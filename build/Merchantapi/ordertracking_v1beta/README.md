@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: ordertracki
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:09:06 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:41:38 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:57:35 GMT
+- **Last Modified:** Mon, 28 Jul 2025 21:57:35 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:47 GMT
 
 
@@ -16,9 +16,9 @@ Auto-generated client library for using the **Merchant API (version: ordertracki
 
 ### `accounts`
 
-### `accounts.ordertrackingsignals`
+### `accounts.orderTrackingSignals`
 
-#### `accounts.ordertrackingsignals.create()`
+#### `accounts.orderTrackingSignals.create()`
 
 Creates new order tracking signal.
 
