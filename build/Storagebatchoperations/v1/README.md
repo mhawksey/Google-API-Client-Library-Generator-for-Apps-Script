@@ -4,7 +4,7 @@ Auto-generated client library for using the **Storage Batch Operations API (vers
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:21:16 GMT
+- **Last Checked:** Mon, 28 Jul 2025 22:08:03 GMT
 - **Last Modified:** Sun, 27 Jul 2025 13:40:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:12 GMT
 
