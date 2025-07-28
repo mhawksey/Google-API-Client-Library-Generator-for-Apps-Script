@@ -4,7 +4,7 @@ Auto-generated client library for using the **My Business Notifications API (ver
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:09:53 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:58:22 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:42:19 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:34 GMT
 
