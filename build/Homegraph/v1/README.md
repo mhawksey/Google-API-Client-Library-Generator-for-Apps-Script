@@ -4,7 +4,7 @@ Auto-generated client library for using the **HomeGraph API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:07:11 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:56:03 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:34:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:58 GMT
 
