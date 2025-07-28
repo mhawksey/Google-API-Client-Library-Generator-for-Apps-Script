@@ -20,25 +20,25 @@ class Serviceconsumermanagement {
 
     // --- Public Interface Initialization ---
 
+    this.operations = {};
+    this.operations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.operations.list = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.operations.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
+    this.operations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
     this.services = {};
     this.services.search = (params) => this._makeRequest('v1/{+parent}:search', 'GET', params);
 
     this.services.tenancyUnits = {};
-    this.services.tenancyUnits.undeleteProject = (params) => this._makeRequest('v1/{+name}:undeleteProject', 'POST', params);
-    this.services.tenancyUnits.removeProject = (params) => this._makeRequest('v1/{+name}:removeProject', 'POST', params);
-    this.services.tenancyUnits.deleteProject = (params) => this._makeRequest('v1/{+name}:deleteProject', 'POST', params);
-    this.services.tenancyUnits.attachProject = (params) => this._makeRequest('v1/{+name}:attachProject', 'POST', params);
-    this.services.tenancyUnits.list = (params) => this._makeRequest('v1/{+parent}/tenancyUnits', 'GET', params);
     this.services.tenancyUnits.applyProjectConfig = (params) => this._makeRequest('v1/{+name}:applyProjectConfig', 'POST', params);
+    this.services.tenancyUnits.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.services.tenancyUnits.undeleteProject = (params) => this._makeRequest('v1/{+name}:undeleteProject', 'POST', params);
     this.services.tenancyUnits.addProject = (params) => this._makeRequest('v1/{+parent}:addProject', 'POST', params);
     this.services.tenancyUnits.create = (params) => this._makeRequest('v1/{+parent}/tenancyUnits', 'POST', params);
-    this.services.tenancyUnits.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-
-    this.operations = {};
-    this.operations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-    this.operations.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
-    this.operations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-    this.operations.list = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.services.tenancyUnits.removeProject = (params) => this._makeRequest('v1/{+name}:removeProject', 'POST', params);
+    this.services.tenancyUnits.attachProject = (params) => this._makeRequest('v1/{+name}:attachProject', 'POST', params);
+    this.services.tenancyUnits.list = (params) => this._makeRequest('v1/{+parent}/tenancyUnits', 'GET', params);
+    this.services.tenancyUnits.deleteProject = (params) => this._makeRequest('v1/{+name}:deleteProject', 'POST', params);
   }
 
   /**
