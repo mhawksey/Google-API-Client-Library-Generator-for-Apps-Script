@@ -4,7 +4,7 @@ Auto-generated client library for using the **Apps Script API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:19:34 GMT
+- **Last Checked:** Mon, 28 Jul 2025 22:06:54 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:46:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:23 GMT
 
