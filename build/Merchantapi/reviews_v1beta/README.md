@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: reviews_v1b
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:09:19 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:57:45 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:41:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:01 GMT
 
