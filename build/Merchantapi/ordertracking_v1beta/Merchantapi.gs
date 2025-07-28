@@ -22,8 +22,8 @@ class Merchantapi {
 
     this.accounts = {};
 
-    this.accounts.ordertrackingsignals = {};
-    this.accounts.ordertrackingsignals.create = (params) => this._makeRequest('ordertracking/v1beta/{+parent}/ordertrackingsignals', 'POST', params);
+    this.accounts.orderTrackingSignals = {};
+    this.accounts.orderTrackingSignals.create = (params) => this._makeRequest('ordertracking/v1beta/{+parent}/orderTrackingSignals', 'POST', params);
   }
 
   /**
