@@ -25,33 +25,33 @@ class Serviceusage {
     this.operations.list = (params) => this._makeRequest('v1beta1/operations', 'GET', params);
 
     this.services = {};
+    this.services.list = (params) => this._makeRequest('v1beta1/{+parent}/services', 'GET', params);
+    this.services.enable = (params) => this._makeRequest('v1beta1/{+name}:enable', 'POST', params);
+    this.services.batchEnable = (params) => this._makeRequest('v1beta1/{+parent}/services:batchEnable', 'POST', params);
     this.services.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
     this.services.generateServiceIdentity = (params) => this._makeRequest('v1beta1/{+parent}:generateServiceIdentity', 'POST', params);
     this.services.disable = (params) => this._makeRequest('v1beta1/{+name}:disable', 'POST', params);
-    this.services.enable = (params) => this._makeRequest('v1beta1/{+name}:enable', 'POST', params);
-    this.services.list = (params) => this._makeRequest('v1beta1/{+parent}/services', 'GET', params);
-    this.services.batchEnable = (params) => this._makeRequest('v1beta1/{+parent}/services:batchEnable', 'POST', params);
 
     this.services.consumerQuotaMetrics = {};
-    this.services.consumerQuotaMetrics.list = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics', 'GET', params);
     this.services.consumerQuotaMetrics.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
     this.services.consumerQuotaMetrics.importConsumerOverrides = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importConsumerOverrides', 'POST', params);
     this.services.consumerQuotaMetrics.importAdminOverrides = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importAdminOverrides', 'POST', params);
+    this.services.consumerQuotaMetrics.list = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics', 'GET', params);
 
     this.services.consumerQuotaMetrics.limits = {};
     this.services.consumerQuotaMetrics.limits.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
 
-    this.services.consumerQuotaMetrics.limits.consumerOverrides = {};
-    this.services.consumerQuotaMetrics.limits.consumerOverrides.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
-    this.services.consumerQuotaMetrics.limits.consumerOverrides.create = (params) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'POST', params);
-    this.services.consumerQuotaMetrics.limits.consumerOverrides.list = (params) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'GET', params);
-    this.services.consumerQuotaMetrics.limits.consumerOverrides.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-
     this.services.consumerQuotaMetrics.limits.adminOverrides = {};
+    this.services.consumerQuotaMetrics.limits.adminOverrides.list = (params) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'GET', params);
     this.services.consumerQuotaMetrics.limits.adminOverrides.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
     this.services.consumerQuotaMetrics.limits.adminOverrides.create = (params) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'POST', params);
     this.services.consumerQuotaMetrics.limits.adminOverrides.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-    this.services.consumerQuotaMetrics.limits.adminOverrides.list = (params) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'GET', params);
+
+    this.services.consumerQuotaMetrics.limits.consumerOverrides = {};
+    this.services.consumerQuotaMetrics.limits.consumerOverrides.create = (params) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'POST', params);
+    this.services.consumerQuotaMetrics.limits.consumerOverrides.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.services.consumerQuotaMetrics.limits.consumerOverrides.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+    this.services.consumerQuotaMetrics.limits.consumerOverrides.list = (params) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'GET', params);
   }
 
   /**
