@@ -20,7 +20,23 @@ class Firebasedynamiclinks {
 
     // --- Public Interface Initialization ---
 
+    this.shortLinks = {};
+
+    /**
+     * Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.shortLinks.create = (params) => this._makeRequest('v1/shortLinks', 'POST', params);
+
     this.v1 = {};
+
+    /**
+     * Get iOS strong/weak-match info for post-install attribution.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.v1.installAttribution = (params) => this._makeRequest('v1/installAttribution', 'POST', params);
 
     /**
      * Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens.
@@ -38,13 +54,6 @@ class Firebasedynamiclinks {
      */
     this.v1.reopenAttribution = (params) => this._makeRequest('v1/reopenAttribution', 'POST', params);
 
-    /**
-     * Get iOS strong/weak-match info for post-install attribution.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.v1.installAttribution = (params) => this._makeRequest('v1/installAttribution', 'POST', params);
-
     this.managedShortLinks = {};
 
     /**
@@ -53,15 +62,6 @@ class Firebasedynamiclinks {
      * @return {object} The API response object.
      */
     this.managedShortLinks.create = (params) => this._makeRequest('v1/managedShortLinks:create', 'POST', params);
-
-    this.shortLinks = {};
-
-    /**
-     * Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.shortLinks.create = (params) => this._makeRequest('v1/shortLinks', 'POST', params);
   }
 
   /**
