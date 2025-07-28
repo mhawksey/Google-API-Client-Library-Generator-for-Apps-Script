@@ -4,7 +4,7 @@ Auto-generated client library for using the **Data Labeling API (version: v1beta
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 15:57:37 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:45:49 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:30:35 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:57 GMT
 
