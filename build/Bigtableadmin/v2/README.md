@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Bigtable Admin API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 15:48:10 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:35:48 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:22:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:22 GMT
 
@@ -775,6 +775,7 @@ Lists all schema bundles associated with the specified table.
 | `params.parent` | `string` | Yes | Required. The parent, which owns this collection of schema bundles. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. |
 | `params.pageSize` | `integer` | No | The maximum number of schema bundles to return. If the value is positive, the server may return at most this value. If unspecified, the server will return the maximum allowed page size. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSchemaBundles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSchemaBundles` must match the call that provided the page token. |
+| `params.view` | `string` | No | Optional. The resource_view to be applied to the returned SchemaBundles' fields. Defaults to NAME_ONLY. |
 
 #### `projects.instances.tables.schemaBundles.delete()`
 
