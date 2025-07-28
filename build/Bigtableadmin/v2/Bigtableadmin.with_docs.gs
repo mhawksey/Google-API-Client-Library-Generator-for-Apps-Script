@@ -699,6 +699,7 @@ class Bigtableadmin {
      * @param {integer} params.pageSize - The maximum number of schema bundles to return. If the value is positive, the server may return at most this value. If unspecified, the server will return the maximum allowed page size.
      * @param {string} params.pageToken - A page token, received from a previous `ListSchemaBundles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSchemaBundles` must match the call that provided the page token.
      * @param {string} params.parent - (Required) Required. The parent, which owns this collection of schema bundles. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`.
+     * @param {string} params.view - Optional. The resource_view to be applied to the returned SchemaBundles' fields. Defaults to NAME_ONLY.
      * @return {object} The API response object.
      */
     this.projects.instances.tables.schemaBundles.list = (params) => this._makeRequest('v2/{+parent}/schemaBundles', 'GET', params);
