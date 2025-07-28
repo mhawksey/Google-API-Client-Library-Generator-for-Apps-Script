@@ -252,6 +252,9 @@ class Discoveryengine {
     this.projects.locations.collections.engines.operations.list = (params) => this._makeRequest('v1alpha/{+name}/operations', 'GET', params);
     this.projects.locations.collections.engines.operations.get = (params) => this._makeRequest('v1alpha/{+name}', 'GET', params);
 
+    this.projects.locations.collections.engines.analytics = {};
+    this.projects.locations.collections.engines.analytics.exportMetrics = (params) => this._makeRequest('v1alpha/{+analytics}:exportMetrics', 'POST', params);
+
     this.projects.locations.collections.engines.assistants = {};
     this.projects.locations.collections.engines.assistants.streamAssist = (params) => this._makeRequest('v1alpha/{+name}:streamAssist', 'POST', params);
     this.projects.locations.collections.engines.assistants.patch = (params) => this._makeRequest('v1alpha/{+name}', 'PATCH', params);
