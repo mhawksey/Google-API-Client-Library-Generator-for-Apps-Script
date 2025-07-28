@@ -4,7 +4,7 @@ Auto-generated client library for using the **Admin SDK API (version: directory_
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 15:45:29 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:32:55 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:20:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:54 GMT
 
