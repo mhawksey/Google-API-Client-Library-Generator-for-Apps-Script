@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Site Verification API (vers
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:20:46 GMT
+- **Last Checked:** Mon, 28 Jul 2025 22:07:43 GMT
 - **Last Modified:** Sun, 27 Jul 2025 13:40:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:40 GMT
 
