@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Talent Solution API (version
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:07:48 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:56:29 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:34:29 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:33 GMT
 
