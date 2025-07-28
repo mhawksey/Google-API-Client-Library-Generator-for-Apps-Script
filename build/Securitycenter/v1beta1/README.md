@@ -4,7 +4,7 @@ Auto-generated client library for using the **Security Command Center API (versi
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:19:51 GMT
+- **Last Checked:** Mon, 28 Jul 2025 22:07:06 GMT
 - **Last Modified:** Sun, 27 Jul 2025 13:38:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:46 GMT
 
