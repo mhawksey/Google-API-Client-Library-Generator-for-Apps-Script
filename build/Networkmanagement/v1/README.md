@@ -4,7 +4,7 @@ Auto-generated client library for using the **Network Management API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:10:21 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:58:41 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:42:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:01 GMT
 
