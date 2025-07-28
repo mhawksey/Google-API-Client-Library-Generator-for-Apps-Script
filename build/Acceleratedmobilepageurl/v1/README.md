@@ -4,7 +4,7 @@ Auto-generated client library for using the **Accelerated Mobile Pages (AMP) URL
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 15:45:10 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:32:36 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:19:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:29 GMT
 
