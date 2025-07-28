@@ -4,7 +4,7 @@ Auto-generated client library for using the **Search Ads 360 Reporting API (vers
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:19:39 GMT
+- **Last Checked:** Mon, 28 Jul 2025 22:06:56 GMT
 - **Last Modified:** Sun, 27 Jul 2025 13:38:19 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:27 GMT
 
