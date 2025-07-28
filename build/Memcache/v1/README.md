@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Memorystore for Memcached AP
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:08:48 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:57:18 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:41:19 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:25 GMT
 
