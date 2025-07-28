@@ -20,6 +20,9 @@ class Discoveryengine {
 
     // --- Public Interface Initialization ---
 
+    this.media = {};
+    this.media.download = (params) => this._makeRequest('v1beta/{+name}:downloadFile', 'GET', params);
+
     this.projects = {};
     this.projects.provision = (params) => this._makeRequest('v1beta/{+name}:provision', 'POST', params);
 
