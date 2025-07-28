@@ -4,7 +4,7 @@ Auto-generated client library for using the **Apigee API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 15:46:47 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:34:17 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:21:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:32 GMT
 
@@ -831,7 +831,7 @@ Retrieves a debug session.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the debug session to retrieve. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.name` | `string` | Yes | Required. The name of the debug session to retrieve. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 
 #### `organizations.environments.apis.revisions.debugsessions.list()`
 
@@ -840,8 +840,8 @@ Lists debug sessions that are currently active in the given API Proxy revision.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the API Proxy revision deployment for which to list debug sessions. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.pageSize` | `integer` | No | Maximum number of debug sessions to return. The page size defaults to 25. |
-| `params.pageToken` | `string` | No | Page token, returned from a previous ListDebugSessions call, that you can use to retrieve the next page. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of debug sessions to return. The page size defaults to 25. |
+| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous ListDebugSessions call, that you can use to retrieve the next page. |
 
 #### `organizations.environments.apis.revisions.debugsessions.deleteData()`
 
@@ -859,7 +859,7 @@ Gets the debug data from a transaction.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the debug session transaction. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}/data/{transaction}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.name` | `string` | Yes | Required. The name of the debug session transaction. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}/data/{transaction}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 
 ### `organizations.environments.apis.deployments`
 
@@ -3186,7 +3186,7 @@ Update a security monitoring condition.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the security monitoring condition resource. Format: organizations/{org}/securityMonitoringConditions/{security_monitoring_condition} |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. Valid fields to update are `profile`, `scope`, `include_all_resources`, `include`, and `exclude`. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. Valid fields to update are `include_all_resources` and `include`. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `organizations.securityMonitoringConditions.delete()`
