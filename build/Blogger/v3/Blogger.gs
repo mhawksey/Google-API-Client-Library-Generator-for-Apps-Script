@@ -1,0 +1,148 @@
+
+/**
+ * Google Apps Script client library for the Blogger API
+ * Documentation URL: https://developers.google.com/blogger/docs/3.0/getting_started
+ * @class
+ */
+class Blogger {
+  /**
+   * @constructor
+   * @param {object} [config] - Optional configuration object.
+   * @param {string} [config.token] - An explicit OAuth2 token.
+   * @param {object} [config.backoff] - Configuration for exponential backoff.
+   */
+  constructor(config = {}) {
+    // "Private" properties using the underscore convention
+    this._token = config.token || ScriptApp.getOAuthToken();
+    this._backoffConfig = Object.assign({ retries: 3, baseDelay: 1000 }, config.backoff);
+    this._rootUrl = 'https://blogger.googleapis.com/';
+    this._servicePath = '';
+
+    // --- Public Interface Initialization ---
+
+    this.comments = {};
+    this.comments.approve = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve', 'POST', params);
+    this.comments.delete = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}', 'DELETE', params);
+    this.comments.get = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}', 'GET', params);
+    this.comments.list = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments', 'GET', params);
+    this.comments.listByBlog = (params) => this._makeRequest('v3/blogs/{blogId}/comments', 'GET', params);
+    this.comments.markAsSpam = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam', 'POST', params);
+    this.comments.removeContent = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent', 'POST', params);
+
+    this.pages = {};
+    this.pages.delete = (params) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'DELETE', params);
+    this.pages.get = (params) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'GET', params);
+    this.pages.insert = (params) => this._makeRequest('v3/blogs/{blogId}/pages', 'POST', params);
+    this.pages.list = (params) => this._makeRequest('v3/blogs/{blogId}/pages', 'GET', params);
+    this.pages.patch = (params) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PATCH', params);
+    this.pages.publish = (params) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/publish', 'POST', params);
+    this.pages.revert = (params) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/revert', 'POST', params);
+    this.pages.update = (params) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PUT', params);
+
+    this.posts = {};
+    this.posts.delete = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'DELETE', params);
+    this.posts.get = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'GET', params);
+    this.posts.getByPath = (params) => this._makeRequest('v3/blogs/{blogId}/posts/bypath', 'GET', params);
+    this.posts.insert = (params) => this._makeRequest('v3/blogs/{blogId}/posts', 'POST', params);
+    this.posts.list = (params) => this._makeRequest('v3/blogs/{blogId}/posts', 'GET', params);
+    this.posts.patch = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'PATCH', params);
+    this.posts.publish = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/publish', 'POST', params);
+    this.posts.revert = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/revert', 'POST', params);
+    this.posts.search = (params) => this._makeRequest('v3/blogs/{blogId}/posts/search', 'GET', params);
+    this.posts.update = (params) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'PUT', params);
+
+    this.blogs = {};
+    this.blogs.get = (params) => this._makeRequest('v3/blogs/{blogId}', 'GET', params);
+    this.blogs.getByUrl = (params) => this._makeRequest('v3/blogs/byurl', 'GET', params);
+    this.blogs.listByUser = (params) => this._makeRequest('v3/users/{userId}/blogs', 'GET', params);
+
+    this.blogUserInfos = {};
+    this.blogUserInfos.get = (params) => this._makeRequest('v3/users/{userId}/blogs/{blogId}', 'GET', params);
+
+    this.pageViews = {};
+    this.pageViews.get = (params) => this._makeRequest('v3/blogs/{blogId}/pageviews', 'GET', params);
+
+    this.postUserInfos = {};
+    this.postUserInfos.get = (params) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts/{postId}', 'GET', params);
+    this.postUserInfos.list = (params) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts', 'GET', params);
+
+    this.users = {};
+    this.users.get = (params) => this._makeRequest('v3/users/{userId}', 'GET', params);
+  }
+
+  /**
+   * @private Builds the full request URL and options object.
+   */
+  _buildRequestDetails(path, httpMethod, params) {
+    let url = this._rootUrl + this._servicePath + path;
+    const remainingParams = { ...params };
+    // Fix: Correctly handle {+param} style parameters and other potential special chars.
+    const pathParams = url.match(/{[^{}]+}/g) || [];
+
+    pathParams.forEach(placeholder => {
+      const isPlus = placeholder.startsWith('{+');
+      const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
+      if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
+        // Fix: URI-encode path parameters for safety.
+        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        delete remainingParams[paramName];
+      }
+    });
+
+    const queryParts = [];
+    for (const key in remainingParams) {
+      if (key !== 'resource') {
+        queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
+      }
+    }
+    if (queryParts.length > 0) {
+      url += '?' + queryParts.join('&');
+    }
+
+    const options = {
+      method: httpMethod,
+      headers: { 'Authorization': 'Bearer ' + this._token },
+      contentType: 'application/json',
+      muteHttpExceptions: true,
+    };
+    if (params && params.resource) {
+      options.payload = JSON.stringify(params.resource);
+    }
+    
+    return { url, options };
+  }
+
+  /**
+   * @private Makes the HTTP request with exponential backoff for retries.
+   */
+  _makeRequest(path, httpMethod, params) {
+    const { url, options } = this._buildRequestDetails(path, httpMethod, params);
+
+    for (let i = 0; i <= this._backoffConfig.retries; i++) {
+      const response = UrlFetchApp.fetch(url, options);
+      const responseCode = response.getResponseCode();
+      const responseText = response.getContentText(); // Simplified call
+
+      if (responseCode >= 200 && responseCode < 300) {
+        return responseText ? JSON.parse(responseText) : {};
+      }
+
+      const retryableErrors = [429, 500, 503];
+      if (retryableErrors.includes(responseCode) && i < this._backoffConfig.retries) {
+        const delay = this._backoffConfig.baseDelay * Math.pow(2, i) + Math.random() * 1000;
+        Utilities.sleep(delay);
+        continue;
+      }
+
+      try {
+        // Return parsed error if possible, otherwise a generic error object
+        return JSON.parse(responseText);
+      } catch (e) {
+        return { error: { code: responseCode, message: responseText } };
+      }
+    }
+    
+    // This line is technically unreachable if retries >= 0, but good for safety.
+    throw new Error('Request failed after multiple retries.');
+  }
+}

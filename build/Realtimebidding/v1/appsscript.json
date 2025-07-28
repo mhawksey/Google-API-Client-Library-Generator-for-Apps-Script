@@ -1,0 +1,9 @@
+{
+  "timeZone": "Etc/GMT",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/realtime-bidding",
+    "https://www.googleapis.com/auth/script.external_request"
+  ]
+}

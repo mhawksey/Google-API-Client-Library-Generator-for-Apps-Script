@@ -1,0 +1,15 @@
+{
+  "timeZone": "Etc/GMT",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/cloud-platform",
+    "https://www.googleapis.com/auth/maps-platform.places",
+    "https://www.googleapis.com/auth/maps-platform.places.autocomplete",
+    "https://www.googleapis.com/auth/maps-platform.places.details",
+    "https://www.googleapis.com/auth/maps-platform.places.getphotomedia",
+    "https://www.googleapis.com/auth/maps-platform.places.nearbysearch",
+    "https://www.googleapis.com/auth/maps-platform.places.textsearch",
+    "https://www.googleapis.com/auth/script.external_request"
+  ]
+}

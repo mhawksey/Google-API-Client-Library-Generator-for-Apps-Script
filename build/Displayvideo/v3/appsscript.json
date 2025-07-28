@@ -1,0 +1,12 @@
+{
+  "timeZone": "Etc/GMT",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/display-video",
+    "https://www.googleapis.com/auth/display-video-mediaplanning",
+    "https://www.googleapis.com/auth/display-video-user-management",
+    "https://www.googleapis.com/auth/doubleclickbidmanager",
+    "https://www.googleapis.com/auth/script.external_request"
+  ]
+}

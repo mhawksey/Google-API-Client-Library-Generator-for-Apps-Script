@@ -1,0 +1,187 @@
+
+/**
+ * Google Apps Script client library for the VM Migration API
+ * Documentation URL: https://cloud.google.com/migrate/virtual-machines
+ * @class
+ */
+class Vmmigration {
+  /**
+   * @constructor
+   * @param {object} [config] - Optional configuration object.
+   * @param {string} [config.token] - An explicit OAuth2 token.
+   * @param {object} [config.backoff] - Configuration for exponential backoff.
+   */
+  constructor(config = {}) {
+    // "Private" properties using the underscore convention
+    this._token = config.token || ScriptApp.getOAuthToken();
+    this._backoffConfig = Object.assign({ retries: 3, baseDelay: 1000 }, config.backoff);
+    this._rootUrl = 'https://vmmigration.googleapis.com/';
+    this._servicePath = '';
+
+    // --- Public Interface Initialization ---
+
+    this.projects = {};
+
+    this.projects.locations = {};
+    this.projects.locations.list = (params) => this._makeRequest('v1alpha1/{+name}/locations', 'GET', params);
+    this.projects.locations.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = (params) => this._makeRequest('v1alpha1/{+name}/operations', 'GET', params);
+    this.projects.locations.operations.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+    this.projects.locations.operations.delete = (params) => this._makeRequest('v1alpha1/{+name}', 'DELETE', params);
+    this.projects.locations.operations.cancel = (params) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', params);
+
+    this.projects.locations.sources = {};
+    this.projects.locations.sources.list = (params) => this._makeRequest('v1alpha1/{+parent}/sources', 'GET', params);
+    this.projects.locations.sources.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+    this.projects.locations.sources.create = (params) => this._makeRequest('v1alpha1/{+parent}/sources', 'POST', params);
+    this.projects.locations.sources.patch = (params) => this._makeRequest('v1alpha1/{+name}', 'PATCH', params);
+    this.projects.locations.sources.delete = (params) => this._makeRequest('v1alpha1/{+name}', 'DELETE', params);
+    this.projects.locations.sources.fetchInventory = (params) => this._makeRequest('v1alpha1/{+source}:fetchInventory', 'GET', params);
+
+    this.projects.locations.sources.utilizationReports = {};
+    this.projects.locations.sources.utilizationReports.list = (params) => this._makeRequest('v1alpha1/{+parent}/utilizationReports', 'GET', params);
+    this.projects.locations.sources.utilizationReports.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+    this.projects.locations.sources.utilizationReports.create = (params) => this._makeRequest('v1alpha1/{+parent}/utilizationReports', 'POST', params);
+    this.projects.locations.sources.utilizationReports.delete = (params) => this._makeRequest('v1alpha1/{+name}', 'DELETE', params);
+
+    this.projects.locations.sources.datacenterConnectors = {};
+    this.projects.locations.sources.datacenterConnectors.list = (params) => this._makeRequest('v1alpha1/{+parent}/datacenterConnectors', 'GET', params);
+    this.projects.locations.sources.datacenterConnectors.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+    this.projects.locations.sources.datacenterConnectors.create = (params) => this._makeRequest('v1alpha1/{+parent}/datacenterConnectors', 'POST', params);
+    this.projects.locations.sources.datacenterConnectors.delete = (params) => this._makeRequest('v1alpha1/{+name}', 'DELETE', params);
+    this.projects.locations.sources.datacenterConnectors.upgradeAppliance = (params) => this._makeRequest('v1alpha1/{+datacenterConnector}:upgradeAppliance', 'POST', params);
+
+    this.projects.locations.sources.migratingVms = {};
+    this.projects.locations.sources.migratingVms.create = (params) => this._makeRequest('v1alpha1/{+parent}/migratingVms', 'POST', params);
+    this.projects.locations.sources.migratingVms.list = (params) => this._makeRequest('v1alpha1/{+parent}/migratingVms', 'GET', params);
+    this.projects.locations.sources.migratingVms.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+    this.projects.locations.sources.migratingVms.patch = (params) => this._makeRequest('v1alpha1/{+name}', 'PATCH', params);
+    this.projects.locations.sources.migratingVms.delete = (params) => this._makeRequest('v1alpha1/{+name}', 'DELETE', params);
+    this.projects.locations.sources.migratingVms.startMigration = (params) => this._makeRequest('v1alpha1/{+migratingVm}:startMigration', 'POST', params);
+    this.projects.locations.sources.migratingVms.resumeMigration = (params) => this._makeRequest('v1alpha1/{+migratingVm}:resumeMigration', 'POST', params);
+    this.projects.locations.sources.migratingVms.pauseMigration = (params) => this._makeRequest('v1alpha1/{+migratingVm}:pauseMigration', 'POST', params);
+    this.projects.locations.sources.migratingVms.finalizeMigration = (params) => this._makeRequest('v1alpha1/{+migratingVm}:finalizeMigration', 'POST', params);
+    this.projects.locations.sources.migratingVms.extendMigration = (params) => this._makeRequest('v1alpha1/{+migratingVm}:extendMigration', 'POST', params);
+
+    this.projects.locations.sources.migratingVms.cloneJobs = {};
+    this.projects.locations.sources.migratingVms.cloneJobs.create = (params) => this._makeRequest('v1alpha1/{+parent}/cloneJobs', 'POST', params);
+    this.projects.locations.sources.migratingVms.cloneJobs.cancel = (params) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', params);
+    this.projects.locations.sources.migratingVms.cloneJobs.list = (params) => this._makeRequest('v1alpha1/{+parent}/cloneJobs', 'GET', params);
+    this.projects.locations.sources.migratingVms.cloneJobs.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+
+    this.projects.locations.sources.migratingVms.cutoverJobs = {};
+    this.projects.locations.sources.migratingVms.cutoverJobs.create = (params) => this._makeRequest('v1alpha1/{+parent}/cutoverJobs', 'POST', params);
+    this.projects.locations.sources.migratingVms.cutoverJobs.cancel = (params) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', params);
+    this.projects.locations.sources.migratingVms.cutoverJobs.list = (params) => this._makeRequest('v1alpha1/{+parent}/cutoverJobs', 'GET', params);
+    this.projects.locations.sources.migratingVms.cutoverJobs.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+
+    this.projects.locations.sources.migratingVms.replicationCycles = {};
+    this.projects.locations.sources.migratingVms.replicationCycles.list = (params) => this._makeRequest('v1alpha1/{+parent}/replicationCycles', 'GET', params);
+    this.projects.locations.sources.migratingVms.replicationCycles.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+
+    this.projects.locations.groups = {};
+    this.projects.locations.groups.list = (params) => this._makeRequest('v1alpha1/{+parent}/groups', 'GET', params);
+    this.projects.locations.groups.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+    this.projects.locations.groups.create = (params) => this._makeRequest('v1alpha1/{+parent}/groups', 'POST', params);
+    this.projects.locations.groups.patch = (params) => this._makeRequest('v1alpha1/{+name}', 'PATCH', params);
+    this.projects.locations.groups.delete = (params) => this._makeRequest('v1alpha1/{+name}', 'DELETE', params);
+    this.projects.locations.groups.addGroupMigration = (params) => this._makeRequest('v1alpha1/{+group}:addGroupMigration', 'POST', params);
+    this.projects.locations.groups.removeGroupMigration = (params) => this._makeRequest('v1alpha1/{+group}:removeGroupMigration', 'POST', params);
+
+    this.projects.locations.targetProjects = {};
+    this.projects.locations.targetProjects.list = (params) => this._makeRequest('v1alpha1/{+parent}/targetProjects', 'GET', params);
+    this.projects.locations.targetProjects.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+    this.projects.locations.targetProjects.create = (params) => this._makeRequest('v1alpha1/{+parent}/targetProjects', 'POST', params);
+    this.projects.locations.targetProjects.patch = (params) => this._makeRequest('v1alpha1/{+name}', 'PATCH', params);
+    this.projects.locations.targetProjects.delete = (params) => this._makeRequest('v1alpha1/{+name}', 'DELETE', params);
+
+    this.projects.locations.imageImports = {};
+    this.projects.locations.imageImports.list = (params) => this._makeRequest('v1alpha1/{+parent}/imageImports', 'GET', params);
+    this.projects.locations.imageImports.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+    this.projects.locations.imageImports.create = (params) => this._makeRequest('v1alpha1/{+parent}/imageImports', 'POST', params);
+    this.projects.locations.imageImports.delete = (params) => this._makeRequest('v1alpha1/{+name}', 'DELETE', params);
+
+    this.projects.locations.imageImports.imageImportJobs = {};
+    this.projects.locations.imageImports.imageImportJobs.list = (params) => this._makeRequest('v1alpha1/{+parent}/imageImportJobs', 'GET', params);
+    this.projects.locations.imageImports.imageImportJobs.get = (params) => this._makeRequest('v1alpha1/{+name}', 'GET', params);
+    this.projects.locations.imageImports.imageImportJobs.cancel = (params) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', params);
+  }
+
+  /**
+   * @private Builds the full request URL and options object.
+   */
+  _buildRequestDetails(path, httpMethod, params) {
+    let url = this._rootUrl + this._servicePath + path;
+    const remainingParams = { ...params };
+    // Fix: Correctly handle {+param} style parameters and other potential special chars.
+    const pathParams = url.match(/{[^{}]+}/g) || [];
+
+    pathParams.forEach(placeholder => {
+      const isPlus = placeholder.startsWith('{+');
+      const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
+      if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
+        // Fix: URI-encode path parameters for safety.
+        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        delete remainingParams[paramName];
+      }
+    });
+
+    const queryParts = [];
+    for (const key in remainingParams) {
+      if (key !== 'resource') {
+        queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
+      }
+    }
+    if (queryParts.length > 0) {
+      url += '?' + queryParts.join('&');
+    }
+
+    const options = {
+      method: httpMethod,
+      headers: { 'Authorization': 'Bearer ' + this._token },
+      contentType: 'application/json',
+      muteHttpExceptions: true,
+    };
+    if (params && params.resource) {
+      options.payload = JSON.stringify(params.resource);
+    }
+    
+    return { url, options };
+  }
+
+  /**
+   * @private Makes the HTTP request with exponential backoff for retries.
+   */
+  _makeRequest(path, httpMethod, params) {
+    const { url, options } = this._buildRequestDetails(path, httpMethod, params);
+
+    for (let i = 0; i <= this._backoffConfig.retries; i++) {
+      const response = UrlFetchApp.fetch(url, options);
+      const responseCode = response.getResponseCode();
+      const responseText = response.getContentText(); // Simplified call
+
+      if (responseCode >= 200 && responseCode < 300) {
+        return responseText ? JSON.parse(responseText) : {};
+      }
+
+      const retryableErrors = [429, 500, 503];
+      if (retryableErrors.includes(responseCode) && i < this._backoffConfig.retries) {
+        const delay = this._backoffConfig.baseDelay * Math.pow(2, i) + Math.random() * 1000;
+        Utilities.sleep(delay);
+        continue;
+      }
+
+      try {
+        // Return parsed error if possible, otherwise a generic error object
+        return JSON.parse(responseText);
+      } catch (e) {
+        return { error: { code: responseCode, message: responseText } };
+      }
+    }
+    
+    // This line is technically unreachable if retries >= 0, but good for safety.
+    throw new Error('Request failed after multiple retries.');
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "timeZone": "Etc/GMT",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/drive.admin.labels",
+    "https://www.googleapis.com/auth/drive.admin.labels.readonly",
+    "https://www.googleapis.com/auth/drive.labels",
+    "https://www.googleapis.com/auth/drive.labels.readonly",
+    "https://www.googleapis.com/auth/script.external_request"
+  ]
+}

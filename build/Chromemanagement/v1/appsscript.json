@@ -1,0 +1,13 @@
+{
+  "timeZone": "Etc/GMT",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/chrome.management.appdetails.readonly",
+    "https://www.googleapis.com/auth/chrome.management.profiles",
+    "https://www.googleapis.com/auth/chrome.management.profiles.readonly",
+    "https://www.googleapis.com/auth/chrome.management.reports.readonly",
+    "https://www.googleapis.com/auth/chrome.management.telemetry.readonly",
+    "https://www.googleapis.com/auth/script.external_request"
+  ]
+}
