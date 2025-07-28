@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Firestore API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:00:36 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:55:13 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:33:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:56 GMT
 
