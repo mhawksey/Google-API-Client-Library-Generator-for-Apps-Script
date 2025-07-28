@@ -4,8 +4,8 @@ Auto-generated client library for using the **Discovery Engine API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 15:58:46 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:31:40 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:47:20 GMT
+- **Last Modified:** Mon, 28 Jul 2025 21:47:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:49 GMT
 
 
@@ -13,6 +13,18 @@ Auto-generated client library for using the **Discovery Engine API (version: v1)
 ---
 
 ## API Reference
+
+### `media`
+
+#### `media.download()`
+
+Downloads a file from the session.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Session. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}` |
+| `params.fileId` | `string` | No | Required. The ID of the file to be downloaded. |
+| `params.viewId` | `string` | No | Optional. The ID of the view to be downloaded. |
 
 ### `projects`
 
@@ -697,7 +709,7 @@ Lists all Sessions by their parent DataStore.
 | `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
 | `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
-| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"" |
+| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
 | `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time. |
 
 ### `projects.locations.collections.dataStores.sessions.answers`
@@ -1254,7 +1266,7 @@ Lists all Sessions by their parent DataStore.
 | `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
 | `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
-| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"" |
+| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
 | `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time. |
 
 ### `projects.locations.collections.engines.sessions.answers`
@@ -1872,7 +1884,7 @@ Lists all Sessions by their parent DataStore.
 | `params.parent` | `string` | Yes | Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}` |
 | `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
-| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\"" |
+| `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
 | `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time. |
 
 ### `projects.locations.dataStores.sessions.answers`
