@@ -22,7 +22,7 @@ class Merchantapi {
 
     this.accounts = {};
 
-    this.accounts.ordertrackingsignals = {};
+    this.accounts.orderTrackingSignals = {};
 
     /**
      * Creates new order tracking signal.
@@ -31,7 +31,7 @@ class Merchantapi {
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
-    this.accounts.ordertrackingsignals.create = (params) => this._makeRequest('ordertracking/v1beta/{+parent}/ordertrackingsignals', 'POST', params);
+    this.accounts.orderTrackingSignals.create = (params) => this._makeRequest('ordertracking/v1beta/{+parent}/orderTrackingSignals', 'POST', params);
   }
 
   /**
