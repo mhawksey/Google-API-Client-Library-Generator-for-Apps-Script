@@ -4,7 +4,7 @@ Auto-generated client library for using the **Managed Service for Apache Kafka A
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:08:35 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:57:08 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:35:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:10 GMT
 
