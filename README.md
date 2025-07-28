@@ -10,7 +10,7 @@ This tool creates libraries with features including flexible authentication, and
 
 For most users, you do not need to run the generator yourself. You can find the library you need in the `build/` directory.
 
-**Call for Contributions:** While all libraries are generated, not all have been extensively tested in real-world applications. We welcome and encourage community contributions. If you find a bug or have a suggestion, please [**open a GitHub Issue**](https://github.com/your-repo/issues). If you have fixes or tests to add, please feel free to **submit a Pull Request**.
+**Call for Contributions:** While all libraries are generated, not all have been extensively tested in real-world applications. We welcome and encourage community contributions. If you find a bug or have a suggestion, please [**open a GitHub Issue**](https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/issues). If you have fixes or tests to add, please feel free to **submit a Pull Request**.
 
 ---
 
@@ -53,7 +53,7 @@ The libraries support multiple authentication methods.
 
 By default, the library uses the script's own OAuth token. This is the simplest method and works automatically when a user is running the script and has approved the necessary scopes.
 
-```
+``` javascript
 // No special configuration needed.
 const drive = new Drive();
 const files = drive.files.list();
@@ -77,7 +77,7 @@ This flow is essential for scripts that run on a trigger, act on behalf of a sys
 
 The following is a complete, working example for using a service account with the generated Drive library.
 
-```
+``` javascript
 /*
  * This sample demonstrates how to configure the library for Google APIs, using
  * domain-wide delegation (Service Account flow).
@@ -165,7 +165,7 @@ If the library you need needs adjusting or or you would like to incorporate this
 1. Open the `Code.gs` file in your **ApiLibraryGenerator** project.  
 2. To generate a new library, call `createCompleteApiLibrary()` with the desired `apiName` and `version`. You can also configure whether to include JSDoc comments. 
 
-```
+``` javascript
 function generateMyLibrary() {
   // Generate YouTube Analytics v2 library with full JSDoc comments
   createCompleteApiLibrary('youtubeAnalytics', 'v2', { generateJsdoc: true });
