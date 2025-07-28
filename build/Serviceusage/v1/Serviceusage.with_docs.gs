@@ -57,6 +57,14 @@ class Serviceusage {
     this.services = {};
 
     /**
+     * Disable a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled.
+     * @param {string} params.name - (Required) Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.services.disable = (params) => this._makeRequest('v1/{+name}:disable', 'POST', params);
+
+    /**
      * Enable a service so that it can be used with a project.
      * @param {string} params.name - (Required) Name of the consumer and service to enable the service on. The `EnableService` and `DisableService` methods currently only support projects. Enabling a service requires that the service is public or is shared with the user enabling the service. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number.
      * @param {object} params.resource - The request body.
@@ -83,12 +91,11 @@ class Serviceusage {
     this.services.list = (params) => this._makeRequest('v1/{+parent}/services', 'GET', params);
 
     /**
-     * Disable a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled.
-     * @param {string} params.name - (Required) Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number.
-     * @param {object} params.resource - The request body.
+     * Returns the service configuration and enabled state for a given service.
+     * @param {string} params.name - (Required) Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number.
      * @return {object} The API response object.
      */
-    this.services.disable = (params) => this._makeRequest('v1/{+name}:disable', 'POST', params);
+    this.services.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
 
     /**
      * Enable multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. To enable a single service, use the `EnableService` method instead.
@@ -97,13 +104,6 @@ class Serviceusage {
      * @return {object} The API response object.
      */
     this.services.batchEnable = (params) => this._makeRequest('v1/{+parent}/services:batchEnable', 'POST', params);
-
-    /**
-     * Returns the service configuration and enabled state for a given service.
-     * @param {string} params.name - (Required) Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number.
-     * @return {object} The API response object.
-     */
-    this.services.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
   }
 
   /**
