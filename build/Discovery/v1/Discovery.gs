@@ -21,8 +21,8 @@ class Discovery {
     // --- Public Interface Initialization ---
 
     this.apis = {};
-    this.apis.getRest = (params) => this._makeRequest('apis/{api}/{version}/rest', 'GET', params);
     this.apis.list = (params) => this._makeRequest('apis', 'GET', params);
+    this.apis.getRest = (params) => this._makeRequest('apis/{api}/{version}/rest', 'GET', params);
   }
 
   /**
