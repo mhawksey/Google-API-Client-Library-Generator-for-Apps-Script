@@ -4,8 +4,8 @@ Auto-generated client library for using the **Service Usage API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:20:40 GMT
-- **Last Modified:** Sun, 27 Jul 2025 16:20:40 GMT
+- **Last Checked:** Mon, 28 Jul 2025 22:07:40 GMT
+- **Last Modified:** Mon, 28 Jul 2025 22:07:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:33 GMT
 
 
@@ -30,9 +30,9 @@ Lists operations that match the specified filter in the request. If the server d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.filter` | `string` | No | The standard list filter. |
-| `params.pageToken` | `string` | No | The standard list page token. |
 | `params.name` | `string` | No | The name of the operation's parent resource. |
 
 #### `operations.get()`
@@ -54,6 +54,15 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 
 ### `services`
 
+#### `services.disable()`
+
+Disable a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. |
+| `params.resource` | `object` | Yes | The request body. |
+
 #### `services.enable()`
 
 Enable a service so that it can be used with a project.
@@ -69,8 +78,8 @@ Returns the service configurations and enabled states for a given list of servic
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Parent to retrieve services from. If this is set, the parent of all of the services specified in `names` must match this field. An example name would be: `projects/123` where `123` is the project number. The `BatchGetServices` method currently only supports projects. |
 | `params.names` | `string` | No | Names of the services to retrieve. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. A single request can get a maximum of 30 services at a time. |
+| `params.parent` | `string` | Yes | Parent to retrieve services from. If this is set, the parent of all of the services specified in `names` must match this field. An example name would be: `projects/123` where `123` is the project number. The `BatchGetServices` method currently only supports projects. |
 
 #### `services.list()`
 
@@ -83,14 +92,13 @@ List all services available to the specified project, and the current state of t
 | `params.pageToken` | `string` | No | Token identifying which result to start with, which is returned by a previous list call. |
 | `params.parent` | `string` | Yes | Parent to search for services on. An example name would be: `projects/123` where `123` is the project number. |
 
-#### `services.disable()`
+#### `services.get()`
 
-Disable a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled.
+Returns the service configuration and enabled state for a given service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. |
 
 #### `services.batchEnable()`
 
@@ -100,11 +108,3 @@ Enable multiple services on a project. The operation is atomic: if enabling any 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Parent to enable services on. An example name would be: `projects/123` where `123` is the project number. The `BatchEnableServices` method currently only supports projects. |
 | `params.resource` | `object` | Yes | The request body. |
-
-#### `services.get()`
-
-Returns the service configuration and enabled state for a given service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number. |
