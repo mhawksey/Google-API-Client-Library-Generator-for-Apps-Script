@@ -4,7 +4,7 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 15:58:30 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:46:54 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:31:24 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:31 GMT
 
