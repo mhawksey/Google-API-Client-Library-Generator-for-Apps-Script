@@ -4,7 +4,7 @@ Auto-generated client library for using the **GKE Hub API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:06:42 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:55:41 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:33:43 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:32 GMT
 
