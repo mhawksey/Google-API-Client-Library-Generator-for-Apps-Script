@@ -4,7 +4,7 @@ Auto-generated client library for using the **YouTube Reporting API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:29:00 GMT
+- **Last Checked:** Mon, 28 Jul 2025 22:15:41 GMT
 - **Last Modified:** Sun, 27 Jul 2025 13:50:07 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:37 GMT
 
