@@ -20,6 +20,17 @@ class Discoveryengine {
 
     // --- Public Interface Initialization ---
 
+    this.media = {};
+
+    /**
+     * Downloads a file from the session.
+     * @param {string} params.fileId - Required. The ID of the file to be downloaded.
+     * @param {string} params.name - (Required) Required. The resource name of the Session. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}`
+     * @param {string} params.viewId - Optional. The ID of the view to be downloaded.
+     * @return {object} The API response object.
+     */
+    this.media.download = (params) => this._makeRequest('v1/{+name}:downloadFile', 'GET', params);
+
     this.projects = {};
 
     /**
@@ -629,7 +640,7 @@ class Discoveryengine {
 
     /**
      * Lists all Sessions by their parent DataStore.
-     * @param {string} params.filter - A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\""
+     * @param {string} params.filter - A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"`
      * @param {string} params.orderBy - A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time.
      * @param {integer} params.pageSize - Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
      * @param {string} params.pageToken - A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page.
@@ -1129,7 +1140,7 @@ class Discoveryengine {
 
     /**
      * Lists all Sessions by their parent DataStore.
-     * @param {string} params.filter - A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\""
+     * @param {string} params.filter - A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"`
      * @param {string} params.orderBy - A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time.
      * @param {integer} params.pageSize - Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
      * @param {string} params.pageToken - A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page.
@@ -1685,7 +1696,7 @@ class Discoveryengine {
 
     /**
      * Lists all Sessions by their parent DataStore.
-     * @param {string} params.filter - A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: "user_pseudo_id = some_id" "display_name = \"some_name\"" "starred = true" "is_pinned=true AND (NOT labels:hidden)" "create_time > \"1970-01-01T12:00:00Z\""
+     * @param {string} params.filter - A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"`
      * @param {string} params.orderBy - A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time.
      * @param {integer} params.pageSize - Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
      * @param {string} params.pageToken - A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page.
