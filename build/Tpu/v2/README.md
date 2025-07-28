@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud TPU API (version: v2)** in G
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:21:57 GMT
+- **Last Checked:** Mon, 28 Jul 2025 22:08:34 GMT
 - **Last Modified:** Sun, 27 Jul 2025 13:47:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:02 GMT
 
