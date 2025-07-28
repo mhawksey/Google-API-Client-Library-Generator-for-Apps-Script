@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud SQL Admin API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:21:07 GMT
+- **Last Checked:** Mon, 28 Jul 2025 22:07:57 GMT
 - **Last Modified:** Sun, 27 Jul 2025 13:40:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:03 GMT
 
