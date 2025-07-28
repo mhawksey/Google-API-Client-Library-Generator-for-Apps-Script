@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Healthcare API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 16:07:08 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:56:01 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:34:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:56 GMT
 
