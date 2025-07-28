@@ -4,7 +4,7 @@ Auto-generated client library for using the **Eventarc API (version: v1)** in Go
 
 ## Metadata
 
-- **Last Checked:** Sun, 27 Jul 2025 15:59:37 GMT
+- **Last Checked:** Mon, 28 Jul 2025 21:54:21 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:32:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:49 GMT
 
