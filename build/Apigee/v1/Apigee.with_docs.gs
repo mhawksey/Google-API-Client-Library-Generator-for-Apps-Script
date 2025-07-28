@@ -712,15 +712,15 @@ class Apigee {
 
     /**
      * Retrieves a debug session.
-     * @param {string} params.name - (Required) Required. The name of the debug session to retrieve. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+     * @param {string} params.name - (Required) Required. The name of the debug session to retrieve. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
      * @return {object} The API response object.
      */
     this.organizations.environments.apis.revisions.debugsessions.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
 
     /**
      * Lists debug sessions that are currently active in the given API Proxy revision.
-     * @param {integer} params.pageSize - Maximum number of debug sessions to return. The page size defaults to 25.
-     * @param {string} params.pageToken - Page token, returned from a previous ListDebugSessions call, that you can use to retrieve the next page.
+     * @param {integer} params.pageSize - Optional. Maximum number of debug sessions to return. The page size defaults to 25.
+     * @param {string} params.pageToken - Optional. Page token, returned from a previous ListDebugSessions call, that you can use to retrieve the next page.
      * @param {string} params.parent - (Required) Required. The name of the API Proxy revision deployment for which to list debug sessions. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
      * @return {object} The API response object.
      */
@@ -737,7 +737,7 @@ class Apigee {
 
     /**
      * Gets the debug data from a transaction.
-     * @param {string} params.name - (Required) Required. The name of the debug session transaction. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{session}/data/{transaction}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+     * @param {string} params.name - (Required) Required. The name of the debug session transaction. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}/data/{transaction}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
      * @return {object} The API response object.
      */
     this.organizations.environments.apis.revisions.debugsessions.data.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
@@ -2808,7 +2808,7 @@ class Apigee {
     /**
      * Update a security monitoring condition.
      * @param {string} params.name - (Required) Identifier. Name of the security monitoring condition resource. Format: organizations/{org}/securityMonitoringConditions/{security_monitoring_condition}
-     * @param {string} params.updateMask - Optional. The list of fields to update. Valid fields to update are `profile`, `scope`, `include_all_resources`, `include`, and `exclude`.
+     * @param {string} params.updateMask - Optional. The list of fields to update. Valid fields to update are `include_all_resources` and `include`.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
