@@ -34,14 +34,17 @@ Before using a library, you must ensure the underlying Google API is enabled. Ap
 
 For these APIs, you can use a simple workaround without needing your own Google Cloud project.
 
+> **Important**: This method only supports the standard Apps Script authentication flow where the user running the script grants permission. You cannot use a service account or other custom OAuth clients with this setup.
+
 1.  In your Apps Script project, click **Services +**.
 2.  Find the corresponding advanced service (e.g., `Drive API`) and add it.
-3.  **That's it.** By doing this, you've instructed Apps Script to enable the API in the background using its hidden, default Google Cloud project. The generated library can now access it successfully, and the service can be switched off.
+
+**That's it.** By doing this, you've instructed Apps Script to enable the API in the background using its hidden, default Google Cloud project. The generated library can now access it successfully, and the service can be switched off.
 
 #### **Scenario 2: The API is NOT an Apps Script "Advanced Service"**
 *(e.g., Cloud Vision, Firestore, Firebase Management, etc.)*
 
-For these APIs, you **must** use a standard Google Cloud project.
+This method is required for most APIs and is the **only way to use service accounts**.
 
 1.  Create or select a project in the [Google Cloud Console](https://console.cloud.google.com/).
 2.  To prepare your project to be linked, you must first configure the consent screen. Go to **APIs & Services > Credentials** and 
