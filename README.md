@@ -38,10 +38,7 @@ This is the most flexible approach.
 4.  **You do not need to link your Apps Script project to this GCP project.** The authentication is handled by the credentials you provide to the library.
 
 #### **If using the Default User Authentication Flow:**
-This method uses the identity of the user running the script. 
-
-##### For libraries that already exist as an Advanced Services (e.g., Drive, Sheets, and Slides etc) 
-You can use the default user authentication flow by following these steps:
+This method uses the identity of the user running the script. For libraries that already exist as an Advanced Services (e.g., Drive, Sheets, and Slides etc), you can use the default user authentication flow by following these steps:
 
 1. In your Apps Script project, click **Services \+**.  
 2. Find the corresponding advanced service (e.g., `Drive API`) and **Add** it.  
