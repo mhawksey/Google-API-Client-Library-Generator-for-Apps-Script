@@ -10,6 +10,80 @@ This tool creates libraries with features including flexible authentication, and
 
 For most users, you do not need to run the generator yourself. You can find the library you need in the `build/` directory.
 
+> **Call for Contributions:** While all libraries are generated, not all have been extensively tested in real-world applications. We welcome and encourage community contributions. If you find a bug or have a suggestion, please [**open a GitHub Issue**](https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/issues). If you have fixes or tests to add, please feel free to **submit a Pull Request**.
+
+---
+
+## **Why Use a Generated Library?**
+
+While Google Apps Script has excellent built-in and advanced services, a generated client library offers two critical advantages:
+
+1.  **Complete API Coverage:** Apps Script's built-in services only cover a fraction of all Google APIs. This generator allows you to create a client for **any** service with a Discovery Document, such as Firebase, Cloud Billing, and over 400 more.
+2.  **Flexible Authentication Flows:** Generated libraries allow you to use a custom OAuth token. This unlocks powerful workflows, such as using your own OAuth clients and **service accounts** for server-to-server tasks, which is not possible with standard built-in services.
+
+---
+
+## **Getting Started: Using a Pre-built Library**
+
+### **Prerequisite: Understanding Google Cloud Projects & Enabling APIs**
+
+Before using a library, you must ensure the underlying Google API is enabled. Apps Script manages this in one of two ways:
+
+#### **Scenario 1: The API is also an Apps Script "Advanced Service"**
+*(e.g., Drive, Calendar, Sheets, Docs, etc.)*
+
+For these APIs, you can use a simple workaround without needing your own Google Cloud project.
+
+1.  In your Apps Script project, click **Services +**.
+2.  Find the corresponding advanced service (e.g., `Drive API`) and add it.
+3.  **That's it.** By doing this, you've instructed Apps Script to enable the API in the background using its hidden, default Google Cloud project. The generated library can now access it successfully, and the service can be switched off.
+
+#### **Scenario 2: The API is NOT an Apps Script "Advanced Service"**
+*(e.g., Cloud Vision, Firestore, Firebase Management, etc.)*
+
+For these APIs, you **must** use a standard Google Cloud project.
+
+1.  Create or select a project in the [Google Cloud Console](https://console.cloud.google.com/).
+2.  To prepare your project to be linked, you must first configure the consent screen. Go to **APIs & Services > Credentials** and 
+click **Configure consent screen**. 
+3.  In your Apps Script project, click **Project Settings ⚙️**.
+4.  Scroll down to **Google Cloud Platform (GCP) Project** and click **Change project**.
+5.  Enter the **Project Number** of your standard GCP project and click **Set project**.
+6.  In the Google Cloud Console for that project, go to **APIs & Services > Library** and **enable the API** you intend to use (e.g., "Cloud Vision API").
+
+---
+
+### **Step 1: Find and Add the Library Code**
+
+1.  Navigate to the `build/` directory in this repository.
+2.  Find the folder for the API you want to use (e.g., `Drive`, `Bigquery`). Inside that folder, open the specific version directory (e.g., `v3`).
+3.  You will find two library files. Choose one to add to your project:
+    *   `[ApiName].with_docs.gs`: This version includes full JSDoc comments for reference.
+    *   `[ApiName].gs`: A compact version without JSDoc comments. Ideal for production scripts.
+4.  In your Apps Script project, create a new script file (e.g., `DriveLibrary.gs`) and paste the code into it.
+
+### **Step 2: Add Required Scopes to Your Manifest**
+
+1.  From the library folder in the `build/` directory, open the `appsscript.json` file.
+2.  Copy the scopes you need from the `"oauthScopes"` array into your own project's manifest file (`Project Settings ⚙️ > Show "appsscript.json" manifest file`).
+3.  **Note:** You must always include the `https://www.googleapis.com/auth/script.external_request` scope to make the API calls.
+
+---
+*(The rest of the README, covering Authentication Flows, Developer Usage, and Acknowledgements, would follow here as before.)*
+
+
+# **Google API Client Library Generator for Apps Script**
+
+A Google Apps Script project that dynamically generates modern, feature-rich client libraries for any public Google API directly from the Google APIs Discovery Service.
+
+This tool creates libraries with features including flexible authentication, and automatic exponential backoff.
+
+## **Pre-built Libraries Available**
+
+**This repository includes a `build/` directory containing auto-generated client libraries for every discoverable Google API.**
+
+For most users, you do not need to run the generator yourself. You can find the library you need in the `build/` directory.
+
 **Call for Contributions:** While all libraries are generated, not all have been extensively tested in real-world applications. We welcome and encourage community contributions. If you find a bug or have a suggestion, please [**open a GitHub Issue**](https://github.com/mhawksey/Google-API-Client-Library-Generator-for-Apps-Script/issues). If you have fixes or tests to add, please feel free to **submit a Pull Request**.
 
 ---
