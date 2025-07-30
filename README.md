@@ -189,12 +189,12 @@ const USER_EMAIL = '...';
  * @private
  */
 function getService_() {
-  return OAuth2.createService('GoogleApi:' + USER_EMAIL)
+  return OAuth2.createService('Drive:' + USER_EMAIL)
       .setTokenUrl('https://oauth2.googleapis.com/token')
       .setPrivateKey(PRIVATE_KEY)
       .setIssuer(CLIENT_EMAIL)
       .setSubject(USER_EMAIL)
-      .setPropertyStore(PropertiesService.getScriptProperties())
+      .setCache(CacheService.getUserCache())
       .setScope('https://www.googleapis.com/auth/drive'); 
       // Set the scope. This must match one of the scopes configured during the setup of domain-wide delegation.
 }
@@ -228,13 +228,6 @@ function listFilesWithServiceAccount() {
   
   console.log('Files found via service account:');
   console.log(JSON.stringify(files, null, 2));
-}
-
-/**
- * Resets the authorization state of the service account.
- */
-function resetServiceAccount() {
-  getService_().reset();
 }
 ```
 ---
