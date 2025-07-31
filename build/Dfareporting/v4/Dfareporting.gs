@@ -160,6 +160,15 @@ class Dfareporting {
     this.directorySites.insert = (params) => this._makeRequest('userprofiles/{+profileId}/directorySites', 'POST', params);
     this.directorySites.list = (params) => this._makeRequest('userprofiles/{+profileId}/directorySites', 'GET', params);
 
+    this.dynamicFeeds = {};
+    this.dynamicFeeds.get = (params) => this._makeRequest('studio/dynamicFeeds/{+dynamicFeedId}', 'GET', params);
+    this.dynamicFeeds.insert = (params) => this._makeRequest('studio/dynamicFeeds', 'POST', params);
+
+    this.dynamicProfiles = {};
+    this.dynamicProfiles.get = (params) => this._makeRequest('studio/dynamicProfiles/{+dynamicProfileId}', 'GET', params);
+    this.dynamicProfiles.insert = (params) => this._makeRequest('studio/dynamicProfiles', 'POST', params);
+    this.dynamicProfiles.update = (params) => this._makeRequest('studio/dynamicProfiles', 'PUT', params);
+
     this.dynamicTargetingKeys = {};
     this.dynamicTargetingKeys.delete = (params) => this._makeRequest('userprofiles/{+profileId}/dynamicTargetingKeys/{+objectId}', 'DELETE', params);
     this.dynamicTargetingKeys.insert = (params) => this._makeRequest('userprofiles/{+profileId}/dynamicTargetingKeys', 'POST', params);
