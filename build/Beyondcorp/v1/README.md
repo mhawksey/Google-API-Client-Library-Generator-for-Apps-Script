@@ -4,7 +4,7 @@ Auto-generated client library for using the **BeyondCorp API (version: v1)** in 
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:35:25 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:23:06 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:22:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:55 GMT
 
@@ -366,13 +366,13 @@ Gets details of a single SecurityGateway.
 
 #### `projects.locations.securityGateways.create()`
 
-Creates a new SecurityGateway in a given project and location.
+Creates a new Security Gateway in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource project name of the SecurityGateway location using the form: `projects/{project_id}/locations/{location_id}` |
 | `params.securityGatewayId` | `string` | No | Optional. User-settable SecurityGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or letter. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.securityGateways.patch()`
@@ -469,7 +469,7 @@ Updates the parameters of a single Application.
 
 #### `projects.locations.securityGateways.applications.delete()`
 
-Deletes a single Application.
+Deletes a single application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
