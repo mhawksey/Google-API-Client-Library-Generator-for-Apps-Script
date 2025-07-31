@@ -4,9 +4,9 @@ Auto-generated client library for using the **Compute Engine API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:44:46 GMT
-- **Last Modified:** Mon, 28 Jul 2025 21:44:46 GMT
-- **Created:** Mon, 28 Jul 2025 21:44:46 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:25:33 GMT
+- **Last Modified:** Thu, 31 Jul 2025 23:25:33 GMT
+- **Created:** Thu, 31 Jul 2025 23:25:33 GMT
 
 
 
@@ -92,8 +92,8 @@ Retrieves the specified Operations resource. Gets a list of operations by making
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.operation` | `string` | Yes | Name of the Operations resource to return, or its unique numeric identifier. |
-| `params.parentId` | `string` | No | Parent ID for this request. |
+| `params.operation` | `string` | Yes | Name of the Operations resource to return. Parent is derived from this field. |
+| `params.parentId` | `string` | No | Parent ID for this request. Not used. Parent is derived from resource_id. |
 
 #### `globalOrganizationOperations.delete()`
 
@@ -7329,6 +7329,7 @@ Retrieves an aggregated list of all usable subnetworks in the project.
 | `params.pageToken` | `string` | No | Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
+| `params.serviceProject` | `string` | No | The project id or project number in which the subnetwork is intended to be used. Only applied for Shared VPC. See [Shared VPC documentation](https://cloud.google.com/vpc/docs/shared-vpc/) |
 
 #### `subnetworks.get()`
 
