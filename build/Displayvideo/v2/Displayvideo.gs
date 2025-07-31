@@ -62,11 +62,18 @@ class Displayvideo {
     this.advertisers.assets.upload = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/assets', 'POST', params);
 
     this.advertisers.campaigns = {};
+    this.advertisers.campaigns.listAssignedTargetingOptions = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/campaigns/{+campaignId}:listAssignedTargetingOptions', 'GET', params);
     this.advertisers.campaigns.get = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'GET', params);
     this.advertisers.campaigns.list = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/campaigns', 'GET', params);
     this.advertisers.campaigns.create = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/campaigns', 'POST', params);
     this.advertisers.campaigns.patch = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'PATCH', params);
     this.advertisers.campaigns.delete = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'DELETE', params);
+
+    this.advertisers.campaigns.targetingTypes = {};
+
+    this.advertisers.campaigns.targetingTypes.assignedTargetingOptions = {};
+    this.advertisers.campaigns.targetingTypes.assignedTargetingOptions.get = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', params);
+    this.advertisers.campaigns.targetingTypes.assignedTargetingOptions.list = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', params);
 
     this.advertisers.channels = {};
     this.advertisers.channels.get = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/channels/{+channelId}', 'GET', params);
@@ -89,11 +96,20 @@ class Displayvideo {
     this.advertisers.creatives.delete = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/creatives/{+creativeId}', 'DELETE', params);
 
     this.advertisers.insertionOrders = {};
+    this.advertisers.insertionOrders.listAssignedTargetingOptions = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}:listAssignedTargetingOptions', 'GET', params);
     this.advertisers.insertionOrders.get = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'GET', params);
     this.advertisers.insertionOrders.list = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders', 'GET', params);
     this.advertisers.insertionOrders.create = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders', 'POST', params);
     this.advertisers.insertionOrders.patch = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'PATCH', params);
     this.advertisers.insertionOrders.delete = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'DELETE', params);
+
+    this.advertisers.insertionOrders.targetingTypes = {};
+
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions = {};
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.get = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', params);
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.list = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', params);
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.create = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', params);
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.delete = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', params);
 
     this.advertisers.invoices = {};
     this.advertisers.invoices.list = (params) => this._makeRequest('v2/advertisers/{+advertiserId}/invoices', 'GET', params);
