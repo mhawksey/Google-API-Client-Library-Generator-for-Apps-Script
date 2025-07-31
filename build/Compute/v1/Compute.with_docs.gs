@@ -88,8 +88,8 @@ class Compute {
 
     /**
      * Retrieves the specified Operations resource. Gets a list of operations by making a `list()` request.
-     * @param {string} params.operation - (Required) Name of the Operations resource to return, or its unique numeric identifier.
-     * @param {string} params.parentId - Parent ID for this request.
+     * @param {string} params.operation - (Required) Name of the Operations resource to return. Parent is derived from this field.
+     * @param {string} params.parentId - Parent ID for this request. Not used. Parent is derived from resource_id.
      * @return {object} The API response object.
      */
     this.globalOrganizationOperations.get = (params) => this._makeRequest('locations/global/operations/{operation}', 'GET', params);
@@ -6706,6 +6706,7 @@ class Compute {
      * @param {string} params.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
      * @param {string} params.project - (Required) Project ID for this request.
      * @param {boolean} params.returnPartialSuccess - Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code.
+     * @param {string} params.serviceProject - The project id or project number in which the subnetwork is intended to be used. Only applied for Shared VPC. See [Shared VPC documentation](https://cloud.google.com/vpc/docs/shared-vpc/)
      * @return {object} The API response object.
      */
     this.subnetworks.listUsable = (params) => this._makeRequest('projects/{project}/aggregated/subnetworks/listUsable', 'GET', params);
