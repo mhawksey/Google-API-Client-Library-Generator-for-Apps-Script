@@ -168,24 +168,27 @@ This detailed walkthrough shows how to get a token using the OAuth2 for Apps Scr
 #### Prerequisites
 
 1.  Add the OAuth2 for Apps Script library. In your project, go to **Libraries \+** and add it using this Script ID:
-    `1B7FSrk57A1B1LCo3YTO5V323iJ30rO-Z_d-3Q6gceTvYsbM4E_c3r1g5`
+    `1B7FSrk5Zi6L1rSxxTDgDEUsPzlukDsi4KGuTMorsTQHhGBzBkMun4iDF`
 2.  Create a Service Account in your Google Cloud Platform project. Download the JSON key file. [Official Google Guide](https://developers.google.com/identity/protocols/oauth2/service-account#creatinganaccount)
 
 #### Implementation
 
 ```javascript
-// Private key and client email of the service account.
-const PRIVATE_KEY = '-----BEGIN PRIVATE KEY-----\n...\n-----END PRIVATE KEY-----\n';
-const CLIENT_EMAIL = '...';
 const USER_EMAIL = '...'; // Email of user to impersonate
 
 function getService_() {
+  // Your service account credentials
+  const serviceAccountCreds = {
+    "private_key": "-----BEGIN PRIVATE KEY-----\n...",
+    "client_email": "your-service-account@your-project.iam.gserviceaccount.com",
+  };
+
   // Use a unique name for the service, like 'Drive' or 'BigQuery', to avoid
   // token collisions between different services.
   return OAuth2.createService('Drive:' + USER_EMAIL)
       .setTokenUrl('https://oauth2.googleapis.com/token')
-      .setPrivateKey(PRIVATE_KEY)
-      .setIssuer(CLIENT_EMAIL)
+      .setPrivateKey(serviceAccountCreds.private_key)
+      .setIssuer(serviceAccountCreds.client_email)
       .setSubject(USER_EMAIL)
       .setCache(CacheService.getUserCache())
       .setScope('https://www.googleapis.com/auth/drive');
