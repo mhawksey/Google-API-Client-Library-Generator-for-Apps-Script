@@ -4,7 +4,7 @@ Auto-generated client library for using the **Safe Browsing API (version: v4)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 22:06:48 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:53:50 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:46:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:11 GMT
 
