@@ -88,8 +88,8 @@ class Compute {
 
     /**
      * Retrieves the specified Operations resource. Gets a list of operations by making a `list()` request.
-     * @param {string} params.operation - (Required) Name of the Operations resource to return, or its unique numeric identifier.
-     * @param {string} params.parentId - Parent ID for this request.
+     * @param {string} params.operation - (Required) Name of the Operations resource to return. Parent is derived from this field.
+     * @param {string} params.parentId - Parent ID for this request. Not used. Parent is derived from resource_id.
      * @return {object} The API response object.
      */
     this.globalOrganizationOperations.get = (params) => this._makeRequest('locations/global/operations/{operation}', 'GET', params);
@@ -7674,6 +7674,7 @@ class Compute {
      * @param {string} params.project - (Required) Project ID for this request.
      * @param {string} params.region - (Required) Name of the region scoping this request.
      * @param {boolean} params.returnPartialSuccess - Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code.
+     * @param {string} params.views - Defines the extra views returned back in the subnetwork resource. Supported values: - WITH_UTILIZATION: Utilization data is included in the response.
      * @return {object} The API response object.
      */
     this.subnetworks.list = (params) => this._makeRequest('projects/{project}/regions/{region}/subnetworks', 'GET', params);
@@ -7710,6 +7711,7 @@ class Compute {
      * @param {string} params.project - (Required) Project ID for this request.
      * @param {string} params.region - (Required) Name of the region scoping this request.
      * @param {string} params.subnetwork - (Required) Name of the Subnetwork resource to return.
+     * @param {string} params.views - Defines the extra views returned back in the subnetwork resource. Supported values: - WITH_UTILIZATION: Utilization data is included in the response.
      * @return {object} The API response object.
      */
     this.subnetworks.get = (params) => this._makeRequest('projects/{project}/regions/{region}/subnetworks/{subnetwork}', 'GET', params);
