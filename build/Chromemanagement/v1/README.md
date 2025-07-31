@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Management API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:36:27 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:22:50 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:23:50 GMT
+- **Last Modified:** Thu, 31 Jul 2025 23:23:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:10 GMT
 
 
@@ -365,3 +365,14 @@ Lists remote commands of a Chrome browser profile.
 | `params.parent` | `string` | Yes | Required. Format: customers/{customer_id}/profiles/{profile_permanent_id} |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of commands to return. The default page size is 100 if page_size is unspecified, and the maximum page size allowed is 100. |
 | `params.pageToken` | `string` | No | Optional. The page token used to retrieve a specific page of the listing request. |
+
+### `customers.thirdPartyProfileUsers`
+
+#### `customers.thirdPartyProfileUsers.move()`
+
+Moves a third party chrome profile user to a destination OU. All profiles associated to that user will be moved to the destination OU.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id} |
+| `params.resource` | `object` | Yes | The request body. |
