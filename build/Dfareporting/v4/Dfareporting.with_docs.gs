@@ -915,6 +915,45 @@ class Dfareporting {
      */
     this.directorySites.list = (params) => this._makeRequest('userprofiles/{+profileId}/directorySites', 'GET', params);
 
+    this.dynamicFeeds = {};
+
+    /**
+     * Gets a dynamic feed by ID.
+     * @param {string} params.dynamicFeedId - (Required) Required. Dynamic feed ID.
+     * @return {object} The API response object.
+     */
+    this.dynamicFeeds.get = (params) => this._makeRequest('studio/dynamicFeeds/{+dynamicFeedId}', 'GET', params);
+
+    /**
+     * Inserts a new dynamic feed.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.dynamicFeeds.insert = (params) => this._makeRequest('studio/dynamicFeeds', 'POST', params);
+
+    this.dynamicProfiles = {};
+
+    /**
+     * Gets a dynamic profile by ID.
+     * @param {string} params.dynamicProfileId - (Required) Required. Dynamic profile ID.
+     * @return {object} The API response object.
+     */
+    this.dynamicProfiles.get = (params) => this._makeRequest('studio/dynamicProfiles/{+dynamicProfileId}', 'GET', params);
+
+    /**
+     * Inserts a new dynamic profile.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.dynamicProfiles.insert = (params) => this._makeRequest('studio/dynamicProfiles', 'POST', params);
+
+    /**
+     * Updates an existing dynamic profile.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.dynamicProfiles.update = (params) => this._makeRequest('studio/dynamicProfiles', 'PUT', params);
+
     this.dynamicTargetingKeys = {};
 
     /**
