@@ -24,17 +24,17 @@ While Google Apps Script has excellent built-in and advanced services, a generat
 
 ### Prerequisite: Enabling the API in a Google Cloud Project
 
-Every API call your script makes must be associated with a Google Cloud Project that has that specific API enabled.
+Every API call your script makes must be associated with a Google Cloud Project that has that specific API enabled. There may be situations where you want to link your Apps Script project to a Google Cloud Project. For a detailed guide, see the official documentation on [Standard Google Cloud Platform projects](https://developers.google.com/apps-script/guides/cloud-platform-projects#standard_cloud_platform_projects).
 
-#### **Path 1: If using Service Accounts or a Custom OAuth Client**
-This is the most flexible approach.
+#### Path 1: If using Service Accounts or a Custom OAuth Client
+This is the most flexible and common approach when using client libraries.
 
 1.  Create or select a project in the [Google Cloud Console](https://console.cloud.google.com/).
 2.  In this project, go to **APIs & Services > Library** and **enable the API** you intend to use (e.g., "Cloud Vision API").
 3.  Create your credentials (e.g., a Service Account key or an OAuth 2.0 Client ID) within this same project.
 4.  **You do not need to link your Apps Script project to this GCP project.** The authentication is handled by the credentials you provide to the library.
 
-#### **Path 2: If using the Default User Authentication Flow**
+#### Path 2: If using the Default User Authentication Flow
 This method uses the identity of the user running the script. The setup depends on the API you want to use.
 
 *   **For APIs that are also Advanced Services** (e.g., Drive, Sheets):
@@ -43,11 +43,8 @@ This method uses the identity of the user running the script. The setup depends 
     3.  This enables the API in the background using Apps Script's hidden, default GCP project.
 
 *   **For all other APIs** (e.g., Cloud Vision, Firebase):
-    1.  You must link your Apps Script project to a **standard GCP project**.
+    1.  You must use a **standard GCP project**.
     2.  In your standard GCP project, go to **APIs & Services > Library** and **enable the API**.
-    3.  For a detailed guide on how to link your project, see the official documentation on [Standard Google Cloud Platform projects](https://developers.google.com/apps-script/guides/cloud-platform-projects#standard_cloud_platform_projects).
-
----
 
 ### Step 1: Find and Add the Library Code
 
