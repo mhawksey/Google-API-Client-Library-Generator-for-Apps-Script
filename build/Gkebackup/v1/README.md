@@ -4,7 +4,7 @@ Auto-generated client library for using the **Backup for GKE API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:55:28 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:35:32 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:33:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:15 GMT
 
