@@ -4,9 +4,9 @@ Auto-generated client library for using the **Compute Engine API (version: beta)
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:44:39 GMT
-- **Last Modified:** Mon, 28 Jul 2025 21:44:39 GMT
-- **Created:** Mon, 28 Jul 2025 21:44:39 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:25:28 GMT
+- **Last Modified:** Thu, 31 Jul 2025 23:25:28 GMT
+- **Created:** Thu, 31 Jul 2025 23:25:28 GMT
 
 
 
@@ -92,8 +92,8 @@ Retrieves the specified Operations resource. Gets a list of operations by making
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.operation` | `string` | Yes | Name of the Operations resource to return, or its unique numeric identifier. |
-| `params.parentId` | `string` | No | Parent ID for this request. |
+| `params.operation` | `string` | Yes | Name of the Operations resource to return. Parent is derived from this field. |
+| `params.parentId` | `string` | No | Parent ID for this request. Not used. Parent is derived from resource_id. |
 
 #### `globalOrganizationOperations.delete()`
 
@@ -8391,6 +8391,7 @@ Retrieves a list of subnetworks available to the specified project.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
+| `params.views` | `string` | No | Defines the extra views returned back in the subnetwork resource. Supported values: - WITH_UTILIZATION: Utilization data is included in the response.  |
 
 #### `subnetworks.aggregatedList()`
 
@@ -8430,6 +8431,7 @@ Returns the specified subnetwork.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.subnetwork` | `string` | Yes | Name of the Subnetwork resource to return. |
+| `params.views` | `string` | No | Defines the extra views returned back in the subnetwork resource. Supported values: - WITH_UTILIZATION: Utilization data is included in the response.  |
 
 #### `subnetworks.insert()`
 
