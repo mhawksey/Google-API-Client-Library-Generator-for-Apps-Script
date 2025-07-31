@@ -182,6 +182,7 @@ class Compute {
     this.firewallPolicies.getIamPolicy = (params) => this._makeRequest('locations/global/firewallPolicies/{resource}/getIamPolicy', 'GET', params);
     this.firewallPolicies.setIamPolicy = (params) => this._makeRequest('locations/global/firewallPolicies/{resource}/setIamPolicy', 'POST', params);
     this.firewallPolicies.testIamPermissions = (params) => this._makeRequest('locations/global/firewallPolicies/{resource}/testIamPermissions', 'POST', params);
+    this.firewallPolicies.forceStartProgressiveRollout = (params) => this._makeRequest('locations/global/{+firewallPolicy}/forceStartProgressiveRollout', 'POST', params);
 
     this.networkFirewallPolicies = {};
     this.networkFirewallPolicies.list = (params) => this._makeRequest('projects/{project}/global/firewallPolicies', 'GET', params);
@@ -1325,9 +1326,19 @@ class Compute {
     this.regionZones = {};
     this.regionZones.list = (params) => this._makeRequest('projects/{project}/regions/{region}/zones', 'GET', params);
 
+    this.zoneVmExtensionPolicies = {};
+    this.zoneVmExtensionPolicies.insert = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies', 'POST', params);
+    this.zoneVmExtensionPolicies.get = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}', 'GET', params);
+    this.zoneVmExtensionPolicies.update = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}', 'PATCH', params);
+    this.zoneVmExtensionPolicies.delete = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}', 'DELETE', params);
+    this.zoneVmExtensionPolicies.list = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies', 'GET', params);
+
     this.reliabilityRisks = {};
     this.reliabilityRisks.get = (params) => this._makeRequest('projects/{project}/global/reliabilityRisks/{reliabilityRisk}', 'GET', params);
     this.reliabilityRisks.list = (params) => this._makeRequest('projects/{project}/global/reliabilityRisks', 'GET', params);
+
+    this.haControllers = {};
+    this.haControllers.failover = (params) => this._makeRequest('projects/{project}/regions/{region}/haControllers/{haController}/failover', 'POST', params);
   }
 
   /**
