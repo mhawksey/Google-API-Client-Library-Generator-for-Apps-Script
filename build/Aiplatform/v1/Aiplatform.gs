@@ -188,6 +188,7 @@ class Aiplatform {
     this.projects.locations.featureOnlineStores.featureViews.sync = (params) => this._makeRequest('v1/{+featureView}:sync', 'POST', params);
     this.projects.locations.featureOnlineStores.featureViews.fetchFeatureValues = (params) => this._makeRequest('v1/{+featureView}:fetchFeatureValues', 'POST', params);
     this.projects.locations.featureOnlineStores.featureViews.searchNearestEntities = (params) => this._makeRequest('v1/{+featureView}:searchNearestEntities', 'POST', params);
+    this.projects.locations.featureOnlineStores.featureViews.directWrite = (params) => this._makeRequest('v1/{+featureView}:directWrite', 'POST', params);
 
     this.projects.locations.featureOnlineStores.featureViews.operations = {};
     this.projects.locations.featureOnlineStores.featureViews.operations.listWait = (params) => this._makeRequest('v1/{+name}:wait', 'GET', params);
