@@ -4,8 +4,8 @@ Auto-generated client library for using the **Campaign Manager 360 API (version:
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:46:44 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:31:16 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:32:55 GMT
+- **Last Modified:** Thu, 31 Jul 2025 23:32:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:21 GMT
 
 
@@ -994,6 +994,50 @@ Retrieves a list of directory sites, possibly filtered. This method supports pag
 | `params.pageToken` | `string` | No | Value of the nextPageToken from the previous result page. |
 | `params.sortField` | `string` | No | Field by which to sort the list. |
 | `params.sortOrder` | `string` | No | Order of sorted results. |
+
+### `dynamicFeeds`
+
+#### `dynamicFeeds.get()`
+
+Gets a dynamic feed by ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dynamicFeedId` | `string` | Yes | Required. Dynamic feed ID. |
+
+#### `dynamicFeeds.insert()`
+
+Inserts a new dynamic feed.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `object` | Yes | The request body. |
+
+### `dynamicProfiles`
+
+#### `dynamicProfiles.get()`
+
+Gets a dynamic profile by ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dynamicProfileId` | `string` | Yes | Required. Dynamic profile ID. |
+
+#### `dynamicProfiles.insert()`
+
+Inserts a new dynamic profile.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `dynamicProfiles.update()`
+
+Updates an existing dynamic profile.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `object` | Yes | The request body. |
 
 ### `dynamicTargetingKeys`
 
