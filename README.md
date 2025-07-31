@@ -161,7 +161,7 @@ const ytAnalytics = new YoutubeAnalytics({
   }
 });
 ```
----
+
 ## Complete Example: Using a Service Account
 This detailed walkthrough shows how to get a token using the OAuth2 for Apps Script library and pass it to a generated library. This flow is essential for scripts that run on a trigger or act on behalf of a system.
 
