@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Classroom API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:36:38 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:23:58 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:22:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:20:50 GMT
 
