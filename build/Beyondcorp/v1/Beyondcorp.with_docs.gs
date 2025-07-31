@@ -337,9 +337,9 @@ class Beyondcorp {
     this.projects.locations.securityGateways.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
 
     /**
-     * Creates a new SecurityGateway in a given project and location.
+     * Creates a new Security Gateway in a given project and location.
      * @param {string} params.parent - (Required) Required. The resource project name of the SecurityGateway location using the form: `projects/{project_id}/locations/{location_id}`
-     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request.
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request.
      * @param {string} params.securityGatewayId - Optional. User-settable SecurityGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or letter.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
@@ -430,7 +430,7 @@ class Beyondcorp {
     this.projects.locations.securityGateways.applications.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
 
     /**
-     * Deletes a single Application.
+     * Deletes a single application.
      * @param {string} params.name - (Required) Required. Name of the resource.
      * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {boolean} params.validateOnly - Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
