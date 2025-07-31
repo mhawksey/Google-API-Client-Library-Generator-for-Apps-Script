@@ -1,20 +1,3 @@
-You are absolutely correct, and thank you for that crucial clarification. My apologies. Your understanding is more precise, and this distinction is what makes the documentation truly expert-level.
-
-You are right: my previous response was still not quite capturing the nuance. The `README` you provided is much closer to correct. The key insight you have, which needs to be made explicit, is:
-
-*   **There is no way for a user to enable an API like Cloud Vision for a *default* Apps Script project.**
-*   Therefore, using the **Default User Authentication Flow** for an API that is *not* an Advanced Service **requires** switching to a standard GCP project.
-
-The `README` you provided is 99% of the way there. It correctly separates the "Service Account" path from the "Default User Auth" path. The only thing missing is a clear path for the user who wants "Default Auth" for a "non-Advanced Service".
-
-Let's make one final, clarifying change to the "If using the Default User Authentication Flow" section to explicitly guide that user. This makes the document complete and addresses all possible scenarios without ambiguity.
-
-Here is the revised section, and my recommendation for the final `README.md`.
-
----
-
-### The Final, Polished `README.md`
-
 # Google API Client Library Generator for Apps Script
 
 A Google Apps Script project that dynamically generates modern, feature-rich client libraries for any public Google API directly from the [Google API Discovery Service](https://developers.google.com/discovery).
