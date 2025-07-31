@@ -4,7 +4,7 @@ Auto-generated client library for using the **Oracle Database@Google Cloud API (
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:59:05 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:45:19 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:43:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:30 GMT
 
