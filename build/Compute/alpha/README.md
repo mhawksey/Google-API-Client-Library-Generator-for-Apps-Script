@@ -4,9 +4,9 @@ Auto-generated client library for using the **Compute Engine API (version: alpha
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:44:33 GMT
-- **Last Modified:** Mon, 28 Jul 2025 21:44:33 GMT
-- **Created:** Mon, 28 Jul 2025 21:44:33 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:25:24 GMT
+- **Last Modified:** Thu, 31 Jul 2025 23:25:24 GMT
+- **Created:** Thu, 31 Jul 2025 23:25:24 GMT
 
 
 
@@ -133,8 +133,8 @@ Retrieves the specified Operations resource. Gets a list of operations by making
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.operation` | `string` | Yes | Name of the Operations resource to return, or its unique numeric identifier. |
-| `params.parentId` | `string` | No | Parent ID for this request. |
+| `params.operation` | `string` | Yes | Name of the Operations resource to return. Parent is derived from this field. |
+| `params.parentId` | `string` | No | Parent ID for this request. Not used. Parent is derived from resource_id. |
 
 #### `globalOrganizationOperations.delete()`
 
@@ -1507,6 +1507,14 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.resource` | `object` | Yes | The request body. |
+
+#### `firewallPolicies.forceStartProgressiveRollout()`
+
+Starts a brand new progressive rollout of hierarchical firewall policy. This API will return an error when there is an ongoing progressive rollout.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.firewallPolicy` | `string` | Yes | Name of the target firewall policy. |
 
 ### `networkFirewallPolicies`
 
@@ -10754,7 +10762,7 @@ Recovers the specified RecoverableSnapshot.
 | `params.project` | `string` | Yes | Project Id of the request |
 | `params.recoverableSnapshot` | `string` | Yes | Name of the recoverable resource to recover |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.snapshotName` | `string` | No | Name of the snapshot after the recovery The name will be 1-63 characters long, and comply with RFC1035. Specifically, the name will be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character will be a lowercase letter, and all following characters can be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. |
+| `params.snapshotName` | `string` | No | Optional. Name of the snapshot after the recovery The name will be 1-63 characters long, and comply with RFC1035. Specifically, the name will be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character will be a lowercase letter, and all following characters can be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. |
 
 #### `recoverableSnapshots.getIamPolicy()`
 
@@ -12335,6 +12343,66 @@ Retrieves the list of Zone resources under the specific region available to the 
 | `params.region` | `string` | Yes | Region for this request. |
 | `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
 
+### `zoneVmExtensionPolicies`
+
+#### `zoneVmExtensionPolicies.insert()`
+
+Creates a new zone-level VM extension policy within a project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.zone` | `string` | Yes | Name of the zone for this request. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `zoneVmExtensionPolicies.get()`
+
+Retrieves details of a specific zone VM extension policy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.vmExtensionPolicy` | `string` | Yes | Name of the VM extension policy resource to return. |
+| `params.zone` | `string` | Yes | Name of the zone for this request. |
+
+#### `zoneVmExtensionPolicies.update()`
+
+Modifies an existing zone VM extension policy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.vmExtensionPolicy` | `string` | Yes | Name of the zone VM extension policy to update. |
+| `params.zone` | `string` | Yes | Name of the zone for this request. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `zoneVmExtensionPolicies.delete()`
+
+Deletes a specified zone VM extension policy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.vmExtensionPolicy` | `string` | Yes | Name of the zone VM extension policy to delete. |
+| `params.zone` | `string` | Yes | Name of the zone for this request. |
+
+#### `zoneVmExtensionPolicies.list()`
+
+Lists all VM extension policies within a specific zone for a project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. |
+| `params.maxResults` | `integer` | No | The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) |
+| `params.orderBy` | `string` | No | Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. |
+| `params.pageToken` | `string` | No | Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
+| `params.zone` | `string` | Yes | Name of the zone for this request. |
+
 ### `reliabilityRisks`
 
 #### `reliabilityRisks.get()`
@@ -12358,3 +12426,17 @@ Retrieves the list of reliabilityRisks available in the specified project.
 | `params.pageToken` | `string` | No | Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
+
+### `haControllers`
+
+#### `haControllers.failover()`
+
+Fails over a VM targeted by the specified HaController to the selected zone.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.haController` | `string` | Yes | ID of the HaController resource to update. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.region` | `string` | Yes | Name of the region for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. |
+| `params.resource` | `object` | Yes | The request body. |
