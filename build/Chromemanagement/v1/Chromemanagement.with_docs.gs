@@ -340,6 +340,16 @@ class Chromemanagement {
      * @return {object} The API response object.
      */
     this.customers.profiles.commands.list = (params) => this._makeRequest('v1/{+parent}/commands', 'GET', params);
+
+    this.customers.thirdPartyProfileUsers = {};
+
+    /**
+     * Moves a third party chrome profile user to a destination OU. All profiles associated to that user will be moved to the destination OU.
+     * @param {string} params.name - (Required) Required. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id}
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.customers.thirdPartyProfileUsers.move = (params) => this._makeRequest('v1/{+name}:move', 'POST', params);
   }
 
   /**
