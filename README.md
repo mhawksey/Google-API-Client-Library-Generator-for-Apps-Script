@@ -154,7 +154,7 @@ function listFilesWithServiceAccount() {
 
 If the library you need needs adjusting or or you would like to incorporate this into your own workflows, you can run the generator yourself.
 
-### 1\. Setup the Generator**
+### 1\. Setup the Generator
 
 1. Create a new, standalone Google Apps Script project at [script.google.com](https://script.google.com). Name it **ApiLibraryGenerator**.  
 2. Replace the contents of `Code.gs` with the complete code from the `generator/` folder in this repository.  
