@@ -4,8 +4,8 @@ Auto-generated client library for using the **Display & Video 360 API (version: 
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:47:24 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:31:42 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:33:30 GMT
+- **Last Modified:** Thu, 31 Jul 2025 23:33:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:52 GMT
 
 
@@ -351,6 +351,19 @@ Uploads an asset. Returns the ID of the newly uploaded asset if successful. The 
 
 ### `advertisers.campaigns`
 
+#### `advertisers.campaigns.listAssignedTargetingOptions()`
+
+Lists assigned targeting options of a campaign across targeting types.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the campaign belongs to. |
+| `params.campaignId` | `string` | Yes | Required. The ID of the campaign to list assigned targeting options for. |
+| `params.pageSize` | `integer` | No | Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. |
+| `params.pageToken` | `string` | No | A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to `BulkListCampaignAssignedTargetingOptions` method. If not specified, the first page of results will be returned. |
+| `params.orderBy` | `string` | No | Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. |
+| `params.filter` | `string` | No | Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_LANGUAGE` or `TARGETING_TYPE_GENDER`: `targetingType="TARGETING_TYPE_LANGUAGE" OR targetingType="TARGETING_TYPE_GENDER"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. |
+
 #### `advertisers.campaigns.get()`
 
 Gets a campaign.
@@ -400,6 +413,35 @@ Permanently deletes a campaign. A deleted campaign cannot be recovered. The camp
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | The ID of the advertiser this campaign belongs to. |
 | `params.campaignId` | `string` | Yes | The ID of the campaign we need to delete. |
+
+### `advertisers.campaigns.targetingTypes`
+
+### `advertisers.campaigns.targetingTypes.assignedTargetingOptions`
+
+#### `advertisers.campaigns.targetingTypes.assignedTargetingOptions.get()`
+
+Gets a single targeting option assigned to a campaign.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the campaign belongs to. |
+| `params.campaignId` | `string` | Yes | Required. The ID of the campaign the assigned targeting option belongs to. |
+| `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_VIEWABILITY` |
+| `params.assignedTargetingOptionId` | `string` | Yes | Required. An identifier unique to the targeting type in this campaign that identifies the assigned targeting option being requested. |
+
+#### `advertisers.campaigns.targetingTypes.assignedTargetingOptions.list()`
+
+Lists the targeting options assigned to a campaign for a specified targeting type.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the campaign belongs to. |
+| `params.campaignId` | `string` | Yes | Required. The ID of the campaign to list assigned targeting options for. |
+| `params.targetingType` | `string` | Yes | Required. Identifies the type of assigned targeting options to list. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_VIEWABILITY` |
+| `params.pageSize` | `integer` | No | Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListCampaignAssignedTargetingOptions` method. If not specified, the first page of results will be returned. |
+| `params.orderBy` | `string` | No | Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`. |
+| `params.filter` | `string` | No | Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the `OR` logical operator. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` * `inheritance` Examples: * `AssignedTargetingOption` resources with ID 1 or 2 `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER` `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. |
 
 ### `advertisers.channels`
 
@@ -560,6 +602,19 @@ Deletes a creative. Returns error code `NOT_FOUND` if the creative does not exis
 
 ### `advertisers.insertionOrders`
 
+#### `advertisers.insertionOrders.listAssignedTargetingOptions()`
+
+Lists assigned targeting options of an insertion order across targeting types.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the insertion order belongs to. |
+| `params.insertionOrderId` | `string` | Yes | Required. The ID of the insertion order to list assigned targeting options for. |
+| `params.pageSize` | `integer` | No | Requested page size. The size must be an integer between `1` and `5000`. If unspecified, the default is `5000`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. |
+| `params.pageToken` | `string` | No | A token that lets the client fetch the next page of results. Typically, this is the value of next_page_token returned from the previous call to `BulkListInsertionOrderAssignedTargetingOptions` method. If not specified, the first page of results will be returned. |
+| `params.orderBy` | `string` | No | Field by which to sort the list. Acceptable values are: * `targetingType` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. |
+| `params.filter` | `string` | No | Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` * `inheritance` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` or `TARGETING_TYPE_CHANNEL`: `targetingType="TARGETING_TYPE_PROXIMITY_LOCATION_LIST" OR targetingType="TARGETING_TYPE_CHANNEL"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. |
+
 #### `advertisers.insertionOrders.get()`
 
 Gets an insertion order. Returns error code `NOT_FOUND` if the insertion order does not exist.
@@ -609,6 +664,117 @@ Deletes an insertion order. Returns error code `NOT_FOUND` if the insertion orde
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | The ID of the advertiser this insertion order belongs to. |
 | `params.insertionOrderId` | `string` | Yes | The ID of the insertion order to delete. |
+
+### `advertisers.insertionOrders.targetingTypes`
+
+### `advertisers.insertionOrders.targetingTypes.assignedTargetingOptions`
+
+#### `advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.get()`
+
+Gets a single targeting option assigned to an insertion order.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the insertion order belongs to. |
+| `params.insertionOrderId` | `string` | Yes | Required. The ID of the insertion order the assigned targeting option belongs to. |
+| `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` |
+| `params.assignedTargetingOptionId` | `string` | Yes | Required. An identifier unique to the targeting type in this insertion order that identifies the assigned targeting option being requested. |
+
+#### `advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.list()`
+
+Lists the targeting options assigned to an insertion order.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the insertion order belongs to. |
+| `params.insertionOrderId` | `string` | Yes | Required. The ID of the insertion order to list assigned targeting options for. |
+| `params.targetingType` | `string` | Yes | Required. Identifies the type of assigned targeting options to list. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` |
+| `params.pageSize` | `integer` | No | Requested page size. Must be between `1` and `5000`. If unspecified will default to `100`. Returns error code `INVALID_ARGUMENT` if an invalid value is specified. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListInsertionOrderAssignedTargetingOptions` method. If not specified, the first page of results will be returned. |
+| `params.orderBy` | `string` | No | Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`. |
+| `params.filter` | `string` | No | Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` * `inheritance` Examples: * `AssignedTargetingOption` resources with ID 1 or 2: `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` * `AssignedTargetingOption` resources with inheritance status of `NOT_INHERITED` or `INHERITED_FROM_PARTNER`: `inheritance="NOT_INHERITED" OR inheritance="INHERITED_FROM_PARTNER"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. |
+
+#### `advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.create()`
+
+Assigns a targeting option to an insertion order. Returns the assigned targeting option if successful. Supported targeting types:
+
+* `TARGETING_TYPE_AGE_RANGE`
+
+* `TARGETING_TYPE_BROWSER`
+
+* `TARGETING_TYPE_CATEGORY`
+
+* `TARGETING_TYPE_CHANNEL`
+
+* `TARGETING_TYPE_DEVICE_MAKE_MODEL`
+
+* `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`
+
+* `TARGETING_TYPE_ENVIRONMENT`
+
+* `TARGETING_TYPE_GENDER`
+
+* `TARGETING_TYPE_KEYWORD`
+
+* `TARGETING_TYPE_LANGUAGE`
+
+* `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`
+
+* `TARGETING_TYPE_OPERATING_SYSTEM`
+
+* `TARGETING_TYPE_PARENTAL_STATUS`
+
+* `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+
+* `TARGETING_TYPE_VIEWABILITY`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the insertion order belongs to. |
+| `params.insertionOrderId` | `string` | Yes | Required. The ID of the insertion order the assigned targeting option will belong to. |
+| `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY` |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.delete()`
+
+Deletes an assigned targeting option from an insertion order. Supported targeting types:
+
+* `TARGETING_TYPE_AGE_RANGE`
+
+* `TARGETING_TYPE_BROWSER`
+
+* `TARGETING_TYPE_CATEGORY`
+
+* `TARGETING_TYPE_CHANNEL`
+
+* `TARGETING_TYPE_DEVICE_MAKE_MODEL`
+
+* `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION`
+
+* `TARGETING_TYPE_ENVIRONMENT`
+
+* `TARGETING_TYPE_GENDER`
+
+* `TARGETING_TYPE_KEYWORD`
+
+* `TARGETING_TYPE_LANGUAGE`
+
+* `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST`
+
+* `TARGETING_TYPE_OPERATING_SYSTEM`
+
+* `TARGETING_TYPE_PARENTAL_STATUS`
+
+* `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION`
+
+* `TARGETING_TYPE_VIEWABILITY`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the insertion order belongs to. |
+| `params.insertionOrderId` | `string` | Yes | Required. The ID of the insertion order the assigned targeting option belongs to. |
+| `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY` |
+| `params.assignedTargetingOptionId` | `string` | Yes | Required. The ID of the assigned targeting option to delete. |
 
 ### `advertisers.invoices`
 
