@@ -76,6 +76,9 @@ class Chromemanagement {
     this.customers.profiles.commands.create = (params) => this._makeRequest('v1/{+parent}/commands', 'POST', params);
     this.customers.profiles.commands.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
     this.customers.profiles.commands.list = (params) => this._makeRequest('v1/{+parent}/commands', 'GET', params);
+
+    this.customers.thirdPartyProfileUsers = {};
+    this.customers.thirdPartyProfileUsers.move = (params) => this._makeRequest('v1/{+name}:move', 'POST', params);
   }
 
   /**
