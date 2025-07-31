@@ -1147,6 +1147,14 @@ class Aiplatform {
      */
     this.projects.locations.featureOnlineStores.featureViews.searchNearestEntities = (params) => this._makeRequest('v1/{+featureView}:searchNearestEntities', 'POST', params);
 
+    /**
+     * Bidirectional streaming RPC to directly write to feature values in a feature view. Requests may not have a one-to-one mapping to responses and responses may be returned out-of-order to reduce latency.
+     * @param {string} params.featureView - (Required) FeatureView resource format `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.featureOnlineStores.featureViews.directWrite = (params) => this._makeRequest('v1/{+featureView}:directWrite', 'POST', params);
+
     this.projects.locations.featureOnlineStores.featureViews.operations = {};
 
     /**
