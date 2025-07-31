@@ -46,6 +46,13 @@ class Networksecurity {
     this.projects.locations.addressGroups.getIamPolicy = (params) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', params);
     this.projects.locations.addressGroups.testIamPermissions = (params) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', params);
 
+    this.projects.locations.dnsThreatDetectors = {};
+    this.projects.locations.dnsThreatDetectors.list = (params) => this._makeRequest('v1beta1/{+parent}/dnsThreatDetectors', 'GET', params);
+    this.projects.locations.dnsThreatDetectors.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.dnsThreatDetectors.create = (params) => this._makeRequest('v1beta1/{+parent}/dnsThreatDetectors', 'POST', params);
+    this.projects.locations.dnsThreatDetectors.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+    this.projects.locations.dnsThreatDetectors.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
     this.projects.locations.firewallEndpointAssociations = {};
     this.projects.locations.firewallEndpointAssociations.list = (params) => this._makeRequest('v1beta1/{+parent}/firewallEndpointAssociations', 'GET', params);
     this.projects.locations.firewallEndpointAssociations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
