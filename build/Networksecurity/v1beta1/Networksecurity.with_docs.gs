@@ -180,6 +180,49 @@ class Networksecurity {
      */
     this.projects.locations.addressGroups.testIamPermissions = (params) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', params);
 
+    this.projects.locations.dnsThreatDetectors = {};
+
+    /**
+     * Lists DnsThreatDetectors in a given project and location.
+     * @param {integer} params.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} params.pageToken - Optional. A page token, received from a previous `ListDnsThreatDetectorsRequest` call. Provide this to retrieve the subsequent page.
+     * @param {string} params.parent - (Required) Required. Parent value for ListDnsThreatDetectorsRequest
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dnsThreatDetectors.list = (params) => this._makeRequest('v1beta1/{+parent}/dnsThreatDetectors', 'GET', params);
+
+    /**
+     * Gets details of a single DnsThreatDetector.
+     * @param {string} params.name - (Required) Required. Name of the DnsThreatDetector resource
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dnsThreatDetectors.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Creates a new DnsThreatDetector in a given project and location.
+     * @param {string} params.dnsThreatDetectorId - Optional. Id of the requesting DnsThreatDetector object. If this field is not supplied, the service will generate an identifier.
+     * @param {string} params.parent - (Required) Required. Value for parent of the DnsThreatDetector resource.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dnsThreatDetectors.create = (params) => this._makeRequest('v1beta1/{+parent}/dnsThreatDetectors', 'POST', params);
+
+    /**
+     * Updates the parameters of a single DnsThreatDetector.
+     * @param {string} params.name - (Required) Immutable. Identifier. Name of the DnsThreatDetector resource.
+     * @param {string} params.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the DnsThreatDetector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the mask is not provided then all fields present in the request will be overwritten.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dnsThreatDetectors.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+
+    /**
+     * Deletes a single DnsThreatDetector.
+     * @param {string} params.name - (Required) Required. Name of the DnsThreatDetector resource.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dnsThreatDetectors.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
     this.projects.locations.firewallEndpointAssociations = {};
 
     /**
