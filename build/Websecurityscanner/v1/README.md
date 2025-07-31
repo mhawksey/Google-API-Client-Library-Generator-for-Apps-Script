@@ -4,7 +4,7 @@ Auto-generated client library for using the **Web Security Scanner API (version:
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 22:15:21 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:57:11 GMT
 - **Last Modified:** Sun, 27 Jul 2025 13:49:23 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:08 GMT
 
