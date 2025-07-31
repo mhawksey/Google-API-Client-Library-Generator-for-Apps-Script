@@ -20,6 +20,15 @@ class Firebasedynamiclinks {
 
     // --- Public Interface Initialization ---
 
+    this.managedShortLinks = {};
+
+    /**
+     * Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for the link (non unique name for the front end). - The response must be authenticated with an auth token (generated with the admin service account). - The link will appear in the FDL list of links in the console front end. The Dynamic Link domain in the request must be owned by requester's Firebase project.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.managedShortLinks.create = (params) => this._makeRequest('v1/managedShortLinks:create', 'POST', params);
+
     this.shortLinks = {};
 
     /**
@@ -32,13 +41,6 @@ class Firebasedynamiclinks {
     this.v1 = {};
 
     /**
-     * Get iOS strong/weak-match info for post-install attribution.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.v1.installAttribution = (params) => this._makeRequest('v1/installAttribution', 'POST', params);
-
-    /**
      * Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens.
      * @param {string} params.durationDays - The span of time requested in days.
      * @param {string} params.dynamicLink - (Required) Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
@@ -48,20 +50,18 @@ class Firebasedynamiclinks {
     this.v1.getLinkStats = (params) => this._makeRequest('v1/{dynamicLink}/linkStats', 'GET', params);
 
     /**
+     * Get iOS strong/weak-match info for post-install attribution.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.v1.installAttribution = (params) => this._makeRequest('v1/installAttribution', 'POST', params);
+
+    /**
      * Get iOS reopen attribution for app universal link open deeplinking.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
     this.v1.reopenAttribution = (params) => this._makeRequest('v1/reopenAttribution', 'POST', params);
-
-    this.managedShortLinks = {};
-
-    /**
-     * Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for the link (non unique name for the front end). - The response must be authenticated with an auth token (generated with the admin service account). - The link will appear in the FDL list of links in the console front end. The Dynamic Link domain in the request must be owned by requester's Firebase project.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.managedShortLinks.create = (params) => this._makeRequest('v1/managedShortLinks:create', 'POST', params);
   }
 
   /**
