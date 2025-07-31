@@ -4,7 +4,7 @@ Auto-generated client library for using the **BigQuery API (version: v2)** in Go
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:35:31 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:23:08 GMT
 - **Last Modified:** Sun, 27 Jul 2025 12:22:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:02 GMT
 
@@ -131,6 +131,7 @@ RPC to get the results of a query job.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.formatOptions.timestampOutputFormat` | `string` | No | Optional. The API output format for a timestamp. This offers more explicit control over the timestamp output format as compared to the existing `use_int64_timestamp` option. |
 | `params.formatOptions.useInt64Timestamp` | `boolean` | No | Optional. Output timestamp as usec int64. Default is false. |
 | `params.jobId` | `string` | Yes | Required. Job ID of the query job. |
 | `params.location` | `string` | No | The geographic location of the job. You must specify the location to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`) For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations). |
@@ -434,6 +435,7 @@ List the content of a table in rows.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.datasetId` | `string` | Yes | Required. Dataset id of the table to list. |
+| `params.formatOptions.timestampOutputFormat` | `string` | No | Optional. The API output format for a timestamp. This offers more explicit control over the timestamp output format as compared to the existing `use_int64_timestamp` option. |
 | `params.formatOptions.useInt64Timestamp` | `boolean` | No | Optional. Output timestamp as usec int64. Default is false. |
 | `params.maxResults` | `integer` | No | Row limit of the table. |
 | `params.pageToken` | `string` | No | To retrieve the next page of table data, set this field to the string provided in the pageToken field of the response body from your previous call to tabledata.list. |
