@@ -126,8 +126,8 @@ class Compute {
 
     /**
      * Retrieves the specified Operations resource. Gets a list of operations by making a `list()` request.
-     * @param {string} params.operation - (Required) Name of the Operations resource to return, or its unique numeric identifier.
-     * @param {string} params.parentId - Parent ID for this request.
+     * @param {string} params.operation - (Required) Name of the Operations resource to return. Parent is derived from this field.
+     * @param {string} params.parentId - Parent ID for this request. Not used. Parent is derived from resource_id.
      * @return {object} The API response object.
      */
     this.globalOrganizationOperations.get = (params) => this._makeRequest('locations/global/operations/{operation}', 'GET', params);
@@ -1380,6 +1380,13 @@ class Compute {
      * @return {object} The API response object.
      */
     this.firewallPolicies.testIamPermissions = (params) => this._makeRequest('locations/global/firewallPolicies/{resource}/testIamPermissions', 'POST', params);
+
+    /**
+     * Starts a brand new progressive rollout of hierarchical firewall policy. This API will return an error when there is an ongoing progressive rollout.
+     * @param {string} params.firewallPolicy - (Required) Name of the target firewall policy.
+     * @return {object} The API response object.
+     */
+    this.firewallPolicies.forceStartProgressiveRollout = (params) => this._makeRequest('locations/global/{+firewallPolicy}/forceStartProgressiveRollout', 'POST', params);
 
     this.networkFirewallPolicies = {};
 
@@ -9841,7 +9848,7 @@ class Compute {
      * @param {string} params.project - (Required) Project Id of the request
      * @param {string} params.recoverableSnapshot - (Required) Name of the recoverable resource to recover
      * @param {string} params.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
-     * @param {string} params.snapshotName - Name of the snapshot after the recovery The name will be 1-63 characters long, and comply with RFC1035. Specifically, the name will be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character will be a lowercase letter, and all following characters can be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+     * @param {string} params.snapshotName - Optional. Name of the snapshot after the recovery The name will be 1-63 characters long, and comply with RFC1035. Specifically, the name will be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character will be a lowercase letter, and all following characters can be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      * @return {object} The API response object.
      */
     this.recoverableSnapshots.recover = (params) => this._makeRequest('projects/{project}/global/recoverableSnapshots/{recoverableSnapshot}/recover', 'POST', params);
@@ -11290,6 +11297,61 @@ class Compute {
      */
     this.regionZones.list = (params) => this._makeRequest('projects/{project}/regions/{region}/zones', 'GET', params);
 
+    this.zoneVmExtensionPolicies = {};
+
+    /**
+     * Creates a new zone-level VM extension policy within a project.
+     * @param {string} params.project - (Required) Project ID for this request.
+     * @param {string} params.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {string} params.zone - (Required) Name of the zone for this request.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.zoneVmExtensionPolicies.insert = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies', 'POST', params);
+
+    /**
+     * Retrieves details of a specific zone VM extension policy.
+     * @param {string} params.project - (Required) Project ID for this request.
+     * @param {string} params.vmExtensionPolicy - (Required) Name of the VM extension policy resource to return.
+     * @param {string} params.zone - (Required) Name of the zone for this request.
+     * @return {object} The API response object.
+     */
+    this.zoneVmExtensionPolicies.get = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}', 'GET', params);
+
+    /**
+     * Modifies an existing zone VM extension policy.
+     * @param {string} params.project - (Required) Project ID for this request.
+     * @param {string} params.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {string} params.vmExtensionPolicy - (Required) Name of the zone VM extension policy to update.
+     * @param {string} params.zone - (Required) Name of the zone for this request.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.zoneVmExtensionPolicies.update = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}', 'PATCH', params);
+
+    /**
+     * Deletes a specified zone VM extension policy.
+     * @param {string} params.project - (Required) Project ID for this request.
+     * @param {string} params.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {string} params.vmExtensionPolicy - (Required) Name of the zone VM extension policy to delete.
+     * @param {string} params.zone - (Required) Name of the zone for this request.
+     * @return {object} The API response object.
+     */
+    this.zoneVmExtensionPolicies.delete = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies/{vmExtensionPolicy}', 'DELETE', params);
+
+    /**
+     * Lists all VM extension policies within a specific zone for a project.
+     * @param {string} params.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
+     * @param {integer} params.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+     * @param {string} params.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+     * @param {string} params.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
+     * @param {string} params.project - (Required) Project ID for this request.
+     * @param {boolean} params.returnPartialSuccess - Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code.
+     * @param {string} params.zone - (Required) Name of the zone for this request.
+     * @return {object} The API response object.
+     */
+    this.zoneVmExtensionPolicies.list = (params) => this._makeRequest('projects/{project}/zones/{zone}/vmExtensionPolicies', 'GET', params);
+
     this.reliabilityRisks = {};
 
     /**
@@ -11311,6 +11373,19 @@ class Compute {
      * @return {object} The API response object.
      */
     this.reliabilityRisks.list = (params) => this._makeRequest('projects/{project}/global/reliabilityRisks', 'GET', params);
+
+    this.haControllers = {};
+
+    /**
+     * Fails over a VM targeted by the specified HaController to the selected zone.
+     * @param {string} params.haController - (Required) ID of the HaController resource to update.
+     * @param {string} params.project - (Required) Project ID for this request.
+     * @param {string} params.region - (Required) Name of the region for this request.
+     * @param {string} params.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.haControllers.failover = (params) => this._makeRequest('projects/{project}/regions/{region}/haControllers/{haController}/failover', 'POST', params);
   }
 
   /**
