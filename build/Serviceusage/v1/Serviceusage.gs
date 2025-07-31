@@ -20,19 +20,19 @@ class Serviceusage {
 
     // --- Public Interface Initialization ---
 
-    this.operations = {};
-    this.operations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-    this.operations.list = (params) => this._makeRequest('v1/operations', 'GET', params);
-    this.operations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-    this.operations.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
-
     this.services = {};
+    this.services.batchEnable = (params) => this._makeRequest('v1/{+parent}/services:batchEnable', 'POST', params);
     this.services.disable = (params) => this._makeRequest('v1/{+name}:disable', 'POST', params);
     this.services.enable = (params) => this._makeRequest('v1/{+name}:enable', 'POST', params);
-    this.services.batchGet = (params) => this._makeRequest('v1/{+parent}/services:batchGet', 'GET', params);
     this.services.list = (params) => this._makeRequest('v1/{+parent}/services', 'GET', params);
     this.services.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-    this.services.batchEnable = (params) => this._makeRequest('v1/{+parent}/services:batchEnable', 'POST', params);
+    this.services.batchGet = (params) => this._makeRequest('v1/{+parent}/services:batchGet', 'GET', params);
+
+    this.operations = {};
+    this.operations.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
+    this.operations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.operations.list = (params) => this._makeRequest('v1/operations', 'GET', params);
+    this.operations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
   }
 
   /**
