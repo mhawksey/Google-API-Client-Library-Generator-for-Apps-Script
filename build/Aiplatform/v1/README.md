@@ -4,8 +4,8 @@ Auto-generated client library for using the **Vertex AI API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:33:24 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:20:36 GMT
+- **Last Checked:** Thu, 31 Jul 2025 23:21:31 GMT
+- **Last Modified:** Thu, 31 Jul 2025 23:21:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:27 GMT
 
 
@@ -1270,6 +1270,15 @@ Search the nearest entities under a FeatureView. Search only works for indexable
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.featureView` | `string` | Yes | Required. FeatureView resource format `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}` |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.featureOnlineStores.featureViews.directWrite()`
+
+Bidirectional streaming RPC to directly write to feature values in a feature view. Requests may not have a one-to-one mapping to responses and responses may be returned out-of-order to reduce latency.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.featureView` | `string` | Yes | FeatureView resource format `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}` |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `projects.locations.featureOnlineStores.featureViews.operations`
