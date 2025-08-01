@@ -39,12 +39,15 @@ For a detailed guide on these setups, please see the official documentation on [
 2.  Find the folder for the API you want to use and open the specific version directory.
 3.  Add the library code to your project by copying the content from either `[ApiName].with_docs.gs` (for development) or `[ApiName].gs` (for production) into a new script file.
 
+> **Tip:** Providing the `[ApiName].with_docs.gs` file to a conversation in gemini.google.com can help when vibe coding with Gemini.
+
 ### Step 2: Add Required Scopes to Your Manifest
+
+For service account usage only the `https://www.googleapis.com/auth/script.external_request` scope is required in the manifest
 
 1.  From the library folder in the `build/` directory, open the `appsscript.json` file.
 2.  Copy the scopes you need from the `"oauthScopes"` array into your own project's manifest file (`Project Settings ⚙️ > Show "appsscript.json" manifest file`).
 3.  **Note:** You must always include the `https://www.googleapis.com/auth/script.external_request` scope to allow the library to make API calls.
-
 
 ## Usage and Configuration Patterns
 
