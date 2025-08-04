@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud DNS API (version: v1beta2)**
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:33:44 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:31:52 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:13:55 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:13:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:05 GMT
 
 
