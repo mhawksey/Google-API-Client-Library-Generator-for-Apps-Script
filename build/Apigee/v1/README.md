@@ -4,8 +4,8 @@ Auto-generated client library for using the **Apigee API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:22:10 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:21:14 GMT
+- **Last Checked:** Mon, 04 Aug 2025 19:52:32 GMT
+- **Last Modified:** Mon, 04 Aug 2025 19:52:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:32 GMT
 
 
