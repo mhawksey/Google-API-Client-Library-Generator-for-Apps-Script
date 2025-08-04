@@ -132,6 +132,10 @@ class Walletobjects {
     this.permissions.get = (params) => this._makeRequest('walletobjects/v1/permissions/{resourceId}', 'GET', params);
     this.permissions.update = (params) => this._makeRequest('walletobjects/v1/permissions/{resourceId}', 'PUT', params);
 
+    this.media = {};
+    this.media.upload = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues', 'POST', params);
+    this.media.download = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/downloadRotatingBarcodeValues', 'GET', params);
+
     this.walletobjects = {};
 
     this.walletobjects.v1 = {};
@@ -157,10 +161,6 @@ class Walletobjects {
     this.transitobject.list = (params) => this._makeRequest('walletobjects/v1/transitObject', 'GET', params);
     this.transitobject.patch = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}', 'PATCH', params);
     this.transitobject.update = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}', 'PUT', params);
-
-    this.media = {};
-    this.media.upload = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues', 'POST', params);
-    this.media.download = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/downloadRotatingBarcodeValues', 'GET', params);
   }
 
   /**
@@ -176,8 +176,7 @@ class Walletobjects {
       const isPlus = placeholder.startsWith('{+');
       const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
       if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        // Fix: URI-encode path parameters for safety.
-        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        url = url.replace(placeholder, remainingParams[paramName]);
         delete remainingParams[paramName];
       }
     });
