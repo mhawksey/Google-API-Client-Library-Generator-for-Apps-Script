@@ -22,16 +22,16 @@ class Serviceusage {
 
     this.services = {};
     this.services.batchEnable = (params) => this._makeRequest('v1/{+parent}/services:batchEnable', 'POST', params);
+    this.services.list = (params) => this._makeRequest('v1/{+parent}/services', 'GET', params);
     this.services.disable = (params) => this._makeRequest('v1/{+name}:disable', 'POST', params);
     this.services.enable = (params) => this._makeRequest('v1/{+name}:enable', 'POST', params);
-    this.services.list = (params) => this._makeRequest('v1/{+parent}/services', 'GET', params);
-    this.services.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
     this.services.batchGet = (params) => this._makeRequest('v1/{+parent}/services:batchGet', 'GET', params);
+    this.services.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
 
     this.operations = {};
+    this.operations.list = (params) => this._makeRequest('v1/operations', 'GET', params);
     this.operations.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
     this.operations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-    this.operations.list = (params) => this._makeRequest('v1/operations', 'GET', params);
     this.operations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
   }
 
@@ -48,8 +48,7 @@ class Serviceusage {
       const isPlus = placeholder.startsWith('{+');
       const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
       if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        // Fix: URI-encode path parameters for safety.
-        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        url = url.replace(placeholder, remainingParams[paramName]);
         delete remainingParams[paramName];
       }
     });

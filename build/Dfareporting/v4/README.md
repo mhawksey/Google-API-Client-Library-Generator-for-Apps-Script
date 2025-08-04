@@ -4,8 +4,8 @@ Auto-generated client library for using the **Campaign Manager 360 API (version:
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:32:55 GMT
-- **Last Modified:** Thu, 31 Jul 2025 23:32:55 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:12:45 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:12:45 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:21 GMT
 
 

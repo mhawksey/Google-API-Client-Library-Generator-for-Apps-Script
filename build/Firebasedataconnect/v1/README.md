@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Data Connect API (version
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:34:54 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:32:56 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:15:48 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:15:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:29 GMT
 
 

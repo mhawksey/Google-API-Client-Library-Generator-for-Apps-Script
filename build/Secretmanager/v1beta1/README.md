@@ -4,8 +4,8 @@ Auto-generated client library for using the **Secret Manager API (version: v1bet
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:54:02 GMT
-- **Last Modified:** Sun, 27 Jul 2025 13:38:27 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:45:31 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:45:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:34 GMT
 
 

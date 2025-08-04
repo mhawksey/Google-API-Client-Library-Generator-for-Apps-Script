@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase App Hosting API (version:
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:34:45 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:32:47 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:15:34 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:15:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:18 GMT
 
 

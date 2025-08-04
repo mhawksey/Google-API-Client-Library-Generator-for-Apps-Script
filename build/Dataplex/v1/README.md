@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Dataplex API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:32:22 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:30:46 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:11:51 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:11:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:17 GMT
 
 
@@ -1851,6 +1851,64 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). |
 
 #### `projects.locations.governanceRules.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.resource` | `object` | Yes | The request body. |
+
+### `projects.locations.dataProducts`
+
+#### `projects.locations.dataProducts.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataProducts.getIamPolicy()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `projects.locations.dataProducts.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.resource` | `object` | Yes | The request body. |
+
+### `projects.locations.dataProducts.dataAssets`
+
+#### `projects.locations.dataProducts.dataAssets.setIamPolicy()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy.Can return NOT_FOUND, INVALID_ARGUMENT, and PERMISSION_DENIED errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataProducts.dataAssets.getIamPolicy()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `projects.locations.dataProducts.dataAssets.testIamPermissions()`
 
 Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
 

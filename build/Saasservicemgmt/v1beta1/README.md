@@ -4,8 +4,8 @@ Auto-generated client library for using the **SaaS Runtime API (version: v1beta1
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:53:48 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:46:07 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:45:06 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:45:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:07 GMT
 
 
