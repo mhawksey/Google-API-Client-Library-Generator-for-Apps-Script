@@ -20,22 +20,33 @@ class Serviceusage {
 
     // --- Public Interface Initialization ---
 
+    this.operations = {};
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {string} params.name - (Required) The name of the operation resource.
+     * @return {object} The API response object.
+     */
+    this.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * @param {string} params.filter - The standard list filter.
+     * @param {string} params.name - The name of the operation's parent resource.
+     * @param {integer} params.pageSize - The standard list page size.
+     * @param {string} params.pageToken - The standard list page token.
+     * @return {object} The API response object.
+     */
+    this.operations.list = (params) => this._makeRequest('v1beta1/operations', 'GET', params);
+
     this.services = {};
 
     /**
-     * Enables a service so that it can be used with a project. Operation response type: `google.protobuf.Empty`
-     * @param {string} params.name - (Required) Name of the consumer and service to enable the service on. The `EnableService` and `DisableService` methods currently only support projects. Enabling a service requires that the service is public or is shared with the user enabling the service. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
-     * @param {object} params.resource - The request body.
+     * Generates service identity for service.
+     * @param {string} params.parent - (Required) Name of the consumer and service to generate an identity for. The `GenerateServiceIdentity` methods currently support projects, folders, organizations. Example parents would be: `projects/123/services/example.googleapis.com` `folders/123/services/example.googleapis.com` `organizations/123/services/example.googleapis.com`
      * @return {object} The API response object.
      */
-    this.services.enable = (params) => this._makeRequest('v1beta1/{+name}:enable', 'POST', params);
-
-    /**
-     * Returns the service configuration and enabled state for a given service.
-     * @param {string} params.name - (Required) Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
-     * @return {object} The API response object.
-     */
-    this.services.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.services.generateServiceIdentity = (params) => this._makeRequest('v1beta1/{+parent}:generateServiceIdentity', 'POST', params);
 
     /**
      * Disables a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled. Operation response type: `google.protobuf.Empty`
@@ -46,19 +57,12 @@ class Serviceusage {
     this.services.disable = (params) => this._makeRequest('v1beta1/{+name}:disable', 'POST', params);
 
     /**
-     * Generates service identity for service.
-     * @param {string} params.parent - (Required) Name of the consumer and service to generate an identity for. The `GenerateServiceIdentity` methods currently support projects, folders, organizations. Example parents would be: `projects/123/services/example.googleapis.com` `folders/123/services/example.googleapis.com` `organizations/123/services/example.googleapis.com`
-     * @return {object} The API response object.
-     */
-    this.services.generateServiceIdentity = (params) => this._makeRequest('v1beta1/{+parent}:generateServiceIdentity', 'POST', params);
-
-    /**
-     * Enables multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. Operation response type: `google.protobuf.Empty`
-     * @param {string} params.parent - (Required) Parent to enable services on. An example name would be: `projects/123` where `123` is the project number (not project ID). The `BatchEnableServices` method currently only supports projects.
+     * Enables a service so that it can be used with a project. Operation response type: `google.protobuf.Empty`
+     * @param {string} params.name - (Required) Name of the consumer and service to enable the service on. The `EnableService` and `DisableService` methods currently only support projects. Enabling a service requires that the service is public or is shared with the user enabling the service. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
-    this.services.batchEnable = (params) => this._makeRequest('v1beta1/{+parent}/services:batchEnable', 'POST', params);
+    this.services.enable = (params) => this._makeRequest('v1beta1/{+name}:enable', 'POST', params);
 
     /**
      * Lists all services available to the specified project, and the current state of those services with respect to the project. The list includes all public services, all services for which the calling user has the `servicemanagement.services.bind` permission, and all services that have already been enabled on the project. The list can be filtered to only include services in a specific state, for example to only include services enabled on the project.
@@ -70,7 +74,30 @@ class Serviceusage {
      */
     this.services.list = (params) => this._makeRequest('v1beta1/{+parent}/services', 'GET', params);
 
+    /**
+     * Enables multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. Operation response type: `google.protobuf.Empty`
+     * @param {string} params.parent - (Required) Parent to enable services on. An example name would be: `projects/123` where `123` is the project number (not project ID). The `BatchEnableServices` method currently only supports projects.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.services.batchEnable = (params) => this._makeRequest('v1beta1/{+parent}/services:batchEnable', 'POST', params);
+
+    /**
+     * Returns the service configuration and enabled state for a given service.
+     * @param {string} params.name - (Required) Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
+     * @return {object} The API response object.
+     */
+    this.services.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
     this.services.consumerQuotaMetrics = {};
+
+    /**
+     * Creates or updates multiple admin overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set.
+     * @param {string} params.parent - (Required) The resource name of the consumer. An example name would be: `projects/123/services/compute.googleapis.com`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.services.consumerQuotaMetrics.importAdminOverrides = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importAdminOverrides', 'POST', params);
 
     /**
      * Retrieves a summary of quota information for a specific quota metric
@@ -98,14 +125,6 @@ class Serviceusage {
      */
     this.services.consumerQuotaMetrics.list = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics', 'GET', params);
 
-    /**
-     * Creates or updates multiple admin overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set.
-     * @param {string} params.parent - (Required) The resource name of the consumer. An example name would be: `projects/123/services/compute.googleapis.com`
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.services.consumerQuotaMetrics.importAdminOverrides = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importAdminOverrides', 'POST', params);
-
     this.services.consumerQuotaMetrics.limits = {};
 
     /**
@@ -117,15 +136,6 @@ class Serviceusage {
     this.services.consumerQuotaMetrics.limits.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
 
     this.services.consumerQuotaMetrics.limits.adminOverrides = {};
-
-    /**
-     * Lists all admin overrides on this limit.
-     * @param {integer} params.pageSize - Requested size of the next page of data.
-     * @param {string} params.pageToken - Token identifying which result to start with; returned by a previous list call.
-     * @param {string} params.parent - (Required) The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
-     * @return {object} The API response object.
-     */
-    this.services.consumerQuotaMetrics.limits.adminOverrides.list = (params) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'GET', params);
 
     /**
      * Deletes an admin override.
@@ -146,6 +156,15 @@ class Serviceusage {
      * @return {object} The API response object.
      */
     this.services.consumerQuotaMetrics.limits.adminOverrides.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+
+    /**
+     * Lists all admin overrides on this limit.
+     * @param {integer} params.pageSize - Requested size of the next page of data.
+     * @param {string} params.pageToken - Token identifying which result to start with; returned by a previous list call.
+     * @param {string} params.parent - (Required) The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+     * @return {object} The API response object.
+     */
+    this.services.consumerQuotaMetrics.limits.adminOverrides.list = (params) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'GET', params);
 
     /**
      * Creates an admin override. An admin override is applied by an administrator of a parent folder or parent organization of the consumer receiving the override. An admin override is intended to limit the amount of quota the consumer can use out of the total quota pool allocated to all children of the folder or organization.
@@ -169,16 +188,6 @@ class Serviceusage {
     this.services.consumerQuotaMetrics.limits.consumerOverrides.list = (params) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'GET', params);
 
     /**
-     * Creates a consumer override. A consumer override is applied to the consumer on its own authority to limit its own quota usage. Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides, producer overrides, or the default limit of the service.
-     * @param {boolean} params.force - Whether to force the creation of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
-     * @param {string} params.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
-     * @param {string} params.parent - (Required) The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.services.consumerQuotaMetrics.limits.consumerOverrides.create = (params) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'POST', params);
-
-    /**
      * Updates a consumer override.
      * @param {boolean} params.force - Whether to force the update of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
      * @param {string} params.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
@@ -190,6 +199,16 @@ class Serviceusage {
     this.services.consumerQuotaMetrics.limits.consumerOverrides.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
 
     /**
+     * Creates a consumer override. A consumer override is applied to the consumer on its own authority to limit its own quota usage. Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides, producer overrides, or the default limit of the service.
+     * @param {boolean} params.force - Whether to force the creation of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
+     * @param {string} params.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
+     * @param {string} params.parent - (Required) The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.services.consumerQuotaMetrics.limits.consumerOverrides.create = (params) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'POST', params);
+
+    /**
      * Deletes a consumer override.
      * @param {boolean} params.force - Whether to force the deletion of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
      * @param {string} params.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
@@ -197,25 +216,6 @@ class Serviceusage {
      * @return {object} The API response object.
      */
     this.services.consumerQuotaMetrics.limits.consumerOverrides.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-
-    this.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-     * @param {string} params.filter - The standard list filter.
-     * @param {string} params.name - The name of the operation's parent resource.
-     * @param {integer} params.pageSize - The standard list page size.
-     * @param {string} params.pageToken - The standard list page token.
-     * @return {object} The API response object.
-     */
-    this.operations.list = (params) => this._makeRequest('v1beta1/operations', 'GET', params);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {string} params.name - (Required) The name of the operation resource.
-     * @return {object} The API response object.
-     */
-    this.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
   }
 
   /**
@@ -231,8 +231,7 @@ class Serviceusage {
       const isPlus = placeholder.startsWith('{+');
       const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
       if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        // Fix: URI-encode path parameters for safety.
-        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        url = url.replace(placeholder, remainingParams[paramName]);
         delete remainingParams[paramName];
       }
     });
