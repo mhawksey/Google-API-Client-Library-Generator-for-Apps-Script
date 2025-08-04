@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Composer API (version: v1bet
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:25:17 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:24:23 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:04:04 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:04:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:16 GMT
 
 
