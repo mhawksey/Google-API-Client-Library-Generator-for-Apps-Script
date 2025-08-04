@@ -3094,6 +3094,14 @@ class Aiplatform {
      */
     this.projects.locations.tuningJobs.rebaseTunedModel = (params) => this._makeRequest('v1beta1/{+parent}/tuningJobs:rebaseTunedModel', 'POST', params);
 
+    /**
+     * Optimizes a prompt.
+     * @param {string} params.parent - (Required) Required. The resource name of the Location to optimize the prompt in. Format: `projects/{project}/locations/{location}`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.tuningJobs.optimizePrompt = (params) => this._makeRequest('v1beta1/{+parent}/tuningJobs:optimizePrompt', 'POST', params);
+
     this.projects.locations.tuningJobs.operations = {};
 
     /**
@@ -6796,8 +6804,7 @@ class Aiplatform {
       const isPlus = placeholder.startsWith('{+');
       const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
       if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        // Fix: URI-encode path parameters for safety.
-        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        url = url.replace(placeholder, remainingParams[paramName]);
         delete remainingParams[paramName];
       }
     });
