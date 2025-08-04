@@ -4,8 +4,8 @@ Auto-generated client library for using the **Vertex AI API (version: v1beta1)**
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:21:25 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:20:32 GMT
+- **Last Checked:** Mon, 04 Aug 2025 19:51:14 GMT
+- **Last Modified:** Mon, 04 Aug 2025 19:51:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:23 GMT
 
 
@@ -3446,6 +3446,15 @@ Rebase a TunedModel.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location into which to rebase the Model. Format: `projects/{project}/locations/{location}` |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.tuningJobs.optimizePrompt()`
+
+Optimizes a prompt.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Location to optimize the prompt in. Format: `projects/{project}/locations/{location}` |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `projects.locations.tuningJobs.operations`
