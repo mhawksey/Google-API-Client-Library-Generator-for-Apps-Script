@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Management API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:23:50 GMT
-- **Last Modified:** Thu, 31 Jul 2025 23:23:50 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:00:44 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:00:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:10 GMT
 
 
