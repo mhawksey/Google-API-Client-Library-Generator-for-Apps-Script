@@ -140,7 +140,7 @@ class Androidmanagement {
 
     /**
      * Lists devices for a given enterprise. Deleted devices are not returned in the response.
-     * @param {integer} params.pageSize - The requested page size. The actual page size may be fixed to a min or max value.
+     * @param {integer} params.pageSize - The requested page size. If unspecified, at most 10 devices will be returned. The maximum value is 100; values above 100 will be coerced to 100. The limits can change over time.
      * @param {string} params.pageToken - A token identifying a page of results returned by the server.
      * @param {string} params.parent - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
      * @return {object} The API response object.
@@ -350,8 +350,7 @@ class Androidmanagement {
       const isPlus = placeholder.startsWith('{+');
       const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
       if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        // Fix: URI-encode path parameters for safety.
-        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        url = url.replace(placeholder, remainingParams[paramName]);
         delete remainingParams[paramName];
       }
     });
