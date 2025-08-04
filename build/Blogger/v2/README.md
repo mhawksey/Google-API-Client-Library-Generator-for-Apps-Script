@@ -4,8 +4,8 @@ Auto-generated client library for using the **Blogger API (version: v2)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:23:32 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:22:33 GMT
+- **Last Checked:** Mon, 04 Aug 2025 19:54:48 GMT
+- **Last Modified:** Mon, 04 Aug 2025 19:54:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:43 GMT
 
 
