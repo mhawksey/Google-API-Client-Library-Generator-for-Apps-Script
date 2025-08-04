@@ -1,0 +1,13 @@
+{
+    "timeZone": "America/New_York",
+    "dependencies": {
+      "enabledAdvancedServices": []
+    },
+    "exceptionLogging": "STACKDRIVER",
+    "oauthScopes": [
+      "https://www.googleapis.com/auth/chat.messages",
+      "https://www.googleapis.com/auth/chat.spaces",
+      "https://www.googleapis.com/auth/script.external_request"
+    ],
+    "runtimeVersion": "V8"
+  }
