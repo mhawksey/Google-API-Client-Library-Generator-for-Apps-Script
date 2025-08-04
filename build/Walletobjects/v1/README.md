@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Wallet API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:57:00 GMT
-- **Last Modified:** Sun, 27 Jul 2025 13:49:04 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:55:26 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:55:26 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:55 GMT
 
 
@@ -764,6 +764,25 @@ Updates the permissions for the given issuer.
 | `params.resourceId` | `string` | Yes | The unique identifier for an issuer. This ID must be unique across all issuers. |
 | `params.resource` | `object` | Yes | The request body. |
 
+### `media`
+
+#### `media.upload()`
+
+Uploads rotating barcode values for the transit object referenced by the given object ID. Note the max upload size is specified in google3/production/config/cdd/apps-upload/customers/payments-consumer-passes/config.gcl and enforced by Scotty.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `media.download()`
+
+Downloads rotating barcode values for the transit object referenced by the given object ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
+
 ### `walletobjects`
 
 ### `walletobjects.v1`
@@ -897,22 +916,3 @@ Updates the transit object referenced by the given object ID.
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
 | `params.resource` | `object` | Yes | The request body. |
-
-### `media`
-
-#### `media.upload()`
-
-Uploads rotating barcode values for the transit object referenced by the given object ID. Note the max upload size is specified in google3/production/config/cdd/apps-upload/customers/payments-consumer-passes/config.gcl and enforced by Scotty.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
-
-#### `media.download()`
-
-Downloads rotating barcode values for the transit object referenced by the given object ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |

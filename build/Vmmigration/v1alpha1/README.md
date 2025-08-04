@@ -4,8 +4,8 @@ Auto-generated client library for using the **VM Migration API (version: v1alpha
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:56:48 GMT
-- **Last Modified:** Sun, 27 Jul 2025 13:48:40 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:55:02 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:55:02 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:41 GMT
 
 

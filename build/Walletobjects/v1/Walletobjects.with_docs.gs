@@ -688,6 +688,23 @@ class Walletobjects {
      */
     this.permissions.update = (params) => this._makeRequest('walletobjects/v1/permissions/{resourceId}', 'PUT', params);
 
+    this.media = {};
+
+    /**
+     * Uploads rotating barcode values for the transit object referenced by the given object ID. Note the max upload size is specified in google3/production/config/cdd/apps-upload/customers/payments-consumer-passes/config.gcl and enforced by Scotty.
+     * @param {string} params.resourceId - (Required) The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.media.upload = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues', 'POST', params);
+
+    /**
+     * Downloads rotating barcode values for the transit object referenced by the given object ID.
+     * @param {string} params.resourceId - (Required) The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'.
+     * @return {object} The API response object.
+     */
+    this.media.download = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/downloadRotatingBarcodeValues', 'GET', params);
+
     this.walletobjects = {};
 
     this.walletobjects.v1 = {};
@@ -807,23 +824,6 @@ class Walletobjects {
      * @return {object} The API response object.
      */
     this.transitobject.update = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}', 'PUT', params);
-
-    this.media = {};
-
-    /**
-     * Uploads rotating barcode values for the transit object referenced by the given object ID. Note the max upload size is specified in google3/production/config/cdd/apps-upload/customers/payments-consumer-passes/config.gcl and enforced by Scotty.
-     * @param {string} params.resourceId - (Required) The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.media.upload = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues', 'POST', params);
-
-    /**
-     * Downloads rotating barcode values for the transit object referenced by the given object ID.
-     * @param {string} params.resourceId - (Required) The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'.
-     * @return {object} The API response object.
-     */
-    this.media.download = (params) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/downloadRotatingBarcodeValues', 'GET', params);
   }
 
   /**
@@ -839,8 +839,7 @@ class Walletobjects {
       const isPlus = placeholder.startsWith('{+');
       const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
       if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        // Fix: URI-encode path parameters for safety.
-        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        url = url.replace(placeholder, remainingParams[paramName]);
         delete remainingParams[paramName];
       }
     });
