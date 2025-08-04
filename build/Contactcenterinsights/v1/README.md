@@ -4,8 +4,8 @@ Auto-generated client library for using the **Contact Center AI Insights API (ve
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:25:44 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:24:46 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:04:57 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:04:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:58 GMT
 
 
@@ -1193,7 +1193,7 @@ Create AuthorizedViewSet
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedViewSet. |
-| `params.authorizedViewSetId` | `string` | No | Optional. A unique ID for the new AuthorizedViewSet. This ID will become the final component of the AuthorizedViewSet's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See go/aip/122#resource-id-segments |
+| `params.authorizedViewSetId` | `string` | No | Optional. A unique ID for the new AuthorizedViewSet. This ID will become the final component of the AuthorizedViewSet's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See aip.dev/122#resource-id-segments |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.get()`
@@ -1262,7 +1262,7 @@ Create AuthorizedView
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedView. |
-| `params.authorizedViewId` | `string` | No | Optional. A unique ID for the new AuthorizedView. This ID will become the final component of the AuthorizedView's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See go/aip/122#resource-id-segments |
+| `params.authorizedViewId` | `string` | No | Optional. A unique ID for the new AuthorizedView. This ID will become the final component of the AuthorizedView's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See aip.dev/122#resource-id-segments |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.get()`
