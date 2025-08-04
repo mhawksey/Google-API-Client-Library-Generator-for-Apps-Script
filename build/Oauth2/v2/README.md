@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google OAuth2 API (version: v2)** 
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:45:11 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:42:59 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:34:34 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:34:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:19 GMT
 
 
