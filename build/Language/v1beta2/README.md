@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:42:52 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:34:41 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:25:04 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:25:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:49 GMT
 
 
