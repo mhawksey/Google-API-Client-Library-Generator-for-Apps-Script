@@ -4,8 +4,8 @@ Auto-generated client library for using the **Android Management API (version: v
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:22:01 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:21:05 GMT
+- **Last Checked:** Mon, 04 Aug 2025 19:52:16 GMT
+- **Last Modified:** Mon, 04 Aug 2025 19:52:16 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:17 GMT
 
 
@@ -152,7 +152,7 @@ Lists devices for a given enterprise. Deleted devices are not returned in the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the enterprise in the form enterprises/{enterpriseId}. |
-| `params.pageSize` | `integer` | No | The requested page size. The actual page size may be fixed to a min or max value. |
+| `params.pageSize` | `integer` | No | The requested page size. If unspecified, at most 10 devices will be returned. The maximum value is 100; values above 100 will be coerced to 100. The limits can change over time. |
 | `params.pageToken` | `string` | No | A token identifying a page of results returned by the server. |
 
 #### `enterprises.devices.patch()`
