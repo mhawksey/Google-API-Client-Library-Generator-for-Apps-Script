@@ -126,6 +126,14 @@ class Apihub {
     this.projects.locations.curations.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
     this.projects.locations.curations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
 
+    this.projects.locations.discoveredApiObservations = {};
+    this.projects.locations.discoveredApiObservations.list = (params) => this._makeRequest('v1/{+parent}/discoveredApiObservations', 'GET', params);
+    this.projects.locations.discoveredApiObservations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    this.projects.locations.discoveredApiObservations.discoveredApiOperations = {};
+    this.projects.locations.discoveredApiObservations.discoveredApiOperations.list = (params) => this._makeRequest('v1/{+parent}/discoveredApiOperations', 'GET', params);
+    this.projects.locations.discoveredApiObservations.discoveredApiOperations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
     this.projects.locations.hostProjectRegistrations = {};
     this.projects.locations.hostProjectRegistrations.create = (params) => this._makeRequest('v1/{+parent}/hostProjectRegistrations', 'POST', params);
     this.projects.locations.hostProjectRegistrations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
@@ -157,8 +165,7 @@ class Apihub {
       const isPlus = placeholder.startsWith('{+');
       const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
       if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        // Fix: URI-encode path parameters for safety.
-        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        url = url.replace(placeholder, remainingParams[paramName]);
         delete remainingParams[paramName];
       }
     });
