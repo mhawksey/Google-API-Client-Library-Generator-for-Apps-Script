@@ -4,8 +4,8 @@ Auto-generated client library for using the **Recommender API (version: v1beta1)
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:47:34 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:45:35 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:44:20 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:44:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:21 GMT
 
 
