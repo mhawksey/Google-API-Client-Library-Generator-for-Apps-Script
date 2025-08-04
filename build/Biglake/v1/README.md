@@ -4,8 +4,8 @@ Auto-generated client library for using the **BigLake API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Mon, 28 Jul 2025 21:35:28 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:22:07 GMT
+- **Last Checked:** Mon, 04 Aug 2025 19:54:01 GMT
+- **Last Modified:** Mon, 04 Aug 2025 19:54:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:58 GMT
 
 
