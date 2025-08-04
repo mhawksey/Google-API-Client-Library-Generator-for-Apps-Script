@@ -20,52 +20,29 @@ class Apikeys {
 
     // --- Public Interface Initialization ---
 
+    this.operations = {};
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {string} params.name - (Required) The name of the operation resource.
+     * @return {object} The API response object.
+     */
+    this.operations.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
+
+    this.keys = {};
+
+    /**
+     * Find the parent project and resource name of the API key that matches the key string in the request. If the API key has been purged, resource name will not be set. The service account must have the `apikeys.keys.lookup` permission on the parent project.
+     * @param {string} params.keyString - Required. Finds the project that owns the key string value.
+     * @return {object} The API response object.
+     */
+    this.keys.lookupKey = (params) => this._makeRequest('v2/keys:lookupKey', 'GET', params);
+
     this.projects = {};
 
     this.projects.locations = {};
 
     this.projects.locations.keys = {};
-
-    /**
-     * Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.etag - Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency.
-     * @param {string} params.name - (Required) Required. The resource name of the API key to be deleted.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.keys.delete = (params) => this._makeRequest('v2/{+name}', 'DELETE', params);
-
-    /**
-     * Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.name - (Required) Required. The resource name of the API key to be undeleted.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.keys.undelete = (params) => this._makeRequest('v2/{+name}:undelete', 'POST', params);
-
-    /**
-     * Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.keyId - User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
-     * @param {string} params.parent - (Required) Required. The project in which the API key is created.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.keys.create = (params) => this._makeRequest('v2/{+parent}/keys', 'POST', params);
-
-    /**
-     * Patches the modifiable fields of an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.name - (Required) Output only. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.updateMask - The field mask specifies which fields to be updated as part of this request. All other fields are ignored. Mutable fields are: `display_name`, `restrictions`, and `annotations`. If an update mask is not provided, the service treats it as an implied mask equivalent to all allowed fields that are set on the wire. If the field mask has a special value "*", the service treats it equivalent to replace all allowed mutable fields.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.keys.patch = (params) => this._makeRequest('v2/{+name}', 'PATCH', params);
-
-    /**
-     * Get the key string for an API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.name - (Required) Required. The resource name of the API key to be retrieved.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.keys.getKeyString = (params) => this._makeRequest('v2/{+name}/keyString', 'GET', params);
 
     /**
      * Gets the metadata for an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
@@ -84,23 +61,46 @@ class Apikeys {
      */
     this.projects.locations.keys.list = (params) => this._makeRequest('v2/{+parent}/keys', 'GET', params);
 
-    this.operations = {};
-
     /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {string} params.name - (Required) The name of the operation resource.
+     * Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {string} params.name - (Required) Required. The resource name of the API key to be undeleted.
+     * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
-    this.operations.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
-
-    this.keys = {};
+    this.projects.locations.keys.undelete = (params) => this._makeRequest('v2/{+name}:undelete', 'POST', params);
 
     /**
-     * Find the parent project and resource name of the API key that matches the key string in the request. If the API key has been purged, resource name will not be set. The service account must have the `apikeys.keys.lookup` permission on the parent project.
-     * @param {string} params.keyString - Required. Finds the project that owns the key string value.
+     * Patches the modifiable fields of an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {string} params.name - (Required) Output only. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {string} params.updateMask - The field mask specifies which fields to be updated as part of this request. All other fields are ignored. Mutable fields are: `display_name`, `restrictions`, and `annotations`. If an update mask is not provided, the service treats it as an implied mask equivalent to all allowed fields that are set on the wire. If the field mask has a special value "*", the service treats it equivalent to replace all allowed mutable fields.
+     * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
-    this.keys.lookupKey = (params) => this._makeRequest('v2/keys:lookupKey', 'GET', params);
+    this.projects.locations.keys.patch = (params) => this._makeRequest('v2/{+name}', 'PATCH', params);
+
+    /**
+     * Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {string} params.keyId - User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
+     * @param {string} params.parent - (Required) Required. The project in which the API key is created.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.keys.create = (params) => this._makeRequest('v2/{+parent}/keys', 'POST', params);
+
+    /**
+     * Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {string} params.etag - Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency.
+     * @param {string} params.name - (Required) Required. The resource name of the API key to be deleted.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.keys.delete = (params) => this._makeRequest('v2/{+name}', 'DELETE', params);
+
+    /**
+     * Get the key string for an API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {string} params.name - (Required) Required. The resource name of the API key to be retrieved.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.keys.getKeyString = (params) => this._makeRequest('v2/{+name}/keyString', 'GET', params);
   }
 
   /**
@@ -116,8 +116,7 @@ class Apikeys {
       const isPlus = placeholder.startsWith('{+');
       const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
       if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        // Fix: URI-encode path parameters for safety.
-        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        url = url.replace(placeholder, remainingParams[paramName]);
         delete remainingParams[paramName];
       }
     });
