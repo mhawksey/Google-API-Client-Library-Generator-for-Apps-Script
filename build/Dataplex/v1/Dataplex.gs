@@ -270,6 +270,16 @@ class Dataplex {
     this.projects.locations.governanceRules.getIamPolicy = (params) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', params);
     this.projects.locations.governanceRules.testIamPermissions = (params) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', params);
 
+    this.projects.locations.dataProducts = {};
+    this.projects.locations.dataProducts.setIamPolicy = (params) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', params);
+    this.projects.locations.dataProducts.getIamPolicy = (params) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', params);
+    this.projects.locations.dataProducts.testIamPermissions = (params) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', params);
+
+    this.projects.locations.dataProducts.dataAssets = {};
+    this.projects.locations.dataProducts.dataAssets.setIamPolicy = (params) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', params);
+    this.projects.locations.dataProducts.dataAssets.getIamPolicy = (params) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', params);
+    this.projects.locations.dataProducts.dataAssets.testIamPermissions = (params) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', params);
+
     this.organizations = {};
 
     this.organizations.locations = {};
@@ -304,8 +314,7 @@ class Dataplex {
       const isPlus = placeholder.startsWith('{+');
       const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
       if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        // Fix: URI-encode path parameters for safety.
-        url = url.replace(placeholder, encodeURIComponent(remainingParams[paramName]));
+        url = url.replace(placeholder, remainingParams[paramName]);
         delete remainingParams[paramName];
       }
     });
