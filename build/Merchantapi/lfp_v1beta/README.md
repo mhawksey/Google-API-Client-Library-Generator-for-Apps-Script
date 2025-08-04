@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: lfp_v1beta)
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:43:51 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:41:33 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:32:07 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:32:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:42 GMT
 
 
