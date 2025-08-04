@@ -4,8 +4,8 @@ Auto-generated client library for using the **API Discovery Service (version: v1
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:33:14 GMT
-- **Last Modified:** Mon, 28 Jul 2025 21:47:04 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:13:11 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:13:11 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:40 GMT
 
 
@@ -22,8 +22,8 @@ Retrieve the list of APIs supported at this endpoint.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.preferred` | `boolean` | No | Return only the preferred version of an API. |
 | `params.name` | `string` | No | Only include APIs with the given name. |
+| `params.preferred` | `boolean` | No | Return only the preferred version of an API. |
 
 #### `apis.getRest()`
 
@@ -31,5 +31,5 @@ Retrieve the description of a particular version of an api.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.api` | `string` | Yes | The name of the API. |
 | `params.version` | `string` | Yes | The version of the API. |
+| `params.api` | `string` | Yes | The name of the API. |
