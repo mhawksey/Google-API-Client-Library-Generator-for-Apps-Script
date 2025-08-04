@@ -4,8 +4,8 @@ Auto-generated client library for using the **Places API (New) (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:45:52 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:43:45 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:35:56 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:35:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:14 GMT
 
 
