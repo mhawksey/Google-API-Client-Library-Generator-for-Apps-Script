@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Civic Information API (vers
 
 ## Metadata
 
-- **Last Checked:** Thu, 31 Jul 2025 23:23:56 GMT
-- **Last Modified:** Sun, 27 Jul 2025 12:22:55 GMT
+- **Last Checked:** Mon, 04 Aug 2025 20:00:57 GMT
+- **Last Modified:** Mon, 04 Aug 2025 20:00:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:21 GMT
 
 
