@@ -4,7 +4,7 @@ Auto-generated client library for using the **Storage Transfer API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:47:27 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:55:41 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:47:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:16 GMT
 
