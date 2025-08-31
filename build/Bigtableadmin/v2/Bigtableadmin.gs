@@ -22,8 +22,6 @@ class Bigtableadmin {
 
     this.operations = {};
     this.operations.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
-    this.operations.delete = (params) => this._makeRequest('v2/{+name}', 'DELETE', params);
-    this.operations.cancel = (params) => this._makeRequest('v2/{+name}:cancel', 'POST', params);
 
     this.operations.projects = {};
 
@@ -130,7 +128,6 @@ class Bigtableadmin {
 
     this.projects.locations = {};
     this.projects.locations.list = (params) => this._makeRequest('v2/{+name}/locations', 'GET', params);
-    this.projects.locations.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
   }
 
   /**
