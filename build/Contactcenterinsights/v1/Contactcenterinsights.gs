@@ -45,6 +45,7 @@ class Contactcenterinsights {
     this.projects.locations.conversations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
     this.projects.locations.conversations.list = (params) => this._makeRequest('v1/{+parent}/conversations', 'GET', params);
     this.projects.locations.conversations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.projects.locations.conversations.sample = (params) => this._makeRequest('v1/{+parent}/conversations:sample', 'POST', params);
     this.projects.locations.conversations.bulkAnalyze = (params) => this._makeRequest('v1/{+parent}/conversations:bulkAnalyze', 'POST', params);
     this.projects.locations.conversations.bulkDelete = (params) => this._makeRequest('v1/{+parent}/conversations:bulkDelete', 'POST', params);
     this.projects.locations.conversations.ingest = (params) => this._makeRequest('v1/{+parent}/conversations:ingest', 'POST', params);
@@ -77,6 +78,43 @@ class Contactcenterinsights {
     this.projects.locations.conversations.assessments.notes.list = (params) => this._makeRequest('v1/{+parent}/notes', 'GET', params);
     this.projects.locations.conversations.assessments.notes.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
     this.projects.locations.conversations.assessments.notes.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.datasets = {};
+    this.projects.locations.datasets.create = (params) => this._makeRequest('v1/{+parent}/datasets', 'POST', params);
+    this.projects.locations.datasets.list = (params) => this._makeRequest('v1/{+parent}/datasets', 'GET', params);
+    this.projects.locations.datasets.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.datasets.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+    this.projects.locations.datasets.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.projects.locations.datasets.listAllFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:listAllFeedbackLabels', 'GET', params);
+    this.projects.locations.datasets.bulkUploadFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkUploadFeedbackLabels', 'POST', params);
+    this.projects.locations.datasets.bulkDownloadFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkDownloadFeedbackLabels', 'POST', params);
+    this.projects.locations.datasets.bulkDeleteFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkDeleteFeedbackLabels', 'POST', params);
+
+    this.projects.locations.datasets.conversations = {};
+    this.projects.locations.datasets.conversations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.datasets.conversations.list = (params) => this._makeRequest('v1/{+parent}/conversations', 'GET', params);
+    this.projects.locations.datasets.conversations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.projects.locations.datasets.conversations.sample = (params) => this._makeRequest('v1/{+parent}/conversations:sample', 'POST', params);
+    this.projects.locations.datasets.conversations.bulkAnalyze = (params) => this._makeRequest('v1/{+parent}/conversations:bulkAnalyze', 'POST', params);
+    this.projects.locations.datasets.conversations.bulkDelete = (params) => this._makeRequest('v1/{+parent}/conversations:bulkDelete', 'POST', params);
+    this.projects.locations.datasets.conversations.ingest = (params) => this._makeRequest('v1/{+parent}/conversations:ingest', 'POST', params);
+    this.projects.locations.datasets.conversations.calculateStats = (params) => this._makeRequest('v1/{+location}/conversations:calculateStats', 'POST', params);
+
+    this.projects.locations.datasets.conversations.analyses = {};
+    this.projects.locations.datasets.conversations.analyses.create = (params) => this._makeRequest('v1/{+parent}/analyses', 'POST', params);
+    this.projects.locations.datasets.conversations.analyses.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.datasets.conversations.analyses.list = (params) => this._makeRequest('v1/{+parent}/analyses', 'GET', params);
+    this.projects.locations.datasets.conversations.analyses.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.datasets.conversations.feedbackLabels = {};
+    this.projects.locations.datasets.conversations.feedbackLabels.create = (params) => this._makeRequest('v1/{+parent}/feedbackLabels', 'POST', params);
+    this.projects.locations.datasets.conversations.feedbackLabels.list = (params) => this._makeRequest('v1/{+parent}/feedbackLabels', 'GET', params);
+    this.projects.locations.datasets.conversations.feedbackLabels.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.datasets.conversations.feedbackLabels.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+    this.projects.locations.datasets.conversations.feedbackLabels.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.datasets.insightsdata = {};
+    this.projects.locations.datasets.insightsdata.export = (params) => this._makeRequest('v1/{+parent}/insightsdata:export', 'POST', params);
 
     this.projects.locations.insightsdata = {};
     this.projects.locations.insightsdata.export = (params) => this._makeRequest('v1/{+parent}/insightsdata:export', 'POST', params);
@@ -161,37 +199,6 @@ class Contactcenterinsights {
     this.projects.locations.qaScorecards.revisions.qaQuestions.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
     this.projects.locations.qaScorecards.revisions.qaQuestions.list = (params) => this._makeRequest('v1/{+parent}/qaQuestions', 'GET', params);
 
-    this.projects.locations.datasets = {};
-    this.projects.locations.datasets.listAllFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:listAllFeedbackLabels', 'GET', params);
-    this.projects.locations.datasets.bulkUploadFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkUploadFeedbackLabels', 'POST', params);
-    this.projects.locations.datasets.bulkDownloadFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkDownloadFeedbackLabels', 'POST', params);
-    this.projects.locations.datasets.bulkDeleteFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkDeleteFeedbackLabels', 'POST', params);
-
-    this.projects.locations.datasets.conversations = {};
-    this.projects.locations.datasets.conversations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-    this.projects.locations.datasets.conversations.list = (params) => this._makeRequest('v1/{+parent}/conversations', 'GET', params);
-    this.projects.locations.datasets.conversations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-    this.projects.locations.datasets.conversations.bulkAnalyze = (params) => this._makeRequest('v1/{+parent}/conversations:bulkAnalyze', 'POST', params);
-    this.projects.locations.datasets.conversations.bulkDelete = (params) => this._makeRequest('v1/{+parent}/conversations:bulkDelete', 'POST', params);
-    this.projects.locations.datasets.conversations.ingest = (params) => this._makeRequest('v1/{+parent}/conversations:ingest', 'POST', params);
-    this.projects.locations.datasets.conversations.calculateStats = (params) => this._makeRequest('v1/{+location}/conversations:calculateStats', 'POST', params);
-
-    this.projects.locations.datasets.conversations.analyses = {};
-    this.projects.locations.datasets.conversations.analyses.create = (params) => this._makeRequest('v1/{+parent}/analyses', 'POST', params);
-    this.projects.locations.datasets.conversations.analyses.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-    this.projects.locations.datasets.conversations.analyses.list = (params) => this._makeRequest('v1/{+parent}/analyses', 'GET', params);
-    this.projects.locations.datasets.conversations.analyses.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-
-    this.projects.locations.datasets.conversations.feedbackLabels = {};
-    this.projects.locations.datasets.conversations.feedbackLabels.create = (params) => this._makeRequest('v1/{+parent}/feedbackLabels', 'POST', params);
-    this.projects.locations.datasets.conversations.feedbackLabels.list = (params) => this._makeRequest('v1/{+parent}/feedbackLabels', 'GET', params);
-    this.projects.locations.datasets.conversations.feedbackLabels.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-    this.projects.locations.datasets.conversations.feedbackLabels.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
-    this.projects.locations.datasets.conversations.feedbackLabels.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-
-    this.projects.locations.datasets.insightsdata = {};
-    this.projects.locations.datasets.insightsdata.export = (params) => this._makeRequest('v1/{+parent}/insightsdata:export', 'POST', params);
-
     this.projects.locations.authorizedViewSets = {};
     this.projects.locations.authorizedViewSets.create = (params) => this._makeRequest('v1/{+parent}/authorizedViewSets', 'POST', params);
     this.projects.locations.authorizedViewSets.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
@@ -208,6 +215,9 @@ class Contactcenterinsights {
     this.projects.locations.authorizedViewSets.authorizedViews.search = (params) => this._makeRequest('v1/{+parent}/authorizedViews:search', 'GET', params);
     this.projects.locations.authorizedViewSets.authorizedViews.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
     this.projects.locations.authorizedViewSets.authorizedViews.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.projects.locations.authorizedViewSets.authorizedViews.setIamPolicy = (params) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', params);
+    this.projects.locations.authorizedViewSets.authorizedViews.getIamPolicy = (params) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', params);
+    this.projects.locations.authorizedViewSets.authorizedViews.testIamPermissions = (params) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', params);
 
     this.projects.locations.authorizedViewSets.authorizedViews.operations = {};
     this.projects.locations.authorizedViewSets.authorizedViews.operations.list = (params) => this._makeRequest('v1/{+name}/operations', 'GET', params);
