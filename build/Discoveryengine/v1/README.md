@@ -4,8 +4,8 @@ Auto-generated client library for using the **Discovery Engine API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:13:27 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:13:27 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:34:11 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:34:11 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:49 GMT
 
 
@@ -68,6 +68,23 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `projects.locations`
+
+#### `projects.locations.updateAclConfig()`
+
+Default ACL configuration for use in a location of a customer's project. Updates will only reflect to new data stores. Existing data stores will still use the old value.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. The full resource name of the acl configuration. Format: `projects/{project}/locations/{location}/aclConfig`. This field must be a UTF-8 encoded string with a length limit of 1024 characters. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.getAclConfig()`
+
+Gets the AclConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of AclConfig, such as `projects/*/locations/*/aclConfig`. If the caller does not have permission to access the AclConfig, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
 
 #### `projects.locations.updateCmekConfig()`
 
@@ -710,7 +727,7 @@ Lists all Sessions by their parent DataStore.
 | `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
 | `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
 
 ### `projects.locations.collections.dataStores.sessions.answers`
 
@@ -1267,7 +1284,7 @@ Lists all Sessions by their parent DataStore.
 | `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
 | `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
 
 ### `projects.locations.collections.engines.sessions.answers`
 
@@ -1885,7 +1902,7 @@ Lists all Sessions by their parent DataStore.
 | `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
 | `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
 
 ### `projects.locations.dataStores.sessions.answers`
 
