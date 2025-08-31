@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Marketing Platform Admin AP
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:26:03 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:43:01 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:26:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:16 GMT
 
