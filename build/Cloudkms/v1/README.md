@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Key Management Service (KMS)
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:02:33 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:02:33 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:25:10 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:25:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:05 GMT
 
 
@@ -22,7 +22,7 @@ Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.auto
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`. |
+| `params.name` | `string` | Yes | Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` `projects/{PROJECT_NUMBER}/autokeyConfig`. |
 | `params.updateMask` | `string` | No | Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`. |
 | `params.resource` | `object` | Yes | The request body. |
 
@@ -135,7 +135,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -550,6 +550,15 @@ Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and return
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to use for verification. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.decapsulate()`
+
+Decapsulates data that was encapsulated with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose KEY_ENCAPSULATION.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to use for decapsulation. |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `projects.locations.keyRings.importJobs`
