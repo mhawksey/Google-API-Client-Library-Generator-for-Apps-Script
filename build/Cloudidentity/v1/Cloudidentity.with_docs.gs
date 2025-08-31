@@ -428,6 +428,47 @@ class Cloudidentity {
      */
     this.inboundSamlSsoProfiles.idpCredentials.add = (params) => this._makeRequest('v1/{+parent}/idpCredentials:add', 'POST', params);
 
+    this.inboundOidcSsoProfiles = {};
+
+    /**
+     * Creates an InboundOidcSsoProfile for a customer. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.inboundOidcSsoProfiles.create = (params) => this._makeRequest('v1/inboundOidcSsoProfiles', 'POST', params);
+
+    /**
+     * Updates an InboundOidcSsoProfile. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`.
+     * @param {string} params.name - (Required) Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the OIDC SSO profile.
+     * @param {string} params.updateMask - Required. The list of fields to be updated.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.inboundOidcSsoProfiles.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Deletes an InboundOidcSsoProfile.
+     * @param {string} params.name - (Required) Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundOidcSsoProfile to delete. Format: `inboundOidcSsoProfiles/{sso_profile_id}`
+     * @return {object} The API response object.
+     */
+    this.inboundOidcSsoProfiles.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    /**
+     * Gets an InboundOidcSsoProfile.
+     * @param {string} params.name - (Required) Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundOidcSsoProfile to get. Format: `inboundOidcSsoProfiles/{sso_profile_id}`
+     * @return {object} The API response object.
+     */
+    this.inboundOidcSsoProfiles.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Lists InboundOidcSsoProfile objects for a Google enterprise customer.
+     * @param {string} params.filter - A [Common Expression Language](https://github.com/google/cel-spec) expression to filter the results. The only supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`. Omitting the filter or specifying a filter of `customer=="customers/my_customer"` will return the profiles for the customer that the caller (authenticated user) belongs to. Specifying a filter of `customer==""` will return the global shared OIDC profiles.
+     * @param {integer} params.pageSize - The maximum number of InboundOidcSsoProfiles to return. The service may return fewer than this value. If omitted (or defaulted to zero) the server will use a sensible default. This default may change over time. The maximum allowed value is 100. Requests with page_size greater than that will be silently interpreted as having this maximum value.
+     * @param {string} params.pageToken - A page token, received from a previous `ListInboundOidcSsoProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListInboundOidcSsoProfiles` must match the call that provided the page token.
+     * @return {object} The API response object.
+     */
+    this.inboundOidcSsoProfiles.list = (params) => this._makeRequest('v1/inboundOidcSsoProfiles', 'GET', params);
+
     this.inboundSsoAssignments = {};
 
     /**
