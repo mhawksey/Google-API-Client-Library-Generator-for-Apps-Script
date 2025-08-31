@@ -29,20 +29,6 @@ class Bigtableadmin {
      */
     this.operations.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
 
-    /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {string} params.name - (Required) The name of the operation resource to be deleted.
-     * @return {object} The API response object.
-     */
-    this.operations.delete = (params) => this._makeRequest('v2/{+name}', 'DELETE', params);
-
-    /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {string} params.name - (Required) The name of the operation resource to be cancelled.
-     * @return {object} The API response object.
-     */
-    this.operations.cancel = (params) => this._makeRequest('v2/{+name}:cancel', 'POST', params);
-
     this.operations.projects = {};
 
     this.operations.projects.operations = {};
@@ -716,7 +702,7 @@ class Bigtableadmin {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -724,13 +710,6 @@ class Bigtableadmin {
      * @return {object} The API response object.
      */
     this.projects.locations.list = (params) => this._makeRequest('v2/{+name}/locations', 'GET', params);
-
-    /**
-     * Gets information about a location.
-     * @param {string} params.name - (Required) Resource name for the location.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
   }
 
   /**
