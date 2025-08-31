@@ -1,0 +1,11 @@
+{
+  "timeZone": "Etc/GMT",
+  "exceptionLogging": "STACKDRIVER",
+  "runtimeVersion": "V8",
+  "oauthScopes": [
+    "https://www.googleapis.com/auth/ddmconversions",
+    "https://www.googleapis.com/auth/dfareporting",
+    "https://www.googleapis.com/auth/dfatrafficking",
+    "https://www.googleapis.com/auth/script.external_request"
+  ]
+}
