@@ -4,7 +4,7 @@ Auto-generated client library for using the **Custom Search API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:11:04 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:32:37 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:11:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:32 GMT
 
