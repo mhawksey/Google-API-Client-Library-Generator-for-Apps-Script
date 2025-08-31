@@ -4,8 +4,8 @@ Auto-generated client library for using the **Network Connectivity API (version:
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:33:55 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:55 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:45:11 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:45:11 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:54 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -350,6 +350,136 @@ Deletes a single ServiceConnectionToken.
 | `params.name` | `string` | Yes | Required. The name of the ServiceConnectionToken to delete. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.etag` | `string` | No | Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. |
+
+### `projects.locations.multicloudDataTransferConfigs`
+
+#### `projects.locations.multicloudDataTransferConfigs.list()`
+
+Lists MulticloudDataTransferConfigs in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource's name |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results per page that should be returned. |
+| `params.pageToken` | `string` | No | Optional. The page token. |
+| `params.filter` | `string` | No | Optional. A filter expression that filters the results listed in the response. |
+| `params.orderBy` | `string` | No | Optional. Sort the results by a certain order. |
+| `params.returnPartialSuccess` | `boolean` | No | Optional. If true, allow partial responses for multi-regional Aggregated List requests. |
+
+#### `projects.locations.multicloudDataTransferConfigs.get()`
+
+Gets details of a single MulticloudDataTransferConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the MulticloudDataTransferConfig to get. |
+
+#### `projects.locations.multicloudDataTransferConfigs.create()`
+
+Creates a MulticloudDataTransferConfig in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource's name |
+| `params.multicloudDataTransferConfigId` | `string` | No | Required. The ID to use for the MulticloudDataTransferConfig, which will become the final component of the MulticloudDataTransferConfig's resource name. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.multicloudDataTransferConfigs.patch()`
+
+Updates a MulticloudDataTransferConfig in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The name of the MulticloudDataTransferConfig resource. Format: `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}`. |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the MulticloudDataTransferConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.multicloudDataTransferConfigs.delete()`
+
+Deletes a single MulticloudDataTransferConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the MulticloudDataTransferConfig resource to delete. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.etag` | `string` | No | Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. |
+
+### `projects.locations.multicloudDataTransferConfigs.destinations`
+
+#### `projects.locations.multicloudDataTransferConfigs.destinations.list()`
+
+Lists Destinations in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource's name |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results per page that should be returned. |
+| `params.pageToken` | `string` | No | Optional. The page token. |
+| `params.filter` | `string` | No | Optional. A filter expression that filters the results listed in the response. |
+| `params.orderBy` | `string` | No | Optional. Sort the results by a certain order. |
+| `params.returnPartialSuccess` | `boolean` | No | Optional. If true, allow partial responses for multi-regional Aggregated List requests. |
+
+#### `projects.locations.multicloudDataTransferConfigs.destinations.get()`
+
+Gets details of a single Destination.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the Destination to get. |
+
+#### `projects.locations.multicloudDataTransferConfigs.destinations.create()`
+
+Creates a Destination in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource's name |
+| `params.destinationId` | `string` | No | Required. The ID to use for the Destination, which will become the final component of the Destination's resource name. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate Destinations. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.multicloudDataTransferConfigs.destinations.patch()`
+
+Updates a Destination in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The name of the Destination resource. Format: `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}/destinations/{destination}`. |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Destination resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.multicloudDataTransferConfigs.destinations.delete()`
+
+Deletes a single Destination.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Destination resource to delete. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.etag` | `string` | No | Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. |
+
+### `projects.locations.multicloudDataTransferSupportedServices`
+
+#### `projects.locations.multicloudDataTransferSupportedServices.get()`
+
+Gets details of a single MulticloudDataTransferSupportedServices.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the service. |
+
+#### `projects.locations.multicloudDataTransferSupportedServices.list()`
+
+Lists the supported services for Multicloud Data Transfer. This is a passthrough method.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource's name |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results per page that should be returned. |
+| `params.pageToken` | `string` | No | Optional. The page token. |
 
 ### `projects.locations.global`
 
