@@ -4,8 +4,8 @@ Auto-generated client library for using the **Discovery Engine API (version: v1a
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:13:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:13:16 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:34:02 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:34:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:43 GMT
 
 
@@ -140,6 +140,23 @@ Estimates the data size to be used by a customer.
 
 ### `projects.locations.notebooks`
 
+#### `projects.locations.notebooks.create()`
+
+Creates a notebook. Needs a side channel with the user's EUC.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, such as `projects/{project}/locations/{location}`. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.notebooks.get()`
+
+Gets a notebook. Needs a side channel with the user's EUC.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of Notebook, such as `projects/{project}/locations/{location}/notebooks/{notebook_id}`. |
+
 #### `projects.locations.notebooks.listRecentlyViewed()`
 
 Lists the recently viewed notebooks. Needs a side channel with the user's EUC.
@@ -149,6 +166,43 @@ Lists the recently viewed notebooks. Needs a side channel with the user's EUC.
 | `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}`. |
 | `params.pageSize` | `integer` | No | Optional. Maximum number of Notebooks to return. If unspecified, defaults to "200". The maximum allowed value is "500". If this field is negative, will use the default value. |
 | `params.pageToken` | `string` | No | Optional. The page token, provide this to retrieve the subsequent page. |
+
+#### `projects.locations.notebooks.batchDelete()`
+
+Batch deletes Notebooks. Needs a side channel with the user's EUC.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent branch resource name, such as `projects/{project}/locations/{location}`. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.notebooks.share()`
+
+Shares a notebook to other accounts. Needs a side channel with the user's EUC.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Full resource name of Notebook, such as `projects/{project}/locations/{location}/notebooks/{notebook_id}`. |
+| `params.resource` | `object` | Yes | The request body. |
+
+### `projects.locations.notebooks.audioOverviews`
+
+#### `projects.locations.notebooks.audioOverviews.create()`
+
+Generates a new audio overview. Needs a side channel with the user's EUC.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource where this notebook will be created. Format: projects/{project}/locations/{location}/notebooks/{notebook} |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.notebooks.audioOverviews.delete()`
+
+Deletes an audio overview. Needs a side channel with the user's EUC.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource name of the AudioOverview, such as `projects/{project}/locations/{location}/notebooks/{notebook}/audioOverviews/{audio_overview_id}`. |
 
 ### `projects.locations.notebooks.sources`
 
@@ -169,6 +223,23 @@ Uploads a file for Notebook LM to use. Creates a Source.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where the sources will be created. Format: projects/{project}/locations/{location}/notebooks/{notebook} |
 | `params.sourceId` | `string` | Yes | The source id of the associated file. If not set, a source id will be generated and a new tentative source will be created. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.notebooks.sources.get()`
+
+Gets a Source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name for source Format: projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source} |
+
+#### `projects.locations.notebooks.sources.batchDelete()`
+
+Deletes multiple sources
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource where the sources will be deleted. Format: projects/{project}/locations/{location}/notebooks/{notebook} |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `projects.locations.operations`
@@ -962,7 +1033,7 @@ Lists all Sessions by their parent DataStore.
 | `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
 | `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
 
 ### `projects.locations.collections.dataStores.sessions.answers`
 
@@ -1665,7 +1736,7 @@ Lists all Sessions by their parent DataStore.
 | `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
 | `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
 
 ### `projects.locations.collections.engines.sessions.answers`
 
@@ -1689,6 +1760,7 @@ Lists metadata for all files in the current session.
 | `params.filter` | `string` | No | Optional. The filter syntax consists of an expression language for constructing a predicate from one or more fields of the files being filtered. Filter expression is case-sensitive. Currently supported field names are: * upload_time * last_add_time * last_use_time * file_name * mime_type Some examples of filters would be: * "file_name = 'file_1'" * "file_name = 'file_1' AND mime_type = 'text/plain'" * "last_use_time > '2025-06-14T12:00:00Z'" For a full description of the filter format, please see https://google.aip.dev/160. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of files to return. The service may return fewer than this value. If unspecified, at most 100 files will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. If user specifies a value less than or equal to 0 - the request will be rejected with an INVALID_ARGUMENT error. |
 | `params.pageToken` | `string` | No | Optional. A page token received from a previous `ListFiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFiles` must match the call that provided the page token (except `page_size`, which may differ). |
+| `params.orderBy` | `string` | No | Optional. Specifies the order in which files are returned. The value is a comma-separated string of fields to sort by. For ascending order - just the field name is used. For descending order - the field name is suffixed with ` desc`. Sorting is stable and applied sequentially according to the order of fields provided in the string. Supported fields for ordering: * `upload_time`: The time the file was uploaded. * `file_name`: The name of the file. * `mime_type`: The MIME type of the file. * `session_name`: The name of the session the file belongs to. Default Behavior: If the `order_by` field is not specified, files will be returned sorted by creation time in descending order. Examples: 1. Sort by file name in ascending order: `file_name` 2. Sort by upload time in descending order: `upload_time desc` 3. Sort by file name (ascending), then by content type (MIME type) (descending), and finally by upload time (ascending): `file_name, mime_type desc, upload_time` |
 
 ### `projects.locations.collections.engines.widgetConfigs`
 
@@ -2306,7 +2378,7 @@ Lists all Sessions by their parent DataStore.
 | `params.pageSize` | `integer` | No | Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page. |
 | `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
-| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time. |
+| `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
 
 ### `projects.locations.dataStores.sessions.answers`
 
@@ -2500,8 +2572,8 @@ Gets a list of Evaluations.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent location resource name, such as `projects/{project}/locations/{location}`. If the caller does not have permission to list Evaluations under this location, regardless of whether or not this location exists, a `PERMISSION_DENIED` error is returned. |
-| `params.pageSize` | `integer` | No | Maximum number of Evaluations to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned. |
-| `params.pageToken` | `string` | No | A page token ListEvaluationsResponse.next_page_token, received from a previous EvaluationService.ListEvaluations call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to EvaluationService.ListEvaluations must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of Evaluations to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned. |
+| `params.pageToken` | `string` | No | Optional. A page token ListEvaluationsResponse.next_page_token, received from a previous EvaluationService.ListEvaluations call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to EvaluationService.ListEvaluations must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. |
 
 #### `projects.locations.evaluations.create()`
 
@@ -2519,8 +2591,8 @@ Gets a list of results for a given a Evaluation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.evaluation` | `string` | Yes | Required. The evaluation resource name, such as `projects/{project}/locations/{location}/evaluations/{evaluation}`. If the caller does not have permission to list ListEvaluationResultsResponse.EvaluationResult under this evaluation, regardless of whether or not this evaluation set exists, a `PERMISSION_DENIED` error is returned. |
-| `params.pageSize` | `integer` | No | Maximum number of ListEvaluationResultsResponse.EvaluationResult to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned. |
-| `params.pageToken` | `string` | No | A page token ListEvaluationResultsResponse.next_page_token, received from a previous EvaluationService.ListEvaluationResults call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to EvaluationService.ListEvaluationResults must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of ListEvaluationResultsResponse.EvaluationResult to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned. |
+| `params.pageToken` | `string` | No | Optional. A page token ListEvaluationResultsResponse.next_page_token, received from a previous EvaluationService.ListEvaluationResults call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to EvaluationService.ListEvaluationResults must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned. |
 
 ### `projects.locations.evaluations.operations`
 
