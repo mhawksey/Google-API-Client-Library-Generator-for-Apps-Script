@@ -26,7 +26,7 @@ class File {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -137,6 +137,22 @@ class File {
      * @return {object} The API response object.
      */
     this.projects.locations.instances.promoteReplica = (params) => this._makeRequest('v1beta1/{+name}:promoteReplica', 'POST', params);
+
+    /**
+     * Pause the standby instance (replica). WARNING: This operation makes the standby instance's NFS filesystem writable. Any data written to the standby instance while paused will be lost when the replica is resumed or promoted.
+     * @param {string} params.name - (Required) Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.instances.pauseReplica = (params) => this._makeRequest('v1beta1/{+name}:pauseReplica', 'POST', params);
+
+    /**
+     * Resume the standby instance (replica). WARNING: Any data written to the standby instance while paused will be lost when the replica is resumed.
+     * @param {string} params.name - (Required) Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.instances.resumeReplica = (params) => this._makeRequest('v1beta1/{+name}:resumeReplica', 'POST', params);
 
     /**
      * Deletes an instance.
