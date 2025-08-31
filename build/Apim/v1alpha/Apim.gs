@@ -24,6 +24,7 @@ class Apim {
 
     this.projects.locations = {};
     this.projects.locations.listApiObservationTags = (params) => this._makeRequest('v1alpha/{+parent}:listApiObservationTags', 'GET', params);
+    this.projects.locations.getEntitlement = (params) => this._makeRequest('v1alpha/{+name}', 'GET', params);
     this.projects.locations.list = (params) => this._makeRequest('v1alpha/{+name}/locations', 'GET', params);
     this.projects.locations.get = (params) => this._makeRequest('v1alpha/{+name}', 'GET', params);
 
