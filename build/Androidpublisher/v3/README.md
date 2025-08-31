@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Play Android Developer API 
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 19:52:20 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:22:06 GMT
 - **Last Modified:** Mon, 04 Aug 2025 19:52:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:21 GMT
 
@@ -192,7 +192,7 @@ Deprecated: Use purchases.subscriptionsv2.get instead. Checks whether a user's s
 
 #### `purchases.subscriptions.cancel()`
 
-Cancels a user's subscription purchase. The subscription remains valid until its expiration time.
+Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
