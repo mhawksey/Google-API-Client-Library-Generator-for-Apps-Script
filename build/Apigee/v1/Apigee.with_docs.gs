@@ -1995,10 +1995,10 @@ class Apigee {
      * @param {string} params.ids - Optional. Comma-separated list of app IDs on which to filter.
      * @param {boolean} params.includeCred - Optional. Flag that specifies whether to include credentials in the response.
      * @param {string} params.keyStatus - Optional. Key status of the app. Valid values include `approved` or `revoked`. Defaults to `approved`.
-     * @param {integer} params.pageSize - Optional. Count of apps a single page can have in the response. If unspecified, at most 100 apps will be returned. The maximum value is 100; values above 100 will be coerced to 100. "page_size" is supported from ver 1.10.0 and above.
+     * @param {integer} params.pageSize - Optional. Count of apps a single page can have in the response. If unspecified, at most 1000 apps will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. "page_size" is supported from ver 1.10.0 and above.
      * @param {string} params.pageToken - Optional. The starting index record for listing the developers. "page_token" is supported from ver 1.10.0 and above.
      * @param {string} params.parent - (Required) Required. Resource path of the parent in the following format: `organizations/{org}`
-     * @param {string} params.rows - Optional. Maximum number of app IDs to return. Defaults to 1000.
+     * @param {string} params.rows - Optional. Maximum number of app IDs to return. Defaults to 1000, which is also the upper limit. To get more than 1000, use pagination with 'pageSize' and 'pageToken' parameters.
      * @param {string} params.startKey - Returns the list of apps starting from the specified app ID.
      * @param {string} params.status - Optional. Filter by the status of the app. Valid values are `approved` or `revoked`. Defaults to `approved`.
      * @return {object} The API response object.
