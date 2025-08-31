@@ -32,6 +32,8 @@ class Discoveryengine {
     this.projects.operations.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
 
     this.projects.locations = {};
+    this.projects.locations.updateAclConfig = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+    this.projects.locations.getAclConfig = (params) => this._makeRequest('v1/{+name}', 'GET', params);
     this.projects.locations.updateCmekConfig = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
     this.projects.locations.getCmekConfig = (params) => this._makeRequest('v1/{+name}', 'GET', params);
 
