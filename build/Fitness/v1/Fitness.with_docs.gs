@@ -133,10 +133,10 @@ class Fitness {
     /**
      * Lists sessions previously created.
      * @param {integer} params.activityType - If non-empty, only sessions with these activity types should be returned.
-     * @param {string} params.endTime - An RFC3339 timestamp. Only sessions ending between the start and end times will be included in the response. If this time is omitted but startTime is specified, all sessions from startTime to the end of time will be returned.
+     * @param {string} params.endTime - An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned.
      * @param {boolean} params.includeDeleted - If true, and if both startTime and endTime are omitted, session deletions will be returned.
      * @param {string} params.pageToken - The continuation token, which is used for incremental syncing. To get the next batch of changes, set this parameter to the value of nextPageToken from the previous response. The page token is ignored if either start or end time is specified. If none of start time, end time, and the page token is specified, sessions modified in the last 30 days are returned.
-     * @param {string} params.startTime - An RFC3339 timestamp. Only sessions ending between the start and end times will be included in the response. If this time is omitted but endTime is specified, all sessions from the start of time up to endTime will be returned.
+     * @param {string} params.startTime - An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but endTime is specified, all sessions starting before endTime and ending after the start of time up to (endTime + 1 day) will be returned.
      * @param {string} params.userId - (Required) List sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
      * @return {object} The API response object.
      */
