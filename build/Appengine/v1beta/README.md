@@ -4,7 +4,7 @@ Auto-generated client library for using the **App Engine Admin API (version: v1b
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 19:52:54 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:22:36 GMT
 - **Last Modified:** Mon, 04 Aug 2025 19:52:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:53 GMT
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -71,7 +71,7 @@ Updates the specified Application resource. You can update the following fields:
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the Application resource to update. Example: apps/myapp. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the Application resource to update. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
@@ -85,7 +85,7 @@ Updates the configuration of the specified service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/services/default. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -99,7 +99,7 @@ Deletes the specified service and all enclosed versions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/services/default. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -112,7 +112,7 @@ Updates the specified Version resource. You can specify the following fields dep
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/services/default/versions/1. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default/versions/1. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -126,7 +126,7 @@ Deletes an existing Version resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -140,7 +140,7 @@ Lists all domains the user is authorized to administer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
@@ -154,7 +154,7 @@ Lists all SSL certificates the user is authorized to administer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.view` | `string` | No | Controls the set of fields returned in the LIST response. |
@@ -167,7 +167,7 @@ Gets the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -179,7 +179,7 @@ Uploads the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.resource` | `object` | Yes | The request body. |
@@ -190,7 +190,7 @@ Updates the specified SSL certificate. To renew a certificate and maintain its e
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -203,7 +203,7 @@ Deletes the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -216,7 +216,7 @@ Gets the specified domain mapping.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -227,7 +227,7 @@ Maps a domain to an application. A user must be authorized to administer a domai
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.overrideStrategy` | `string` | No | Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. |
@@ -241,7 +241,7 @@ Gets information about an application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the Application resource to get. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the Application resource to get. Example: apps/myapp. |
 | `params.includeExtraData` | `string` | No | Optional. Options to include extra data |
 
 #### `apps.create()`
@@ -258,7 +258,7 @@ Updates the specified Application resource. You can update the following fields:
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the Application resource to update. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the Application resource to update. Example: apps/myapp. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
 | `params.resource` | `object` | Yes | The request body. |
 
@@ -268,7 +268,7 @@ Recreates the required App Engine features for the specified App Engine applicat
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the application to repair. Example: apps/myapp |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the application to repair. Example: apps/myapp |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `apps.listRuntimes()`
@@ -310,7 +310,7 @@ Lists all the services in the application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
 | `params.pageToken` | `string` | No | Continuation token for fetching the next page of results. |
 
@@ -320,7 +320,7 @@ Gets the current configuration of the specified service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/services/default. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.includeExtraData` | `string` | No | Optional. Options to include extra data |
 
@@ -330,7 +330,7 @@ Updates the configuration of the specified service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/services/default. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
 | `params.migrateTraffic` | `boolean` | No | Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1beta/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic). |
@@ -342,7 +342,7 @@ Deletes the specified service and all enclosed versions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/services/default. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 
 ### `apps.services.versions`
@@ -353,7 +353,7 @@ Lists the versions of a service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Service resource. Example: apps/myapp/services/default. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Service resource. Example: apps/myapp/services/default. |
 | `params.servicesId` | `string` | Yes | Part of `parent`. See documentation of `appsId`. |
 | `params.view` | `string` | No | Controls the set of fields returned in the List response. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
@@ -365,7 +365,7 @@ Gets the specified Version resource. By default, only a BASIC_VIEW will be retur
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.view` | `string` | No | Controls the set of fields returned in the Get response. |
@@ -377,7 +377,7 @@ Deploys code and resource files to a new version.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent resource to create this version under. Example: apps/myapp/services/default. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent resource to create this version under. Example: apps/myapp/services/default. |
 | `params.servicesId` | `string` | Yes | Part of `parent`. See documentation of `appsId`. |
 | `params.resource` | `object` | Yes | The request body. |
 
@@ -387,7 +387,7 @@ Updates the specified Version resource. You can specify the following fields dep
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/services/default/versions/1. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/services/default/versions/1. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. |
@@ -399,7 +399,7 @@ Deletes an existing Version resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 
@@ -411,7 +411,7 @@ Lists the instances of a version.Tip: To aggregate details about instances over 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Version resource. Example: apps/myapp/services/default/versions/v1. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Version resource. Example: apps/myapp/services/default/versions/v1. |
 | `params.servicesId` | `string` | Yes | Part of `parent`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `parent`. See documentation of `appsId`. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
@@ -423,7 +423,7 @@ Gets instance information.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.instancesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
@@ -434,7 +434,7 @@ Stops a running instance.The instance might be automatically recreated based on 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.instancesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
@@ -445,7 +445,7 @@ Enables debugging on a VM instance. This allows you to use the SSH command to co
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/services/default/versions/v1/instances/instance-1. |
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.instancesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
@@ -481,7 +481,7 @@ Creates a firewall rule for the application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Firewall collection in which to create a new rule. Example: apps/myapp/firewall/ingressRules. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Firewall collection in which to create a new rule. Example: apps/myapp/firewall/ingressRules. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `apps.firewall.ingressRules.get()`
@@ -521,7 +521,7 @@ Lists all domains the user is authorized to administer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
 | `params.pageToken` | `string` | No | Continuation token for fetching the next page of results. |
 
@@ -533,7 +533,7 @@ Lists all SSL certificates the user is authorized to administer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.view` | `string` | No | Controls the set of fields returned in the LIST response. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
 | `params.pageToken` | `string` | No | Continuation token for fetching the next page of results. |
@@ -544,7 +544,7 @@ Gets the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.view` | `string` | No | Controls the set of fields returned in the GET response. |
 
@@ -554,7 +554,7 @@ Uploads the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `apps.authorizedCertificates.patch()`
@@ -563,7 +563,7 @@ Updates the specified SSL certificate. To renew a certificate and maintain its e
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. |
 | `params.resource` | `object` | Yes | The request body. |
@@ -574,7 +574,7 @@ Deletes the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 
 ### `apps.domainMappings`
@@ -585,7 +585,7 @@ Lists the domain mappings on an application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
 | `params.pageToken` | `string` | No | Continuation token for fetching the next page of results. |
 
@@ -595,7 +595,7 @@ Gets the specified domain mapping.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. |
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 
 #### `apps.domainMappings.create()`
@@ -604,7 +604,7 @@ Maps a domain to an application. A user must be authorized to administer a domai
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.overrideStrategy` | `string` | No | Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. |
 | `params.resource` | `object` | Yes | The request body. |
 
@@ -614,7 +614,7 @@ Updates the specified domain mapping. To map an SSL certificate to a domain mapp
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. |
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
 | `params.resource` | `object` | Yes | The request body. |
@@ -625,7 +625,7 @@ Deletes the specified domain mapping. A user must be authorized to administer th
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. |
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 
 ### `apps.locations`
@@ -640,7 +640,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `apps.locations.get()`
 
