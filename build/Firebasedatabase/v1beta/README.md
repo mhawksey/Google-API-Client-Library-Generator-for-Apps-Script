@@ -4,7 +4,7 @@ Auto-generated client library for using the **Firebase Realtime Database Managem
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:15:41 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:35:29 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:15:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:24 GMT
 
