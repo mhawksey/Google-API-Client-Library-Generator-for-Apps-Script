@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Dataproc API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:12:03 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:33:14 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:12:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:29 GMT
 
@@ -1228,7 +1228,7 @@ Updates the session template synchronously.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the session template. |
+| `params.name` | `string` | Yes | Required. Identifier. The resource name of the session template. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.sessionTemplates.get()`
