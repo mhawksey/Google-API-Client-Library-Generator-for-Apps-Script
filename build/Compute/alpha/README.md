@@ -4,9 +4,9 @@ Auto-generated client library for using the **Compute Engine API (version: alpha
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:04:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:04:16 GMT
-- **Created:** Mon, 04 Aug 2025 20:04:16 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:31:46 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:31:46 GMT
+- **Created:** Sun, 31 Aug 2025 23:31:46 GMT
 
 
 
@@ -6319,6 +6319,21 @@ Returns permissions that a caller has on the specified resource.
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.resource` | `object` | Yes | The request body. |
 
+#### `regionHealthAggregationPolicies.aggregatedList()`
+
+Retrieves the list of all HealthAggregationPolicy resources, regional and global, available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. |
+| `params.includeAllScopes` | `boolean` | No | Indicates whether every visible scope for each scope type (zone, region, global) should be included in the response. For new resource types added after this field, the flag has no effect as new resource types will always include every visible scope for each scope type in response. For resource types which predate this field, if this flag is omitted or false, only scopes of the scope types where the resource type is expected to be found will be included. |
+| `params.maxResults` | `integer` | No | The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) |
+| `params.orderBy` | `string` | No | Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. |
+| `params.pageToken` | `string` | No | Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. |
+| `params.project` | `string` | Yes | Name of the project scoping this request. |
+| `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
+| `params.serviceProjectNumber` | `string` | No | The Shared VPC service project id or service project number for which aggregated list request is invoked for subnetworks list-usable api. |
+
 ### `regionHealthCheckServices`
 
 #### `regionHealthCheckServices.aggregatedList()`
@@ -9540,6 +9555,19 @@ Allows customers to perform maintenance on a reservation subBlock
 | `params.reservationSubBlock` | `string` | Yes | The name of the reservation subBlock. Name should conform to RFC1035 or be a resource ID. |
 | `params.zone` | `string` | Yes | Name of the zone for this request. Zone name should conform to RFC1035. |
 
+#### `reservationSubBlocks.reportFaulty()`
+
+Allows customers to report a faulty subBlock.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parentName` | `string` | Yes | The name of the parent reservation and parent block. In the format of reservations/{reservation_name}/reservationBlocks/{reservation_block_name} |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.reservationSubBlock` | `string` | Yes | The name of the reservation subBlock. Name should conform to RFC1035 or be a resource ID. |
+| `params.zone` | `string` | Yes | Name of the zone for this request. Zone name should conform to RFC1035. |
+| `params.resource` | `object` | Yes | The request body. |
+
 ### `resourcePolicies`
 
 #### `resourcePolicies.list()`
@@ -12429,6 +12457,40 @@ Retrieves the list of reliabilityRisks available in the specified project.
 
 ### `haControllers`
 
+#### `haControllers.get()`
+
+Returns all the details of a specific HaController.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.haController` | `string` | Yes | Name of the HaController resource to return. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.region` | `string` | Yes | Name of the region for this request. |
+
+#### `haControllers.insert()`
+
+Creates HaController in the specified project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.region` | `string` | Yes | Name of the region for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `haControllers.patch()`
+
+Updates HaController in the specified project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.haController` | `string` | Yes | ID of the HaController resource to update. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.region` | `string` | Yes | Name of the region for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. |
+| `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
+| `params.resource` | `object` | Yes | The request body. |
+
 #### `haControllers.failover()`
 
 Fails over a VM targeted by the specified HaController to the selected zone.
@@ -12440,3 +12502,28 @@ Fails over a VM targeted by the specified HaController to the selected zone.
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. |
 | `params.resource` | `object` | Yes | The request body. |
+
+#### `haControllers.delete()`
+
+Deletes an HaController in the specified project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.haController` | `string` | Yes | Name of the HaController resource to delete. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.region` | `string` | Yes | Name of the region for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. |
+
+#### `haControllers.list()`
+
+Lists all HaControllers in the specified project in the specified region.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. |
+| `params.maxResults` | `integer` | No | The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) |
+| `params.orderBy` | `string` | No | Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. |
+| `params.pageToken` | `string` | No | Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.region` | `string` | Yes | Name of the region for this request. |
+| `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
