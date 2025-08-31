@@ -26,7 +26,7 @@ class Managedkafka {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -395,6 +395,7 @@ class Managedkafka {
     /**
      * List schema registries.
      * @param {string} params.parent - (Required) Required. The parent whose schema registry instances are to be listed. Structured like: `projects/{project}/locations/{location}`
+     * @param {string} params.view - Optional. Specifies the view to return for the schema registry instances. If not specified, the default view is SCHEMA_REGISTRY_VIEW_BASIC.
      * @return {object} The API response object.
      */
     this.projects.locations.schemaRegistries.list = (params) => this._makeRequest('v1/{+parent}/schemaRegistries', 'GET', params);
