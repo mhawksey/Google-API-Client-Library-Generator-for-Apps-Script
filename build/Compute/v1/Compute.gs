@@ -691,6 +691,7 @@ class Compute {
     this.networks.patch = (params) => this._makeRequest('projects/{project}/global/networks/{network}', 'PATCH', params);
     this.networks.updatePeering = (params) => this._makeRequest('projects/{project}/global/networks/{network}/updatePeering', 'PATCH', params);
     this.networks.addPeering = (params) => this._makeRequest('projects/{project}/global/networks/{network}/addPeering', 'POST', params);
+    this.networks.requestRemovePeering = (params) => this._makeRequest('projects/{project}/global/networks/{network}/requestRemovePeering', 'POST', params);
     this.networks.removePeering = (params) => this._makeRequest('projects/{project}/global/networks/{network}/removePeering', 'POST', params);
     this.networks.switchToCustomMode = (params) => this._makeRequest('projects/{project}/global/networks/{network}/switchToCustomMode', 'POST', params);
     this.networks.getEffectiveFirewalls = (params) => this._makeRequest('projects/{project}/global/networks/{network}/getEffectiveFirewalls', 'GET', params);
