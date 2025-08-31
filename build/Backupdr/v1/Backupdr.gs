@@ -23,6 +23,7 @@ class Backupdr {
     this.projects = {};
 
     this.projects.locations = {};
+    this.projects.locations.getTrial = (params) => this._makeRequest('v1/{+name}', 'GET', params);
     this.projects.locations.list = (params) => this._makeRequest('v1/{+name}/locations', 'GET', params);
     this.projects.locations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
 
@@ -41,6 +42,9 @@ class Backupdr {
     this.projects.locations.operations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
     this.projects.locations.operations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
     this.projects.locations.operations.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
+
+    this.projects.locations.trial = {};
+    this.projects.locations.trial.subscribe = (params) => this._makeRequest('v1/{+parent}/trial:subscribe', 'POST', params);
 
     this.projects.locations.backupVaults = {};
     this.projects.locations.backupVaults.create = (params) => this._makeRequest('v1/{+parent}/backupVaults', 'POST', params);
