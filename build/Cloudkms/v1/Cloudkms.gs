@@ -93,6 +93,7 @@ class Cloudkms {
     this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.asymmetricDecrypt = (params) => this._makeRequest('v1/{+name}:asymmetricDecrypt', 'POST', params);
     this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.macSign = (params) => this._makeRequest('v1/{+name}:macSign', 'POST', params);
     this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.macVerify = (params) => this._makeRequest('v1/{+name}:macVerify', 'POST', params);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.decapsulate = (params) => this._makeRequest('v1/{+name}:decapsulate', 'POST', params);
 
     this.projects.locations.keyRings.importJobs = {};
     this.projects.locations.keyRings.importJobs.list = (params) => this._makeRequest('v1/{+parent}/importJobs', 'GET', params);
