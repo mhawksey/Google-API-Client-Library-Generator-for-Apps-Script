@@ -26,7 +26,7 @@ class Networkmanagement {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -161,14 +161,14 @@ class Networkmanagement {
      * Lists NetworkMonitoringProviders for a given project and location.
      * @param {integer} params.pageSize - Optional. The maximum number of monitoring points to return. The service may return fewer than this value. If unspecified, at most 20 monitoring points will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
      * @param {string} params.pageToken - Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token.
-     * @param {string} params.parent - (Required) Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: projects/{project}/locations/{location}
+     * @param {string} params.parent - (Required) Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: `projects/{project}/locations/{location}`
      * @return {object} The API response object.
      */
     this.projects.locations.networkMonitoringProviders.list = (params) => this._makeRequest('v1/{+parent}/networkMonitoringProviders', 'GET', params);
 
     /**
      * Gets the NetworkMonitoringProvider resource.
-     * @param {string} params.name - (Required) Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}
+     * @param {string} params.name - (Required) Required. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}`
      * @return {object} The API response object.
      */
     this.projects.locations.networkMonitoringProviders.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
@@ -294,7 +294,7 @@ class Networkmanagement {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
