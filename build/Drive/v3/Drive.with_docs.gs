@@ -167,7 +167,7 @@ class Drive {
     this.drives = {};
 
     /**
-     * Creates a shared drive.
+     * Creates a shared drive. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
      * @param {string} params.requestId - (Required) Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a shared drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same shared drive. If the shared drive already exists a 409 error will be returned.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
@@ -175,7 +175,7 @@ class Drive {
     this.drives.create = (params) => this._makeRequest('drives', 'POST', params);
 
     /**
-     * Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any untrashed items.
+     * Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any untrashed items. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
      * @param {boolean} params.allowItemDeletion - Whether any items inside the shared drive should also be deleted. This option is only supported when `useDomainAdminAccess` is also set to `true`.
      * @param {string} params.driveId - (Required) The ID of the shared drive.
      * @param {boolean} params.useDomainAdminAccess - Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the shared drive belongs.
@@ -184,7 +184,7 @@ class Drive {
     this.drives.delete = (params) => this._makeRequest('drives/{driveId}', 'DELETE', params);
 
     /**
-     * Gets a shared drive's metadata by ID.
+     * Gets a shared drive's metadata by ID. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
      * @param {string} params.driveId - (Required) The ID of the shared drive.
      * @param {boolean} params.useDomainAdminAccess - Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the shared drive belongs.
      * @return {object} The API response object.
@@ -192,7 +192,7 @@ class Drive {
     this.drives.get = (params) => this._makeRequest('drives/{driveId}', 'GET', params);
 
     /**
-     * Hides a shared drive from the default view.
+     * Hides a shared drive from the default view. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
      * @param {string} params.driveId - (Required) The ID of the shared drive.
      * @return {object} The API response object.
      */
@@ -209,14 +209,14 @@ class Drive {
     this.drives.list = (params) => this._makeRequest('drives', 'GET', params);
 
     /**
-     * Restores a shared drive to the default view.
+     * Restores a shared drive to the default view. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
      * @param {string} params.driveId - (Required) The ID of the shared drive.
      * @return {object} The API response object.
      */
     this.drives.unhide = (params) => this._makeRequest('drives/{driveId}/unhide', 'POST', params);
 
     /**
-     * Updates the metadata for a shared drive.
+     * Updates the metadata for a shared drive. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
      * @param {string} params.driveId - (Required) The ID of the shared drive.
      * @param {boolean} params.useDomainAdminAccess - Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the shared drive belongs.
      * @param {object} params.resource - The request body.
@@ -507,7 +507,7 @@ class Drive {
     this.revisions = {};
 
     /**
-     * Permanently deletes a file version. You can only delete revisions for files with binary content in Google Drive, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted.
+     * Permanently deletes a file version. You can only delete revisions for files with binary content in Google Drive, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted. For more information, see [Manage file revisions](https://developers.google.com/drive/api/guides/manage-revisions).
      * @param {string} params.fileId - (Required) The ID of the file.
      * @param {string} params.revisionId - (Required) The ID of the revision.
      * @return {object} The API response object.
@@ -515,7 +515,7 @@ class Drive {
     this.revisions.delete = (params) => this._makeRequest('files/{fileId}/revisions/{revisionId}', 'DELETE', params);
 
     /**
-     * Gets a revision's metadata or content by ID.
+     * Gets a revision's metadata or content by ID. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
      * @param {boolean} params.acknowledgeAbuse - Whether the user is acknowledging the risk of downloading known malware or other abusive files. This is only applicable when the `alt` parameter is set to `media` and the user is the owner of the file or an organizer of the shared drive in which the file resides.
      * @param {string} params.fileId - (Required) The ID of the file.
      * @param {string} params.revisionId - (Required) The ID of the revision.
@@ -524,7 +524,7 @@ class Drive {
     this.revisions.get = (params) => this._makeRequest('files/{fileId}/revisions/{revisionId}', 'GET', params);
 
     /**
-     * Lists a file's revisions.
+     * Lists a file's revisions. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
      * @param {string} params.fileId - (Required) The ID of the file.
      * @param {integer} params.pageSize - The maximum number of revisions to return per page.
      * @param {string} params.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.
@@ -533,7 +533,7 @@ class Drive {
     this.revisions.list = (params) => this._makeRequest('files/{fileId}/revisions', 'GET', params);
 
     /**
-     * Updates a revision with patch semantics.
+     * Updates a revision with patch semantics. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
      * @param {string} params.fileId - (Required) The ID of the file.
      * @param {string} params.revisionId - (Required) The ID of the revision.
      * @param {object} params.resource - The request body.
