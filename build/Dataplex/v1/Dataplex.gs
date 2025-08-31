@@ -272,12 +272,10 @@ class Dataplex {
 
     this.projects.locations.dataProducts = {};
     this.projects.locations.dataProducts.setIamPolicy = (params) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', params);
-    this.projects.locations.dataProducts.getIamPolicy = (params) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', params);
     this.projects.locations.dataProducts.testIamPermissions = (params) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', params);
 
     this.projects.locations.dataProducts.dataAssets = {};
     this.projects.locations.dataProducts.dataAssets.setIamPolicy = (params) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', params);
-    this.projects.locations.dataProducts.dataAssets.getIamPolicy = (params) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', params);
     this.projects.locations.dataProducts.dataAssets.testIamPermissions = (params) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', params);
 
     this.organizations = {};
