@@ -366,6 +366,15 @@ class Sqladmin {
     this.instances.update = (params) => this._makeRequest('sql/v1beta4/projects/{project}/instances/{instance}', 'PUT', params);
 
     /**
+     * Execute SQL statements.
+     * @param {string} params.instance - (Required) Required. Database instance ID. This does not include the project ID.
+     * @param {string} params.project - (Required) Required. Project ID of the project that contains the instance.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.instances.executeSql = (params) => this._makeRequest('sql/v1beta4/projects/{project}/instances/{instance}/executeSql', 'POST', params);
+
+    /**
      * Acquire a lease for the setup of SQL Server Reporting Services (SSRS).
      * @param {string} params.instance - (Required) Required. Cloud SQL instance ID. This doesn't include the project ID. It's composed of lowercase letters, numbers, and hyphens, and it must start with a letter. The total length must be 98 characters or less (Example: instance-id).
      * @param {string} params.project - (Required) Required. ID of the project that contains the instance (Example: project-id).
@@ -497,6 +506,7 @@ class Sqladmin {
      * Get Latest Recovery Time for a given instance.
      * @param {string} params.instance - (Required) Cloud SQL instance ID. This does not include the project ID.
      * @param {string} params.project - (Required) Project ID of the project that contains the instance.
+     * @param {string} params.sourceInstanceDeletionTime - The timestamp used to identify the time when the source instance is deleted. If this instance is deleted, then you must set the timestamp.
      * @return {object} The API response object.
      */
     this.projects.instances.getLatestRecoveryTime = (params) => this._makeRequest('sql/v1beta4/projects/{project}/instances/{instance}/getLatestRecoveryTime', 'GET', params);
