@@ -48,6 +48,15 @@ class Analyticshub {
     this.projects.locations.dataExchanges.listings.setIamPolicy = (params) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', params);
     this.projects.locations.dataExchanges.listings.testIamPermissions = (params) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', params);
 
+    this.projects.locations.dataExchanges.queryTemplates = {};
+    this.projects.locations.dataExchanges.queryTemplates.create = (params) => this._makeRequest('v1/{+parent}/queryTemplates', 'POST', params);
+    this.projects.locations.dataExchanges.queryTemplates.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.dataExchanges.queryTemplates.list = (params) => this._makeRequest('v1/{+parent}/queryTemplates', 'GET', params);
+    this.projects.locations.dataExchanges.queryTemplates.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+    this.projects.locations.dataExchanges.queryTemplates.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.projects.locations.dataExchanges.queryTemplates.submit = (params) => this._makeRequest('v1/{+name}:submit', 'POST', params);
+    this.projects.locations.dataExchanges.queryTemplates.approve = (params) => this._makeRequest('v1/{+name}:approve', 'POST', params);
+
     this.projects.locations.subscriptions = {};
     this.projects.locations.subscriptions.refresh = (params) => this._makeRequest('v1/{+name}:refresh', 'POST', params);
     this.projects.locations.subscriptions.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
