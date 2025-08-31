@@ -4,7 +4,7 @@ Auto-generated client library for using the **Managed Service for Apache Kafka A
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:25:55 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:42:58 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:25:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:10 GMT
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -435,6 +435,7 @@ List schema registries.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent whose schema registry instances are to be listed. Structured like: `projects/{project}/locations/{location}` |
+| `params.view` | `string` | No | Optional. Specifies the view to return for the schema registry instances. If not specified, the default view is SCHEMA_REGISTRY_VIEW_BASIC. |
 
 #### `projects.locations.schemaRegistries.create()`
 
