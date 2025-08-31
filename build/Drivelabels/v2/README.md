@@ -4,7 +4,7 @@ Auto-generated client library for using the **Drive Labels API (version: v2)** i
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:14:46 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:34:54 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:14:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:44 GMT
 
@@ -23,20 +23,20 @@ Gets the user capabilities.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the user. Only "users/me/capabilities" is supported. |
-| `params.customer` | `string` | No | The customer to scope this request to. For example: "customers/abcd1234". If unset, will return settings within the current customer. |
+| `params.customer` | `string` | No | The customer to scope this request to. For example: `customers/abcd1234`. If unset, it will return settings within the current customer. |
 
 ### `labels`
 
 #### `labels.list()`
 
-List labels.
+List labels. For more information, see [Search for labels](https://developers.google.com/workspace/drive/labels/guides/search-label).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. This will return all Labels within the customer. |
-| `params.minimumRole` | `string` | No | Specifies the level of access the user must have on the returned Labels. The minimum role a user must have on a label. Defaults to `READER`. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. This will return all labels within the customer. |
+| `params.minimumRole` | `string` | No | Specifies the level of access the user must have on the returned labels. The minimum role a user must have on a label. Defaults to `READER`. |
 | `params.publishedOnly` | `boolean` | No | Whether to include only published labels in the results. * When `true`, only the current published label revisions are returned. Disabled labels are included. Returned label resource names reference the published revision (`labels/{id}/{revision_id}`). * When `false`, the current label revisions are returned, which might not be published. Returned label resource names don't reference a specific revision (`labels/{id}`). |
-| `params.customer` | `string` | No | The customer to scope this list request to. For example: "customers/abcd1234". If unset, will return all labels within the current customer. |
+| `params.customer` | `string` | No | The customer to scope this list request to. For example: `customers/abcd1234`. If unset, will return all labels within the current customer. |
 | `params.languageCode` | `string` | No | The BCP-47 language code to use for evaluating localized field labels. When not specified, values in the default configured language are used. |
 | `params.pageSize` | `integer` | No | Maximum number of labels to return per page. Default: 50. Max: 200. |
 | `params.pageToken` | `string` | No | The token of the page to return. |
@@ -44,7 +44,7 @@ List labels.
 
 #### `labels.get()`
 
-Get a label by its resource name. Resource name may be any of:
+Get a label by its resource name. For more information, see [Search for labels](https://developers.google.com/workspace/drive/labels/guides/search-label). Resource name may be any of:
 
 * `labels/{id}` - See `labels/{id}@latest`
 
@@ -63,43 +63,43 @@ Get a label by its resource name. Resource name may be any of:
 
 #### `labels.create()`
 
-Creates a new Label.
+Creates a label. For more information, see [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin privileges. The server will verify the user is an admin before allowing access. |
-| `params.languageCode` | `string` | No | The BCP-47 language code to use for evaluating localized Field labels in response. When not specified, values in the default configured language will be used. |
+| `params.languageCode` | `string` | No | The BCP-47 language code to use for evaluating localized field labels in response. When not specified, values in the default configured language will be used. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `labels.delta()`
 
-Updates a single Label by applying a set of update requests resulting in a new draft revision. The batch update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The resulting draft revision must be published before the changes may be used with Drive Items.
+Updates a single label by applying a set of update requests resulting in a new draft revision. For more information, see [Update a label](https://developers.google.com/workspace/drive/labels/guides/update-label). The batch update is all-or-nothing: If any of the update requests are invalid, no changes are applied. The resulting draft revision must be published before the changes may be used with Drive items.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Label to update. |
+| `params.name` | `string` | Yes | Required. The resource name of the label to update. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `labels.updateLabelCopyMode()`
 
-Updates a Label's `CopyMode`. Changes to this policy are not revisioned, do not require publishing, and take effect immediately.
+Updates a label's `CopyMode`. Changes to this policy aren't revisioned, don't require publishing, and take effect immediately.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Label to update. |
+| `params.name` | `string` | Yes | Required. The resource name of the label to update. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `labels.publish()`
 
-Publish all draft changes to the Label. Once published, the Label may not return to its draft state. See `google.apps.drive.labels.v2.Lifecycle` for more information. Publishing a Label will result in a new published revision. All previous draft revisions will be deleted. Previous published revisions will be kept but are subject to automated deletion as needed. Once published, some changes are no longer permitted. Generally, any change that would invalidate or cause new restrictions on existing metadata related to the Label will be rejected. For example, the following changes to a Label will be rejected after the Label is published:
+Publish all draft changes to the label. Once published, the label may not return to its draft state. For more information, see [Create and publish a label](https://developers.google.com/workspace/drive/labels/guides/create-label). Publishing a label will result in a new published revision. All previous draft revisions will be deleted. Previous published revisions will be kept but are subject to automated deletion as needed. For more information, see [Label lifecycle](https://developers.google.com/workspace/drive/labels/guides/label-lifecycle). Once published, some changes are no longer permitted. Generally, any change that would invalidate or cause new restrictions on existing metadata related to the label will be rejected. For example, the following changes to a label will be rejected after the label is published:
 
 * The label cannot be directly deleted. It must be disabled first, then deleted.
 
-* Field.FieldType cannot be changed.
+* `Field.FieldType` cannot be changed.
 
-* Changes to Field validation options cannot reject something that was previously accepted.
+* Changes to field validation options cannot reject something that was previously accepted.
 
-* Reducing the max entries.
+* Reducing the maximum entries.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -108,7 +108,7 @@ Publish all draft changes to the Label. Once published, the Label may not return
 
 #### `labels.disable()`
 
-Disable a published Label. Disabling a Label will result in a new disabled published revision based on the current published revision. If there is a draft revision, a new disabled draft revision will be created based on the latest draft revision. Older draft revisions will be deleted. Once disabled, a label may be deleted with `DeleteLabel`.
+Disable a published label. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Disabling a label will result in a new disabled published revision based on the current published revision. If there's a draft revision, a new disabled draft revision will be created based on the latest draft revision. Older draft revisions will be deleted. Once disabled, a label may be deleted with `DeleteLabel`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -117,7 +117,7 @@ Disable a published Label. Disabling a Label will result in a new disabled publi
 
 #### `labels.enable()`
 
-Enable a disabled Label and restore it to its published state. This will result in a new published revision based on the current disabled published revision. If there is an existing disabled draft revision, a new revision will be created based on that draft and will be enabled.
+Enable a disabled label and restore it to its published state. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). This will result in a new published revision based on the current disabled published revision. If there's an existing disabled draft revision, a new revision will be created based on that draft and will be enabled.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -126,175 +126,175 @@ Enable a disabled Label and restore it to its published state. This will result 
 
 #### `labels.delete()`
 
-Permanently deletes a Label and related metadata on Drive Items. Once deleted, the Label and related Drive item metadata will be deleted. Only draft Labels, and disabled Labels may be deleted.
+Permanently deletes a label and related metadata on Drive items. For more information, see [Disable, enable, and delete a label](https://developers.google.com/workspace/drive/labels/guides/disable-delete-label). Once deleted, the label and related Drive item metadata will be deleted. Only draft labels and disabled labels may be deleted.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Label resource name. |
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the Label before allowing access. |
-| `params.writeControl.requiredRevisionId` | `string` | No | The revision_id of the label that the write request will be applied to. If this is not the latest revision of the label, the request will not be processed and will return a 400 Bad Request error. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
+| `params.writeControl.requiredRevisionId` | `string` | No | The revision ID of the label that the write request will be applied to. If this isn't the latest revision of the label, the request will not be processed and will return a 400 Bad Request error. |
 
 #### `labels.updatePermissions()`
 
-Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name. |
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the Label before allowing access. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `labels.updateLabelEnabledAppSettings()`
 
-Updates a Label's EabledAppSettings. Enabling a Label in a Workspace Application allows it to be used in that application. This change is not revisioned, does not require publishing, and takes effect immediately.
+Updates a label's `EnabledAppSettings`. Enabling a label in a Google Workspace app allows it to be used in that app. This change isn't revisioned, doesn't require publishing, and takes effect immediately.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Label to update. The resource name of the Label to update. |
+| `params.name` | `string` | Yes | Required. The resource name of the label to update. The resource name of the label to update. |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `labels.permissions`
 
 #### `labels.permissions.list()`
 
-Lists a Label's permissions.
+Lists a label's permissions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name on which Label Permission are listed. Format: labels/{label} |
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the Label before allowing access. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name on which label permissions are listed. Format: `labels/{label}`. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
 | `params.pageSize` | `integer` | No | Maximum number of permissions to return per page. Default: 50. Max: 200. |
 | `params.pageToken` | `string` | No | The token of the page to return. |
 
 #### `labels.permissions.create()`
 
-Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name on the Label Permission is created. Format: labels/{label} |
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the Label before allowing access. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name on the label permission is created. Format: `labels/{label}`. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `labels.permissions.delete()`
 
-Deletes a Label's permission. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Label Permission resource name. |
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the Label before allowing access. |
+| `params.name` | `string` | Yes | Required. Label permission resource name. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
 
 #### `labels.permissions.batchUpdate()`
 
-Updates Label permissions. If a permission for the indicated principal doesn't exist, a new Label Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name shared by all permissions being updated. Format: labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must either be empty or match this field. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `labels.permissions.batchDelete()`
 
-Deletes Label permissions. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name shared by all permissions being deleted. Format: labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must either be empty or match this field. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `labels.revisions`
 
 #### `labels.revisions.updatePermissions()`
 
-Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name. |
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the Label before allowing access. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `labels.revisions.permissions`
 
 #### `labels.revisions.permissions.list()`
 
-Lists a Label's permissions.
+Lists a label's permissions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name on which Label Permission are listed. Format: labels/{label} |
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the Label before allowing access. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name on which label permissions are listed. Format: `labels/{label}`. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
 | `params.pageSize` | `integer` | No | Maximum number of permissions to return per page. Default: 50. Max: 200. |
 | `params.pageToken` | `string` | No | The token of the page to return. |
 
 #### `labels.revisions.permissions.create()`
 
-Updates a Label's permissions. If a permission for the indicated principal doesn't exist, a new Label Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Updates a label's permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name on the Label Permission is created. Format: labels/{label} |
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the Label before allowing access. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name on the label permission is created. Format: `labels/{label}`. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `labels.revisions.permissions.delete()`
 
-Deletes a Label's permission. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Deletes a label's permission. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Label Permission resource name. |
-| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the Label before allowing access. |
+| `params.name` | `string` | Yes | Required. Label permission resource name. |
+| `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
 
 #### `labels.revisions.permissions.batchUpdate()`
 
-Updates Label permissions. If a permission for the indicated principal doesn't exist, a new Label Permission is created, otherwise the existing permission is updated. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Updates label permissions. If a permission for the indicated principal doesn't exist, a label permission is created, otherwise the existing permission is updated. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name shared by all permissions being updated. Format: labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must either be empty or match this field. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `labels.revisions.permissions.batchDelete()`
 
-Deletes Label permissions. Permissions affect the Label resource as a whole, are not revisioned, and do not require publishing.
+Deletes label permissions. Permissions affect the label resource as a whole, aren't revisioned, and don't require publishing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent Label resource name shared by all permissions being deleted. Format: labels/{label} If this is set, the parent field in the UpdateLabelPermissionRequest messages must either be empty or match this field. |
+| `params.parent` | `string` | Yes | Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `labels.revisions.locks`
 
 #### `labels.revisions.locks.list()`
 
-Lists the LabelLocks on a Label.
+Lists the label locks on a label.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Label on which Locks are applied. Format: labels/{label} |
-| `params.pageSize` | `integer` | No | Maximum number of Locks to return per page. Default: 100. Max: 200. |
+| `params.parent` | `string` | Yes | Required. Label on which locks are applied. Format: `labels/{label}`. |
+| `params.pageSize` | `integer` | No | Maximum number of locks to return per page. Default: 100. Max: 200. |
 | `params.pageToken` | `string` | No | The token of the page to return. |
 
 ### `labels.locks`
 
 #### `labels.locks.list()`
 
-Lists the LabelLocks on a Label.
+Lists the label locks on a label.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Label on which Locks are applied. Format: labels/{label} |
-| `params.pageSize` | `integer` | No | Maximum number of Locks to return per page. Default: 100. Max: 200. |
+| `params.parent` | `string` | Yes | Required. Label on which locks are applied. Format: `labels/{label}`. |
+| `params.pageSize` | `integer` | No | Maximum number of locks to return per page. Default: 100. Max: 200. |
 | `params.pageToken` | `string` | No | The token of the page to return. |
 
 ### `limits`
 
 #### `limits.getLabel()`
 
-Get the constraints on the structure of a Label; such as, the maximum number of Fields allowed and maximum length of the label title.
+Get the constraints on the structure of a label; such as, the maximum number of fields allowed and maximum length of the label title.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | No | Required. Label revision resource name Must be: "limits/label" |
+| `params.name` | `string` | No | Required. Label revision resource name must be: "limits/label". |
