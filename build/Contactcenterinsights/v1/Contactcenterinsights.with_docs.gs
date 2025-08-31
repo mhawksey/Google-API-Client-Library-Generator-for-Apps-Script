@@ -181,6 +181,14 @@ class Contactcenterinsights {
     this.projects.locations.conversations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
 
     /**
+     * Samples conversations based on user configuration and handles the sampled conversations for different use cases.
+     * @param {string} params.parent - (Required) Required. The parent resource of the dataset.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.conversations.sample = (params) => this._makeRequest('v1/{+parent}/conversations:sample', 'POST', params);
+
+    /**
      * Analyzes multiple conversations in a single request.
      * @param {string} params.parent - (Required) Required. The parent resource to create analyses in.
      * @param {object} params.resource - The request body.
@@ -383,6 +391,242 @@ class Contactcenterinsights {
      * @return {object} The API response object.
      */
     this.projects.locations.conversations.assessments.notes.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.datasets = {};
+
+    /**
+     * Creates a dataset.
+     * @param {string} params.datasetId - Optional. The ID to use for the dataset.
+     * @param {string} params.parent - (Required) Required. The parent resource of the dataset.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.create = (params) => this._makeRequest('v1/{+parent}/datasets', 'POST', params);
+
+    /**
+     * List datasets matching the input.
+     * @param {string} params.filter - Optional. A filter to reduce results to a specific subset. Useful for querying datasets with specific properties. Supported fields include, for Q2 though we only support list by project: - `type` - `description` - `project_number`
+     * @param {integer} params.pageSize - Optional. The maximum number of datasets to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available.
+     * @param {string} params.pageToken - Optional. The value returned by the last `ListDatasetsResponse`; indicates that this is a continuation of a prior `ListDatasets` call and the system should return the next page of data.
+     * @param {string} params.parent - (Required) Required. The parent resource of the dataset.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.list = (params) => this._makeRequest('v1/{+parent}/datasets', 'GET', params);
+
+    /**
+     * Gets a dataset.
+     * @param {string} params.name - (Required) Required. The name of the dataset to get.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Updates a dataset.
+     * @param {string} params.name - (Required) Immutable. Identifier. Resource name of the dataset. Format: projects/{project}/locations/{location}/datasets/{dataset}
+     * @param {string} params.updateMask - Optional. The list of fields to update.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Delete a dataset.
+     * @param {string} params.name - (Required) Required. The name of the dataset to delete.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    /**
+     * List all feedback labels by project number.
+     * @param {string} params.filter - Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
+     * @param {integer} params.pageSize - Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size.
+     * @param {string} params.pageToken - Optional. The value returned by the last `ListAllFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListAllFeedbackLabels` call and that the system should return the next page of data.
+     * @param {string} params.parent - (Required) Required. The parent resource of all feedback labels per project.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.listAllFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:listAllFeedbackLabels', 'GET', params);
+
+    /**
+     * Upload feedback labels from an external source in bulk. Currently supports labeling Quality AI example conversations.
+     * @param {string} params.parent - (Required) Required. The parent resource for new feedback labels.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.bulkUploadFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkUploadFeedbackLabels', 'POST', params);
+
+    /**
+     * Download feedback labels in bulk from an external source. Currently supports exporting Quality AI example conversations with transcripts and question bodies.
+     * @param {string} params.parent - (Required) Required. The parent resource for new feedback labels.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.bulkDownloadFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkDownloadFeedbackLabels', 'POST', params);
+
+    /**
+     * Delete feedback labels in bulk using a filter.
+     * @param {string} params.parent - (Required) Required. The parent resource for new feedback labels.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.bulkDeleteFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkDeleteFeedbackLabels', 'POST', params);
+
+    this.projects.locations.datasets.conversations = {};
+
+    /**
+     * Gets a conversation.
+     * @param {string} params.name - (Required) Required. The name of the conversation to get.
+     * @param {string} params.view - The level of details of the conversation. Default is `FULL`.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Lists conversations.
+     * @param {string} params.filter - A filter to reduce results to a specific subset. Useful for querying conversations with specific properties.
+     * @param {string} params.orderBy - Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering).
+     * @param {integer} params.pageSize - The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size.
+     * @param {string} params.pageToken - The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data.
+     * @param {string} params.parent - (Required) Required. The parent resource of the conversation.
+     * @param {string} params.view - The level of details of the conversation. Default is `BASIC`.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.list = (params) => this._makeRequest('v1/{+parent}/conversations', 'GET', params);
+
+    /**
+     * Deletes a conversation.
+     * @param {boolean} params.force - If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses.
+     * @param {string} params.name - (Required) Required. The name of the conversation to delete.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    /**
+     * Samples conversations based on user configuration and handles the sampled conversations for different use cases.
+     * @param {string} params.parent - (Required) Required. The parent resource of the dataset.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.sample = (params) => this._makeRequest('v1/{+parent}/conversations:sample', 'POST', params);
+
+    /**
+     * Analyzes multiple conversations in a single request.
+     * @param {string} params.parent - (Required) Required. The parent resource to create analyses in.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.bulkAnalyze = (params) => this._makeRequest('v1/{+parent}/conversations:bulkAnalyze', 'POST', params);
+
+    /**
+     * Deletes multiple conversations in a single request.
+     * @param {string} params.parent - (Required) Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location}
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.bulkDelete = (params) => this._makeRequest('v1/{+parent}/conversations:bulkDelete', 'POST', params);
+
+    /**
+     * Imports conversations and processes them according to the user's configuration.
+     * @param {string} params.parent - (Required) Required. The parent resource for new conversations.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.ingest = (params) => this._makeRequest('v1/{+parent}/conversations:ingest', 'POST', params);
+
+    /**
+     * Gets conversation statistics.
+     * @param {string} params.location - (Required) Required. The location of the conversations.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.calculateStats = (params) => this._makeRequest('v1/{+location}/conversations:calculateStats', 'POST', params);
+
+    this.projects.locations.datasets.conversations.analyses = {};
+
+    /**
+     * Creates an analysis. The long running operation is done when the analysis has completed.
+     * @param {string} params.parent - (Required) Required. The parent resource of the analysis.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.analyses.create = (params) => this._makeRequest('v1/{+parent}/analyses', 'POST', params);
+
+    /**
+     * Gets an analysis.
+     * @param {string} params.name - (Required) Required. The name of the analysis to get.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.analyses.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Lists analyses.
+     * @param {string} params.filter - A filter to reduce results to a specific subset. Useful for querying conversations with specific properties.
+     * @param {integer} params.pageSize - The maximum number of analyses to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available.
+     * @param {string} params.pageToken - The value returned by the last `ListAnalysesResponse`; indicates that this is a continuation of a prior `ListAnalyses` call and the system should return the next page of data.
+     * @param {string} params.parent - (Required) Required. The parent resource of the analyses.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.analyses.list = (params) => this._makeRequest('v1/{+parent}/analyses', 'GET', params);
+
+    /**
+     * Deletes an analysis.
+     * @param {string} params.name - (Required) Required. The name of the analysis to delete.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.analyses.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.datasets.conversations.feedbackLabels = {};
+
+    /**
+     * Create feedback label.
+     * @param {string} params.feedbackLabelId - Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server.
+     * @param {string} params.parent - (Required) Required. The parent resource of the feedback label.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.feedbackLabels.create = (params) => this._makeRequest('v1/{+parent}/feedbackLabels', 'POST', params);
+
+    /**
+     * List feedback labels.
+     * @param {string} params.filter - Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
+     * @param {integer} params.pageSize - Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size.
+     * @param {string} params.pageToken - Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data.
+     * @param {string} params.parent - (Required) Required. The parent resource of the feedback labels.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.feedbackLabels.list = (params) => this._makeRequest('v1/{+parent}/feedbackLabels', 'GET', params);
+
+    /**
+     * Get feedback label.
+     * @param {string} params.name - (Required) Required. The name of the feedback label to get.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.feedbackLabels.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Update feedback label.
+     * @param {string} params.name - (Required) Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
+     * @param {string} params.updateMask - Required. The list of fields to be updated.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.feedbackLabels.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Delete feedback label.
+     * @param {string} params.name - (Required) Required. The name of the feedback label to delete.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.conversations.feedbackLabels.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.datasets.insightsdata = {};
+
+    /**
+     * Export insights data to a destination defined in the request body.
+     * @param {string} params.parent - (Required) Required. The parent resource to export data from.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.datasets.insightsdata.export = (params) => this._makeRequest('v1/{+parent}/insightsdata:export', 'POST', params);
 
     this.projects.locations.insightsdata = {};
 
@@ -729,7 +973,7 @@ class Contactcenterinsights {
 
     /**
      * Lists the question tags.
-     * @param {string} params.filter - Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Supported fields include the following: * `project_id` - id of the project to list tags for * `qa_scorecard_revision_id` - id of the scorecard revision to list tags for * `qa_question_id - id of the question to list tags for`
+     * @param {string} params.filter - Optional. A filter to reduce results to a specific subset. Supports conjunctions (ie. AND operators). Supported fields include the following: * `project_id` - id of the project to list tags for * `qa_scorecard_id` - id of the scorecard to list tags for * `revision_id` - id of the scorecard revision to list tags for` * `qa_question_id - id of the question to list tags for`
      * @param {string} params.parent - (Required) Required. The parent resource of the QaQuestionTags.
      * @return {object} The API response object.
      */
@@ -775,6 +1019,7 @@ class Contactcenterinsights {
      * @param {integer} params.pageSize - Optional. The maximum number of scorecards to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available.
      * @param {string} params.pageToken - Optional. The value returned by the last `ListQaScorecardsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecards` call and that the system should return the next page of data.
      * @param {string} params.parent - (Required) Required. The parent resource of the scorecards.
+     * @param {string} params.qaScorecardSources - Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards of one or more sources.
      * @return {object} The API response object.
      */
     this.projects.locations.qaScorecards.list = (params) => this._makeRequest('v1/{+parent}/qaScorecards', 'GET', params);
@@ -835,6 +1080,7 @@ class Contactcenterinsights {
      * @param {integer} params.pageSize - Optional. The maximum number of scorecard revisions to return in the response. If the value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available.
      * @param {string} params.pageToken - Optional. The value returned by the last `ListQaScorecardRevisionsResponse`. This value indicates that this is a continuation of a prior `ListQaScorecardRevisions` call and that the system should return the next page of data.
      * @param {string} params.parent - (Required) Required. The parent resource of the scorecard revisions. To list all revisions of all scorecards, substitute the QaScorecard ID with a '-' character.
+     * @param {string} params.qaScorecardSources - Optional. The source of scorecards are based on how those Scorecards were created, e.g., a customer-defined scorecard, a predefined scorecard, etc. This field is used to retrieve Scorecards Revisions from Scorecards of one or more sources.
      * @return {object} The API response object.
      */
     this.projects.locations.qaScorecards.revisions.list = (params) => this._makeRequest('v1/{+parent}/revisions', 'GET', params);
@@ -881,192 +1127,6 @@ class Contactcenterinsights {
      * @return {object} The API response object.
      */
     this.projects.locations.qaScorecards.revisions.qaQuestions.list = (params) => this._makeRequest('v1/{+parent}/qaQuestions', 'GET', params);
-
-    this.projects.locations.datasets = {};
-
-    /**
-     * List all feedback labels by project number.
-     * @param {string} params.filter - Optional. A filter to reduce results to a specific subset in the entire project. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
-     * @param {integer} params.pageSize - Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size.
-     * @param {string} params.pageToken - Optional. The value returned by the last `ListAllFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListAllFeedbackLabels` call and that the system should return the next page of data.
-     * @param {string} params.parent - (Required) Required. The parent resource of all feedback labels per project.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.listAllFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:listAllFeedbackLabels', 'GET', params);
-
-    /**
-     * Upload feedback labels from an external source in bulk. Currently supports labeling Quality AI example conversations.
-     * @param {string} params.parent - (Required) Required. The parent resource for new feedback labels.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.bulkUploadFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkUploadFeedbackLabels', 'POST', params);
-
-    /**
-     * Download feedback labels in bulk from an external source. Currently supports exporting Quality AI example conversations with transcripts and question bodies.
-     * @param {string} params.parent - (Required) Required. The parent resource for new feedback labels.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.bulkDownloadFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkDownloadFeedbackLabels', 'POST', params);
-
-    /**
-     * Delete feedback labels in bulk using a filter.
-     * @param {string} params.parent - (Required) Required. The parent resource for new feedback labels.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.bulkDeleteFeedbackLabels = (params) => this._makeRequest('v1/{+parent}:bulkDeleteFeedbackLabels', 'POST', params);
-
-    this.projects.locations.datasets.conversations = {};
-
-    /**
-     * Gets a conversation.
-     * @param {string} params.name - (Required) Required. The name of the conversation to get.
-     * @param {string} params.view - The level of details of the conversation. Default is `FULL`.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-
-    /**
-     * Lists conversations.
-     * @param {string} params.filter - A filter to reduce results to a specific subset. Useful for querying conversations with specific properties.
-     * @param {string} params.orderBy - Optional. The attribute by which to order conversations in the response. If empty, conversations will be ordered by descending creation time. Supported values are one of the following: * create_time * customer_satisfaction_rating * duration * latest_analysis * start_time * turn_count The default sort order is ascending. To specify order, append `asc` or `desc` (`create_time desc`). For more details, see [Google AIPs Ordering](https://google.aip.dev/132#ordering).
-     * @param {integer} params.pageSize - The maximum number of conversations to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size.
-     * @param {string} params.pageToken - The value returned by the last `ListConversationsResponse`. This value indicates that this is a continuation of a prior `ListConversations` call and that the system should return the next page of data.
-     * @param {string} params.parent - (Required) Required. The parent resource of the conversation.
-     * @param {string} params.view - The level of details of the conversation. Default is `BASIC`.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.list = (params) => this._makeRequest('v1/{+parent}/conversations', 'GET', params);
-
-    /**
-     * Deletes a conversation.
-     * @param {boolean} params.force - If set to true, all of this conversation's analyses will also be deleted. Otherwise, the request will only succeed if the conversation has no analyses.
-     * @param {string} params.name - (Required) Required. The name of the conversation to delete.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-
-    /**
-     * Analyzes multiple conversations in a single request.
-     * @param {string} params.parent - (Required) Required. The parent resource to create analyses in.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.bulkAnalyze = (params) => this._makeRequest('v1/{+parent}/conversations:bulkAnalyze', 'POST', params);
-
-    /**
-     * Deletes multiple conversations in a single request.
-     * @param {string} params.parent - (Required) Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location}
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.bulkDelete = (params) => this._makeRequest('v1/{+parent}/conversations:bulkDelete', 'POST', params);
-
-    /**
-     * Imports conversations and processes them according to the user's configuration.
-     * @param {string} params.parent - (Required) Required. The parent resource for new conversations.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.ingest = (params) => this._makeRequest('v1/{+parent}/conversations:ingest', 'POST', params);
-
-    /**
-     * Gets conversation statistics.
-     * @param {string} params.location - (Required) Required. The location of the conversations.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.calculateStats = (params) => this._makeRequest('v1/{+location}/conversations:calculateStats', 'POST', params);
-
-    this.projects.locations.datasets.conversations.analyses = {};
-
-    /**
-     * Creates an analysis. The long running operation is done when the analysis has completed.
-     * @param {string} params.parent - (Required) Required. The parent resource of the analysis.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.analyses.create = (params) => this._makeRequest('v1/{+parent}/analyses', 'POST', params);
-
-    /**
-     * Gets an analysis.
-     * @param {string} params.name - (Required) Required. The name of the analysis to get.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.analyses.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-
-    /**
-     * Lists analyses.
-     * @param {string} params.filter - A filter to reduce results to a specific subset. Useful for querying conversations with specific properties.
-     * @param {integer} params.pageSize - The maximum number of analyses to return in the response. If this value is zero, the service will select a default size. A call might return fewer objects than requested. A non-empty `next_page_token` in the response indicates that more data is available.
-     * @param {string} params.pageToken - The value returned by the last `ListAnalysesResponse`; indicates that this is a continuation of a prior `ListAnalyses` call and the system should return the next page of data.
-     * @param {string} params.parent - (Required) Required. The parent resource of the analyses.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.analyses.list = (params) => this._makeRequest('v1/{+parent}/analyses', 'GET', params);
-
-    /**
-     * Deletes an analysis.
-     * @param {string} params.name - (Required) Required. The name of the analysis to delete.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.analyses.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-
-    this.projects.locations.datasets.conversations.feedbackLabels = {};
-
-    /**
-     * Create feedback label.
-     * @param {string} params.feedbackLabelId - Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server.
-     * @param {string} params.parent - (Required) Required. The parent resource of the feedback label.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.feedbackLabels.create = (params) => this._makeRequest('v1/{+parent}/feedbackLabels', 'POST', params);
-
-    /**
-     * List feedback labels.
-     * @param {string} params.filter - Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Automatically sorts by conversation ID. To sort by all feedback labels in a project see ListAllFeedbackLabels. Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING
-     * @param {integer} params.pageSize - Optional. The maximum number of feedback labels to return in the response. A valid page size ranges from 0 to 100,000 inclusive. If the page size is zero or unspecified, a default page size of 100 will be chosen. Note that a call might return fewer results than the requested page size.
-     * @param {string} params.pageToken - Optional. The value returned by the last `ListFeedbackLabelsResponse`. This value indicates that this is a continuation of a prior `ListFeedbackLabels` call and that the system should return the next page of data.
-     * @param {string} params.parent - (Required) Required. The parent resource of the feedback labels.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.feedbackLabels.list = (params) => this._makeRequest('v1/{+parent}/feedbackLabels', 'GET', params);
-
-    /**
-     * Get feedback label.
-     * @param {string} params.name - (Required) Required. The name of the feedback label to get.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.feedbackLabels.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-
-    /**
-     * Update feedback label.
-     * @param {string} params.name - (Required) Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label}
-     * @param {string} params.updateMask - Required. The list of fields to be updated.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.feedbackLabels.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
-
-    /**
-     * Delete feedback label.
-     * @param {string} params.name - (Required) Required. The name of the feedback label to delete.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.conversations.feedbackLabels.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-
-    this.projects.locations.datasets.insightsdata = {};
-
-    /**
-     * Export insights data to a destination defined in the request body.
-     * @param {string} params.parent - (Required) Required. The parent resource to export data from.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.datasets.insightsdata.export = (params) => this._makeRequest('v1/{+parent}/insightsdata:export', 'POST', params);
 
     this.projects.locations.authorizedViewSets = {};
 
@@ -1185,6 +1245,30 @@ class Contactcenterinsights {
      * @return {object} The API response object.
      */
     this.projects.locations.authorizedViewSets.authorizedViews.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    /**
+     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+     * @param {string} params.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.authorizedViewSets.authorizedViews.setIamPolicy = (params) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', params);
+
+    /**
+     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+     * @param {integer} params.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+     * @param {string} params.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.authorizedViewSets.authorizedViews.getIamPolicy = (params) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', params);
+
+    /**
+     * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+     * @param {string} params.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.authorizedViewSets.authorizedViews.testIamPermissions = (params) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', params);
 
     this.projects.locations.authorizedViewSets.authorizedViews.operations = {};
 
