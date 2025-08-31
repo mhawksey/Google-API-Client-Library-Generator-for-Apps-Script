@@ -4,7 +4,7 @@ Auto-generated client library for using the **Firebase App Distribution API (ver
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:15:27 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:35:19 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:15:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:13 GMT
 
@@ -22,7 +22,7 @@ Get a JWT token
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
 
 #### `apps.get()`
 
@@ -41,8 +41,8 @@ Enable access on a release for testers.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.releaseId` | `string` | Yes | Release identifier |
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+| `params.releaseId` | `string` | Yes | Required. Release identifier |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `apps.releases.notes`
@@ -53,8 +53,8 @@ Create release notes on a release.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.releaseId` | `string` | Yes | Release identifier |
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+| `params.releaseId` | `string` | Yes | Required. Release identifier |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `apps.release_by_hash`
@@ -65,8 +65,8 @@ GET Release by binary upload hash
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.uploadHash` | `string` | Yes | The hash for the upload |
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+| `params.uploadHash` | `string` | Yes | Required. The hash for the upload |
 
 ### `apps.upload_status`
 
@@ -76,8 +76,8 @@ GET Binary upload status by token
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.mobilesdkAppId` | `string` | Yes | Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
-| `params.uploadToken` | `string` | Yes | The token for the upload |
+| `params.mobilesdkAppId` | `string` | Yes | Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289 |
+| `params.uploadToken` | `string` | Yes | Required. The token for the upload |
 
 ### `apps.testers`
 
