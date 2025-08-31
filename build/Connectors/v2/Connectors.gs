@@ -36,6 +36,10 @@ class Connectors {
     this.projects.locations.connections.actions.list = (params) => this._makeRequest('v2/{+parent}/actions', 'GET', params);
     this.projects.locations.connections.actions.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
 
+    this.projects.locations.connections.tools = {};
+    this.projects.locations.connections.tools.list = (params) => this._makeRequest('v2/{+parent}/tools', 'GET', params);
+    this.projects.locations.connections.tools.execute = (params) => this._makeRequest('v2/{+name}:execute', 'POST', params);
+
     this.projects.locations.connections.entityTypes = {};
     this.projects.locations.connections.entityTypes.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
     this.projects.locations.connections.entityTypes.list = (params) => this._makeRequest('v2/{+parent}/entityTypes', 'GET', params);
