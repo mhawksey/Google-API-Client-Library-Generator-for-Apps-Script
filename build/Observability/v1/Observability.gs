@@ -35,6 +35,13 @@ class Observability {
     this.projects.locations.scopes = {};
     this.projects.locations.scopes.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
     this.projects.locations.scopes.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    this.projects.locations.traceScopes = {};
+    this.projects.locations.traceScopes.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.traceScopes.list = (params) => this._makeRequest('v1/{+parent}/traceScopes', 'GET', params);
+    this.projects.locations.traceScopes.create = (params) => this._makeRequest('v1/{+parent}/traceScopes', 'POST', params);
+    this.projects.locations.traceScopes.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+    this.projects.locations.traceScopes.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
   }
 
   /**
