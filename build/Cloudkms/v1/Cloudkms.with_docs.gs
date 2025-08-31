@@ -24,7 +24,7 @@ class Cloudkms {
 
     /**
      * Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.autokeyConfigs.update` permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key project. A KeyHandle creation in the folder's descendant projects will use this configuration to determine where to create the resulting CryptoKey.
-     * @param {string} params.name - (Required) Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`.
+     * @param {string} params.name - (Required) Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` `projects/{PROJECT_NUMBER}/autokeyConfig`.
      * @param {string} params.updateMask - Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
@@ -121,7 +121,7 @@ class Cloudkms {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -501,6 +501,14 @@ class Cloudkms {
      * @return {object} The API response object.
      */
     this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.macVerify = (params) => this._makeRequest('v1/{+name}:macVerify', 'POST', params);
+
+    /**
+     * Decapsulates data that was encapsulated with a public key retrieved from GetPublicKey corresponding to a CryptoKeyVersion with CryptoKey.purpose KEY_ENCAPSULATION.
+     * @param {string} params.name - (Required) Required. The resource name of the CryptoKeyVersion to use for decapsulation.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.decapsulate = (params) => this._makeRequest('v1/{+name}:decapsulate', 'POST', params);
 
     this.projects.locations.keyRings.importJobs = {};
 
