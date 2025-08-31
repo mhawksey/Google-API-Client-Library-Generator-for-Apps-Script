@@ -97,6 +97,22 @@ class Dataform {
     this.projects.locations.repositories.workflowInvocations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
     this.projects.locations.repositories.workflowInvocations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
     this.projects.locations.repositories.workflowInvocations.query = (params) => this._makeRequest('v1beta1/{+name}:query', 'GET', params);
+
+    this.projects.locations.folders = {};
+    this.projects.locations.folders.setIamPolicy = (params) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', params);
+    this.projects.locations.folders.getIamPolicy = (params) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', params);
+    this.projects.locations.folders.testIamPermissions = (params) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', params);
+
+    this.projects.locations.teamFolders = {};
+    this.projects.locations.teamFolders.setIamPolicy = (params) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', params);
+    this.projects.locations.teamFolders.getIamPolicy = (params) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', params);
+    this.projects.locations.teamFolders.testIamPermissions = (params) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', params);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
+    this.projects.locations.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.projects.locations.operations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
   }
 
   /**
