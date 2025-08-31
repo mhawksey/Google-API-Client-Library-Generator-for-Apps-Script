@@ -180,7 +180,7 @@ class Androidpublisher {
     this.purchases.subscriptions.get = (params) => this._makeRequest('androidpublisher/v3/applications/{packageName}/purchases/subscriptions/{subscriptionId}/tokens/{token}', 'GET', params);
 
     /**
-     * Cancels a user's subscription purchase. The subscription remains valid until its expiration time.
+     * Cancels a user's subscription purchase. The subscription remains valid until its expiration time. Newer version is available at purchases.subscriptionsv2.cancel for better client library support.
      * @param {string} params.packageName - (Required) The package name of the application for which this subscription was purchased (for example, 'com.some.thing').
      * @param {string} params.subscriptionId - (Required) Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with add-ons. The purchased subscription ID (for example, 'monthly001').
      * @param {string} params.token - (Required) The token provided to the user's device when the subscription was purchased.
