@@ -293,7 +293,7 @@ class Iam {
 
     /**
      * Updates an existing WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoolNamespace.
-     * @param {string} params.name - (Required) Output only. The resource name of the managed identity.
+     * @param {string} params.name - (Required) Identifier. The resource name of the managed identity.
      * @param {string} params.updateMask - Required. The list of fields to update.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
@@ -399,7 +399,7 @@ class Iam {
 
     /**
      * Updates an existing WorkloadIdentityPoolProvider.
-     * @param {string} params.name - (Required) Output only. The resource name of the provider.
+     * @param {string} params.name - (Required) Identifier. The resource name of the provider.
      * @param {string} params.updateMask - Required. The list of fields to update.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
@@ -712,7 +712,7 @@ class Iam {
     /**
      * Lists all non-deleted WorkforcePools under the specified parent. If `show_deleted` is set to `true`, then deleted pools are also listed.
      * @param {string} params.location - (Required) The location of the pool. Format: `locations/{location}`.
-     * @param {integer} params.pageSize - The maximum number of pools to return. If unspecified, at most 50 pools will be returned. The maximum value is 1000; values above 1000 are truncated to 1000.
+     * @param {integer} params.pageSize - The maximum number of pools to return. The default value is 50. The maximum value is 100.
      * @param {string} params.pageToken - A page token, received from a previous `ListWorkforcePools` call. Provide this to retrieve the subsequent page.
      * @param {string} params.parent - Required. The parent resource to list pools for. Format: `organizations/{org-id}`.
      * @param {boolean} params.showDeleted - Whether to return soft-deleted pools.
