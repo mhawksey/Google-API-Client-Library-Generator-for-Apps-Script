@@ -67,6 +67,24 @@ class Networkconnectivity {
     this.projects.locations.serviceConnectionTokens.create = (params) => this._makeRequest('v1/{+parent}/serviceConnectionTokens', 'POST', params);
     this.projects.locations.serviceConnectionTokens.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
 
+    this.projects.locations.multicloudDataTransferConfigs = {};
+    this.projects.locations.multicloudDataTransferConfigs.list = (params) => this._makeRequest('v1/{+parent}/multicloudDataTransferConfigs', 'GET', params);
+    this.projects.locations.multicloudDataTransferConfigs.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.multicloudDataTransferConfigs.create = (params) => this._makeRequest('v1/{+parent}/multicloudDataTransferConfigs', 'POST', params);
+    this.projects.locations.multicloudDataTransferConfigs.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+    this.projects.locations.multicloudDataTransferConfigs.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.multicloudDataTransferConfigs.destinations = {};
+    this.projects.locations.multicloudDataTransferConfigs.destinations.list = (params) => this._makeRequest('v1/{+parent}/destinations', 'GET', params);
+    this.projects.locations.multicloudDataTransferConfigs.destinations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.multicloudDataTransferConfigs.destinations.create = (params) => this._makeRequest('v1/{+parent}/destinations', 'POST', params);
+    this.projects.locations.multicloudDataTransferConfigs.destinations.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+    this.projects.locations.multicloudDataTransferConfigs.destinations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.multicloudDataTransferSupportedServices = {};
+    this.projects.locations.multicloudDataTransferSupportedServices.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.multicloudDataTransferSupportedServices.list = (params) => this._makeRequest('v1/{+parent}/multicloudDataTransferSupportedServices', 'GET', params);
+
     this.projects.locations.global = {};
 
     this.projects.locations.global.hubs = {};
