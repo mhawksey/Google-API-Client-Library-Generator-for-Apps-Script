@@ -4,7 +4,7 @@ Auto-generated client library for using the **Network Management API (version: v
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:34:03 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:45:16 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:34:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:01 GMT
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -172,7 +172,7 @@ Lists NetworkMonitoringProviders for a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: projects/{project}/locations/{location} |
+| `params.parent` | `string` | Yes | Required. Parent value for ListNetworkMonitoringProvidersRequest. Format: `projects/{project}/locations/{location}` |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of monitoring points to return. The service may return fewer than this value. If unspecified, at most 20 monitoring points will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListMonitoringPoints` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMonitoringPoints` must match the call that provided the page token. |
 
@@ -182,7 +182,7 @@ Gets the NetworkMonitoringProvider resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. Format: projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider} |
+| `params.name` | `string` | Yes | Required. Name of the resource. Format: `projects/{project}/locations/{location}/networkMonitoringProviders/{network_monitoring_provider}` |
 
 #### `projects.locations.networkMonitoringProviders.create()`
 
@@ -346,7 +346,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `organizations.locations.get()`
 
