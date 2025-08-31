@@ -23,21 +23,21 @@ class Apikeys {
     this.operations = {};
     this.operations.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
 
-    this.keys = {};
-    this.keys.lookupKey = (params) => this._makeRequest('v2/keys:lookupKey', 'GET', params);
-
     this.projects = {};
 
     this.projects.locations = {};
 
     this.projects.locations.keys = {};
-    this.projects.locations.keys.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
+    this.projects.locations.keys.patch = (params) => this._makeRequest('v2/{+name}', 'PATCH', params);
+    this.projects.locations.keys.delete = (params) => this._makeRequest('v2/{+name}', 'DELETE', params);
     this.projects.locations.keys.list = (params) => this._makeRequest('v2/{+parent}/keys', 'GET', params);
     this.projects.locations.keys.undelete = (params) => this._makeRequest('v2/{+name}:undelete', 'POST', params);
-    this.projects.locations.keys.patch = (params) => this._makeRequest('v2/{+name}', 'PATCH', params);
+    this.projects.locations.keys.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
     this.projects.locations.keys.create = (params) => this._makeRequest('v2/{+parent}/keys', 'POST', params);
-    this.projects.locations.keys.delete = (params) => this._makeRequest('v2/{+name}', 'DELETE', params);
     this.projects.locations.keys.getKeyString = (params) => this._makeRequest('v2/{+name}/keyString', 'GET', params);
+
+    this.keys = {};
+    this.keys.lookupKey = (params) => this._makeRequest('v2/keys:lookupKey', 'GET', params);
   }
 
   /**
