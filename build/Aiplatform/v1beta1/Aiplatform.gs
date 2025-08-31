@@ -29,10 +29,13 @@ class Aiplatform {
     this.projects.locations = {};
     this.projects.locations.list = (params) => this._makeRequest('v1beta1/{+name}/locations', 'GET', params);
     this.projects.locations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.generateSyntheticData = (params) => this._makeRequest('v1beta1/{+location}:generateSyntheticData', 'POST', params);
     this.projects.locations.evaluateInstances = (params) => this._makeRequest('v1beta1/{+location}:evaluateInstances', 'POST', params);
     this.projects.locations.evaluateDataset = (params) => this._makeRequest('v1beta1/{+location}:evaluateDataset', 'POST', params);
+    this.projects.locations.generateInstanceRubrics = (params) => this._makeRequest('v1beta1/{+location}:generateInstanceRubrics', 'POST', params);
     this.projects.locations.deploy = (params) => this._makeRequest('v1beta1/{+destination}:deploy', 'POST', params);
     this.projects.locations.deployPublisherModel = (params) => this._makeRequest('v1beta1/{+destination}:deployPublisherModel', 'POST', params);
+    this.projects.locations.recommendSpec = (params) => this._makeRequest('v1beta1/{+parent}:recommendSpec', 'POST', params);
     this.projects.locations.updateRagEngineConfig = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
     this.projects.locations.getRagEngineConfig = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
     this.projects.locations.retrieveContexts = (params) => this._makeRequest('v1beta1/{+parent}:retrieveContexts', 'POST', params);
@@ -332,30 +335,6 @@ class Aiplatform {
     this.projects.locations.edgeDevices.operations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
     this.projects.locations.edgeDevices.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
 
-    this.projects.locations.evaluationItems = {};
-
-    this.projects.locations.evaluationItems.operations = {};
-    this.projects.locations.evaluationItems.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
-    this.projects.locations.evaluationItems.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
-    this.projects.locations.evaluationItems.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-    this.projects.locations.evaluationItems.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
-
-    this.projects.locations.evaluationSets = {};
-
-    this.projects.locations.evaluationSets.operations = {};
-    this.projects.locations.evaluationSets.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
-    this.projects.locations.evaluationSets.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
-    this.projects.locations.evaluationSets.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-    this.projects.locations.evaluationSets.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
-
-    this.projects.locations.evaluationRuns = {};
-
-    this.projects.locations.evaluationRuns.operations = {};
-    this.projects.locations.evaluationRuns.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
-    this.projects.locations.evaluationRuns.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
-    this.projects.locations.evaluationRuns.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-    this.projects.locations.evaluationRuns.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
-
     this.projects.locations.evaluationTasks = {};
 
     this.projects.locations.evaluationTasks.operations = {};
@@ -478,6 +457,44 @@ class Aiplatform {
     this.projects.locations.deploymentResourcePools.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
     this.projects.locations.deploymentResourcePools.operations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
     this.projects.locations.deploymentResourcePools.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
+
+    this.projects.locations.evaluationRuns = {};
+    this.projects.locations.evaluationRuns.create = (params) => this._makeRequest('v1beta1/{+parent}/evaluationRuns', 'POST', params);
+    this.projects.locations.evaluationRuns.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.evaluationRuns.list = (params) => this._makeRequest('v1beta1/{+parent}/evaluationRuns', 'GET', params);
+    this.projects.locations.evaluationRuns.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.projects.locations.evaluationRuns.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
+
+    this.projects.locations.evaluationRuns.operations = {};
+    this.projects.locations.evaluationRuns.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
+    this.projects.locations.evaluationRuns.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.evaluationRuns.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.projects.locations.evaluationRuns.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
+
+    this.projects.locations.evaluationSets = {};
+    this.projects.locations.evaluationSets.create = (params) => this._makeRequest('v1beta1/{+parent}/evaluationSets', 'POST', params);
+    this.projects.locations.evaluationSets.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.evaluationSets.list = (params) => this._makeRequest('v1beta1/{+parent}/evaluationSets', 'GET', params);
+    this.projects.locations.evaluationSets.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.projects.locations.evaluationSets.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+
+    this.projects.locations.evaluationSets.operations = {};
+    this.projects.locations.evaluationSets.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
+    this.projects.locations.evaluationSets.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.evaluationSets.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.projects.locations.evaluationSets.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
+
+    this.projects.locations.evaluationItems = {};
+    this.projects.locations.evaluationItems.create = (params) => this._makeRequest('v1beta1/{+parent}/evaluationItems', 'POST', params);
+    this.projects.locations.evaluationItems.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.evaluationItems.list = (params) => this._makeRequest('v1beta1/{+parent}/evaluationItems', 'GET', params);
+    this.projects.locations.evaluationItems.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    this.projects.locations.evaluationItems.operations = {};
+    this.projects.locations.evaluationItems.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
+    this.projects.locations.evaluationItems.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.evaluationItems.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.projects.locations.evaluationItems.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
 
     this.projects.locations.exampleStores = {};
     this.projects.locations.exampleStores.create = (params) => this._makeRequest('v1beta1/{+parent}/exampleStores:create', 'POST', params);
@@ -834,15 +851,6 @@ class Aiplatform {
     this.projects.locations.reasoningEngines.operations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
     this.projects.locations.reasoningEngines.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
 
-    this.projects.locations.reasoningEngines.sandboxEnvironments = {};
-
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations = {};
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
-
     this.projects.locations.reasoningEngines.examples = {};
 
     this.projects.locations.reasoningEngines.examples.operations = {};
@@ -866,6 +874,20 @@ class Aiplatform {
     this.projects.locations.reasoningEngines.memories.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
     this.projects.locations.reasoningEngines.memories.operations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
     this.projects.locations.reasoningEngines.memories.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
+
+    this.projects.locations.reasoningEngines.sandboxEnvironments = {};
+    this.projects.locations.reasoningEngines.sandboxEnvironments.create = (params) => this._makeRequest('v1beta1/{+parent}/sandboxEnvironments', 'POST', params);
+    this.projects.locations.reasoningEngines.sandboxEnvironments.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.reasoningEngines.sandboxEnvironments.list = (params) => this._makeRequest('v1beta1/{+parent}/sandboxEnvironments', 'GET', params);
+    this.projects.locations.reasoningEngines.sandboxEnvironments.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.projects.locations.reasoningEngines.sandboxEnvironments.execute = (params) => this._makeRequest('v1beta1/{+name}:execute', 'POST', params);
+
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations = {};
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
 
     this.projects.locations.reasoningEngines.sessions = {};
     this.projects.locations.reasoningEngines.sessions.create = (params) => this._makeRequest('v1beta1/{+parent}/sessions', 'POST', params);
