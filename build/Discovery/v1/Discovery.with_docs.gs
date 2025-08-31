@@ -23,20 +23,20 @@ class Discovery {
     this.apis = {};
 
     /**
-     * Retrieve the list of APIs supported at this endpoint.
-     * @param {string} params.name - Only include APIs with the given name.
-     * @param {boolean} params.preferred - Return only the preferred version of an API.
-     * @return {object} The API response object.
-     */
-    this.apis.list = (params) => this._makeRequest('apis', 'GET', params);
-
-    /**
      * Retrieve the description of a particular version of an api.
      * @param {string} params.api - (Required) The name of the API.
      * @param {string} params.version - (Required) The version of the API.
      * @return {object} The API response object.
      */
     this.apis.getRest = (params) => this._makeRequest('apis/{api}/{version}/rest', 'GET', params);
+
+    /**
+     * Retrieve the list of APIs supported at this endpoint.
+     * @param {string} params.name - Only include APIs with the given name.
+     * @param {boolean} params.preferred - Return only the preferred version of an API.
+     * @return {object} The API response object.
+     */
+    this.apis.list = (params) => this._makeRequest('apis', 'GET', params);
   }
 
   /**
