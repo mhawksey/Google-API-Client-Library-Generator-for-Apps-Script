@@ -26,7 +26,7 @@ class Networkconnectivity {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -323,6 +323,124 @@ class Networkconnectivity {
      * @return {object} The API response object.
      */
     this.projects.locations.serviceConnectionTokens.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.multicloudDataTransferConfigs = {};
+
+    /**
+     * Lists MulticloudDataTransferConfigs in a given project and location.
+     * @param {string} params.filter - Optional. A filter expression that filters the results listed in the response.
+     * @param {string} params.orderBy - Optional. Sort the results by a certain order.
+     * @param {integer} params.pageSize - Optional. The maximum number of results per page that should be returned.
+     * @param {string} params.pageToken - Optional. The page token.
+     * @param {string} params.parent - (Required) Required. The parent resource's name
+     * @param {boolean} params.returnPartialSuccess - Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.list = (params) => this._makeRequest('v1/{+parent}/multicloudDataTransferConfigs', 'GET', params);
+
+    /**
+     * Gets details of a single MulticloudDataTransferConfig.
+     * @param {string} params.name - (Required) Required. Name of the MulticloudDataTransferConfig to get.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Creates a MulticloudDataTransferConfig in a given project and location.
+     * @param {string} params.multicloudDataTransferConfigId - Required. The ID to use for the MulticloudDataTransferConfig, which will become the final component of the MulticloudDataTransferConfig's resource name.
+     * @param {string} params.parent - (Required) Required. The parent resource's name
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.create = (params) => this._makeRequest('v1/{+parent}/multicloudDataTransferConfigs', 'POST', params);
+
+    /**
+     * Updates a MulticloudDataTransferConfig in a given project and location.
+     * @param {string} params.name - (Required) Identifier. The name of the MulticloudDataTransferConfig resource. Format: `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}`.
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} params.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the MulticloudDataTransferConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Deletes a single MulticloudDataTransferConfig.
+     * @param {string} params.etag - Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     * @param {string} params.name - (Required) Required. The name of the MulticloudDataTransferConfig resource to delete.
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate MulticloudDataTransferConfigs. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.multicloudDataTransferConfigs.destinations = {};
+
+    /**
+     * Lists Destinations in a given project and location.
+     * @param {string} params.filter - Optional. A filter expression that filters the results listed in the response.
+     * @param {string} params.orderBy - Optional. Sort the results by a certain order.
+     * @param {integer} params.pageSize - Optional. The maximum number of results per page that should be returned.
+     * @param {string} params.pageToken - Optional. The page token.
+     * @param {string} params.parent - (Required) Required. The parent resource's name
+     * @param {boolean} params.returnPartialSuccess - Optional. If true, allow partial responses for multi-regional Aggregated List requests.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.destinations.list = (params) => this._makeRequest('v1/{+parent}/destinations', 'GET', params);
+
+    /**
+     * Gets details of a single Destination.
+     * @param {string} params.name - (Required) Required. Name of the Destination to get.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.destinations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Creates a Destination in a given project and location.
+     * @param {string} params.destinationId - Required. The ID to use for the Destination, which will become the final component of the Destination's resource name.
+     * @param {string} params.parent - (Required) Required. The parent resource's name
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate Destinations. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.destinations.create = (params) => this._makeRequest('v1/{+parent}/destinations', 'POST', params);
+
+    /**
+     * Updates a Destination in a given project and location.
+     * @param {string} params.name - (Required) Identifier. The name of the Destination resource. Format: `projects/{project}/locations/{location}/multicloudDataTransferConfigs/{multicloud_data_transfer_config}/destinations/{destination}`.
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} params.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the Destination resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.destinations.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Deletes a single Destination.
+     * @param {string} params.etag - Optional. The etag is computed by the server, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
+     * @param {string} params.name - (Required) Required. The name of the Destination resource to delete.
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferConfigs.destinations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    this.projects.locations.multicloudDataTransferSupportedServices = {};
+
+    /**
+     * Gets details of a single MulticloudDataTransferSupportedServices.
+     * @param {string} params.name - (Required) Required. The name of the service.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferSupportedServices.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Lists the supported services for Multicloud Data Transfer. This is a passthrough method.
+     * @param {integer} params.pageSize - Optional. The maximum number of results per page that should be returned.
+     * @param {string} params.pageToken - Optional. The page token.
+     * @param {string} params.parent - (Required) Required. The parent resource's name
+     * @return {object} The API response object.
+     */
+    this.projects.locations.multicloudDataTransferSupportedServices.list = (params) => this._makeRequest('v1/{+parent}/multicloudDataTransferSupportedServices', 'GET', params);
 
     this.projects.locations.global = {};
 
