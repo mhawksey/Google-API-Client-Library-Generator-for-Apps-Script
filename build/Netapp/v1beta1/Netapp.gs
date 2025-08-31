@@ -48,6 +48,7 @@ class Netapp {
     this.projects.locations.volumes.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
     this.projects.locations.volumes.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
     this.projects.locations.volumes.revert = (params) => this._makeRequest('v1beta1/{+name}:revert', 'POST', params);
+    this.projects.locations.volumes.establishPeering = (params) => this._makeRequest('v1beta1/{+name}:establishPeering', 'POST', params);
     this.projects.locations.volumes.restore = (params) => this._makeRequest('v1beta1/{+name}:restore', 'POST', params);
 
     this.projects.locations.volumes.snapshots = {};
