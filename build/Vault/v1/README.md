@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Vault API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:54:21 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:56:59 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:54:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:28 GMT
 
