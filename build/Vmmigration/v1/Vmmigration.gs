@@ -39,6 +39,7 @@ class Vmmigration {
     this.projects.locations.sources.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
     this.projects.locations.sources.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
     this.projects.locations.sources.fetchInventory = (params) => this._makeRequest('v1/{+source}:fetchInventory', 'GET', params);
+    this.projects.locations.sources.fetchStorageInventory = (params) => this._makeRequest('v1/{+source}:fetchStorageInventory', 'GET', params);
 
     this.projects.locations.sources.utilizationReports = {};
     this.projects.locations.sources.utilizationReports.list = (params) => this._makeRequest('v1/{+parent}/utilizationReports', 'GET', params);
@@ -80,6 +81,15 @@ class Vmmigration {
     this.projects.locations.sources.migratingVms.replicationCycles = {};
     this.projects.locations.sources.migratingVms.replicationCycles.list = (params) => this._makeRequest('v1/{+parent}/replicationCycles', 'GET', params);
     this.projects.locations.sources.migratingVms.replicationCycles.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    this.projects.locations.sources.diskMigrationJobs = {};
+    this.projects.locations.sources.diskMigrationJobs.create = (params) => this._makeRequest('v1/{+parent}/diskMigrationJobs', 'POST', params);
+    this.projects.locations.sources.diskMigrationJobs.list = (params) => this._makeRequest('v1/{+parent}/diskMigrationJobs', 'GET', params);
+    this.projects.locations.sources.diskMigrationJobs.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.locations.sources.diskMigrationJobs.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+    this.projects.locations.sources.diskMigrationJobs.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.projects.locations.sources.diskMigrationJobs.run = (params) => this._makeRequest('v1/{+name}:run', 'POST', params);
+    this.projects.locations.sources.diskMigrationJobs.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
 
     this.projects.locations.groups = {};
     this.projects.locations.groups.list = (params) => this._makeRequest('v1/{+parent}/groups', 'GET', params);
