@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Workstations API (version: v
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:56:08 GMT
+- **Last Checked:** Mon, 01 Sep 2025 00:03:25 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:56:08 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:27 GMT
 
