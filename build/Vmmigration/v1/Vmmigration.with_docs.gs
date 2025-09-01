@@ -26,7 +26,7 @@ class Vmmigration {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -133,6 +133,17 @@ class Vmmigration {
      * @return {object} The API response object.
      */
     this.projects.locations.sources.fetchInventory = (params) => this._makeRequest('v1/{+source}:fetchInventory', 'GET', params);
+
+    /**
+     * List remote source's inventory of storage resources. The remote source is another cloud vendor (e.g. AWS, Azure). The inventory describes the list of existing storage resources in that source. Note that this operation lists the resources on the remote source, as opposed to listing the MigratingVms resources in the vmmigration service.
+     * @param {boolean} params.forceRefresh - Optional. If this flag is set to true, the source will be queried instead of using cached results. Using this flag will make the call slower.
+     * @param {integer} params.pageSize - Optional. The maximum number of VMs to return. The service may return fewer than this value.
+     * @param {string} params.pageToken - Optional. A page token, received from a previous `FetchStorageInventory` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchStorageInventory` must match the call that provided the page token.
+     * @param {string} params.source - (Required) Required. The name of the Source.
+     * @param {string} params.type - Required. The type of the storage inventory to fetch.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.sources.fetchStorageInventory = (params) => this._makeRequest('v1/{+source}:fetchStorageInventory', 'GET', params);
 
     this.projects.locations.sources.utilizationReports = {};
 
@@ -404,6 +415,69 @@ class Vmmigration {
      * @return {object} The API response object.
      */
     this.projects.locations.sources.migratingVms.replicationCycles.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    this.projects.locations.sources.diskMigrationJobs = {};
+
+    /**
+     * Creates a new disk migration job in a given Source.
+     * @param {string} params.diskMigrationJobId - Required. The DiskMigrationJob identifier. The maximum length of this value is 63 characters. Valid characters are lower case Latin letters, digits and hyphen. It must start with a Latin letter and must not end with a hyphen.
+     * @param {string} params.parent - (Required) Required. The DiskMigrationJob's parent.
+     * @param {string} params.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.sources.diskMigrationJobs.create = (params) => this._makeRequest('v1/{+parent}/diskMigrationJobs', 'POST', params);
+
+    /**
+     * Lists DiskMigrationJobs in a given Source.
+     * @param {string} params.filter - Optional. The filter request (according to AIP-160).
+     * @param {string} params.orderBy - Optional. Ordering of the result list.
+     * @param {integer} params.pageSize - Optional. The maximum number of disk migration jobs to return. The service may return fewer than this value. If unspecified, at most 500 disk migration jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} params.pageToken - Optional. A page token, received from a previous `ListDiskMigrationJobs` call. Provide this to retrieve the subsequent page. When paginating, all parameters provided to `ListDiskMigrationJobs` except `page_size` must match the call that provided the page token.
+     * @param {string} params.parent - (Required) Required. The parent, which owns this collection of DiskMigrationJobs.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.sources.diskMigrationJobs.list = (params) => this._makeRequest('v1/{+parent}/diskMigrationJobs', 'GET', params);
+
+    /**
+     * Gets details of a single DiskMigrationJob.
+     * @param {string} params.name - (Required) Required. The name of the DiskMigrationJob.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.sources.diskMigrationJobs.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Updates the parameters of a single DiskMigrationJob.
+     * @param {string} params.name - (Required) Output only. Identifier. The identifier of the DiskMigrationJob.
+     * @param {string} params.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} params.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the DiskMigrationJob resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask, then a mask equivalent to all fields that are populated (have a non-empty value), will be implied.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.sources.diskMigrationJobs.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Deletes a single DiskMigrationJob.
+     * @param {string} params.name - (Required) Required. The name of the DiskMigrationJob.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.sources.diskMigrationJobs.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    /**
+     * Runs the disk migration job.
+     * @param {string} params.name - (Required) Required. The name of the DiskMigrationJob.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.sources.diskMigrationJobs.run = (params) => this._makeRequest('v1/{+name}:run', 'POST', params);
+
+    /**
+     * Cancels the disk migration job.
+     * @param {string} params.name - (Required) Required. The name of the DiskMigrationJob.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.sources.diskMigrationJobs.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
 
     this.projects.locations.groups = {};
 
