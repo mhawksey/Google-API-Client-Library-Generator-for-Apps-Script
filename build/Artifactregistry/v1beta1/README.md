@@ -4,8 +4,8 @@ Auto-generated client library for using the **Artifact Registry API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:49 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:53:16 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:58 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:14 GMT
 
 
@@ -77,7 +77,7 @@ Creates a repository. The returned Operation will finish once the repository has
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource where the repository will be created. |
 | `params.repositoryId` | `string` | No | Required. The repository id to use for this repository. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.patch()`
 
@@ -87,7 +87,7 @@ Updates a repository.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. For each location in a project, repository names must be unique. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.delete()`
 
@@ -104,7 +104,7 @@ Updates the IAM policy for a given resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.getIamPolicy()`
 
@@ -122,7 +122,7 @@ Tests if the caller has a list of permissions on a resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.packages`
 
@@ -214,7 +214,7 @@ Creates a tag.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the parent resource where the tag will be created. |
 | `params.tagId` | `string` | No | The tag id to use for this repository. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.packages.tags.patch()`
 
@@ -224,7 +224,7 @@ Updates a tag.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.packages.tags.delete()`
 
