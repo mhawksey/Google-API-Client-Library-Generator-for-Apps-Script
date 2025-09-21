@@ -4,8 +4,8 @@ Auto-generated client library for using the **Admin SDK API (version: directory_
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:04 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:40 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:42 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:54 GMT
 
 
@@ -30,7 +30,7 @@ Use [BatchChangeChromeOsDeviceStatus](https://developers.google.com/workspace/ad
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). |
 | `params.resourceId` | `string` | Yes | The unique ID of the device. The `resourceId`s are returned in the response from the [chromeosdevices.list](https://developers.google.com/workspace/admin/directory/v1/reference/chromeosdevices/list) method. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `chromeosdevices.get()`
 
@@ -66,7 +66,7 @@ Moves or inserts multiple Chrome OS devices to an organizational unit. You can m
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Immutable. ID of the Google Workspace account |
 | `params.orgUnitPath` | `string` | Yes | Full path of the target organizational unit or its ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `chromeosdevices.patch()`
 
@@ -77,7 +77,7 @@ Updates a device's updatable properties, such as `annotatedUser`, `annotatedLoca
 | `params.customerId` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). |
 | `params.deviceId` | `string` | Yes | The unique ID of the device. The `deviceId`s are returned in the response from the [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list) method. |
 | `params.projection` | `string` | No | Determines whether the response contains the full list of properties or only a subset. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `chromeosdevices.update()`
 
@@ -88,7 +88,7 @@ Updates a device's updatable properties, such as `annotatedUser`, `annotatedLoca
 | `params.customerId` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). |
 | `params.deviceId` | `string` | Yes | The unique ID of the device. The `deviceId`s are returned in the response from the [chromeosdevices.list](https://developers.google.com/workspace/admin/v1/reference/chromeosdevices/list) method. |
 | `params.projection` | `string` | No | Determines whether the response contains the full list of properties or only a subset. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customer`
 
@@ -104,7 +104,7 @@ Issues a command for the device to execute.
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Immutable. ID of the Google Workspace account. |
 | `params.deviceId` | `string` | Yes | Immutable. ID of Chrome OS Device. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customer.devices.chromeos.batchChangeStatus()`
 
@@ -113,7 +113,7 @@ Changes the status of a batch of ChromeOS devices. For more information about ch
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Required. Immutable ID of the Google Workspace account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customer.devices.chromeos.commands`
 
@@ -163,7 +163,7 @@ Stops watching resources through this channel.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers`
 
@@ -182,7 +182,7 @@ Updates a customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerKey` | `string` | Yes | Id of the customer to be updated |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.patch()`
 
@@ -191,7 +191,7 @@ Patches a customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerKey` | `string` | Yes | Id of the customer to be updated |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.chrome`
 
@@ -236,7 +236,7 @@ Creates a printer under given Organization Unit.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the customer. Format: customers/{customer_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.chrome.printers.batchCreatePrinters()`
 
@@ -245,7 +245,7 @@ Creates printers under given Organization Unit.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the customer. Format: customers/{customer_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.chrome.printers.patch()`
 
@@ -256,7 +256,7 @@ Updates a `Printer` resource.
 | `params.name` | `string` | Yes | Identifier. The resource name of the Printer object, in the format customers/{customer-id}/printers/{printer-id} (During printer creation leave empty) |
 | `params.updateMask` | `string` | No | The list of fields to be updated. Note, some of the fields are read only and cannot be updated. Values for not specified fields will be patched. |
 | `params.clearMask` | `string` | No | The list of fields to be cleared. Note, some of the fields are read only and cannot be updated. Values for not specified fields will be patched. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.chrome.printers.delete()`
 
@@ -273,7 +273,7 @@ Deletes printers in batch.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the customer. Format: customers/{customer_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.chrome.printServers`
 
@@ -305,7 +305,7 @@ Creates a print server.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.chrome.printServers.batchCreatePrintServers()`
 
@@ -314,7 +314,7 @@ Creates multiple print servers.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.chrome.printServers.patch()`
 
@@ -324,7 +324,7 @@ Updates a print server's configuration.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Resource name of the print server. Leave empty when creating. Format: `customers/{customer.id}/printServers/{print_server.id}` |
 | `params.updateMask` | `string` | No | The list of fields to update. Some fields are read-only and cannot be updated. Values for unspecified fields are patched. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.chrome.printServers.delete()`
 
@@ -341,7 +341,7 @@ Deletes multiple print servers.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{customer.id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `domainAliases`
 
@@ -370,7 +370,7 @@ Inserts a domain alias of the customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Immutable ID of the Google Workspace account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `domainAliases.list()`
 
@@ -408,7 +408,7 @@ Inserts a domain of the customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Immutable ID of the Google Workspace account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `domains.list()`
 
@@ -442,7 +442,7 @@ Creates a group.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.list()`
 
@@ -455,7 +455,7 @@ Retrieves all groups of a domain or of a user given a userKey (paginated).
 | `params.maxResults` | `integer` | No | Maximum number of results to return. Max allowed value is 200. |
 | `params.orderBy` | `string` | No | Column to use for sorting results |
 | `params.pageToken` | `string` | No | Token to specify next page in the list |
-| `params.query` | `string` | No | Query string search. Should be of the form "". Complete documentation is at https: //developers.google.com/admin-sdk/directory/v1/guides/search-groups |
+| `params.query` | `string` | No | Query string search. Should be of the form "". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-groups |
 | `params.sortOrder` | `string` | No | Whether to return results in ascending or descending order. Only of use when orderBy is also used |
 | `params.userKey` | `string` | No | Email or immutable ID of the user if only those groups are to be listed, the given user is a member of. If it's an ID, it should match with the ID of the user object. Cannot be used with the `customer` parameter. |
 
@@ -466,7 +466,7 @@ Updates a group's properties.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.groupKey` | `string` | Yes | Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.patch()`
 
@@ -475,7 +475,7 @@ Updates a group's properties. This method supports [patch semantics](https://dev
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.groupKey` | `string` | Yes | Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `groups.aliases`
 
@@ -495,7 +495,7 @@ Adds an alias for the group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.groupKey` | `string` | Yes | Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.aliases.list()`
 
@@ -541,7 +541,7 @@ Adds a user to the specified group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.groupKey` | `string` | Yes | Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `members.list()`
 
@@ -563,7 +563,7 @@ Updates the membership of a user in the specified group.
 |---|---|---|---|
 | `params.groupKey` | `string` | Yes | Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. |
 | `params.memberKey` | `string` | Yes | Identifies the group member in the API request. A group member can be a user or another group. The value can be the member's (group or user) primary email address, alias, or unique ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `members.patch()`
 
@@ -573,7 +573,7 @@ Updates the membership properties of a user in the specified group. This method 
 |---|---|---|---|
 | `params.groupKey` | `string` | Yes | Identifies the group in the API request. The value can be the group's email address, group alias, or the unique group ID. |
 | `params.memberKey` | `string` | Yes | Identifies the group member in the API request. A group member can be a user or another group. The value can be the member's (group or user) primary email address, alias, or unique ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `mobiledevices`
 
@@ -585,7 +585,7 @@ Takes an action that affects a mobile device. For example, remotely wiping a dev
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). |
 | `params.resourceId` | `string` | Yes | The unique ID the API service uses to identify the mobile device. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `mobiledevices.delete()`
 
@@ -647,7 +647,7 @@ Adds an organizational unit.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `orgunits.list()`
 
@@ -667,7 +667,7 @@ Updates an organizational unit.
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). |
 | `params.orgUnitPath` | `string` | Yes | The full path of the organizational unit (minus the leading `/`) or its unique ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `orgunits.patch()`
 
@@ -677,7 +677,7 @@ Updates an organizational unit. This method supports [patch semantics](https://d
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's `customerId`. The `customerId` is also returned as part of the [Users resource](https://developers.google.com/workspace/admin/directory/v1/reference/users). |
 | `params.orgUnitPath` | `string` | Yes | The full path of the organizational unit (minus the leading `/`) or its unique ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `privileges`
 
@@ -716,7 +716,7 @@ Creates a role assignment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Immutable ID of the Google Workspace account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `roleAssignments.list()`
 
@@ -761,7 +761,7 @@ Inserts a building.
 |---|---|---|---|
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
 | `params.coordinatesSource` | `string` | No | Source from which Building.coordinates are derived. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resources.buildings.list()`
 
@@ -782,7 +782,7 @@ Updates a building.
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
 | `params.buildingId` | `string` | Yes | The id of the building to update. |
 | `params.coordinatesSource` | `string` | No | Source from which Building.coordinates are derived. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resources.buildings.patch()`
 
@@ -793,7 +793,7 @@ Patches a building.
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
 | `params.buildingId` | `string` | Yes | The id of the building to update. |
 | `params.coordinatesSource` | `string` | No | Source from which Building.coordinates are derived. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `resources.calendars`
 
@@ -822,7 +822,7 @@ Inserts a calendar resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resources.calendars.list()`
 
@@ -844,7 +844,7 @@ Updates a calendar resource. This method supports patch semantics, meaning you o
 |---|---|---|---|
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
 | `params.calendarResourceId` | `string` | Yes | The unique ID of the calendar resource to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resources.calendars.patch()`
 
@@ -854,7 +854,7 @@ Patches a calendar resource.
 |---|---|---|---|
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
 | `params.calendarResourceId` | `string` | Yes | The unique ID of the calendar resource to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `resources.features`
 
@@ -883,7 +883,7 @@ Inserts a feature.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resources.features.list()`
 
@@ -903,7 +903,7 @@ Renames a feature.
 |---|---|---|---|
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
 | `params.oldName` | `string` | Yes | The unique ID of the feature to rename. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resources.features.update()`
 
@@ -913,7 +913,7 @@ Updates a feature.
 |---|---|---|---|
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
 | `params.featureKey` | `string` | Yes | The unique ID of the feature to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resources.features.patch()`
 
@@ -923,7 +923,7 @@ Patches a feature.
 |---|---|---|---|
 | `params.customer` | `string` | Yes | The unique ID for the customer's Google Workspace account. As an account administrator, you can also use the `my_customer` alias to represent your account's customer ID. |
 | `params.featureKey` | `string` | Yes | The unique ID of the feature to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `roles`
 
@@ -952,7 +952,7 @@ Creates a role.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Immutable ID of the Google Workspace account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `roles.list()`
 
@@ -972,7 +972,7 @@ Updates a role.
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Immutable ID of the Google Workspace account. |
 | `params.roleId` | `string` | Yes | Immutable ID of the role. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `roles.patch()`
 
@@ -982,7 +982,7 @@ Patches a role.
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Immutable ID of the Google Workspace account. |
 | `params.roleId` | `string` | Yes | Immutable ID of the role. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `schemas`
 
@@ -1011,7 +1011,7 @@ Creates a schema.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Immutable ID of the Google Workspace account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `schemas.list()`
 
@@ -1029,7 +1029,7 @@ Patches a schema.
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Immutable ID of the Google Workspace account. |
 | `params.schemaKey` | `string` | Yes | Name or immutable ID of the schema. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `schemas.update()`
 
@@ -1039,7 +1039,7 @@ Updates a schema.
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Immutable ID of the Google Workspace account. |
 | `params.schemaKey` | `string` | Yes | Name or immutable ID of the schema. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `tokens`
 
@@ -1107,7 +1107,7 @@ Creates a user. Mutate calls immediately following user creation might sometimes
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resolveConflictAccount` | `boolean` | No | Optional. If set to `true`, the option selected for [handling unmanaged user accounts](https://support.google.com/a/answer/11112794) will apply. Default: `false` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.list()`
 
@@ -1135,7 +1135,7 @@ Makes a user a super administrator.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userKey` | `string` | Yes | Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.patch()`
 
@@ -1144,7 +1144,7 @@ Updates a user using patch semantics. The update method should be used instead, 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userKey` | `string` | Yes | Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.undelete()`
 
@@ -1153,7 +1153,7 @@ Undeletes a deleted user.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userKey` | `string` | Yes | The immutable id of the user |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.update()`
 
@@ -1162,7 +1162,7 @@ Updates a user. This method supports patch semantics, meaning that you only need
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userKey` | `string` | Yes | Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.watch()`
 
@@ -1178,11 +1178,11 @@ Watches for changes in users list.
 | `params.orderBy` | `string` | No | Column to use for sorting results |
 | `params.pageToken` | `string` | No | Token to specify next page in the list |
 | `params.projection` | `string` | No | What subset of fields to fetch for this user. |
-| `params.query` | `string` | No | Query string search. Should be of the form "". Complete documentation is at https: //developers.google.com/admin-sdk/directory/v1/guides/search-users |
+| `params.query` | `string` | No | Query string search. Should be of the form "". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-users |
 | `params.showDeleted` | `string` | No | If set to true, retrieves the list of deleted users. (Default: false) |
 | `params.sortOrder` | `string` | No | Whether to return results in ascending or descending order. |
 | `params.viewType` | `string` | No | Whether to fetch the administrator-only or domain-wide public view of the user. For more information, see [Retrieve a user as a non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.signOut()`
 
@@ -1210,7 +1210,7 @@ Adds an alias.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userKey` | `string` | Yes | Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.aliases.list()`
 
@@ -1229,7 +1229,7 @@ Watches for changes in users list.
 |---|---|---|---|
 | `params.userKey` | `string` | Yes | Email or immutable ID of the user |
 | `params.event` | `string` | No | Events to watch for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.photos`
 
@@ -1256,7 +1256,7 @@ Adds a photo for the user.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userKey` | `string` | Yes | Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.photos.patch()`
 
@@ -1265,7 +1265,7 @@ Adds a photo for the user. This method supports [patch semantics](https://develo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userKey` | `string` | Yes | Identifies the user in the API request. The value can be the user's primary email address, alias email address, or unique user ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `verificationCodes`
 
