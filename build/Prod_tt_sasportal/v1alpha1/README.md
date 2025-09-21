@@ -4,8 +4,8 @@ Auto-generated client library for using the **SAS Portal API (Testing) (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:52:52 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:43:32 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:45:29 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:45:29 GMT
 - **Created:** Sun, 20 Jul 2025 16:46:37 GMT
 
 
@@ -41,7 +41,7 @@ Updates an existing customer.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the customer. |
 | `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.listGcpProjectDeployments()`
 
@@ -56,7 +56,7 @@ Creates a new SAS deployment through the GCP workflow. Creates a SAS organizatio
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.listLegacyOrganizations()`
 
@@ -71,7 +71,7 @@ Migrates a SAS organization to the cloud. This will create GCP projects for each
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.setupSasAnalytics()`
 
@@ -79,7 +79,7 @@ Setups the a GCP Project to receive SAS Analytics messages via GCP Pub/Sub with 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.devices`
 
@@ -90,7 +90,7 @@ Creates a device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.devices.createSigned()`
 
@@ -99,7 +99,7 @@ Creates a signed device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.devices.delete()`
 
@@ -135,7 +135,7 @@ Moves a device under another node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the device to move. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.devices.patch()`
 
@@ -145,7 +145,7 @@ Updates a device.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource path name. |
 | `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.devices.updateSigned()`
 
@@ -154,7 +154,7 @@ Updates a signed device.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the device to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.devices.signDevice()`
 
@@ -163,7 +163,7 @@ Signs a device.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource path name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.nodes`
 
@@ -174,7 +174,7 @@ Creates a new node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.nodes.delete()`
 
@@ -210,7 +210,7 @@ Moves a node under another node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the node to move. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.nodes.patch()`
 
@@ -220,7 +220,7 @@ Updates an existing node.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name. |
 | `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.nodes.devices`
 
@@ -231,7 +231,7 @@ Creates a device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.nodes.devices.createSigned()`
 
@@ -240,7 +240,7 @@ Creates a signed device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.nodes.devices.list()`
 
@@ -262,7 +262,7 @@ Creates a new node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.nodes.nodes.list()`
 
@@ -284,7 +284,7 @@ Creates a new deployment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name where the deployment is to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.nodes.deployments.list()`
 
@@ -306,7 +306,7 @@ Creates a new deployment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name where the deployment is to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.deployments.delete()`
 
@@ -343,7 +343,7 @@ Updates an existing deployment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name. |
 | `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.deployments.move()`
 
@@ -352,7 +352,7 @@ Moves a deployment under another node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the deployment to move. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.deployments.devices`
 
@@ -363,7 +363,7 @@ Creates a device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.deployments.devices.createSigned()`
 
@@ -372,7 +372,7 @@ Creates a signed device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.deployments.devices.list()`
 
@@ -404,7 +404,7 @@ Creates a device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.devices.createSigned()`
 
@@ -413,7 +413,7 @@ Creates a signed device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.devices.delete()`
 
@@ -449,7 +449,7 @@ Moves a device under another node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the device to move. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.devices.patch()`
 
@@ -459,7 +459,7 @@ Updates a device.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource path name. |
 | `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.devices.updateSigned()`
 
@@ -468,7 +468,7 @@ Updates a signed device.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the device to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.devices.signDevice()`
 
@@ -477,7 +477,7 @@ Signs a device.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource path name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `nodes.nodes`
 
@@ -488,7 +488,7 @@ Creates a new node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.nodes.delete()`
 
@@ -524,7 +524,7 @@ Moves a node under another node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the node to move. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.nodes.patch()`
 
@@ -534,7 +534,7 @@ Updates an existing node.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name. |
 | `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `nodes.nodes.devices`
 
@@ -545,7 +545,7 @@ Creates a device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.nodes.devices.createSigned()`
 
@@ -554,7 +554,7 @@ Creates a signed device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.nodes.devices.list()`
 
@@ -576,7 +576,7 @@ Creates a new node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.nodes.nodes.list()`
 
@@ -598,7 +598,7 @@ Creates a new deployment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name where the deployment is to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.nodes.deployments.list()`
 
@@ -648,7 +648,7 @@ Updates an existing deployment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name. |
 | `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.deployments.move()`
 
@@ -657,7 +657,7 @@ Moves a deployment under another node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the deployment to move. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `nodes.deployments.devices`
 
@@ -668,7 +668,7 @@ Creates a device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.deployments.devices.createSigned()`
 
@@ -677,7 +677,7 @@ Creates a signed device under a node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodes.deployments.devices.list()`
 
@@ -698,7 +698,7 @@ Generates a secret to be used with the ValidateInstaller.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `installer.validate()`
 
@@ -706,7 +706,7 @@ Validates the identity of a Certified Professional Installer (CPI).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `deployments`
 
@@ -743,7 +743,7 @@ Moves a device under another node or customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the device to move. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `deployments.devices.patch()`
 
@@ -753,7 +753,7 @@ Updates a device.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource path name. |
 | `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `deployments.devices.updateSigned()`
 
@@ -762,7 +762,7 @@ Updates a signed device.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the device to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `deployments.devices.signDevice()`
 
@@ -771,7 +771,7 @@ Signs a device.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource path name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `policies`
 
@@ -781,7 +781,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `policies.get()`
 
@@ -789,7 +789,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `policies.test()`
 
@@ -797,4 +797,4 @@ Returns permissions that a caller has on the specified resource.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
