@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Keep API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:26 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:24:52 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:27:43 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:27:43 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:41 GMT
 
 
@@ -22,7 +22,7 @@ Creates a new note.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `notes.get()`
 
@@ -59,7 +59,7 @@ Creates one or more permissions on the note. Only permissions with the `WRITER` 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource shared by all Permissions being created. Format: `notes/{note}` If this is set, the parent field in the CreatePermission messages must either be empty or match this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `notes.permissions.batchDelete()`
 
@@ -68,7 +68,7 @@ Deletes one or more permissions on the note. The specified entities will immedia
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource shared by all permissions being deleted. Format: `notes/{note}` If this is set, the parent of all of the permissions specified in the DeletePermissionRequest messages must match this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `media`
 
