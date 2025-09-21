@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Dataplex API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:07 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:33:07 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:13 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:17 GMT
 
 
@@ -20,7 +20,7 @@ Auto-generated client library for using the **Cloud Dataplex API (version: v1)**
 
 #### `projects.locations.lookupEntry()`
 
-Looks up an entry by name using the permission on the source system.
+Looks up an entry by name using the permission on the source system. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog is changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog (https://cloud.google.com/dataplex/docs/metadata-changes).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -54,7 +54,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -100,7 +100,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.entryTypes`
 
@@ -113,7 +113,7 @@ Creates an EntryType.
 | `params.parent` | `string` | Yes | Required. The resource name of the EntryType, of the form: projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region. |
 | `params.entryTypeId` | `string` | No | Required. EntryType identifier. |
 | `params.validateOnly` | `boolean` | No | Optional. The service validates the request without performing any mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryTypes.patch()`
 
@@ -124,7 +124,7 @@ Updates an EntryType.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the EntryType, of the form: projects/{project_number}/locations/{location_id}/entryTypes/{entry_type_id}. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. The service validates the request without performing any mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryTypes.delete()`
 
@@ -162,7 +162,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryTypes.getIamPolicy()`
 
@@ -180,7 +180,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.aspectTypes`
 
@@ -193,7 +193,7 @@ Creates an AspectType.
 | `params.parent` | `string` | Yes | Required. The resource name of the AspectType, of the form: projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region. |
 | `params.aspectTypeId` | `string` | No | Required. AspectType identifier. |
 | `params.validateOnly` | `boolean` | No | Optional. The service validates the request without performing any mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.aspectTypes.patch()`
 
@@ -204,7 +204,7 @@ Updates an AspectType.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the AspectType, of the form: projects/{project_number}/locations/{location_id}/aspectTypes/{aspect_type_id}. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.aspectTypes.delete()`
 
@@ -242,7 +242,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.aspectTypes.getIamPolicy()`
 
@@ -260,7 +260,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.entryGroups`
 
@@ -273,7 +273,7 @@ Creates an EntryGroup.
 | `params.parent` | `string` | Yes | Required. The resource name of the entryGroup, of the form: projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region. |
 | `params.entryGroupId` | `string` | No | Required. EntryGroup identifier. |
 | `params.validateOnly` | `boolean` | No | Optional. The service validates the request without performing any mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryGroups.patch()`
 
@@ -284,7 +284,7 @@ Updates an EntryGroup.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the EntryGroup, in the format projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. The service validates the request, without performing any mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryGroups.delete()`
 
@@ -322,7 +322,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryGroups.getIamPolicy()`
 
@@ -340,7 +340,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.entryGroups.entries`
 
@@ -352,7 +352,7 @@ Creates an Entry.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent Entry Group: projects/{project}/locations/{location}/entryGroups/{entry_group}. |
 | `params.entryId` | `string` | No | Required. Entry identifier. It has to be unique within an Entry Group.Entries corresponding to Google Cloud resources use an Entry ID format based on full resource names (https://cloud.google.com/apis/design/resource_names#full_resource_name). The format is a full resource name of the resource without the prefix double slashes in the API service name part of the full resource name. This allows retrieval of entries using their associated resource name.For example, if the full resource name of a resource is //library.googleapis.com/shelves/shelf1/books/book2, then the suggested entry_id is library.googleapis.com/shelves/shelf1/books/book2.It is also suggested to follow the same convention for entries corresponding to resources from providers or systems other than Google Cloud.The maximum size of the field is 4000 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryGroups.entries.patch()`
 
@@ -365,7 +365,7 @@ Updates an Entry.
 | `params.allowMissing` | `boolean` | No | Optional. If set to true and the entry doesn't exist, the service will create it. |
 | `params.deleteMissingAspects` | `boolean` | No | Optional. If set to true and the aspect_keys specify aspect ranges, the service deletes any existing aspects from that range that weren't provided in the request. |
 | `params.aspectKeys` | `string` | No | Optional. The map keys of the Aspects which the service should modify. It supports the following syntaxes: - matches an aspect of the given type and empty path. @path - matches an aspect of the given type and specified path. For example, to attach an aspect to a field that is specified by the schema aspect, the path should have the format Schema.. @* - matches aspects of the given type for all paths. *@path - matches aspects of all types on the given path.The service will not remove existing aspects matching the syntax unless delete_missing_aspects is set to true.If this field is left empty, the service treats it as specifying exactly those Aspects present in the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryGroups.entries.delete()`
 
@@ -377,7 +377,7 @@ Deletes an Entry.
 
 #### `projects.locations.entryGroups.entries.list()`
 
-Lists Entries within an EntryGroup.
+Lists Entries within an EntryGroup. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog is changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog (https://cloud.google.com/dataplex/docs/metadata-changes).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -388,7 +388,7 @@ Lists Entries within an EntryGroup.
 
 #### `projects.locations.entryGroups.entries.get()`
 
-Gets an Entry.
+Gets an Entry. Caution: The Vertex AI, Bigtable, Spanner, Pub/Sub, Dataform, and Dataproc Metastore metadata that is stored in Dataplex Universal Catalog is changing. For more information, see Changes to metadata stored in Dataplex Universal Catalog (https://cloud.google.com/dataplex/docs/metadata-changes).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -407,7 +407,7 @@ Creates an Entry Link.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent Entry Group: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}. |
 | `params.entryLinkId` | `string` | No | Required. Entry Link identifier * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the EntryGroup. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryGroups.entryLinks.delete()`
 
@@ -436,7 +436,7 @@ Creates a metadata job. For example, use a metadata job to import metadata from 
 | `params.parent` | `string` | Yes | Required. The resource name of the parent location, in the format projects/{project_id_or_number}/locations/{location_id} |
 | `params.metadataJobId` | `string` | No | Optional. The metadata job ID. If not provided, a unique ID is generated with the prefix metadata-job-. |
 | `params.validateOnly` | `boolean` | No | Optional. The service validates the request without performing any mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataJobs.get()`
 
@@ -465,7 +465,7 @@ Cancels a metadata job.If you cancel a metadata import job that is in progress, 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the job, in the format projects/{project_id_or_number}/locations/{location_id}/metadataJobs/{metadata_job_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.glossaries`
 
@@ -478,7 +478,7 @@ Creates a new Glossary resource.
 | `params.parent` | `string` | Yes | Required. The parent resource where this Glossary will be created. Format: projects/{project_id_or_number}/locations/{location_id} where location_id refers to a Google Cloud region. |
 | `params.glossaryId` | `string` | No | Required. Glossary ID: Glossary identifier. |
 | `params.validateOnly` | `boolean` | No | Optional. Validates the request without actually creating the Glossary. Default: false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.glossaries.patch()`
 
@@ -489,7 +489,7 @@ Updates a Glossary resource.
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of the Glossary. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Validates the request without actually updating the Glossary. Default: false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.glossaries.delete()`
 
@@ -527,7 +527,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.glossaries.getIamPolicy()`
 
@@ -545,7 +545,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.glossaries.categories`
 
@@ -557,7 +557,7 @@ Creates a new GlossaryCategory resource.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this GlossaryCategory will be created. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where locationId refers to a Google Cloud region. |
 | `params.categoryId` | `string` | No | Required. GlossaryCategory identifier. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.glossaries.categories.patch()`
 
@@ -567,7 +567,7 @@ Updates a GlossaryCategory resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of the GlossaryCategory. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/categories/{category_id} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.glossaries.categories.delete()`
 
@@ -604,7 +604,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.glossaries.categories.getIamPolicy()`
 
@@ -622,7 +622,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.glossaries.terms`
 
@@ -634,7 +634,7 @@ Creates a new GlossaryTerm resource.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where the GlossaryTerm will be created. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id} where location_id refers to a Google Cloud region. |
 | `params.termId` | `string` | No | Required. GlossaryTerm identifier. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.glossaries.terms.patch()`
 
@@ -644,7 +644,7 @@ Updates a GlossaryTerm resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of the GlossaryTerm. Format: projects/{project_id_or_number}/locations/{location_id}/glossaries/{glossary_id}/terms/{term_id} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.glossaries.terms.delete()`
 
@@ -681,7 +681,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.glossaries.terms.getIamPolicy()`
 
@@ -699,7 +699,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.lakes`
 
@@ -710,7 +710,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.getIamPolicy()`
 
@@ -728,7 +728,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.create()`
 
@@ -739,7 +739,7 @@ Creates a lake resource.
 | `params.parent` | `string` | Yes | Required. The resource name of the lake location, of the form: projects/{project_number}/locations/{location_id} where location_id refers to a Google Cloud region. |
 | `params.lakeId` | `string` | No | Required. Lake identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the customer project / location. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.patch()`
 
@@ -750,7 +750,7 @@ Updates a lake resource.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the lake, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.delete()`
 
@@ -789,7 +789,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.getIamPolicy()`
 
@@ -807,7 +807,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.create()`
 
@@ -818,7 +818,7 @@ Creates a zone resource within a lake.
 | `params.parent` | `string` | Yes | Required. The resource name of the parent lake: projects/{project_number}/locations/{location_id}/lakes/{lake_id}. |
 | `params.zoneId` | `string` | No | Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp") |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.patch()`
 
@@ -829,7 +829,7 @@ Updates a zone resource.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the zone, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.delete()`
 
@@ -868,7 +868,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.assets.getIamPolicy()`
 
@@ -886,7 +886,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.assets.create()`
 
@@ -897,7 +897,7 @@ Creates an asset resource.
 | `params.parent` | `string` | Yes | Required. The resource name of the parent zone: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}. |
 | `params.assetId` | `string` | No | Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.assets.patch()`
 
@@ -908,7 +908,7 @@ Updates an asset resource.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the asset, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/assets/{asset_id}. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.assets.delete()`
 
@@ -960,7 +960,7 @@ Create a metadata entity.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent zone: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.entities.update()`
 
@@ -970,7 +970,7 @@ Update a metadata entity. Only supports full resource update.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the entity, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{id}. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.entities.delete()`
 
@@ -1012,7 +1012,7 @@ Create a metadata partition.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent zone: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.zones.entities.partitions.delete()`
 
@@ -1063,7 +1063,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.tasks.getIamPolicy()`
 
@@ -1081,7 +1081,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.tasks.create()`
 
@@ -1092,7 +1092,7 @@ Creates a task resource within a lake.
 | `params.parent` | `string` | Yes | Required. The resource name of the parent lake: projects/{project_number}/locations/{location_id}/lakes/{lake_id}. |
 | `params.taskId` | `string` | No | Required. Task identifier. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.tasks.patch()`
 
@@ -1103,7 +1103,7 @@ Update the task resource.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the task, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/ tasks/{task_id}. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.tasks.delete()`
 
@@ -1140,7 +1140,7 @@ Run an on demand execution of a Task.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the task: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/tasks/{task_id}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.lakes.tasks.jobs`
 
@@ -1169,7 +1169,7 @@ Cancel jobs running for the task resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the job: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/task/{task_id}/job/{job_id}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.lakes.environments`
 
@@ -1180,7 +1180,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.environments.getIamPolicy()`
 
@@ -1198,7 +1198,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.environments.create()`
 
@@ -1209,7 +1209,7 @@ Create an environment resource.
 | `params.parent` | `string` | Yes | Required. The resource name of the parent lake: projects/{project_id}/locations/{location_id}/lakes/{lake_id}. |
 | `params.environmentId` | `string` | No | Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.environments.patch()`
 
@@ -1220,7 +1220,7 @@ Update the environment resource.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the environment, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/environment/{environment_id} |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.environments.delete()`
 
@@ -1273,7 +1273,7 @@ Create a content.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent lake: projects/{project_id}/locations/{location_id}/lakes/{lake_id} |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.contentitems.patch()`
 
@@ -1284,7 +1284,7 @@ Update a content. Only supports full resource update.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the content, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id} |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.contentitems.delete()`
 
@@ -1319,7 +1319,7 @@ Sets the access control policy on the specified contentitem resource. Replaces a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.contentitems.testIamPermissions()`
 
@@ -1328,7 +1328,7 @@ Returns the caller's permissions on a resource. If the resource does not exist, 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.contentitems.list()`
 
@@ -1351,7 +1351,7 @@ Create a content.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent lake: projects/{project_id}/locations/{location_id}/lakes/{lake_id} |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.content.patch()`
 
@@ -1362,7 +1362,7 @@ Update a content. Only supports full resource update.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the content, of the form: projects/{project_id}/locations/{location_id}/lakes/{lake_id}/content/{content_id} |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.content.delete()`
 
@@ -1397,7 +1397,7 @@ Sets the access control policy on the specified contentitem resource. Replaces a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.content.testIamPermissions()`
 
@@ -1406,7 +1406,7 @@ Returns the caller's permissions on a resource. If the resource does not exist, 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lakes.content.list()`
 
@@ -1440,7 +1440,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataScans.getIamPolicy()`
 
@@ -1458,7 +1458,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataScans.create()`
 
@@ -1469,7 +1469,7 @@ Creates a DataScan resource.
 | `params.parent` | `string` | Yes | Required. The resource name of the parent location: projects/{project}/locations/{location_id} where project refers to a project_id or project_number and location_id refers to a Google Cloud region. |
 | `params.dataScanId` | `string` | No | Required. DataScan identifier. Must contain only lowercase letters, numbers and hyphens. Must start with a letter. Must end with a number or a letter. Must be between 1-63 characters. Must be unique within the customer project / location. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataScans.patch()`
 
@@ -1480,7 +1480,7 @@ Updates a DataScan resource.
 | `params.name` | `string` | Yes | Output only. Identifier. The relative resource name of the scan, of the form: projects/{project}/locations/{location_id}/dataScans/{datascan_id}, where project refers to a project_id or project_number and location_id refers to a Google Cloud region. |
 | `params.updateMask` | `string` | No | Optional. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataScans.delete()`
 
@@ -1519,7 +1519,7 @@ Runs an on-demand execution of a DataScan
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the DataScan: projects/{project}/locations/{location_id}/dataScans/{data_scan_id}. where project refers to a project_id or project_number and location_id refers to a Google Cloud region.Only OnDemand data scans are allowed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataScans.generateDataQualityRules()`
 
@@ -1528,7 +1528,7 @@ Generates recommended data quality rules based on the results of a data profilin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name must be one of the following: The name of a data scan with at least one successful, completed data profiling job The name of a successful, completed data profiling job (a data scan job where the job type is data profiling) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.dataScans.jobs`
 
@@ -1559,7 +1559,7 @@ Generates recommended data quality rules based on the results of a data profilin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name must be one of the following: The name of a data scan with at least one successful, completed data profiling job The name of a successful, completed data profiling job (a data scan job where the job type is data profiling) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.dataTaxonomies`
 
@@ -1570,7 +1570,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataTaxonomies.getIamPolicy()`
 
@@ -1588,7 +1588,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataTaxonomies.create()`
 
@@ -1599,7 +1599,7 @@ Create a DataTaxonomy resource.
 | `params.parent` | `string` | Yes |  |
 | `params.dataTaxonomyId` | `string` | No | Required. DataTaxonomy identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the Project. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataTaxonomies.patch()`
 
@@ -1610,7 +1610,7 @@ Updates a DataTaxonomy resource.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the DataTaxonomy, of the form: projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id}. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataTaxonomies.delete()`
 
@@ -1650,7 +1650,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataTaxonomies.attributes.getIamPolicy()`
 
@@ -1668,7 +1668,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataTaxonomies.attributes.create()`
 
@@ -1679,7 +1679,7 @@ Create a DataAttribute resource.
 | `params.parent` | `string` | Yes | Required. The resource name of the parent data taxonomy projects/{project_number}/locations/{location_id}/dataTaxonomies/{data_taxonomy_id} |
 | `params.dataAttributeId` | `string` | No | Required. DataAttribute identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the DataTaxonomy. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataTaxonomies.attributes.patch()`
 
@@ -1690,7 +1690,7 @@ Updates a DataAttribute resource.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the dataAttribute, of the form: projects/{project_number}/locations/{location_id}/dataTaxonomies/{dataTaxonomy}/attributes/{data_attribute_id}. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataTaxonomies.attributes.delete()`
 
@@ -1730,7 +1730,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataAttributeBindings.getIamPolicy()`
 
@@ -1748,7 +1748,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataAttributeBindings.create()`
 
@@ -1759,7 +1759,7 @@ Create a DataAttributeBinding resource.
 | `params.parent` | `string` | Yes | Required. The resource name of the parent data taxonomy projects/{project_number}/locations/{location_id} |
 | `params.dataAttributeBindingId` | `string` | No | Required. DataAttributeBinding identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the Location. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataAttributeBindings.patch()`
 
@@ -1770,7 +1770,7 @@ Updates a DataAttributeBinding resource.
 | `params.name` | `string` | Yes | Output only. The relative resource name of the Data Attribute Binding, of the form: projects/{project_number}/locations/{location}/dataAttributeBindings/{data_attribute_binding_id} |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the request, but do not perform mutations. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataAttributeBindings.delete()`
 
@@ -1810,7 +1810,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.entryLinkTypes.getIamPolicy()`
 
@@ -1828,7 +1828,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.governanceRules`
 
@@ -1839,7 +1839,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.governanceRules.getIamPolicy()`
 
@@ -1857,7 +1857,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.dataProducts`
 
@@ -1868,7 +1868,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataProducts.testIamPermissions()`
 
@@ -1877,7 +1877,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.dataProducts.dataAssets`
 
@@ -1888,7 +1888,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataProducts.dataAssets.testIamPermissions()`
 
@@ -1897,7 +1897,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations`
 
@@ -1939,7 +1939,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.encryptionConfigs`
 
@@ -1951,7 +1951,7 @@ Create an EncryptionConfig.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The location at which the EncryptionConfig is to be created. |
 | `params.encryptionConfigId` | `string` | No | Required. The ID of the EncryptionConfig to create. Currently, only a value of "default" is supported. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.encryptionConfigs.patch()`
 
@@ -1961,7 +1961,7 @@ Update an EncryptionConfig.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the EncryptionConfig. Format: organizations/{organization}/locations/{location}/encryptionConfigs/{encryption_config} Global location is not supported. |
 | `params.updateMask` | `string` | No | Optional. Mask of fields to update. The service treats an omitted field mask as an implied field mask equivalent to all fields that are populated (have a non-empty value). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.encryptionConfigs.delete()`
 
@@ -1999,7 +1999,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.encryptionConfigs.getIamPolicy()`
 
@@ -2017,4 +2017,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
