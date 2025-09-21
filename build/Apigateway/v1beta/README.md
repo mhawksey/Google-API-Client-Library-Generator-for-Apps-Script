@@ -4,8 +4,8 @@ Auto-generated client library for using the **API Gateway API (version: v1beta)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:09 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:52:24 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:12 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:12 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:25 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.gateways`
 
@@ -106,7 +106,7 @@ Creates a new Gateway in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the Gateway, of the form: `projects/*/locations/*` |
 | `params.gatewayId` | `string` | No | Required. Identifier to assign to the Gateway. Must be unique within scope of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gateways.patch()`
 
@@ -116,7 +116,7 @@ Updates the parameters of a single Gateway.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the Gateway. Format: projects/{project}/locations/{location}/gateways/{gateway} |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Gateway resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gateways.delete()`
 
@@ -133,7 +133,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gateways.getIamPolicy()`
 
@@ -151,7 +151,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.apis`
 
@@ -183,7 +183,7 @@ Creates a new Api in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the API, of the form: `projects/*/locations/global` |
 | `params.apiId` | `string` | No | Required. Identifier to assign to the API. Must be unique within scope of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.patch()`
 
@@ -193,7 +193,7 @@ Updates the parameters of a single Api.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the API. Format: projects/{project}/locations/global/apis/{api} |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Api resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.delete()`
 
@@ -210,7 +210,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.getIamPolicy()`
 
@@ -228,7 +228,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.apis.configs`
 
@@ -261,7 +261,7 @@ Creates a new ApiConfig in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the API Config, of the form: `projects/*/locations/global/apis/*` |
 | `params.apiConfigId` | `string` | No | Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.configs.patch()`
 
@@ -271,7 +271,7 @@ Updates the parameters of a single ApiConfig.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the API Config. Format: projects/{project}/locations/global/apis/{api}/configs/{api_config} |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the ApiConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.configs.delete()`
 
@@ -288,7 +288,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.configs.getIamPolicy()`
 
@@ -306,4 +306,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
