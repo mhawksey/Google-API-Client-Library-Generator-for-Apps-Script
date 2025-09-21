@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Q&A API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:55 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:34 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:36:15 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:36:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:40 GMT
 
 
@@ -38,7 +38,7 @@ Adds a question for the specified location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the location to write a question for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.questions.patch()`
 
@@ -48,7 +48,7 @@ Updates a specific question written by the current user.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The unique name for the question. locations/*/questions/* This field will be ignored if set during question creation. |
 | `params.updateMask` | `string` | No | Required. The specific fields to update. Only question text can be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.questions.delete()`
 
@@ -78,7 +78,7 @@ Creates an answer or updates the existing answer written by the user for the spe
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the question to write an answer for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.questions.answers.delete()`
 
