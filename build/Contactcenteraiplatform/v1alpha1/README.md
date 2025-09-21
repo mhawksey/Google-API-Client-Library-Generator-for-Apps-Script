@@ -4,8 +4,8 @@ Auto-generated client library for using the **Contact Center AI Platform API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:12 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:04:52 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:14:56 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:14:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:54 GMT
 
 
@@ -82,7 +82,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.contactCenters`
 
@@ -115,7 +115,7 @@ Creates a new ContactCenter in a given project and location.
 | `params.parent` | `string` | Yes | Required. Value for parent. |
 | `params.contactCenterId` | `string` | No | Required. Id of the requesting object If auto-generating Id server-side, remove this field and contact_center_id from the method_signature of Create RPC |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.contactCenters.patch()`
 
@@ -126,7 +126,7 @@ Updates the parameters of a single ContactCenter.
 | `params.name` | `string` | Yes | name of resource |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the ContactCenter resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.contactCenters.delete()`
 
