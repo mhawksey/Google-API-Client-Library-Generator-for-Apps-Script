@@ -4,8 +4,8 @@ Auto-generated client library for using the **Storage Transfer API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:41 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:47:27 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:10 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:16 GMT
 
 
@@ -42,7 +42,7 @@ Cancels a transfer. Use the transferOperations.get method to check if the cancel
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transferOperations.pause()`
 
@@ -51,7 +51,7 @@ Pauses a transfer operation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the transfer operation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transferOperations.resume()`
 
@@ -60,7 +60,7 @@ Resumes a transfer operation that is paused.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the transfer operation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `googleServiceAccounts`
 
@@ -80,7 +80,7 @@ Creates a transfer job that runs periodically.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transferJobs.patch()`
 
@@ -89,7 +89,7 @@ Updates a transfer job. Updating a job's transfer spec does not affect transfer 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.jobName` | `string` | Yes | Required. The name of job to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transferJobs.get()`
 
@@ -117,7 +117,7 @@ Starts a new operation for the specified transfer job. A `TransferJob` has a max
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.jobName` | `string` | Yes | Required. The name of the transfer job. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transferJobs.delete()`
 
@@ -140,7 +140,7 @@ Creates an agent pool resource.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud project that owns the agent pool. |
 | `params.agentPoolId` | `string` | No | Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agentPools.patch()`
 
@@ -150,7 +150,7 @@ Updates an existing agent pool resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Specifies a unique string that identifies the agent pool. Format: `projects/{project_id}/agentPools/{agent_pool_id}` |
 | `params.updateMask` | `string` | No | The [field mask] (https://developers.google.com/protocol-buffers/docs/reference/google.protobuf) of the fields in `agentPool` to update in this request. The following `agentPool` fields can be updated: * display_name * bandwidth_limit |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agentPools.get()`
 
