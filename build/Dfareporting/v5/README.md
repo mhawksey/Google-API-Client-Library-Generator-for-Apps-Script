@@ -4,8 +4,8 @@ Auto-generated client library for using the **Campaign Manager 360 API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:42 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:33:42 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:17:05 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:17:05 GMT
 - **Created:** Sun, 31 Aug 2025 23:33:42 GMT
 
 
@@ -85,7 +85,7 @@ Updates an existing account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.patch()`
 
@@ -95,7 +95,7 @@ Updates an existing account. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Account ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accountActiveAdSummaries`
 
@@ -126,7 +126,7 @@ Inserts a new account user profile.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accountUserProfiles.list()`
 
@@ -152,7 +152,7 @@ Updates an existing account user profile.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accountUserProfiles.patch()`
 
@@ -162,7 +162,7 @@ Updates an existing account user profile. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. AccountUserProfile ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `ads`
 
@@ -182,7 +182,7 @@ Inserts a new ad.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `ads.list()`
 
@@ -222,7 +222,7 @@ Updates an existing ad.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `ads.patch()`
 
@@ -232,7 +232,7 @@ Updates an existing ad. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. RemarketingList ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertiserGroups`
 
@@ -261,7 +261,7 @@ Inserts a new advertiser group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertiserGroups.list()`
 
@@ -284,7 +284,7 @@ Updates an existing advertiser group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertiserGroups.patch()`
 
@@ -294,7 +294,7 @@ Updates an existing advertiser group. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Advertiser Group ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers`
 
@@ -314,7 +314,7 @@ Inserts a new advertiser.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.list()`
 
@@ -343,7 +343,7 @@ Updates an existing advertiser.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.patch()`
 
@@ -353,7 +353,7 @@ Updates an existing advertiser. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Advertiser ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `billingAssignments`
 
@@ -365,7 +365,7 @@ Inserts a new billing assignment and returns the new assignment. Only one of adv
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.billingProfileId` | `string` | Yes | Billing profile ID of this billing assignment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAssignments.list()`
 
@@ -412,7 +412,7 @@ Updates an existing billing profile.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `billingRates`
 
@@ -445,7 +445,7 @@ Associates a creative with the specified campaign. This method creates a default
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.campaignId` | `string` | Yes | Campaign ID in this association. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `campaignCreativeAssociations.list()`
 
@@ -477,7 +477,7 @@ Inserts a new campaign.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `campaigns.list()`
 
@@ -507,7 +507,7 @@ Updates an existing campaign.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `campaigns.patch()`
 
@@ -517,7 +517,7 @@ Updates an existing campaign. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Campaign ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `changeLogs`
 
@@ -608,7 +608,7 @@ Inserts a new content category.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `contentCategories.list()`
 
@@ -631,7 +631,7 @@ Updates an existing content category.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `contentCategories.patch()`
 
@@ -641,7 +641,7 @@ Updates an existing content category. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. ContentCategory ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `conversions`
 
@@ -652,7 +652,7 @@ Inserts conversions.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `conversions.batchupdate()`
 
@@ -661,7 +661,7 @@ Updates existing conversions.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `countries`
 
@@ -692,7 +692,7 @@ Inserts a new creative asset.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.advertiserId` | `string` | Yes | Advertiser ID of this creative. This is a required field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `creativeFields`
 
@@ -721,7 +721,7 @@ Inserts a new creative field.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `creativeFields.list()`
 
@@ -745,7 +745,7 @@ Updates an existing creative field.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `creativeFields.patch()`
 
@@ -755,7 +755,7 @@ Updates an existing creative field. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | CreativeField ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `creativeFieldValues`
 
@@ -787,7 +787,7 @@ Inserts a new creative field value.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.creativeFieldId` | `string` | Yes | Creative field ID for this creative field value. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `creativeFieldValues.list()`
 
@@ -812,7 +812,7 @@ Updates an existing creative field value.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.creativeFieldId` | `string` | Yes | Creative field ID for this creative field value. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `creativeFieldValues.patch()`
 
@@ -823,7 +823,7 @@ Updates an existing creative field value. This method supports patch semantics.
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.creativeFieldId` | `string` | Yes | CreativeField ID. |
 | `params.id` | `string` | Yes | CreativeFieldValue ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `creativeGroups`
 
@@ -843,7 +843,7 @@ Inserts a new creative group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `creativeGroups.list()`
 
@@ -868,7 +868,7 @@ Updates an existing creative group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `creativeGroups.patch()`
 
@@ -878,7 +878,7 @@ Updates an existing creative group. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Creative Group ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `creatives`
 
@@ -898,7 +898,7 @@ Inserts a new creative.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `creatives.list()`
 
@@ -931,7 +931,7 @@ Updates an existing creative.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `creatives.patch()`
 
@@ -941,7 +941,7 @@ Updates an existing creative. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Creative ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `dimensionValues`
 
@@ -954,7 +954,7 @@ Retrieves list of report dimension values for a list of filters.
 | `params.profileId` | `string` | Yes | The Campaign Manager 360 user profile ID. |
 | `params.maxResults` | `integer` | No | Maximum number of results to return. |
 | `params.pageToken` | `string` | No | The value of the nextToken from the previous result page. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `directorySites`
 
@@ -974,7 +974,7 @@ Inserts a new directory site.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `directorySites.list()`
 
@@ -1011,7 +1011,7 @@ Inserts a new dynamic feed.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `dynamicProfiles`
 
@@ -1029,7 +1029,7 @@ Inserts a new dynamic profile.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `dynamicProfiles.update()`
 
@@ -1037,7 +1037,7 @@ Updates an existing dynamic profile.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `dynamicTargetingKeys`
 
@@ -1059,7 +1059,7 @@ Inserts a new dynamic targeting key. Keys must be created at the advertiser leve
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `dynamicTargetingKeys.list()`
 
@@ -1100,7 +1100,7 @@ Inserts a new event tag.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `eventTags.list()`
 
@@ -1127,7 +1127,7 @@ Updates an existing event tag.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `eventTags.patch()`
 
@@ -1137,7 +1137,7 @@ Updates an existing event tag. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. EventTag ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `files`
 
@@ -1181,7 +1181,7 @@ Inserts a new floodlight activity group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `floodlightActivityGroups.list()`
 
@@ -1207,7 +1207,7 @@ Updates an existing floodlight activity group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `floodlightActivityGroups.patch()`
 
@@ -1217,7 +1217,7 @@ Updates an existing floodlight activity group. This method supports patch semant
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. EventTag ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `floodlightActivities`
 
@@ -1255,7 +1255,7 @@ Inserts a new floodlight activity.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `floodlightActivities.list()`
 
@@ -1285,7 +1285,7 @@ Updates an existing floodlight activity.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `floodlightActivities.patch()`
 
@@ -1295,7 +1295,7 @@ Updates an existing floodlight activity. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. EventTag ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `floodlightConfigurations`
 
@@ -1324,7 +1324,7 @@ Updates an existing floodlight configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `floodlightConfigurations.patch()`
 
@@ -1334,7 +1334,7 @@ Updates an existing floodlight configuration. This method supports patch semanti
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. EventTag ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertiserInvoices`
 
@@ -1368,7 +1368,7 @@ Inserts a new landing page.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertiserLandingPages.list()`
 
@@ -1395,7 +1395,7 @@ Updates an existing landing page.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertiserLandingPages.patch()`
 
@@ -1405,7 +1405,7 @@ Updates an existing landing page. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Landing Page ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `languages`
 
@@ -1518,7 +1518,7 @@ Updates an existing remarketing list. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. RemarketingList ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `remarketingLists.get()`
 
@@ -1536,7 +1536,7 @@ Inserts a new remarketing list.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `remarketingLists.list()`
 
@@ -1561,7 +1561,7 @@ Updates an existing remarketing list.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `remarketingListShares`
 
@@ -1573,7 +1573,7 @@ Updates an existing remarketing list share. This method supports patch semantics
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. RemarketingList ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `remarketingListShares.get()`
 
@@ -1591,7 +1591,7 @@ Updates an existing remarketing list share.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sites`
 
@@ -1603,7 +1603,7 @@ Updates an existing site. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Site ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sites.get()`
 
@@ -1621,7 +1621,7 @@ Inserts a new site.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sites.list()`
 
@@ -1653,7 +1653,7 @@ Updates an existing site.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `subaccounts`
 
@@ -1665,7 +1665,7 @@ Updates an existing subaccount. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Subaccount ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subaccounts.get()`
 
@@ -1683,7 +1683,7 @@ Inserts a new subaccount.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subaccounts.list()`
 
@@ -1706,7 +1706,7 @@ Updates an existing subaccount.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `userRoles`
 
@@ -1718,7 +1718,7 @@ Updates an existing user role. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. UserRole ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `userRoles.get()`
 
@@ -1736,7 +1736,7 @@ Inserts a new user role.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `userRoles.list()`
 
@@ -1761,7 +1761,7 @@ Updates an existing user role.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `userRoles.delete()`
 
@@ -1782,7 +1782,7 @@ Updates an existing targeting template. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. RemarketingList ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetingTemplates.get()`
 
@@ -1800,7 +1800,7 @@ Inserts a new targeting template.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetingTemplates.list()`
 
@@ -1824,7 +1824,7 @@ Updates an existing targeting template.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `placements`
 
@@ -1836,7 +1836,7 @@ Updates an existing placement. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Placement ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `placements.generatetags()`
 
@@ -1865,7 +1865,7 @@ Inserts a new placement.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `placements.list()`
 
@@ -1904,7 +1904,7 @@ Updates an existing placement.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `placementGroups`
 
@@ -1916,7 +1916,7 @@ Updates an existing placement group. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. Placement ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `placementGroups.get()`
 
@@ -1934,7 +1934,7 @@ Inserts a new placement group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `placementGroups.list()`
 
@@ -1970,7 +1970,7 @@ Updates an existing placement group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `placementStrategies`
 
@@ -1982,7 +1982,7 @@ Updates an existing placement strategy. This method supports patch semantics.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
 | `params.id` | `string` | Yes | Required. PlacementStrategy ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `placementStrategies.delete()`
 
@@ -2009,7 +2009,7 @@ Inserts a new placement strategy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `placementStrategies.list()`
 
@@ -2032,7 +2032,7 @@ Updates an existing placement strategy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `platformTypes`
 
@@ -2135,7 +2135,7 @@ Creates a report.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | The Campaign Manager 360 user profile ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reports.list()`
 
@@ -2168,7 +2168,7 @@ Updates a report.
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | The Campaign Manager 360 user profile ID. |
 | `params.reportId` | `string` | Yes | The ID of the report. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `reports.files`
 
@@ -2204,7 +2204,7 @@ Returns the fields that are compatible to be selected in the respective sections
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | The Campaign Manager 360 user profile ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sizes`
 
@@ -2224,7 +2224,7 @@ Inserts a new size.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sizes.list()`
 
