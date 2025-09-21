@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Composer API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:31:41 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:04:09 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:14:17 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:14:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:20 GMT
 
 
@@ -56,7 +56,7 @@ Create a new environment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent must be of the form "projects/{projectId}/locations/{locationId}". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.get()`
 
@@ -84,7 +84,7 @@ Update an environment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The relative resource name of the environment to update, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of paths, relative to `Environment`, of fields to update. For example, to set the version of scikit-learn to install in the environment to 0.19.0 and to remove an existing installation of numpy, the `updateMask` parameter would include the following two `paths` values: "config.softwareConfig.pypiPackages.scikit-learn" and "config.softwareConfig.pypiPackages.numpy". The included patch environment would specify the scikit-learn version as follows: { "config":{ "softwareConfig":{ "pypiPackages":{ "scikit-learn":"==0.19.0" } } } } Note that in the above example, any existing PyPI packages other than scikit-learn and numpy will be unaffected. Only one update type may be included in a single request's `updateMask`. For example, one cannot update both the PyPI packages and labels in the same request. However, it is possible to update multiple members of a map field simultaneously in the same request. For example, to set the labels "label1" and "label2" while clearing "label3" (assuming it already exists), one can provide the paths "labels.label1", "labels.label2", and "labels.label3" and populate the patch environment as follows: { "labels":{ "label1":"new-label1-value" "label2":"new-label2-value" } } Note that in the above example, any existing labels that are not included in the `updateMask` will be unaffected. It is also possible to replace an entire map field by providing the map field's path in the `updateMask`. The new value of the field will be that which is provided in the patch environment. For example, to delete all pre-existing user-specified PyPI packages and install botocore at version 1.7.14, the `updateMask` would contain the path "config.softwareConfig.pypiPackages", and the patch environment would be the following: { "config":{ "softwareConfig":{ "pypiPackages":{ "botocore":"==1.7.14" } } } } **Note:** Only the following fields can be updated: * `config.softwareConfig.pypiPackages` * Replace all custom custom PyPI packages. If a replacement package map is not included in `environment`, all custom PyPI packages are cleared. It is an error to provide both this mask and a mask specifying an individual package. * `config.softwareConfig.pypiPackages.`packagename * Update the custom PyPI package *packagename*, preserving other packages. To delete the package, include it in `updateMask`, and omit the mapping for it in `environment.config.softwareConfig.pypiPackages`. It is an error to provide both a mask of this form and the `config.softwareConfig.pypiPackages` mask. * `labels` * Replace all environment labels. If a replacement labels map is not included in `environment`, all labels are cleared. It is an error to provide both this mask and a mask specifying one or more individual labels. * `labels.`labelName * Set the label named *labelName*, while preserving other labels. To delete the label, include it in `updateMask` and omit its mapping in `environment.labels`. It is an error to provide both a mask of this form and the `labels` mask. * `config.nodeCount` * Horizontally scale the number of nodes in the environment. An integer greater than or equal to 3 must be provided in the `config.nodeCount` field. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. * `config.webServerNetworkAccessControl` * Replace the environment's current `WebServerNetworkAccessControl`. * `config.softwareConfig.airflowConfigOverrides` * Replace all Apache Airflow config overrides. If a replacement config overrides map is not included in `environment`, all config overrides are cleared. It is an error to provide both this mask and a mask specifying one or more individual config overrides. * `config.softwareConfig.airflowConfigOverrides.`section-name * Override the Apache Airflow config property *name* in the section named *section*, preserving other properties. To delete the property override, include it in `updateMask` and omit its mapping in `environment.config.softwareConfig.airflowConfigOverrides`. It is an error to provide both a mask of this form and the `config.softwareConfig.airflowConfigOverrides` mask. * `config.softwareConfig.envVariables` * Replace all environment variables. If a replacement environment variable map is not included in `environment`, all custom environment variables are cleared. * `config.softwareConfig.schedulerCount` * Horizontally scale the number of schedulers in Airflow. A positive integer not greater than the number of nodes must be provided in the `config.softwareConfig.schedulerCount` field. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-2.*.*. * `config.databaseConfig.machineType` * Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. * `config.webServerConfig.machineType` * Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.delete()`
 
@@ -101,7 +101,7 @@ Restart Airflow web server.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the environment to restart the web server for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.executeAirflowCommand()`
 
@@ -110,7 +110,7 @@ Executes Airflow CLI command.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environment` | `string` | Yes | The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.stopAirflowCommand()`
 
@@ -119,7 +119,7 @@ Stops Airflow CLI command execution.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environment` | `string` | Yes | The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.pollAirflowCommand()`
 
@@ -128,7 +128,7 @@ Polls Airflow CLI command execution and fetches logs.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environment` | `string` | Yes | The resource name of the environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.checkUpgrade()`
 
@@ -137,7 +137,7 @@ Check if an upgrade operation on the environment will succeed. In case of proble
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environment` | `string` | Yes | Required. The resource name of the environment to check upgrade for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.saveSnapshot()`
 
@@ -146,7 +146,7 @@ Creates a snapshots of a Cloud Composer environment. As a result of this operati
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environment` | `string` | Yes | The resource name of the source environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.loadSnapshot()`
 
@@ -155,7 +155,7 @@ Loads a snapshot of a Cloud Composer environment. As a result of this operation,
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environment` | `string` | Yes | The resource name of the target environment in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.databaseFailover()`
 
@@ -164,7 +164,7 @@ Triggers database failover (only for highly resilient environments).
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environment` | `string` | Yes | Target environment: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.fetchDatabaseProperties()`
 
@@ -196,7 +196,7 @@ Creates a user workloads Secret. This method is supported for Cloud Composer env
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The environment name to create a Secret for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.userWorkloadsSecrets.get()`
 
@@ -223,7 +223,7 @@ Updates a user workloads Secret. This method is supported for Cloud Composer env
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the Secret, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.userWorkloadsSecrets.delete()`
 
@@ -242,7 +242,7 @@ Creates a user workloads ConfigMap. This method is supported for Cloud Composer 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The environment name to create a ConfigMap for, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.userWorkloadsConfigMaps.get()`
 
@@ -269,7 +269,7 @@ Updates a user workloads ConfigMap. This method is supported for Cloud Composer 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the ConfigMap, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.userWorkloadsConfigMaps.delete()`
 
