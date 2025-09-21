@@ -4,8 +4,8 @@ Auto-generated client library for using the **Admin SDK API (version: datatransf
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:02 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:37 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:39 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:51 GMT
 
 
@@ -50,7 +50,7 @@ Inserts a data transfer request. See the [Transfer parameters](https://developer
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transfers.list()`
 
