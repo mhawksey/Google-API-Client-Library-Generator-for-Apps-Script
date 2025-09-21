@@ -4,8 +4,8 @@ Auto-generated client library for using the **Developer Connect API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:34 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:12:37 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:53 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:53 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:15 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections`
 
@@ -108,7 +108,7 @@ Creates a new Connection in a given project and location.
 | `params.connectionId` | `string` | No | Required. Id of the requesting object If auto-generating Id server-side, remove this field and connection_id from the method_signature of Create RPC |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request, but do not actually post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.patch()`
 
@@ -121,7 +121,7 @@ Updates the parameters of a single Connection.
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the connection is not found a new connection will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input connection has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties). |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request, but do not actually post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.delete()`
 
@@ -159,7 +159,7 @@ ProcessGitHubEnterpriseWebhook is called by the external GitHub Enterprise insta
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Project and location where the webhook will be received. Format: `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections.gitRepositoryLinks`
 
@@ -173,7 +173,7 @@ Creates a GitRepositoryLink. Upon linking a Git Repository, Developer Connect wi
 | `params.gitRepositoryLinkId` | `string` | No | Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request, but do not actually post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.gitRepositoryLinks.delete()`
 
@@ -213,7 +213,7 @@ Fetches read/write token of a given gitRepositoryLink.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.gitRepositoryLink` | `string` | Yes | Required. The resource name of the gitRepositoryLink in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.gitRepositoryLinks.fetchReadToken()`
 
@@ -222,7 +222,7 @@ Fetches read token of a given gitRepositoryLink.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.gitRepositoryLink` | `string` | Yes | Required. The resource name of the gitRepositoryLink in the format `projects/*/locations/*/connections/*/gitRepositoryLinks/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.gitRepositoryLinks.fetchGitRefs()`
 
@@ -242,7 +242,7 @@ ProcessGitLabEnterpriseWebhook is called by the external GitLab Enterprise insta
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*/locations/*/connections/*/gitRepositoryLinks/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.gitRepositoryLinks.processGitLabWebhook()`
 
@@ -251,7 +251,7 @@ ProcessGitLabWebhook is called by the GitLab.com for notifying events.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The GitRepositoryLink resource where the webhook will be received. Format: `projects/*/locations/*/connections/*/gitRepositoryLinks/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.gitRepositoryLinks.processBitbucketDataCenterWebhook()`
 
@@ -260,7 +260,7 @@ ProcessBitbucketDataCenterWebhook is called by the external Bitbucket Data Cente
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The GitRepositoryLink where the webhook will be received. Format: `projects/*/locations/*/connections/*/gitRepositoryLinks/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.gitRepositoryLinks.processBitbucketCloudWebhook()`
 
@@ -269,7 +269,7 @@ ProcessBitbucketCloudWebhook is called by the external Bitbucket Cloud instances
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The GitRepositoryLink where the webhook will be received. Format: `projects/*/locations/*/connections/*/gitRepositoryLinks/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.accountConnectors`
 
@@ -303,7 +303,7 @@ Creates a new AccountConnector in a given project and location.
 | `params.accountConnectorId` | `string` | No | Required. The ID to use for the AccountConnector, which will become the final component of the AccountConnector's resource name. Its format should adhere to https://google.aip.dev/122#resource-id-segments Names must be unique per-project per-location. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request, but do not actually post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.accountConnectors.patch()`
 
@@ -316,7 +316,7 @@ Updates the parameters of a single AccountConnector.
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the accountConnector is not found a new accountConnector will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input accountConnector has all the necessary |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request, but do not actually post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.accountConnectors.delete()`
 
@@ -339,7 +339,7 @@ Fetches OAuth access token based on end user credentials.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountConnector` | `string` | Yes | Required. The resource name of the AccountConnector in the format `projects/*/locations/*/accountConnectors/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.accountConnectors.users.list()`
 
@@ -403,7 +403,7 @@ Creates a new InsightsConfig in a given project and location.
 | `params.parent` | `string` | Yes | Required. Value for parent. |
 | `params.insightsConfigId` | `string` | No | Required. ID of the requesting InsightsConfig. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request, but do not actually post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.insightsConfigs.get()`
 
@@ -423,7 +423,7 @@ Updates the parameters of a single InsightsConfig.
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the insightsConfig is not found a new insightsConfig will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input insightsConfig has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties). |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request, but do not actually post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.insightsConfigs.delete()`
 
