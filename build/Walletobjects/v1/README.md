@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Wallet API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:02:59 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:55:26 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:18 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:18 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:55 GMT
 
 
@@ -30,7 +30,7 @@ Inserts an issuer with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `issuer.list()`
 
@@ -46,7 +46,7 @@ Updates the issuer referenced by the given issuer ID. This method supports patch
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an issuer. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `issuer.update()`
 
@@ -55,7 +55,7 @@ Updates the issuer referenced by the given issuer ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an issuer. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `eventticketclass`
 
@@ -66,7 +66,7 @@ Adds a message to the event ticket class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `eventticketclass.get()`
 
@@ -82,7 +82,7 @@ Inserts an event ticket class with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `eventticketclass.list()`
 
@@ -101,7 +101,7 @@ Updates the event ticket class referenced by the given class ID. This method sup
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `eventticketclass.update()`
 
@@ -110,7 +110,7 @@ Updates the event ticket class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `eventticketobject`
 
@@ -121,7 +121,7 @@ Adds a message to the event ticket object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `eventticketobject.get()`
 
@@ -137,7 +137,7 @@ Inserts an event ticket object with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `eventticketobject.list()`
 
@@ -156,7 +156,7 @@ Modifies linked offer objects for the event ticket object with the given ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `eventticketobject.patch()`
 
@@ -165,7 +165,7 @@ Updates the event ticket object referenced by the given object ID. This method s
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `eventticketobject.update()`
 
@@ -174,7 +174,7 @@ Updates the event ticket object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `flightclass`
 
@@ -185,7 +185,7 @@ Adds a message to the flight class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `flightclass.get()`
 
@@ -201,7 +201,7 @@ Inserts an flight class with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `flightclass.list()`
 
@@ -220,7 +220,7 @@ Updates the flight class referenced by the given class ID. This method supports 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `flightclass.update()`
 
@@ -229,7 +229,7 @@ Updates the flight class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `flightobject`
 
@@ -240,7 +240,7 @@ Adds a message to the flight object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `flightobject.get()`
 
@@ -256,7 +256,7 @@ Inserts an flight object with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `flightobject.list()`
 
@@ -275,7 +275,7 @@ Updates the flight object referenced by the given object ID. This method support
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `flightobject.update()`
 
@@ -284,7 +284,7 @@ Updates the flight object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `genericclass`
 
@@ -295,7 +295,7 @@ Adds a message to the generic class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `genericclass.get()`
 
@@ -311,7 +311,7 @@ Inserts a generic class with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `genericclass.list()`
 
@@ -330,7 +330,7 @@ Updates the generic class referenced by the given class ID. This method supports
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `genericclass.update()`
 
@@ -339,7 +339,7 @@ Updates the Generic class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `genericobject`
 
@@ -350,7 +350,7 @@ Adds a message to the generic object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `genericobject.get()`
 
@@ -366,7 +366,7 @@ Inserts a generic object with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `genericobject.list()`
 
@@ -385,7 +385,7 @@ Updates the generic object referenced by the given object ID. This method suppor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `genericobject.update()`
 
@@ -394,7 +394,7 @@ Updates the generic object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value needs to follow the format `issuerID.identifier` where `issuerID` is issued by Google and `identifier` is chosen by you. The unique identifier can only include alphanumeric characters, `.`, `_`, or `-`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `giftcardclass`
 
@@ -405,7 +405,7 @@ Adds a message to the gift card class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `giftcardclass.get()`
 
@@ -421,7 +421,7 @@ Inserts an gift card class with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `giftcardclass.list()`
 
@@ -440,7 +440,7 @@ Updates the gift card class referenced by the given class ID. This method suppor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `giftcardclass.update()`
 
@@ -449,7 +449,7 @@ Updates the gift card class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `giftcardobject`
 
@@ -460,7 +460,7 @@ Adds a message to the gift card object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `giftcardobject.get()`
 
@@ -476,7 +476,7 @@ Inserts an gift card object with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `giftcardobject.list()`
 
@@ -495,7 +495,7 @@ Updates the gift card object referenced by the given object ID. This method supp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `giftcardobject.update()`
 
@@ -504,7 +504,7 @@ Updates the gift card object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `jwt`
 
@@ -514,7 +514,7 @@ Inserts the resources in the JWT.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `loyaltyclass`
 
@@ -525,7 +525,7 @@ Adds a message to the loyalty class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `loyaltyclass.get()`
 
@@ -541,7 +541,7 @@ Inserts an loyalty class with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `loyaltyclass.list()`
 
@@ -560,7 +560,7 @@ Updates the loyalty class referenced by the given class ID. This method supports
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `loyaltyclass.update()`
 
@@ -569,7 +569,7 @@ Updates the loyalty class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `loyaltyobject`
 
@@ -580,7 +580,7 @@ Adds a message to the loyalty object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `loyaltyobject.get()`
 
@@ -596,7 +596,7 @@ Inserts an loyalty object with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `loyaltyobject.list()`
 
@@ -615,7 +615,7 @@ Modifies linked offer objects for the loyalty object with the given ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `loyaltyobject.patch()`
 
@@ -624,7 +624,7 @@ Updates the loyalty object referenced by the given object ID. This method suppor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `loyaltyobject.update()`
 
@@ -633,7 +633,7 @@ Updates the loyalty object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `offerclass`
 
@@ -644,7 +644,7 @@ Adds a message to the offer class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `offerclass.get()`
 
@@ -660,7 +660,7 @@ Inserts an offer class with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `offerclass.list()`
 
@@ -679,7 +679,7 @@ Updates the offer class referenced by the given class ID. This method supports p
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `offerclass.update()`
 
@@ -688,7 +688,7 @@ Updates the offer class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `offerobject`
 
@@ -699,7 +699,7 @@ Adds a message to the offer object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `offerobject.get()`
 
@@ -715,7 +715,7 @@ Inserts an offer object with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `offerobject.list()`
 
@@ -734,7 +734,7 @@ Updates the offer object referenced by the given object ID. This method supports
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `offerobject.update()`
 
@@ -743,7 +743,7 @@ Updates the offer object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `permissions`
 
@@ -762,7 +762,7 @@ Updates the permissions for the given issuer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an issuer. This ID must be unique across all issuers. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `media`
 
@@ -773,7 +773,7 @@ Uploads rotating barcode values for the transit object referenced by the given o
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `media.download()`
 
@@ -795,7 +795,7 @@ Provide Google with information about awaiting private pass update. This will al
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `smarttap`
 
@@ -805,7 +805,7 @@ Inserts the smart tap.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `transitclass`
 
@@ -816,7 +816,7 @@ Adds a message to the transit class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transitclass.get()`
 
@@ -832,7 +832,7 @@ Inserts a transit class with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transitclass.list()`
 
@@ -851,7 +851,7 @@ Updates the transit class referenced by the given class ID. This method supports
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transitclass.update()`
 
@@ -860,7 +860,7 @@ Updates the transit class referenced by the given class ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `transitobject`
 
@@ -871,7 +871,7 @@ Adds a message to the transit object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transitobject.get()`
 
@@ -887,7 +887,7 @@ Inserts an transit object with the given ID and properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transitobject.list()`
 
@@ -906,7 +906,7 @@ Updates the transit object referenced by the given object ID. This method suppor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `transitobject.update()`
 
@@ -915,4 +915,4 @@ Updates the transit object referenced by the given object ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceId` | `string` | Yes | The unique identifier for an object. This ID must be unique across all objects from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
