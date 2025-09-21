@@ -4,8 +4,8 @@ Auto-generated client library for using the **Kubernetes Engine API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:18 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:05:02 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:15:04 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:15:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:02 GMT
 
 
@@ -66,7 +66,7 @@ Creates a cluster, consisting of the specified number and type of Google Compute
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent (project and location) where the cluster will be created. Specified in the format `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.update()`
 
@@ -75,7 +75,7 @@ Updates the settings for a specific cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster) of the cluster to update. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.setLogging()`
 
@@ -84,7 +84,7 @@ Sets the logging service for a specific cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster) of the cluster to set logging. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.setMonitoring()`
 
@@ -93,7 +93,7 @@ Sets the monitoring service for a specific cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster) of the cluster to set monitoring. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.setAddons()`
 
@@ -102,7 +102,7 @@ Sets the addons for a specific cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster) of the cluster to set addons. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.setLocations()`
 
@@ -111,7 +111,7 @@ Sets the locations for a specific cluster. Deprecated. Use [projects.locations.c
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster) of the cluster to set locations. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.updateMaster()`
 
@@ -120,7 +120,7 @@ Updates the master for a specific cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster) of the cluster to update. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.setMasterAuth()`
 
@@ -129,7 +129,7 @@ Sets master auth materials. Currently supports changing the admin password or a 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster) of the cluster to set auth. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.delete()`
 
@@ -157,7 +157,7 @@ Sets labels on a cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster name) of the cluster to set labels. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.setLegacyAbac()`
 
@@ -166,7 +166,7 @@ Enables or disables the ABAC authorization mechanism on a cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster name) of the cluster to set legacy abac. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.startIpRotation()`
 
@@ -175,7 +175,7 @@ Starts master IP rotation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster name) of the cluster to start IP rotation. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.completeIpRotation()`
 
@@ -184,7 +184,7 @@ Completes master IP rotation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster name) of the cluster to complete IP rotation. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.setNetworkPolicy()`
 
@@ -193,7 +193,7 @@ Enables or disables Network Policy for a cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster name) of the cluster to set networking policy. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.setMaintenancePolicy()`
 
@@ -202,7 +202,7 @@ Sets the maintenance policy for a cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster name) of the cluster to set maintenance policy. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.checkAutopilotCompatibility()`
 
@@ -230,7 +230,7 @@ Updates the version and/or image type of a specific node pool.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster, node pool) of the node pool to update. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.nodePools.setAutoscaling()`
 
@@ -239,7 +239,7 @@ Sets the autoscaling settings of a specific node pool.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster, node pool) of the node pool to set autoscaler settings. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.nodePools.list()`
 
@@ -271,7 +271,7 @@ Creates a node pool for a cluster.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent (project, location, cluster name) where the node pool will be created. Specified in the format `projects/*/locations/*/clusters/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.nodePools.delete()`
 
@@ -292,7 +292,7 @@ CompleteNodePoolUpgrade will signal an on-going node pool upgrade to complete.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster, node pool id) of the node pool to complete upgrade. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.nodePools.rollback()`
 
@@ -301,7 +301,7 @@ Rolls back a previously Aborted or Failed NodePool upgrade. This makes no change
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster, node pool id) of the node poll to rollback upgrade. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.nodePools.setManagement()`
 
@@ -310,7 +310,7 @@ Sets the NodeManagement options for a node pool.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster, node pool id) of the node pool to set management properties. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.nodePools.setSize()`
 
@@ -319,7 +319,7 @@ SetNodePoolSizeRequest sets the size of a node pool. The new size will be used f
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, cluster, node pool id) of the node pool to set size. Specified in the format `projects/*/locations/*/clusters/*/nodePools/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clusters.nodePools.fetchNodePoolUpgradeInfo()`
 
@@ -370,7 +370,7 @@ Cancels the specified operation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name (project, location, operation id) of the operation to cancel. Specified in the format `projects/*/locations/*/operations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.zones`
 
@@ -415,7 +415,7 @@ Creates a cluster, consisting of the specified number and type of Google Compute
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.update()`
 
@@ -426,7 +426,7 @@ Updates the settings for a specific cluster.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.logging()`
 
@@ -437,7 +437,7 @@ Sets the logging service for a specific cluster.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.monitoring()`
 
@@ -448,7 +448,7 @@ Sets the monitoring service for a specific cluster.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.addons()`
 
@@ -459,7 +459,7 @@ Sets the addons for a specific cluster.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.locations()`
 
@@ -470,7 +470,7 @@ Sets the locations for a specific cluster. Deprecated. Use [projects.locations.c
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.master()`
 
@@ -481,7 +481,7 @@ Updates the master for a specific cluster.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.setMasterAuth()`
 
@@ -492,7 +492,7 @@ Sets master auth materials. Currently supports changing the admin password or a 
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.delete()`
 
@@ -514,7 +514,7 @@ Sets labels on a cluster.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.legacyAbac()`
 
@@ -525,7 +525,7 @@ Enables or disables the ABAC authorization mechanism on a cluster.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to update. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.startIpRotation()`
 
@@ -536,7 +536,7 @@ Starts master IP rotation.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.completeIpRotation()`
 
@@ -547,7 +547,7 @@ Completes master IP rotation.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.setNetworkPolicy()`
 
@@ -558,7 +558,7 @@ Enables or disables Network Policy for a cluster.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.setMaintenancePolicy()`
 
@@ -569,7 +569,7 @@ Sets the maintenance policy for a cluster.
 | `params.projectId` | `string` | Yes | Required. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). |
 | `params.zone` | `string` | Yes | Required. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. |
 | `params.clusterId` | `string` | Yes | Required. The name of the cluster to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.fetchClusterUpgradeInfo()`
 
@@ -592,7 +592,7 @@ Updates the version and/or image type of a specific node pool.
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. |
 | `params.nodePoolId` | `string` | Yes | Deprecated. The name of the node pool to upgrade. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.nodePools.autoscaling()`
 
@@ -604,7 +604,7 @@ Sets the autoscaling settings of a specific node pool.
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. |
 | `params.nodePoolId` | `string` | Yes | Deprecated. The name of the node pool to upgrade. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.nodePools.list()`
 
@@ -638,7 +638,7 @@ Creates a node pool for a cluster.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the parent field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster. This field has been deprecated and replaced by the parent field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.nodePools.delete()`
 
@@ -662,7 +662,7 @@ Rolls back a previously Aborted or Failed NodePool upgrade. This makes no change
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to rollback. This field has been deprecated and replaced by the name field. |
 | `params.nodePoolId` | `string` | Yes | Deprecated. The name of the node pool to rollback. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.nodePools.setManagement()`
 
@@ -674,7 +674,7 @@ Sets the NodeManagement options for a node pool.
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to update. This field has been deprecated and replaced by the name field. |
 | `params.nodePoolId` | `string` | Yes | Deprecated. The name of the node pool to update. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.nodePools.setSize()`
 
@@ -686,7 +686,7 @@ SetNodePoolSizeRequest sets the size of a node pool. The new size will be used f
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. |
 | `params.clusterId` | `string` | Yes | Deprecated. The name of the cluster to update. This field has been deprecated and replaced by the name field. |
 | `params.nodePoolId` | `string` | Yes | Deprecated. The name of the node pool to update. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.zones.clusters.nodePools.fetchNodePoolUpgradeInfo()`
 
@@ -729,7 +729,7 @@ Cancels the specified operation.
 | `params.projectId` | `string` | Yes | Deprecated. The Google Developers Console [project ID or project number](https://{$universe.dns_names.final_documentation_domain}/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. |
 | `params.zone` | `string` | Yes | Deprecated. The name of the Google Compute Engine [zone](https://{$universe.dns_names.final_documentation_domain}/compute/docs/zones#available) in which the operation resides. This field has been deprecated and replaced by the name field. |
 | `params.operationId` | `string` | Yes | Deprecated. The server-assigned `name` of the operation. This field has been deprecated and replaced by the name field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.aggregated`
 
