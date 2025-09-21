@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Functions API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:56 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:02:16 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:12:52 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:12:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:50 GMT
 
 
@@ -49,7 +49,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 ### `projects.locations.functions`
 
@@ -79,7 +79,7 @@ Creates a new function. If a function with the given name already exists in the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The project and location in which the function should be created, specified in the format `projects/*/locations/*` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.patch()`
 
@@ -89,7 +89,7 @@ Updates existing function.
 |---|---|---|---|
 | `params.name` | `string` | Yes | A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*` |
 | `params.updateMask` | `string` | No | Required. The list of fields in `CloudFunction` that have to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.delete()`
 
@@ -106,7 +106,7 @@ Synchronously invokes a deployed Cloud Function. To be used for testing purposes
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the function to be called. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.generateUploadUrl()`
 
@@ -127,7 +127,7 @@ Returns a signed URL for uploading a function source code. For more information 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The project and location in which the Google Cloud Storage signed URL should be generated, specified in the format `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.generateDownloadUrl()`
 
@@ -136,7 +136,7 @@ Returns a signed URL for downloading deployed function source code. The URL is o
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of function for which source code Google Cloud Storage signed URL should be generated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.setIamPolicy()`
 
@@ -145,7 +145,7 @@ Sets the IAM access control policy on the specified function. Replaces any exist
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.getIamPolicy()`
 
@@ -163,4 +163,4 @@ Tests the specified permissions against the IAM access control policy for a func
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
