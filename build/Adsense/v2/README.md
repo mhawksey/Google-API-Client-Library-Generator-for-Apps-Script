@@ -4,8 +4,8 @@ Auto-generated client library for using the **AdSense Management API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:12 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:54 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:55 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:08 GMT
 
 
@@ -114,7 +114,7 @@ Creates an ad unit. This method can be called only by a restricted set of projec
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Ad client to create an ad unit under. Format: accounts/{account}/adclients/{adclient} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.adclients.adunits.patch()`
 
@@ -124,7 +124,7 @@ Updates an ad unit. This method can be called only by a restricted set of projec
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit} |
 | `params.updateMask` | `string` | No | The list of fields to update. If empty, a full update is performed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.adclients.adunits.listLinkedCustomChannels()`
 
@@ -173,7 +173,7 @@ Creates a custom channel. This method can be called only by a restricted set of 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The ad client to create a custom channel under. Format: accounts/{account}/adclients/{adclient} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.adclients.customchannels.patch()`
 
@@ -183,7 +183,7 @@ Updates a custom channel. This method can be called only by a restricted set of 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel} |
 | `params.updateMask` | `string` | No | The list of fields to update. If empty, a full update is performed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.adclients.customchannels.delete()`
 
