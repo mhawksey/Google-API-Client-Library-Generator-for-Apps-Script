@@ -4,8 +4,8 @@ Auto-generated client library for using the **Apps Script API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:03 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:45:21 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:47:04 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:47:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:23 GMT
 
 
@@ -32,7 +32,7 @@ Creates a new, empty script project with no script files and a base manifest fil
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.get()`
 
@@ -58,7 +58,7 @@ Updates the content of the specified script project. This content is stored as t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.scriptId` | `string` | Yes | The script project's Drive ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.deployments`
 
@@ -69,7 +69,7 @@ Creates a deployment of an Apps Script project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.scriptId` | `string` | Yes | The script project's Drive ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.deployments.update()`
 
@@ -79,7 +79,7 @@ Updates a deployment of an Apps Script project.
 |---|---|---|---|
 | `params.scriptId` | `string` | Yes | The script project's Drive ID. |
 | `params.deploymentId` | `string` | Yes | The deployment ID for this deployment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.deployments.delete()`
 
@@ -118,7 +118,7 @@ Creates a new immutable version using the current code, with a unique version nu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.scriptId` | `string` | Yes | The script project's Drive ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.versions.get()`
 
@@ -182,4 +182,4 @@ List information about processes made by or on behalf of a user, such as process
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.scriptId` | `string` | Yes | The script ID of the script to be executed. Find the script ID on the **Project settings** page under "IDs." As multiple executable APIs can be deployed in new IDE for same script, this field should be populated with DeploymentID generated while deploying in new IDE instead of script ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
