@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud TPU API (version: v2alpha1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:19 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:53:46 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:49 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:56 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -45,7 +45,7 @@ Generates the Cloud TPU service identity for the project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.operations`
 
@@ -113,7 +113,7 @@ Creates a node.
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
 | `params.nodeId` | `string` | No | The unqualified resource name. |
 | `params.requestId` | `string` | No | Idempotent request UUID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.delete()`
 
@@ -131,7 +131,7 @@ Stops a node. This operation is only available with single TPU nodes.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.start()`
 
@@ -140,7 +140,7 @@ Starts a node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.patch()`
 
@@ -150,7 +150,7 @@ Updates the configurations of a node.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Immutable. The name of the TPU. |
 | `params.updateMask` | `string` | No | Required. Mask of fields from Node to update. Supported fields: [description, tags, labels, metadata, network_config.enable_external_ips]. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.performMaintenance()`
 
@@ -159,7 +159,7 @@ Perform manual maintenance on a node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.getGuestAttributes()`
 
@@ -168,7 +168,7 @@ Retrieves the guest attributes for the node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.simulateMaintenanceEvent()`
 
@@ -177,7 +177,7 @@ Simulates a maintenance event.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.queuedResources`
 
@@ -208,7 +208,7 @@ Creates a QueuedResource TPU instance.
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
 | `params.queuedResourceId` | `string` | No | The unqualified resource name. Should follow the `^[A-Za-z0-9_.~+%-]+$` regex format. |
 | `params.requestId` | `string` | No | Idempotent request UUID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queuedResources.delete()`
 
@@ -227,7 +227,7 @@ Resets a QueuedResource TPU instance
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the queued resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queuedResources.performMaintenanceQueuedResource()`
 
@@ -236,7 +236,7 @@ Perform manual maintenance on specific nodes of a QueuedResource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the QueuedResource which holds the nodes to perform maintenance on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.acceleratorTypes`
 
