@@ -4,8 +4,8 @@ Auto-generated client library for using the **Binary Authorization API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:44 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:54:38 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:09 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:33 GMT
 
 
@@ -31,7 +31,7 @@ Creates or updates a project's policy, and returns a copy of the new policy. A p
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name, in the format `projects/*/policy`. There is at most one policy per project. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.attestors`
 
@@ -42,7 +42,7 @@ Returns whether the given `Attestation` for the given image URI was signed by th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.attestor` | `string` | Yes | Required. The resource name of the Attestor of the occurrence, in the format `projects/*/attestors/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.attestors.create()`
 
@@ -52,7 +52,7 @@ Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND i
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of this attestor. |
 | `params.attestorId` | `string` | No | Required. The attestors ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.attestors.get()`
 
@@ -69,7 +69,7 @@ Updates an attestor. Returns NOT_FOUND if the attestor does not exist.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name, in the format: `projects/*/attestors/*`. This field may not be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.attestors.list()`
 
@@ -96,7 +96,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.attestors.getIamPolicy()`
 
@@ -114,7 +114,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.policy`
 
@@ -125,7 +125,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.policy.getIamPolicy()`
 
@@ -143,7 +143,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `systempolicy`
 
