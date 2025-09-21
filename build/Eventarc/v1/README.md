@@ -4,8 +4,8 @@ Auto-generated client library for using the **Eventarc API (version: v1)** in Go
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:58 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:53 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:28 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:49 GMT
 
 
@@ -34,7 +34,7 @@ Update a single GoogleChannelConfig
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the config. Must be in the format of, `projects/{project}/locations/{location}/googleChannelConfig`. In API responses, the config name always includes the projectID, regardless of whether the projectID or projectNumber was provided. |
 | `params.updateMask` | `string` | No | The fields to be updated; only fields explicitly provided are updated. If no field mask is provided, all provided fields in the request are updated. To update all fields, provide a field mask of "*". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.list()`
 
@@ -46,7 +46,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -92,7 +92,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.triggers`
 
@@ -125,7 +125,7 @@ Create a new trigger in a particular project and location.
 | `params.parent` | `string` | Yes | Required. The parent collection in which to add this trigger. |
 | `params.triggerId` | `string` | No | Required. The user-provided ID to be assigned to the trigger. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.triggers.patch()`
 
@@ -137,7 +137,7 @@ Update a single trigger.
 | `params.updateMask` | `string` | No | The fields to be updated; only fields explicitly provided are updated. If no field mask is provided, all provided fields in the request are updated. To update all fields, provide a field mask of "*". |
 | `params.allowMissing` | `boolean` | No | If set to true, and the trigger is not found, a new trigger will be created. In this situation, `update_mask` is ignored. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.triggers.delete()`
 
@@ -157,7 +157,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.triggers.getIamPolicy()`
 
@@ -175,7 +175,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.channels`
 
@@ -207,7 +207,7 @@ Create a new channel in a particular project and location.
 | `params.parent` | `string` | Yes | Required. The parent collection in which to add this channel. |
 | `params.channelId` | `string` | No | Required. The user-provided ID to be assigned to the channel. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.channels.patch()`
 
@@ -218,7 +218,7 @@ Update a single channel.
 | `params.name` | `string` | Yes | Required. The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format. |
 | `params.updateMask` | `string` | No | The fields to be updated; only fields explicitly provided are updated. If no field mask is provided, all provided fields in the request are updated. To update all fields, provide a field mask of "*". |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.channels.delete()`
 
@@ -236,7 +236,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.channels.getIamPolicy()`
 
@@ -254,7 +254,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.providers`
 
@@ -306,7 +306,7 @@ Create a new ChannelConnection in a particular project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent collection in which to add this channel connection. |
 | `params.channelConnectionId` | `string` | No | Required. The user-provided ID to be assigned to the channel connection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.channelConnections.delete()`
 
@@ -323,7 +323,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.channelConnections.getIamPolicy()`
 
@@ -341,7 +341,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.messageBuses`
 
@@ -384,7 +384,7 @@ Create a new MessageBus in a particular project and location.
 | `params.parent` | `string` | Yes | Required. The parent collection in which to add this message bus. |
 | `params.messageBusId` | `string` | No | Required. The user-provided ID to be assigned to the MessageBus. It should match the format `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.messageBuses.patch()`
 
@@ -396,7 +396,7 @@ Update a single message bus.
 | `params.updateMask` | `string` | No | Optional. The fields to be updated; only fields explicitly provided are updated. If no field mask is provided, all provided fields in the request are updated. To update all fields, provide a field mask of "*". |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the MessageBus is not found, a new MessageBus will be created. In this situation, `update_mask` is ignored. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.messageBuses.delete()`
 
@@ -416,7 +416,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.messageBuses.getIamPolicy()`
 
@@ -434,7 +434,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.enrollments`
 
@@ -467,7 +467,7 @@ Create a new Enrollment in a particular project and location.
 | `params.parent` | `string` | Yes | Required. The parent collection in which to add this enrollment. |
 | `params.enrollmentId` | `string` | No | Required. The user-provided ID to be assigned to the Enrollment. It should match the format `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.enrollments.patch()`
 
@@ -479,7 +479,7 @@ Update a single Enrollment.
 | `params.updateMask` | `string` | No | Optional. The fields to be updated; only fields explicitly provided are updated. If no field mask is provided, all provided fields in the request are updated. To update all fields, provide a field mask of "*". |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the Enrollment is not found, a new Enrollment will be created. In this situation, `update_mask` is ignored. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.enrollments.delete()`
 
@@ -499,7 +499,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.enrollments.getIamPolicy()`
 
@@ -517,7 +517,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.pipelines`
 
@@ -550,7 +550,7 @@ Create a new Pipeline in a particular project and location.
 | `params.parent` | `string` | Yes | Required. The parent collection in which to add this pipeline. |
 | `params.pipelineId` | `string` | No | Required. The user-provided ID to be assigned to the Pipeline. It should match the format `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.pipelines.patch()`
 
@@ -562,7 +562,7 @@ Update a single pipeline.
 | `params.updateMask` | `string` | No | Optional. The fields to be updated; only fields explicitly provided are updated. If no field mask is provided, all provided fields in the request are updated. To update all fields, provide a field mask of "*". |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the Pipeline is not found, a new Pipeline will be created. In this situation, `update_mask` is ignored. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.pipelines.delete()`
 
@@ -582,7 +582,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.pipelines.getIamPolicy()`
 
@@ -600,7 +600,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.googleApiSources`
 
@@ -633,7 +633,7 @@ Create a new GoogleApiSource in a particular project and location.
 | `params.parent` | `string` | Yes | Required. The parent collection in which to add this google api source. |
 | `params.googleApiSourceId` | `string` | No | Required. The user-provided ID to be assigned to the GoogleApiSource. It should match the format `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.googleApiSources.patch()`
 
@@ -645,7 +645,7 @@ Update a single GoogleApiSource.
 | `params.updateMask` | `string` | No | Optional. The fields to be updated; only fields explicitly provided are updated. If no field mask is provided, all provided fields in the request are updated. To update all fields, provide a field mask of "*". |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the GoogleApiSource is not found, a new GoogleApiSource will be created. In this situation, `update_mask` is ignored. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.googleApiSources.delete()`
 
@@ -665,7 +665,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.googleApiSources.getIamPolicy()`
 
@@ -683,7 +683,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.kafkaSources`
 
@@ -694,7 +694,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.kafkaSources.getIamPolicy()`
 
@@ -712,4 +712,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
