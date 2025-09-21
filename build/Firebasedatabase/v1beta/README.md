@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Realtime Database Managem
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:29 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:15:41 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:10 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:24 GMT
 
 
@@ -29,7 +29,7 @@ Requests that a new DatabaseInstance be created. The state of a successfully cre
 | `params.parent` | `string` | Yes | Required. The parent project for which to create a database instance, in the form: `projects/{project-number}/locations/{location-id}`. |
 | `params.databaseId` | `string` | No | The globally unique identifier of the database instance. |
 | `params.validateOnly` | `boolean` | No | When set to true, the request will be validated but not submitted. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.get()`
 
@@ -65,7 +65,7 @@ Restores a DatabaseInstance that was previously marked to be deleted. After the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.disable()`
 
@@ -74,7 +74,7 @@ Disables a DatabaseInstance. The database can be re-enabled later using Reenable
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.reenable()`
 
@@ -83,4 +83,4 @@ Enables a DatabaseInstance. The database must have been disabled previously usin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
