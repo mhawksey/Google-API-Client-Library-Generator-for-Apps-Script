@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Forms API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:36:01 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:21:59 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:55 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:04 GMT
 
 
@@ -23,7 +23,7 @@ Create a new form using the title given in the provided form message in the requ
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.unpublished` | `boolean` | No | Optional. Whether the form is unpublished. If set to `true`, the form doesn't accept responses. If set to `false` or unset, the form is published and accepts responses. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forms.get()`
 
@@ -40,7 +40,7 @@ Change the form with a batch of updates.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.formId` | `string` | Yes | Required. The form ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forms.setPublishSettings()`
 
@@ -49,7 +49,7 @@ Updates the publish settings of a form. Legacy forms aren't supported because th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.formId` | `string` | Yes | Required. The ID of the form. You can get the id from Form.form_id field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `forms.responses`
 
@@ -82,7 +82,7 @@ Create a new watch. If a watch ID is provided, it must be unused. For each invok
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.formId` | `string` | Yes | Required. ID of the Form to watch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forms.watches.list()`
 
@@ -100,7 +100,7 @@ Renew an existing watch for seven days. The state of the watch after renewal is 
 |---|---|---|---|
 | `params.formId` | `string` | Yes | Required. The ID of the Form. |
 | `params.watchId` | `string` | Yes | Required. The ID of the Watch to renew. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forms.watches.delete()`
 
