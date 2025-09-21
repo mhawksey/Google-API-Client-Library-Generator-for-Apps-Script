@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Firestore API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:52 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:21:44 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:43 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:43 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:53 GMT
 
 
@@ -25,7 +25,7 @@ Exports a copy of all or a subset of documents from Google Cloud Firestore to an
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.importDocuments()`
 
@@ -34,7 +34,7 @@ Imports documents into Google Cloud Firestore. Existing documents with the same 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.databases.indexes`
 
@@ -45,7 +45,7 @@ Creates the specified index. A newly created index's initial state is `CREATING`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the database this index will apply to. For example: `projects/{project_id}/databases/{database_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.indexes.list()`
 
@@ -130,7 +130,7 @@ Updates or inserts a document.
 | `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
 | `params.currentDocument.exists` | `boolean` | No | When set to `true`, the target document must exist. When set to `false`, the target document must not exist. |
 | `params.currentDocument.updateTime` | `string` | No | When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.delete()`
 
@@ -149,7 +149,7 @@ Gets multiple documents. Documents returned by this method are not guaranteed to
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.beginTransaction()`
 
@@ -158,7 +158,7 @@ Starts a new transaction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.commit()`
 
@@ -167,7 +167,7 @@ Commits a transaction, while optionally updating documents.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.rollback()`
 
@@ -176,7 +176,7 @@ Rolls back a transaction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.runQuery()`
 
@@ -185,7 +185,7 @@ Runs a query.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.runAggregationQuery()`
 
@@ -196,7 +196,7 @@ Runs an aggregation query. Rather than producing Document results like Firestore
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.partitionQuery()`
 
@@ -205,7 +205,7 @@ Partitions a query by returning partition cursors that can be used to run the qu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not supported; only database resource names can be specified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.write()`
 
@@ -214,7 +214,7 @@ Streams batches of document updates and deletes, in order. This method is only a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. This is only required in the first message. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.listen()`
 
@@ -223,7 +223,7 @@ Listens to changes. This method is only available via gRPC or WebChannel (not RE
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.listCollectionIds()`
 
@@ -232,7 +232,7 @@ Lists all the collection IDs underneath a document.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent document. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.batchWrite()`
 
@@ -241,7 +241,7 @@ Applies a batch of write operations. The BatchWrite method does not apply the wr
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.createDocument()`
 
@@ -253,4 +253,4 @@ Creates a new document.
 | `params.collectionId` | `string` | Yes | Required. The collection ID, relative to `parent`, to list. For example: `chatrooms`. |
 | `params.documentId` | `string` | No | The client-assigned document ID to use for this document. Optional. If not specified, an ID will be assigned by the service. |
 | `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
