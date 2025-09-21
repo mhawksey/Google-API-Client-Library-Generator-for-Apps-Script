@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Storage JSON API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:34 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:47:20 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:04 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:09 GMT
 
 
@@ -23,7 +23,7 @@ Creates an Anywhere Cache instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of the parent bucket. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `anywhereCaches.update()`
 
@@ -33,7 +33,7 @@ Updates the config(ttl and admissionPolicy) of an Anywhere Cache instance.
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of the parent bucket. |
 | `params.anywhereCacheId` | `string` | Yes | The ID of requested Anywhere Cache instance. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `anywhereCaches.get()`
 
@@ -111,7 +111,7 @@ Creates a new ACL entry on the specified bucket.
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of a bucket. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bucketAccessControls.list()`
 
@@ -131,7 +131,7 @@ Patches an ACL entry on the specified bucket.
 | `params.bucket` | `string` | Yes | Name of a bucket. |
 | `params.entity` | `string` | Yes | The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bucketAccessControls.update()`
 
@@ -142,7 +142,7 @@ Updates an ACL entry on the specified bucket.
 | `params.bucket` | `string` | Yes | Name of a bucket. |
 | `params.entity` | `string` | Yes | The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `buckets`
 
@@ -175,7 +175,7 @@ Initiates a long-running Relocate Bucket operation on the specified bucket.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of the bucket to be moved. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buckets.get()`
 
@@ -222,7 +222,7 @@ Creates a new bucket.
 | `params.projection` | `string` | No | Set of properties to return. Defaults to noAcl, unless the bucket resource specifies acl or defaultObjectAcl properties, when it defaults to full. |
 | `params.userProject` | `string` | No | The project to be billed for this request. |
 | `params.enableObjectRetention` | `boolean` | No | When set to true, object retention is enabled for this bucket. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buckets.list()`
 
@@ -261,7 +261,7 @@ Patches a bucket. Changes to the bucket will be readable immediately after writi
 | `params.predefinedDefaultObjectAcl` | `string` | No | Apply a predefined set of default object access controls to this bucket. |
 | `params.projection` | `string` | No | Set of properties to return. Defaults to full. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buckets.setIamPolicy()`
 
@@ -271,7 +271,7 @@ Updates an IAM policy for the specified bucket.
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of a bucket. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buckets.testIamPermissions()`
 
@@ -296,7 +296,7 @@ Updates a bucket. Changes to the bucket will be readable immediately after writi
 | `params.predefinedDefaultObjectAcl` | `string` | No | Apply a predefined set of default object access controls to this bucket. |
 | `params.projection` | `string` | No | Set of properties to return. Defaults to full. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `operations`
 
@@ -326,7 +326,7 @@ Starts asynchronous advancement of the relocate bucket operation in the case of 
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of the bucket to advance the relocate for. |
 | `params.operationId` | `string` | Yes | ID of the operation resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `operations.list()`
 
@@ -345,7 +345,9 @@ Lists operations that match the specified filter in the request.
 
 Stop watching resources through this channel
 
-| `params.resource` | `object` | Yes | The request body. |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `defaultObjectAccessControls`
 
@@ -377,7 +379,7 @@ Creates a new default object ACL entry on the specified bucket.
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of a bucket. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `defaultObjectAccessControls.list()`
 
@@ -399,7 +401,7 @@ Patches a default object ACL entry on the specified bucket.
 | `params.bucket` | `string` | Yes | Name of a bucket. |
 | `params.entity` | `string` | Yes | The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `defaultObjectAccessControls.update()`
 
@@ -410,7 +412,7 @@ Updates a default object ACL entry on the specified bucket.
 | `params.bucket` | `string` | Yes | Name of a bucket. |
 | `params.entity` | `string` | Yes | The entity holding the permission. Can be user-userId, user-emailAddress, group-groupId, group-emailAddress, allUsers, or allAuthenticatedUsers. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `folders`
 
@@ -444,7 +446,7 @@ Creates a new folder. Only applicable to buckets with hierarchical namespace ena
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of the bucket in which the folder resides. |
 | `params.recursive` | `boolean` | No | If true, any parent folder which doesn't exist will be created automatically. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.list()`
 
@@ -515,7 +517,7 @@ Creates a new managed folder.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of the bucket containing the managed folder. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedFolders.list()`
 
@@ -537,7 +539,7 @@ Updates an IAM policy for the specified managed folder.
 | `params.bucket` | `string` | Yes | Name of the bucket containing the managed folder. |
 | `params.managedFolder` | `string` | Yes | The managed folder name/path. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedFolders.testIamPermissions()`
 
@@ -580,7 +582,7 @@ Creates a notification subscription for a given bucket.
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | The parent bucket of the notification. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `notifications.list()`
 
@@ -627,7 +629,7 @@ Creates a new ACL entry on the specified object.
 | `params.generation` | `string` | No | If present, selects a specific revision of this object (as opposed to the latest version, the default). |
 | `params.object` | `string` | Yes | Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objectAccessControls.list()`
 
@@ -651,7 +653,7 @@ Patches an ACL entry on the specified object.
 | `params.generation` | `string` | No | If present, selects a specific revision of this object (as opposed to the latest version, the default). |
 | `params.object` | `string` | Yes | Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objectAccessControls.update()`
 
@@ -664,7 +666,7 @@ Updates an ACL entry on the specified object.
 | `params.generation` | `string` | No | If present, selects a specific revision of this object (as opposed to the latest version, the default). |
 | `params.object` | `string` | Yes | Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `objects`
 
@@ -681,7 +683,7 @@ Concatenates a list of existing objects into a new object in the same bucket.
 | `params.ifMetagenerationMatch` | `string` | No | Makes the operation conditional on whether the object's current metageneration matches the given value. |
 | `params.kmsKeyName` | `string` | No | Resource name of the Cloud KMS key, of the form projects/my-project/locations/global/keyRings/my-kr/cryptoKeys/my-key, that will be used to encrypt the object. Overrides the object metadata's kms_key_name value, if any. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objects.copy()`
 
@@ -706,7 +708,7 @@ Copies a source object to a destination object. Optionally overrides metadata.
 | `params.sourceGeneration` | `string` | No | If present, selects a specific revision of the source object (as opposed to the latest version, the default). |
 | `params.sourceObject` | `string` | Yes | Name of the source object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objects.delete()`
 
@@ -769,7 +771,7 @@ Stores a new object and metadata.
 | `params.predefinedAcl` | `string` | No | Apply a predefined set of access controls to this object. |
 | `params.projection` | `string` | No | Set of properties to return. Defaults to noAcl, unless the object resource specifies the acl property, when it defaults to full. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objects.list()`
 
@@ -810,7 +812,7 @@ Patches an object's metadata.
 | `params.predefinedAcl` | `string` | No | Apply a predefined set of access controls to this object. |
 | `params.projection` | `string` | No | Set of properties to return. Defaults to full. |
 | `params.userProject` | `string` | No | The project to be billed for this request, for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objects.rewrite()`
 
@@ -837,7 +839,7 @@ Rewrites a source object to a destination object. Optionally overrides metadata.
 | `params.sourceGeneration` | `string` | No | If present, selects a specific revision of the source object (as opposed to the latest version, the default). |
 | `params.sourceObject` | `string` | Yes | Name of the source object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objects.move()`
 
@@ -869,7 +871,7 @@ Updates an IAM policy for the specified object.
 | `params.generation` | `string` | No | If present, selects a specific revision of this object (as opposed to the latest version, the default). |
 | `params.object` | `string` | Yes | Name of the object. For information about how to URL encode object names to be path safe, see [Encoding URI Path Parts](https://cloud.google.com/storage/docs/request-endpoints#encoding). |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objects.testIamPermissions()`
 
@@ -900,7 +902,7 @@ Updates an object's metadata.
 | `params.predefinedAcl` | `string` | No | Apply a predefined set of access controls to this object. |
 | `params.projection` | `string` | No | Set of properties to return. Defaults to full. |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objects.watchAll()`
 
@@ -919,7 +921,7 @@ Watch for changes on all objects in a bucket.
 | `params.startOffset` | `string` | No | Filter results to objects whose names are lexicographically equal to or after startOffset. If endOffset is also set, the objects listed will have names between startOffset (inclusive) and endOffset (exclusive). |
 | `params.userProject` | `string` | No | The project to be billed for this request. Required for Requester Pays buckets. |
 | `params.versions` | `boolean` | No | If true, lists all versions of an object as distinct results. The default is false. For more information, see [Object Versioning](https://cloud.google.com/storage/docs/object-versioning). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `objects.restore()`
 
@@ -946,7 +948,7 @@ Initiates a long-running bulk restore operation on the specified bucket.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Name of the bucket in which the object resides. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
 
@@ -1004,7 +1006,7 @@ Updates the state of an HMAC key. See the [HMAC Key resource descriptor](https:/
 | `params.accessId` | `string` | Yes | Name of the HMAC key being updated. |
 | `params.projectId` | `string` | Yes | Project ID owning the service account of the updated key. |
 | `params.userProject` | `string` | No | The project to be billed for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.serviceAccount`
 
