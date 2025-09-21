@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Verifications API (ver
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:57 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:38 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:36:18 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:36:18 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:43 GMT
 
 
@@ -31,7 +31,7 @@ Reports all eligible verification options for a location in a specific language.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The location to verify. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.verify()`
 
@@ -40,7 +40,7 @@ Starts the verification process for a location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the location to verify. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations.verifications`
 
@@ -51,7 +51,7 @@ Completes a `PENDING` verification. It is only necessary for non `AUTO` verifica
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the verification to complete. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.verifications.list()`
 
@@ -71,4 +71,4 @@ Generate a token for the provided location data to verify the location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
