@@ -4,8 +4,8 @@ Auto-generated client library for using the **AdSense Platform API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:51:01 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:03:01 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:03:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:15 GMT
 
 
@@ -52,7 +52,7 @@ Creates a sub-account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Platform to create an account for. Format: platforms/{platform} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `platforms.accounts.close()`
 
@@ -61,7 +61,7 @@ Closes a sub-account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Account to close. Format: platforms/{platform}/accounts/{account_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `platforms.accounts.events`
 
@@ -72,7 +72,7 @@ Creates an account event.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Account to log events about. Format: platforms/{platform}/accounts/{account} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `platforms.accounts.sites`
 
@@ -101,7 +101,7 @@ Creates a site for a specified account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Account to create site. Format: platforms/{platform}/accounts/{account_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `platforms.accounts.sites.requestReview()`
 
