@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: datasources
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:43:26 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:31:54 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:34:28 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:34:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:33 GMT
 
 
@@ -43,7 +43,7 @@ Creates the new data source configuration for the given account. This method alw
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account where this data source will be created. Format: `accounts/{account}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.dataSources.patch()`
 
@@ -53,7 +53,7 @@ Updates the existing data source configuration. The fields that are set in the u
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}` |
 | `params.updateMask` | `string` | No | Required. The list of data source fields to be updated. Fields specified in the update mask without a value specified in the body will be deleted from the data source. Providing special "*" value for full data source replacement is not supported. For example, If you insert `updateMask=displayName` in the request, it will only update the `displayName` leaving all other fields untouched. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.dataSources.delete()`
 
@@ -70,7 +70,7 @@ Performs the data fetch immediately (even outside fetch schedule) on a data sour
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the data source resource to fetch. Format: `accounts/{account}/dataSources/{datasource}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.dataSources.fileUploads`
 
