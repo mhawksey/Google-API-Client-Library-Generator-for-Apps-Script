@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Datastore API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:12:08 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:26 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:33 GMT
 
 
@@ -23,7 +23,7 @@ Exports a copy of all or a subset of entities from Google Cloud Datastore to ano
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Project ID against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.import()`
 
@@ -32,4 +32,4 @@ Imports entities into Google Cloud Datastore. Existing entities with the same ke
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Project ID against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
