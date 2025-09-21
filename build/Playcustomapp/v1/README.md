@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Custom App Publishing 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:46:20 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:36:00 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:43:58 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:43:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:17 GMT
 
 
@@ -25,4 +25,4 @@ Creates a new custom app.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.account` | `string` | Yes | Developer account ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
