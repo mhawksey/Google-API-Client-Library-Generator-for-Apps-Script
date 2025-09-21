@@ -4,8 +4,8 @@ Auto-generated client library for using the **Container Analysis API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:25 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:05:16 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:15:14 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:15:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:13 GMT
 
 
@@ -53,7 +53,7 @@ Creates a new occurrence.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.occurrences.batchCreate()`
 
@@ -62,7 +62,7 @@ Creates new occurrences in batch.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences are to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.occurrences.patch()`
 
@@ -72,7 +72,7 @@ Updates the specified occurrence.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
 | `params.updateMask` | `string` | No | The fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.occurrences.getNotes()`
 
@@ -99,7 +99,7 @@ Sets the access control policy on the specified note or occurrence. Requires `co
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.occurrences.getIamPolicy()`
 
@@ -108,7 +108,7 @@ Gets the access control policy for a note or an occurrence resource. Requires `c
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.occurrences.testIamPermissions()`
 
@@ -117,7 +117,7 @@ Returns the permissions that a caller has on the specified note or occurrence. R
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations`
 
@@ -158,7 +158,7 @@ Creates a new occurrence.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrence is to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.occurrences.batchCreate()`
 
@@ -167,7 +167,7 @@ Creates new occurrences in batch.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the occurrences are to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.occurrences.patch()`
 
@@ -177,7 +177,7 @@ Updates the specified occurrence.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the occurrence in the form of `projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]`. |
 | `params.updateMask` | `string` | No | The fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.occurrences.getNotes()`
 
@@ -204,7 +204,7 @@ Sets the access control policy on the specified note or occurrence. Requires `co
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.occurrences.getIamPolicy()`
 
@@ -213,7 +213,7 @@ Gets the access control policy for a note or an occurrence resource. Requires `c
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.occurrences.testIamPermissions()`
 
@@ -222,7 +222,7 @@ Returns the permissions that a caller has on the specified note or occurrence. R
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.notes`
 
@@ -262,7 +262,7 @@ Creates a new note.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be created. |
 | `params.noteId` | `string` | No | Required. The ID to use for this note. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notes.batchCreate()`
 
@@ -271,7 +271,7 @@ Creates new notes in batch.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notes.patch()`
 
@@ -281,7 +281,7 @@ Updates the specified note.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
 | `params.updateMask` | `string` | No | The fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notes.setIamPolicy()`
 
@@ -290,7 +290,7 @@ Sets the access control policy on the specified note or occurrence. Requires `co
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notes.getIamPolicy()`
 
@@ -299,7 +299,7 @@ Gets the access control policy for a note or an occurrence resource. Requires `c
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notes.testIamPermissions()`
 
@@ -308,7 +308,7 @@ Returns the permissions that a caller has on the specified note or occurrence. R
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.notes.occurrences`
 
@@ -332,7 +332,7 @@ Gets a summary of the packages within a given resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource to get a packages summary for in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.resources.exportSBOM()`
 
@@ -341,7 +341,7 @@ Generates an SBOM and other dependency information for the given resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.notes`
 
@@ -381,7 +381,7 @@ Creates a new note.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the note is to be created. |
 | `params.noteId` | `string` | No | Required. The ID to use for this note. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.notes.batchCreate()`
 
@@ -390,7 +390,7 @@ Creates new notes in batch.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in the form of `projects/[PROJECT_ID]`, under which the notes are to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.notes.patch()`
 
@@ -400,7 +400,7 @@ Updates the specified note.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the note in the form of `projects/[PROVIDER_ID]/notes/[NOTE_ID]`. |
 | `params.updateMask` | `string` | No | The fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.notes.setIamPolicy()`
 
@@ -409,7 +409,7 @@ Sets the access control policy on the specified note or occurrence. Requires `co
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.notes.getIamPolicy()`
 
@@ -418,7 +418,7 @@ Gets the access control policy for a note or an occurrence resource. Requires `c
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.notes.testIamPermissions()`
 
@@ -427,7 +427,7 @@ Returns the permissions that a caller has on the specified note or occurrence. R
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.notes.occurrences`
 
@@ -451,7 +451,7 @@ Gets a summary of the packages within a given resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource to get a packages summary for in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.resources.exportSBOM()`
 
@@ -460,4 +460,4 @@ Generates an SBOM and other dependency information for the given resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource in the form of `projects/[PROJECT_ID]/resources/[RESOURCE_URL]`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
