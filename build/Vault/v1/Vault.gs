@@ -12,114 +12,519 @@ class Vault {
    * @param {object} [config.backoff] - Configuration for exponential backoff.
    */
   constructor(config = {}) {
-    // "Private" properties using the underscore convention
     this._token = config.token || ScriptApp.getOAuthToken();
     this._backoffConfig = Object.assign({ retries: 3, baseDelay: 1000 }, config.backoff);
     this._rootUrl = 'https://vault.googleapis.com/';
     this._servicePath = '';
 
-    // --- Public Interface Initialization ---
 
     this.operations = {};
-    this.operations.list = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-    this.operations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-    this.operations.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
-    this.operations.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - The standard list filter.
+     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
+     * @param {integer} apiParams.pageSize - The standard list page size.
+     * @param {string} apiParams.pageToken - The standard list page token.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.matters = {};
-    this.matters.create = (params) => this._makeRequest('v1/matters', 'POST', params);
-    this.matters.update = (params) => this._makeRequest('v1/matters/{matterId}', 'PUT', params);
-    this.matters.close = (params) => this._makeRequest('v1/matters/{matterId}:close', 'POST', params);
-    this.matters.reopen = (params) => this._makeRequest('v1/matters/{matterId}:reopen', 'POST', params);
-    this.matters.delete = (params) => this._makeRequest('v1/matters/{matterId}', 'DELETE', params);
-    this.matters.undelete = (params) => this._makeRequest('v1/matters/{matterId}:undelete', 'POST', params);
-    this.matters.get = (params) => this._makeRequest('v1/matters/{matterId}', 'GET', params);
-    this.matters.list = (params) => this._makeRequest('v1/matters', 'GET', params);
-    this.matters.addPermissions = (params) => this._makeRequest('v1/matters/{matterId}:addPermissions', 'POST', params);
-    this.matters.removePermissions = (params) => this._makeRequest('v1/matters/{matterId}:removePermissions', 'POST', params);
-    this.matters.count = (params) => this._makeRequest('v1/matters/{matterId}:count', 'POST', params);
+
+    /**
+     * Creates a matter with the given name and description. The initial state is open, and the owner is the method caller. Returns the created matter with default view.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the specified matter. This updates only the name and description of the matter, identified by matter ID. Changes to any other fields are ignored. Returns the default view of the matter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Closes the specified matter. Returns the matter with updated state.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:close', 'POST', apiParams, clientConfig);
+
+    /**
+     * Reopens the specified matter. Returns the matter with updated state.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.reopen = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:reopen', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified matter. Returns the matter with updated state.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Undeletes the specified matter. Returns the matter with updated state.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:undelete', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the specified matter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {string} apiParams.view - Specifies how much information about the matter to return in the response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists matters the requestor has access to.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The number of matters to return in the response. Default and maximum are 100.
+     * @param {string} apiParams.pageToken - The pagination token as returned in the response.
+     * @param {string} apiParams.state - If set, lists only matters with the specified state. The default lists matters of all states.
+     * @param {string} apiParams.view - Specifies how much information about the matter to return in response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters', 'GET', apiParams, clientConfig);
+
+    /**
+     * Adds an account as a matter collaborator.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.addPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:addPermissions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Removes an account as a matter collaborator.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.removePermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:removePermissions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Counts the accounts processed by the specified query.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.count = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:count', 'POST', apiParams, clientConfig);
 
     this.matters.exports = {};
-    this.matters.exports.create = (params) => this._makeRequest('v1/matters/{matterId}/exports', 'POST', params);
-    this.matters.exports.delete = (params) => this._makeRequest('v1/matters/{matterId}/exports/{exportId}', 'DELETE', params);
-    this.matters.exports.get = (params) => this._makeRequest('v1/matters/{matterId}/exports/{exportId}', 'GET', params);
-    this.matters.exports.list = (params) => this._makeRequest('v1/matters/{matterId}/exports', 'GET', params);
+
+    /**
+     * Creates an export.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.exports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an export.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.exportId - (Required) The export ID.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.exports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports/{exportId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets an export.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.exportId - (Required) The export ID.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.exports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports/{exportId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists details about the exports in the specified matter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {integer} apiParams.pageSize - The number of exports to return in the response.
+     * @param {string} apiParams.pageToken - The pagination token as returned in the response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.exports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports', 'GET', apiParams, clientConfig);
 
     this.matters.holds = {};
-    this.matters.holds.create = (params) => this._makeRequest('v1/matters/{matterId}/holds', 'POST', params);
-    this.matters.holds.update = (params) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'PUT', params);
-    this.matters.holds.delete = (params) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'DELETE', params);
-    this.matters.holds.get = (params) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'GET', params);
-    this.matters.holds.list = (params) => this._makeRequest('v1/matters/{matterId}/holds', 'GET', params);
-    this.matters.holds.addHeldAccounts = (params) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}:addHeldAccounts', 'POST', params);
-    this.matters.holds.removeHeldAccounts = (params) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts', 'POST', params);
+
+    /**
+     * Creates a hold in the specified matter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the scope (organizational unit or accounts) and query parameters of a hold. You cannot add accounts to a hold that covers an organizational unit, nor can you add organizational units to a hold that covers individual accounts. If you try, the unsupported values are ignored.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.holdId - (Required) The ID of the hold.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Removes the specified hold and releases the accounts or organizational unit covered by the hold. If the data is not preserved by another hold or retention rule, it might be purged.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.holdId - (Required) The hold ID.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets the specified hold.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.holdId - (Required) The hold ID.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {string} apiParams.view - The amount of detail to return for a hold.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the holds in a matter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {integer} apiParams.pageSize - The number of holds to return in the response, between 0 and 100 inclusive. Leaving this empty, or as 0, is the same as **page_size** = 100.
+     * @param {string} apiParams.pageToken - The pagination token as returned in the response. An empty token means start from the beginning.
+     * @param {string} apiParams.view - The amount of detail to return for a hold.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds', 'GET', apiParams, clientConfig);
+
+    /**
+     * Adds accounts to a hold. Returns a list of accounts that have been successfully added. Accounts can be added only to an existing account-based hold.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.holdId - (Required) The hold ID.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.addHeldAccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}:addHeldAccounts', 'POST', apiParams, clientConfig);
+
+    /**
+     * Removes the specified accounts from a hold. Returns a list of statuses in the same order as the request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.holdId - (Required) The hold ID.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.removeHeldAccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts', 'POST', apiParams, clientConfig);
 
     this.matters.holds.accounts = {};
-    this.matters.holds.accounts.create = (params) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}/accounts', 'POST', params);
-    this.matters.holds.accounts.delete = (params) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}', 'DELETE', params);
-    this.matters.holds.accounts.list = (params) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}/accounts', 'GET', params);
+
+    /**
+     * Adds an account to a hold. Accounts can be added only to a hold that does not have an organizational unit set. If you try to add an account to an organizational unit-based hold, an error is returned.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.holdId - (Required) The hold ID.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}/accounts', 'POST', apiParams, clientConfig);
+
+    /**
+     * Removes an account from a hold.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The ID of the account to remove from the hold.
+     * @param {string} apiParams.holdId - (Required) The hold ID.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists the accounts covered by a hold. This can list only individually-specified accounts covered by the hold. If the hold covers an organizational unit, use the [Admin SDK](https://developers.google.com/admin-sdk/). to list the members of the organizational unit on hold.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.holdId - (Required) The hold ID.
+     * @param {string} apiParams.matterId - (Required) The matter ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.holds.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}/accounts', 'GET', apiParams, clientConfig);
 
     this.matters.savedQueries = {};
-    this.matters.savedQueries.create = (params) => this._makeRequest('v1/matters/{matterId}/savedQueries', 'POST', params);
-    this.matters.savedQueries.delete = (params) => this._makeRequest('v1/matters/{matterId}/savedQueries/{savedQueryId}', 'DELETE', params);
-    this.matters.savedQueries.get = (params) => this._makeRequest('v1/matters/{matterId}/savedQueries/{savedQueryId}', 'GET', params);
-    this.matters.savedQueries.list = (params) => this._makeRequest('v1/matters/{matterId}/savedQueries', 'GET', params);
+
+    /**
+     * Creates a saved query.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The ID of the matter to create the saved query in.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.savedQueries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified saved query.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The ID of the matter to delete the saved query from.
+     * @param {string} apiParams.savedQueryId - (Required) ID of the saved query to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.savedQueries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries/{savedQueryId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Retrieves the specified saved query.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The ID of the matter to get the saved query from.
+     * @param {string} apiParams.savedQueryId - (Required) ID of the saved query to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.savedQueries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries/{savedQueryId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the saved queries in a matter.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.matterId - (Required) The ID of the matter to get the saved queries for.
+     * @param {integer} apiParams.pageSize - The maximum number of saved queries to return.
+     * @param {string} apiParams.pageToken - The pagination token as returned in the previous response. An empty token means start from the beginning.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.matters.savedQueries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries', 'GET', apiParams, clientConfig);
   }
 
-  /**
-   * @private Builds the full request URL and options object.
-   */
-  _buildRequestDetails(path, httpMethod, params) {
-    let url = this._rootUrl + this._servicePath + path;
-    const remainingParams = { ...params };
-    // Fix: Correctly handle {+param} style parameters and other potential special chars.
+/**
+ * @private Builds the full request URL and options object for a request.
+ */
+_buildRequestDetails(path, httpMethod, apiParams, clientConfig = {}) {
+    let url;
+    if (path.startsWith('/upload/')) {
+        url = 'https://www.googleapis.com' + path;
+    } else {
+        url = this._rootUrl + this._servicePath + path;
+    }
+
+    const remainingParams = { ...apiParams };
     const pathParams = url.match(/{[^{}]+}/g) || [];
 
     pathParams.forEach(placeholder => {
-      const isPlus = placeholder.startsWith('{+');
-      const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
-      if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        url = url.replace(placeholder, remainingParams[paramName]);
-        delete remainingParams[paramName];
-      }
+        const isPlus = placeholder.startsWith('{+');
+        const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
+        if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
+            url = url.replace(placeholder, remainingParams[paramName]);
+            delete remainingParams[paramName];
+        }
     });
 
+    const options = {
+        method: httpMethod,
+        headers: {
+            'Authorization': 'Bearer ' + this._token,
+            ...(clientConfig.headers || {}),
+        },
+        muteHttpExceptions: true,
+    };
+
+    if (apiParams && apiParams.media && apiParams.media.body) {
+        let mediaBlob;
+        // Check if the body is already a blob by "duck typing" for the getBytes method.
+        if (apiParams.media.body.getBytes && typeof apiParams.media.body.getBytes === 'function') {
+            mediaBlob = apiParams.media.body;
+        } else {
+            // If it's not a blob (e.g., a string or byte array), create one.
+            mediaBlob = Utilities.newBlob(apiParams.media.body);
+        }
+
+        const hasMetadata = apiParams.requestBody && Object.keys(apiParams.requestBody).length > 0;
+
+        if (hasMetadata) {
+            // ** Multipart Upload (Media + Metadata) **
+            remainingParams.uploadType = 'multipart';
+            
+            const boundary = '----' + Utilities.getUuid();
+            const metadata = apiParams.requestBody;
+
+            let requestData = '--' + boundary + '\r\n';
+            requestData += 'Content-Type: application/json; charset=UTF-8\r\n\r\n';
+            requestData += JSON.stringify(metadata) + '\r\n';
+            requestData += '--' + boundary + '\r\n';
+            requestData += 'Content-Type: ' + apiParams.media.mimeType + '\r\n\r\n';
+            
+            const payloadBytes = Utilities.newBlob(requestData).getBytes()
+                .concat(mediaBlob.getBytes())
+                .concat(Utilities.newBlob('\r\n--' + boundary + '--').getBytes());
+
+            options.contentType = 'multipart/related; boundary=' + boundary;
+            options.payload = payloadBytes;
+
+        } else {
+            // ** Simple Media Upload (Media only) **
+            remainingParams.uploadType = 'media';
+
+            options.contentType = mediaBlob.getContentType();
+            options.payload = mediaBlob.getBytes();
+        }
+
+    } else if (apiParams && apiParams.requestBody) {
+        options.contentType = 'application/json';
+        options.payload = JSON.stringify(apiParams.requestBody);
+    }
     const queryParts = [];
     for (const key in remainingParams) {
-      if (key !== 'resource') {
-        queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
-      }
+        if (key !== 'requestBody' && key !== 'media') {
+            queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
+        }
     }
     if (queryParts.length > 0) {
-      url += '?' + queryParts.join('&');
+        url += '?' + queryParts.join('&');
     }
 
-    const options = {
-      method: httpMethod,
-      headers: { 'Authorization': 'Bearer ' + this._token },
-      contentType: 'application/json',
-      muteHttpExceptions: true,
-    };
-    if (params && params.resource) {
-      options.payload = JSON.stringify(params.resource);
-    }
-    
     return { url, options };
-  }
+}
 
   /**
    * @private Makes the HTTP request with exponential backoff for retries.
+   * @return {Promise<object>} A promise that resolves with the response object.
    */
-  _makeRequest(path, httpMethod, params) {
-    const { url, options } = this._buildRequestDetails(path, httpMethod, params);
+  async _makeRequest(path, httpMethod, apiParams, clientConfig = {}) {
+    const isMediaDownload = apiParams.alt === 'media';
+
+    const { url, options } = this._buildRequestDetails(path, httpMethod, apiParams, clientConfig);
 
     for (let i = 0; i <= this._backoffConfig.retries; i++) {
       const response = UrlFetchApp.fetch(url, options);
       const responseCode = response.getResponseCode();
-      const responseText = response.getContentText(); // Simplified call
+      const responseHeaders = response.getAllHeaders();
 
       if (responseCode >= 200 && responseCode < 300) {
-        return responseText ? JSON.parse(responseText) : {};
+        // Prioritize responseType:'blob' and media downloads to return raw data.
+        if ((clientConfig && (clientConfig.responseType === 'blob' || clientConfig.responseType === 'stream')) || isMediaDownload) {
+          return {
+            data: response.getBlob(),
+            status: responseCode,
+            headers: responseHeaders,
+          };
+        }
+
+        const responseText = response.getContentText();
+        // Handle empty responses, which are valid (e.g., a 204 No Content).
+        const responseBody = responseText ? JSON.parse(responseText) : {};
+        return {
+          data: responseBody,
+          status: responseCode,
+          headers: responseHeaders,
+        };
       }
 
       const retryableErrors = [429, 500, 503];
@@ -129,15 +534,22 @@ class Vault {
         continue;
       }
 
+      const responseText = response.getContentText(); // Get response text for error
+      let errorMessage = `Request failed with status ${responseCode}`;
       try {
-        // Return parsed error if possible, otherwise a generic error object
-        return JSON.parse(responseText);
+        const errorObj = JSON.parse(responseText);
+        if (errorObj.error && errorObj.error.message) {
+          errorMessage += `: ${errorObj.error.message}`;
+        }
       } catch (e) {
-        return { error: { code: responseCode, message: responseText } };
+        // If the error response isn't JSON, include the raw text.
+        if (responseText) {
+          errorMessage += `. Response: ${responseText}`;
+        }
       }
+      throw new Error(errorMessage);
     }
-    
-    // This line is technically unreachable if retries >= 0, but good for safety.
+
     throw new Error('Request failed after multiple retries.');
   }
 }
