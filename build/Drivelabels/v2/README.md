@@ -4,8 +4,8 @@ Auto-generated client library for using the **Drive Labels API (version: v2)** i
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:54 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:46 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:22 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:22 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:44 GMT
 
 
@@ -69,7 +69,7 @@ Creates a label. For more information, see [Create and publish a label](https://
 |---|---|---|---|
 | `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin privileges. The server will verify the user is an admin before allowing access. |
 | `params.languageCode` | `string` | No | The BCP-47 language code to use for evaluating localized field labels in response. When not specified, values in the default configured language will be used. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.delta()`
 
@@ -78,7 +78,7 @@ Updates a single label by applying a set of update requests resulting in a new d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the label to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.updateLabelCopyMode()`
 
@@ -87,7 +87,7 @@ Updates a label's `CopyMode`. Changes to this policy aren't revisioned, don't re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the label to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.publish()`
 
@@ -104,7 +104,7 @@ Publish all draft changes to the label. Once published, the label may not return
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Label resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.disable()`
 
@@ -113,7 +113,7 @@ Disable a published label. For more information, see [Disable, enable, and delet
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Label resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.enable()`
 
@@ -122,7 +122,7 @@ Enable a disabled label and restore it to its published state. For more informat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Label resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.delete()`
 
@@ -142,7 +142,7 @@ Updates a label's permissions. If a permission for the indicated principal doesn
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent label resource name. |
 | `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.updateLabelEnabledAppSettings()`
 
@@ -151,7 +151,7 @@ Updates a label's `EnabledAppSettings`. Enabling a label in a Google Workspace a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the label to update. The resource name of the label to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `labels.permissions`
 
@@ -174,7 +174,7 @@ Updates a label's permissions. If a permission for the indicated principal doesn
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent label resource name on the label permission is created. Format: `labels/{label}`. |
 | `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.permissions.delete()`
 
@@ -192,7 +192,7 @@ Updates label permissions. If a permission for the indicated principal doesn't e
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.permissions.batchDelete()`
 
@@ -201,7 +201,7 @@ Deletes label permissions. Permissions affect the label resource as a whole, are
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `labels.revisions`
 
@@ -213,7 +213,7 @@ Updates a label's permissions. If a permission for the indicated principal doesn
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent label resource name. |
 | `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `labels.revisions.permissions`
 
@@ -236,7 +236,7 @@ Updates a label's permissions. If a permission for the indicated principal doesn
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent label resource name on the label permission is created. Format: `labels/{label}`. |
 | `params.useAdminAccess` | `boolean` | No | Set to `true` in order to use the user's admin credentials. The server will verify the user is an admin for the label before allowing access. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.revisions.permissions.delete()`
 
@@ -254,7 +254,7 @@ Updates label permissions. If a permission for the indicated principal doesn't e
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent label resource name shared by all permissions being updated. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `labels.revisions.permissions.batchDelete()`
 
@@ -263,7 +263,7 @@ Deletes label permissions. Permissions affect the label resource as a whole, are
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent label resource name shared by all permissions being deleted. Format: `labels/{label}`. If this is set, the parent field in the `UpdateLabelPermissionRequest` messages must either be empty or match this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `labels.revisions.locks`
 
