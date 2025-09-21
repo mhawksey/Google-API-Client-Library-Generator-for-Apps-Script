@@ -4,8 +4,8 @@ Auto-generated client library for using the **App Engine Admin API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:38 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:52:57 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:42 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:57 GMT
 
 
@@ -31,7 +31,7 @@ Creates an App Engine application for a Google Cloud Platform project. Required 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.patch()`
 
@@ -41,7 +41,7 @@ Updates the specified Application resource. You can update the following fields:
 |---|---|---|---|
 | `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the Application resource to update. Example: apps/myapp. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.repair()`
 
@@ -50,7 +50,7 @@ Recreates the required App Engine features for the specified App Engine applicat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the application to repair. Example: apps/myapp |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.listRuntimes()`
 
@@ -114,7 +114,7 @@ Updates the configuration of the specified service.
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
 | `params.migrateTraffic` | `boolean` | No | Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.services.delete()`
 
@@ -158,7 +158,7 @@ Deploys code and resource files to a new version.
 |---|---|---|---|
 | `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent resource to create this version under. Example: apps/myapp/services/default. |
 | `params.servicesId` | `string` | Yes | Part of `parent`. See documentation of `appsId`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.services.versions.patch()`
 
@@ -170,7 +170,7 @@ Updates the specified Version resource. You can specify the following fields dep
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.services.versions.delete()`
 
@@ -228,7 +228,7 @@ Enables debugging on a VM instance. This allows you to use the SSH command to co
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.instancesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `apps.firewall`
 
@@ -252,7 +252,7 @@ Replaces the entire firewall ruleset in one bulk operation. This overrides and r
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.appsId` | `string` | Yes | Part of `name`. Name of the Firewall collection to set. Example: apps/myapp/firewall/ingressRules. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.firewall.ingressRules.create()`
 
@@ -261,7 +261,7 @@ Creates a firewall rule for the application.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Firewall collection in which to create a new rule. Example: apps/myapp/firewall/ingressRules. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.firewall.ingressRules.get()`
 
@@ -281,7 +281,7 @@ Updates the specified firewall rule.
 | `params.appsId` | `string` | Yes | Part of `name`. Name of the Firewall resource to update. Example: apps/myapp/firewall/ingressRules/100. |
 | `params.ingressRulesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.firewall.ingressRules.delete()`
 
@@ -334,7 +334,7 @@ Uploads the specified SSL certificate.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.authorizedCertificates.patch()`
 
@@ -345,7 +345,7 @@ Updates the specified SSL certificate. To renew a certificate and maintain its e
 | `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.authorizedCertificates.delete()`
 
@@ -385,7 +385,7 @@ Maps a domain to an application. A user must be authorized to administer a domai
 |---|---|---|---|
 | `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.overrideStrategy` | `string` | No | Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.domainMappings.patch()`
 
@@ -396,7 +396,7 @@ Updates the specified domain mapping. To map an SSL certificate to a domain mapp
 | `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. |
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.domainMappings.delete()`
 
@@ -446,7 +446,7 @@ Updates the specified Application resource. You can update the following fields:
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.applications.services`
 
@@ -462,7 +462,7 @@ Updates the configuration of the specified service.
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
 | `params.migrateTraffic` | `boolean` | No | Set to true to gradually shift traffic to one or more versions that you specify. By default, traffic is shifted immediately. For gradual traffic migration, the target versions must be located within instances that are configured for both warmup requests (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#InboundServiceType) and automatic scaling (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services.versions#AutomaticScaling). You must specify the shardBy (https://cloud.google.com/appengine/docs/admin-api/reference/rest/v1/apps.services#ShardBy) field in the Service resource. Gradual traffic migration is not supported in the App Engine flexible environment. For examples, see Migrating and Splitting Traffic (https://cloud.google.com/appengine/docs/admin-api/migrating-splitting-traffic). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.applications.services.delete()`
 
@@ -489,7 +489,7 @@ Updates the specified Version resource. You can specify the following fields dep
 | `params.servicesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.versionsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.applications.services.versions.delete()`
 
@@ -553,7 +553,7 @@ Uploads the specified SSL certificate.
 | `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.applications.authorizedCertificates.patch()`
 
@@ -566,7 +566,7 @@ Updates the specified SSL certificate. To renew a certificate and maintain its e
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.applications.authorizedCertificates.delete()`
 
@@ -602,4 +602,4 @@ Maps a domain to an application. A user must be authorized to administer a domai
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.overrideStrategy` | `string` | No | Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
