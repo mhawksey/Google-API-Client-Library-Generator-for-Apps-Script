@@ -4,8 +4,8 @@ Auto-generated client library for using the **Dataform API (version: v1beta1)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:48 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:32:48 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:15:46 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:15:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:47 GMT
 
 
@@ -34,7 +34,7 @@ Update default config for a given project and location. **Note:** *This method d
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The config name. |
 | `params.updateMask` | `string` | No | Optional. Specifies the fields to be updated in the config. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.list()`
 
@@ -46,7 +46,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -56,34 +56,45 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
+### `projects.locations.operations`
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `projects.locations.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.repositories`
-
-#### `projects.locations.repositories.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
-
-#### `projects.locations.repositories.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.repositories.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.list()`
 
@@ -113,7 +124,7 @@ Creates a new Repository in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The location in which to create the repository. Must be in the format `projects/*/locations/*`. |
 | `params.repositoryId` | `string` | No | Required. The ID to use for the repository, which will become the final component of the repository's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.patch()`
 
@@ -123,7 +134,7 @@ Updates a single Repository. **Note:** *This method does not fully implement [AI
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The repository's name. |
 | `params.updateMask` | `string` | No | Optional. Specifies the fields to be updated in the repository. If left unset, all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.delete()`
 
@@ -141,7 +152,7 @@ Applies a Git commit to a Repository. The Repository must not have a value for `
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The repository's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.readFile()`
 
@@ -193,33 +204,6 @@ Fetches a Repository's remote branches.
 
 ### `projects.locations.repositories.workspaces`
 
-#### `projects.locations.repositories.workspaces.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
-
-#### `projects.locations.repositories.workspaces.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.repositories.workspaces.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
-
 #### `projects.locations.repositories.workspaces.list()`
 
 Lists Workspaces in a given Repository.
@@ -248,7 +232,7 @@ Creates a new Workspace in a given Repository.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The repository in which to create the workspace. Must be in the format `projects/*/locations/*/repositories/*`. |
 | `params.workspaceId` | `string` | No | Required. The ID to use for the workspace, which will become the final component of the workspace's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.delete()`
 
@@ -265,7 +249,7 @@ Installs dependency NPM packages (inside a Workspace).
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.workspace` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.pull()`
 
@@ -274,7 +258,7 @@ Pulls Git commits from the Repository's remote into a Workspace.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.push()`
 
@@ -283,7 +267,7 @@ Pushes Git commits from a Workspace to the Repository's remote.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.fetchFileGitStatuses()`
 
@@ -309,7 +293,7 @@ Applies a Git commit for uncommitted files in a Workspace.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.reset()`
 
@@ -318,7 +302,7 @@ Performs a Git reset for uncommitted files in a Workspace.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.fetchFileDiff()`
 
@@ -358,7 +342,7 @@ Creates a directory inside a Workspace.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.workspace` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.removeDirectory()`
 
@@ -367,7 +351,7 @@ Deletes a directory (inside a Workspace) and all of its contents.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.workspace` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.moveDirectory()`
 
@@ -376,7 +360,7 @@ Moves a directory (inside a Workspace), and all of its contents, to a new locati
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.workspace` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.readFile()`
 
@@ -395,7 +379,7 @@ Deletes a file (inside a Workspace).
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.workspace` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.moveFile()`
 
@@ -404,7 +388,7 @@ Moves a file (inside a Workspace) to a new location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.workspace` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workspaces.writeFile()`
 
@@ -413,7 +397,7 @@ Writes to a file (inside a Workspace).
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.workspace` | `string` | Yes | Required. The workspace's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.releaseConfigs`
 
@@ -443,7 +427,7 @@ Creates a new ReleaseConfig in a given Repository.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The repository in which to create the release config. Must be in the format `projects/*/locations/*/repositories/*`. |
 | `params.releaseConfigId` | `string` | No | Required. The ID to use for the release config, which will become the final component of the release config's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.releaseConfigs.patch()`
 
@@ -453,7 +437,7 @@ Updates a single ReleaseConfig. **Note:** *This method does not fully implement 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The release config's name. |
 | `params.updateMask` | `string` | No | Optional. Specifies the fields to be updated in the release config. If left unset, all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.releaseConfigs.delete()`
 
@@ -492,7 +476,7 @@ Creates a new CompilationResult in a given project and location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The repository in which to create the compilation result. Must be in the format `projects/*/locations/*/repositories/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.compilationResults.query()`
 
@@ -533,7 +517,7 @@ Creates a new WorkflowConfig in a given Repository.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The repository in which to create the workflow config. Must be in the format `projects/*/locations/*/repositories/*`. |
 | `params.workflowConfigId` | `string` | No | Required. The ID to use for the workflow config, which will become the final component of the workflow config's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workflowConfigs.patch()`
 
@@ -543,7 +527,7 @@ Updates a single WorkflowConfig. **Note:** *This method does not fully implement
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The workflow config's name. |
 | `params.updateMask` | `string` | No | Optional. Specifies the fields to be updated in the workflow config. If left unset, all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workflowConfigs.delete()`
 
@@ -582,7 +566,7 @@ Creates a new WorkflowInvocation in a given Repository.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The repository in which to create the workflow invocation. Must be in the format `projects/*/locations/*/repositories/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workflowInvocations.delete()`
 
@@ -599,7 +583,7 @@ Requests cancellation of a running WorkflowInvocation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The workflow invocation resource's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.workflowInvocations.query()`
 
@@ -610,99 +594,3 @@ Returns WorkflowInvocationActions in a given WorkflowInvocation.
 | `params.name` | `string` | Yes | Required. The workflow invocation's name. |
 | `params.pageSize` | `integer` | No | Optional. Maximum number of workflow invocations to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | Optional. Page token received from a previous `QueryWorkflowInvocationActions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `QueryWorkflowInvocationActions`, with the exception of `page_size`, must match the call that provided the page token. |
-
-### `projects.locations.folders`
-
-#### `projects.locations.folders.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
-
-#### `projects.locations.folders.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.folders.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
-
-### `projects.locations.teamFolders`
-
-#### `projects.locations.teamFolders.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
-
-#### `projects.locations.teamFolders.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `projects.locations.teamFolders.testIamPermissions()`
-
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
-
-### `projects.locations.operations`
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
