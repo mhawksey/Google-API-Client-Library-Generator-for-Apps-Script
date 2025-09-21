@@ -4,8 +4,8 @@ Auto-generated client library for using the **Connectors API (version: v1)** in 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:05 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:04:43 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:14:50 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:14:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:46 GMT
 
 
@@ -42,7 +42,7 @@ Update the settings of a region.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the Connection. Format: projects/{project}/locations/{location}/regionalSettings |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.list()`
 
@@ -54,7 +54,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -73,7 +73,7 @@ ListenEvent listens to the event.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourcePath` | `string` | Yes | Required. Resource path for request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.list()`
 
@@ -116,7 +116,7 @@ Creates a new Connection in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the Connection, of the form: `projects/*/locations/*` |
 | `params.connectionId` | `string` | No | Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.patch()`
 
@@ -126,7 +126,7 @@ Updates the parameters of a single Connection.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. Fields are specified relative to the connection. A field will be overwritten if it is in the mask. The field mask must not be empty, and it must not contain fields that are immutable or only set by the server. You can modify only the fields listed below. To lock/unlock a connection: * `lock_config` To suspend/resume a connection: * `suspended` To update the connection details: * `description` * `labels` * `connector_version` * `config_variables` * `auth_config` * `destination_configs` * `node_config` * `log_config` * `ssl_config` * `eventing_enablement_type` * `eventing_config` * `auth_override_enabled` * `async_operations_enabled` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.delete()`
 
@@ -152,7 +152,7 @@ RepaiEventing tries to repair eventing related event subscriptions.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.setIamPolicy()`
 
@@ -161,7 +161,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.getIamPolicy()`
 
@@ -179,7 +179,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections.connectionSchemaMetadata`
 
@@ -190,7 +190,7 @@ Refresh runtime schema of a connection.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name. Format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.connectionSchemaMetadata.listEntityTypes()`
 
@@ -291,7 +291,7 @@ Creates a new EventSubscription in a given project,location and connection.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the EventSubscription, of the form: `projects/*/locations/*/connections/*` |
 | `params.eventSubscriptionId` | `string` | No | Required. Identifier to assign to the Event Subscription. Must be unique within scope of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.eventSubscriptions.patch()`
 
@@ -301,7 +301,7 @@ Updates the parameters of a single EventSubscription.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Identifier. Resource name of the EventSubscription. Format: projects/{project}/locations/{location}/connections/{connection}/eventSubscriptions/{event_subscription} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. Fields are specified relative to the Subscription. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the EventSubscription details: * `serviceAccount` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.eventSubscriptions.delete()`
 
@@ -318,7 +318,7 @@ RetryEventSubscription retries the registration of Subscription.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/*/locations/*/connections/*/eventSubscriptions/*` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections.endUserAuthentications`
 
@@ -351,7 +351,7 @@ Creates a new EndUserAuthentication in a given project,location and connection.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the EndUserAuthentication, of the form: `projects/*/locations/*/connections/*` |
 | `params.endUserAuthenticationId` | `string` | No | Required. Identifier to assign to the EndUserAuthentication. Must be unique within scope of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.endUserAuthentications.patch()`
 
@@ -361,7 +361,7 @@ Updates the parameters of a single EndUserAuthentication.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Identifier. Resource name of the EndUserAuthentication. Format: projects/{project}/locations/{location}/connections/{connection}/endUserAuthentications/{end_user_authentication} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the EndUserAuthentication details: * `notify_endpoint_destination` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.endUserAuthentications.delete()`
 
@@ -407,7 +407,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.providers`
 
@@ -436,7 +436,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.providers.getIamPolicy()`
 
@@ -454,7 +454,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.providers.connectors`
 
@@ -546,7 +546,7 @@ Update the global settings of a project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the Connection. Format: projects/{project}/locations/global/settings} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.global.managedZones`
 
@@ -579,7 +579,7 @@ Creates a new ManagedZone in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the ManagedZone, of the form: `projects/*/locations/global` |
 | `params.managedZoneId` | `string` | No | Required. Identifier to assign to the ManagedZone. Must be unique within scope of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.managedZones.patch()`
 
@@ -589,7 +589,7 @@ Updates the parameters of a single ManagedZone.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the Managed Zone. Format: projects/{project}/locations/global/managedZones/{managed_zone} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. Fields are specified relative to the managedZone. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the managedZone details: * `description` * `labels` * `target_project` * `target_network` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.managedZones.delete()`
 
@@ -637,7 +637,7 @@ Creates a new CustomConnector in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the CreateCustomConnector, of the form: `projects/{project}/locations/*` |
 | `params.customConnectorId` | `string` | No | Required. Identifier to assign to the CreateCustomConnector. Must be unique within scope of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.customConnectors.patch()`
 
@@ -647,7 +647,7 @@ Updates the parameters of a CustomConnector.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector} |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Connector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. Set the mask as "*" for full replacement, which means all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.global.customConnectors.customConnectorVersions`
 
@@ -677,7 +677,7 @@ Creates a new CustomConnectorVersion in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the CreateCustomConnector, of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}` |
 | `params.customConnectorVersionId` | `string` | No | Required. Identifier to assign to the CreateCustomConnectorVersion. Must be unique within scope of the parent resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.endpointAttachments`
 
@@ -711,7 +711,7 @@ Creates a new EndpointAttachment in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource of the EndpointAttachment, of the form: `projects/*/locations/*` |
 | `params.endpointAttachmentId` | `string` | No | Required. Identifier to assign to the EndpointAttachment. Must be unique within scope of the parent resource. The regex is: `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpointAttachments.patch()`
 
@@ -721,7 +721,7 @@ Updates the parameters of a single EndpointAttachment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the Endpoint Attachment. Format: projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. Fields are specified relative to the endpointAttachment. A field will be overwritten if it is in the mask. You can modify only the fields listed below. To update the endpointAttachment details: * `description` * `labels` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpointAttachments.delete()`
 
@@ -740,7 +740,7 @@ Validates a Custom Connector Spec.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Location at which the custom connector is being created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.customConnectors.customConnectorVersions`
 
@@ -759,7 +759,7 @@ Deprecates a single CustomConnectorVersion.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.customConnectors.customConnectorVersions.publish()`
 
@@ -768,7 +768,7 @@ Publish request for the CustomConnectorVersion. Once approved, the CustomConnect
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.customConnectors.customConnectorVersions.withdraw()`
 
@@ -777,4 +777,4 @@ Withdraw the publish request for the CustomConnectorVersion. This can only be us
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the form: `projects/{project}/locations/{location}/customConnectors/{custom_connector}/customConnectorVersions/{custom_connector_version}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
