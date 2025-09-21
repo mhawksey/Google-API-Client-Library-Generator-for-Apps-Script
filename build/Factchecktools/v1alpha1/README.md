@@ -4,8 +4,8 @@ Auto-generated client library for using the **Fact Check Tools API (version: v1a
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:00 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:56 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:31 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:52 GMT
 
 
@@ -50,7 +50,7 @@ Create `ClaimReview` markup on a page.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `pages.get()`
 
@@ -79,7 +79,7 @@ Update for all `ClaimReview` markup on a page Note that this is a full update. T
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of this `ClaimReview` markup page resource, in the form of `pages/{page_id}`. Except for update requests, this field is output-only and should not be set by the user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `pages.delete()`
 
