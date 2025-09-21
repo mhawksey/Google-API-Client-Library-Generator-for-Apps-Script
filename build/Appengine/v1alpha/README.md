@@ -4,8 +4,8 @@ Auto-generated client library for using the **App Engine Admin API (version: v1a
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:33 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:52:50 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:35 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:35 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:50 GMT
 
 
@@ -80,7 +80,7 @@ Uploads the specified SSL certificate.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.authorizedCertificates.patch()`
 
@@ -91,7 +91,7 @@ Updates the specified SSL certificate. To renew a certificate and maintain its e
 | `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.authorizedCertificates.delete()`
 
@@ -132,7 +132,7 @@ Maps a domain to an application. A user must be authorized to administer a domai
 | `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.noManagedCertificate` | `boolean` | No | Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. |
 | `params.overrideStrategy` | `string` | No | Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.domainMappings.patch()`
 
@@ -144,7 +144,7 @@ Updates the specified domain mapping. To map an SSL certificate to a domain mapp
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
 | `params.noManagedCertificate` | `boolean` | No | Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apps.domainMappings.delete()`
 
@@ -279,7 +279,7 @@ Uploads the specified SSL certificate.
 | `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.applications.authorizedCertificates.patch()`
 
@@ -292,7 +292,7 @@ Updates the specified SSL certificate. To renew a certificate and maintain its e
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.applications.authorizedCertificates.delete()`
 
@@ -329,4 +329,4 @@ Maps a domain to an application. A user must be authorized to administer a domai
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.noManagedCertificate` | `boolean` | No | Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. |
 | `params.overrideStrategy` | `string` | No | Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
