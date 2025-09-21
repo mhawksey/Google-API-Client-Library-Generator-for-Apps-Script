@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: reviews_v1b
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:23 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:32:34 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:35:25 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:35:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:01 GMT
 
 
@@ -44,7 +44,7 @@ Inserts a review for your Merchant Center account. If the review already exists,
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account where the merchant review will be inserted. Format: accounts/{account} |
 | `params.dataSource` | `string` | No | Required. The data source of the [merchantreview](https://support.google.com/merchants/answer/7045996?sjid=5253581244217581976-EU) Format: `accounts/{account}/dataSources/{datasource}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.merchantReviews.delete()`
 
@@ -82,7 +82,7 @@ Inserts a product review.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account where the product review will be inserted. Format: accounts/{account} |
 | `params.dataSource` | `string` | No | Required. Format: `accounts/{account}/dataSources/{datasource}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.productReviews.delete()`
 
