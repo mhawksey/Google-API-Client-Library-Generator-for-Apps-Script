@@ -4,8 +4,8 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:50 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:12:59 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:17:18 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:17:18 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:31 GMT
 
 
@@ -32,7 +32,7 @@ Creates/updates the specified agent. Note: You should always train an agent prio
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project of this agent. Format: `projects/`. |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.deleteAgent()`
 
@@ -89,7 +89,7 @@ Creates/updates the specified agent. Note: You should always train an agent prio
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project of this agent. Format: `projects/`. |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.deleteAgent()`
 
@@ -117,7 +117,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -175,7 +175,7 @@ Trains the specified agent. This method is a [long-running operation](https://cl
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project that the agent to train is associated with. Format: `projects/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.export()`
 
@@ -184,7 +184,7 @@ Exports the specified agent to a ZIP file. This method is a [long-running operat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project that the agent to export is associated with. Format: `projects/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.import()`
 
@@ -193,7 +193,7 @@ Imports the specified agent from a ZIP file. Uploads new intents and entity type
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project that the agent to import is associated with. Format: `projects/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.restore()`
 
@@ -202,7 +202,7 @@ Restores the specified agent from a ZIP file. Replaces the current agent version
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project that the agent to restore is associated with. Format: `projects/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.getValidationResult()`
 
@@ -229,7 +229,7 @@ Updates the fulfillment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields get updated. If the mask is not present, all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.agent.sessions`
 
@@ -248,7 +248,7 @@ Processes a natural language query and returns structured, actionable data as a 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.session` | `string` | Yes | Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment (`Environment ID` might be referred to as environment name at some places). If `User ID` is not specified, we are using "-". It's up to the API caller to choose an appropriate `Session ID` and `User Id`. They can be a random number or some type of user and session identifiers (preferably hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters. For more information, see the [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent versions for production traffic. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.agent.sessions.contexts`
 
@@ -277,7 +277,7 @@ Creates a context. If the specified context already exists, overrides the contex
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The session to create a context for. Format: `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.sessions.contexts.patch()`
 
@@ -287,7 +287,7 @@ Updates the specified context.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size` |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.sessions.contexts.delete()`
 
@@ -324,7 +324,7 @@ Creates a session entity type. If the specified session entity type already exis
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The session to create a session entity type for. Format: `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.sessions.entityTypes.patch()`
 
@@ -334,7 +334,7 @@ Updates the specified session entity type. This method doesn't work with Google 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented. |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.sessions.entityTypes.delete()`
 
@@ -377,7 +377,7 @@ Creates an intent in the specified agent. Note: You should always train an agent
 | `params.parent` | `string` | Yes | Required. The agent to create a intent for. Format: `projects//agent`. |
 | `params.languageCode` | `string` | No | Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity). |
 | `params.intentView` | `string` | No | Optional. The resource view to apply to the returned intent. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.intents.patch()`
 
@@ -389,7 +389,7 @@ Updates the specified intent. Note: You should always train an agent prior to se
 | `params.languageCode` | `string` | No | Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity). |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
 | `params.intentView` | `string` | No | Optional. The resource view to apply to the returned intent. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.intents.delete()`
 
@@ -406,7 +406,7 @@ Updates/Creates multiple intents in the specified agent. This method is a [long-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the agent to update or create intents in. Format: `projects//agent`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.intents.batchDelete()`
 
@@ -415,7 +415,7 @@ Deletes intents in the specified agent. This method is a [long-running operation
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the agent to delete all entities types for. Format: `projects//agent`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.agent.entityTypes`
 
@@ -447,7 +447,7 @@ Creates an entity type in the specified agent. Note: You should always train an 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The agent to create a entity type for. Format: `projects//agent`. |
 | `params.languageCode` | `string` | No | Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.entityTypes.patch()`
 
@@ -458,7 +458,7 @@ Updates the specified entity type. Note: You should always train an agent prior 
 | `params.name` | `string` | Yes | The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`. |
 | `params.languageCode` | `string` | No | Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity). |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.entityTypes.delete()`
 
@@ -475,7 +475,7 @@ Updates/Creates multiple entity types in the specified agent. This method is a [
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the agent to update or create entity types in. Format: `projects//agent`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.entityTypes.batchDelete()`
 
@@ -484,7 +484,7 @@ Deletes entity types in the specified agent. This method is a [long-running oper
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the agent to delete all entities types for. Format: `projects//agent`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.agent.entityTypes.entities`
 
@@ -495,7 +495,7 @@ Creates multiple new entities in the specified entity type. This method is a [lo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the entity type to create entities in. Format: `projects//agent/entityTypes/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.entityTypes.entities.batchUpdate()`
 
@@ -504,7 +504,7 @@ Updates or creates multiple entities in the specified entity type. This method d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the entity type to update or create entities in. Format: `projects//agent/entityTypes/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.entityTypes.entities.batchDelete()`
 
@@ -513,7 +513,7 @@ Deletes entities in the specified entity type. This method is a [long-running op
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the entity type to delete entries for. Format: `projects//agent/entityTypes/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.agent.environments`
 
@@ -543,7 +543,7 @@ Creates an agent environment.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The agent to create an environment for. Supported formats: - `projects//agent` - `projects//locations//agent` |
 | `params.environmentId` | `string` | No | Required. The unique id of the new environment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.environments.patch()`
 
@@ -554,7 +554,7 @@ Updates the specified agent environment. This method allows you to deploy new ag
 | `params.name` | `string` | Yes | Output only. The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields get updated. |
 | `params.allowLoadToDraftAndDiscardChanges` | `boolean` | No | Optional. This field is used to prevent accidental overwrite of the default environment, which is an operation that cannot be undone. To confirm that the caller desires this overwrite, this field must be explicitly set to true when updating the default environment (environment ID = `-`). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.environments.delete()`
 
@@ -593,7 +593,7 @@ Processes a natural language query and returns structured, actionable data as a 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.session` | `string` | Yes | Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment (`Environment ID` might be referred to as environment name at some places). If `User ID` is not specified, we are using "-". It's up to the API caller to choose an appropriate `Session ID` and `User Id`. They can be a random number or some type of user and session identifiers (preferably hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters. For more information, see the [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent versions for production traffic. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.agent.environments.users.sessions.contexts`
 
@@ -622,7 +622,7 @@ Creates a context. If the specified context already exists, overrides the contex
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The session to create a context for. Format: `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.environments.users.sessions.contexts.patch()`
 
@@ -632,7 +632,7 @@ Updates the specified context.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size` |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.environments.users.sessions.contexts.delete()`
 
@@ -669,7 +669,7 @@ Creates a session entity type. If the specified session entity type already exis
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The session to create a session entity type for. Format: `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.environments.users.sessions.entityTypes.patch()`
 
@@ -679,7 +679,7 @@ Updates the specified session entity type. This method doesn't work with Google 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented. |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.environments.users.sessions.entityTypes.delete()`
 
@@ -730,7 +730,7 @@ Creates an agent version. The new version points to the agent instance in the "d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The agent to create a version for. Supported formats: - `projects//agent` - `projects//locations//agent` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.versions.patch()`
 
@@ -740,7 +740,7 @@ Updates the specified agent version. Note that this method does not allow you to
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/` |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.agent.versions.delete()`
 
@@ -760,7 +760,7 @@ Creates a generator.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project/location to create generator for. Format: `projects//locations/` |
 | `params.generatorId` | `string` | No | Optional. The ID to use for the generator, which will become the final component of the generator's resource name. The generator ID must be compliant with the regression formula `a-zA-Z*` with the characters length in range of [3,64]. If the field is not provided, an Id will be auto-generated. If the field is provided, the caller is responsible for 1. the uniqueness of the ID, otherwise the request will be rejected. 2. the consistency for whether to use custom ID or not under a project to better ensure uniqueness. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.generators.get()`
 
@@ -796,7 +796,7 @@ Updates a generator.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of the generator. Format: `projects//locations//generators/` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.answerRecords`
 
@@ -819,7 +819,7 @@ Updates the specified answer record.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The unique identifier of this answer record. Format: `projects//locations//answerRecords/`. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversationDatasets`
 
@@ -830,7 +830,7 @@ Creates a new conversation dataset. This method is a [long-running operation](ht
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to create conversation dataset for. Format: `projects//locations/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversationDatasets.get()`
 
@@ -865,7 +865,7 @@ Import data into the specified conversation dataset. Note that it is not allowed
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Dataset resource name. Format: `projects//locations//conversationDatasets/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversationProfiles`
 
@@ -894,7 +894,7 @@ Creates a conversation profile in the specified project. ConversationProfile.cre
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to create a conversation profile for. Format: `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversationProfiles.patch()`
 
@@ -904,7 +904,7 @@ Updates the specified conversation profile. ConversationProfile.create_time and 
 |---|---|---|---|
 | `params.name` | `string` | Yes | The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversationProfiles.delete()`
 
@@ -921,7 +921,7 @@ Adds or updates a suggestion feature in a conversation profile. If the conversat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversationProfile` | `string` | Yes | Required. The Conversation Profile to add or update the suggestion feature config. Format: `projects//locations//conversationProfiles/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversationProfiles.clearSuggestionFeatureConfig()`
 
@@ -930,7 +930,7 @@ Clears a suggestion feature from a conversation profile for the given participan
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversationProfile` | `string` | Yes | Required. The Conversation Profile to add or update the suggestion feature config. Format: `projects//locations//conversationProfiles/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversations`
 
@@ -942,7 +942,7 @@ Creates a new conversation. Conversations are auto-completed after 24 hours. Con
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource identifier of the project creating the conversation. Format: `projects//locations/`. |
 | `params.conversationId` | `string` | No | Optional. Identifier of the conversation. Generally it's auto generated by Google. Only set it if you cannot wait for the response to return a auto-generated one to you. The conversation ID must be compliant with the regression formula `a-zA-Z*` with the characters length in range of [3,64]. If the field is provided, the caller is responsible for 1. the uniqueness of the ID, otherwise the request will be rejected. 2. the consistency for whether to use custom ID or not under a project to better ensure uniqueness. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.list()`
 
@@ -970,7 +970,7 @@ Completes the specified conversation. Finished conversations are purged from the
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource identifier of the conversation to close. Format: `projects//locations//conversations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.ingestContextReferences()`
 
@@ -979,7 +979,7 @@ Data ingestion API. Ingests context references for an existing conversation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversation` | `string` | Yes | Required. Resource identifier of the conversation to ingest context information for. Format: `projects//locations//conversations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversations.participants`
 
@@ -990,7 +990,7 @@ Creates a new participant in a conversation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource identifier of the conversation adding the participant. Format: `projects//locations//conversations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.participants.get()`
 
@@ -1018,7 +1018,7 @@ Updates the specified participant.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`. |
 | `params.updateMask` | `string` | No | Required. The mask to specify which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.participants.analyzeContent()`
 
@@ -1027,7 +1027,7 @@ Adds a text (chat, for example), or audio (phone recording, for example) message
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.participant` | `string` | Yes | Required. The name of the participant this text comes from. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversations.participants.suggestions`
 
@@ -1038,7 +1038,7 @@ Gets suggested articles for a participant based on specific historical messages.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the participant to fetch suggestion for. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.participants.suggestions.suggestFaqAnswers()`
 
@@ -1047,7 +1047,7 @@ Gets suggested faq answers for a participant based on specific historical messag
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the participant to fetch suggestion for. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.participants.suggestions.suggestSmartReplies()`
 
@@ -1056,7 +1056,7 @@ Gets smart replies for a participant based on specific historical messages.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the participant to fetch suggestion for. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.participants.suggestions.suggestKnowledgeAssist()`
 
@@ -1065,7 +1065,7 @@ Gets knowledge assist suggestions based on historical messages.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the participant to fetch suggestions for. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversations.messages`
 
@@ -1089,7 +1089,7 @@ Suggests summary for a conversation based on specific historical messages. The r
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversation` | `string` | Yes | Required. The conversation to fetch suggestion for. Format: `projects//locations//conversations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.suggestions.searchKnowledge()`
 
@@ -1098,7 +1098,7 @@ Get answers for the given query based on knowledge documents.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversation` | `string` | Yes | Optional. The conversation (between human agent and end user) where the search request is triggered. Format: `projects//locations//conversations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.suggestions.generate()`
 
@@ -1107,7 +1107,7 @@ Generates all the suggestions using generators configured in the conversation pr
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversation` | `string` | Yes | Required. The conversation for which the suggestions are generated. Format: `projects//locations//conversations/`. The conversation must be created with a conversation profile which has generators configured in it to be able to get suggestions. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.suggestions`
 
@@ -1118,7 +1118,7 @@ Generates and returns a summary for a conversation that does not have a resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to charge for the Summary's generation. Format: `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.suggestions.searchKnowledge()`
 
@@ -1127,7 +1127,7 @@ Get answers for the given query based on knowledge documents.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.statelessSuggestion`
 
@@ -1138,7 +1138,7 @@ Generates and returns a suggestion for a conversation that does not have a resou
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to charge for the Suggestion's generation. Format: `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversationModels`
 
@@ -1149,7 +1149,7 @@ Creates a model. This method is a [long-running operation](https://cloud.google.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The project to create conversation model for. Format: `projects/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversationModels.get()`
 
@@ -1184,7 +1184,7 @@ Deploys a model. If a model is already deployed, deploying it has no effect. A m
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The conversation model to deploy. Format: `projects//conversationModels/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversationModels.undeploy()`
 
@@ -1193,7 +1193,7 @@ Undeploys a model. If the model is not deployed this method has no effect. If th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The conversation model to undeploy. Format: `projects//conversationModels/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversationModels.evaluations`
 
@@ -1222,7 +1222,7 @@ Creates evaluation of a conversation model.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The conversation model resource name. Format: `projects//locations//conversationModels/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.encryptionSpec`
 
@@ -1233,7 +1233,7 @@ Initializes a location-level encryption key specification. An error will be thro
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the encryption key specification resource. Format: projects/{project}/locations/{location}/encryptionSpec |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.knowledgeBases`
 
@@ -1263,7 +1263,7 @@ Creates a knowledge base.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to create a knowledge base for. Format: `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.knowledgeBases.delete()`
 
@@ -1282,7 +1282,7 @@ Updates the specified knowledge base.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`. |
 | `params.updateMask` | `string` | No | Optional. Not specified means `update all`. Currently, only `display_name` can be updated, an InvalidArgument will be returned for attempting to update other fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.knowledgeBases.documents`
 
@@ -1312,7 +1312,7 @@ Creates a new document. This method is a [long-running operation](https://cloud.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The knowledge base to create a document for. Format: `projects//locations//knowledgeBases/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.knowledgeBases.documents.import()`
 
@@ -1321,7 +1321,7 @@ Creates documents by importing data from external sources. Dialogflow supports u
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The knowledge base to import documents into. Format: `projects//locations//knowledgeBases/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.knowledgeBases.documents.delete()`
 
@@ -1339,7 +1339,7 @@ Updates the specified document. This method is a [long-running operation](https:
 |---|---|---|---|
 | `params.name` | `string` | Yes | Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`. |
 | `params.updateMask` | `string` | No | Optional. Not specified means `update all`. Currently, only `display_name` can be updated, an InvalidArgument will be returned for attempting to update other fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.knowledgeBases.documents.reload()`
 
@@ -1348,7 +1348,7 @@ Reloads the specified document from its specified source, content_uri or content
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the document to reload. Format: `projects//locations//knowledgeBases//documents/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.knowledgeBases.documents.export()`
 
@@ -1357,7 +1357,7 @@ Exports a smart messaging candidate document into the specified destination. Thi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the document to export. Format: `projects//locations//knowledgeBases//documents/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.sipTrunks`
 
@@ -1368,7 +1368,7 @@ Creates a SipTrunk for a specified location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The location to create a SIP trunk for. Format: `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sipTrunks.delete()`
 
@@ -1404,7 +1404,7 @@ Updates the specified SipTrunk.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The unique identifier of the SIP trunk. Format: `projects//locations//sipTrunks/`. |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. If the mask is not present, all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent`
 
@@ -1425,7 +1425,7 @@ Trains the specified agent. This method is a [long-running operation](https://cl
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project that the agent to train is associated with. Format: `projects/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.export()`
 
@@ -1434,7 +1434,7 @@ Exports the specified agent to a ZIP file. This method is a [long-running operat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project that the agent to export is associated with. Format: `projects/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.import()`
 
@@ -1443,7 +1443,7 @@ Imports the specified agent from a ZIP file. Uploads new intents and entity type
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project that the agent to import is associated with. Format: `projects/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.restore()`
 
@@ -1452,7 +1452,7 @@ Restores the specified agent from a ZIP file. Replaces the current agent version
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project that the agent to restore is associated with. Format: `projects/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.getValidationResult()`
 
@@ -1479,7 +1479,7 @@ Updates the fulfillment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of the fulfillment. Supported formats: - `projects//agent/fulfillment` - `projects//locations//agent/fulfillment` This field is not used for Fulfillment in an Environment. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields get updated. If the mask is not present, all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent.sessions`
 
@@ -1498,7 +1498,7 @@ Processes a natural language query and returns structured, actionable data as a 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.session` | `string` | Yes | Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment (`Environment ID` might be referred to as environment name at some places). If `User ID` is not specified, we are using "-". It's up to the API caller to choose an appropriate `Session ID` and `User Id`. They can be a random number or some type of user and session identifiers (preferably hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters. For more information, see the [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent versions for production traffic. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent.sessions.contexts`
 
@@ -1527,7 +1527,7 @@ Creates a context. If the specified context already exists, overrides the contex
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The session to create a context for. Format: `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.sessions.contexts.patch()`
 
@@ -1537,7 +1537,7 @@ Updates the specified context.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size` |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.sessions.contexts.delete()`
 
@@ -1574,7 +1574,7 @@ Creates a session entity type. If the specified session entity type already exis
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The session to create a session entity type for. Format: `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.sessions.entityTypes.patch()`
 
@@ -1584,7 +1584,7 @@ Updates the specified session entity type. This method doesn't work with Google 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented. |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.sessions.entityTypes.delete()`
 
@@ -1627,7 +1627,7 @@ Creates an intent in the specified agent. Note: You should always train an agent
 | `params.parent` | `string` | Yes | Required. The agent to create a intent for. Format: `projects//agent`. |
 | `params.languageCode` | `string` | No | Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity). |
 | `params.intentView` | `string` | No | Optional. The resource view to apply to the returned intent. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.intents.patch()`
 
@@ -1639,7 +1639,7 @@ Updates the specified intent. Note: You should always train an agent prior to se
 | `params.languageCode` | `string` | No | Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity). |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
 | `params.intentView` | `string` | No | Optional. The resource view to apply to the returned intent. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.intents.delete()`
 
@@ -1656,7 +1656,7 @@ Updates/Creates multiple intents in the specified agent. This method is a [long-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the agent to update or create intents in. Format: `projects//agent`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.intents.batchDelete()`
 
@@ -1665,7 +1665,7 @@ Deletes intents in the specified agent. This method is a [long-running operation
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the agent to delete all entities types for. Format: `projects//agent`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent.entityTypes`
 
@@ -1697,7 +1697,7 @@ Creates an entity type in the specified agent. Note: You should always train an 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The agent to create a entity type for. Format: `projects//agent`. |
 | `params.languageCode` | `string` | No | Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.entityTypes.patch()`
 
@@ -1708,7 +1708,7 @@ Updates the specified entity type. Note: You should always train an agent prior 
 | `params.name` | `string` | Yes | The unique identifier of the entity type. Required for EntityTypes.UpdateEntityType and EntityTypes.BatchUpdateEntityTypes methods. Format: `projects//agent/entityTypes/`. |
 | `params.languageCode` | `string` | No | Optional. The language used to access language-specific data. If not specified, the agent's default language is used. For more information, see [Multilingual intent and entity data](https://cloud.google.com/dialogflow/docs/agents-multilingual#intent-entity). |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.entityTypes.delete()`
 
@@ -1725,7 +1725,7 @@ Updates/Creates multiple entity types in the specified agent. This method is a [
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the agent to update or create entity types in. Format: `projects//agent`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.entityTypes.batchDelete()`
 
@@ -1734,7 +1734,7 @@ Deletes entity types in the specified agent. This method is a [long-running oper
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the agent to delete all entities types for. Format: `projects//agent`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent.entityTypes.entities`
 
@@ -1745,7 +1745,7 @@ Creates multiple new entities in the specified entity type. This method is a [lo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the entity type to create entities in. Format: `projects//agent/entityTypes/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.entityTypes.entities.batchUpdate()`
 
@@ -1754,7 +1754,7 @@ Updates or creates multiple entities in the specified entity type. This method d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the entity type to update or create entities in. Format: `projects//agent/entityTypes/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.entityTypes.entities.batchDelete()`
 
@@ -1763,7 +1763,7 @@ Deletes entities in the specified entity type. This method is a [long-running op
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the entity type to delete entries for. Format: `projects//agent/entityTypes/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent.environments`
 
@@ -1793,7 +1793,7 @@ Creates an agent environment.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The agent to create an environment for. Supported formats: - `projects//agent` - `projects//locations//agent` |
 | `params.environmentId` | `string` | No | Required. The unique id of the new environment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.environments.patch()`
 
@@ -1804,7 +1804,7 @@ Updates the specified agent environment. This method allows you to deploy new ag
 | `params.name` | `string` | Yes | Output only. The unique identifier of this agent environment. Supported formats: - `projects//agent/environments/` - `projects//locations//agent/environments/` The environment ID for the default environment is `-`. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields get updated. |
 | `params.allowLoadToDraftAndDiscardChanges` | `boolean` | No | Optional. This field is used to prevent accidental overwrite of the default environment, which is an operation that cannot be undone. To confirm that the caller desires this overwrite, this field must be explicitly set to true when updating the default environment (environment ID = `-`). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.environments.delete()`
 
@@ -1843,7 +1843,7 @@ Processes a natural language query and returns structured, actionable data as a 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.session` | `string` | Yes | Required. The name of the session this query is sent to. Format: `projects//agent/sessions/`, or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment (`Environment ID` might be referred to as environment name at some places). If `User ID` is not specified, we are using "-". It's up to the API caller to choose an appropriate `Session ID` and `User Id`. They can be a random number or some type of user and session identifiers (preferably hashed). The length of the `Session ID` and `User ID` must not exceed 36 characters. For more information, see the [API interactions guide](https://cloud.google.com/dialogflow/docs/api-overview). Note: Always use agent versions for production traffic. See [Versions and environments](https://cloud.google.com/dialogflow/es/docs/agents-versions). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent.environments.users.sessions.contexts`
 
@@ -1872,7 +1872,7 @@ Creates a context. If the specified context already exists, overrides the contex
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The session to create a context for. Format: `projects//agent/sessions/` or `projects//agent/environments//users//sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.environments.users.sessions.contexts.patch()`
 
@@ -1882,7 +1882,7 @@ Updates the specified context.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of the context. Format: `projects//agent/sessions//contexts/`, or `projects//agent/environments//users//sessions//contexts/`. The `Context ID` is always converted to lowercase, may only contain characters in `a-zA-Z0-9_-%` and may be at most 250 bytes long. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. The following context names are reserved for internal use by Dialogflow. You should not use these contexts or create contexts with these names: * `__system_counters__` * `*_id_dialog_context` * `*_dialog_params_size` |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.environments.users.sessions.contexts.delete()`
 
@@ -1919,7 +1919,7 @@ Creates a session entity type. If the specified session entity type already exis
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The session to create a session entity type for. Format: `projects//agent/sessions/` or `projects//agent/environments//users// sessions/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.environments.users.sessions.entityTypes.patch()`
 
@@ -1929,7 +1929,7 @@ Updates the specified session entity type. This method doesn't work with Google 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique identifier of this session entity type. Format: `projects//agent/sessions//entityTypes/`, or `projects//agent/environments//users//sessions//entityTypes/`. If `Environment ID` is not specified, we assume default 'draft' environment. If `User ID` is not specified, we assume default '-' user. `` must be the display name of an existing entity type in the same agent that will be overridden or supplemented. |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.environments.users.sessions.entityTypes.delete()`
 
@@ -1981,7 +1981,7 @@ Creates a knowledge base.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to create a knowledge base for. Format: `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.knowledgeBases.delete()`
 
@@ -2000,7 +2000,7 @@ Updates the specified knowledge base.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`. |
 | `params.updateMask` | `string` | No | Optional. Not specified means `update all`. Currently, only `display_name` can be updated, an InvalidArgument will be returned for attempting to update other fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent.knowledgeBases.documents`
 
@@ -2030,7 +2030,7 @@ Creates a new document. This method is a [long-running operation](https://cloud.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The knowledge base to create a document for. Format: `projects//locations//knowledgeBases/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.knowledgeBases.documents.delete()`
 
@@ -2048,7 +2048,7 @@ Updates the specified document. This method is a [long-running operation](https:
 |---|---|---|---|
 | `params.name` | `string` | Yes | Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`. |
 | `params.updateMask` | `string` | No | Optional. Not specified means `update all`. Currently, only `display_name` can be updated, an InvalidArgument will be returned for attempting to update other fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.knowledgeBases.documents.reload()`
 
@@ -2057,7 +2057,7 @@ Reloads the specified document from its specified source, content_uri or content
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the document to reload. Format: `projects//locations//knowledgeBases//documents/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.agent.versions`
 
@@ -2086,7 +2086,7 @@ Creates an agent version. The new version points to the agent instance in the "d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The agent to create a version for. Supported formats: - `projects//agent` - `projects//locations//agent` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.versions.patch()`
 
@@ -2096,7 +2096,7 @@ Updates the specified agent version. Note that this method does not allow you to
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The unique identifier of this agent version. Supported formats: - `projects//agent/versions/` - `projects//locations//agent/versions/` |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.agent.versions.delete()`
 
@@ -2116,7 +2116,7 @@ Creates a generator.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project/location to create generator for. Format: `projects//locations/` |
 | `params.generatorId` | `string` | No | Optional. The ID to use for the generator, which will become the final component of the generator's resource name. The generator ID must be compliant with the regression formula `a-zA-Z*` with the characters length in range of [3,64]. If the field is not provided, an Id will be auto-generated. If the field is provided, the caller is responsible for 1. the uniqueness of the ID, otherwise the request will be rejected. 2. the consistency for whether to use custom ID or not under a project to better ensure uniqueness. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.generators.list()`
 
@@ -2149,7 +2149,7 @@ Updates the specified answer record.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The unique identifier of this answer record. Format: `projects//locations//answerRecords/`. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields get updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.conversationDatasets`
 
@@ -2178,7 +2178,7 @@ Import data into the specified conversation dataset. Note that it is not allowed
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Dataset resource name. Format: `projects//locations//conversationDatasets/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.conversationProfiles`
 
@@ -2207,7 +2207,7 @@ Creates a conversation profile in the specified project. ConversationProfile.cre
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to create a conversation profile for. Format: `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversationProfiles.patch()`
 
@@ -2217,7 +2217,7 @@ Updates the specified conversation profile. ConversationProfile.create_time and 
 |---|---|---|---|
 | `params.name` | `string` | Yes | The unique identifier of this conversation profile. Format: `projects//locations//conversationProfiles/`. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversationProfiles.delete()`
 
@@ -2234,7 +2234,7 @@ Adds or updates a suggestion feature in a conversation profile. If the conversat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversationProfile` | `string` | Yes | Required. The Conversation Profile to add or update the suggestion feature config. Format: `projects//locations//conversationProfiles/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversationProfiles.clearSuggestionFeatureConfig()`
 
@@ -2243,7 +2243,7 @@ Clears a suggestion feature from a conversation profile for the given participan
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversationProfile` | `string` | Yes | Required. The Conversation Profile to add or update the suggestion feature config. Format: `projects//locations//conversationProfiles/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.conversations`
 
@@ -2255,7 +2255,7 @@ Creates a new conversation. Conversations are auto-completed after 24 hours. Con
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource identifier of the project creating the conversation. Format: `projects//locations/`. |
 | `params.conversationId` | `string` | No | Optional. Identifier of the conversation. Generally it's auto generated by Google. Only set it if you cannot wait for the response to return a auto-generated one to you. The conversation ID must be compliant with the regression formula `a-zA-Z*` with the characters length in range of [3,64]. If the field is provided, the caller is responsible for 1. the uniqueness of the ID, otherwise the request will be rejected. 2. the consistency for whether to use custom ID or not under a project to better ensure uniqueness. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.list()`
 
@@ -2283,7 +2283,7 @@ Completes the specified conversation. Finished conversations are purged from the
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource identifier of the conversation to close. Format: `projects//locations//conversations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.conversations.participants`
 
@@ -2294,7 +2294,7 @@ Creates a new participant in a conversation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource identifier of the conversation adding the participant. Format: `projects//locations//conversations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.participants.get()`
 
@@ -2322,7 +2322,7 @@ Updates the specified participant.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Optional. The unique identifier of this participant. Format: `projects//locations//conversations//participants/`. |
 | `params.updateMask` | `string` | No | Required. The mask to specify which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.participants.analyzeContent()`
 
@@ -2331,7 +2331,7 @@ Adds a text (chat, for example), or audio (phone recording, for example) message
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.participant` | `string` | Yes | Required. The name of the participant this text comes from. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.conversations.participants.suggestions`
 
@@ -2342,7 +2342,7 @@ Gets suggested articles for a participant based on specific historical messages.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the participant to fetch suggestion for. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.participants.suggestions.suggestFaqAnswers()`
 
@@ -2351,7 +2351,7 @@ Gets suggested faq answers for a participant based on specific historical messag
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the participant to fetch suggestion for. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.participants.suggestions.suggestSmartReplies()`
 
@@ -2360,7 +2360,7 @@ Gets smart replies for a participant based on specific historical messages.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the participant to fetch suggestion for. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.participants.suggestions.suggestKnowledgeAssist()`
 
@@ -2369,7 +2369,7 @@ Gets knowledge assist suggestions based on historical messages.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the participant to fetch suggestions for. Format: `projects//locations//conversations//participants/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.conversations.messages`
 
@@ -2393,7 +2393,7 @@ Suggests summary for a conversation based on specific historical messages. The r
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversation` | `string` | Yes | Required. The conversation to fetch suggestion for. Format: `projects//locations//conversations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.suggestions.searchKnowledge()`
 
@@ -2402,7 +2402,7 @@ Get answers for the given query based on knowledge documents.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversation` | `string` | Yes | Optional. The conversation (between human agent and end user) where the search request is triggered. Format: `projects//locations//conversations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversations.suggestions.generate()`
 
@@ -2411,7 +2411,7 @@ Generates all the suggestions using generators configured in the conversation pr
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.conversation` | `string` | Yes | Required. The conversation for which the suggestions are generated. Format: `projects//locations//conversations/`. The conversation must be created with a conversation profile which has generators configured in it to be able to get suggestions. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.suggestions`
 
@@ -2422,7 +2422,7 @@ Generates and returns a summary for a conversation that does not have a resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to charge for the Summary's generation. Format: `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.suggestions.searchKnowledge()`
 
@@ -2431,7 +2431,7 @@ Get answers for the given query based on knowledge documents.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource contains the conversation profile Format: 'projects/' or `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.conversationModels`
 
@@ -2442,7 +2442,7 @@ Creates a model. This method is a [long-running operation](https://cloud.google.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The project to create conversation model for. Format: `projects/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversationModels.get()`
 
@@ -2477,7 +2477,7 @@ Deploys a model. If a model is already deployed, deploying it has no effect. A m
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The conversation model to deploy. Format: `projects//conversationModels/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.conversationModels.undeploy()`
 
@@ -2486,7 +2486,7 @@ Undeploys a model. If the model is not deployed this method has no effect. If th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The conversation model to undeploy. Format: `projects//conversationModels/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.conversationModels.evaluations`
 
@@ -2536,7 +2536,7 @@ Creates a knowledge base.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to create a knowledge base for. Format: `projects//locations/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.knowledgeBases.delete()`
 
@@ -2555,7 +2555,7 @@ Updates the specified knowledge base.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The knowledge base resource name. The name must be empty when creating a knowledge base. Format: `projects//locations//knowledgeBases/`. |
 | `params.updateMask` | `string` | No | Optional. Not specified means `update all`. Currently, only `display_name` can be updated, an InvalidArgument will be returned for attempting to update other fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.knowledgeBases.documents`
 
@@ -2585,7 +2585,7 @@ Creates a new document. This method is a [long-running operation](https://cloud.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The knowledge base to create a document for. Format: `projects//locations//knowledgeBases/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.knowledgeBases.documents.import()`
 
@@ -2594,7 +2594,7 @@ Creates documents by importing data from external sources. Dialogflow supports u
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The knowledge base to import documents into. Format: `projects//locations//knowledgeBases/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.knowledgeBases.documents.delete()`
 
@@ -2612,7 +2612,7 @@ Updates the specified document. This method is a [long-running operation](https:
 |---|---|---|---|
 | `params.name` | `string` | Yes | Optional. The document resource name. The name must be empty when creating a document. Format: `projects//locations//knowledgeBases//documents/`. |
 | `params.updateMask` | `string` | No | Optional. Not specified means `update all`. Currently, only `display_name` can be updated, an InvalidArgument will be returned for attempting to update other fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.knowledgeBases.documents.reload()`
 
@@ -2621,7 +2621,7 @@ Reloads the specified document from its specified source, content_uri or content
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the document to reload. Format: `projects//locations//knowledgeBases//documents/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.knowledgeBases.documents.export()`
 
@@ -2630,4 +2630,4 @@ Exports a smart messaging candidate document into the specified destination. Thi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the document to export. Format: `projects//locations//knowledgeBases//documents/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
