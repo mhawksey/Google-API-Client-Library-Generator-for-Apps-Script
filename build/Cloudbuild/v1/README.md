@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Build API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:33 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:01:36 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:12:21 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:12:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:19 GMT
 
 
@@ -31,7 +31,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
 
@@ -45,7 +45,7 @@ Starts a build with the specified configuration. This method returns a long-runn
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. ID of the project. |
 | `params.parent` | `string` | No | The parent resource where this build will be created. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.builds.get()`
 
@@ -77,7 +77,7 @@ Cancels a build in progress.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. ID of the project. |
 | `params.id` | `string` | Yes | Required. ID of the build. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.builds.retry()`
 
@@ -97,7 +97,7 @@ Creates a new build based on the specified build. This method creates a new buil
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. ID of the project. |
 | `params.id` | `string` | Yes | Required. Build ID of the original build. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.builds.approve()`
 
@@ -106,7 +106,7 @@ Approves or rejects a pending build. If approved, the returned LRO will be analo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.triggers`
 
@@ -118,7 +118,7 @@ Creates a new `BuildTrigger`.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. ID of the project for which to configure automatic builds. |
 | `params.parent` | `string` | No | The parent resource where this trigger will be created. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.triggers.get()`
 
@@ -160,7 +160,7 @@ Updates a `BuildTrigger` by its project ID and trigger ID.
 | `params.projectId` | `string` | Yes | Required. ID of the project that owns the trigger. |
 | `params.triggerId` | `string` | Yes | Required. ID of the `BuildTrigger` to update. |
 | `params.updateMask` | `string` | No | Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.triggers.run()`
 
@@ -171,7 +171,7 @@ Runs a `BuildTrigger` at a particular source revision. To run a regional or glob
 | `params.projectId` | `string` | Yes | Required. ID of the project. |
 | `params.triggerId` | `string` | Yes | Required. ID of the trigger. |
 | `params.name` | `string` | No | The name of the `Trigger` to run. Format: `projects/{project}/locations/{location}/triggers/{trigger}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.triggers.webhook()`
 
@@ -183,7 +183,7 @@ ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook r
 | `params.trigger` | `string` | Yes | Name of the trigger to run the payload against |
 | `params.name` | `string` | No | The name of the `ReceiveTriggerWebhook` to retrieve. Format: `projects/{project}/locations/{location}/triggers/{trigger}` |
 | `params.secret` | `string` | No | Secret token used for authorization if an OAuth token isn't provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.githubEnterpriseConfigs`
 
@@ -196,7 +196,7 @@ Create an association between a GCP project and a GitHub Enterprise server.
 | `params.parent` | `string` | Yes | Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} |
 | `params.projectId` | `string` | No | ID of the project. |
 | `params.gheConfigId` | `string` | No | Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig's resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.githubEnterpriseConfigs.patch()`
 
@@ -206,7 +206,7 @@ Update an association between a GCP project and a GitHub Enterprise server.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" |
 | `params.updateMask` | `string` | No | Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.githubEnterpriseConfigs.get()`
 
@@ -264,7 +264,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.builds`
 
@@ -276,7 +276,7 @@ Starts a build with the specified configuration. This method returns a long-runn
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource where this build will be created. Format: `projects/{project}/locations/{location}` |
 | `params.projectId` | `string` | No | Required. ID of the project. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.builds.get()`
 
@@ -307,7 +307,7 @@ Cancels a build in progress.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the `Build` to cancel. Format: `projects/{project}/locations/{location}/builds/{build}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.builds.retry()`
 
@@ -326,7 +326,7 @@ Creates a new build based on the specified build. This method creates a new buil
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the `Build` to retry. Format: `projects/{project}/locations/{location}/builds/{build}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.builds.approve()`
 
@@ -335,7 +335,7 @@ Approves or rejects a pending build. If approved, the returned LRO will be analo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.triggers`
 
@@ -347,7 +347,7 @@ Creates a new `BuildTrigger`.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource where this trigger will be created. Format: `projects/{project}/locations/{location}` |
 | `params.projectId` | `string` | No | Required. ID of the project for which to configure automatic builds. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.triggers.get()`
 
@@ -390,7 +390,7 @@ Updates a `BuildTrigger` by its project ID and trigger ID.
 | `params.projectId` | `string` | No | Required. ID of the project that owns the trigger. |
 | `params.triggerId` | `string` | No | Required. ID of the `BuildTrigger` to update. |
 | `params.updateMask` | `string` | No | Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.triggers.run()`
 
@@ -399,7 +399,7 @@ Runs a `BuildTrigger` at a particular source revision. To run a regional or glob
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the `Trigger` to run. Format: `projects/{project}/locations/{location}/triggers/{trigger}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.triggers.webhook()`
 
@@ -411,7 +411,7 @@ ReceiveTriggerWebhook [Experimental] is called when the API receives a webhook r
 | `params.projectId` | `string` | No | Project in which the specified trigger lives |
 | `params.trigger` | `string` | No | Name of the trigger to run the payload against |
 | `params.secret` | `string` | No | Secret token used for authorization if an OAuth token isn't provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.bitbucketServerConfigs`
 
@@ -423,7 +423,7 @@ Creates a new `BitbucketServerConfig`. This API is experimental.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the parent resource. |
 | `params.bitbucketServerConfigId` | `string` | No | Optional. The ID to use for the BitbucketServerConfig, which will become the final component of the BitbucketServerConfig's resource name. bitbucket_server_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bitbucketServerConfigs.patch()`
 
@@ -433,7 +433,7 @@ Updates an existing `BitbucketServerConfig`. This API is experimental.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name for the config. |
 | `params.updateMask` | `string` | No | Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bitbucketServerConfigs.get()`
 
@@ -468,7 +468,7 @@ Remove a Bitbucket Server repository from a given BitbucketServerConfig's connec
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.config` | `string` | Yes | Required. The name of the `BitbucketServerConfig` to remove a connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.bitbucketServerConfigs.repos`
 
@@ -491,7 +491,7 @@ Batch connecting Bitbucket Server repositories to Cloud Build.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the `BitbucketServerConfig` that added connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.gitLabConfigs`
 
@@ -503,7 +503,7 @@ Creates a new `GitLabConfig`. This API is experimental
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the parent resource. |
 | `params.gitlabConfigId` | `string` | No | Optional. The ID to use for the GitLabConfig, which will become the final component of the GitLabConfig’s resource name. gitlab_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gitLabConfigs.patch()`
 
@@ -513,7 +513,7 @@ Updates an existing `GitLabConfig`. This API is experimental
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name for the config. |
 | `params.updateMask` | `string` | No | Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gitLabConfigs.get()`
 
@@ -548,7 +548,7 @@ Remove a GitLab repository from a given GitLabConfig's connected repositories. T
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.config` | `string` | Yes | Required. The name of the `GitLabConfig` to remove a connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.gitLabConfigs.repos`
 
@@ -571,7 +571,7 @@ Batch connecting GitLab repositories to Cloud Build. This API is experimental.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the `GitLabConfig` that adds connected repositories. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.githubEnterpriseConfigs`
 
@@ -584,7 +584,7 @@ Create an association between a GCP project and a GitHub Enterprise server.
 | `params.parent` | `string` | Yes | Name of the parent project. For example: projects/{$project_number} or projects/{$project_id} |
 | `params.projectId` | `string` | No | ID of the project. |
 | `params.gheConfigId` | `string` | No | Optional. The ID to use for the GithubEnterpriseConfig, which will become the final component of the GithubEnterpriseConfig's resource name. ghe_config_id must meet the following requirements: + They must contain only alphanumeric characters and dashes. + They can be 1-64 characters long. + They must begin and end with an alphanumeric character |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.githubEnterpriseConfigs.patch()`
 
@@ -594,7 +594,7 @@ Update an association between a GCP project and a GitHub Enterprise server.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The full resource name for the GitHubEnterpriseConfig For example: "projects/{$project_id}/locations/{$location_id}/githubEnterpriseConfigs/{$config_id}" |
 | `params.updateMask` | `string` | No | Update mask for the resource. If this is set, the server will only update the fields specified in the field mask. Otherwise, a full update of the mutable resource fields will be performed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.githubEnterpriseConfigs.get()`
 
@@ -636,7 +636,7 @@ Creates a `WorkerPool`.
 | `params.parent` | `string` | Yes | Required. The parent resource where this worker pool will be created. Format: `projects/{project}/locations/{location}`. |
 | `params.workerPoolId` | `string` | No | Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/. |
 | `params.validateOnly` | `boolean` | No | If set, validate the request and preview the response, but do not actually post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workerPools.get()`
 
@@ -666,7 +666,7 @@ Updates a `WorkerPool`.
 | `params.name` | `string` | Yes | Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed. |
 | `params.updateMask` | `string` | No | Optional. A mask specifying which fields in `worker_pool` to update. |
 | `params.validateOnly` | `boolean` | No | If set, validate the request and preview the response, but do not actually post it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workerPools.list()`
 
@@ -687,7 +687,7 @@ ReceiveGitHubDotComWebhook is called when the API receives a github.com webhook.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.webhookKey` | `string` | No | For GitHub Enterprise webhooks, this key is used to associate the webhook request with the GitHubEnterpriseConfig to use for validation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations`
 
@@ -699,7 +699,7 @@ ReceiveRegionalWebhook is called when the API receives a regional GitHub webhook
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The location where the webhook should be sent. |
 | `params.webhookKey` | `string` | No | For GitHub Enterprise webhooks, this key is used to associate the webhook request with the GitHubEnterpriseConfig to use for validation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `v1`
 
@@ -710,4 +710,4 @@ ReceiveWebhook is called when the API receives a GitHub webhook.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.webhookKey` | `string` | No | For GitHub Enterprise webhooks, this key is used to associate the webhook request with the GitHubEnterpriseConfig to use for validation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
