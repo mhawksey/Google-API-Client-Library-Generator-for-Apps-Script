@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Cloud Messaging API (vers
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:02 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:15:00 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:34 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:54 GMT
 
 
@@ -25,4 +25,4 @@ Send a message to specified target (a registration token, topic or condition).
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. It contains the Firebase project id (i.e. the unique identifier for your Firebase project), in the format of `projects/{project_id}`. The numeric project number with no padding is also supported in the format of `projects/{project_number}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
