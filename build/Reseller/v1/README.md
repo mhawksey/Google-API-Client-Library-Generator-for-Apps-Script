@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Workspace Reseller API (ver
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:37 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:44:35 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:46:23 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:46:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:36 GMT
 
 
@@ -31,7 +31,7 @@ Orders a new customer's account. Before ordering a new customer account, establi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerAuthToken` | `string` | No | The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.update()`
 
@@ -40,7 +40,7 @@ Updates a customer account's settings. You cannot update `customerType` via the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.patch()`
 
@@ -49,7 +49,7 @@ Updates a customer account's settings. This method supports patch semantics. You
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `resellernotify`
 
@@ -95,7 +95,7 @@ Updates a subscription plan. Use this method to update a plan for a 30-day trial
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. |
 | `params.subscriptionId` | `string` | Yes | This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.changeRenewalSettings()`
 
@@ -105,7 +105,7 @@ Updates a user license's renewal settings. This is applicable for accounts with 
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. |
 | `params.subscriptionId` | `string` | Yes | This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.changeSeats()`
 
@@ -115,7 +115,7 @@ Updates a subscription's user license settings. For more information about updat
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable. |
 | `params.subscriptionId` | `string` | Yes | This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.delete()`
 
@@ -146,7 +146,7 @@ Creates or transfer a subscription. Create a subscription for a customer's accou
 | `params.customerAuthToken` | `string` | No | The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center. |
 | `params.action` | `string` | No | The intented insert action. Advised to set this when the customer already has a subscription for a different SKU in the same product. |
 | `params.sourceSkuId` | `string` | No | The sku_id of the existing subscription to be upgraded or downgraded. This is required when action is SWITCH. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.list()`
 
