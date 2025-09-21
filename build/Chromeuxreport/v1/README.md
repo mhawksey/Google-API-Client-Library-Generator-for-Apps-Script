@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome UX Report API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:11 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:00:52 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:46 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:18 GMT
 
 
@@ -22,7 +22,7 @@ Queries the Chrome User Experience for a single `record` for a given site. Retur
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `records.queryHistoryRecord()`
 
@@ -30,4 +30,4 @@ Queries the Chrome User Experience Report for a timeseries `history record` for 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
