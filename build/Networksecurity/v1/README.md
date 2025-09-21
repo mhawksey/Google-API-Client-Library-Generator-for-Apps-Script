@@ -4,8 +4,8 @@ Auto-generated client library for using the **Network Security API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:23 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:34:13 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:36:50 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:36:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:06 GMT
 
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.addressGroups`
 
@@ -106,7 +106,7 @@ Creates a new address group in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent resource of the AddressGroup. Must be in the format `projects/*/locations/{location}`. |
 | `params.addressGroupId` | `string` | No | Required. Short name of the AddressGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy". |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.addressGroups.patch()`
 
@@ -117,7 +117,7 @@ Updates the parameters of a single address group.
 | `params.name` | `string` | Yes | Required. Name of the AddressGroup resource. It matches pattern `projects/*/locations/{location}/addressGroups/`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the AddressGroup resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.addressGroups.addItems()`
 
@@ -126,7 +126,7 @@ Adds items to an address group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.addressGroup` | `string` | Yes | Required. A name of the AddressGroup to add items to. Must be in the format `projects|organization/*/locations/{location}/addressGroups/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.addressGroups.removeItems()`
 
@@ -135,7 +135,7 @@ Removes items from an address group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.addressGroup` | `string` | Yes | Required. A name of the AddressGroup to remove items from. Must be in the format `projects|organization/*/locations/{location}/addressGroups/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.addressGroups.cloneItems()`
 
@@ -144,7 +144,7 @@ Clones items from one address group to another.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.addressGroup` | `string` | Yes | Required. A name of the AddressGroup to clone items to. Must be in the format `projects|organization/*/locations/{location}/addressGroups/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.addressGroups.delete()`
 
@@ -172,7 +172,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.addressGroups.getIamPolicy()`
 
@@ -190,7 +190,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.firewallEndpointAssociations`
 
@@ -223,7 +223,7 @@ Creates a new FirewallEndpointAssociation in a given project and location.
 | `params.parent` | `string` | Yes | Required. Value for parent. |
 | `params.firewallEndpointAssociationId` | `string` | No | Optional. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_association_id from the method_signature of Create RPC. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.firewallEndpointAssociations.delete()`
 
@@ -243,7 +243,7 @@ Update a single FirewallEndpointAssociation.
 | `params.name` | `string` | Yes | Immutable. Identifier. name of resource |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Association resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.interceptEndpointGroups`
 
@@ -276,7 +276,7 @@ Creates an endpoint group in a given project and location. See https://google.ai
 | `params.parent` | `string` | Yes | Required. The parent resource where this endpoint group will be created. Format: projects/{project}/locations/{location} |
 | `params.interceptEndpointGroupId` | `string` | No | Required. The ID to use for the endpoint group, which will become the final component of the endpoint group's resource name. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.interceptEndpointGroups.patch()`
 
@@ -287,7 +287,7 @@ Updates an endpoint group. See https://google.aip.dev/134.
 | `params.name` | `string` | Yes | Immutable. Identifier. The resource name of this endpoint group, for example: `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/122 for more details. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Fields are specified relative to the endpoint group (e.g. `description`; *not* `intercept_endpoint_group.description`). See https://google.aip.dev/161 for more details. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.interceptEndpointGroups.delete()`
 
@@ -329,7 +329,7 @@ Creates an association in a given project and location. See https://google.aip.d
 | `params.parent` | `string` | Yes | Required. The parent resource where this association will be created. Format: projects/{project}/locations/{location} |
 | `params.interceptEndpointGroupAssociationId` | `string` | No | Optional. The ID to use for the new association, which will become the final component of the endpoint group's resource name. If not provided, the server will generate a unique ID. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.interceptEndpointGroupAssociations.patch()`
 
@@ -340,7 +340,7 @@ Updates an association. See https://google.aip.dev/134.
 | `params.name` | `string` | Yes | Immutable. Identifier. The resource name of this endpoint group association, for example: `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-eg-association`. See https://google.aip.dev/122 for more details. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Fields are specified relative to the association (e.g. `description`; *not* `intercept_endpoint_group_association.description`). See https://google.aip.dev/161 for more details. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.interceptEndpointGroupAssociations.delete()`
 
@@ -382,7 +382,7 @@ Creates a deployment group in a given project and location. See https://google.a
 | `params.parent` | `string` | Yes | Required. The parent resource where this deployment group will be created. Format: projects/{project}/locations/{location} |
 | `params.interceptDeploymentGroupId` | `string` | No | Required. The ID to use for the new deployment group, which will become the final component of the deployment group's resource name. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.interceptDeploymentGroups.patch()`
 
@@ -393,7 +393,7 @@ Updates a deployment group. See https://google.aip.dev/134.
 | `params.name` | `string` | Yes | Immutable. Identifier. The resource name of this deployment group, for example: `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/122 for more details. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Fields are specified relative to the deployment group (e.g. `description`; *not* `intercept_deployment_group.description`). See https://google.aip.dev/161 for more details. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.interceptDeploymentGroups.delete()`
 
@@ -435,7 +435,7 @@ Creates a deployment in a given project and location. See https://google.aip.dev
 | `params.parent` | `string` | Yes | Required. The parent resource where this deployment will be created. Format: projects/{project}/locations/{location} |
 | `params.interceptDeploymentId` | `string` | No | Required. The ID to use for the new deployment, which will become the final component of the deployment's resource name. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.interceptDeployments.patch()`
 
@@ -446,7 +446,7 @@ Updates a deployment. See https://google.aip.dev/134.
 | `params.name` | `string` | Yes | Immutable. Identifier. The resource name of this deployment, for example: `projects/123456789/locations/us-central1-a/interceptDeployments/my-dep`. See https://google.aip.dev/122 for more details. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Fields are specified relative to the deployment (e.g. `description`; *not* `intercept_deployment.description`). See https://google.aip.dev/161 for more details. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.interceptDeployments.delete()`
 
@@ -488,7 +488,7 @@ Creates an endpoint group in a given project and location. See https://google.ai
 | `params.parent` | `string` | Yes | Required. The parent resource where this endpoint group will be created. Format: projects/{project}/locations/{location} |
 | `params.mirroringEndpointGroupId` | `string` | No | Required. The ID to use for the endpoint group, which will become the final component of the endpoint group's resource name. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.mirroringEndpointGroups.patch()`
 
@@ -499,7 +499,7 @@ Updates an endpoint group. See https://google.aip.dev/134.
 | `params.name` | `string` | Yes | Immutable. Identifier. The resource name of this endpoint group, for example: `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/122 for more details. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Fields are specified relative to the endpoint group (e.g. `description`; *not* `mirroring_endpoint_group.description`). See https://google.aip.dev/161 for more details. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.mirroringEndpointGroups.delete()`
 
@@ -541,7 +541,7 @@ Creates an association in a given project and location. See https://google.aip.d
 | `params.parent` | `string` | Yes | Required. The parent resource where this association will be created. Format: projects/{project}/locations/{location} |
 | `params.mirroringEndpointGroupAssociationId` | `string` | No | Optional. The ID to use for the new association, which will become the final component of the endpoint group's resource name. If not provided, the server will generate a unique ID. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.mirroringEndpointGroupAssociations.patch()`
 
@@ -552,7 +552,7 @@ Updates an association. See https://google.aip.dev/134.
 | `params.name` | `string` | Yes | Immutable. Identifier. The resource name of this endpoint group association, for example: `projects/123456789/locations/global/mirroringEndpointGroupAssociations/my-eg-association`. See https://google.aip.dev/122 for more details. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Fields are specified relative to the association (e.g. `description`; *not* `mirroring_endpoint_group_association.description`). See https://google.aip.dev/161 for more details. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.mirroringEndpointGroupAssociations.delete()`
 
@@ -594,7 +594,7 @@ Creates a deployment group in a given project and location. See https://google.a
 | `params.parent` | `string` | Yes | Required. The parent resource where this deployment group will be created. Format: projects/{project}/locations/{location} |
 | `params.mirroringDeploymentGroupId` | `string` | No | Required. The ID to use for the new deployment group, which will become the final component of the deployment group's resource name. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.mirroringDeploymentGroups.patch()`
 
@@ -605,7 +605,7 @@ Updates a deployment group. See https://google.aip.dev/134.
 | `params.name` | `string` | Yes | Immutable. Identifier. The resource name of this deployment group, for example: `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/122 for more details. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Fields are specified relative to the deployment group (e.g. `description`; *not* `mirroring_deployment_group.description`). See https://google.aip.dev/161 for more details. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.mirroringDeploymentGroups.delete()`
 
@@ -647,7 +647,7 @@ Creates a deployment in a given project and location. See https://google.aip.dev
 | `params.parent` | `string` | Yes | Required. The parent resource where this deployment will be created. Format: projects/{project}/locations/{location} |
 | `params.mirroringDeploymentId` | `string` | No | Required. The ID to use for the new deployment, which will become the final component of the deployment's resource name. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.mirroringDeployments.patch()`
 
@@ -658,7 +658,7 @@ Updates a deployment. See https://google.aip.dev/134.
 | `params.name` | `string` | Yes | Immutable. Identifier. The resource name of this deployment, for example: `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See https://google.aip.dev/122 for more details. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Fields are specified relative to the deployment (e.g. `description`; *not* `mirroring_deployment.description`). See https://google.aip.dev/161 for more details. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Must be a UUID4. This request is only idempotent if a `request_id` is provided. See https://google.aip.dev/155 for more details. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.mirroringDeployments.delete()`
 
@@ -697,7 +697,7 @@ Creates a new AuthorizationPolicy in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizationPolicy. Must be in the format `projects/{project}/locations/{location}`. |
 | `params.authorizationPolicyId` | `string` | No | Required. Short name of the AuthorizationPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizationPolicies.patch()`
 
@@ -707,7 +707,7 @@ Updates the parameters of a single AuthorizationPolicy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the AuthorizationPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizationPolicies.delete()`
 
@@ -724,7 +724,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizationPolicies.getIamPolicy()`
 
@@ -742,7 +742,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.backendAuthenticationConfigs`
 
@@ -772,7 +772,7 @@ Creates a new BackendAuthenticationConfig in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the BackendAuthenticationConfig. Must be in the format `projects/*/locations/{location}`. |
 | `params.backendAuthenticationConfigId` | `string` | No | Required. Short name of the BackendAuthenticationConfig resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "backend-auth-config". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.backendAuthenticationConfigs.patch()`
 
@@ -782,7 +782,7 @@ Updates the parameters of a single BackendAuthenticationConfig to BackendAuthent
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the BackendAuthenticationConfig resource. It matches the pattern `projects/*/locations/{location}/backendAuthenticationConfigs/{backend_authentication_config}` |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the BackendAuthenticationConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.backendAuthenticationConfigs.delete()`
 
@@ -822,7 +822,7 @@ Creates a new ServerTlsPolicy in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the ServerTlsPolicy. Must be in the format `projects/*/locations/{location}`. |
 | `params.serverTlsPolicyId` | `string` | No | Required. Short name of the ServerTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "server_mtls_policy". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.serverTlsPolicies.patch()`
 
@@ -832,7 +832,7 @@ Updates the parameters of a single ServerTlsPolicy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the ServerTlsPolicy resource. It matches the pattern `projects/*/locations/{location}/serverTlsPolicies/{server_tls_policy}` |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the ServerTlsPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.serverTlsPolicies.delete()`
 
@@ -849,7 +849,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.serverTlsPolicies.getIamPolicy()`
 
@@ -867,7 +867,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.clientTlsPolicies`
 
@@ -897,7 +897,7 @@ Creates a new ClientTlsPolicy in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the ClientTlsPolicy. Must be in the format `projects/*/locations/{location}`. |
 | `params.clientTlsPolicyId` | `string` | No | Required. Short name of the ClientTlsPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "client_mtls_policy". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clientTlsPolicies.patch()`
 
@@ -907,7 +907,7 @@ Updates the parameters of a single ClientTlsPolicy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the ClientTlsPolicy resource. It matches the pattern `projects/{project}/locations/{location}/clientTlsPolicies/{client_tls_policy}` |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the ClientTlsPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clientTlsPolicies.delete()`
 
@@ -924,7 +924,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.clientTlsPolicies.getIamPolicy()`
 
@@ -942,7 +942,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.gatewaySecurityPolicies`
 
@@ -972,7 +972,7 @@ Creates a new GatewaySecurityPolicy in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the GatewaySecurityPolicy. Must be in the format `projects/{project}/locations/{location}`. |
 | `params.gatewaySecurityPolicyId` | `string` | No | Required. Short name of the GatewaySecurityPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "gateway_security_policy1". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gatewaySecurityPolicies.patch()`
 
@@ -982,7 +982,7 @@ Updates the parameters of a single GatewaySecurityPolicy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. Name is of the form projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy} gateway_security_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the GatewaySecurityPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gatewaySecurityPolicies.delete()`
 
@@ -1020,7 +1020,7 @@ Creates a new GatewaySecurityPolicy in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent where this rule will be created. Format : projects/{project}/location/{location}/gatewaySecurityPolicies/* |
 | `params.gatewaySecurityPolicyRuleId` | `string` | No | The ID to use for the rule, which will become the final component of the rule's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gatewaySecurityPolicies.rules.patch()`
 
@@ -1030,7 +1030,7 @@ Updates the parameters of a single GatewaySecurityPolicyRule.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Immutable. Name of the resource. ame is the full resource name so projects/{project}/locations/{location}/gatewaySecurityPolicies/{gateway_security_policy}/rules/{rule} rule should match the pattern: (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the GatewaySecurityPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gatewaySecurityPolicies.rules.delete()`
 
@@ -1068,7 +1068,7 @@ Creates a new UrlList in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the UrlList. Must be in the format `projects/*/locations/{location}`. |
 | `params.urlListId` | `string` | No | Required. Short name of the UrlList resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "url_list". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.urlLists.patch()`
 
@@ -1078,7 +1078,7 @@ Updates the parameters of a single UrlList.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource provided by the user. Name is of the form projects/{project}/locations/{location}/urlLists/{url_list} url_list should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the UrlList resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.urlLists.delete()`
 
@@ -1116,7 +1116,7 @@ Creates a new TlsInspectionPolicy in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the TlsInspectionPolicy. Must be in the format `projects/{project}/locations/{location}`. |
 | `params.tlsInspectionPolicyId` | `string` | No | Required. Short name of the TlsInspectionPolicy resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "tls_inspection_policy1". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tlsInspectionPolicies.patch()`
 
@@ -1126,7 +1126,7 @@ Updates the parameters of a single TlsInspectionPolicy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. Name is of the form projects/{project}/locations/{location}/tlsInspectionPolicies/{tls_inspection_policy} tls_inspection_policy should match the pattern:(^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$). |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the TlsInspectionPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tlsInspectionPolicies.delete()`
 
@@ -1168,7 +1168,7 @@ Creates a new AuthzPolicy in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent resource of the `AuthzPolicy` resource. Must be in the format `projects/{project}/locations/{location}`. |
 | `params.authzPolicyId` | `string` | No | Required. User-provided ID of the `AuthzPolicy` resource to be created. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authzPolicies.patch()`
 
@@ -1179,7 +1179,7 @@ Updates the parameters of a single AuthzPolicy.
 | `params.name` | `string` | Yes | Required. Identifier. Name of the `AuthzPolicy` resource in the following format: `projects/{project}/locations/{location}/authzPolicies/{authz_policy}`. |
 | `params.updateMask` | `string` | No | Required. Used to specify the fields to be overwritten in the `AuthzPolicy` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field is overwritten if it is in the mask. If the user does not specify a mask, then all fields are overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authzPolicies.delete()`
 
@@ -1197,7 +1197,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authzPolicies.getIamPolicy()`
 
@@ -1215,7 +1215,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations`
 
@@ -1257,7 +1257,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.addressGroups`
 
@@ -1289,7 +1289,7 @@ Creates a new address group in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent resource of the AddressGroup. Must be in the format `projects/*/locations/{location}`. |
 | `params.addressGroupId` | `string` | No | Required. Short name of the AddressGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "authz_policy". |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.addressGroups.patch()`
 
@@ -1300,7 +1300,7 @@ Updates parameters of an address group.
 | `params.name` | `string` | Yes | Required. Name of the AddressGroup resource. It matches pattern `projects/*/locations/{location}/addressGroups/`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the AddressGroup resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.addressGroups.addItems()`
 
@@ -1309,7 +1309,7 @@ Adds items to an address group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.addressGroup` | `string` | Yes | Required. A name of the AddressGroup to add items to. Must be in the format `projects|organization/*/locations/{location}/addressGroups/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.addressGroups.removeItems()`
 
@@ -1318,7 +1318,7 @@ Removes items from an address group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.addressGroup` | `string` | Yes | Required. A name of the AddressGroup to remove items from. Must be in the format `projects|organization/*/locations/{location}/addressGroups/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.addressGroups.cloneItems()`
 
@@ -1327,7 +1327,7 @@ Clones items from one address group to another.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.addressGroup` | `string` | Yes | Required. A name of the AddressGroup to clone items to. Must be in the format `projects|organization/*/locations/{location}/addressGroups/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.addressGroups.delete()`
 
@@ -1379,7 +1379,7 @@ Creates a new FirewallEndpoint in a given project and location.
 | `params.parent` | `string` | Yes | Required. Value for parent. |
 | `params.firewallEndpointId` | `string` | No | Required. Id of the requesting object. If auto-generating Id server-side, remove this field and firewall_endpoint_id from the method_signature of Create RPC. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.firewallEndpoints.delete()`
 
@@ -1399,7 +1399,7 @@ Update a single Endpoint.
 | `params.name` | `string` | Yes | Immutable. Identifier. Name of resource. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Endpoint resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.securityProfileGroups`
 
@@ -1429,7 +1429,7 @@ Creates a new SecurityProfileGroup in a given organization and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the SecurityProfileGroup. Must be in the format `projects|organizations/*/locations/{location}`. |
 | `params.securityProfileGroupId` | `string` | No | Required. Short name of the SecurityProfileGroup resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile_group1". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.securityProfileGroups.patch()`
 
@@ -1439,7 +1439,7 @@ Updates the parameters of a single SecurityProfileGroup.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Identifier. Name of the SecurityProfileGroup resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfileGroups/{security_profile_group}`. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the SecurityProfileGroup resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.securityProfileGroups.delete()`
 
@@ -1478,7 +1478,7 @@ Creates a new SecurityProfile in a given organization and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the SecurityProfile. Must be in the format `projects|organizations/*/locations/{location}`. |
 | `params.securityProfileId` | `string` | No | Required. Short name of the SecurityProfile resource to be created. This value should be 1-63 characters long, containing only letters, numbers, hyphens, and underscores, and should not start with a number. E.g. "security_profile1". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.securityProfiles.patch()`
 
@@ -1488,7 +1488,7 @@ Updates the parameters of a single SecurityProfile.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Identifier. Name of the SecurityProfile resource. It matches pattern `projects|organizations/*/locations/{location}/securityProfiles/{security_profile}`. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the SecurityProfile resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.securityProfiles.delete()`
 
