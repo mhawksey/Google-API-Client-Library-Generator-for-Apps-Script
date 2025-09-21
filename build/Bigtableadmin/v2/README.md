@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Bigtable Admin API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:38 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:23:38 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:00 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:00 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:22 GMT
 
 
@@ -50,7 +50,7 @@ Create an instance within a project. Note that exactly one of Cluster.serve_node
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.get()`
 
@@ -76,7 +76,7 @@ Updates an instance within a project. This method updates only the display name 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.partialUpdateInstance()`
 
@@ -86,7 +86,7 @@ Partially updates an instance within a project. This method can modify all field
 |---|---|---|---|
 | `params.name` | `string` | Yes | The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. |
 | `params.updateMask` | `string` | No | Required. The subset of Instance fields which should be replaced. Must be explicitly set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.delete()`
 
@@ -103,7 +103,7 @@ Gets the access control policy for an instance resource. Returns an empty policy
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.setIamPolicy()`
 
@@ -112,7 +112,7 @@ Sets the access control policy on an instance resource. Replaces any existing po
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.testIamPermissions()`
 
@@ -121,7 +121,7 @@ Returns permissions that the caller has on the specified instance resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.instances.clusters`
 
@@ -133,7 +133,7 @@ Creates a cluster within an instance. Note that exactly one of Cluster.serve_nod
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The unique name of the instance in which to create the new cluster. Values are of the form `projects/{project}/instances/{instance}`. |
 | `params.clusterId` | `string` | No | Required. The ID to be used when referring to the new cluster within its instance, e.g., just `mycluster` rather than `projects/myproject/instances/myinstance/clusters/mycluster`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.clusters.get()`
 
@@ -159,7 +159,7 @@ Updates a cluster within an instance. Note that UpdateCluster does not support u
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.clusters.partialUpdateCluster()`
 
@@ -169,7 +169,7 @@ Partially updates a cluster within a project. This method is the preferred way t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. |
 | `params.updateMask` | `string` | No | Required. The subset of Cluster fields which should be replaced. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.clusters.delete()`
 
@@ -203,7 +203,7 @@ Starts creating a new Cloud Bigtable Backup. The returned backup long-running op
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. This must be one of the clusters in the instance in which this table is located. The backup will be stored in this cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. |
 | `params.backupId` | `string` | No | Required. The id of the backup to be created. The `backup_id` along with the parent `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.clusters.backups.get()`
 
@@ -221,7 +221,7 @@ Updates a pending or completed Cloud Bigtable Backup.
 |---|---|---|---|
 | `params.name` | `string` | Yes | A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. |
 | `params.updateMask` | `string` | No | Required. A mask specifying which fields (e.g. `expire_time`) in the Backup resource should be updated. This mask is relative to the Backup resource, not to the request message. The field mask must always be specified; this prevents any future fields from being erased accidentally by clients that do not know about them. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.clusters.backups.delete()`
 
@@ -250,7 +250,7 @@ Copy a Cloud Bigtable backup to a new backup in the destination cluster located 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the destination cluster that will contain the backup copy. The cluster must already exist. Values are of the form: `projects/{project}/instances/{instance}/clusters/{cluster}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.clusters.backups.getIamPolicy()`
 
@@ -259,7 +259,7 @@ Gets the access control policy for a Bigtable resource. Returns an empty policy 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.clusters.backups.setIamPolicy()`
 
@@ -268,7 +268,7 @@ Sets the access control policy on a Bigtable resource. Replaces any existing pol
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.clusters.backups.testIamPermissions()`
 
@@ -277,7 +277,7 @@ Returns permissions that the caller has on the specified Bigtable resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.instances.appProfiles`
 
@@ -290,7 +290,7 @@ Creates an app profile within an instance.
 | `params.parent` | `string` | Yes | Required. The unique name of the instance in which to create the new app profile. Values are of the form `projects/{project}/instances/{instance}`. |
 | `params.appProfileId` | `string` | No | Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`. |
 | `params.ignoreWarnings` | `boolean` | No | If true, ignore safety checks when creating the app profile. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.appProfiles.get()`
 
@@ -319,7 +319,7 @@ Updates an app profile within an instance.
 | `params.name` | `string` | Yes | The unique name of the app profile, up to 50 characters long. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`. |
 | `params.updateMask` | `string` | No | Required. The subset of app profile fields which should be replaced. If unset, all fields will be replaced. |
 | `params.ignoreWarnings` | `boolean` | No | If true, ignore safety checks when updating the app profile. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.appProfiles.delete()`
 
@@ -339,7 +339,7 @@ Gets the access control policy for an instance resource. Returns an empty policy
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.materializedViews.setIamPolicy()`
 
@@ -348,7 +348,7 @@ Sets the access control policy on an instance resource. Replaces any existing po
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.materializedViews.testIamPermissions()`
 
@@ -357,7 +357,7 @@ Returns permissions that the caller has on the specified instance resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.materializedViews.create()`
 
@@ -367,7 +367,7 @@ Creates a materialized view within an instance.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent instance where this materialized view will be created. Format: `projects/{project}/instances/{instance}`. |
 | `params.materializedViewId` | `string` | No | Required. The ID to use for the materialized view, which will become the final component of the materialized view's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.materializedViews.get()`
 
@@ -393,9 +393,9 @@ Updates a materialized view within an instance.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The unique name of the materialized view. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` |
+| `params.name` | `string` | Yes | Identifier. The unique name of the materialized view. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.materializedViews.delete()`
 
@@ -415,7 +415,7 @@ Gets the access control policy for an instance resource. Returns an empty policy
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.logicalViews.setIamPolicy()`
 
@@ -424,7 +424,7 @@ Sets the access control policy on an instance resource. Replaces any existing po
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.logicalViews.testIamPermissions()`
 
@@ -433,7 +433,7 @@ Returns permissions that the caller has on the specified instance resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.logicalViews.create()`
 
@@ -443,7 +443,7 @@ Creates a logical view within an instance.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent instance where this logical view will be created. Format: `projects/{project}/instances/{instance}`. |
 | `params.logicalViewId` | `string` | No | Required. The ID to use for the logical view, which will become the final component of the logical view's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.logicalViews.get()`
 
@@ -471,7 +471,7 @@ Updates a logical view within an instance.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The unique name of the logical view. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.logicalViews.delete()`
 
@@ -491,7 +491,7 @@ Creates a new table in the specified instance. The table can be created with a f
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The unique name of the instance in which to create the table. Values are of the form `projects/{project}/instances/{instance}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.list()`
 
@@ -522,7 +522,7 @@ Updates a specified table.
 | `params.name` | `string` | Yes | The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL` |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. A mask specifying which fields (e.g. `change_stream_config`) in the `table` field should be updated. This mask is relative to the `table` field, not to the request message. The wildcard (*) path is currently not supported. Currently UpdateTable is only supported for the following fields: * `change_stream_config` * `change_stream_config.retention_period` * `deletion_protection` * `automated_backup_policy` * `automated_backup_policy.retention_period` * `automated_backup_policy.frequency` * `row_key_schema` If `column_families` is set in `update_mask`, it will return an UNIMPLEMENTED error. |
 | `params.ignoreWarnings` | `boolean` | No | Optional. If true, ignore safety checks when updating the table. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.delete()`
 
@@ -539,7 +539,7 @@ Restores a specified table which was accidentally deleted.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique name of the table to be restored. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.modifyColumnFamilies()`
 
@@ -548,7 +548,7 @@ Performs a series of column family modifications on the specified table. Either 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique name of the table whose families should be modified. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.dropRowRange()`
 
@@ -557,7 +557,7 @@ Permanently drop/delete a row range from a specified table. The request can spec
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique name of the table on which to drop a range of rows. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.generateConsistencyToken()`
 
@@ -566,7 +566,7 @@ Generates a consistency token for a Table, which can be used in CheckConsistency
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique name of the Table for which to create a consistency token. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.checkConsistency()`
 
@@ -575,7 +575,7 @@ Checks replication consistency based on a consistency token, that is, if replica
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique name of the Table for which to check replication consistency. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.restore()`
 
@@ -584,7 +584,7 @@ Create a new table by restoring from a completed backup. The returned table long
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the instance in which to create the restored table. Values are of the form `projects//instances/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.getIamPolicy()`
 
@@ -593,7 +593,7 @@ Gets the access control policy for a Bigtable resource. Returns an empty policy 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.setIamPolicy()`
 
@@ -602,7 +602,7 @@ Sets the access control policy on a Bigtable resource. Replaces any existing pol
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.testIamPermissions()`
 
@@ -611,7 +611,7 @@ Returns permissions that the caller has on the specified Bigtable resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.instances.tables.authorizedViews`
 
@@ -623,7 +623,7 @@ Creates a new AuthorizedView in a table.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. This is the name of the table the AuthorizedView belongs to. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. |
 | `params.authorizedViewId` | `string` | No | Required. The id of the AuthorizedView to create. This AuthorizedView must not already exist. The `authorized_view_id` appended to `parent` forms the full AuthorizedView name of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedView/{authorized_view}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.authorizedViews.list()`
 
@@ -654,7 +654,7 @@ Updates an AuthorizedView in a table.
 | `params.name` | `string` | Yes | Identifier. The name of this AuthorizedView. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. A mask specifying which fields in the AuthorizedView resource should be updated. This mask is relative to the AuthorizedView resource, not to the request message. A field will be overwritten if it is in the mask. If empty, all fields set in the request will be overwritten. A special value `*` means to overwrite all fields (including fields not set in the request). |
 | `params.ignoreWarnings` | `boolean` | No | Optional. If true, ignore the safety checks when updating the AuthorizedView. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.authorizedViews.delete()`
 
@@ -672,7 +672,7 @@ Gets the access control policy for a Bigtable resource. Returns an empty policy 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.authorizedViews.setIamPolicy()`
 
@@ -681,7 +681,7 @@ Sets the access control policy on a Bigtable resource. Replaces any existing pol
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.authorizedViews.testIamPermissions()`
 
@@ -690,7 +690,7 @@ Returns permissions that the caller has on the specified Bigtable resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.instances.tables.schemaBundles`
 
@@ -701,7 +701,7 @@ Gets the access control policy for a Bigtable resource. Returns an empty policy 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.schemaBundles.setIamPolicy()`
 
@@ -710,7 +710,7 @@ Sets the access control policy on a Bigtable resource. Replaces any existing pol
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.schemaBundles.testIamPermissions()`
 
@@ -719,7 +719,7 @@ Returns permissions that the caller has on the specified Bigtable resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.schemaBundles.create()`
 
@@ -729,7 +729,7 @@ Creates a new schema bundle in the specified table.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this schema bundle will be created. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. |
 | `params.schemaBundleId` | `string` | No | Required. The unique ID to use for the schema bundle, which will become the final component of the schema bundle's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.schemaBundles.patch()`
 
@@ -740,7 +740,7 @@ Updates a schema bundle in the specified table.
 | `params.name` | `string` | Yes | Identifier. The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
 | `params.ignoreWarnings` | `boolean` | No | Optional. If set, ignore the safety checks when updating the Schema Bundle. The safety checks are: - The new Schema Bundle is backwards compatible with the existing Schema Bundle. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.tables.schemaBundles.get()`
 
@@ -782,4 +782,4 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
