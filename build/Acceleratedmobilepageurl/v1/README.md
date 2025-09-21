@@ -4,8 +4,8 @@ Auto-generated client library for using the **Accelerated Mobile Pages (AMP) URL
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:20:51 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:15 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:20 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:29 GMT
 
 
@@ -22,4 +22,4 @@ Returns AMP URL(s) and equivalent [AMP Cache URL(s)](/amp/cache/overview#amp-cac
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
