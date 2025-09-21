@@ -4,8 +4,8 @@ Auto-generated client library for using the **Area120 Tables API (version: v1alp
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:46 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:53:09 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:52 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:07 GMT
 
 
@@ -66,7 +66,7 @@ Creates a row.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent table where this row will be created. Format: tables/{table} |
 | `params.view` | `string` | No | Optional. Column key to use for values in the row. Defaults to user entered name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tables.rows.batchCreate()`
 
@@ -75,7 +75,7 @@ Creates multiple rows.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent table where the rows will be created. Format: tables/{table} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tables.rows.patch()`
 
@@ -86,7 +86,7 @@ Updates a row.
 | `params.name` | `string` | Yes | The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is ignored when creating a row. |
 | `params.updateMask` | `string` | No | The list of fields to update. |
 | `params.view` | `string` | No | Optional. Column key to use for values in the row. Defaults to user entered name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tables.rows.batchUpdate()`
 
@@ -95,7 +95,7 @@ Updates multiple rows.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent table shared by all rows being updated. Format: tables/{table} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tables.rows.delete()`
 
@@ -112,7 +112,7 @@ Deletes multiple rows.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent table shared by all rows being deleted. Format: tables/{table} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `workspaces`
 
