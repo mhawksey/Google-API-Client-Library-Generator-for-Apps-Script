@@ -4,8 +4,8 @@ Auto-generated client library for using the **BigLake API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:21 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:54:01 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:05:40 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:05:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:58 GMT
 
 
@@ -28,7 +28,7 @@ Creates a new catalog.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this catalog will be created. Format: projects/{project_id_or_number}/locations/{location_id} |
 | `params.catalogId` | `string` | No | Required. The ID to use for the catalog, which will become the final component of the catalog's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.delete()`
 
@@ -66,7 +66,7 @@ Creates a new database.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this database will be created. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} |
 | `params.databaseId` | `string` | No | Required. The ID to use for the database, which will become the final component of the database's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.databases.delete()`
 
@@ -84,7 +84,7 @@ Updates an existing database specified by the database ID.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
 | `params.updateMask` | `string` | No | The list of fields to update. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.databases.get()`
 
@@ -114,7 +114,7 @@ Creates a new table.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this table will be created. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
 | `params.tableId` | `string` | No | Required. The ID to use for the table, which will become the final component of the table's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.databases.tables.delete()`
 
@@ -132,7 +132,7 @@ Updates an existing table specified by the table ID.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} |
 | `params.updateMask` | `string` | No | The list of fields to update. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.databases.tables.rename()`
 
@@ -141,7 +141,7 @@ Renames an existing table specified by the table ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The table's `name` field is used to identify the table to rename. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.databases.tables.get()`
 
