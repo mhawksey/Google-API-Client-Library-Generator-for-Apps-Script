@@ -4,8 +4,8 @@ Auto-generated client library for using the **Datastream API (version: v1alpha1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:22 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:12:18 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:37 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:37 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:44 GMT
 
 
@@ -84,7 +84,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connectionProfiles`
 
@@ -117,7 +117,7 @@ Use this method to create a connection profile in a project and location.
 | `params.parent` | `string` | Yes | Required. The parent that owns the collection of ConnectionProfiles. |
 | `params.connectionProfileId` | `string` | No | Required. The connection profile identifier. |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectionProfiles.patch()`
 
@@ -129,7 +129,7 @@ Use this method to update the parameters of a connection profile.
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the ConnectionProfile resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the connection profile, but do not update any resources. The default is false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectionProfiles.delete()`
 
@@ -147,7 +147,7 @@ Use this method to discover a connection profile. The discover API call exposes 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the ConnectionProfile type. Must be in the format `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.streams`
 
@@ -182,7 +182,7 @@ Use this method to create a stream.
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the stream, but do not create any resources. The default is false. |
 | `params.force` | `boolean` | No | Optional. Create the stream without validating it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.streams.patch()`
 
@@ -195,7 +195,7 @@ Use this method to update the configuration of a stream.
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the stream with the changes, without actually updating it. The default is false. |
 | `params.force` | `boolean` | No | Optional. Execute the update without validating it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.streams.delete()`
 
@@ -213,7 +213,7 @@ Use this method to fetch any errors associated with a stream.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.stream` | `string` | Yes | Name of the Stream resource for which to fetch any errors. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.streams.objects`
 
@@ -262,7 +262,7 @@ Use this method to create a private connectivity configuration.
 | `params.parent` | `string` | Yes | Required. The parent that owns the collection of PrivateConnections. |
 | `params.privateConnectionId` | `string` | No | Required. The private connectivity identifier. |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.privateConnections.get()`
 
@@ -305,7 +305,7 @@ Use this method to create a route for a private connectivity in a project and lo
 | `params.parent` | `string` | Yes | Required. The parent that owns the collection of Routes. |
 | `params.routeId` | `string` | No | Required. The Route identifier. |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.privateConnections.routes.get()`
 
