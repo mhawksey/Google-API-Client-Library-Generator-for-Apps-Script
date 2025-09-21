@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase App Distribution API (ver
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:22 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:15:30 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:01 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:16 GMT
 
 
@@ -56,7 +56,7 @@ Updates a release.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the release resource. Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.releases.distribute()`
 
@@ -65,7 +65,7 @@ Distributes a release to testers. This call does the following: 1. Creates teste
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the release resource to distribute. Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.releases.batchDelete()`
 
@@ -74,7 +74,7 @@ Deletes releases. A maximum of 100 releases can be deleted per request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the app resource, which is the parent of the release resources. Format: `projects/{project_number}/apps/{app_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.releases.operations`
 
@@ -112,7 +112,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.releases.operations.wait()`
 
@@ -121,7 +121,7 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.releases.feedbackReports`
 
@@ -160,7 +160,7 @@ Batch adds testers. This call adds testers for the specified emails if they don'
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.project` | `string` | Yes | Required. The name of the project resource. Format: `projects/{project_number}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.testers.batchRemove()`
 
@@ -169,7 +169,7 @@ Batch removes testers. If found, this call deletes testers for the specified ema
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.project` | `string` | Yes | Required. The name of the project resource. Format: `projects/{project_number}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.testers.list()`
 
@@ -190,7 +190,7 @@ Update a tester. If the testers joins a group they gain access to all releases t
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the tester resource. Format: `projects/{project_number}/testers/{email_address}` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.groups`
 
@@ -220,7 +220,7 @@ Create a group.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project resource, which is the parent of the group resource. Format: `projects/{project_number}` |
 | `params.groupId` | `string` | No | Optional. The "alias" to use for the group, which will become the final component of the group's resource name. This value must be unique per project. The field is named `groupId` to comply with AIP guidance for user-specified IDs. This value should be 4-63 characters, and valid characters are `/a-z-/`. If not set, it will be generated based on the display name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.groups.patch()`
 
@@ -230,7 +230,7 @@ Update a group.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.groups.delete()`
 
@@ -247,7 +247,7 @@ Batch adds members to a group. The testers will gain access to all releases that
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.group` | `string` | Yes | Required. The name of the group resource to which testers are added. Format: `projects/{project_number}/groups/{group_alias}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.groups.batchLeave()`
 
@@ -256,7 +256,7 @@ Batch removed members from a group. The testers will lose access to all releases
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.group` | `string` | Yes | Required. The name of the group resource from which testers are removed. Format: `projects/{project_number}/groups/{group_alias}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `media`
 
@@ -267,4 +267,4 @@ Uploads a binary. Uploading a binary can result in a new release being created, 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
