@@ -4,8 +4,8 @@ Auto-generated client library for using the **Pub/Sub Lite API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:08 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:43:58 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:45:51 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:45:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:01 GMT
 
 
@@ -56,7 +56,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `admin.projects.locations.topics`
 
@@ -68,7 +68,7 @@ Creates a new topic.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent location in which to create the topic. Structured like `projects/{project_number}/locations/{location}`. |
 | `params.topicId` | `string` | No | Required. The ID to use for the topic, which will become the final component of the topic's name. This value is structured like: `my-topic-name`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `admin.projects.locations.topics.get()`
 
@@ -104,7 +104,7 @@ Updates properties of the specified topic.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} |
 | `params.updateMask` | `string` | No | Required. A mask specifying the topic fields to change. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `admin.projects.locations.topics.delete()`
 
@@ -137,7 +137,7 @@ Creates a new subscription.
 | `params.parent` | `string` | Yes | Required. The parent location in which to create the subscription. Structured like `projects/{project_number}/locations/{location}`. |
 | `params.subscriptionId` | `string` | No | Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`. |
 | `params.skipBacklog` | `boolean` | No | If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `admin.projects.locations.subscriptions.get()`
 
@@ -165,7 +165,7 @@ Updates properties of the specified subscription.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} |
 | `params.updateMask` | `string` | No | Required. A mask specifying the subscription fields to change. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `admin.projects.locations.subscriptions.delete()`
 
@@ -182,7 +182,7 @@ Performs an out-of-band seek for a subscription to a specified target, which may
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription to seek. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `admin.projects.locations.reservations`
 
@@ -194,7 +194,7 @@ Creates a new reservation.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent location in which to create the reservation. Structured like `projects/{project_number}/locations/{location}`. |
 | `params.reservationId` | `string` | No | Required. The ID to use for the reservation, which will become the final component of the reservation's name. This value is structured like: `my-reservation-name`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `admin.projects.locations.reservations.get()`
 
@@ -222,7 +222,7 @@ Updates properties of the specified reservation.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} |
 | `params.updateMask` | `string` | No | Required. A mask specifying the reservation fields to change. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `admin.projects.locations.reservations.delete()`
 
@@ -259,7 +259,7 @@ Updates the committed cursor.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | The subscription for which to update the cursor. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `cursor.projects.locations.subscriptions.cursors`
 
@@ -288,7 +288,7 @@ Compute statistics about a range of messages in a given topic and partition.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.topic` | `string` | Yes | Required. The topic for which we should compute message stats. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `topicStats.projects.locations.topics.computeHeadCursor()`
 
@@ -297,7 +297,7 @@ Compute the head cursor for the partition. The head cursor's offset is guarantee
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.topic` | `string` | Yes | Required. The topic for which we should compute the head cursor. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `topicStats.projects.locations.topics.computeTimeCursor()`
 
@@ -306,4 +306,4 @@ Compute the corresponding cursor for a publish or event time in a topic partitio
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.topic` | `string` | Yes | Required. The topic for which we should compute the cursor. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
