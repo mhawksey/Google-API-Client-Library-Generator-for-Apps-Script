@@ -4,8 +4,8 @@ Auto-generated client library for using the **Artifact Registry API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:53 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:53:22 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:05:05 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:05:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:20 GMT
 
 
@@ -32,7 +32,7 @@ Updates the Settings for the Project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the project's settings. Always of the form: projects/{project-id}/projectSettings In update request: never set In response: always set |
 | `params.updateMask` | `string` | No | Field mask to support partial updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations`
 
@@ -52,7 +52,7 @@ Updates the VPCSC Config for the Project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the project's VPC SC Config. Always of the form: projects/{projectID}/locations/{location}/vpcscConfig In update request: never set In response: always set |
 | `params.updateMask` | `string` | No | Field mask to support partial updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.list()`
 
@@ -114,7 +114,7 @@ Creates a repository. The returned Operation will finish once the repository has
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource where the repository will be created. |
 | `params.repositoryId` | `string` | No | Required. The repository id to use for this repository. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.patch()`
 
@@ -124,7 +124,7 @@ Updates a repository.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the repository, for example: `projects/p1/locations/us-central1/repositories/repo1`. For each location in a project, repository names must be unique. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.delete()`
 
@@ -141,7 +141,7 @@ Updates the IAM policy for a given resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.getIamPolicy()`
 
@@ -159,7 +159,7 @@ Tests if the caller has a list of permissions on a resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.dockerImages`
 
@@ -251,7 +251,7 @@ Imports Apt artifacts. The returned Operation will complete once the resources a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the parent resource where the artifacts will be imported. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.aptArtifacts.upload()`
 
@@ -260,7 +260,7 @@ Directly uploads an Apt artifact. The returned Operation will complete once the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the parent resource where the artifacts will be uploaded. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.yumArtifacts`
 
@@ -271,7 +271,7 @@ Imports Yum (RPM) artifacts. The returned Operation will complete once the resou
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the parent resource where the artifacts will be imported. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.yumArtifacts.upload()`
 
@@ -280,7 +280,7 @@ Directly uploads a Yum artifact. The returned Operation will complete once the r
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the parent resource where the artifacts will be uploaded. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.googetArtifacts`
 
@@ -291,7 +291,7 @@ Imports GooGet artifacts. The returned Operation will complete once the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the parent resource where the artifacts will be imported. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.googetArtifacts.upload()`
 
@@ -300,7 +300,7 @@ Directly uploads a GooGet artifact. The returned Operation will complete once th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the parent resource where the artifacts will be uploaded. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.genericArtifacts`
 
@@ -311,7 +311,7 @@ Directly uploads a Generic artifact. The returned operation will complete once t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The resource name of the repository where the generic artifact will be uploaded. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.kfpArtifacts`
 
@@ -322,7 +322,7 @@ Directly uploads a KFP artifact. The returned Operation will complete once the r
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The resource name of the repository where the KFP artifact will be uploaded. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.goModules`
 
@@ -333,7 +333,7 @@ Directly uploads a Go module. The returned Operation will complete once the Go m
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The resource name of the repository where the Go module will be uploaded. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.packages`
 
@@ -373,7 +373,7 @@ Updates a package.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the package, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1`. If the package ID part contains slashes, the slashes are escaped. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.packages.versions`
 
@@ -415,7 +415,7 @@ Deletes multiple versions across a repository. The returned operation will compl
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the repository holding all requested versions. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.packages.versions.patch()`
 
@@ -425,7 +425,7 @@ Updates a version.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the version, for example: `projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/versions/art1`. If the package or version ID parts contain slashes, the slashes are escaped. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.packages.tags`
 
@@ -456,7 +456,7 @@ Creates a tag.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the parent resource where the tag will be created. |
 | `params.tagId` | `string` | No | The tag id to use for this repository. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.packages.tags.patch()`
 
@@ -466,7 +466,7 @@ Updates a tag.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.packages.tags.delete()`
 
@@ -513,7 +513,7 @@ Directly uploads a file to a repository. The returned Operation will complete on
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the repository where the file will be uploaded. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.files.delete()`
 
@@ -531,7 +531,7 @@ Updates a file.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the file, for example: `projects/p1/locations/us-central1/repositories/repo1/files/a%2Fb%2Fc.txt`. If the file ID part contains slashes, they are escaped. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.repositories.rules`
 
@@ -543,7 +543,7 @@ Creates a rule.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource where the rule will be created. |
 | `params.ruleId` | `string` | No | The rule id to use for this repository. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.rules.list()`
 
@@ -571,7 +571,7 @@ Updates a rule.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the rule, for example: `projects/p1/locations/us-central1/repositories/repo1/rules/rule1`. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.rules.delete()`
 
@@ -610,7 +610,7 @@ Creates an attachment. The returned Operation will finish once the attachment ha
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource where the attachment will be created. |
 | `params.attachmentId` | `string` | No | Required. The attachment id to use for this attachment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.repositories.attachments.delete()`
 
