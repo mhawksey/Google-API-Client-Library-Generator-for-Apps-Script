@@ -4,8 +4,8 @@ Auto-generated client library for using the **Database Migration API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:01 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:11:43 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:05 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:08 GMT
 
 
@@ -84,7 +84,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.migrationJobs`
 
@@ -117,7 +117,7 @@ Creates a new migration job in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent which owns this collection of migration jobs. |
 | `params.migrationJobId` | `string` | No | Required. The ID of the instance to create. |
 | `params.requestId` | `string` | No | Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.patch()`
 
@@ -128,7 +128,7 @@ Updates the parameters of a single migration job.
 | `params.name` | `string` | Yes | The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten by the update in the conversion workspace resource. |
 | `params.requestId` | `string` | No | A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.delete()`
 
@@ -147,7 +147,7 @@ Start an already created migration job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to start. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.stop()`
 
@@ -156,7 +156,7 @@ Stops a running migration job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to stop. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.resume()`
 
@@ -165,7 +165,7 @@ Resume a migration job that is currently stopped and is resumable (was stopped d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to resume. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.promote()`
 
@@ -174,7 +174,7 @@ Promote a migration job, stopping replication to the destination and promoting t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to promote. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.demoteDestination()`
 
@@ -183,7 +183,7 @@ Demotes the destination database to become a read replica of the source. This is
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to demote its destination. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.verify()`
 
@@ -192,7 +192,7 @@ Verify a migration job, making sure the destination can reach the source and tha
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to verify. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.restart()`
 
@@ -201,7 +201,7 @@ Restart a stopped or failed migration job, resetting the destination instance to
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to restart. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.generateSshScript()`
 
@@ -210,7 +210,7 @@ Generate a SSH configuration script to configure the reverse SSH connectivity.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.migrationJob` | `string` | Yes | Name of the migration job resource to generate the SSH script. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.generateTcpProxyScript()`
 
@@ -219,7 +219,7 @@ Generate a TCP Proxy configuration script to configure a cloud-hosted VM running
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.migrationJob` | `string` | Yes | Name of the migration job resource to generate the TCP Proxy script. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.fetchSourceObjects()`
 
@@ -236,7 +236,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.getIamPolicy()`
 
@@ -254,7 +254,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.migrationJobs.objects`
 
@@ -273,7 +273,7 @@ Use this method to look up a migration job object by its source object identifie
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent migration job that owns the collection of objects. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.objects.list()`
 
@@ -292,7 +292,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.objects.getIamPolicy()`
 
@@ -310,7 +310,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connectionProfiles`
 
@@ -345,7 +345,7 @@ Creates a new connection profile in a given project and location.
 | `params.requestId` | `string` | No | Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the connection profile, but don't create any resources. The default is false. Only supported for Oracle connection profiles. |
 | `params.skipValidation` | `boolean` | No | Optional. Create the connection profile without validating it. The default is false. Only supported for Oracle connection profiles. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectionProfiles.patch()`
 
@@ -358,7 +358,7 @@ Update the configuration of a single connection profile.
 | `params.requestId` | `string` | No | Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
 | `params.validateOnly` | `boolean` | No | Optional. Only validate the connection profile, but don't update any resources. The default is false. Only supported for Oracle connection profiles. |
 | `params.skipValidation` | `boolean` | No | Optional. Update the connection profile without validating it. The default is false. Only supported for Oracle connection profiles. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectionProfiles.delete()`
 
@@ -377,7 +377,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectionProfiles.getIamPolicy()`
 
@@ -395,7 +395,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.privateConnections`
 
@@ -410,7 +410,7 @@ Creates a new private connection in a given project and location.
 | `params.requestId` | `string` | No | Optional. A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
 | `params.skipValidation` | `boolean` | No | Optional. If set to true, will skip validations. |
 | `params.validateOnly` | `boolean` | No | Optional. For PSC Interface only - get the tenant project before creating the resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.privateConnections.get()`
 
@@ -448,7 +448,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.privateConnections.getIamPolicy()`
 
@@ -466,7 +466,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversionWorkspaces`
 
@@ -498,7 +498,7 @@ Creates a new conversion workspace in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent which owns this collection of conversion workspaces. |
 | `params.conversionWorkspaceId` | `string` | No | Required. The ID of the conversion workspace to create. |
 | `params.requestId` | `string` | No | A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversionWorkspaces.patch()`
 
@@ -509,7 +509,7 @@ Updates the parameters of a single conversion workspace.
 | `params.name` | `string` | Yes | Full name of the workspace resource, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten by the update in the conversion workspace resource. |
 | `params.requestId` | `string` | No | A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversionWorkspaces.delete()`
 
@@ -528,7 +528,7 @@ Imports a snapshot of the source database into the conversion workspace.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the conversion workspace resource to seed with new database structure, in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversionWorkspaces.convert()`
 
@@ -537,7 +537,7 @@ Creates a draft tree schema for the destination database.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the conversion workspace resource to convert in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversionWorkspaces.commit()`
 
@@ -546,7 +546,7 @@ Marks all the data in the conversion workspace as committed.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the conversion workspace resource to commit. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversionWorkspaces.rollback()`
 
@@ -555,7 +555,7 @@ Rolls back a conversion workspace to the last committed snapshot.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the conversion workspace resource to roll back to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversionWorkspaces.apply()`
 
@@ -564,7 +564,7 @@ Applies draft tree onto a specific destination database.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the conversion workspace resource for which to apply the draft tree. Must be in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversionWorkspaces.describeDatabaseEntities()`
 
@@ -608,7 +608,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversionWorkspaces.getIamPolicy()`
 
@@ -626,7 +626,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversionWorkspaces.mappingRules`
 
@@ -639,7 +639,7 @@ Creates a new mapping rule for a given conversion workspace.
 | `params.parent` | `string` | Yes | Required. The parent which owns this collection of mapping rules. |
 | `params.mappingRuleId` | `string` | No | Required. The ID of the rule to create. |
 | `params.requestId` | `string` | No | A unique ID used to identify the request. If the server receives two requests with the same ID, then the second request is ignored. It is recommended to always set this value to a UUID. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversionWorkspaces.mappingRules.delete()`
 
@@ -675,4 +675,4 @@ Imports the mapping rules for a given conversion workspace. Supports various for
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the conversion workspace resource to import the rules to in the form of: projects/{project}/locations/{location}/conversionWorkspaces/{conversion_workspace}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
