@@ -4,8 +4,8 @@ Auto-generated client library for using the **Web Search Indexing API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:24:31 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:27:28 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:27:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:28 GMT
 
 
@@ -22,7 +22,7 @@ Notifies that a URL has been updated or deleted.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `urlNotifications.getMetadata()`
 
