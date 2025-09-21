@@ -4,8 +4,8 @@ Auto-generated client library for using the **Payments Reseller Subscription API
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:46:14 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:35:47 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:43:47 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:43:47 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:08 GMT
 
 
@@ -26,7 +26,7 @@ Used by partners to create a subscription for their customers. The created subsc
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name, which is the identifier of the partner. It will have the format of "partners/{partner_id}". |
 | `params.subscriptionId` | `string` | No | Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.subscriptions.provision()`
 
@@ -36,7 +36,7 @@ Used by partners to provision a subscription for their customers. This creates a
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name, which is the identifier of the partner. It will have the format of "partners/{partner_id}". |
 | `params.subscriptionId` | `string` | No | Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.subscriptions.get()`
 
@@ -53,7 +53,7 @@ Entitles a previously provisioned subscription to the current end user. The end 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription resource that is entitled to the current end user. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.subscriptions.extend()`
 
@@ -62,7 +62,7 @@ Entitles a previously provisioned subscription to the current end user. The end 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription resource to be extended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.subscriptions.cancel()`
 
@@ -71,7 +71,7 @@ Cancels a subscription service either immediately or by the end of the current b
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription resource to be cancelled. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.subscriptions.undoCancel()`
 
@@ -80,7 +80,7 @@ Currently, it is used by **Google One, Play Pass** partners. Revokes the pending
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription resource whose pending cancellation needs to be undone. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.subscriptions.suspend()`
 
@@ -89,7 +89,7 @@ Suspends a subscription. Contract terms may dictate if a prorated refund will be
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription resource to be suspended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.subscriptions.resume()`
 
@@ -98,7 +98,7 @@ Resumes a suspended subscription. The new billing cycle will start at the time o
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription resource to be resumed. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `partners.products`
 
@@ -122,7 +122,7 @@ Currently, it is only enabeld for **YouTube**. Finds eligible promotions for the
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent, the partner that can resell. Format: partners/{partner} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.promotions.list()`
 
@@ -144,4 +144,4 @@ This API replaces user authorized OAuth consent based APIs (Create, Entitle). Is
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent, the partner that can resell. Format: partners/{partner} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
