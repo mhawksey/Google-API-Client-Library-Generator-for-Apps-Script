@@ -12,225 +12,338 @@ class Script {
    * @param {object} [config.backoff] - Configuration for exponential backoff.
    */
   constructor(config = {}) {
-    // "Private" properties using the underscore convention
     this._token = config.token || ScriptApp.getOAuthToken();
     this._backoffConfig = Object.assign({ retries: 3, baseDelay: 1000 }, config.backoff);
     this._rootUrl = 'https://script.googleapis.com/';
     this._servicePath = '';
 
-    // --- Public Interface Initialization ---
 
     this.projects = {};
 
     /**
      * Get metrics data for scripts, such as number of executions and active users.
-     * @param {string} params.metricsFilter.deploymentId - Optional field indicating a specific deployment to retrieve metrics from.
-     * @param {string} params.metricsGranularity - Required field indicating what granularity of metrics are returned.
-     * @param {string} params.scriptId - (Required) Required field indicating the script to get metrics for.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.metricsFilter.deploymentId - Optional field indicating a specific deployment to retrieve metrics from.
+     * @param {string} apiParams.metricsGranularity - Required field indicating what granularity of metrics are returned.
+     * @param {string} apiParams.scriptId - (Required) Required field indicating the script to get metrics for.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.getMetrics = (params) => this._makeRequest('v1/projects/{scriptId}/metrics', 'GET', params);
+    this.projects.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/metrics', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a new, empty script project with no script files and a base manifest file.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.create = (params) => this._makeRequest('v1/projects', 'POST', params);
+    this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a script project's metadata.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.get = (params) => this._makeRequest('v1/projects/{scriptId}', 'GET', params);
+    this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}', 'GET', apiParams, clientConfig);
 
     /**
      * Gets the content of the script project, including the code source and metadata for each script file.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @param {integer} params.versionNumber - The version number of the project to retrieve. If not provided, the project's HEAD version is returned.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {integer} apiParams.versionNumber - The version number of the project to retrieve. If not provided, the project's HEAD version is returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.getContent = (params) => this._makeRequest('v1/projects/{scriptId}/content', 'GET', params);
+    this.projects.getContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/content', 'GET', apiParams, clientConfig);
 
     /**
      * Updates the content of the specified script project. This content is stored as the HEAD version, and is used when the script is executed as a trigger, in the script editor, in add-on preview mode, or as a web app or Apps Script API in development mode. This clears all the existing files in the project.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.updateContent = (params) => this._makeRequest('v1/projects/{scriptId}/content', 'PUT', params);
+    this.projects.updateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/content', 'PUT', apiParams, clientConfig);
 
     this.projects.deployments = {};
 
     /**
      * Creates a deployment of an Apps Script project.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.deployments.create = (params) => this._makeRequest('v1/projects/{scriptId}/deployments', 'POST', params);
+    this.projects.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments', 'POST', apiParams, clientConfig);
 
     /**
      * Updates a deployment of an Apps Script project.
-     * @param {string} params.deploymentId - (Required) The deployment ID for this deployment.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.deploymentId - (Required) The deployment ID for this deployment.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.deployments.update = (params) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'PUT', params);
+    this.projects.deployments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'PUT', apiParams, clientConfig);
 
     /**
      * Deletes a deployment of an Apps Script project.
-     * @param {string} params.deploymentId - (Required) The deployment ID to be undeployed.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.deploymentId - (Required) The deployment ID to be undeployed.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.deployments.delete = (params) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'DELETE', params);
+    this.projects.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Gets a deployment of an Apps Script project.
-     * @param {string} params.deploymentId - (Required) The deployment ID.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.deploymentId - (Required) The deployment ID.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.deployments.get = (params) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'GET', params);
+    this.projects.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists the deployments of an Apps Script project.
-     * @param {integer} params.pageSize - The maximum number of deployments on each returned page. Defaults to 50.
-     * @param {string} params.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of deployments on each returned page. Defaults to 50.
+     * @param {string} apiParams.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.deployments.list = (params) => this._makeRequest('v1/projects/{scriptId}/deployments', 'GET', params);
+    this.projects.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments', 'GET', apiParams, clientConfig);
 
     this.projects.versions = {};
 
     /**
      * Creates a new immutable version using the current code, with a unique version number.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.versions.create = (params) => this._makeRequest('v1/projects/{scriptId}/versions', 'POST', params);
+    this.projects.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/versions', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a version of a script project.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @param {integer} params.versionNumber - (Required) The version number.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {integer} apiParams.versionNumber - (Required) The version number.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.versions.get = (params) => this._makeRequest('v1/projects/{scriptId}/versions/{versionNumber}', 'GET', params);
+    this.projects.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/versions/{versionNumber}', 'GET', apiParams, clientConfig);
 
     /**
      * List the versions of a script project.
-     * @param {integer} params.pageSize - The maximum number of versions on each returned page. Defaults to 50.
-     * @param {string} params.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response.
-     * @param {string} params.scriptId - (Required) The script project's Drive ID.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of versions on each returned page. Defaults to 50.
+     * @param {string} apiParams.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response.
+     * @param {string} apiParams.scriptId - (Required) The script project's Drive ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.versions.list = (params) => this._makeRequest('v1/projects/{scriptId}/versions', 'GET', params);
+    this.projects.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/versions', 'GET', apiParams, clientConfig);
 
     this.processes = {};
 
     /**
      * List information about a script's executed processes, such as process type and current status.
-     * @param {integer} params.pageSize - The maximum number of returned processes per page of results. Defaults to 50.
-     * @param {string} params.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response.
-     * @param {string} params.scriptId - The script ID of the project whose processes are listed.
-     * @param {string} params.scriptProcessFilter.deploymentId - Optional field used to limit returned processes to those originating from projects with a specific deployment ID.
-     * @param {string} params.scriptProcessFilter.endTime - Optional field used to limit returned processes to those that completed on or before the given timestamp.
-     * @param {string} params.scriptProcessFilter.functionName - Optional field used to limit returned processes to those originating from a script function with the given function name.
-     * @param {string} params.scriptProcessFilter.startTime - Optional field used to limit returned processes to those that were started on or after the given timestamp.
-     * @param {string} params.scriptProcessFilter.statuses - Optional field used to limit returned processes to those having one of the specified process statuses.
-     * @param {string} params.scriptProcessFilter.types - Optional field used to limit returned processes to those having one of the specified process types.
-     * @param {string} params.scriptProcessFilter.userAccessLevels - Optional field used to limit returned processes to those having one of the specified user access levels.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of returned processes per page of results. Defaults to 50.
+     * @param {string} apiParams.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response.
+     * @param {string} apiParams.scriptId - The script ID of the project whose processes are listed.
+     * @param {string} apiParams.scriptProcessFilter.deploymentId - Optional field used to limit returned processes to those originating from projects with a specific deployment ID.
+     * @param {string} apiParams.scriptProcessFilter.endTime - Optional field used to limit returned processes to those that completed on or before the given timestamp.
+     * @param {string} apiParams.scriptProcessFilter.functionName - Optional field used to limit returned processes to those originating from a script function with the given function name.
+     * @param {string} apiParams.scriptProcessFilter.startTime - Optional field used to limit returned processes to those that were started on or after the given timestamp.
+     * @param {string} apiParams.scriptProcessFilter.statuses - Optional field used to limit returned processes to those having one of the specified process statuses.
+     * @param {string} apiParams.scriptProcessFilter.types - Optional field used to limit returned processes to those having one of the specified process types.
+     * @param {string} apiParams.scriptProcessFilter.userAccessLevels - Optional field used to limit returned processes to those having one of the specified user access levels.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.processes.listScriptProcesses = (params) => this._makeRequest('v1/processes:listScriptProcesses', 'GET', params);
+    this.processes.listScriptProcesses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/processes:listScriptProcesses', 'GET', apiParams, clientConfig);
 
     /**
      * List information about processes made by or on behalf of a user, such as process type and current status.
-     * @param {integer} params.pageSize - The maximum number of returned processes per page of results. Defaults to 50.
-     * @param {string} params.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response.
-     * @param {string} params.userProcessFilter.deploymentId - Optional field used to limit returned processes to those originating from projects with a specific deployment ID.
-     * @param {string} params.userProcessFilter.endTime - Optional field used to limit returned processes to those that completed on or before the given timestamp.
-     * @param {string} params.userProcessFilter.functionName - Optional field used to limit returned processes to those originating from a script function with the given function name.
-     * @param {string} params.userProcessFilter.projectName - Optional field used to limit returned processes to those originating from projects with project names containing a specific string.
-     * @param {string} params.userProcessFilter.scriptId - Optional field used to limit returned processes to those originating from projects with a specific script ID.
-     * @param {string} params.userProcessFilter.startTime - Optional field used to limit returned processes to those that were started on or after the given timestamp.
-     * @param {string} params.userProcessFilter.statuses - Optional field used to limit returned processes to those having one of the specified process statuses.
-     * @param {string} params.userProcessFilter.types - Optional field used to limit returned processes to those having one of the specified process types.
-     * @param {string} params.userProcessFilter.userAccessLevels - Optional field used to limit returned processes to those having one of the specified user access levels.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of returned processes per page of results. Defaults to 50.
+     * @param {string} apiParams.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from a previous response.
+     * @param {string} apiParams.userProcessFilter.deploymentId - Optional field used to limit returned processes to those originating from projects with a specific deployment ID.
+     * @param {string} apiParams.userProcessFilter.endTime - Optional field used to limit returned processes to those that completed on or before the given timestamp.
+     * @param {string} apiParams.userProcessFilter.functionName - Optional field used to limit returned processes to those originating from a script function with the given function name.
+     * @param {string} apiParams.userProcessFilter.projectName - Optional field used to limit returned processes to those originating from projects with project names containing a specific string.
+     * @param {string} apiParams.userProcessFilter.scriptId - Optional field used to limit returned processes to those originating from projects with a specific script ID.
+     * @param {string} apiParams.userProcessFilter.startTime - Optional field used to limit returned processes to those that were started on or after the given timestamp.
+     * @param {string} apiParams.userProcessFilter.statuses - Optional field used to limit returned processes to those having one of the specified process statuses.
+     * @param {string} apiParams.userProcessFilter.types - Optional field used to limit returned processes to those having one of the specified process types.
+     * @param {string} apiParams.userProcessFilter.userAccessLevels - Optional field used to limit returned processes to those having one of the specified user access levels.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.processes.list = (params) => this._makeRequest('v1/processes', 'GET', params);
+    this.processes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/processes', 'GET', apiParams, clientConfig);
 
     this.scripts = {};
 
     /**
-     * @param {string} params.scriptId - (Required) The script ID of the script to be executed. Find the script ID on the **Project settings** page under "IDs." As multiple executable APIs can be deployed in new IDE for same script, this field should be populated with DeploymentID generated while deploying in new IDE instead of script ID.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.scriptId - (Required) The script ID of the script to be executed. Find the script ID on the **Project settings** page under "IDs." As multiple executable APIs can be deployed in new IDE for same script, this field should be populated with DeploymentID generated while deploying in new IDE instead of script ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.scripts.run = (params) => this._makeRequest('v1/scripts/{scriptId}:run', 'POST', params);
+    this.scripts.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/scripts/{scriptId}:run', 'POST', apiParams, clientConfig);
   }
 
-  /**
-   * @private Builds the full request URL and options object.
-   */
-  _buildRequestDetails(path, httpMethod, params) {
-    let url = this._rootUrl + this._servicePath + path;
-    const remainingParams = { ...params };
-    // Fix: Correctly handle {+param} style parameters and other potential special chars.
+/**
+ * @private Builds the full request URL and options object for a request.
+ */
+_buildRequestDetails(path, httpMethod, apiParams, clientConfig = {}) {
+    let url;
+    if (path.startsWith('/upload/')) {
+        url = 'https://www.googleapis.com' + path;
+    } else {
+        url = this._rootUrl + this._servicePath + path;
+    }
+
+    const remainingParams = { ...apiParams };
     const pathParams = url.match(/{[^{}]+}/g) || [];
 
     pathParams.forEach(placeholder => {
-      const isPlus = placeholder.startsWith('{+');
-      const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
-      if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        url = url.replace(placeholder, remainingParams[paramName]);
-        delete remainingParams[paramName];
-      }
+        const isPlus = placeholder.startsWith('{+');
+        const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
+        if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
+            url = url.replace(placeholder, remainingParams[paramName]);
+            delete remainingParams[paramName];
+        }
     });
 
+    const options = {
+        method: httpMethod,
+        headers: {
+            'Authorization': 'Bearer ' + this._token,
+            ...(clientConfig.headers || {}),
+        },
+        muteHttpExceptions: true,
+    };
+
+    if (apiParams && apiParams.media && apiParams.media.body) {
+        let mediaBlob;
+        // Check if the body is already a blob by "duck typing" for the getBytes method.
+        if (apiParams.media.body.getBytes && typeof apiParams.media.body.getBytes === 'function') {
+            mediaBlob = apiParams.media.body;
+        } else {
+            // If it's not a blob (e.g., a string or byte array), create one.
+            mediaBlob = Utilities.newBlob(apiParams.media.body);
+        }
+
+        const hasMetadata = apiParams.requestBody && Object.keys(apiParams.requestBody).length > 0;
+
+        if (hasMetadata) {
+            // ** Multipart Upload (Media + Metadata) **
+            remainingParams.uploadType = 'multipart';
+            
+            const boundary = '----' + Utilities.getUuid();
+            const metadata = apiParams.requestBody;
+
+            let requestData = '--' + boundary + '\r\n';
+            requestData += 'Content-Type: application/json; charset=UTF-8\r\n\r\n';
+            requestData += JSON.stringify(metadata) + '\r\n';
+            requestData += '--' + boundary + '\r\n';
+            requestData += 'Content-Type: ' + apiParams.media.mimeType + '\r\n\r\n';
+            
+            const payloadBytes = Utilities.newBlob(requestData).getBytes()
+                .concat(mediaBlob.getBytes())
+                .concat(Utilities.newBlob('\r\n--' + boundary + '--').getBytes());
+
+            options.contentType = 'multipart/related; boundary=' + boundary;
+            options.payload = payloadBytes;
+
+        } else {
+            // ** Simple Media Upload (Media only) **
+            remainingParams.uploadType = 'media';
+
+            options.contentType = mediaBlob.getContentType();
+            options.payload = mediaBlob.getBytes();
+        }
+
+    } else if (apiParams && apiParams.requestBody) {
+        options.contentType = 'application/json';
+        options.payload = JSON.stringify(apiParams.requestBody);
+    }
     const queryParts = [];
     for (const key in remainingParams) {
-      if (key !== 'resource') {
-        queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
-      }
+        if (key !== 'requestBody' && key !== 'media') {
+            queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
+        }
     }
     if (queryParts.length > 0) {
-      url += '?' + queryParts.join('&');
+        url += '?' + queryParts.join('&');
     }
 
-    const options = {
-      method: httpMethod,
-      headers: { 'Authorization': 'Bearer ' + this._token },
-      contentType: 'application/json',
-      muteHttpExceptions: true,
-    };
-    if (params && params.resource) {
-      options.payload = JSON.stringify(params.resource);
-    }
-    
     return { url, options };
-  }
+}
 
   /**
    * @private Makes the HTTP request with exponential backoff for retries.
+   * @return {Promise<object>} A promise that resolves with the response object.
    */
-  _makeRequest(path, httpMethod, params) {
-    const { url, options } = this._buildRequestDetails(path, httpMethod, params);
+  async _makeRequest(path, httpMethod, apiParams, clientConfig = {}) {
+    const isMediaDownload = apiParams.alt === 'media';
+
+    const { url, options } = this._buildRequestDetails(path, httpMethod, apiParams, clientConfig);
 
     for (let i = 0; i <= this._backoffConfig.retries; i++) {
       const response = UrlFetchApp.fetch(url, options);
       const responseCode = response.getResponseCode();
-      const responseText = response.getContentText(); // Simplified call
+      const responseHeaders = response.getAllHeaders();
 
       if (responseCode >= 200 && responseCode < 300) {
-        return responseText ? JSON.parse(responseText) : {};
+        // Prioritize responseType:'blob' and media downloads to return raw data.
+        if ((clientConfig && (clientConfig.responseType === 'blob' || clientConfig.responseType === 'stream')) || isMediaDownload) {
+          return {
+            data: response.getBlob(),
+            status: responseCode,
+            headers: responseHeaders,
+          };
+        }
+
+        const responseText = response.getContentText();
+        // Handle empty responses, which are valid (e.g., a 204 No Content).
+        const responseBody = responseText ? JSON.parse(responseText) : {};
+        return {
+          data: responseBody,
+          status: responseCode,
+          headers: responseHeaders,
+        };
       }
 
       const retryableErrors = [429, 500, 503];
@@ -240,15 +353,22 @@ class Script {
         continue;
       }
 
+      const responseText = response.getContentText(); // Get response text for error
+      let errorMessage = `Request failed with status ${responseCode}`;
       try {
-        // Return parsed error if possible, otherwise a generic error object
-        return JSON.parse(responseText);
+        const errorObj = JSON.parse(responseText);
+        if (errorObj.error && errorObj.error.message) {
+          errorMessage += `: ${errorObj.error.message}`;
+        }
       } catch (e) {
-        return { error: { code: responseCode, message: responseText } };
+        // If the error response isn't JSON, include the raw text.
+        if (responseText) {
+          errorMessage += `. Response: ${responseText}`;
+        }
       }
+      throw new Error(errorMessage);
     }
-    
-    // This line is technically unreachable if retries >= 0, but good for safety.
+
     throw new Error('Request failed after multiple retries.');
   }
 }
