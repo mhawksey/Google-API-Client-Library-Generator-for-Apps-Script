@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Slides API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:07 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:46:48 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:48:26 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:48:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:43 GMT
 
 
@@ -30,7 +30,7 @@ Creates a blank presentation using the title given in the request. If a `present
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `presentations.batchUpdate()`
 
@@ -39,7 +39,7 @@ Applies one or more updates to the presentation. Each request is validated befor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.presentationId` | `string` | Yes | The presentation to apply the updates to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `presentations.pages`
 
