@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Firestore API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:57 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:21:51 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:49 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:59 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Exports a copy of all or a subset of documents from Google Cloud Firestore to an
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Database to export. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.importDocuments()`
 
@@ -83,7 +83,7 @@ Imports documents into Google Cloud Firestore. Existing documents with the same 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Database to import into. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.bulkDeleteDocuments()`
 
@@ -92,7 +92,7 @@ Bulk deletes a subset of documents from Google Cloud Firestore. Documents create
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Database to operate. Should be of the form: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.create()`
 
@@ -102,7 +102,7 @@ Create a database.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}` |
 | `params.databaseId` | `string` | No | Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid if the database is Standard edition. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.get()`
 
@@ -129,7 +129,7 @@ Updates a database.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the Database. Format: `projects/{project}/databases/{database}` |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.delete()`
 
@@ -147,7 +147,7 @@ Creates a new database by restoring from an existing backup. The new database mu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to restore the database in. Format is `projects/{project_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.clone()`
 
@@ -156,7 +156,7 @@ Creates a new database by cloning an existing one. The new database must be in t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to clone the database in. Format is `projects/{project_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.databases.operations`
 
@@ -194,7 +194,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.databases.collectionGroups`
 
@@ -207,7 +207,7 @@ Creates a composite index. This returns a google.longrunning.Operation which may
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.collectionGroups.indexes.list()`
 
@@ -254,7 +254,7 @@ Updates a field configuration. Currently, field updates apply only to single fie
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. A field name of the form: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field path can be a simple field name, e.g. `address` or a path to fields within `map_value` , e.g. `address.city`, or a special field path. The only valid special field is `*`, which represents any field. Field paths can be quoted using `` ` `` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*`, `.`, `` ` `` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: `` `address.city` `` represents a field named `address.city`, not the map key `city` in the field `address`. `` `*` `` represents a field named `*`, not any field. A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration. |
 | `params.updateMask` | `string` | No | A mask, relative to the field. If specified, only configuration specified by this field_mask will be updated in the field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.collectionGroups.fields.list()`
 
@@ -277,7 +277,7 @@ Create a user creds.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}/databases/{database_id}` |
 | `params.userCredsId` | `string` | No | Required. The ID to use for the user creds, which will become the final component of the user creds's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.userCreds.get()`
 
@@ -302,7 +302,7 @@ Enables a user creds. No-op if the user creds are already enabled.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.userCreds.disable()`
 
@@ -311,7 +311,7 @@ Disables a user creds. No-op if the user creds are already disabled.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.userCreds.resetPassword()`
 
@@ -320,7 +320,7 @@ Resets the password of a user creds.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. A name of the form `projects/{project_id}/databases/{database_id}/userCreds/{user_creds_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.userCreds.delete()`
 
@@ -339,7 +339,7 @@ Creates a backup schedule on a database. At most two backup schedules can be con
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent database. Format `projects/{project}/databases/{database}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.backupSchedules.get()`
 
@@ -365,7 +365,7 @@ Updates a backup schedule.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The unique backup schedule identifier across all locations and databases for the given project. This will be auto-assigned. Format is `projects/{project}/databases/{database}/backupSchedules/{backup_schedule}` |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.backupSchedules.delete()`
 
@@ -431,7 +431,7 @@ Updates or inserts a document.
 | `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
 | `params.currentDocument.exists` | `boolean` | No | When set to `true`, the target document must exist. When set to `false`, the target document must not exist. |
 | `params.currentDocument.updateTime` | `string` | No | When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.delete()`
 
@@ -450,7 +450,7 @@ Gets multiple documents. Documents returned by this method are not guaranteed to
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.beginTransaction()`
 
@@ -459,7 +459,7 @@ Starts a new transaction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.commit()`
 
@@ -468,7 +468,7 @@ Commits a transaction, while optionally updating documents.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.rollback()`
 
@@ -477,7 +477,7 @@ Rolls back a transaction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.runQuery()`
 
@@ -486,7 +486,7 @@ Runs a query.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.runAggregationQuery()`
 
@@ -497,7 +497,7 @@ Runs an aggregation query. Rather than producing Document results like Firestore
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.partitionQuery()`
 
@@ -506,7 +506,7 @@ Partitions a query by returning partition cursors that can be used to run the qu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not supported; only database resource names can be specified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.write()`
 
@@ -515,7 +515,7 @@ Streams batches of document updates and deletes, in order. This method is only a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. This is only required in the first message. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.listen()`
 
@@ -524,7 +524,7 @@ Listens to changes. This method is only available via gRPC or WebChannel (not RE
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.listCollectionIds()`
 
@@ -533,7 +533,7 @@ Lists all the collection IDs underneath a document.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent document. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.batchWrite()`
 
@@ -542,7 +542,7 @@ Applies a batch of write operations. The BatchWrite method does not apply the wr
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.database` | `string` | Yes | Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.databases.documents.createDocument()`
 
@@ -554,4 +554,4 @@ Creates a new document.
 | `params.collectionId` | `string` | Yes | Required. The collection ID, relative to `parent`, to list. For example: `chatrooms`. |
 | `params.documentId` | `string` | No | The client-assigned document ID to use for this document. Optional. If not specified, an ID will be assigned by the service. |
 | `params.mask.fieldPaths` | `string` | No | The list of field paths in the mask. See Document.fields for a field path syntax reference. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
