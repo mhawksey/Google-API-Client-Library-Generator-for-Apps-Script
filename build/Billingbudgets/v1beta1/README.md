@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Billing Budget API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:40 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:54:31 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:03 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:26 GMT
 
 
@@ -25,7 +25,7 @@ Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/q
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the billing account to create the budget in. Values are of the form `billingAccounts/{billingAccountId}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.budgets.patch()`
 
@@ -34,7 +34,7 @@ Updates a budget and returns the updated budget. WARNING: There are some fields 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.budgets.get()`
 
