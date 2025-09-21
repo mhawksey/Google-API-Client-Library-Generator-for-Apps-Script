@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Sheets API (version: v4)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:02 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:46:41 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:48:20 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:48:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:36 GMT
 
 
@@ -22,7 +22,7 @@ Creates a spreadsheet, returning the newly created spreadsheet.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spreadsheets.get()`
 
@@ -50,7 +50,7 @@ Returns the spreadsheet at the given ID. The caller must specify the spreadsheet
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The spreadsheet to request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spreadsheets.batchUpdate()`
 
@@ -59,7 +59,7 @@ Applies one or more updates to the spreadsheet. Each request is validated before
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The spreadsheet to apply the updates to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `spreadsheets.values`
 
@@ -87,7 +87,7 @@ Sets values in a range of a spreadsheet. The caller must specify the spreadsheet
 | `params.includeValuesInResponse` | `boolean` | No | Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns). |
 | `params.responseValueRenderOption` | `string` | No | Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. |
 | `params.responseDateTimeRenderOption` | `string` | No | Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spreadsheets.values.append()`
 
@@ -102,7 +102,7 @@ Appends values to a spreadsheet. The input range is used to search for existing 
 | `params.includeValuesInResponse` | `boolean` | No | Determines if the update response should include the values of the cells that were appended. By default, responses do not include the updated values. |
 | `params.responseValueRenderOption` | `string` | No | Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE. |
 | `params.responseDateTimeRenderOption` | `string` | No | Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spreadsheets.values.clear()`
 
@@ -112,7 +112,7 @@ Clears values from a spreadsheet. The caller must specify the spreadsheet ID and
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
 | `params.range` | `string` | Yes | The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to clear. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spreadsheets.values.batchGet()`
 
@@ -133,7 +133,7 @@ Sets values in one or more ranges of a spreadsheet. The caller must specify the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spreadsheets.values.batchClear()`
 
@@ -142,7 +142,7 @@ Clears one or more ranges of values from a spreadsheet. The caller must specify 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spreadsheets.values.batchGetByDataFilter()`
 
@@ -151,7 +151,7 @@ Returns one or more ranges of values that match the specified data filters. The 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve data from. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spreadsheets.values.batchUpdateByDataFilter()`
 
@@ -160,7 +160,7 @@ Sets values in one or more ranges of a spreadsheet. The caller must specify the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spreadsheets.values.batchClearByDataFilter()`
 
@@ -169,7 +169,7 @@ Clears one or more ranges of values from a spreadsheet. The caller must specify 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `spreadsheets.developerMetadata`
 
@@ -189,7 +189,7 @@ Returns all developer metadata matching the specified DataFilter. If the provide
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet to retrieve metadata from. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `spreadsheets.sheets`
 
@@ -201,4 +201,4 @@ Copies a single sheet from a spreadsheet to another spreadsheet. Returns the pro
 |---|---|---|---|
 | `params.spreadsheetId` | `string` | Yes | The ID of the spreadsheet containing the sheet to copy. |
 | `params.sheetId` | `integer` | Yes | The ID of the sheet to copy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
