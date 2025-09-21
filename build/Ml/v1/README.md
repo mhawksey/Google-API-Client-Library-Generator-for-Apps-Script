@@ -4,8 +4,8 @@ Auto-generated client library for using the **AI Platform Training & Prediction 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:39 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:01 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:35:48 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:35:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:18 GMT
 
 
@@ -23,7 +23,7 @@ Performs online prediction on the data in the request. {% dynamic include "/ai-p
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of a model or a version. Authorization: requires the `predict` permission on the specified resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.explain()`
 
@@ -32,7 +32,7 @@ Performs explanation on the data in the request. {% dynamic include "/ai-platfor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of a model or a version. Authorization: requires the `predict` permission on the specified resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getConfig()`
 
@@ -51,7 +51,7 @@ Creates a training or a batch prediction job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.list()`
 
@@ -79,7 +79,7 @@ Cancels a running job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the job to cancel. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.patch()`
 
@@ -89,7 +89,7 @@ Updates a specific job resource. Currently the only supported fields to update a
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The job name. |
 | `params.updateMask` | `string` | No | Required. Specifies the path, relative to `Job`, of the field to update. To adopt etag mechanism, include `etag` field in the mask, and include the `etag` value in your job resource. For example, to change the labels of a job, the `update_mask` parameter would be specified as `labels`, `etag`, and the `PATCH` request body would specify the new value, as follows: { "labels": { "owner": "Google", "color": "Blue" } "etag": "33a64df551425fcc55e4d42a148795d9f25f89d4" } If `etag` matches the one on the server, the labels of the job will be replaced with the given ones, and the server end `etag` will be recalculated. Currently the only supported update masks are `labels` and `etag`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.setIamPolicy()`
 
@@ -98,7 +98,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.getIamPolicy()`
 
@@ -116,7 +116,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations`
 
@@ -166,7 +166,7 @@ Creates a study.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project and location that the study belongs to. Format: projects/{project}/locations/{location} |
 | `params.studyId` | `string` | No | Required. The ID to use for the study, which will become the final component of the study's resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.get()`
 
@@ -201,7 +201,7 @@ Adds one or more trials to a study, with parameter values suggested by AI Platfo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the study that the trial belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.create()`
 
@@ -210,7 +210,7 @@ Adds a user provided trial to a study.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the study that the trial belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.get()`
 
@@ -235,7 +235,7 @@ Adds a measurement of the objective metrics to a trial. This measurement is assu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The trial name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.complete()`
 
@@ -244,7 +244,7 @@ Marks a trial as complete.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The trial name.metat |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.delete()`
 
@@ -261,7 +261,7 @@ Checks whether a trial should stop or not. Returns a long-running operation. Whe
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The trial name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.stop()`
 
@@ -270,7 +270,7 @@ Stops a trial.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The trial name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.listOptimalTrials()`
 
@@ -279,7 +279,7 @@ Lists the pareto-optimal trials for multi-objective study or the optimal trials 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the study that the pareto-optimal trial belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.operations`
 
@@ -319,7 +319,7 @@ Creates a model which will later contain one or more versions. You must add at l
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.models.list()`
 
@@ -356,7 +356,7 @@ Updates a specific model resource. Currently the only supported fields to update
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The project name. |
 | `params.updateMask` | `string` | No | Required. Specifies the path, relative to `Model`, of the field to update. For example, to change the description of a model to "foo" and set its default version to "version_1", the `update_mask` parameter would be specified as `description`, `default_version.name`, and the `PATCH` request body would specify the new value, as follows: { "description": "foo", "defaultVersion": { "name":"version_1" } } Currently the supported update masks are `description` and `default_version.name`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.models.setIamPolicy()`
 
@@ -365,7 +365,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.models.getIamPolicy()`
 
@@ -383,7 +383,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.models.versions`
 
@@ -394,7 +394,7 @@ Creates a new version of a model from a trained TensorFlow model. If the version
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the model. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.models.versions.patch()`
 
@@ -404,7 +404,7 @@ Updates the specified Version resource. Currently the only update-able fields ar
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the model. |
 | `params.updateMask` | `string` | No | Required. Specifies the path, relative to `Version`, of the field to update. Must be present and non-empty. For example, to change the description of a version to "foo", the `update_mask` parameter would be specified as `description`, and the `PATCH` request body would specify the new value, as follows: ``` { "description": "foo" } ``` Currently the only supported update mask fields are `description`, `requestLoggingConfig`, `autoScaling.minNodes`, and `manualScaling.nodes`. However, you can only update `manualScaling.nodes` if the version uses a [Compute Engine (N1) machine type](/ml-engine/docs/machine-types-online-prediction). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.models.versions.list()`
 
@@ -440,4 +440,4 @@ Designates a version to be the default for the model. The default version is use
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the version to make the default for the model. You can get the names of all the versions of a model by calling projects.models.versions.list. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
