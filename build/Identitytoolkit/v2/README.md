@@ -4,8 +4,8 @@ Auto-generated client library for using the **Identity Toolkit API (version: v2)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:10 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:24:19 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:27:20 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:27:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:20 GMT
 
 
@@ -32,7 +32,7 @@ Update an Identity Toolkit project configuration.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The name of the Config resource. Example: "projects/my-awesome-project/config" |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. Fields set in the config but not included in this update mask will be ignored. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.identityPlatform`
 
@@ -43,7 +43,7 @@ Initialize Identity Platform for a Cloud project. Identity Platform is an end-to
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.project` | `string` | Yes | The resource name of the target project the developer wants to enable Identity Platform for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.defaultSupportedIdpConfigs`
 
@@ -55,7 +55,7 @@ Create a default supported Idp configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource name where the config to be created, for example: "projects/my-awesome-project" |
 | `params.idpId` | `string` | No | The id of the Idp to create a config for. Call ListDefaultSupportedIdps for list of all default supported Idps. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.defaultSupportedIdpConfigs.delete()`
 
@@ -91,7 +91,7 @@ Update a default supported Idp configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com" |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.oauthIdpConfigs`
 
@@ -103,7 +103,7 @@ Create an Oidc Idp configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource name where the config to be created, for example: "projects/my-awesome-project" |
 | `params.oauthIdpConfigId` | `string` | No | The id to use for this config. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.oauthIdpConfigs.delete()`
 
@@ -139,7 +139,7 @@ Update an Oidc Idp configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the OAuthIdpConfig resource, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. Ignored during create requests. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. Empty update mask will result in updating nothing. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.inboundSamlConfigs`
 
@@ -151,7 +151,7 @@ Create an inbound SAML configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource name where the config to be created, for example: "projects/my-awesome-project" |
 | `params.inboundSamlConfigId` | `string` | No | The id to use for this config. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.inboundSamlConfigs.delete()`
 
@@ -187,7 +187,7 @@ Update an inbound SAML configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the InboundSamlConfig resource, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. Ignored during create requests. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. Empty update mask will result in updating nothing. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.tenants`
 
@@ -198,7 +198,7 @@ Sets the access control policy for a resource. If the policy exists, it is repla
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.tenants.getIamPolicy()`
 
@@ -207,7 +207,7 @@ Gets the access control policy for a resource. An error is returned if the resou
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.tenants.testIamPermissions()`
 
@@ -216,7 +216,7 @@ Returns the caller's permissions on a resource. An error is returned if the reso
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.tenants.create()`
 
@@ -225,7 +225,7 @@ Create a tenant. Requires write permission on the Agent project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource name where the tenant will be created. For example, "projects/project1". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.tenants.delete()`
 
@@ -261,7 +261,7 @@ Update a tenant. Requires write permission on the Tenant resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}" |
 | `params.updateMask` | `string` | No | If provided, only update fields set in the update mask. Otherwise, all settable fields will be updated. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.tenants.defaultSupportedIdpConfigs`
 
@@ -273,7 +273,7 @@ Create a default supported Idp configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource name where the config to be created, for example: "projects/my-awesome-project" |
 | `params.idpId` | `string` | No | The id of the Idp to create a config for. Call ListDefaultSupportedIdps for list of all default supported Idps. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.tenants.defaultSupportedIdpConfigs.delete()`
 
@@ -309,7 +309,7 @@ Update a default supported Idp configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the DefaultSupportedIdpConfig resource, for example: "projects/my-awesome-project/defaultSupportedIdpConfigs/google.com" |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.tenants.oauthIdpConfigs`
 
@@ -321,7 +321,7 @@ Create an Oidc Idp configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource name where the config to be created, for example: "projects/my-awesome-project" |
 | `params.oauthIdpConfigId` | `string` | No | The id to use for this config. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.tenants.oauthIdpConfigs.delete()`
 
@@ -357,7 +357,7 @@ Update an Oidc Idp configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the OAuthIdpConfig resource, for example: 'projects/my-awesome-project/oauthIdpConfigs/oauth-config-id'. Ignored during create requests. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. Empty update mask will result in updating nothing. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.tenants.inboundSamlConfigs`
 
@@ -369,7 +369,7 @@ Create an inbound SAML configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The parent resource name where the config to be created, for example: "projects/my-awesome-project" |
 | `params.inboundSamlConfigId` | `string` | No | The id to use for this config. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.tenants.inboundSamlConfigs.delete()`
 
@@ -405,7 +405,7 @@ Update an inbound SAML configuration for an Identity Toolkit project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the InboundSamlConfig resource, for example: 'projects/my-awesome-project/inboundSamlConfigs/my-config-id'. Ignored during create requests. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. Empty update mask will result in updating nothing. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `defaultSupportedIdps`
 
@@ -446,7 +446,7 @@ Revokes a user's token from an Identity Provider (IdP). This is done by manually
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.mfaEnrollment`
 
@@ -456,7 +456,7 @@ Finishes enrolling a second factor for the user.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.mfaEnrollment.start()`
 
@@ -464,7 +464,7 @@ Step one of the MFA enrollment process. In SMS case, this sends an SMS verificat
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.mfaEnrollment.withdraw()`
 
@@ -472,7 +472,7 @@ Revokes one second factor from the enrolled second factors for an account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.mfaSignIn`
 
@@ -482,7 +482,7 @@ Verifies the MFA challenge and performs sign-in
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.mfaSignIn.start()`
 
@@ -490,4 +490,4 @@ Sends the MFA challenge
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
