@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Tasks API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:58 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:53:26 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:30 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:36 GMT
 
 
@@ -51,7 +51,7 @@ Creates a new task on the specified task list. Tasks assigned from Docs or Chat 
 | `params.tasklist` | `string` | Yes | Task list identifier. |
 | `params.parent` | `string` | No | Parent task identifier. If the task is created at the top level, this parameter is omitted. An assigned task cannot be a parent task, nor can it have a parent. Setting the parent to an assigned task results in failure of the request. Optional. |
 | `params.previous` | `string` | No | Previous sibling task identifier. If the task is created at the first position among its siblings, this parameter is omitted. Optional. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tasks.list()`
 
@@ -92,7 +92,7 @@ Updates the specified task. This method supports patch semantics.
 |---|---|---|---|
 | `params.tasklist` | `string` | Yes | Task list identifier. |
 | `params.task` | `string` | Yes | Task identifier. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tasks.update()`
 
@@ -102,7 +102,7 @@ Updates the specified task.
 |---|---|---|---|
 | `params.tasklist` | `string` | Yes | Task list identifier. |
 | `params.task` | `string` | Yes | Task identifier. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `tasklists`
 
@@ -128,7 +128,7 @@ Creates a new task list and adds it to the authenticated user's task lists. A us
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tasklists.list()`
 
@@ -146,7 +146,7 @@ Updates the authenticated user's specified task list. This method supports patch
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.tasklist` | `string` | Yes | Task list identifier. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tasklists.update()`
 
@@ -155,4 +155,4 @@ Updates the authenticated user's specified task list.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.tasklist` | `string` | Yes | Task list identifier. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
