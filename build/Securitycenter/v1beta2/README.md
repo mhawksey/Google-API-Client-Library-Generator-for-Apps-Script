@@ -4,8 +4,8 @@ Auto-generated client library for using the **Security Command Center API (versi
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:22 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:45:50 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:47:32 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:47:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:50 GMT
 
 
@@ -48,7 +48,7 @@ Update the ContainerThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: * organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.getEventThreatDetectionSettings()`
 
@@ -66,7 +66,7 @@ Update the EventThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the EventThreatDetectionSettings. Formats: * organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.getSecurityHealthAnalyticsSettings()`
 
@@ -84,7 +84,7 @@ Update the SecurityHealthAnalyticsSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: * organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.getVirtualMachineThreatDetectionSettings()`
 
@@ -102,7 +102,7 @@ Update the VirtualMachineThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: * organizations/{organization}/virtualMachineThreatDetectionSettings * folders/{folder}/virtualMachineThreatDetectionSettings * projects/{project}/virtualMachineThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.getRapidVulnerabilityDetectionSettings()`
 
@@ -120,7 +120,7 @@ Update the RapidVulnerabilityDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the RapidVulnerabilityDetectionSettings. Formats: * organizations/{organization}/rapidVulnerabilityDetectionSettings * folders/{folder}/rapidVulnerabilityDetectionSettings * projects/{project}/rapidVulnerabilityDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.getWebSecurityScannerSettings()`
 
@@ -138,7 +138,7 @@ Update the WebSecurityScannerSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the WebSecurityScannerSettings. Formats: * organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings * projects/{project}/webSecurityScannerSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.containerThreatDetectionSettings`
 
@@ -231,7 +231,7 @@ Update the ContainerThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: * organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getEventThreatDetectionSettings()`
 
@@ -249,7 +249,7 @@ Update the EventThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the EventThreatDetectionSettings. Formats: * organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getSecurityHealthAnalyticsSettings()`
 
@@ -267,7 +267,7 @@ Update the SecurityHealthAnalyticsSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: * organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getVirtualMachineThreatDetectionSettings()`
 
@@ -285,7 +285,7 @@ Update the VirtualMachineThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: * organizations/{organization}/virtualMachineThreatDetectionSettings * folders/{folder}/virtualMachineThreatDetectionSettings * projects/{project}/virtualMachineThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getRapidVulnerabilityDetectionSettings()`
 
@@ -303,7 +303,7 @@ Update the RapidVulnerabilityDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the RapidVulnerabilityDetectionSettings. Formats: * organizations/{organization}/rapidVulnerabilityDetectionSettings * folders/{folder}/rapidVulnerabilityDetectionSettings * projects/{project}/rapidVulnerabilityDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getWebSecurityScannerSettings()`
 
@@ -321,7 +321,7 @@ Update the WebSecurityScannerSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the WebSecurityScannerSettings. Formats: * organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings * projects/{project}/webSecurityScannerSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `folders.containerThreatDetectionSettings`
 
@@ -414,7 +414,7 @@ Update the ContainerThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: * organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getEventThreatDetectionSettings()`
 
@@ -432,7 +432,7 @@ Update the EventThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the EventThreatDetectionSettings. Formats: * organizations/{organization}/eventThreatDetectionSettings * folders/{folder}/eventThreatDetectionSettings * projects/{project}/eventThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getSecurityHealthAnalyticsSettings()`
 
@@ -450,7 +450,7 @@ Update the SecurityHealthAnalyticsSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the SecurityHealthAnalyticsSettings. Formats: * organizations/{organization}/securityHealthAnalyticsSettings * folders/{folder}/securityHealthAnalyticsSettings * projects/{project}/securityHealthAnalyticsSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getVirtualMachineThreatDetectionSettings()`
 
@@ -468,7 +468,7 @@ Update the VirtualMachineThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the VirtualMachineThreatDetectionSettings. Formats: * organizations/{organization}/virtualMachineThreatDetectionSettings * folders/{folder}/virtualMachineThreatDetectionSettings * projects/{project}/virtualMachineThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getRapidVulnerabilityDetectionSettings()`
 
@@ -486,7 +486,7 @@ Update the RapidVulnerabilityDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the RapidVulnerabilityDetectionSettings. Formats: * organizations/{organization}/rapidVulnerabilityDetectionSettings * folders/{folder}/rapidVulnerabilityDetectionSettings * projects/{project}/rapidVulnerabilityDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getWebSecurityScannerSettings()`
 
@@ -504,7 +504,7 @@ Update the WebSecurityScannerSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the WebSecurityScannerSettings. Formats: * organizations/{organization}/webSecurityScannerSettings * folders/{folder}/webSecurityScannerSettings * projects/{project}/webSecurityScannerSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations`
 
@@ -526,7 +526,7 @@ Update the ContainerThreatDetectionSettings resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the ContainerThreatDetectionSettings. Formats: * organizations/{organization}/containerThreatDetectionSettings * folders/{folder}/containerThreatDetectionSettings * projects/{project}/containerThreatDetectionSettings * projects/{project}/locations/{location}/clusters/{cluster}/containerThreatDetectionSettings |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.clusters.containerThreatDetectionSettings`
 
