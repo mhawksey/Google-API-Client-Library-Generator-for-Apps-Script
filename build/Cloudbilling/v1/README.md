@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Billing API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:30 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:01:31 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:07:14 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:07:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:15 GMT
 
 
@@ -43,7 +43,7 @@ Updates a billing account's fields. Currently the only field that can be edited 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the billing account resource to be updated. |
 | `params.updateMask` | `string` | No | The update mask applied to the resource. Only "display_name" is currently supported. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.create()`
 
@@ -52,7 +52,7 @@ This method creates [billing subaccounts](https://cloud.google.com/billing/docs/
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | No | Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.getIamPolicy()`
 
@@ -70,7 +70,7 @@ Sets the access control policy for a billing account. Replaces any existing poli
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.testIamPermissions()`
 
@@ -79,7 +79,7 @@ Tests the access control policy for a billing account. This method takes the res
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.move()`
 
@@ -88,7 +88,7 @@ Changes which parent organization a billing account belongs to.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the billing account to move. Must be of the form `billingAccounts/{billing_account_id}`. The specified billing account cannot be a subaccount, since a subaccount always belongs to the same organization as its parent account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `billingAccounts.subAccounts`
 
@@ -110,7 +110,7 @@ This method creates [billing subaccounts](https://cloud.google.com/billing/docs/
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `billingAccounts.projects`
 
@@ -146,7 +146,7 @@ This method creates [billing subaccounts](https://cloud.google.com/billing/docs/
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Optional. The parent to create a billing account from. Format: - `billingAccounts/{billing_account_id}`, for example, `billingAccounts/012345-567890-ABCDEF` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.billingAccounts.move()`
 
@@ -174,7 +174,7 @@ Sets or updates the billing account associated with a project. You specify the n
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the project associated with the billing information that you want to update. For example, `projects/tokyo-rain-123`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services`
 
