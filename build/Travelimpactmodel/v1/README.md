@@ -4,8 +4,8 @@ Auto-generated client library for using the **Travel Impact Model API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:55 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:54:17 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:55:17 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:55:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:25 GMT
 
 
@@ -32,7 +32,7 @@ Stateless method to retrieve emission estimates. Details on how emission estimat
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `flights.computeTypicalFlightEmissions()`
 
@@ -40,4 +40,4 @@ Retrieves typical flight emissions estimates between two airports, also known as
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
