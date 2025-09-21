@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Place Actions API (ver
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:53 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:30 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:36:12 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:36:12 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:37 GMT
 
 
@@ -57,7 +57,7 @@ Creates a place action link associated with the specified location, and returns 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the location where to create this place action link. `locations/{location_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.placeActionLinks.patch()`
 
@@ -67,7 +67,7 @@ Updates the specified place action link and returns it.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Optional. The resource name, in the format `locations/{location_id}/placeActionLinks/{place_action_link_id}`. The name field will only be considered in UpdatePlaceActionLink and DeletePlaceActionLink requests for updating and deleting links respectively. However, it will be ignored in CreatePlaceActionLink request, where `place_action_link_id` will be assigned by the server on successful creation of a new link and returned as part of the response. |
 | `params.updateMask` | `string` | No | Required. The specific fields to update. The only editable fields are `uri`, `place_action_type` and `is_preferred`. If the updated link already exists at the same location with the same `place_action_type` and `uri`, fails with an `ALREADY_EXISTS` error. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.placeActionLinks.delete()`
 
