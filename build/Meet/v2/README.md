@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Meet API (version: v2)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:43:03 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:26:07 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:34:03 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:34:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:19 GMT
 
 
@@ -22,7 +22,7 @@ Creates a space.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spaces.get()`
 
@@ -40,7 +40,7 @@ Updates details about a meeting space. For an example, see [Update a meeting spa
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). |
 | `params.updateMask` | `string` | No | Optional. Field mask used to specify the fields to be updated in the space. If update_mask isn't provided(not set, set with empty paths, or only has "" as paths), it defaults to update all fields provided with values in the request. Using "*" as update_mask will update all fields, including deleting fields not set in the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `spaces.endActiveConference()`
 
@@ -49,7 +49,7 @@ Ends an active conference (if there's one). For an example, see [End active conf
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `conferenceRecords`
 
