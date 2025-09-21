@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: ordertracki
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:43:56 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:32:15 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:34:57 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:34:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:47 GMT
 
 
@@ -26,4 +26,4 @@ Creates new order tracking signal.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account of the business for which the order signal is created. Format: accounts/{account} |
 | `params.orderTrackingSignalId` | `string` | No | Output only. The ID that uniquely identifies this order tracking signal. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
