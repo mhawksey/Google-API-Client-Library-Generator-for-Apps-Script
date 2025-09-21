@@ -4,8 +4,8 @@ Auto-generated client library for using the **DoubleClick Bid Manager API (versi
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:40 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:24 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:02 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:28 GMT
 
 
@@ -22,7 +22,7 @@ Creates a new query.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `queries.delete()`
 
@@ -58,7 +58,7 @@ Runs an existing query to generate a report.
 |---|---|---|---|
 | `params.queryId` | `string` | Yes | Required. The ID of the query to run. |
 | `params.synchronous` | `boolean` | No | Whether the query should be run synchronously. When `true`, the request won't return until the resulting report has finished running. This parameter is `false` by default. Setting this parameter to `true` is **not recommended**. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `queries.reports`
 
