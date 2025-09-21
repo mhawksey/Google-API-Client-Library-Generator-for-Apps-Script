@@ -4,7 +4,7 @@ Auto-generated client library for using the **Fitness API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:21:55 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:35:59 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:21:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:01 GMT
 
@@ -142,8 +142,8 @@ Lists sessions previously created.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | List sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-| `params.startTime` | `string` | No | An RFC3339 timestamp. Only sessions ending between the start and end times will be included in the response. If this time is omitted but endTime is specified, all sessions from the start of time up to endTime will be returned. |
-| `params.endTime` | `string` | No | An RFC3339 timestamp. Only sessions ending between the start and end times will be included in the response. If this time is omitted but startTime is specified, all sessions from startTime to the end of time will be returned. |
+| `params.startTime` | `string` | No | An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but endTime is specified, all sessions starting before endTime and ending after the start of time up to (endTime + 1 day) will be returned. |
+| `params.endTime` | `string` | No | An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned. |
 | `params.includeDeleted` | `boolean` | No | If true, and if both startTime and endTime are omitted, session deletions will be returned. |
 | `params.pageToken` | `string` | No | The continuation token, which is used for incremental syncing. To get the next batch of changes, set this parameter to the value of nextPageToken from the previous response. The page token is ignored if either start or end time is specified. If none of start time, end time, and the page token is specified, sessions modified in the last 30 days are returned. |
 | `params.activityType` | `integer` | No | If non-empty, only sessions with these activity types should be returned. |

@@ -26,7 +26,7 @@ class Securesourcemanager {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -403,7 +403,7 @@ class Securesourcemanager {
     this.projects.locations.repositories.pullRequests.pullRequestComments.list = (params) => this._makeRequest('v1/{+parent}/pullRequestComments', 'GET', params);
 
     /**
-     * Creates a pull request comment.
+     * Creates a pull request comment. This function is used to create a single PullRequestComment of type Comment, or a single PullRequestComment of type Code that's replying to another PullRequestComment of type Code. Use BatchCreatePullRequestComments to create multiple PullRequestComments for code reviews.
      * @param {string} params.parent - (Required) Required. The pull request in which to create the pull request comment. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}`
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
@@ -427,7 +427,7 @@ class Securesourcemanager {
     this.projects.locations.repositories.pullRequests.pullRequestComments.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
 
     /**
-     * Batch creates pull request comments.
+     * Batch creates pull request comments. This function is used to create multiple PullRequestComments for code review. There needs to be exactly one PullRequestComment of type Review, and at most 100 PullRequestComments of type Code per request. The Position of the code comments must be unique within the request.
      * @param {string} params.parent - (Required) Required. The pull request in which to create the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}`
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
@@ -435,7 +435,7 @@ class Securesourcemanager {
     this.projects.locations.repositories.pullRequests.pullRequestComments.batchCreate = (params) => this._makeRequest('v1/{+parent}/pullRequestComments:batchCreate', 'POST', params);
 
     /**
-     * Resolves pull request comments.
+     * Resolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be resolved.
      * @param {string} params.parent - (Required) Required. The pull request in which to resolve the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}`
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
@@ -443,7 +443,7 @@ class Securesourcemanager {
     this.projects.locations.repositories.pullRequests.pullRequestComments.resolve = (params) => this._makeRequest('v1/{+parent}/pullRequestComments:resolve', 'POST', params);
 
     /**
-     * Unresolves pull request comment.
+     * Unresolves pull request comments. A list of PullRequestComment names must be provided. The PullRequestComment names must be in the same conversation thread. If auto_fill is set, all comments in the conversation thread will be unresolved.
      * @param {string} params.parent - (Required) Required. The pull request in which to resolve the pull request comments. Format: `projects/{project_number}/locations/{location_id}/repositories/{repository_id}/pullRequests/{pull_request_id}`
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.

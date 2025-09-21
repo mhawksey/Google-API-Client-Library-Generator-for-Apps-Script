@@ -4,8 +4,8 @@ Auto-generated client library for using the **Analytics Hub API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 19:52:06 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:52:06 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:21:58 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:21:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:07 GMT
 
 
@@ -207,6 +207,72 @@ Returns the permissions that a caller has.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.resource` | `object` | Yes | The request body. |
+
+### `projects.locations.dataExchanges.queryTemplates`
+
+#### `projects.locations.dataExchanges.queryTemplates.create()`
+
+Creates a new QueryTemplate
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myQueryTemplate`. |
+| `params.queryTemplateId` | `string` | No | Required. The ID of the QueryTemplate to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Max length: 100 bytes. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataExchanges.queryTemplates.get()`
+
+Gets a QueryTemplate
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The parent resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. |
+
+#### `projects.locations.dataExchanges.queryTemplates.list()`
+
+Lists all QueryTemplates in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource path of the QueryTemplates. e.g. `projects/myproject/locations/us/dataExchanges/123`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. |
+| `params.pageToken` | `string` | No | Optional. Page token, returned by a previous call, to request the next page of results. |
+
+#### `projects.locations.dataExchanges.queryTemplates.patch()`
+
+Updates an existing QueryTemplate
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456` |
+| `params.updateMask` | `string` | No | Optional. Field mask specifies the fields to update in the query template resource. The fields specified in the `updateMask` are relative to the resource and are not a full request. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataExchanges.queryTemplates.delete()`
+
+Deletes a query template.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. |
+
+#### `projects.locations.dataExchanges.queryTemplates.submit()`
+
+Submits a query template for approval.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataExchanges.queryTemplates.approve()`
+
+Approves a query template.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `projects.locations.subscriptions`

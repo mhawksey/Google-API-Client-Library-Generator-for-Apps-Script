@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud SQL Admin API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:47:09 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:47:09 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:55:24 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:55:24 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:03 GMT
 
 
@@ -397,6 +397,16 @@ Updates settings of a Cloud SQL instance. Using this operation might cause your 
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
 | `params.resource` | `object` | Yes | The request body. |
 
+#### `instances.executeSql()`
+
+Execute SQL statements.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.project` | `string` | Yes | Required. Project ID of the project that contains the instance. |
+| `params.instance` | `string` | Yes | Required. Database instance ID. This does not include the project ID. |
+| `params.resource` | `object` | Yes | The request body. |
+
 #### `instances.acquireSsrsLease()`
 
 Acquire a lease for the setup of SQL Server Reporting Services (SSRS).
@@ -547,6 +557,7 @@ Get Latest Recovery Time for a given instance.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
+| `params.sourceInstanceDeletionTime` | `string` | No | The timestamp used to identify the time when the source instance is deleted. If this instance is deleted, then you must set the timestamp. |
 
 ### `operations`
 

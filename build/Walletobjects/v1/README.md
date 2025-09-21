@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Wallet API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:55:26 GMT
+- **Last Checked:** Mon, 01 Sep 2025 00:02:59 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:55:26 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:55 GMT
 

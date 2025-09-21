@@ -4,7 +4,7 @@ Auto-generated client library for using the **Identity and Access Management (IA
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:23:50 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:41:59 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:23:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:04 GMT
 
@@ -322,7 +322,7 @@ Updates an existing WorkloadIdentityPoolManagedIdentity in a WorkloadIdentityPoo
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name of the managed identity. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the managed identity. |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
 | `params.resource` | `object` | Yes | The request body. |
 
@@ -440,7 +440,7 @@ Updates an existing WorkloadIdentityPoolProvider.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name of the provider. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the provider. |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
 | `params.resource` | `object` | Yes | The request body. |
 
@@ -803,7 +803,7 @@ Lists all non-deleted WorkforcePools under the specified parent. If `show_delete
 |---|---|---|---|
 | `params.location` | `string` | Yes | The location of the pool. Format: `locations/{location}`. |
 | `params.parent` | `string` | No | Required. The parent resource to list pools for. Format: `organizations/{org-id}`. |
-| `params.pageSize` | `integer` | No | The maximum number of pools to return. If unspecified, at most 50 pools will be returned. The maximum value is 1000; values above 1000 are truncated to 1000. |
+| `params.pageSize` | `integer` | No | The maximum number of pools to return. The default value is 50. The maximum value is 100. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListWorkforcePools` call. Provide this to retrieve the subsequent page. |
 | `params.showDeleted` | `boolean` | No | Whether to return soft-deleted pools. |
 

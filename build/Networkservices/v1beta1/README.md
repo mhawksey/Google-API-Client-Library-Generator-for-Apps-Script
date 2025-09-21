@@ -4,8 +4,8 @@ Auto-generated client library for using the **Network Services API (version: v1b
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:34:17 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:34:17 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:45:27 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:45:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:09 GMT
 
 
@@ -234,6 +234,59 @@ Deletes the specified `LbEdgeExtension` resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the `LbEdgeExtension` resource to delete. Must be in the format `projects/{project}/locations/{location}/lbEdgeExtensions/{lb_edge_extension}`. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server ignores the second request This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.lbTcpExtensions`
+
+#### `projects.locations.lbTcpExtensions.list()`
+
+Lists `LbTcpExtension` resources in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project and location from which the `LbTcpExtension` resources are listed, specified in the following format: `projects/{project}/locations/{location}`. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. The server might return fewer items than requested. If unspecified, the server picks an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results that the server returns. |
+| `params.filter` | `string` | No | Optional. Filtering results. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. |
+
+#### `projects.locations.lbTcpExtensions.get()`
+
+Gets details of the specified `LbTcpExtension` resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. A name of the `LbTcpExtension` resource to get. Must be in the format `projects/{project}/locations/{location}/LbTcpExtensions/{lb_tcp_extension}`. |
+
+#### `projects.locations.lbTcpExtensions.create()`
+
+Creates a new `LbTcpExtension` resource in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the `LbTcpExtension` resource. Must be in the format `projects/{project}/locations/{location}`. |
+| `params.lbTcpExtensionId` | `string` | No | Required. User-provided ID of the `LbTcpExtension` resource to be created. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.lbTcpExtensions.patch()`
+
+Updates the parameters of the specified `LbTcpExtension` resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Identifier. Name of the `LbTcpExtension` resource in the following format: `projects/{project}/locations/{location}/LbTcpExtension/{lb_tcp_extension}` |
+| `params.updateMask` | `string` | No | Optional. Used to specify the fields to be overwritten in the `LbTcpExtension` resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field is overwritten if it is in the mask. If the user does not specify a mask, then all fields are overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.lbTcpExtensions.delete()`
+
+Deletes the specified `LbTcpExtension` resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the `LbTcpExtension` resource to delete. Must be in the format `projects/{project}/locations/{location}/LbTcpExtensions/{lb_tcp_extension}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
 ### `projects.locations.authzExtensions`
 

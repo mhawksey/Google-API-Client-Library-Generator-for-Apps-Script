@@ -65,6 +65,7 @@ class Sqladmin {
     this.instances.stopReplica = (params) => this._makeRequest('sql/v1beta4/projects/{project}/instances/{instance}/stopReplica', 'POST', params);
     this.instances.truncateLog = (params) => this._makeRequest('sql/v1beta4/projects/{project}/instances/{instance}/truncateLog', 'POST', params);
     this.instances.update = (params) => this._makeRequest('sql/v1beta4/projects/{project}/instances/{instance}', 'PUT', params);
+    this.instances.executeSql = (params) => this._makeRequest('sql/v1beta4/projects/{project}/instances/{instance}/executeSql', 'POST', params);
     this.instances.acquireSsrsLease = (params) => this._makeRequest('sql/v1beta4/projects/{project}/instances/{instance}/acquireSsrsLease', 'POST', params);
     this.instances.releaseSsrsLease = (params) => this._makeRequest('sql/v1beta4/projects/{project}/instances/{instance}/releaseSsrsLease', 'POST', params);
     this.instances.pointInTimeRestore = (params) => this._makeRequest('sql/v1beta4/{+parent}:pointInTimeRestore', 'POST', params);

@@ -4,7 +4,7 @@ Auto-generated client library for using the **Apigee API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 19:52:32 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:22:16 GMT
 - **Last Modified:** Mon, 04 Aug 2025 19:52:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:32 GMT
 
@@ -2266,12 +2266,12 @@ Lists IDs of apps within an organization that have the specified app status (app
 | `params.apptype` | `string` | No | Optional. 'apptype' is no longer available. Use a 'filter' instead. |
 | `params.includeCred` | `boolean` | No | Optional. Flag that specifies whether to include credentials in the response. |
 | `params.startKey` | `string` | No | Returns the list of apps starting from the specified app ID. |
-| `params.rows` | `string` | No | Optional. Maximum number of app IDs to return. Defaults to 1000. |
+| `params.rows` | `string` | No | Optional. Maximum number of app IDs to return. Defaults to 1000, which is also the upper limit. To get more than 1000, use pagination with 'pageSize' and 'pageToken' parameters. |
 | `params.expand` | `boolean` | No | Optional. Flag that specifies whether to return an expanded list of apps for the organization. Defaults to `false`. |
 | `params.ids` | `string` | No | Optional. Comma-separated list of app IDs on which to filter. |
 | `params.keyStatus` | `string` | No | Optional. Key status of the app. Valid values include `approved` or `revoked`. Defaults to `approved`. |
 | `params.apiProduct` | `string` | No | API product. |
-| `params.pageSize` | `integer` | No | Optional. Count of apps a single page can have in the response. If unspecified, at most 100 apps will be returned. The maximum value is 100; values above 100 will be coerced to 100. "page_size" is supported from ver 1.10.0 and above. |
+| `params.pageSize` | `integer` | No | Optional. Count of apps a single page can have in the response. If unspecified, at most 1000 apps will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. "page_size" is supported from ver 1.10.0 and above. |
 | `params.pageToken` | `string` | No | Optional. The starting index record for listing the developers. "page_token" is supported from ver 1.10.0 and above. |
 | `params.filter` | `string` | No | Optional. The filter expression to be used to get the list of apps, where filtering can be done on developerEmail, apiProduct, consumerKey, status, appId, appName, appType and appGroup. Examples: "developerEmail=foo@bar.com", "appType=AppGroup", or "appType=Developer" "filter" is supported from ver 1.10.0 and above. |
 

@@ -4,7 +4,7 @@ Auto-generated client library for using the **App Engine Admin API (version: v1a
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 19:52:50 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:22:33 GMT
 - **Last Modified:** Mon, 04 Aug 2025 19:52:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:50 GMT
 
@@ -46,7 +46,7 @@ Lists all domains the user is authorized to administer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
 | `params.pageToken` | `string` | No | Continuation token for fetching the next page of results. |
 
@@ -58,7 +58,7 @@ Lists all SSL certificates the user is authorized to administer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.view` | `string` | No | Controls the set of fields returned in the LIST response. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
 | `params.pageToken` | `string` | No | Continuation token for fetching the next page of results. |
@@ -69,7 +69,7 @@ Gets the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.view` | `string` | No | Controls the set of fields returned in the GET response. |
 
@@ -79,7 +79,7 @@ Uploads the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `apps.authorizedCertificates.patch()`
@@ -88,7 +88,7 @@ Updates the specified SSL certificate. To renew a certificate and maintain its e
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields. |
 | `params.resource` | `object` | Yes | The request body. |
@@ -99,7 +99,7 @@ Deletes the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 
 ### `apps.domainMappings`
@@ -110,7 +110,7 @@ Lists the domain mappings on an application.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
 | `params.pageToken` | `string` | No | Continuation token for fetching the next page of results. |
 
@@ -120,7 +120,7 @@ Gets the specified domain mapping.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. |
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 
 #### `apps.domainMappings.create()`
@@ -129,7 +129,7 @@ Maps a domain to an application. A user must be authorized to administer a domai
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.appsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.noManagedCertificate` | `boolean` | No | Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. |
 | `params.overrideStrategy` | `string` | No | Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. |
 | `params.resource` | `object` | Yes | The request body. |
@@ -140,7 +140,7 @@ Updates the specified domain mapping. To map an SSL certificate to a domain mapp
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. |
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 | `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
 | `params.noManagedCertificate` | `boolean` | No | Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask. |
@@ -152,7 +152,7 @@ Deletes the specified domain mapping. A user must be authorized to administer th
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appsId` | `string` | Yes | Part of `name`. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. |
+| `params.appsId` | `string` | Yes | Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. |
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `appsId`. |
 
 ### `apps.locations`
@@ -167,7 +167,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `apps.locations.get()`
 
@@ -192,7 +192,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -237,7 +237,7 @@ Lists all domains the user is authorized to administer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.pageSize` | `integer` | No | Maximum results to return per page. |
@@ -251,7 +251,7 @@ Lists all SSL certificates the user is authorized to administer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.view` | `string` | No | Controls the set of fields returned in the LIST response. |
@@ -264,7 +264,7 @@ Gets the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -276,7 +276,7 @@ Uploads the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.resource` | `object` | Yes | The request body. |
@@ -287,7 +287,7 @@ Updates the specified SSL certificate. To renew a certificate and maintain its e
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -300,7 +300,7 @@ Deletes the specified SSL certificate.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -313,7 +313,7 @@ Gets the specified domain mapping.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. |
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com. |
 | `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 | `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
@@ -324,7 +324,7 @@ Maps a domain to an application. A user must be authorized to administer a domai
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.projectsId` | `string` | Yes | Part of `parent`. Name of the parent Application resource. Example: apps/myapp. |
+| `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
 | `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
 | `params.noManagedCertificate` | `boolean` | No | Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. |

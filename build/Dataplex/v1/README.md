@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Dataplex API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:11:51 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:11:51 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:33:07 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:33:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:17 GMT
 
 
@@ -37,10 +37,10 @@ Searches for Entries matching the given query and scope.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The project to which the request should be attributed in the following form: projects/{project}/locations/global. |
-| `params.query` | `string` | No | Required. The query against which entries in scope should be matched. The query syntax is defined in Search syntax for Dataplex Catalog (https://cloud.google.com/dataplex/docs/search-syntax). |
+| `params.query` | `string` | No | Required. The query against which entries in scope should be matched. The query syntax is defined in Search syntax for Dataplex Universal Catalog (https://cloud.google.com/dataplex/docs/search-syntax). |
 | `params.pageSize` | `integer` | No | Optional. Number of results in the search page. If <=0, then defaults to 10. Max limit for page_size is 1000. Throws an invalid argument for page_size > 1000. |
 | `params.pageToken` | `string` | No | Optional. Page token received from a previous SearchEntries call. Provide this to retrieve the subsequent page. |
-| `params.orderBy` | `string` | No | Optional. Specifies the ordering of results. Supported values are: relevance (default) last_modified_timestamp last_modified_timestamp asc |
+| `params.orderBy` | `string` | No | Optional. Specifies the ordering of results. Supported values are: relevance last_modified_timestamp last_modified_timestamp asc |
 | `params.scope` | `string` | No | Optional. The scope under which the search should be operating. It must either be organizations/ or projects/. If it is unspecified, it defaults to the organization where the project provided in name is located. |
 | `params.semanticSearch` | `boolean` | No | Optional. Specifies whether the search should understand the meaning and intent behind the query, rather than just matching keywords. |
 
@@ -54,7 +54,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -429,7 +429,7 @@ Gets an Entry Link.
 
 #### `projects.locations.metadataJobs.create()`
 
-Creates a metadata job. For example, use a metadata job to import Dataplex Catalog entries and aspects from a third-party system into Dataplex.
+Creates a metadata job. For example, use a metadata job to import metadata from a third-party system into Dataplex Universal Catalog.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1870,15 +1870,6 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.resource` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataProducts.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). |
-
 #### `projects.locations.dataProducts.testIamPermissions()`
 
 Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
@@ -1898,15 +1889,6 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.resource` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataProducts.dataAssets.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). |
 
 #### `projects.locations.dataProducts.dataAssets.testIamPermissions()`
 

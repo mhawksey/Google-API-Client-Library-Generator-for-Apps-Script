@@ -667,6 +667,7 @@ class Compute {
     this.regionHealthAggregationPolicies.delete = (params) => this._makeRequest('projects/{project}/regions/{region}/healthAggregationPolicies/{healthAggregationPolicy}', 'DELETE', params);
     this.regionHealthAggregationPolicies.patch = (params) => this._makeRequest('projects/{project}/regions/{region}/healthAggregationPolicies/{healthAggregationPolicy}', 'PATCH', params);
     this.regionHealthAggregationPolicies.testIamPermissions = (params) => this._makeRequest('projects/{project}/regions/{region}/healthAggregationPolicies/{resource}/testIamPermissions', 'POST', params);
+    this.regionHealthAggregationPolicies.aggregatedList = (params) => this._makeRequest('projects/{project}/aggregated/healthAggregationPolicies', 'GET', params);
 
     this.regionHealthCheckServices = {};
     this.regionHealthCheckServices.aggregatedList = (params) => this._makeRequest('projects/{project}/aggregated/healthCheckServices', 'GET', params);
@@ -1024,6 +1025,7 @@ class Compute {
     this.reservationSubBlocks.get = (params) => this._makeRequest('projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}', 'GET', params);
     this.reservationSubBlocks.list = (params) => this._makeRequest('projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks', 'GET', params);
     this.reservationSubBlocks.performMaintenance = (params) => this._makeRequest('projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/performMaintenance', 'POST', params);
+    this.reservationSubBlocks.reportFaulty = (params) => this._makeRequest('projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/reportFaulty', 'POST', params);
 
     this.resourcePolicies = {};
     this.resourcePolicies.list = (params) => this._makeRequest('projects/{project}/regions/{region}/resourcePolicies', 'GET', params);
@@ -1338,7 +1340,12 @@ class Compute {
     this.reliabilityRisks.list = (params) => this._makeRequest('projects/{project}/global/reliabilityRisks', 'GET', params);
 
     this.haControllers = {};
+    this.haControllers.get = (params) => this._makeRequest('projects/{project}/regions/{region}/haControllers/{haController}', 'GET', params);
+    this.haControllers.insert = (params) => this._makeRequest('projects/{project}/regions/{region}/haControllers', 'POST', params);
+    this.haControllers.patch = (params) => this._makeRequest('projects/{project}/regions/{region}/haControllers/{haController}', 'PATCH', params);
     this.haControllers.failover = (params) => this._makeRequest('projects/{project}/regions/{region}/haControllers/{haController}/failover', 'POST', params);
+    this.haControllers.delete = (params) => this._makeRequest('projects/{project}/regions/{region}/haControllers/{haController}', 'DELETE', params);
+    this.haControllers.list = (params) => this._makeRequest('projects/{project}/regions/{region}/haControllers', 'GET', params);
   }
 
   /**

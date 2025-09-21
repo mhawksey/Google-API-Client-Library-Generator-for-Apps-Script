@@ -38,6 +38,7 @@ class Vmwareengine {
     this.projects.locations.privateClouds.create = (params) => this._makeRequest('v1/{+parent}/privateClouds', 'POST', params);
     this.projects.locations.privateClouds.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
     this.projects.locations.privateClouds.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.projects.locations.privateClouds.privateCloudDeletionNow = (params) => this._makeRequest('v1/{+name}:privateCloudDeletionNow', 'POST', params);
     this.projects.locations.privateClouds.undelete = (params) => this._makeRequest('v1/{+name}:undelete', 'POST', params);
     this.projects.locations.privateClouds.showNsxCredentials = (params) => this._makeRequest('v1/{+privateCloud}:showNsxCredentials', 'GET', params);
     this.projects.locations.privateClouds.showVcenterCredentials = (params) => this._makeRequest('v1/{+privateCloud}:showVcenterCredentials', 'GET', params);

@@ -42,10 +42,10 @@ class Firebaseappdistribution {
 
     /**
      * Lists releases. By default, sorts by `createTime` in descending order.
-     * @param {string} params.filter - The expression to filter releases listed in the response. To learn more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: - `releaseNotes.text` supports `=` (can contain a wildcard character (`*`) at the beginning or end of the string) - `createTime` supports `<`, `<=`, `>` and `>=`, and expects an RFC-3339 formatted string Examples: - `createTime <= "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
-     * @param {string} params.orderBy - The fields used to order releases. Supported fields: - `createTime` To specify descending order for a field, append a "desc" suffix, for example, `createTime desc`. If this parameter is not set, releases are ordered by `createTime` in descending order.
-     * @param {integer} params.pageSize - The maximum number of releases to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 releases are returned. Values above 100 are coerced to 100.
-     * @param {string} params.pageToken - A page token, received from a previous `ListReleases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReleases` must match the call that provided the page token.
+     * @param {string} params.filter - Optional. The expression to filter releases listed in the response. To learn more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: - `releaseNotes.text` supports `=` (can contain a wildcard character (`*`) at the beginning or end of the string) - `createTime` supports `<`, `<=`, `>` and `>=`, and expects an RFC-3339 formatted string Examples: - `createTime <= "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"`
+     * @param {string} params.orderBy - Optional. The fields used to order releases. Supported fields: - `createTime` To specify descending order for a field, append a "desc" suffix, for example, `createTime desc`. If this parameter is not set, releases are ordered by `createTime` in descending order.
+     * @param {integer} params.pageSize - Optional. The maximum number of releases to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 releases are returned. Values above 100 are coerced to 100.
+     * @param {string} params.pageToken - Optional. A page token, received from a previous `ListReleases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReleases` must match the call that provided the page token.
      * @param {string} params.parent - (Required) Required. The name of the app resource, which is the parent of the release resources. Format: `projects/{project_number}/apps/{app_id}`
      * @return {object} The API response object.
      */
@@ -54,7 +54,7 @@ class Firebaseappdistribution {
     /**
      * Updates a release.
      * @param {string} params.name - (Required) The name of the release resource. Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}`
-     * @param {string} params.updateMask - The list of fields to update.
+     * @param {string} params.updateMask - Optional. The list of fields to update.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
@@ -129,8 +129,8 @@ class Firebaseappdistribution {
 
     /**
      * Lists feedback reports. By default, sorts by `createTime` in descending order.
-     * @param {integer} params.pageSize - The maximum number of feedback reports to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 feedback reports are returned. Values above 100 are coerced to 100.
-     * @param {string} params.pageToken - A page token, received from a previous `ListFeedbackReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFeedbackReports` must match the call that provided the page token.
+     * @param {integer} params.pageSize - Output only. The maximum number of feedback reports to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 feedback reports are returned. Values above 100 are coerced to 100.
+     * @param {string} params.pageToken - Output only. A page token, received from a previous `ListFeedbackReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFeedbackReports` must match the call that provided the page token.
      * @param {string} params.parent - (Required) Required. The name of the release resource, which is the parent of the feedback report resources. Format: `projects/{project_number}/apps/{app}/releases/{release}`
      * @return {object} The API response object.
      */
@@ -174,7 +174,7 @@ class Firebaseappdistribution {
     /**
      * Update a tester. If the testers joins a group they gain access to all releases that the group has access to.
      * @param {string} params.name - (Required) The name of the tester resource. Format: `projects/{project_number}/testers/{email_address}`
-     * @param {string} params.updateMask - The list of fields to update.
+     * @param {string} params.updateMask - Optional. The list of fields to update.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
@@ -210,7 +210,7 @@ class Firebaseappdistribution {
     /**
      * Update a group.
      * @param {string} params.name - (Required) The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}`
-     * @param {string} params.updateMask - The list of fields to update.
+     * @param {string} params.updateMask - Optional. The list of fields to update.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
@@ -243,7 +243,7 @@ class Firebaseappdistribution {
 
     /**
      * Uploads a binary. Uploading a binary can result in a new release being created, an update to an existing release, or a no-op if a release with the same binary already exists.
-     * @param {string} params.app - (Required) The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
+     * @param {string} params.app - (Required) Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}`
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */

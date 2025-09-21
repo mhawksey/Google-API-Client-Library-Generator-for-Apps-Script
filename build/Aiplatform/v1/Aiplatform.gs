@@ -44,6 +44,7 @@ class Aiplatform {
     this.projects.locations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
     this.projects.locations.evaluateInstances = (params) => this._makeRequest('v1/{+location}:evaluateInstances', 'POST', params);
     this.projects.locations.evaluateDataset = (params) => this._makeRequest('v1/{+location}:evaluateDataset', 'POST', params);
+    this.projects.locations.generateInstanceRubrics = (params) => this._makeRequest('v1/{+location}:generateInstanceRubrics', 'POST', params);
     this.projects.locations.deploy = (params) => this._makeRequest('v1/{+destination}:deploy', 'POST', params);
     this.projects.locations.updateRagEngineConfig = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
     this.projects.locations.getRagEngineConfig = (params) => this._makeRequest('v1/{+name}', 'GET', params);

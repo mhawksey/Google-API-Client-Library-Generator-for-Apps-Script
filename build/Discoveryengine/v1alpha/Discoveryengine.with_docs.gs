@@ -132,6 +132,21 @@ class Discoveryengine {
     this.projects.locations.notebooks = {};
 
     /**
+     * Creates a notebook. Needs a side channel with the user's EUC.
+     * @param {string} params.parent - (Required) Required. The parent resource name, such as `projects/{project}/locations/{location}`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.notebooks.create = (params) => this._makeRequest('v1alpha/{+parent}/notebooks', 'POST', params);
+
+    /**
+     * Gets a notebook. Needs a side channel with the user's EUC.
+     * @param {string} params.name - (Required) Required. Full resource name of Notebook, such as `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.notebooks.get = (params) => this._makeRequest('v1alpha/{+name}', 'GET', params);
+
+    /**
      * Lists the recently viewed notebooks. Needs a side channel with the user's EUC.
      * @param {integer} params.pageSize - Optional. Maximum number of Notebooks to return. If unspecified, defaults to "200". The maximum allowed value is "500". If this field is negative, will use the default value.
      * @param {string} params.pageToken - Optional. The page token, provide this to retrieve the subsequent page.
@@ -139,6 +154,39 @@ class Discoveryengine {
      * @return {object} The API response object.
      */
     this.projects.locations.notebooks.listRecentlyViewed = (params) => this._makeRequest('v1alpha/{+parent}/notebooks:listRecentlyViewed', 'GET', params);
+
+    /**
+     * Batch deletes Notebooks. Needs a side channel with the user's EUC.
+     * @param {string} params.parent - (Required) Required. The parent branch resource name, such as `projects/{project}/locations/{location}`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.notebooks.batchDelete = (params) => this._makeRequest('v1alpha/{+parent}/notebooks:batchDelete', 'POST', params);
+
+    /**
+     * Shares a notebook to other accounts. Needs a side channel with the user's EUC.
+     * @param {string} params.name - (Required) Required. Full resource name of Notebook, such as `projects/{project}/locations/{location}/notebooks/{notebook_id}`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.notebooks.share = (params) => this._makeRequest('v1alpha/{+name}:share', 'POST', params);
+
+    this.projects.locations.notebooks.audioOverviews = {};
+
+    /**
+     * Generates a new audio overview. Needs a side channel with the user's EUC.
+     * @param {string} params.parent - (Required) Required. The parent resource where this notebook will be created. Format: projects/{project}/locations/{location}/notebooks/{notebook}
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.notebooks.audioOverviews.create = (params) => this._makeRequest('v1alpha/{+parent}/audioOverviews', 'POST', params);
+
+    /**
+     * Deletes an audio overview. Needs a side channel with the user's EUC.
+     * @param {string} params.name - (Required) Required. The full resource name of the AudioOverview, such as `projects/{project}/locations/{location}/notebooks/{notebook}/audioOverviews/{audio_overview_id}`.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.notebooks.audioOverviews.delete = (params) => this._makeRequest('v1alpha/{+name}', 'DELETE', params);
 
     this.projects.locations.notebooks.sources = {};
 
@@ -158,6 +206,21 @@ class Discoveryengine {
      * @return {object} The API response object.
      */
     this.projects.locations.notebooks.sources.uploadFile = (params) => this._makeRequest('v1alpha/{+parent}/sources/{sourceId}:uploadFile', 'POST', params);
+
+    /**
+     * Gets a Source.
+     * @param {string} params.name - (Required) Required. The resource name for source Format: projects/{project}/locations/{location}/notebooks/{notebook}/sources/{source}
+     * @return {object} The API response object.
+     */
+    this.projects.locations.notebooks.sources.get = (params) => this._makeRequest('v1alpha/{+name}', 'GET', params);
+
+    /**
+     * Deletes multiple sources
+     * @param {string} params.parent - (Required) Required. The parent resource where the sources will be deleted. Format: projects/{project}/locations/{location}/notebooks/{notebook}
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.notebooks.sources.batchDelete = (params) => this._makeRequest('v1alpha/{+parent}/sources:batchDelete', 'POST', params);
 
     this.projects.locations.operations = {};
 
@@ -864,7 +927,7 @@ class Discoveryengine {
     /**
      * Lists all Sessions by their parent DataStore.
      * @param {string} params.filter - A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"`
-     * @param {string} params.orderBy - A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time.
+     * @param {string} params.orderBy - A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time.
      * @param {integer} params.pageSize - Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
      * @param {string} params.pageToken - A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page.
      * @param {string} params.parent - (Required) Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
@@ -1495,7 +1558,7 @@ class Discoveryengine {
     /**
      * Lists all Sessions by their parent DataStore.
      * @param {string} params.filter - A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"`
-     * @param {string} params.orderBy - A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time.
+     * @param {string} params.orderBy - A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time.
      * @param {integer} params.pageSize - Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
      * @param {string} params.pageToken - A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page.
      * @param {string} params.parent - (Required) Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
@@ -1517,6 +1580,7 @@ class Discoveryengine {
     /**
      * Lists metadata for all files in the current session.
      * @param {string} params.filter - Optional. The filter syntax consists of an expression language for constructing a predicate from one or more fields of the files being filtered. Filter expression is case-sensitive. Currently supported field names are: * upload_time * last_add_time * last_use_time * file_name * mime_type Some examples of filters would be: * "file_name = 'file_1'" * "file_name = 'file_1' AND mime_type = 'text/plain'" * "last_use_time > '2025-06-14T12:00:00Z'" For a full description of the filter format, please see https://google.aip.dev/160.
+     * @param {string} params.orderBy - Optional. Specifies the order in which files are returned. The value is a comma-separated string of fields to sort by. For ascending order - just the field name is used. For descending order - the field name is suffixed with ` desc`. Sorting is stable and applied sequentially according to the order of fields provided in the string. Supported fields for ordering: * `upload_time`: The time the file was uploaded. * `file_name`: The name of the file. * `mime_type`: The MIME type of the file. * `session_name`: The name of the session the file belongs to. Default Behavior: If the `order_by` field is not specified, files will be returned sorted by creation time in descending order. Examples: 1. Sort by file name in ascending order: `file_name` 2. Sort by upload time in descending order: `upload_time desc` 3. Sort by file name (ascending), then by content type (MIME type) (descending), and finally by upload time (ascending): `file_name, mime_type desc, upload_time`
      * @param {integer} params.pageSize - Optional. The maximum number of files to return. The service may return fewer than this value. If unspecified, at most 100 files will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. If user specifies a value less than or equal to 0 - the request will be rejected with an INVALID_ARGUMENT error.
      * @param {string} params.pageToken - Optional. A page token received from a previous `ListFiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFiles` must match the call that provided the page token (except `page_size`, which may differ).
      * @param {string} params.parent - (Required) Required. The resource name of the Session. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/sessions/{session}` Name of the session resource to which the file belong.
@@ -2072,7 +2136,7 @@ class Discoveryengine {
     /**
      * Lists all Sessions by their parent DataStore.
      * @param {string} params.filter - A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"`
-     * @param {string} params.orderBy - A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * "update_time desc" * "create_time" * "is_pinned desc,update_time desc": list sessions by is_pinned first, then by update_time.
+     * @param {string} params.orderBy - A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time.
      * @param {integer} params.pageSize - Maximum number of results to return. If unspecified, defaults to 50. Max allowed value is 1000.
      * @param {string} params.pageToken - A page token, received from a previous `ListSessions` call. Provide this to retrieve the subsequent page.
      * @param {string} params.parent - (Required) Required. The data store resource name. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{data_store_id}`
@@ -2248,8 +2312,8 @@ class Discoveryengine {
 
     /**
      * Gets a list of Evaluations.
-     * @param {integer} params.pageSize - Maximum number of Evaluations to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned.
-     * @param {string} params.pageToken - A page token ListEvaluationsResponse.next_page_token, received from a previous EvaluationService.ListEvaluations call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to EvaluationService.ListEvaluations must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
+     * @param {integer} params.pageSize - Optional. Maximum number of Evaluations to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned.
+     * @param {string} params.pageToken - Optional. A page token ListEvaluationsResponse.next_page_token, received from a previous EvaluationService.ListEvaluations call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to EvaluationService.ListEvaluations must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
      * @param {string} params.parent - (Required) Required. The parent location resource name, such as `projects/{project}/locations/{location}`. If the caller does not have permission to list Evaluations under this location, regardless of whether or not this location exists, a `PERMISSION_DENIED` error is returned.
      * @return {object} The API response object.
      */
@@ -2266,8 +2330,8 @@ class Discoveryengine {
     /**
      * Gets a list of results for a given a Evaluation.
      * @param {string} params.evaluation - (Required) Required. The evaluation resource name, such as `projects/{project}/locations/{location}/evaluations/{evaluation}`. If the caller does not have permission to list ListEvaluationResultsResponse.EvaluationResult under this evaluation, regardless of whether or not this evaluation set exists, a `PERMISSION_DENIED` error is returned.
-     * @param {integer} params.pageSize - Maximum number of ListEvaluationResultsResponse.EvaluationResult to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned.
-     * @param {string} params.pageToken - A page token ListEvaluationResultsResponse.next_page_token, received from a previous EvaluationService.ListEvaluationResults call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to EvaluationService.ListEvaluationResults must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
+     * @param {integer} params.pageSize - Optional. Maximum number of ListEvaluationResultsResponse.EvaluationResult to return. If unspecified, defaults to 100. The maximum allowed value is 1000. Values above 1000 will be coerced to 1000. If this field is negative, an `INVALID_ARGUMENT` error is returned.
+     * @param {string} params.pageToken - Optional. A page token ListEvaluationResultsResponse.next_page_token, received from a previous EvaluationService.ListEvaluationResults call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to EvaluationService.ListEvaluationResults must match the call that provided the page token. Otherwise, an `INVALID_ARGUMENT` error is returned.
      * @return {object} The API response object.
      */
     this.projects.locations.evaluations.listResults = (params) => this._makeRequest('v1alpha/{+evaluation}:listResults', 'GET', params);

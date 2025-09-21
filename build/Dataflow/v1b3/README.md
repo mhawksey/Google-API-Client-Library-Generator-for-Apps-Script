@@ -4,7 +4,7 @@ Auto-generated client library for using the **Dataflow API (version: v1b3)** in 
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:11:17 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:32:44 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:11:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:43 GMT
 
@@ -61,7 +61,7 @@ Lists snapshots.
 
 #### `projects.jobs.create()`
 
-A Job is a multi-stage computation graph run by the Cloud Dataflow service. Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter confidential information when you supply string values using the API.
+Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter confidential information when you supply string values using the API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -288,7 +288,7 @@ Lists snapshots.
 
 #### `projects.locations.jobs.create()`
 
-A Job is a multi-stage computation graph run by the Cloud Dataflow service. Creates a Cloud Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter confidential information when you supply string values using the API.
+Creates a Dataflow job. To create a job, we recommend using `projects.locations.jobs.create` with a [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints). Using `projects.jobs.create` is not recommended, as your job will always start in `us-central1`. Do not enter confidential information when you supply string values using the API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|

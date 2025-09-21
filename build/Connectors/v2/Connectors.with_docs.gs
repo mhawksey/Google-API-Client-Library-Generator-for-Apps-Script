@@ -92,10 +92,30 @@ class Connectors {
      */
     this.projects.locations.connections.actions.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
 
+    this.projects.locations.connections.tools = {};
+
+    /**
+     * Lists all available tools.
+     * @param {integer} params.pageSize - Page size.
+     * @param {string} params.pageToken - Page token.
+     * @param {string} params.parent - (Required) Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
+     * @return {object} The API response object.
+     */
+    this.projects.locations.connections.tools.list = (params) => this._makeRequest('v2/{+parent}/tools', 'GET', params);
+
+    /**
+     * Executes a specific tool.
+     * @param {string} params.name - (Required) Required. Resource name of the Tool. Format: projects/{project}/locations/{location}/connections/{connection}/tools/{tool}
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.connections.tools.execute = (params) => this._makeRequest('v2/{+name}:execute', 'POST', params);
+
     this.projects.locations.connections.entityTypes = {};
 
     /**
      * Gets metadata of given entity type
+     * @param {string} params.contextMetadata - Context metadata for request could be used to fetch customization of entity type schema.
      * @param {string} params.name - (Required) Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType}
      * @param {string} params.view - Specifies view for entity type schema.
      * @return {object} The API response object.

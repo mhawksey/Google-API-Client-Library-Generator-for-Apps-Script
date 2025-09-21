@@ -4,7 +4,7 @@ Auto-generated client library for using the **Ad Exchange Buyer API II (version:
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 19:50:30 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:20:58 GMT
 - **Last Modified:** Mon, 04 Aug 2025 19:50:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:43 GMT
 

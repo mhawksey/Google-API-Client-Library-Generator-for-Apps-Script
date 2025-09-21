@@ -195,6 +195,65 @@ class Analyticshub {
      */
     this.projects.locations.dataExchanges.listings.testIamPermissions = (params) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', params);
 
+    this.projects.locations.dataExchanges.queryTemplates = {};
+
+    /**
+     * Creates a new QueryTemplate
+     * @param {string} params.parent - (Required) Required. The parent resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myQueryTemplate`.
+     * @param {string} params.queryTemplateId - Required. The ID of the QueryTemplate to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Max length: 100 bytes.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dataExchanges.queryTemplates.create = (params) => this._makeRequest('v1/{+parent}/queryTemplates', 'POST', params);
+
+    /**
+     * Gets a QueryTemplate
+     * @param {string} params.name - (Required) Required. The parent resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dataExchanges.queryTemplates.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * Lists all QueryTemplates in a given project and location.
+     * @param {integer} params.pageSize - Optional. The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection.
+     * @param {string} params.pageToken - Optional. Page token, returned by a previous call, to request the next page of results.
+     * @param {string} params.parent - (Required) Required. The parent resource path of the QueryTemplates. e.g. `projects/myproject/locations/us/dataExchanges/123`.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dataExchanges.queryTemplates.list = (params) => this._makeRequest('v1/{+parent}/queryTemplates', 'GET', params);
+
+    /**
+     * Updates an existing QueryTemplate
+     * @param {string} params.name - (Required) Output only. The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456`
+     * @param {string} params.updateMask - Optional. Field mask specifies the fields to update in the query template resource. The fields specified in the `updateMask` are relative to the resource and are not a full request.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dataExchanges.queryTemplates.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Deletes a query template.
+     * @param {string} params.name - (Required) Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dataExchanges.queryTemplates.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    /**
+     * Submits a query template for approval.
+     * @param {string} params.name - (Required) Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dataExchanges.queryTemplates.submit = (params) => this._makeRequest('v1/{+name}:submit', 'POST', params);
+
+    /**
+     * Approves a query template.
+     * @param {string} params.name - (Required) Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.dataExchanges.queryTemplates.approve = (params) => this._makeRequest('v1/{+name}:approve', 'POST', params);
+
     this.projects.locations.subscriptions = {};
 
     /**

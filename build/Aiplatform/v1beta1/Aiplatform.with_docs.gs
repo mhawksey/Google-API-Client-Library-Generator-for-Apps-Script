@@ -56,7 +56,7 @@ class Aiplatform {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -71,6 +71,14 @@ class Aiplatform {
      * @return {object} The API response object.
      */
     this.projects.locations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Generates synthetic data based on the provided configuration.
+     * @param {string} params.location - (Required) Required. The resource name of the Location to run the job. Format: `projects/{project}/locations/{location}`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.generateSyntheticData = (params) => this._makeRequest('v1beta1/{+location}:generateSyntheticData', 'POST', params);
 
     /**
      * Evaluates instances based on a given metric.
@@ -89,6 +97,14 @@ class Aiplatform {
     this.projects.locations.evaluateDataset = (params) => this._makeRequest('v1beta1/{+location}:evaluateDataset', 'POST', params);
 
     /**
+     * Generates rubrics for a given prompt. A rubric represents a single testable criterion for evaluation. One input prompt could have multiple rubrics This RPC allows users to get suggested rubrics based on provided prompt, which can then be reviewed and used for subsequent evaluations.
+     * @param {string} params.location - (Required) Required. The resource name of the Location to generate rubrics from. Format: `projects/{project}/locations/{location}`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.generateInstanceRubrics = (params) => this._makeRequest('v1beta1/{+location}:generateInstanceRubrics', 'POST', params);
+
+    /**
      * Deploys a model to a new endpoint.
      * @param {string} params.destination - (Required) Required. The resource name of the Location to deploy the model in. Format: `projects/{project}/locations/{location}`
      * @param {object} params.resource - The request body.
@@ -103,6 +119,14 @@ class Aiplatform {
      * @return {object} The API response object.
      */
     this.projects.locations.deployPublisherModel = (params) => this._makeRequest('v1beta1/{+destination}:deployPublisherModel', 'POST', params);
+
+    /**
+     * Gets a Model's spec recommendations. This API is called by UI, SDK, and internal.
+     * @param {string} params.parent - (Required) Required. The resource name of the Location from which to recommend specs. The users must have permission to make a call in the project. Format: `projects/{project}/locations/{location}`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.recommendSpec = (params) => this._makeRequest('v1beta1/{+parent}:recommendSpec', 'POST', params);
 
     /**
      * Updates a RagEngineConfig.
@@ -2022,114 +2046,6 @@ class Aiplatform {
      */
     this.projects.locations.edgeDevices.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
 
-    this.projects.locations.evaluationItems = {};
-
-    this.projects.locations.evaluationItems.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-     * @param {string} params.filter - The standard list filter.
-     * @param {string} params.name - (Required) The name of the operation's parent resource.
-     * @param {integer} params.pageSize - The standard list page size.
-     * @param {string} params.pageToken - The standard list page token.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationItems.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {string} params.name - (Required) The name of the operation resource.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationItems.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
-
-    /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {string} params.name - (Required) The name of the operation resource to be deleted.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationItems.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-
-    /**
-     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
-     * @param {string} params.name - (Required) The name of the operation resource to wait on.
-     * @param {string} params.timeout - The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationItems.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
-
-    this.projects.locations.evaluationSets = {};
-
-    this.projects.locations.evaluationSets.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-     * @param {string} params.filter - The standard list filter.
-     * @param {string} params.name - (Required) The name of the operation's parent resource.
-     * @param {integer} params.pageSize - The standard list page size.
-     * @param {string} params.pageToken - The standard list page token.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationSets.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {string} params.name - (Required) The name of the operation resource.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationSets.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
-
-    /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {string} params.name - (Required) The name of the operation resource to be deleted.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationSets.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-
-    /**
-     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
-     * @param {string} params.name - (Required) The name of the operation resource to wait on.
-     * @param {string} params.timeout - The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationSets.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
-
-    this.projects.locations.evaluationRuns = {};
-
-    this.projects.locations.evaluationRuns.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-     * @param {string} params.filter - The standard list filter.
-     * @param {string} params.name - (Required) The name of the operation's parent resource.
-     * @param {integer} params.pageSize - The standard list page size.
-     * @param {string} params.pageToken - The standard list page token.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationRuns.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {string} params.name - (Required) The name of the operation resource.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationRuns.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
-
-    /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {string} params.name - (Required) The name of the operation resource to be deleted.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationRuns.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-
-    /**
-     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
-     * @param {string} params.name - (Required) The name of the operation resource to wait on.
-     * @param {string} params.timeout - The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.evaluationRuns.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
-
     this.projects.locations.evaluationTasks = {};
 
     this.projects.locations.evaluationTasks.operations = {};
@@ -2828,6 +2744,230 @@ class Aiplatform {
      * @return {object} The API response object.
      */
     this.projects.locations.deploymentResourcePools.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
+
+    this.projects.locations.evaluationRuns = {};
+
+    /**
+     * Creates an Evaluation Run.
+     * @param {string} params.parent - (Required) Required. The resource name of the Location to create the Evaluation Run in. Format: `projects/{project}/locations/{location}`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationRuns.create = (params) => this._makeRequest('v1beta1/{+parent}/evaluationRuns', 'POST', params);
+
+    /**
+     * Gets an Evaluation Run.
+     * @param {string} params.name - (Required) Required. The name of the EvaluationRun resource. Format: `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationRuns.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Lists Evaluation Runs.
+     * @param {string} params.filter - Optional. Filter expression that matches a subset of the EvaluationRuns to show. For field names both snake_case and camelCase are supported. For more information about filter syntax, see [AIP-160](https://google.aip.dev/160).
+     * @param {string} params.orderBy - Optional. A comma-separated list of fields to order by, sorted in ascending order by default. Use `desc` after a field name for descending.
+     * @param {integer} params.pageSize - Optional. The maximum number of Evaluation Runs to return.
+     * @param {string} params.pageToken - Optional. A page token, received from a previous `ListEvaluationRuns` call. Provide this to retrieve the subsequent page.
+     * @param {string} params.parent - (Required) Required. The resource name of the Location from which to list the Evaluation Runs. Format: `projects/{project}/locations/{location}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationRuns.list = (params) => this._makeRequest('v1beta1/{+parent}/evaluationRuns', 'GET', params);
+
+    /**
+     * Deletes an Evaluation Run.
+     * @param {string} params.name - (Required) Required. The name of the EvaluationRun resource to be deleted. Format: `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationRuns.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    /**
+     * Cancels an Evaluation Run. Attempts to cancel a running Evaluation Run asynchronously. Status of run can be checked via GetEvaluationRun.
+     * @param {string} params.name - (Required) Required. The name of the EvaluationRun resource to be cancelled. Format: `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationRuns.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
+
+    this.projects.locations.evaluationRuns.operations = {};
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * @param {string} params.filter - The standard list filter.
+     * @param {string} params.name - (Required) The name of the operation's parent resource.
+     * @param {integer} params.pageSize - The standard list page size.
+     * @param {string} params.pageToken - The standard list page token.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationRuns.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {string} params.name - (Required) The name of the operation resource.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationRuns.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {string} params.name - (Required) The name of the operation resource to be deleted.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationRuns.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    /**
+     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+     * @param {string} params.name - (Required) The name of the operation resource to wait on.
+     * @param {string} params.timeout - The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationRuns.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
+
+    this.projects.locations.evaluationSets = {};
+
+    /**
+     * Creates an Evaluation Set.
+     * @param {string} params.parent - (Required) Required. The resource name of the Location to create the Evaluation Set in. Format: `projects/{project}/locations/{location}`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationSets.create = (params) => this._makeRequest('v1beta1/{+parent}/evaluationSets', 'POST', params);
+
+    /**
+     * Gets an Evaluation Set.
+     * @param {string} params.name - (Required) Required. The name of the EvaluationSet resource. Format: `projects/{project}/locations/{location}/evaluationSets/{evaluation_set}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationSets.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Lists Evaluation Sets.
+     * @param {string} params.filter - Optional. Filter expression that matches a subset of the EvaluationSets to show. For field names both snake_case and camelCase are supported. For more information about filter syntax, see [AIP-160](https://google.aip.dev/160).
+     * @param {string} params.orderBy - Optional. A comma-separated list of fields to order by, sorted in ascending order by default. Use `desc` after a field name for descending.
+     * @param {integer} params.pageSize - Optional. The maximum number of Evaluation Sets to return.
+     * @param {string} params.pageToken - Optional. A page token, received from a previous `ListEvaluationSets` call. Provide this to retrieve the subsequent page.
+     * @param {string} params.parent - (Required) Required. The resource name of the Location from which to list the Evaluation Sets. Format: `projects/{project}/locations/{location}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationSets.list = (params) => this._makeRequest('v1beta1/{+parent}/evaluationSets', 'GET', params);
+
+    /**
+     * Deletes an Evaluation Set.
+     * @param {string} params.name - (Required) Required. The name of the EvaluationSet resource to be deleted. Format: `projects/{project}/locations/{location}/evaluationSets/{evaluation_set}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationSets.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    /**
+     * Updates an Evaluation Set.
+     * @param {string} params.name - (Required) Identifier. The resource name of the EvaluationSet. Format: `projects/{project}/locations/{location}/evaluationSets/{evaluation_set}`
+     * @param {string} params.updateMask - Optional. The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationSets.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+
+    this.projects.locations.evaluationSets.operations = {};
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * @param {string} params.filter - The standard list filter.
+     * @param {string} params.name - (Required) The name of the operation's parent resource.
+     * @param {integer} params.pageSize - The standard list page size.
+     * @param {string} params.pageToken - The standard list page token.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationSets.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {string} params.name - (Required) The name of the operation resource.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationSets.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {string} params.name - (Required) The name of the operation resource to be deleted.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationSets.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    /**
+     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+     * @param {string} params.name - (Required) The name of the operation resource to wait on.
+     * @param {string} params.timeout - The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationSets.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
+
+    this.projects.locations.evaluationItems = {};
+
+    /**
+     * Creates an Evaluation Item.
+     * @param {string} params.parent - (Required) Required. The resource name of the Location to create the Evaluation Item in. Format: `projects/{project}/locations/{location}`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationItems.create = (params) => this._makeRequest('v1beta1/{+parent}/evaluationItems', 'POST', params);
+
+    /**
+     * Gets an Evaluation Item.
+     * @param {string} params.name - (Required) Required. The name of the EvaluationItem resource. Format: `projects/{project}/locations/{location}/evaluationItems/{evaluation_item}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationItems.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Lists Evaluation Items.
+     * @param {string} params.filter - Optional. Filter expression that matches a subset of the EvaluationItems to show. For field names both snake_case and camelCase are supported. For more information about filter syntax, see [AIP-160](https://google.aip.dev/160).
+     * @param {string} params.orderBy - Optional. A comma-separated list of fields to order by, sorted in ascending order by default. Use `desc` after a field name for descending.
+     * @param {integer} params.pageSize - Optional. The maximum number of Evaluation Items to return.
+     * @param {string} params.pageToken - Optional. A page token, received from a previous `ListEvaluationItems` call. Provide this to retrieve the subsequent page.
+     * @param {string} params.parent - (Required) Required. The resource name of the Location from which to list the Evaluation Items. Format: `projects/{project}/locations/{location}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationItems.list = (params) => this._makeRequest('v1beta1/{+parent}/evaluationItems', 'GET', params);
+
+    /**
+     * Deletes an Evaluation Item.
+     * @param {string} params.name - (Required) Required. The name of the EvaluationItem resource to be deleted. Format: `projects/{project}/locations/{location}/evaluationItems/{evaluation_item}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationItems.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    this.projects.locations.evaluationItems.operations = {};
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * @param {string} params.filter - The standard list filter.
+     * @param {string} params.name - (Required) The name of the operation's parent resource.
+     * @param {integer} params.pageSize - The standard list page size.
+     * @param {string} params.pageToken - The standard list page token.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationItems.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {string} params.name - (Required) The name of the operation resource.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationItems.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {string} params.name - (Required) The name of the operation resource to be deleted.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationItems.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    /**
+     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+     * @param {string} params.name - (Required) The name of the operation resource to wait on.
+     * @param {string} params.timeout - The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.evaluationItems.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
 
     this.projects.locations.exampleStores = {};
 
@@ -5046,49 +5186,6 @@ class Aiplatform {
      */
     this.projects.locations.reasoningEngines.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
 
-    this.projects.locations.reasoningEngines.sandboxEnvironments = {};
-
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-     * @param {string} params.filter - The standard list filter.
-     * @param {string} params.name - (Required) The name of the operation's parent resource.
-     * @param {integer} params.pageSize - The standard list page size.
-     * @param {string} params.pageToken - The standard list page token.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {string} params.name - (Required) The name of the operation resource.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
-
-    /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {string} params.name - (Required) The name of the operation resource to be deleted.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-
-    /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {string} params.name - (Required) The name of the operation resource to be cancelled.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
-
-    /**
-     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
-     * @param {string} params.name - (Required) The name of the operation resource to wait on.
-     * @param {string} params.timeout - The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
-
     this.projects.locations.reasoningEngines.examples = {};
 
     this.projects.locations.reasoningEngines.examples.operations = {};
@@ -5221,6 +5318,89 @@ class Aiplatform {
      * @return {object} The API response object.
      */
     this.projects.locations.reasoningEngines.memories.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
+
+    this.projects.locations.reasoningEngines.sandboxEnvironments = {};
+
+    /**
+     * Creates a SandboxEnvironment in a given reasoning engine.
+     * @param {string} params.parent - (Required) Required. The resource name of the reasoning engine to create the SandboxEnvironment in. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.create = (params) => this._makeRequest('v1beta1/{+parent}/sandboxEnvironments', 'POST', params);
+
+    /**
+     * Gets details of the specific SandboxEnvironment.
+     * @param {string} params.name - (Required) Required. The resource name of the sandbox environment. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Lists SandboxEnvironments in a given reasoning engine.
+     * @param {string} params.filter - Optional. The standard list filter. More detail in [AIP-160](https://google.aip.dev/160).
+     * @param {integer} params.pageSize - Optional. The maximum number of SandboxEnvironments to return. The service may return fewer than this value. If unspecified, at most 100 SandboxEnvironments will be returned.
+     * @param {string} params.pageToken - Optional. The standard list page token, received from a previous `ListSandboxEnvironments` call. Provide this to retrieve the subsequent page.
+     * @param {string} params.parent - (Required) Required. The resource name of the reasoning engine to list sandbox environments from. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.list = (params) => this._makeRequest('v1beta1/{+parent}/sandboxEnvironments', 'GET', params);
+
+    /**
+     * Deletes the specific SandboxEnvironment.
+     * @param {string} params.name - (Required) Required. The resource name of the SandboxEnvironment to delete. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}`
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    /**
+     * Executes using a sandbox environment.
+     * @param {string} params.name - (Required) Required. The resource name of the sandbox environment to execute. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.execute = (params) => this._makeRequest('v1beta1/{+name}:execute', 'POST', params);
+
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations = {};
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * @param {string} params.filter - The standard list filter.
+     * @param {string} params.name - (Required) The name of the operation's parent resource.
+     * @param {integer} params.pageSize - The standard list page size.
+     * @param {string} params.pageToken - The standard list page token.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.list = (params) => this._makeRequest('v1beta1/{+name}/operations', 'GET', params);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {string} params.name - (Required) The name of the operation resource.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {string} params.name - (Required) The name of the operation resource to be deleted.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    /**
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * @param {string} params.name - (Required) The name of the operation resource to be cancelled.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.cancel = (params) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', params);
+
+    /**
+     * Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+     * @param {string} params.name - (Required) The name of the operation resource to wait on.
+     * @param {string} params.timeout - The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.reasoningEngines.sandboxEnvironments.operations.wait = (params) => this._makeRequest('v1beta1/{+name}:wait', 'POST', params);
 
     this.projects.locations.reasoningEngines.sessions = {};
 
@@ -6254,6 +6434,7 @@ class Aiplatform {
 
     /**
      * Deletes a RagFile.
+     * @param {boolean} params.forceDelete - Optional. If set to true, any errors generated by external vector database during the deletion will be ignored. The default value is false.
      * @param {string} params.name - (Required) Required. The name of the RagFile resource to be deleted. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragFiles/{rag_file}`
      * @return {object} The API response object.
      */

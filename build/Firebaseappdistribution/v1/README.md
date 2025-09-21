@@ -4,7 +4,7 @@ Auto-generated client library for using the **Firebase App Distribution API (ver
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:15:30 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:35:22 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:15:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:16 GMT
 
@@ -43,10 +43,10 @@ Lists releases. By default, sorts by `createTime` in descending order.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the app resource, which is the parent of the release resources. Format: `projects/{project_number}/apps/{app_id}` |
-| `params.pageSize` | `integer` | No | The maximum number of releases to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 releases are returned. Values above 100 are coerced to 100. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListReleases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReleases` must match the call that provided the page token. |
-| `params.orderBy` | `string` | No | The fields used to order releases. Supported fields: - `createTime` To specify descending order for a field, append a "desc" suffix, for example, `createTime desc`. If this parameter is not set, releases are ordered by `createTime` in descending order. |
-| `params.filter` | `string` | No | The expression to filter releases listed in the response. To learn more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: - `releaseNotes.text` supports `=` (can contain a wildcard character (`*`) at the beginning or end of the string) - `createTime` supports `<`, `<=`, `>` and `>=`, and expects an RFC-3339 formatted string Examples: - `createTime <= "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of releases to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 releases are returned. Values above 100 are coerced to 100. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListReleases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReleases` must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. The fields used to order releases. Supported fields: - `createTime` To specify descending order for a field, append a "desc" suffix, for example, `createTime desc`. If this parameter is not set, releases are ordered by `createTime` in descending order. |
+| `params.filter` | `string` | No | Optional. The expression to filter releases listed in the response. To learn more about filtering, refer to [Google's AIP-160 standard](http://aip.dev/160). Supported fields: - `releaseNotes.text` supports `=` (can contain a wildcard character (`*`) at the beginning or end of the string) - `createTime` supports `<`, `<=`, `>` and `>=`, and expects an RFC-3339 formatted string Examples: - `createTime <= "2021-09-08T00:00:00+04:00"` - `releaseNotes.text="fixes" AND createTime >= "2021-09-08T00:00:00.0Z"` - `releaseNotes.text="*v1.0.0-rc*"` |
 
 #### `projects.apps.releases.patch()`
 
@@ -55,7 +55,7 @@ Updates a release.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the release resource. Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}` |
-| `params.updateMask` | `string` | No | The list of fields to update. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.apps.releases.distribute()`
@@ -140,8 +140,8 @@ Lists feedback reports. By default, sorts by `createTime` in descending order.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the release resource, which is the parent of the feedback report resources. Format: `projects/{project_number}/apps/{app}/releases/{release}` |
-| `params.pageSize` | `integer` | No | The maximum number of feedback reports to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 feedback reports are returned. Values above 100 are coerced to 100. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListFeedbackReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFeedbackReports` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Output only. The maximum number of feedback reports to return. The service may return fewer than this value. The valid range is [1-100]; If unspecified (0), at most 25 feedback reports are returned. Values above 100 are coerced to 100. |
+| `params.pageToken` | `string` | No | Output only. A page token, received from a previous `ListFeedbackReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFeedbackReports` must match the call that provided the page token. |
 
 #### `projects.apps.releases.feedbackReports.delete()`
 
@@ -189,7 +189,7 @@ Update a tester. If the testers joins a group they gain access to all releases t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the tester resource. Format: `projects/{project_number}/testers/{email_address}` |
-| `params.updateMask` | `string` | No | The list of fields to update. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
 | `params.resource` | `object` | Yes | The request body. |
 
 ### `projects.groups`
@@ -229,7 +229,7 @@ Update a group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}` |
-| `params.updateMask` | `string` | No | The list of fields to update. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.groups.delete()`
@@ -266,5 +266,5 @@ Uploads a binary. Uploading a binary can result in a new release being created, 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.app` | `string` | Yes | The name of the app resource. Format: `projects/{project_number}/apps/{app_id}` |
+| `params.app` | `string` | Yes | Required. The name of the app resource. Format: `projects/{project_number}/apps/{app_id}` |
 | `params.resource` | `object` | Yes | The request body. |

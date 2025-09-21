@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Drive API (version: v3)** i
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:14:35 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:34:47 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:14:35 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:36 GMT
 
@@ -175,7 +175,7 @@ Updates a comment with patch semantics. For more information, see [Manage commen
 
 #### `drives.create()`
 
-Creates a shared drive.
+Creates a shared drive. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -184,7 +184,7 @@ Creates a shared drive.
 
 #### `drives.delete()`
 
-Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any untrashed items.
+Permanently deletes a shared drive for which the user is an `organizer`. The shared drive cannot contain any untrashed items. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -194,7 +194,7 @@ Permanently deletes a shared drive for which the user is an `organizer`. The sha
 
 #### `drives.get()`
 
-Gets a shared drive's metadata by ID.
+Gets a shared drive's metadata by ID. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -203,7 +203,7 @@ Gets a shared drive's metadata by ID.
 
 #### `drives.hide()`
 
-Hides a shared drive from the default view.
+Hides a shared drive from the default view. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -222,7 +222,7 @@ Hides a shared drive from the default view.
 
 #### `drives.unhide()`
 
-Restores a shared drive to the default view.
+Restores a shared drive to the default view. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -230,7 +230,7 @@ Restores a shared drive to the default view.
 
 #### `drives.update()`
 
-Updates the metadata for a shared drive.
+Updates the metadata for a shared drive. For more information, see [Manage shared drives](https://developers.google.com/workspace/drive/api/guides/manage-shareddrives).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -545,7 +545,7 @@ Updates a reply with patch semantics.
 
 #### `revisions.delete()`
 
-Permanently deletes a file version. You can only delete revisions for files with binary content in Google Drive, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted.
+Permanently deletes a file version. You can only delete revisions for files with binary content in Google Drive, like images or videos. Revisions for other files, like Google Docs or Sheets, and the last remaining file version can't be deleted. For more information, see [Manage file revisions](https://developers.google.com/drive/api/guides/manage-revisions).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -554,7 +554,7 @@ Permanently deletes a file version. You can only delete revisions for files with
 
 #### `revisions.get()`
 
-Gets a revision's metadata or content by ID.
+Gets a revision's metadata or content by ID. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -564,7 +564,7 @@ Gets a revision's metadata or content by ID.
 
 #### `revisions.list()`
 
-Lists a file's revisions.
+Lists a file's revisions. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -574,7 +574,7 @@ Lists a file's revisions.
 
 #### `revisions.update()`
 
-Updates a revision with patch semantics.
+Updates a revision with patch semantics. For more information, see [Manage file revisions](https://developers.google.com/workspace/drive/api/guides/manage-revisions).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|

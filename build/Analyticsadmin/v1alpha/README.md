@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Analytics Admin API (versio
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 19:51:51 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:21:49 GMT
 - **Last Modified:** Mon, 04 Aug 2025 19:51:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:53 GMT
 
@@ -325,7 +325,7 @@ Submits a request for user deletion for a property.
 
 #### `properties.getReportingIdentitySettings()`
 
-Returns the singleton data retention settings for this property.
+Returns the reporting identity settings for this property.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|

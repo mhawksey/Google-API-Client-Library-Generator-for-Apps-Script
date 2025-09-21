@@ -121,6 +121,13 @@ class Cloudsupport {
      */
     this.cases.attachments.list = (params) => this._makeRequest('v2beta/{+parent}/attachments', 'GET', params);
 
+    /**
+     * Retrieve an attachment associated with a support case. EXAMPLES: cURL: ```shell attachment="projects/some-project/cases/23598314/attachments/0684M00000P3h1fQAB" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$attachment" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = ( supportApiService.cases() .attachments() .get(name="projects/some-project/cases/43595344/attachments/0684M00000P3h1fQAB") ) print(request.execute()) ```
+     * @param {string} params.name - (Required) Required. The name of the attachment to get.
+     * @return {object} The API response object.
+     */
+    this.cases.attachments.get = (params) => this._makeRequest('v2beta/{+name}', 'GET', params);
+
     this.cases.comments = {};
 
     /**
@@ -139,6 +146,13 @@ class Cloudsupport {
      * @return {object} The API response object.
      */
     this.cases.comments.create = (params) => this._makeRequest('v2beta/{+parent}/comments', 'POST', params);
+
+    /**
+     * Retrieve a comment. EXAMPLES: cURL: ```shell comment="projects/some-project/cases/43595344/comments/234567890" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$comment" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().comments().get( name="projects/some-project/cases/43595344/comments/234567890", ) print(request.execute()) ```
+     * @param {string} params.name - (Required) Required. The name of the comment to retrieve.
+     * @return {object} The API response object.
+     */
+    this.cases.comments.get = (params) => this._makeRequest('v2beta/{+name}', 'GET', params);
 
     this.caseClassifications = {};
 

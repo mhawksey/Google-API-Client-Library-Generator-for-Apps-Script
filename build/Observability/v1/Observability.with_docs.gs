@@ -26,7 +26,7 @@ class Observability {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -93,6 +93,49 @@ class Observability {
      * @return {object} The API response object.
      */
     this.projects.locations.scopes.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    this.projects.locations.traceScopes = {};
+
+    /**
+     * Get TraceScope resource.
+     * @param {string} params.name - (Required) Required. The resource name of the trace scope: projects/[PROJECT_ID]/locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example: projects/my-project/locations/global/traceScopes/my-trace-scope
+     * @return {object} The API response object.
+     */
+    this.projects.locations.traceScopes.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
+     * List TraceScopes of a project in a particular location.
+     * @param {integer} params.pageSize - Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available.
+     * @param {string} params.pageToken - Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call.
+     * @param {string} params.parent - (Required) Required. The full resource name of the location to look for trace scopes: projects/[PROJECT_ID]/locations/[LOCATION_ID] For example: projects/my-project/locations/global
+     * @return {object} The API response object.
+     */
+    this.projects.locations.traceScopes.list = (params) => this._makeRequest('v1/{+parent}/traceScopes', 'GET', params);
+
+    /**
+     * Create a new TraceScope.
+     * @param {string} params.parent - (Required) Required. The full resource name of the location where the trace scope should be created projects/[PROJECT_ID]/locations/[LOCATION_ID] For example: projects/my-project/locations/global
+     * @param {string} params.traceScopeId - Required. A client-assigned identifier for the trace scope.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.traceScopes.create = (params) => this._makeRequest('v1/{+parent}/traceScopes', 'POST', params);
+
+    /**
+     * Update a TraceScope.
+     * @param {string} params.name - (Required) Identifier. The resource name of the trace scope. For example: projects/my-project/locations/global/traceScopes/my-trace-scope
+     * @param {string} params.updateMask - Optional. The list of fields to update.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.traceScopes.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Delete a TraceScope.
+     * @param {string} params.name - (Required) Required. The full resource name of the trace scope to delete: projects/[PROJECT_ID]/locations/[LOCATION_ID]/traceScopes/[TRACE_SCOPE_ID] For example: projects/my-project/locations/global/traceScopes/my-trace-scope
+     * @return {object} The API response object.
+     */
+    this.projects.locations.traceScopes.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
   }
 
   /**

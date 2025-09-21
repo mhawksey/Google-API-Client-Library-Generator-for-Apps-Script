@@ -40,6 +40,8 @@ class File {
     this.projects.locations.instances.restore = (params) => this._makeRequest('v1beta1/{+name}:restore', 'POST', params);
     this.projects.locations.instances.revert = (params) => this._makeRequest('v1beta1/{+name}:revert', 'POST', params);
     this.projects.locations.instances.promoteReplica = (params) => this._makeRequest('v1beta1/{+name}:promoteReplica', 'POST', params);
+    this.projects.locations.instances.pauseReplica = (params) => this._makeRequest('v1beta1/{+name}:pauseReplica', 'POST', params);
+    this.projects.locations.instances.resumeReplica = (params) => this._makeRequest('v1beta1/{+name}:resumeReplica', 'POST', params);
     this.projects.locations.instances.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
 
     this.projects.locations.instances.snapshots = {};

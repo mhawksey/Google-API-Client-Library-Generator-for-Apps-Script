@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Cloud Support API (version:
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:03:29 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:03:29 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:25:39 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:25:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:47 GMT
 
 
@@ -126,6 +126,14 @@ List all the attachments associated with a support case. EXAMPLES: cURL: ```shel
 | `params.pageSize` | `integer` | No | The maximum number of attachments fetched with each request. If not provided, the default is 10. The maximum page size that will be returned is 100. The size of each page can be smaller than the requested page size and can include zero. For example, you could request 100 attachments on one page, receive 0, and then on the next page, receive 90. |
 | `params.pageToken` | `string` | No | A token identifying the page of results to return. If unspecified, the first page is retrieved. |
 
+#### `cases.attachments.get()`
+
+Retrieve an attachment associated with a support case. EXAMPLES: cURL: ```shell attachment="projects/some-project/cases/23598314/attachments/0684M00000P3h1fQAB" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$attachment" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = ( supportApiService.cases() .attachments() .get(name="projects/some-project/cases/43595344/attachments/0684M00000P3h1fQAB") ) print(request.execute()) ```
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the attachment to get. |
+
 ### `cases.comments`
 
 #### `cases.comments.list()`
@@ -146,6 +154,14 @@ Add a new comment to a case. The comment must have the following fields set: `bo
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the case to which the comment should be added. |
 | `params.resource` | `object` | Yes | The request body. |
+
+#### `cases.comments.get()`
+
+Retrieve a comment. EXAMPLES: cURL: ```shell comment="projects/some-project/cases/43595344/comments/234567890" curl \ --header "Authorization: Bearer $(gcloud auth print-access-token)" \ "https://cloudsupport.googleapis.com/v2/$comment" ``` Python: ```python import googleapiclient.discovery api_version = "v2beta" supportApiService = googleapiclient.discovery.build( serviceName="cloudsupport", version=api_version, discoveryServiceUrl=f"https://cloudsupport.googleapis.com/$discovery/rest?version={api_version}", ) request = supportApiService.cases().comments().get( name="projects/some-project/cases/43595344/comments/234567890", ) print(request.execute()) ```
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the comment to retrieve. |
 
 ### `caseClassifications`
 

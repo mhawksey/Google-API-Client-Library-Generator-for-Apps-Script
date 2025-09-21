@@ -24,7 +24,7 @@ class Firebaseappdistribution {
 
     /**
      * Get a JWT token
-     * @param {string} params.mobilesdkAppId - (Required) Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
+     * @param {string} params.mobilesdkAppId - (Required) Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
      * @return {object} The API response object.
      */
     this.apps.getJwt = (params) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/jwt', 'GET', params);
@@ -41,8 +41,8 @@ class Firebaseappdistribution {
 
     /**
      * Enable access on a release for testers.
-     * @param {string} params.mobilesdkAppId - (Required) Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
-     * @param {string} params.releaseId - (Required) Release identifier
+     * @param {string} params.mobilesdkAppId - (Required) Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
+     * @param {string} params.releaseId - (Required) Required. Release identifier
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
@@ -52,8 +52,8 @@ class Firebaseappdistribution {
 
     /**
      * Create release notes on a release.
-     * @param {string} params.mobilesdkAppId - (Required) Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
-     * @param {string} params.releaseId - (Required) Release identifier
+     * @param {string} params.mobilesdkAppId - (Required) Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
+     * @param {string} params.releaseId - (Required) Required. Release identifier
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
@@ -63,8 +63,8 @@ class Firebaseappdistribution {
 
     /**
      * GET Release by binary upload hash
-     * @param {string} params.mobilesdkAppId - (Required) Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
-     * @param {string} params.uploadHash - (Required) The hash for the upload
+     * @param {string} params.mobilesdkAppId - (Required) Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
+     * @param {string} params.uploadHash - (Required) Required. The hash for the upload
      * @return {object} The API response object.
      */
     this.apps.release_by_hash.get = (params) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/release_by_hash/{uploadHash}', 'GET', params);
@@ -73,8 +73,8 @@ class Firebaseappdistribution {
 
     /**
      * GET Binary upload status by token
-     * @param {string} params.mobilesdkAppId - (Required) Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
-     * @param {string} params.uploadToken - (Required) The token for the upload
+     * @param {string} params.mobilesdkAppId - (Required) Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
+     * @param {string} params.uploadToken - (Required) Required. The token for the upload
      * @return {object} The API response object.
      */
     this.apps.upload_status.get = (params) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/upload_status/{uploadToken}', 'GET', params);

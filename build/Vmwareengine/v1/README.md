@@ -4,8 +4,8 @@ Auto-generated client library for using the **VMware Engine API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:55:11 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:55:11 GMT
+- **Last Checked:** Mon, 01 Sep 2025 00:02:51 GMT
+- **Last Modified:** Mon, 01 Sep 2025 00:02:51 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:46 GMT
 
 
@@ -130,6 +130,15 @@ Schedules a `PrivateCloud` resource for deletion. A `PrivateCloud` resource sche
 | `params.requestId` | `string` | No | Optional. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.force` | `boolean` | No | Optional. If set to true, cascade delete is enabled and all children of this private cloud resource are also deleted. When this flag is set to false, the private cloud will not be deleted if there are any children other than the management cluster. The management cluster is always deleted. |
 | `params.delayHours` | `integer` | No | Optional. Time delay of the deletion specified in hours. The default value is `3`. Specifying a non-zero value for this field changes the value of `PrivateCloud.state` to `DELETED` and sets `expire_time` to the planned deletion time. Deletion can be cancelled before `expire_time` elapses using VmwareEngine.UndeletePrivateCloud. Specifying a value of `0` for this field instead begins the deletion process and ceases billing immediately. During the final deletion process, the value of `PrivateCloud.state` becomes `PURGING`. |
+
+#### `projects.locations.privateClouds.privateCloudDeletionNow()`
+
+Accelerates the deletion of a private cloud that is currently in soft deletion A `PrivateCloud` resource in soft deletion has `PrivateCloud.state` set to `SOFT_DELETED` and `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the private cloud in softdeletion. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud` |
+| `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.privateClouds.undelete()`
 

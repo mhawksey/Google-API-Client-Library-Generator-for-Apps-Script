@@ -36,10 +36,12 @@ class Cloudsupport {
 
     this.cases.attachments = {};
     this.cases.attachments.list = (params) => this._makeRequest('v2beta/{+parent}/attachments', 'GET', params);
+    this.cases.attachments.get = (params) => this._makeRequest('v2beta/{+name}', 'GET', params);
 
     this.cases.comments = {};
     this.cases.comments.list = (params) => this._makeRequest('v2beta/{+parent}/comments', 'GET', params);
     this.cases.comments.create = (params) => this._makeRequest('v2beta/{+parent}/comments', 'POST', params);
+    this.cases.comments.get = (params) => this._makeRequest('v2beta/{+name}', 'GET', params);
 
     this.caseClassifications = {};
     this.caseClassifications.search = (params) => this._makeRequest('v2beta/caseClassifications:search', 'GET', params);

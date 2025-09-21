@@ -1115,7 +1115,7 @@ class Dataproc {
 
     /**
      * Updates the session template synchronously.
-     * @param {string} params.name - (Required) Required. The resource name of the session template.
+     * @param {string} params.name - (Required) Required. Identifier. The resource name of the session template.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */

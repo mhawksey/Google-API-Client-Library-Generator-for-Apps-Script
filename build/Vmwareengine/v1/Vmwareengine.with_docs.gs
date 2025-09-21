@@ -127,6 +127,14 @@ class Vmwareengine {
     this.projects.locations.privateClouds.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
 
     /**
+     * Accelerates the deletion of a private cloud that is currently in soft deletion A `PrivateCloud` resource in soft deletion has `PrivateCloud.state` set to `SOFT_DELETED` and `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed.
+     * @param {string} params.name - (Required) Required. The resource name of the private cloud in softdeletion. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.privateClouds.privateCloudDeletionNow = (params) => this._makeRequest('v1/{+name}:privateCloudDeletionNow', 'POST', params);
+
+    /**
      * Restores a private cloud that was previously scheduled for deletion by `DeletePrivateCloud`. A `PrivateCloud` resource scheduled for deletion has `PrivateCloud.state` set to `DELETED` and `PrivateCloud.expireTime` set to the time when deletion can no longer be reversed.
      * @param {string} params.name - (Required) Required. The resource name of the private cloud scheduled for deletion. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. For example: `projects/my-project/locations/us-central1-a/privateClouds/my-cloud`
      * @param {object} params.resource - The request body.

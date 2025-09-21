@@ -46,7 +46,7 @@ class Appengine {
 
     /**
      * Lists all domains the user is authorized to administer.
-     * @param {string} params.appsId - (Required) Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} params.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @param {integer} params.pageSize - Maximum results to return per page.
      * @param {string} params.pageToken - Continuation token for fetching the next page of results.
      * @return {object} The API response object.
@@ -57,7 +57,7 @@ class Appengine {
 
     /**
      * Lists all SSL certificates the user is authorized to administer.
-     * @param {string} params.appsId - (Required) Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} params.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @param {integer} params.pageSize - Maximum results to return per page.
      * @param {string} params.pageToken - Continuation token for fetching the next page of results.
      * @param {string} params.view - Controls the set of fields returned in the LIST response.
@@ -67,7 +67,7 @@ class Appengine {
 
     /**
      * Gets the specified SSL certificate.
-     * @param {string} params.appsId - (Required) Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} params.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
      * @param {string} params.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
      * @param {string} params.view - Controls the set of fields returned in the GET response.
      * @return {object} The API response object.
@@ -76,7 +76,7 @@ class Appengine {
 
     /**
      * Uploads the specified SSL certificate.
-     * @param {string} params.appsId - (Required) Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} params.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
@@ -84,7 +84,7 @@ class Appengine {
 
     /**
      * Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated.
-     * @param {string} params.appsId - (Required) Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} params.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
      * @param {string} params.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
      * @param {string} params.updateMask - Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields.
      * @param {object} params.resource - The request body.
@@ -94,7 +94,7 @@ class Appengine {
 
     /**
      * Deletes the specified SSL certificate.
-     * @param {string} params.appsId - (Required) Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} params.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
      * @param {string} params.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
      * @return {object} The API response object.
      */
@@ -104,7 +104,7 @@ class Appengine {
 
     /**
      * Lists the domain mappings on an application.
-     * @param {string} params.appsId - (Required) Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} params.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @param {integer} params.pageSize - Maximum results to return per page.
      * @param {string} params.pageToken - Continuation token for fetching the next page of results.
      * @return {object} The API response object.
@@ -113,7 +113,7 @@ class Appengine {
 
     /**
      * Gets the specified domain mapping.
-     * @param {string} params.appsId - (Required) Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+     * @param {string} params.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
      * @param {string} params.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
      * @return {object} The API response object.
      */
@@ -121,7 +121,7 @@ class Appengine {
 
     /**
      * Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
-     * @param {string} params.appsId - (Required) Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} params.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @param {boolean} params.noManagedCertificate - Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
      * @param {string} params.overrideStrategy - Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
      * @param {object} params.resource - The request body.
@@ -131,7 +131,7 @@ class Appengine {
 
     /**
      * Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource.
-     * @param {string} params.appsId - (Required) Part of `name`. Name of the resource to update. Example: apps/myapp/domainMappings/example.com.
+     * @param {string} params.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com.
      * @param {string} params.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
      * @param {boolean} params.noManagedCertificate - Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask.
      * @param {string} params.updateMask - Required. Standard field mask for the set of fields to be updated.
@@ -142,7 +142,7 @@ class Appengine {
 
     /**
      * Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.
-     * @param {string} params.appsId - (Required) Part of `name`. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
+     * @param {string} params.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
      * @param {string} params.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
      * @return {object} The API response object.
      */
@@ -153,7 +153,7 @@ class Appengine {
     /**
      * Lists information about the supported locations for this service.
      * @param {string} params.appsId - (Required) Part of `name`. The resource that owns the locations collection, if applicable.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
      * @param {string} params.pageToken - A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page.
@@ -175,7 +175,7 @@ class Appengine {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
      * @param {string} params.pageToken - A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page.
@@ -224,7 +224,7 @@ class Appengine {
      * @param {string} params.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
      * @param {integer} params.pageSize - Maximum results to return per page.
      * @param {string} params.pageToken - Continuation token for fetching the next page of results.
-     * @param {string} params.projectsId - (Required) Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} params.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @return {object} The API response object.
      */
     this.projects.locations.applications.authorizedDomains.list = (params) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains', 'GET', params);
@@ -237,7 +237,7 @@ class Appengine {
      * @param {string} params.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
      * @param {integer} params.pageSize - Maximum results to return per page.
      * @param {string} params.pageToken - Continuation token for fetching the next page of results.
-     * @param {string} params.projectsId - (Required) Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} params.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @param {string} params.view - Controls the set of fields returned in the LIST response.
      * @return {object} The API response object.
      */
@@ -248,7 +248,7 @@ class Appengine {
      * @param {string} params.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
      * @param {string} params.authorizedCertificatesId - (Required) Part of `name`. See documentation of `projectsId`.
      * @param {string} params.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} params.projectsId - (Required) Part of `name`. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} params.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
      * @param {string} params.view - Controls the set of fields returned in the GET response.
      * @return {object} The API response object.
      */
@@ -258,7 +258,7 @@ class Appengine {
      * Uploads the specified SSL certificate.
      * @param {string} params.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
      * @param {string} params.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
-     * @param {string} params.projectsId - (Required) Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} params.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
@@ -269,7 +269,7 @@ class Appengine {
      * @param {string} params.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
      * @param {string} params.authorizedCertificatesId - (Required) Part of `name`. See documentation of `projectsId`.
      * @param {string} params.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} params.projectsId - (Required) Part of `name`. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} params.projectsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
      * @param {string} params.updateMask - Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
@@ -281,7 +281,7 @@ class Appengine {
      * @param {string} params.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
      * @param {string} params.authorizedCertificatesId - (Required) Part of `name`. See documentation of `projectsId`.
      * @param {string} params.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} params.projectsId - (Required) Part of `name`. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} params.projectsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
      * @return {object} The API response object.
      */
     this.projects.locations.applications.authorizedCertificates.delete = (params) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', params);
@@ -293,7 +293,7 @@ class Appengine {
      * @param {string} params.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
      * @param {string} params.domainMappingsId - (Required) Part of `name`. See documentation of `projectsId`.
      * @param {string} params.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} params.projectsId - (Required) Part of `name`. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+     * @param {string} params.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
      * @return {object} The API response object.
      */
     this.projects.locations.applications.domainMappings.get = (params) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'GET', params);
@@ -304,7 +304,7 @@ class Appengine {
      * @param {string} params.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
      * @param {boolean} params.noManagedCertificate - Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
      * @param {string} params.overrideStrategy - Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
-     * @param {string} params.projectsId - (Required) Part of `parent`. Name of the parent Application resource. Example: apps/myapp.
+     * @param {string} params.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */

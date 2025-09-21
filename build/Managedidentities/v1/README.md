@@ -4,7 +4,7 @@ Auto-generated client library for using the **Managed Service for Microsoft Acti
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:25:51 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:42:55 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:25:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:07 GMT
 

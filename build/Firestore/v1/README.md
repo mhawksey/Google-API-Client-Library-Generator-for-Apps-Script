@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Firestore API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:21:51 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:35:57 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:21:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:59 GMT
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -101,7 +101,7 @@ Create a database.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project_id}` |
-| `params.databaseId` | `string` | No | Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid. |
+| `params.databaseId` | `string` | No | Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /a-z-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid if the database is Standard edition. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.databases.get()`

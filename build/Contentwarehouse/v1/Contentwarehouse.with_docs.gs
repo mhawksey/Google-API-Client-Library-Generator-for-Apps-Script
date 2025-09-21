@@ -41,11 +41,12 @@ class Contentwarehouse {
     this.projects.locations = {};
 
     /**
-     * Get the project status.
-     * @param {string} params.location - (Required) Required. The location to be queried Format: projects/{project_number}/locations/{location}.
+     * Provisions resources for given tenant project. Returns a long running operation.
+     * @param {string} params.location - (Required) Required. The location to be initialized Format: projects/{project_number}/locations/{location}.
+     * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
-    this.projects.locations.getStatus = (params) => this._makeRequest('v1/{+location}:getStatus', 'GET', params);
+    this.projects.locations.initialize = (params) => this._makeRequest('v1/{+location}:initialize', 'POST', params);
 
     /**
      * Run a predefined pipeline.
@@ -56,69 +57,13 @@ class Contentwarehouse {
     this.projects.locations.runPipeline = (params) => this._makeRequest('v1/{+name}:runPipeline', 'POST', params);
 
     /**
-     * Provisions resources for given tenant project. Returns a long running operation.
-     * @param {string} params.location - (Required) Required. The location to be initialized Format: projects/{project_number}/locations/{location}.
-     * @param {object} params.resource - The request body.
+     * Get the project status.
+     * @param {string} params.location - (Required) Required. The location to be queried Format: projects/{project_number}/locations/{location}.
      * @return {object} The API response object.
      */
-    this.projects.locations.initialize = (params) => this._makeRequest('v1/{+location}:initialize', 'POST', params);
-
-    this.projects.locations.documentSchemas = {};
-
-    /**
-     * Updates a Document Schema. Returns INVALID_ARGUMENT if the name of the Document Schema is non-empty and does not equal the existing name. Supports only appending new properties, adding new ENUM possible values, and updating the EnumTypeOptions.validation_check_disabled flag for ENUM possible values. Updating existing properties will result into INVALID_ARGUMENT.
-     * @param {string} params.name - (Required) Required. The name of the document schema to update. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documentSchemas.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
-
-    /**
-     * Creates a document schema.
-     * @param {string} params.parent - (Required) Required. The parent name.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documentSchemas.create = (params) => this._makeRequest('v1/{+parent}/documentSchemas', 'POST', params);
-
-    /**
-     * Gets a document schema. Returns NOT_FOUND if the document schema does not exist.
-     * @param {string} params.name - (Required) Required. The name of the document schema to retrieve.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documentSchemas.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-
-    /**
-     * Lists document schemas.
-     * @param {integer} params.pageSize - The maximum number of document schemas to return. The service may return fewer than this value. If unspecified, at most 50 document schemas will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} params.pageToken - A page token, received from a previous `ListDocumentSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDocumentSchemas` must match the call that provided the page token.
-     * @param {string} params.parent - (Required) Required. The parent, which owns this collection of document schemas. Format: projects/{project_number}/locations/{location}.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documentSchemas.list = (params) => this._makeRequest('v1/{+parent}/documentSchemas', 'GET', params);
-
-    /**
-     * Deletes a document schema. Returns NOT_FOUND if the document schema does not exist. Returns BAD_REQUEST if the document schema has documents depending on it.
-     * @param {string} params.name - (Required) Required. The name of the document schema to delete.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documentSchemas.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.projects.locations.getStatus = (params) => this._makeRequest('v1/{+location}:getStatus', 'GET', params);
 
     this.projects.locations.ruleSets = {};
-
-    /**
-     * Gets a ruleset. Returns NOT_FOUND if the ruleset does not exist.
-     * @param {string} params.name - (Required) Required. The name of the rule set to retrieve. Format: projects/{project_number}/locations/{location}/ruleSets/{rule_set_id}.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.ruleSets.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
-
-    /**
-     * Deletes a ruleset. Returns NOT_FOUND if the document does not exist.
-     * @param {string} params.name - (Required) Required. The name of the rule set to delete. Format: projects/{project_number}/locations/{location}/ruleSets/{rule_set_id}.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.ruleSets.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
 
     /**
      * Updates a ruleset. Returns INVALID_ARGUMENT if the name of the ruleset is non-empty and does not equal the existing name.
@@ -138,6 +83,13 @@ class Contentwarehouse {
     this.projects.locations.ruleSets.list = (params) => this._makeRequest('v1/{+parent}/ruleSets', 'GET', params);
 
     /**
+     * Deletes a ruleset. Returns NOT_FOUND if the document does not exist.
+     * @param {string} params.name - (Required) Required. The name of the rule set to delete. Format: projects/{project_number}/locations/{location}/ruleSets/{rule_set_id}.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.ruleSets.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    /**
      * Creates a ruleset.
      * @param {string} params.parent - (Required) Required. The parent name. Format: projects/{project_number}/locations/{location}.
      * @param {object} params.resource - The request body.
@@ -145,131 +97,53 @@ class Contentwarehouse {
      */
     this.projects.locations.ruleSets.create = (params) => this._makeRequest('v1/{+parent}/ruleSets', 'POST', params);
 
-    this.projects.locations.documents = {};
+    /**
+     * Gets a ruleset. Returns NOT_FOUND if the ruleset does not exist.
+     * @param {string} params.name - (Required) Required. The name of the rule set to retrieve. Format: projects/{project_number}/locations/{location}/ruleSets/{rule_set_id}.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.ruleSets.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    this.projects.locations.documentSchemas = {};
 
     /**
-     * Deletes a document. Returns NOT_FOUND if the document does not exist.
-     * @param {string} params.name - (Required) Required. The name of the document to delete. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
+     * Updates a Document Schema. Returns INVALID_ARGUMENT if the name of the Document Schema is non-empty and does not equal the existing name. Supports only appending new properties, adding new ENUM possible values, and updating the EnumTypeOptions.validation_check_disabled flag for ENUM possible values. Updating existing properties will result into INVALID_ARGUMENT.
+     * @param {string} params.name - (Required) Required. The name of the document schema to update. Format: projects/{project_number}/locations/{location}/documentSchemas/{document_schema_id}.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
-    this.projects.locations.documents.delete = (params) => this._makeRequest('v1/{+name}:delete', 'POST', params);
+    this.projects.locations.documentSchemas.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
 
     /**
-     * Sets the access control policy for a resource. Replaces any existing policy.
-     * @param {string} params.resource - (Required) Required. REQUIRED: The resource for which the policy is being requested. Format for document: projects/{project_number}/locations/{location}/documents/{document_id}. Format for collection: projects/{project_number}/locations/{location}/collections/{collection_id}. Format for project: projects/{project_number}.
+     * Deletes a document schema. Returns NOT_FOUND if the document schema does not exist. Returns BAD_REQUEST if the document schema has documents depending on it.
+     * @param {string} params.name - (Required) Required. The name of the document schema to delete.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documentSchemas.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+
+    /**
+     * Creates a document schema.
+     * @param {string} params.parent - (Required) Required. The parent name.
      * @param {object} params.resource - The request body.
      * @return {object} The API response object.
      */
-    this.projects.locations.documents.setAcl = (params) => this._makeRequest('v1/{+resource}:setAcl', 'POST', params);
+    this.projects.locations.documentSchemas.create = (params) => this._makeRequest('v1/{+parent}/documentSchemas', 'POST', params);
 
     /**
-     * Lock the document so the document cannot be updated by other users.
-     * @param {string} params.name - (Required) Required. The name of the document to lock. Format: projects/{project_number}/locations/{location}/documents/{document}.
-     * @param {object} params.resource - The request body.
+     * Lists document schemas.
+     * @param {integer} params.pageSize - The maximum number of document schemas to return. The service may return fewer than this value. If unspecified, at most 50 document schemas will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} params.pageToken - A page token, received from a previous `ListDocumentSchemas` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDocumentSchemas` must match the call that provided the page token.
+     * @param {string} params.parent - (Required) Required. The parent, which owns this collection of document schemas. Format: projects/{project_number}/locations/{location}.
      * @return {object} The API response object.
      */
-    this.projects.locations.documents.lock = (params) => this._makeRequest('v1/{+name}:lock', 'POST', params);
+    this.projects.locations.documentSchemas.list = (params) => this._makeRequest('v1/{+parent}/documentSchemas', 'GET', params);
 
     /**
-     * Return all target document-links from the document.
-     * @param {string} params.parent - (Required) Required. The name of the document, for which all target links are returned. Format: projects/{project_number}/locations/{location}/documents/{target_document_id}.
-     * @param {object} params.resource - The request body.
+     * Gets a document schema. Returns NOT_FOUND if the document schema does not exist.
+     * @param {string} params.name - (Required) Required. The name of the document schema to retrieve.
      * @return {object} The API response object.
      */
-    this.projects.locations.documents.linkedTargets = (params) => this._makeRequest('v1/{+parent}/linkedTargets', 'POST', params);
-
-    /**
-     * Searches for documents using provided SearchDocumentsRequest. This call only returns documents that the caller has permission to search against.
-     * @param {string} params.parent - (Required) Required. The parent, which owns this collection of documents. Format: projects/{project_number}/locations/{location}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.search = (params) => this._makeRequest('v1/{+parent}/documents:search', 'POST', params);
-
-    /**
-     * Return all source document-links from the document.
-     * @param {string} params.parent - (Required) Required. The name of the document, for which all source links are returned. Format: projects/{project_number}/locations/{location}/documents/{source_document_id}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.linkedSources = (params) => this._makeRequest('v1/{+parent}/linkedSources', 'POST', params);
-
-    /**
-     * Creates a document.
-     * @param {string} params.parent - (Required) Required. The parent name. Format: projects/{project_number}/locations/{location}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.create = (params) => this._makeRequest('v1/{+parent}/documents', 'POST', params);
-
-    /**
-     * Gets the access control policy for a resource. Returns NOT_FOUND error if the resource does not exist. Returns an empty policy if the resource exists but does not have a policy set.
-     * @param {string} params.resource - (Required) Required. REQUIRED: The resource for which the policy is being requested. Format for document: projects/{project_number}/locations/{location}/documents/{document_id}. Format for collection: projects/{project_number}/locations/{location}/collections/{collection_id}. Format for project: projects/{project_number}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.fetchAcl = (params) => this._makeRequest('v1/{+resource}:fetchAcl', 'POST', params);
-
-    /**
-     * Gets a document. Returns NOT_FOUND if the document does not exist.
-     * @param {string} params.name - (Required) Required. The name of the document to retrieve. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.get = (params) => this._makeRequest('v1/{+name}:get', 'POST', params);
-
-    /**
-     * Updates a document. Returns INVALID_ARGUMENT if the name of the document is non-empty and does not equal the existing name.
-     * @param {string} params.name - (Required) Required. The name of the document to update. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
-
-    this.projects.locations.documents.referenceId = {};
-
-    /**
-     * Gets a document. Returns NOT_FOUND if the document does not exist.
-     * @param {string} params.name - (Required) Required. The name of the document to retrieve. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.referenceId.get = (params) => this._makeRequest('v1/{+name}:get', 'POST', params);
-
-    /**
-     * Deletes a document. Returns NOT_FOUND if the document does not exist.
-     * @param {string} params.name - (Required) Required. The name of the document to delete. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.referenceId.delete = (params) => this._makeRequest('v1/{+name}:delete', 'POST', params);
-
-    /**
-     * Updates a document. Returns INVALID_ARGUMENT if the name of the document is non-empty and does not equal the existing name.
-     * @param {string} params.name - (Required) Required. The name of the document to update. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.referenceId.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
-
-    this.projects.locations.documents.documentLinks = {};
-
-    /**
-     * Remove the link between the source and target documents.
-     * @param {string} params.name - (Required) Required. The name of the document-link to be deleted. Format: projects/{project_number}/locations/{location}/documents/{source_document_id}/documentLinks/{document_link_id}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.documentLinks.delete = (params) => this._makeRequest('v1/{+name}:delete', 'POST', params);
-
-    /**
-     * Create a link between a source document and a target document.
-     * @param {string} params.parent - (Required) Required. Parent of the document-link to be created. parent of document-link should be a document. Format: projects/{project_number}/locations/{location}/documents/{source_document_id}.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.documents.documentLinks.create = (params) => this._makeRequest('v1/{+parent}/documentLinks', 'POST', params);
+    this.projects.locations.documentSchemas.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
 
     this.projects.locations.synonymSets = {};
 
@@ -320,6 +194,132 @@ class Contentwarehouse {
      * @return {object} The API response object.
      */
     this.projects.locations.operations.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    this.projects.locations.documents = {};
+
+    /**
+     * Searches for documents using provided SearchDocumentsRequest. This call only returns documents that the caller has permission to search against.
+     * @param {string} params.parent - (Required) Required. The parent, which owns this collection of documents. Format: projects/{project_number}/locations/{location}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.search = (params) => this._makeRequest('v1/{+parent}/documents:search', 'POST', params);
+
+    /**
+     * Gets the access control policy for a resource. Returns NOT_FOUND error if the resource does not exist. Returns an empty policy if the resource exists but does not have a policy set.
+     * @param {string} params.resource - (Required) Required. REQUIRED: The resource for which the policy is being requested. Format for document: projects/{project_number}/locations/{location}/documents/{document_id}. Format for collection: projects/{project_number}/locations/{location}/collections/{collection_id}. Format for project: projects/{project_number}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.fetchAcl = (params) => this._makeRequest('v1/{+resource}:fetchAcl', 'POST', params);
+
+    /**
+     * Return all source document-links from the document.
+     * @param {string} params.parent - (Required) Required. The name of the document, for which all source links are returned. Format: projects/{project_number}/locations/{location}/documents/{source_document_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.linkedSources = (params) => this._makeRequest('v1/{+parent}/linkedSources', 'POST', params);
+
+    /**
+     * Deletes a document. Returns NOT_FOUND if the document does not exist.
+     * @param {string} params.name - (Required) Required. The name of the document to delete. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.delete = (params) => this._makeRequest('v1/{+name}:delete', 'POST', params);
+
+    /**
+     * Gets a document. Returns NOT_FOUND if the document does not exist.
+     * @param {string} params.name - (Required) Required. The name of the document to retrieve. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.get = (params) => this._makeRequest('v1/{+name}:get', 'POST', params);
+
+    /**
+     * Updates a document. Returns INVALID_ARGUMENT if the name of the document is non-empty and does not equal the existing name.
+     * @param {string} params.name - (Required) Required. The name of the document to update. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Return all target document-links from the document.
+     * @param {string} params.parent - (Required) Required. The name of the document, for which all target links are returned. Format: projects/{project_number}/locations/{location}/documents/{target_document_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.linkedTargets = (params) => this._makeRequest('v1/{+parent}/linkedTargets', 'POST', params);
+
+    /**
+     * Lock the document so the document cannot be updated by other users.
+     * @param {string} params.name - (Required) Required. The name of the document to lock. Format: projects/{project_number}/locations/{location}/documents/{document}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.lock = (params) => this._makeRequest('v1/{+name}:lock', 'POST', params);
+
+    /**
+     * Creates a document.
+     * @param {string} params.parent - (Required) Required. The parent name. Format: projects/{project_number}/locations/{location}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.create = (params) => this._makeRequest('v1/{+parent}/documents', 'POST', params);
+
+    /**
+     * Sets the access control policy for a resource. Replaces any existing policy.
+     * @param {string} params.resource - (Required) Required. REQUIRED: The resource for which the policy is being requested. Format for document: projects/{project_number}/locations/{location}/documents/{document_id}. Format for collection: projects/{project_number}/locations/{location}/collections/{collection_id}. Format for project: projects/{project_number}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.setAcl = (params) => this._makeRequest('v1/{+resource}:setAcl', 'POST', params);
+
+    this.projects.locations.documents.referenceId = {};
+
+    /**
+     * Updates a document. Returns INVALID_ARGUMENT if the name of the document is non-empty and does not equal the existing name.
+     * @param {string} params.name - (Required) Required. The name of the document to update. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.referenceId.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+
+    /**
+     * Deletes a document. Returns NOT_FOUND if the document does not exist.
+     * @param {string} params.name - (Required) Required. The name of the document to delete. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.referenceId.delete = (params) => this._makeRequest('v1/{+name}:delete', 'POST', params);
+
+    /**
+     * Gets a document. Returns NOT_FOUND if the document does not exist.
+     * @param {string} params.name - (Required) Required. The name of the document to retrieve. Format: projects/{project_number}/locations/{location}/documents/{document_id} or projects/{project_number}/locations/{location}/documents/referenceId/{reference_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.referenceId.get = (params) => this._makeRequest('v1/{+name}:get', 'POST', params);
+
+    this.projects.locations.documents.documentLinks = {};
+
+    /**
+     * Create a link between a source document and a target document.
+     * @param {string} params.parent - (Required) Required. Parent of the document-link to be created. parent of document-link should be a document. Format: projects/{project_number}/locations/{location}/documents/{source_document_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.documentLinks.create = (params) => this._makeRequest('v1/{+parent}/documentLinks', 'POST', params);
+
+    /**
+     * Remove the link between the source and target documents.
+     * @param {string} params.name - (Required) Required. The name of the document-link to be deleted. Format: projects/{project_number}/locations/{location}/documents/{source_document_id}/documentLinks/{document_link_id}.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.documents.documentLinks.delete = (params) => this._makeRequest('v1/{+name}:delete', 'POST', params);
   }
 
   /**

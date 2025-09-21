@@ -25,8 +25,15 @@ class Backupdr {
     this.projects.locations = {};
 
     /**
+     * Gets the Trial state for a given project
+     * @param {string} params.name - (Required) Required. The name of the trial to retrieve.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.getTrial = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+
+    /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -145,6 +152,16 @@ class Backupdr {
      * @return {object} The API response object.
      */
     this.projects.locations.operations.cancel = (params) => this._makeRequest('v1/{+name}:cancel', 'POST', params);
+
+    this.projects.locations.trial = {};
+
+    /**
+     * Subscribes to a trial for a project
+     * @param {string} params.parent - (Required) Required. The parent resource where this trial will be created.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.trial.subscribe = (params) => this._makeRequest('v1/{+parent}/trial:subscribe', 'POST', params);
 
     this.projects.locations.backupVaults = {};
 

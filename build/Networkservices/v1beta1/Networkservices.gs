@@ -53,6 +53,13 @@ class Networkservices {
     this.projects.locations.lbEdgeExtensions.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
     this.projects.locations.lbEdgeExtensions.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
 
+    this.projects.locations.lbTcpExtensions = {};
+    this.projects.locations.lbTcpExtensions.list = (params) => this._makeRequest('v1beta1/{+parent}/lbTcpExtensions', 'GET', params);
+    this.projects.locations.lbTcpExtensions.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.projects.locations.lbTcpExtensions.create = (params) => this._makeRequest('v1beta1/{+parent}/lbTcpExtensions', 'POST', params);
+    this.projects.locations.lbTcpExtensions.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+    this.projects.locations.lbTcpExtensions.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
     this.projects.locations.authzExtensions = {};
     this.projects.locations.authzExtensions.list = (params) => this._makeRequest('v1beta1/{+parent}/authzExtensions', 'GET', params);
     this.projects.locations.authzExtensions.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Connectors API (version: v2)** in 
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:04:47 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:04:47 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:32:09 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:32:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:50 GMT
 
 
@@ -96,6 +96,27 @@ Gets the schema of the given action.
 | `params.name` | `string` | Yes | Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} |
 | `params.view` | `string` | No | Specified view of the action schema. |
 
+### `projects.locations.connections.tools`
+
+#### `projects.locations.connections.tools.list()`
+
+Lists all available tools.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+
+#### `projects.locations.connections.tools.execute()`
+
+Executes a specific tool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Tool. Format: projects/{project}/locations/{location}/connections/{connection}/tools/{tool} |
+| `params.resource` | `object` | Yes | The request body. |
+
 ### `projects.locations.connections.entityTypes`
 
 #### `projects.locations.connections.entityTypes.get()`
@@ -106,6 +127,7 @@ Gets metadata of given entity type
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType} |
 | `params.view` | `string` | No | Specifies view for entity type schema. |
+| `params.contextMetadata` | `string` | No | Context metadata for request could be used to fetch customization of entity type schema. |
 
 #### `projects.locations.connections.entityTypes.list()`
 

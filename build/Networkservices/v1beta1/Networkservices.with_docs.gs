@@ -220,6 +220,54 @@ class Networkservices {
      */
     this.projects.locations.lbEdgeExtensions.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
 
+    this.projects.locations.lbTcpExtensions = {};
+
+    /**
+     * Lists `LbTcpExtension` resources in a given project and location.
+     * @param {string} params.filter - Optional. Filtering results.
+     * @param {string} params.orderBy - Optional. Hint for how to order the results.
+     * @param {integer} params.pageSize - Optional. Requested page size. The server might return fewer items than requested. If unspecified, the server picks an appropriate default.
+     * @param {string} params.pageToken - Optional. A token identifying a page of results that the server returns.
+     * @param {string} params.parent - (Required) Required. The project and location from which the `LbTcpExtension` resources are listed, specified in the following format: `projects/{project}/locations/{location}`.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.lbTcpExtensions.list = (params) => this._makeRequest('v1beta1/{+parent}/lbTcpExtensions', 'GET', params);
+
+    /**
+     * Gets details of the specified `LbTcpExtension` resource.
+     * @param {string} params.name - (Required) Required. A name of the `LbTcpExtension` resource to get. Must be in the format `projects/{project}/locations/{location}/LbTcpExtensions/{lb_tcp_extension}`.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.lbTcpExtensions.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
+    /**
+     * Creates a new `LbTcpExtension` resource in a given project and location.
+     * @param {string} params.lbTcpExtensionId - Required. User-provided ID of the `LbTcpExtension` resource to be created.
+     * @param {string} params.parent - (Required) Required. The parent resource of the `LbTcpExtension` resource. Must be in the format `projects/{project}/locations/{location}`.
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.lbTcpExtensions.create = (params) => this._makeRequest('v1beta1/{+parent}/lbTcpExtensions', 'POST', params);
+
+    /**
+     * Updates the parameters of the specified `LbTcpExtension` resource.
+     * @param {string} params.name - (Required) Required. Identifier. Name of the `LbTcpExtension` resource in the following format: `projects/{project}/locations/{location}/LbTcpExtension/{lb_tcp_extension}`
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} params.updateMask - Optional. Used to specify the fields to be overwritten in the `LbTcpExtension` resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field is overwritten if it is in the mask. If the user does not specify a mask, then all fields are overwritten.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.projects.locations.lbTcpExtensions.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+
+    /**
+     * Deletes the specified `LbTcpExtension` resource.
+     * @param {string} params.name - (Required) Required. The name of the `LbTcpExtension` resource to delete. Must be in the format `projects/{project}/locations/{location}/LbTcpExtensions/{lb_tcp_extension}`.
+     * @param {string} params.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @return {object} The API response object.
+     */
+    this.projects.locations.lbTcpExtensions.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
     this.projects.locations.authzExtensions = {};
 
     /**

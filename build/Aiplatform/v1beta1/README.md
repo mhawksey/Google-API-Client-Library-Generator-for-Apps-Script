@@ -4,8 +4,8 @@ Auto-generated client library for using the **Vertex AI API (version: v1beta1)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 19:51:14 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:51:14 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:21:25 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:21:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:23 GMT
 
 
@@ -62,7 +62,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -71,6 +71,15 @@ Gets information about a location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
+
+#### `projects.locations.generateSyntheticData()`
+
+Generates synthetic data based on the provided configuration.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The resource name of the Location to run the job. Format: `projects/{project}/locations/{location}` |
+| `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.evaluateInstances()`
 
@@ -90,6 +99,15 @@ Evaluates a dataset based on a set of given metrics.
 | `params.location` | `string` | Yes | Required. The resource name of the Location to evaluate the dataset. Format: `projects/{project}/locations/{location}` |
 | `params.resource` | `object` | Yes | The request body. |
 
+#### `projects.locations.generateInstanceRubrics()`
+
+Generates rubrics for a given prompt. A rubric represents a single testable criterion for evaluation. One input prompt could have multiple rubrics This RPC allows users to get suggested rubrics based on provided prompt, which can then be reviewed and used for subsequent evaluations.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The resource name of the Location to generate rubrics from. Format: `projects/{project}/locations/{location}` |
+| `params.resource` | `object` | Yes | The request body. |
+
 #### `projects.locations.deploy()`
 
 Deploys a model to a new endpoint.
@@ -106,6 +124,15 @@ Deploys publisher models.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.destination` | `string` | Yes | Required. The resource name of the Location to deploy the model in. Format: `projects/{project}/locations/{location}` |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.recommendSpec()`
+
+Gets a Model's spec recommendations. This API is called by UI, SDK, and internal.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Location from which to recommend specs. The users must have permission to make a call in the project. Format: `projects/{project}/locations/{location}`. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.updateRagEngineConfig()`
@@ -2254,126 +2281,6 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
 | `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
 
-### `projects.locations.evaluationItems`
-
-### `projects.locations.evaluationItems.operations`
-
-#### `projects.locations.evaluationItems.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-
-#### `projects.locations.evaluationItems.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.evaluationItems.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.evaluationItems.operations.wait()`
-
-Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
-
-### `projects.locations.evaluationSets`
-
-### `projects.locations.evaluationSets.operations`
-
-#### `projects.locations.evaluationSets.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-
-#### `projects.locations.evaluationSets.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.evaluationSets.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.evaluationSets.operations.wait()`
-
-Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
-
-### `projects.locations.evaluationRuns`
-
-### `projects.locations.evaluationRuns.operations`
-
-#### `projects.locations.evaluationRuns.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-
-#### `projects.locations.evaluationRuns.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.evaluationRuns.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.evaluationRuns.operations.wait()`
-
-Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
-
 ### `projects.locations.evaluationTasks`
 
 ### `projects.locations.evaluationTasks.operations`
@@ -3144,6 +3051,256 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 
 #### `projects.locations.deploymentResourcePools.operations.wait()`
+
+Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
+| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
+
+### `projects.locations.evaluationRuns`
+
+#### `projects.locations.evaluationRuns.create()`
+
+Creates an Evaluation Run.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Evaluation Run in. Format: `projects/{project}/locations/{location}` |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.evaluationRuns.get()`
+
+Gets an Evaluation Run.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the EvaluationRun resource. Format: `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}` |
+
+#### `projects.locations.evaluationRuns.list()`
+
+Lists Evaluation Runs.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Location from which to list the Evaluation Runs. Format: `projects/{project}/locations/{location}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of Evaluation Runs to return. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListEvaluationRuns` call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | Optional. Filter expression that matches a subset of the EvaluationRuns to show. For field names both snake_case and camelCase are supported. For more information about filter syntax, see [AIP-160](https://google.aip.dev/160). |
+| `params.orderBy` | `string` | No | Optional. A comma-separated list of fields to order by, sorted in ascending order by default. Use `desc` after a field name for descending. |
+
+#### `projects.locations.evaluationRuns.delete()`
+
+Deletes an Evaluation Run.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the EvaluationRun resource to be deleted. Format: `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}` |
+
+#### `projects.locations.evaluationRuns.cancel()`
+
+Cancels an Evaluation Run. Attempts to cancel a running Evaluation Run asynchronously. Status of run can be checked via GetEvaluationRun.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the EvaluationRun resource to be cancelled. Format: `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}` |
+| `params.resource` | `object` | Yes | The request body. |
+
+### `projects.locations.evaluationRuns.operations`
+
+#### `projects.locations.evaluationRuns.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+
+#### `projects.locations.evaluationRuns.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.evaluationRuns.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `projects.locations.evaluationRuns.operations.wait()`
+
+Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
+| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
+
+### `projects.locations.evaluationSets`
+
+#### `projects.locations.evaluationSets.create()`
+
+Creates an Evaluation Set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Evaluation Set in. Format: `projects/{project}/locations/{location}` |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.evaluationSets.get()`
+
+Gets an Evaluation Set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the EvaluationSet resource. Format: `projects/{project}/locations/{location}/evaluationSets/{evaluation_set}` |
+
+#### `projects.locations.evaluationSets.list()`
+
+Lists Evaluation Sets.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Location from which to list the Evaluation Sets. Format: `projects/{project}/locations/{location}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of Evaluation Sets to return. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListEvaluationSets` call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | Optional. Filter expression that matches a subset of the EvaluationSets to show. For field names both snake_case and camelCase are supported. For more information about filter syntax, see [AIP-160](https://google.aip.dev/160). |
+| `params.orderBy` | `string` | No | Optional. A comma-separated list of fields to order by, sorted in ascending order by default. Use `desc` after a field name for descending. |
+
+#### `projects.locations.evaluationSets.delete()`
+
+Deletes an Evaluation Set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the EvaluationSet resource to be deleted. Format: `projects/{project}/locations/{location}/evaluationSets/{evaluation_set}` |
+
+#### `projects.locations.evaluationSets.patch()`
+
+Updates an Evaluation Set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the EvaluationSet. Format: `projects/{project}/locations/{location}/evaluationSets/{evaluation_set}` |
+| `params.updateMask` | `string` | No | Optional. The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask. |
+| `params.resource` | `object` | Yes | The request body. |
+
+### `projects.locations.evaluationSets.operations`
+
+#### `projects.locations.evaluationSets.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+
+#### `projects.locations.evaluationSets.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.evaluationSets.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `projects.locations.evaluationSets.operations.wait()`
+
+Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
+| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
+
+### `projects.locations.evaluationItems`
+
+#### `projects.locations.evaluationItems.create()`
+
+Creates an Evaluation Item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Evaluation Item in. Format: `projects/{project}/locations/{location}` |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.evaluationItems.get()`
+
+Gets an Evaluation Item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the EvaluationItem resource. Format: `projects/{project}/locations/{location}/evaluationItems/{evaluation_item}` |
+
+#### `projects.locations.evaluationItems.list()`
+
+Lists Evaluation Items.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Location from which to list the Evaluation Items. Format: `projects/{project}/locations/{location}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of Evaluation Items to return. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListEvaluationItems` call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | Optional. Filter expression that matches a subset of the EvaluationItems to show. For field names both snake_case and camelCase are supported. For more information about filter syntax, see [AIP-160](https://google.aip.dev/160). |
+| `params.orderBy` | `string` | No | Optional. A comma-separated list of fields to order by, sorted in ascending order by default. Use `desc` after a field name for descending. |
+
+#### `projects.locations.evaluationItems.delete()`
+
+Deletes an Evaluation Item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the EvaluationItem resource to be deleted. Format: `projects/{project}/locations/{location}/evaluationItems/{evaluation_item}` |
+
+### `projects.locations.evaluationItems.operations`
+
+#### `projects.locations.evaluationItems.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+
+#### `projects.locations.evaluationItems.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.evaluationItems.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `projects.locations.evaluationItems.operations.wait()`
 
 Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
 
@@ -5626,54 +5783,6 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
 | `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
 
-### `projects.locations.reasoningEngines.sandboxEnvironments`
-
-### `projects.locations.reasoningEngines.sandboxEnvironments.operations`
-
-#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-
-#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-
-#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.wait()`
-
-Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
-
 ### `projects.locations.reasoningEngines.examples`
 
 ### `projects.locations.reasoningEngines.examples.operations`
@@ -5815,6 +5924,99 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 
 #### `projects.locations.reasoningEngines.memories.operations.wait()`
+
+Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to wait on. |
+| `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
+
+### `projects.locations.reasoningEngines.sandboxEnvironments`
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.create()`
+
+Creates a SandboxEnvironment in a given reasoning engine.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the reasoning engine to create the SandboxEnvironment in. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.get()`
+
+Gets details of the specific SandboxEnvironment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the sandbox environment. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}` |
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.list()`
+
+Lists SandboxEnvironments in a given reasoning engine.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the reasoning engine to list sandbox environments from. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
+| `params.filter` | `string` | No | Optional. The standard list filter. More detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of SandboxEnvironments to return. The service may return fewer than this value. If unspecified, at most 100 SandboxEnvironments will be returned. |
+| `params.pageToken` | `string` | No | Optional. The standard list page token, received from a previous `ListSandboxEnvironments` call. Provide this to retrieve the subsequent page. |
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.delete()`
+
+Deletes the specific SandboxEnvironment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the SandboxEnvironment to delete. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}` |
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.execute()`
+
+Executes using a sandbox environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the sandbox environment to execute. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}` |
+| `params.resource` | `object` | Yes | The request body. |
+
+### `projects.locations.reasoningEngines.sandboxEnvironments.operations`
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+
+#### `projects.locations.reasoningEngines.sandboxEnvironments.operations.wait()`
 
 Waits until the specified long-running operation is done or reaches at most a specified timeout, returning the latest state. If the operation is already done, the latest state is immediately returned. If the timeout specified is greater than the default HTTP/RPC timeout, the HTTP/RPC timeout is used. If the server does not support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Note that this method is on a best-effort basis. It may return the latest state before the specified timeout (including immediately), meaning even an immediate response is no guarantee that the operation is done.
 
@@ -6982,6 +7184,7 @@ Deletes a RagFile.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the RagFile resource to be deleted. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}/ragFiles/{rag_file}` |
+| `params.forceDelete` | `boolean` | No | Optional. If set to true, any errors generated by external vector database during the deletion will be ignored. The default value is false. |
 
 ### `projects.locations.ragCorpora.ragFiles.operations`
 

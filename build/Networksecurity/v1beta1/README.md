@@ -4,7 +4,7 @@ Auto-generated client library for using the **Network Security API (version: v1b
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:34:07 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:45:19 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:34:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:03 GMT
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -200,17 +200,17 @@ Lists DnsThreatDetectors in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for ListDnsThreatDetectorsRequest |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDnsThreatDetectorsRequest` call. Provide this to retrieve the subsequent page. |
+| `params.parent` | `string` | Yes | Required. The parent value for `ListDnsThreatDetectorsRequest`. |
+| `params.pageSize` | `integer` | No | Optional. The requested page size. The server may return fewer items than requested. If unspecified, the server picks an appropriate default. |
+| `params.pageToken` | `string` | No | Optional. A page token received from a previous `ListDnsThreatDetectorsRequest` call. Provide this to retrieve the subsequent page. |
 
 #### `projects.locations.dnsThreatDetectors.get()`
 
-Gets details of a single DnsThreatDetector.
+Gets the details of a single DnsThreatDetector.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the DnsThreatDetector resource |
+| `params.name` | `string` | Yes | Required. Name of the DnsThreatDetector resource. |
 
 #### `projects.locations.dnsThreatDetectors.create()`
 
@@ -218,18 +218,18 @@ Creates a new DnsThreatDetector in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent of the DnsThreatDetector resource. |
-| `params.dnsThreatDetectorId` | `string` | No | Optional. Id of the requesting DnsThreatDetector object. If this field is not supplied, the service will generate an identifier. |
+| `params.parent` | `string` | Yes | Required. The value for the parent of the DnsThreatDetector resource. |
+| `params.dnsThreatDetectorId` | `string` | No | Optional. The ID of the requesting DnsThreatDetector object. If this field is not supplied, the service generates an identifier. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.dnsThreatDetectors.patch()`
 
-Updates the parameters of a single DnsThreatDetector.
+Updates a single DnsThreatDetector.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Identifier. Name of the DnsThreatDetector resource. |
-| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the DnsThreatDetector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the mask is not provided then all fields present in the request will be overwritten. |
+| `params.updateMask` | `string` | No | Optional. The field mask is used to specify the fields to be overwritten in the DnsThreatDetector resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the mask is not provided then all fields present in the request will be overwritten. |
 | `params.resource` | `object` | Yes | The request body. |
 
 #### `projects.locations.dnsThreatDetectors.delete()`
@@ -1528,7 +1528,7 @@ Update a single Endpoint.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Identifier. name of resource |
+| `params.name` | `string` | Yes | Immutable. Identifier. Name of resource. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Endpoint resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `object` | Yes | The request body. |

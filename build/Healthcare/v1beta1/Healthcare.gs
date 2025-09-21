@@ -175,11 +175,6 @@ class Healthcare {
     this.projects.locations.datasets.fhirStores.operations.get-fhir-operation-status = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
     this.projects.locations.datasets.fhirStores.operations.delete-fhir-operation = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
 
-    this.projects.locations.datasets.annotationStores = {};
-    this.projects.locations.datasets.annotationStores.setIamPolicy = (params) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', params);
-    this.projects.locations.datasets.annotationStores.getIamPolicy = (params) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', params);
-    this.projects.locations.datasets.annotationStores.testIamPermissions = (params) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', params);
-
     this.projects.locations.datasets.consentStores = {};
     this.projects.locations.datasets.consentStores.setIamPolicy = (params) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', params);
     this.projects.locations.datasets.consentStores.getIamPolicy = (params) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', params);

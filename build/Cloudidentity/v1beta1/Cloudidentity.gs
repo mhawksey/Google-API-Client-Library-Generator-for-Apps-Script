@@ -79,6 +79,13 @@ class Cloudidentity {
     this.inboundSamlSsoProfiles.idpCredentials.list = (params) => this._makeRequest('v1beta1/{+parent}/idpCredentials', 'GET', params);
     this.inboundSamlSsoProfiles.idpCredentials.add = (params) => this._makeRequest('v1beta1/{+parent}/idpCredentials:add', 'POST', params);
 
+    this.inboundOidcSsoProfiles = {};
+    this.inboundOidcSsoProfiles.create = (params) => this._makeRequest('v1beta1/inboundOidcSsoProfiles', 'POST', params);
+    this.inboundOidcSsoProfiles.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+    this.inboundOidcSsoProfiles.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+    this.inboundOidcSsoProfiles.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.inboundOidcSsoProfiles.list = (params) => this._makeRequest('v1beta1/inboundOidcSsoProfiles', 'GET', params);
+
     this.inboundSsoAssignments = {};
     this.inboundSsoAssignments.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
     this.inboundSsoAssignments.create = (params) => this._makeRequest('v1beta1/inboundSsoAssignments', 'POST', params);

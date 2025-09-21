@@ -38,10 +38,10 @@ class Dataplex {
     /**
      * Searches for Entries matching the given query and scope.
      * @param {string} params.name - (Required) Required. The project to which the request should be attributed in the following form: projects/{project}/locations/global.
-     * @param {string} params.orderBy - Optional. Specifies the ordering of results. Supported values are: relevance (default) last_modified_timestamp last_modified_timestamp asc
+     * @param {string} params.orderBy - Optional. Specifies the ordering of results. Supported values are: relevance last_modified_timestamp last_modified_timestamp asc
      * @param {integer} params.pageSize - Optional. Number of results in the search page. If <=0, then defaults to 10. Max limit for page_size is 1000. Throws an invalid argument for page_size > 1000.
      * @param {string} params.pageToken - Optional. Page token received from a previous SearchEntries call. Provide this to retrieve the subsequent page.
-     * @param {string} params.query - Required. The query against which entries in scope should be matched. The query syntax is defined in Search syntax for Dataplex Catalog (https://cloud.google.com/dataplex/docs/search-syntax).
+     * @param {string} params.query - Required. The query against which entries in scope should be matched. The query syntax is defined in Search syntax for Dataplex Universal Catalog (https://cloud.google.com/dataplex/docs/search-syntax).
      * @param {string} params.scope - Optional. The scope under which the search should be operating. It must either be organizations/ or projects/. If it is unspecified, it defaults to the organization where the project provided in name is located.
      * @param {boolean} params.semanticSearch - Optional. Specifies whether the search should understand the meaning and intent behind the query, rather than just matching keywords.
      * @return {object} The API response object.
@@ -50,7 +50,7 @@ class Dataplex {
 
     /**
      * Lists information about the supported locations for this service.
-     * @param {string} params.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} params.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} params.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
      * @param {string} params.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} params.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -394,7 +394,7 @@ class Dataplex {
     this.projects.locations.metadataJobs = {};
 
     /**
-     * Creates a metadata job. For example, use a metadata job to import Dataplex Catalog entries and aspects from a third-party system into Dataplex.
+     * Creates a metadata job. For example, use a metadata job to import metadata from a third-party system into Dataplex Universal Catalog.
      * @param {string} params.metadataJobId - Optional. The metadata job ID. If not provided, a unique ID is generated with the prefix metadata-job-.
      * @param {string} params.parent - (Required) Required. The resource name of the parent location, in the format projects/{project_id_or_number}/locations/{location_id}
      * @param {boolean} params.validateOnly - Optional. The service validates the request without performing any mutations. The default is false.
@@ -1692,14 +1692,6 @@ class Dataplex {
     this.projects.locations.dataProducts.setIamPolicy = (params) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', params);
 
     /**
-     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-     * @param {integer} params.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
-     * @param {string} params.resource - (Required) REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.dataProducts.getIamPolicy = (params) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', params);
-
-    /**
      * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
      * @param {string} params.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
      * @param {object} params.resource - The request body.
@@ -1716,14 +1708,6 @@ class Dataplex {
      * @return {object} The API response object.
      */
     this.projects.locations.dataProducts.dataAssets.setIamPolicy = (params) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', params);
-
-    /**
-     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-     * @param {integer} params.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies).
-     * @param {string} params.resource - (Required) REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.dataProducts.dataAssets.getIamPolicy = (params) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', params);
 
     /**
      * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a NOT_FOUND error.Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.

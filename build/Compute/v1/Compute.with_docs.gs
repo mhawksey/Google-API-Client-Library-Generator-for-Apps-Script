@@ -5851,6 +5851,16 @@ class Compute {
     this.networks.addPeering = (params) => this._makeRequest('projects/{project}/global/networks/{network}/addPeering', 'POST', params);
 
     /**
+     * Requests to remove a peering from the specified network. Applicable only for PeeringConnection with update_strategy=CONSENSUS.
+     * @param {string} params.network - (Required) Name of the network resource to remove peering from.
+     * @param {string} params.project - (Required) Project ID for this request.
+     * @param {string} params.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.networks.requestRemovePeering = (params) => this._makeRequest('projects/{project}/global/networks/{network}/requestRemovePeering', 'POST', params);
+
+    /**
      * Removes a peering from the specified network.
      * @param {string} params.network - (Required) Name of the network resource to remove peering from.
      * @param {string} params.project - (Required) Project ID for this request.

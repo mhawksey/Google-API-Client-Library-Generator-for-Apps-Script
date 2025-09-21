@@ -40,11 +40,21 @@ class Discoveryengine {
     this.projects.locations.estimateDataSize = (params) => this._makeRequest('v1alpha/{+location}:estimateDataSize', 'POST', params);
 
     this.projects.locations.notebooks = {};
+    this.projects.locations.notebooks.create = (params) => this._makeRequest('v1alpha/{+parent}/notebooks', 'POST', params);
+    this.projects.locations.notebooks.get = (params) => this._makeRequest('v1alpha/{+name}', 'GET', params);
     this.projects.locations.notebooks.listRecentlyViewed = (params) => this._makeRequest('v1alpha/{+parent}/notebooks:listRecentlyViewed', 'GET', params);
+    this.projects.locations.notebooks.batchDelete = (params) => this._makeRequest('v1alpha/{+parent}/notebooks:batchDelete', 'POST', params);
+    this.projects.locations.notebooks.share = (params) => this._makeRequest('v1alpha/{+name}:share', 'POST', params);
+
+    this.projects.locations.notebooks.audioOverviews = {};
+    this.projects.locations.notebooks.audioOverviews.create = (params) => this._makeRequest('v1alpha/{+parent}/audioOverviews', 'POST', params);
+    this.projects.locations.notebooks.audioOverviews.delete = (params) => this._makeRequest('v1alpha/{+name}', 'DELETE', params);
 
     this.projects.locations.notebooks.sources = {};
     this.projects.locations.notebooks.sources.batchCreate = (params) => this._makeRequest('v1alpha/{+parent}/sources:batchCreate', 'POST', params);
     this.projects.locations.notebooks.sources.uploadFile = (params) => this._makeRequest('v1alpha/{+parent}/sources/{sourceId}:uploadFile', 'POST', params);
+    this.projects.locations.notebooks.sources.get = (params) => this._makeRequest('v1alpha/{+name}', 'GET', params);
+    this.projects.locations.notebooks.sources.batchDelete = (params) => this._makeRequest('v1alpha/{+parent}/sources:batchDelete', 'POST', params);
 
     this.projects.locations.operations = {};
     this.projects.locations.operations.list = (params) => this._makeRequest('v1alpha/{+name}/operations', 'GET', params);

@@ -4,9 +4,9 @@ Auto-generated client library for using the **Compute Engine API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:04:33 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:04:33 GMT
-- **Created:** Mon, 04 Aug 2025 20:04:33 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:31:58 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:31:58 GMT
+- **Created:** Sun, 31 Aug 2025 23:31:58 GMT
 
 
 
@@ -6386,6 +6386,17 @@ Adds a peering to the specified network.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.network` | `string` | Yes | Name of the network resource to add peering to. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `networks.requestRemovePeering()`
+
+Requests to remove a peering from the specified network. Applicable only for PeeringConnection with update_strategy=CONSENSUS.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.network` | `string` | Yes | Name of the network resource to remove peering from. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `object` | Yes | The request body. |

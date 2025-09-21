@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Classroom API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:01:01 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:24:16 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:01:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:20:50 GMT
 
@@ -29,6 +29,8 @@ Creates a course. The user specified in `ownerId` is the owner of the created co
 * UserCannotOwnCourse
 
 * UserGroupsMembershipLimitReached
+
+* CourseTitleCannotContainUrl
 
 * `ALREADY_EXISTS` if an alias was specified in the `id` and already exists.
 
@@ -60,6 +62,8 @@ Updates a course. This method returns the following error codes:
 
 * CourseNotModifiable
 
+* CourseTitleCannotContainUrl
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.id` | `string` | Yes | Identifier of the course to update. This identifier can be either the Classroom-assigned identifier or an alias. |
@@ -82,6 +86,8 @@ Updates one or more fields in a course. This method returns the following error 
 * InactiveCourseOwner
 
 * IneligibleOwner
+
+* CourseTitleCannotContainUrl
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|

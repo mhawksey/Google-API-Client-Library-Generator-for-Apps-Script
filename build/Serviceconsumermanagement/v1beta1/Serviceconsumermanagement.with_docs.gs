@@ -20,9 +20,26 @@ class Serviceconsumermanagement {
 
     // --- Public Interface Initialization ---
 
+    this.operations = {};
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {string} params.name - (Required) The name of the operation resource.
+     * @return {object} The API response object.
+     */
+    this.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+
     this.services = {};
 
     this.services.consumerQuotaMetrics = {};
+
+    /**
+     * Create or update multiple producer quota policies atomically, all on the same ancestor, but on many different metrics or limits. The name field in the quota policy message should not be set.
+     * @param {string} params.parent - (Required) The resource name of the consumer. An example name would be: `services/compute.googleapis.com/organizations/123`
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.services.consumerQuotaMetrics.importProducerQuotaPolicies = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importProducerQuotaPolicies', 'POST', params);
 
     /**
      * Retrieves a summary of quota information for a specific quota metric.
@@ -39,14 +56,6 @@ class Serviceconsumermanagement {
      * @return {object} The API response object.
      */
     this.services.consumerQuotaMetrics.importProducerOverrides = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importProducerOverrides', 'POST', params);
-
-    /**
-     * Create or update multiple producer quota policies atomically, all on the same ancestor, but on many different metrics or limits. The name field in the quota policy message should not be set.
-     * @param {string} params.parent - (Required) The resource name of the consumer. An example name would be: `services/compute.googleapis.com/organizations/123`
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.services.consumerQuotaMetrics.importProducerQuotaPolicies = (params) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importProducerQuotaPolicies', 'POST', params);
 
     /**
      * Retrieves a summary of all quota information about this consumer that is visible to the service producer, for each quota metric defined by the service. Each metric includes information about all of its defined limits. Each limit includes the limit configuration (quota unit, preciseness, default value), the current effective limit value, and all of the overrides applied to the limit.
@@ -68,51 +77,26 @@ class Serviceconsumermanagement {
      */
     this.services.consumerQuotaMetrics.limits.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
 
-    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies = {};
+    this.services.consumerQuotaMetrics.limits.producerOverrides = {};
 
     /**
-     * Updates a producer quota policy.
-     * @param {boolean} params.force - Whether to force the update of the quota policy. If the policy update would decrease the default limit of any consumer tier by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
-     * @param {string} params.forceJustification - If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
-     * @param {string} params.name - (Required) The resource name of the producer policy. An example name would be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/4a3f2c1d`
-     * @param {string} params.updateMask - Update only the specified fields. If unset, all modifiable fields will be updated.
-     * @param {boolean} params.validateOnly - If set to true, validate the request, but do not actually update.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
-
-    /**
-     * Creates a producer quota policy. A producer quota policy is applied by the owner or administrator of a service at an org or folder node to set the default quota limit for all consumers under the node where the policy is created. To create multiple policies at once, use ImportProducerQuotaPolicies instead. If a policy with the specified dimensions already exists, this call will fail. To overwrite an existing policy if one is already present ("upsert" semantics), use ImportProducerQuotaPolicies instead.
-     * @param {boolean} params.force - Whether to force the creation of the quota policy. If the policy creation would decrease the default limit of any consumer tier by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
-     * @param {string} params.forceJustification - If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
-     * @param {string} params.parent - (Required) Required. The resource name of the parent quota limit. An example name would be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
-     * @param {boolean} params.validateOnly - If set to true, validate the request, but do not actually update.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.create = (params) => this._makeRequest('v1beta1/{+parent}/producerQuotaPolicies', 'POST', params);
-
-    /**
-     * Deletes a producer quota policy.
-     * @param {boolean} params.force - Whether to force the deletion of the quota policy. If the policy deletion would decrease the default limit of any consumer tier by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
-     * @param {string} params.forceJustification - If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
-     * @param {string} params.name - (Required) Required. The resource name of the policy to delete. An example name would be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/4a3f2c1d`
-     * @param {boolean} params.validateOnly - If set to true, validate the request, but do not actually update.
-     * @return {object} The API response object.
-     */
-    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-
-    /**
-     * Lists all producer policies created at current consumer node for a limit.
+     * Lists all producer overrides on this limit.
      * @param {integer} params.pageSize - Requested size of the next page of data.
      * @param {string} params.pageToken - Token identifying which result to start with; returned by a previous list call.
-     * @param {string} params.parent - (Required) Required. The resource name of the parent quota limit. An example name would be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+     * @param {string} params.parent - (Required) The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
      * @return {object} The API response object.
      */
-    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.list = (params) => this._makeRequest('v1beta1/{+parent}/producerQuotaPolicies', 'GET', params);
+    this.services.consumerQuotaMetrics.limits.producerOverrides.list = (params) => this._makeRequest('v1beta1/{+parent}/producerOverrides', 'GET', params);
 
-    this.services.consumerQuotaMetrics.limits.producerOverrides = {};
+    /**
+     * Deletes a producer override.
+     * @param {boolean} params.force - Whether to force the deletion of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations.
+     * @param {string} params.forceJustification - If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
+     * @param {string} params.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set.
+     * @param {string} params.name - (Required) The resource name of the override to delete. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerOverrides/4a3f2c1d`
+     * @return {object} The API response object.
+     */
+    this.services.consumerQuotaMetrics.limits.producerOverrides.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
 
     /**
      * Creates a producer override. A producer override is applied by the owner or administrator of a service to increase or decrease the amount of quota a consumer of the service is allowed to use. To create multiple overrides at once, use ImportProducerOverrides instead. If an override with the specified dimensions already exists, this call will fail. To overwrite an existing override if one is already present ("upsert" semantics), use ImportProducerOverrides instead.
@@ -137,33 +121,49 @@ class Serviceconsumermanagement {
      */
     this.services.consumerQuotaMetrics.limits.producerOverrides.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
 
+    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies = {};
+
     /**
-     * Lists all producer overrides on this limit.
+     * Creates a producer quota policy. A producer quota policy is applied by the owner or administrator of a service at an org or folder node to set the default quota limit for all consumers under the node where the policy is created. To create multiple policies at once, use ImportProducerQuotaPolicies instead. If a policy with the specified dimensions already exists, this call will fail. To overwrite an existing policy if one is already present ("upsert" semantics), use ImportProducerQuotaPolicies instead.
+     * @param {boolean} params.force - Whether to force the creation of the quota policy. If the policy creation would decrease the default limit of any consumer tier by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
+     * @param {string} params.forceJustification - If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
+     * @param {string} params.parent - (Required) Required. The resource name of the parent quota limit. An example name would be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+     * @param {boolean} params.validateOnly - If set to true, validate the request, but do not actually update.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.create = (params) => this._makeRequest('v1beta1/{+parent}/producerQuotaPolicies', 'POST', params);
+
+    /**
+     * Deletes a producer quota policy.
+     * @param {boolean} params.force - Whether to force the deletion of the quota policy. If the policy deletion would decrease the default limit of any consumer tier by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
+     * @param {string} params.forceJustification - If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
+     * @param {string} params.name - (Required) Required. The resource name of the policy to delete. An example name would be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/4a3f2c1d`
+     * @param {boolean} params.validateOnly - If set to true, validate the request, but do not actually update.
+     * @return {object} The API response object.
+     */
+    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
+
+    /**
+     * Updates a producer quota policy.
+     * @param {boolean} params.force - Whether to force the update of the quota policy. If the policy update would decrease the default limit of any consumer tier by more than 10 percent, the call is rejected, as a safety measure to avoid accidentally decreasing quota too quickly. Setting the force parameter to true ignores this restriction.
+     * @param {string} params.forceJustification - If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
+     * @param {string} params.name - (Required) The resource name of the producer policy. An example name would be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerQuotaPolicies/4a3f2c1d`
+     * @param {string} params.updateMask - Update only the specified fields. If unset, all modifiable fields will be updated.
+     * @param {boolean} params.validateOnly - If set to true, validate the request, but do not actually update.
+     * @param {object} params.resource - The request body.
+     * @return {object} The API response object.
+     */
+    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.patch = (params) => this._makeRequest('v1beta1/{+name}', 'PATCH', params);
+
+    /**
+     * Lists all producer policies created at current consumer node for a limit.
      * @param {integer} params.pageSize - Requested size of the next page of data.
      * @param {string} params.pageToken - Token identifying which result to start with; returned by a previous list call.
-     * @param {string} params.parent - (Required) The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+     * @param {string} params.parent - (Required) Required. The resource name of the parent quota limit. An example name would be: `services/compute.googleapis.com/organizations/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
      * @return {object} The API response object.
      */
-    this.services.consumerQuotaMetrics.limits.producerOverrides.list = (params) => this._makeRequest('v1beta1/{+parent}/producerOverrides', 'GET', params);
-
-    /**
-     * Deletes a producer override.
-     * @param {boolean} params.force - Whether to force the deletion of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations.
-     * @param {string} params.forceJustification - If force option is set to true, force_justification is suggested to be set to log the reason in audit logs.
-     * @param {string} params.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set.
-     * @param {string} params.name - (Required) The resource name of the override to delete. An example name would be: `services/compute.googleapis.com/projects/123/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/producerOverrides/4a3f2c1d`
-     * @return {object} The API response object.
-     */
-    this.services.consumerQuotaMetrics.limits.producerOverrides.delete = (params) => this._makeRequest('v1beta1/{+name}', 'DELETE', params);
-
-    this.operations = {};
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {string} params.name - (Required) The name of the operation resource.
-     * @return {object} The API response object.
-     */
-    this.operations.get = (params) => this._makeRequest('v1beta1/{+name}', 'GET', params);
+    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.list = (params) => this._makeRequest('v1beta1/{+parent}/producerQuotaPolicies', 'GET', params);
   }
 
   /**

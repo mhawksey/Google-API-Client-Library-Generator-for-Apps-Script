@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: promotions_
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:32:23 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:44:10 GMT
 - **Last Modified:** Mon, 04 Aug 2025 20:32:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:53 GMT
 
@@ -42,5 +42,5 @@ Lists the promotions in your Merchant Center account. The response might contain
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account to list processed promotions for. Format: `accounts/{account}` |
-| `params.pageSize` | `integer` | No | Output only. The maximum number of promotions to return. The service may return fewer than this value. The maximum value is 250; values above 250 will be coerced to 250. If unspecified, the maximum number of promotions will be returned. |
-| `params.pageToken` | `string` | No | Output only. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of promotions to return. The service may return fewer than this value. The maximum value is 250; values above 250 will be coerced to 250. If unspecified, the maximum number of promotions will be returned. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListPromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPromotions` must match the call that provided the page token. |

@@ -296,7 +296,7 @@ class Analyticsadmin {
     this.properties.submitUserDeletion = (params) => this._makeRequest('v1alpha/{+name}:submitUserDeletion', 'POST', params);
 
     /**
-     * Returns the singleton data retention settings for this property.
+     * Returns the reporting identity settings for this property.
      * @param {string} params.name - (Required) Required. The name of the settings to lookup. Format: properties/{property}/reportingIdentitySettings Example: "properties/1000/reportingIdentitySettings"
      * @return {object} The API response object.
      */

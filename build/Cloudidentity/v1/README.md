@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Identity API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 04 Aug 2025 20:02:29 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:02:29 GMT
+- **Last Checked:** Sun, 31 Aug 2025 23:25:06 GMT
+- **Last Modified:** Sun, 31 Aug 2025 23:25:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:01 GMT
 
 
@@ -467,6 +467,52 @@ Adds an IdpCredential. Up to 2 credentials are allowed. When the target customer
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The InboundSamlSsoProfile that owns the IdpCredential. Format: `inboundSamlSsoProfiles/{sso_profile_id}` |
 | `params.resource` | `object` | Yes | The request body. |
+
+### `inboundOidcSsoProfiles`
+
+#### `inboundOidcSsoProfiles.create()`
+
+Creates an InboundOidcSsoProfile for a customer. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `inboundOidcSsoProfiles.patch()`
+
+Updates an InboundOidcSsoProfile. When the target customer has enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448), the `Operation` in the response will have `"done": false`, it will not have a response, and the metadata will have `"state": "awaiting-multi-party-approval"`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the OIDC SSO profile. |
+| `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
+| `params.resource` | `object` | Yes | The request body. |
+
+#### `inboundOidcSsoProfiles.delete()`
+
+Deletes an InboundOidcSsoProfile.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundOidcSsoProfile to delete. Format: `inboundOidcSsoProfiles/{sso_profile_id}` |
+
+#### `inboundOidcSsoProfiles.get()`
+
+Gets an InboundOidcSsoProfile.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the InboundOidcSsoProfile to get. Format: `inboundOidcSsoProfiles/{sso_profile_id}` |
+
+#### `inboundOidcSsoProfiles.list()`
+
+Lists InboundOidcSsoProfile objects for a Google enterprise customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A [Common Expression Language](https://github.com/google/cel-spec) expression to filter the results. The only supported filter is filtering by customer. For example: `customer=="customers/C0123abc"`. Omitting the filter or specifying a filter of `customer=="customers/my_customer"` will return the profiles for the customer that the caller (authenticated user) belongs to. Specifying a filter of `customer==""` will return the global shared OIDC profiles. |
+| `params.pageSize` | `integer` | No | The maximum number of InboundOidcSsoProfiles to return. The service may return fewer than this value. If omitted (or defaulted to zero) the server will use a sensible default. This default may change over time. The maximum allowed value is 100. Requests with page_size greater than that will be silently interpreted as having this maximum value. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListInboundOidcSsoProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListInboundOidcSsoProfiles` must match the call that provided the page token. |
 
 ### `inboundSsoAssignments`
 
