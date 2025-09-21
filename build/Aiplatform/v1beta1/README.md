@@ -4,8 +4,8 @@ Auto-generated client library for using the **Vertex AI API (version: v1beta1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:25 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:21:25 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:03:11 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:03:11 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:23 GMT
 
 
@@ -23,7 +23,7 @@ Updates a cache config.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the cache config. Format: - `projects/{project}/cacheConfig`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getCacheConfig()`
 
@@ -40,7 +40,7 @@ Sets (creates or updates) configs of publisher models. For example, sets the req
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the publisher model, in the format of `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.fetchPublisherModelConfig()`
 
@@ -62,7 +62,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -79,7 +79,7 @@ Generates synthetic data based on the provided configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The resource name of the Location to run the job. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.evaluateInstances()`
 
@@ -88,7 +88,7 @@ Evaluates instances based on a given metric.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The resource name of the Location to evaluate the instances. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.evaluateDataset()`
 
@@ -97,7 +97,7 @@ Evaluates a dataset based on a set of given metrics.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The resource name of the Location to evaluate the dataset. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.generateInstanceRubrics()`
 
@@ -106,7 +106,7 @@ Generates rubrics for a given prompt. A rubric represents a single testable crit
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The resource name of the Location to generate rubrics from. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.deploy()`
 
@@ -115,7 +115,7 @@ Deploys a model to a new endpoint.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.destination` | `string` | Yes | Required. The resource name of the Location to deploy the model in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.deployPublisherModel()`
 
@@ -124,7 +124,7 @@ Deploys publisher models.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.destination` | `string` | Yes | Required. The resource name of the Location to deploy the model in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.recommendSpec()`
 
@@ -133,7 +133,7 @@ Gets a Model's spec recommendations. This API is called by UI, SDK, and internal
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location from which to recommend specs. The users must have permission to make a call in the project. Format: `projects/{project}/locations/{location}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.updateRagEngineConfig()`
 
@@ -142,7 +142,7 @@ Updates a RagEngineConfig.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the RagEngineConfig. Format: `projects/{project}/locations/{location}/ragEngineConfig` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.getRagEngineConfig()`
 
@@ -159,7 +159,7 @@ Retrieves relevant contexts for a query.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location from which to retrieve RagContexts. The users must have permission to make a call in the project. Format: `projects/{project}/locations/{location}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.augmentPrompt()`
 
@@ -168,7 +168,7 @@ Given an input prompt, it returns augmented prompt from vertex rag store to guid
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location from which to augment prompt. The users must have permission to make a call in the project. Format: `projects/{project}/locations/{location}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.corroborateContent()`
 
@@ -177,7 +177,7 @@ Given an input text, it returns a score that evaluates the factuality of the tex
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location from which to corroborate text. The users must have permission to make a call in the project. Format: `projects/{project}/locations/{location}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.featurestores`
 
@@ -188,7 +188,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.getIamPolicy()`
 
@@ -197,7 +197,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.testIamPermissions()`
 
@@ -206,7 +206,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.create()`
 
@@ -216,7 +216,7 @@ Creates a new Featurestore in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create Featurestores. Format: `projects/{project}/locations/{location}` |
 | `params.featurestoreId` | `string` | No | Required. The ID to use for this Featurestore, which will become the final component of the Featurestore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.get()`
 
@@ -247,7 +247,7 @@ Updates the parameters of a single Featurestore.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the Featurestore. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}` |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Featurestore resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then only the non-empty fields present in the request will be overwritten. Set the update_mask to `*` to override all fields. Updatable fields: * `labels` * `online_serving_config.fixed_node_count` * `online_serving_config.scaling` * `online_storage_ttl_days` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.delete()`
 
@@ -265,7 +265,7 @@ Batch reads Feature values from a Featurestore. This API enables batch reading F
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.featurestore` | `string` | Yes | Required. The resource name of the Featurestore from which to query Feature values. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.searchFeatures()`
 
@@ -287,7 +287,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.getIamPolicy()`
 
@@ -314,7 +314,7 @@ Reads Feature values of a specific entity of an EntityType. For reading feature 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.entityType` | `string` | Yes | Required. The resource name of the EntityType for the entity being read. Value format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entityType}`. For example, for a machine learning model predicting user clicks on a website, an EntityType ID could be `user`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.streamingReadFeatureValues()`
 
@@ -323,7 +323,7 @@ Reads Feature values for multiple entities. Depending on their size, data for di
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.entityType` | `string` | Yes | Required. The resource name of the entities' type. Value format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entityType}`. For example, for a machine learning model predicting user clicks on a website, an EntityType ID could be `user`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.writeFeatureValues()`
 
@@ -332,7 +332,7 @@ Writes Feature values of one or more entities of an EntityType. The Feature valu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.entityType` | `string` | Yes | Required. The resource name of the EntityType for the entities being written. Value format: `projects/{project}/locations/{location}/featurestores/ {featurestore}/entityTypes/{entityType}`. For example, for a machine learning model predicting user clicks on a website, an EntityType ID could be `user`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.create()`
 
@@ -342,7 +342,7 @@ Creates a new EntityType in a given Featurestore.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Featurestore to create EntityTypes. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}` |
 | `params.entityTypeId` | `string` | No | Required. The ID to use for the EntityType, which will become the final component of the EntityType's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a featurestore. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.get()`
 
@@ -373,7 +373,7 @@ Updates the parameters of a single EntityType.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Name of the EntityType. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` The last part entity_type is assigned by the client. The entity_type can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z and underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given a featurestore. |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the EntityType resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then only the non-empty fields present in the request will be overwritten. Set the update_mask to `*` to override all fields. Updatable fields: * `description` * `labels` * `monitoring_config.snapshot_analysis.disabled` * `monitoring_config.snapshot_analysis.monitoring_interval_days` * `monitoring_config.snapshot_analysis.staleness_days` * `monitoring_config.import_features_analysis.state` * `monitoring_config.import_features_analysis.anomaly_detection_baseline` * `monitoring_config.numerical_threshold_config.value` * `monitoring_config.categorical_threshold_config.value` * `offline_storage_ttl_days` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.delete()`
 
@@ -391,7 +391,7 @@ Imports Feature values into the Featurestore from a source storage. The progress
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.entityType` | `string` | Yes | Required. The resource name of the EntityType grouping the Features for which values are being imported. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entityType}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.exportFeatureValues()`
 
@@ -400,7 +400,7 @@ Exports Feature values from all the entities of a target EntityType.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.entityType` | `string` | Yes | Required. The resource name of the EntityType from which to export Feature values. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.deleteFeatureValues()`
 
@@ -409,7 +409,7 @@ Delete Feature values from Featurestore. The progress of the deletion is tracked
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.entityType` | `string` | Yes | Required. The resource name of the EntityType grouping the Features for which values are being deleted from. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entityType}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.featurestores.entityTypes.operations`
 
@@ -467,7 +467,7 @@ Creates a new Feature in a given EntityType.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format for entity_type as parent: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` Format for feature_group as parent: `projects/{project}/locations/{location}/featureGroups/{feature_group}` |
 | `params.featureId` | `string` | No | Required. The ID to use for the Feature, which will become the final component of the Feature's resource name. This value may be up to 128 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within an EntityType/FeatureGroup. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.features.batchCreate()`
 
@@ -476,7 +476,7 @@ Creates a batch of Features in a given EntityType.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the EntityType/FeatureGroup to create the batch of Features under. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` `projects/{project}/locations/{location}/featureGroups/{feature_group}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.features.get()`
 
@@ -511,7 +511,7 @@ Updates the parameters of a single Feature.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type. |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Features resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then only the non-empty fields present in the request will be overwritten. Set the update_mask to `*` to override all fields. Updatable fields: * `description` * `labels` * `disable_monitoring` (Not supported for FeatureRegistryService Feature) * `point_of_contact` (Not supported for FeaturestoreService FeatureStore) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featurestores.entityTypes.features.delete()`
 
@@ -622,7 +622,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.models.getIamPolicy()`
 
@@ -649,7 +649,7 @@ Uploads a Model artifact into Vertex AI.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location into which to upload the Model. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.models.get()`
 
@@ -702,7 +702,7 @@ Updates a Model.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the Model. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.models.updateExplanationDataset()`
 
@@ -711,7 +711,7 @@ Incrementally update the dataset used for an examples model.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The resource name of the Model to update. Format: `projects/{project}/locations/{location}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.models.delete()`
 
@@ -736,7 +736,7 @@ Merges a set of aliases for a Model version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the model version to merge aliases, with a version ID explicitly included. Example: `projects/{project}/locations/{location}/models/{model}@1234` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.models.export()`
 
@@ -745,7 +745,7 @@ Exports a trained, exportable Model to a location specified by the user. A Model
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Model to export. The resource name may contain version id or version alias to specify the version, if no version is specified, the default version will be exported. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.models.copy()`
 
@@ -754,7 +754,7 @@ Copies an already existing Vertex AI Model into the specified Location. The sour
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location into which to copy the Model. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.models.operations`
 
@@ -811,7 +811,7 @@ Imports an externally generated ModelEvaluation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent model resource. Format: `projects/{project}/locations/{location}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.models.evaluations.get()`
 
@@ -888,7 +888,7 @@ Imports a list of externally generated EvaluatedAnnotations.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent ModelEvaluationSlice resource. Format: `projects/{project}/locations/{location}/models/{model}/evaluations/{evaluation}/slices/{slice}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.models.evaluations.slices.get()`
 
@@ -919,7 +919,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.getIamPolicy()`
 
@@ -947,7 +947,7 @@ Creates an Endpoint.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Endpoint in. Format: `projects/{project}/locations/{location}` |
 | `params.endpointId` | `string` | No | Immutable. The ID to use for endpoint, which will become the final component of the endpoint resource name. If not provided, Vertex AI will generate a value for this ID. If the first character is a letter, this value may be up to 63 characters, and valid characters are `[a-z0-9-]`. The last character must be a letter or number. If the first character is a number, this value may be up to 9 characters, and valid characters are `[0-9]` with no leading zeros. When using HTTP/JSON, this field is populated based on a query string argument, such as `?endpoint_id=12345`. This is the fallback for fields that are not included in either the URI or the body. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.get()`
 
@@ -978,7 +978,7 @@ Updates an Endpoint.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the Endpoint. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. See google.protobuf.FieldMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.update()`
 
@@ -987,7 +987,7 @@ Updates an Endpoint with a long running operation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the Endpoint. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.delete()`
 
@@ -1004,7 +1004,7 @@ Deploys a Model into this Endpoint, creating a DeployedModel within it.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint resource into which to deploy a Model. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.undeployModel()`
 
@@ -1013,7 +1013,7 @@ Undeploys a Model from an Endpoint, removing a DeployedModel from it, and freein
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint resource from which to undeploy a Model. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.mutateDeployedModel()`
 
@@ -1022,7 +1022,7 @@ Updates an existing deployed model. Updatable fields include `min_replica_count`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint resource into which to mutate a DeployedModel. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.predict()`
 
@@ -1031,7 +1031,7 @@ Perform an online prediction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.rawPredict()`
 
@@ -1044,7 +1044,7 @@ Perform an online prediction with an arbitrary HTTP payload. The response includ
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.streamRawPredict()`
 
@@ -1053,7 +1053,7 @@ Perform a streaming online prediction with an arbitrary HTTP payload.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.directPredict()`
 
@@ -1062,7 +1062,7 @@ Perform an unary online prediction request to a gRPC model server for Vertex fir
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.directRawPredict()`
 
@@ -1071,7 +1071,7 @@ Perform an unary online prediction request to a gRPC model server for custom con
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.serverStreamingPredict()`
 
@@ -1080,13 +1080,13 @@ Perform a server-side streaming online prediction request for Vertex LLM streami
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.predictLongRunning()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.fetchPredictOperation()`
 
@@ -1095,7 +1095,7 @@ Fetch an asynchronous online prediction operation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.explain()`
 
@@ -1104,7 +1104,7 @@ Perform an online explanation. If deployed_model_id is specified, the correspond
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the explanation. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.countTokens()`
 
@@ -1113,7 +1113,7 @@ Perform a token counting.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to perform token counting. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.generateContent()`
 
@@ -1122,7 +1122,7 @@ Generate content with multimodal inputs.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.streamGenerateContent()`
 
@@ -1131,7 +1131,7 @@ Generate content with multimodal inputs with streaming support.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpoints.computeTokens()`
 
@@ -1140,7 +1140,7 @@ Return a list of tokens based on the input text.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to get lists of tokens and token ids. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.endpoints.operations`
 
@@ -1188,6 +1188,45 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
 | `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
 
+### `projects.locations.endpoints.invoke`
+
+#### `projects.locations.endpoints.invoke.invoke()`
+
+Forwards arbitrary HTTP requests for both streaming and non-streaming cases. To use this method, invoke_route_prefix must be set to allow the paths that will be specified in the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
+| `params.invokeId` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.endpoints.deployedModels`
+
+### `projects.locations.endpoints.deployedModels.invoke`
+
+#### `projects.locations.endpoints.deployedModels.invoke.invoke()`
+
+Forwards arbitrary HTTP requests for both streaming and non-streaming cases. To use this method, invoke_route_prefix must be set to allow the paths that will be specified in the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
+| `params.deployedModelId` | `string` | Yes | ID of the DeployedModel that serves the invoke request. |
+| `params.invokeId` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.endpoints.openapi`
+
+#### `projects.locations.endpoints.openapi.embeddings()`
+
+Forwards arbitrary HTTP requests for both streaming and non-streaming cases. To use this method, invoke_route_prefix must be set to allow the paths that will be specified in the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
+| `params.deployedModelId` | `string` | No | ID of the DeployedModel that serves the invoke request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.endpoints.chat`
 
 #### `projects.locations.endpoints.chat.completions()`
@@ -1197,7 +1236,7 @@ Exposes an OpenAI-compatible endpoint for chat completions.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.notebookRuntimeTemplates`
 
@@ -1208,7 +1247,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookRuntimeTemplates.getIamPolicy()`
 
@@ -1236,7 +1275,7 @@ Creates a NotebookRuntimeTemplate.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the NotebookRuntimeTemplate. Format: `projects/{project}/locations/{location}` |
 | `params.notebookRuntimeTemplateId` | `string` | No | Optional. User specified ID for the notebook runtime template. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookRuntimeTemplates.get()`
 
@@ -1275,7 +1314,7 @@ Updates a NotebookRuntimeTemplate.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the NotebookRuntimeTemplate. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask. Input format: `{paths: "${updated_filed}"}` Updatable fields: * `encryption_spec.kms_key_name` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.notebookRuntimeTemplates.operations`
 
@@ -1332,7 +1371,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.getIamPolicy()`
 
@@ -1360,7 +1399,7 @@ Creates a new FeatureOnlineStore in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create FeatureOnlineStores. Format: `projects/{project}/locations/{location}` |
 | `params.featureOnlineStoreId` | `string` | No | Required. The ID to use for this FeatureOnlineStore, which will become the final component of the FeatureOnlineStore's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.get()`
 
@@ -1390,7 +1429,7 @@ Updates the parameters of a single FeatureOnlineStore.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the FeatureOnlineStore. Format: `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}` |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the FeatureOnlineStore resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then only the non-empty fields present in the request will be overwritten. Set the update_mask to `*` to override all fields. Updatable fields: * `labels` * `description` * `bigtable` * `bigtable.auto_scaling` * `bigtable.enable_multi_region_replica` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.delete()`
 
@@ -1410,7 +1449,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.featureViews.getIamPolicy()`
 
@@ -1437,7 +1476,7 @@ Fetch feature values under a FeatureView.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.featureView` | `string` | Yes | Required. FeatureView resource format `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.featureViews.streamingFetchFeatureValues()`
 
@@ -1446,7 +1485,7 @@ Bidirectional streaming RPC to fetch feature values under a FeatureView. Request
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.featureView` | `string` | Yes | Required. FeatureView resource format `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.featureViews.searchNearestEntities()`
 
@@ -1455,7 +1494,7 @@ Search the nearest entities under a FeatureView. Search only works for indexable
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.featureView` | `string` | Yes | Required. FeatureView resource format `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.featureViews.directWrite()`
 
@@ -1464,7 +1503,7 @@ Bidirectional streaming RPC to directly write to feature values in a feature vie
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.featureView` | `string` | Yes | FeatureView resource format `projects/{project}/locations/{location}/featureOnlineStores/{featureOnlineStore}/featureViews/{featureView}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.featureViews.create()`
 
@@ -1475,7 +1514,7 @@ Creates a new FeatureView in a given FeatureOnlineStore.
 | `params.parent` | `string` | Yes | Required. The resource name of the FeatureOnlineStore to create FeatureViews. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}` |
 | `params.featureViewId` | `string` | No | Required. The ID to use for the FeatureView, which will become the final component of the FeatureView's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within a FeatureOnlineStore. |
 | `params.runSyncImmediately` | `boolean` | No | Immutable. If set to true, one on demand sync will be run immediately, regardless whether the FeatureView.sync_config is configured or not. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.featureViews.get()`
 
@@ -1505,7 +1544,7 @@ Updates the parameters of a single FeatureView.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the FeatureView. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}` |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the FeatureView resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then only the non-empty fields present in the request will be overwritten. Set the update_mask to `*` to override all fields. Updatable fields: * `labels` * `service_agent_type` * `big_query_source` * `big_query_source.uri` * `big_query_source.entity_id_columns` * `feature_registry_source` * `feature_registry_source.feature_groups` * `sync_config` * `sync_config.cron` * `optimized_config.automatic_resources` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureOnlineStores.featureViews.delete()`
 
@@ -1522,7 +1561,7 @@ Triggers on-demand sync for the FeatureView.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.featureView` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/featureOnlineStores/{feature_online_store}/featureViews/{feature_view}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.featureOnlineStores.featureViews.operations`
 
@@ -1631,7 +1670,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureGroups.getIamPolicy()`
 
@@ -1659,7 +1698,7 @@ Creates a new FeatureGroup in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create FeatureGroups. Format: `projects/{project}/locations/{location}` |
 | `params.featureGroupId` | `string` | No | Required. The ID to use for this FeatureGroup, which will become the final component of the FeatureGroup's resource name. This value may be up to 128 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the project and location. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureGroups.get()`
 
@@ -1689,7 +1728,7 @@ Updates the parameters of a single FeatureGroup.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the FeatureGroup. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}` |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the FeatureGroup resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then only the non-empty fields present in the request will be overwritten. Set the update_mask to `*` to override all fields. Updatable fields: * `labels` * `description` * `big_query` * `big_query.entity_id_columns` * `service_agent_type` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureGroups.delete()`
 
@@ -1748,7 +1787,7 @@ Creates a new Feature in a given FeatureGroup.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the EntityType or FeatureGroup to create a Feature. Format for entity_type as parent: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` Format for feature_group as parent: `projects/{project}/locations/{location}/featureGroups/{feature_group}` |
 | `params.featureId` | `string` | No | Required. The ID to use for the Feature, which will become the final component of the Feature's resource name. This value may be up to 128 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within an EntityType/FeatureGroup. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureGroups.features.batchCreate()`
 
@@ -1757,7 +1796,7 @@ Creates a batch of Features in a given FeatureGroup.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the EntityType/FeatureGroup to create the batch of Features under. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}` `projects/{project}/locations/{location}/featureGroups/{feature_group}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureGroups.features.get()`
 
@@ -1792,7 +1831,7 @@ Updates the parameters of a single Feature.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Name of the Feature. Format: `projects/{project}/locations/{location}/featurestores/{featurestore}/entityTypes/{entity_type}/features/{feature}` `projects/{project}/locations/{location}/featureGroups/{feature_group}/features/{feature}` The last part feature is assigned by the client. The feature can be up to 64 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscore(_), and ASCII digits 0-9 starting with a letter. The value will be unique given an entity type. |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Features resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then only the non-empty fields present in the request will be overwritten. Set the update_mask to `*` to override all fields. Updatable fields: * `description` * `labels` * `disable_monitoring` (Not supported for FeatureRegistryService Feature) * `point_of_contact` (Not supported for FeaturestoreService FeatureStore) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureGroups.features.delete()`
 
@@ -1850,7 +1889,7 @@ Creates a new FeatureMonitor in a given project, location and FeatureGroup.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of FeatureGroup to create FeatureMonitor. Format: `projects/{project}/locations/{location}/featureGroups/{featuregroup}` |
 | `params.featureMonitorId` | `string` | No | Required. The ID to use for this FeatureMonitor, which will become the final component of the FeatureGroup's resource name. This value may be up to 60 characters, and valid characters are `[a-z0-9_]`. The first character cannot be a number. The value must be unique within the FeatureGroup. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureGroups.featureMonitors.get()`
 
@@ -1880,7 +1919,7 @@ Updates the parameters of a single FeatureMonitor.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the FeatureMonitor. Format: `projects/{project}/locations/{location}/featureGroups/{featureGroup}/featureMonitors/{featureMonitor}` |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the FeatureMonitor resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then only the non-empty fields present in the request will be overwritten. Set the update_mask to `*` to override all fields. Updatable fields: * `labels` * `description` * `schedule_config` * `feature_selection_config` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureGroups.featureMonitors.delete()`
 
@@ -1938,7 +1977,7 @@ Creates a new feature monitor job.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of FeatureMonitor to create FeatureMonitorJob. Format: `projects/{project}/locations/{location}/featureGroups/{feature_group}/featureMonitors/{feature_monitor}` |
 | `params.featureMonitorJobId` | `string` | No | Optional. Output only. System-generated ID for feature monitor job. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.featureGroups.featureMonitors.featureMonitorJobs.get()`
 
@@ -1980,7 +2019,7 @@ Sets (creates or updates) configs of publisher models. For example, sets the req
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the publisher model, in the format of `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.fetchPublisherModelConfig()`
 
@@ -1997,7 +2036,7 @@ Perform an online prediction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.rawPredict()`
 
@@ -2010,7 +2049,7 @@ Perform an online prediction with an arbitrary HTTP payload. The response includ
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.streamRawPredict()`
 
@@ -2019,7 +2058,7 @@ Perform a streaming online prediction with an arbitrary HTTP payload.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.serverStreamingPredict()`
 
@@ -2028,13 +2067,13 @@ Perform a server-side streaming online prediction request for Vertex LLM streami
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.predictLongRunning()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.fetchPredictOperation()`
 
@@ -2043,7 +2082,7 @@ Fetch an asynchronous online prediction operation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.countTokens()`
 
@@ -2052,7 +2091,7 @@ Perform a token counting.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to perform token counting. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.generateContent()`
 
@@ -2061,7 +2100,7 @@ Generate content with multimodal inputs.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.streamGenerateContent()`
 
@@ -2070,7 +2109,7 @@ Generate content with multimodal inputs with streaming support.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.computeTokens()`
 
@@ -2079,7 +2118,7 @@ Return a list of tokens based on the input text.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to get lists of tokens and token ids. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.export()`
 
@@ -2089,7 +2128,7 @@ Exports a publisher model to a user provided Google Cloud Storage bucket.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The Location to export the model weights from Format: `projects/{project}/locations/{location}` |
 | `params.name` | `string` | Yes | Required. The name of the PublisherModel resource. Format: `publishers/{publisher}/models/{publisher_model}@{version_id}`, or `publishers/hf-{hugging-face-author}/models/{hugging-face-model-name}@001` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.operations`
 
@@ -2457,7 +2496,7 @@ Creates cached content, this call will initialize the cached content in the data
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where the cached content will be created |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.cachedContents.get()`
 
@@ -2475,7 +2514,7 @@ Updates cached content configurations
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Identifier. The server-generated resource name of the cached content Format: projects/{project}/locations/{location}/cachedContents/{cached_content} |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.cachedContents.delete()`
 
@@ -2504,7 +2543,7 @@ Creates a Dataset.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Dataset in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.get()`
 
@@ -2523,7 +2562,7 @@ Updates a Dataset.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of the Dataset. Format: `projects/{project}/locations/{location}/datasets/{dataset}` |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask. Updatable fields: * `display_name` * `description` * `labels` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.list()`
 
@@ -2553,7 +2592,7 @@ Imports data into a Dataset.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Dataset resource. Format: `projects/{project}/locations/{location}/datasets/{dataset}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.export()`
 
@@ -2562,7 +2601,7 @@ Exports data from a Dataset.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Dataset resource. Format: `projects/{project}/locations/{location}/datasets/{dataset}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.searchDataItems()`
 
@@ -2592,7 +2631,7 @@ Assesses the state or validity of the dataset with respect to a given use case.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Dataset resource. Used only for MULTIMODAL datasets. Format: `projects/{project}/locations/{location}/datasets/{dataset}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.assemble()`
 
@@ -2601,7 +2640,7 @@ Assembles each row of a multimodal dataset and writes the result into a BigQuery
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Dataset resource (used only for MULTIMODAL datasets). Format: `projects/{project}/locations/{location}/datasets/{dataset}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.datasets.operations`
 
@@ -2658,7 +2697,7 @@ Create a version from a Dataset.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the Dataset resource. Format: `projects/{project}/locations/{location}/datasets/{dataset}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.datasetVersions.patch()`
 
@@ -2668,7 +2707,7 @@ Updates a DatasetVersion.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of the DatasetVersion. Format: `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}` |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask. Updatable fields: * `display_name` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.datasetVersions.delete()`
 
@@ -2965,7 +3004,7 @@ Create a DeploymentResourcePool.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent location resource where this DeploymentResourcePool will be created. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.deploymentResourcePools.get()`
 
@@ -2993,7 +3032,7 @@ Update a DeploymentResourcePool.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the DeploymentResourcePool. Format: `projects/{project}/locations/{location}/deploymentResourcePools/{deployment_resource_pool}` |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.deploymentResourcePools.delete()`
 
@@ -3068,7 +3107,7 @@ Creates an Evaluation Run.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Evaluation Run in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.evaluationRuns.get()`
 
@@ -3105,7 +3144,7 @@ Cancels an Evaluation Run. Attempts to cancel a running Evaluation Run asynchron
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the EvaluationRun resource to be cancelled. Format: `projects/{project}/locations/{location}/evaluationRuns/{evaluation_run}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.evaluationRuns.operations`
 
@@ -3154,7 +3193,7 @@ Creates an Evaluation Set.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Evaluation Set in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.evaluationSets.get()`
 
@@ -3192,7 +3231,7 @@ Updates an Evaluation Set.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the EvaluationSet. Format: `projects/{project}/locations/{location}/evaluationSets/{evaluation_set}` |
 | `params.updateMask` | `string` | No | Optional. The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.evaluationSets.operations`
 
@@ -3241,7 +3280,7 @@ Creates an Evaluation Item.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Evaluation Item in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.evaluationItems.get()`
 
@@ -3341,7 +3380,7 @@ Update an ExampleStore.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the ExampleStore. This is a unique identifier. Format: projects/{project}/locations/{location}/exampleStores/{example_store} |
 | `params.updateMask` | `string` | No | Optional. Mask specifying which fields to update. Supported fields: * `display_name` * `description` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.exampleStores.delete()`
 
@@ -3369,7 +3408,7 @@ Create or update Examples in the Example Store.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.exampleStore` | `string` | Yes | Required. The name of the ExampleStore resource that examples are added to or updated in. Format: `projects/{project}/locations/{location}/exampleStores/{example_store}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.exampleStores.removeExamples()`
 
@@ -3378,7 +3417,7 @@ Remove Examples from the Example Store.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.exampleStore` | `string` | Yes | Required. The name of the ExampleStore resource that the examples should be removed from. Format: `projects/{project}/locations/{location}/exampleStores/{example_store}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.exampleStores.searchExamples()`
 
@@ -3387,7 +3426,7 @@ Search for similar Examples for given selection criteria.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.exampleStore` | `string` | Yes | Required. The name of the ExampleStore resource that examples are retrieved from. Format: `projects/{project}/locations/{location}/exampleStores/{example_store}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.exampleStores.fetchExamples()`
 
@@ -3396,7 +3435,7 @@ Get Examples from the Example Store.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.exampleStore` | `string` | Yes | Required. The name of the ExampleStore resource that the examples should be fetched from. Format: `projects/{project}/locations/{location}/exampleStores/{example_store}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.exampleStores.operations`
 
@@ -3453,7 +3492,7 @@ Imports an Extension.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to import the Extension in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.extensions.get()`
 
@@ -3483,7 +3522,7 @@ Updates an Extension.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the Extension. |
 | `params.updateMask` | `string` | No | Required. Mask specifying which fields to update. Supported fields: * `display_name` * `description` * `runtime_config` * `tool_use_examples` * `manifest.description` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.extensions.delete()`
 
@@ -3500,7 +3539,7 @@ Executes the request against a given extension.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name (identifier) of the extension; Format: `projects/{project}/locations/{location}/extensions/{extension}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.extensions.query()`
 
@@ -3509,7 +3548,7 @@ Queries an extension with a default controller.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name (identifier) of the extension; Format: `projects/{project}/locations/{location}/extensions/{extension}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.extensions.operations`
 
@@ -3566,7 +3605,7 @@ Creates a TuningJob. A created TuningJob right away will be attempted to be run.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the TuningJob in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tuningJobs.get()`
 
@@ -3594,7 +3633,7 @@ Cancels a TuningJob. Starts asynchronous cancellation on the TuningJob. The serv
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the TuningJob to cancel. Format: `projects/{project}/locations/{location}/tuningJobs/{tuning_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tuningJobs.rebaseTunedModel()`
 
@@ -3603,7 +3642,7 @@ Rebase a TunedModel.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location into which to rebase the Model. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tuningJobs.optimizePrompt()`
 
@@ -3612,7 +3651,7 @@ Optimizes a prompt.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to optimize the prompt in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.tuningJobs.operations`
 
@@ -3633,7 +3672,7 @@ Creates an Index.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Index in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexes.get()`
 
@@ -3650,7 +3689,7 @@ Imports an Index from an external source (e.g., BigQuery).
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Index resource to import data to. Format: `projects/{project}/locations/{location}/indexes/{index}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexes.list()`
 
@@ -3672,7 +3711,7 @@ Updates an Index.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the Index. |
 | `params.updateMask` | `string` | No | The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexes.delete()`
 
@@ -3689,7 +3728,7 @@ Add/update Datapoints into an Index.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.index` | `string` | Yes | Required. The name of the Index resource to be updated. Format: `projects/{project}/locations/{location}/indexes/{index}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexes.removeDatapoints()`
 
@@ -3698,7 +3737,7 @@ Remove Datapoints from an Index.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.index` | `string` | Yes | Required. The name of the Index resource to be updated. Format: `projects/{project}/locations/{location}/indexes/{index}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.indexes.operations`
 
@@ -3755,7 +3794,7 @@ Creates an IndexEndpoint.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the IndexEndpoint in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexEndpoints.get()`
 
@@ -3785,7 +3824,7 @@ Updates an IndexEndpoint.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the IndexEndpoint. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. See google.protobuf.FieldMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexEndpoints.delete()`
 
@@ -3802,7 +3841,7 @@ Deploys an Index into this IndexEndpoint, creating a DeployedIndex within it.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.indexEndpoint` | `string` | Yes | Required. The name of the IndexEndpoint resource into which to deploy an Index. Format: `projects/{project}/locations/{location}/indexEndpoints/{index_endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexEndpoints.undeployIndex()`
 
@@ -3811,7 +3850,7 @@ Undeploys an Index from an IndexEndpoint, removing a DeployedIndex from it, and 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.indexEndpoint` | `string` | Yes | Required. The name of the IndexEndpoint resource from which to undeploy an Index. Format: `projects/{project}/locations/{location}/indexEndpoints/{index_endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexEndpoints.mutateDeployedIndex()`
 
@@ -3820,7 +3859,7 @@ Update an existing DeployedIndex under an IndexEndpoint.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.indexEndpoint` | `string` | Yes | Required. The name of the IndexEndpoint resource into which to deploy an Index. Format: `projects/{project}/locations/{location}/indexEndpoints/{index_endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexEndpoints.findNeighbors()`
 
@@ -3829,7 +3868,7 @@ Finds the nearest neighbors of each vector within the request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.indexEndpoint` | `string` | Yes | Required. The name of the index endpoint. Format: `projects/{project}/locations/{location}/indexEndpoints/{index_endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.indexEndpoints.readIndexDatapoints()`
 
@@ -3838,7 +3877,7 @@ Reads the datapoints/vectors of the given IDs. A maximum of 1000 datapoints can 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.indexEndpoint` | `string` | Yes | Required. The name of the index endpoint. Format: `projects/{project}/locations/{location}/indexEndpoints/{index_endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.indexEndpoints.operations`
 
@@ -3895,7 +3934,7 @@ Creates a CustomJob. A created CustomJob right away will be attempted to be run.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the CustomJob in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.customJobs.get()`
 
@@ -3932,7 +3971,7 @@ Cancels a CustomJob. Starts asynchronous cancellation on the CustomJob. The serv
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the CustomJob to cancel. Format: `projects/{project}/locations/{location}/customJobs/{custom_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.customJobs.operations`
 
@@ -3989,7 +4028,7 @@ Creates a DataLabelingJob.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the DataLabelingJob. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataLabelingJobs.get()`
 
@@ -4027,7 +4066,7 @@ Cancels a DataLabelingJob. Success of cancellation is not guaranteed.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the DataLabelingJob. Format: `projects/{project}/locations/{location}/dataLabelingJobs/{data_labeling_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.dataLabelingJobs.operations`
 
@@ -4084,7 +4123,7 @@ Creates a HyperparameterTuningJob
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the HyperparameterTuningJob in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.hyperparameterTuningJobs.get()`
 
@@ -4121,7 +4160,7 @@ Cancels a HyperparameterTuningJob. Starts asynchronous cancellation on the Hyper
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the HyperparameterTuningJob to cancel. Format: `projects/{project}/locations/{location}/hyperparameterTuningJobs/{hyperparameter_tuning_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.hyperparameterTuningJobs.operations`
 
@@ -4178,7 +4217,7 @@ Creates a NasJob
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the NasJob in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nasJobs.get()`
 
@@ -4215,7 +4254,7 @@ Cancels a NasJob. Starts asynchronous cancellation on the NasJob. The server mak
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the NasJob to cancel. Format: `projects/{project}/locations/{location}/nasJobs/{nas_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.nasJobs.nasTrialDetails`
 
@@ -4246,7 +4285,7 @@ Creates a BatchPredictionJob. A BatchPredictionJob once created will right away 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the BatchPredictionJob in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.batchPredictionJobs.get()`
 
@@ -4283,7 +4322,7 @@ Cancels a BatchPredictionJob. Starts asynchronous cancellation on the BatchPredi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the BatchPredictionJob to cancel. Format: `projects/{project}/locations/{location}/batchPredictionJobs/{batch_prediction_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.modelDeploymentMonitoringJobs`
 
@@ -4294,7 +4333,7 @@ Creates a ModelDeploymentMonitoringJob. It will run periodically on a configured
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the ModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.modelDeploymentMonitoringJobs.searchModelDeploymentMonitoringStatsAnomalies()`
 
@@ -4303,7 +4342,7 @@ Searches Model Monitoring Statistics generated within a given time window.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.modelDeploymentMonitoringJob` | `string` | Yes | Required. ModelDeploymentMonitoring Job resource name. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.modelDeploymentMonitoringJobs.get()`
 
@@ -4333,7 +4372,7 @@ Updates a ModelDeploymentMonitoringJob.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of a ModelDeploymentMonitoringJob. |
 | `params.updateMask` | `string` | No | Required. The update mask is used to specify the fields to be overwritten in the ModelDeploymentMonitoringJob resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then only the non-empty fields present in the request will be overwritten. Set the update_mask to `*` to override all fields. For the objective config, the user can either provide the update mask for model_deployment_monitoring_objective_configs or any combination of its nested fields, such as: model_deployment_monitoring_objective_configs.objective_config.training_dataset. Updatable fields: * `display_name` * `model_deployment_monitoring_schedule_config` * `model_monitoring_alert_config` * `logging_sampling_strategy` * `labels` * `log_ttl` * `enable_monitoring_pipeline_logs` . and * `model_deployment_monitoring_objective_configs` . or * `model_deployment_monitoring_objective_configs.objective_config.training_dataset` * `model_deployment_monitoring_objective_configs.objective_config.training_prediction_skew_detection_config` * `model_deployment_monitoring_objective_configs.objective_config.prediction_drift_detection_config` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.modelDeploymentMonitoringJobs.delete()`
 
@@ -4350,7 +4389,7 @@ Pauses a ModelDeploymentMonitoringJob. If the job is running, the server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the ModelDeploymentMonitoringJob to pause. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.modelDeploymentMonitoringJobs.resume()`
 
@@ -4359,7 +4398,7 @@ Resumes a paused ModelDeploymentMonitoringJob. It will start to run from next sc
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the ModelDeploymentMonitoringJob to resume. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.modelDeploymentMonitoringJobs.operations`
 
@@ -4417,7 +4456,7 @@ Initializes a MetadataStore, including allocation of resources.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location where the MetadataStore should be created. Format: `projects/{project}/locations/{location}/` |
 | `params.metadataStoreId` | `string` | No | The {metadatastore} portion of the resource name with the format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` If not provided, the MetadataStore's ID will be a UUID generated by the service. Must be 4-128 characters in length. Valid characters are `/a-z-/`. Must be unique across all MetadataStores in the parent Location. (Otherwise the request will fail with ALREADY_EXISTS, or PERMISSION_DENIED if the caller can't view the preexisting MetadataStore.) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.get()`
 
@@ -4502,7 +4541,7 @@ Creates an Artifact associated with a MetadataStore.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the MetadataStore where the Artifact should be created. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
 | `params.artifactId` | `string` | No | The {artifact} portion of the resource name with the format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/artifacts/{artifact}` If not provided, the Artifact's ID will be a UUID generated by the service. Must be 4-128 characters in length. Valid characters are `/a-z-/`. Must be unique across all Artifacts in the parent MetadataStore. (Otherwise the request will fail with ALREADY_EXISTS, or PERMISSION_DENIED if the caller can't view the preexisting Artifact.) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.artifacts.get()`
 
@@ -4533,7 +4572,7 @@ Updates a stored Artifact.
 | `params.name` | `string` | Yes | Output only. The resource name of the Artifact. |
 | `params.updateMask` | `string` | No | Optional. A FieldMask indicating which fields should be updated. |
 | `params.allowMissing` | `boolean` | No | If set to true, and the Artifact is not found, a new Artifact is created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.artifacts.delete()`
 
@@ -4551,7 +4590,7 @@ Purges Artifacts.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The metadata store to purge Artifacts from. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.artifacts.queryArtifactLineageSubgraph()`
 
@@ -4619,7 +4658,7 @@ Creates a Context associated with a MetadataStore.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the MetadataStore where the Context should be created. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
 | `params.contextId` | `string` | No | The {context} portion of the resource name with the format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}`. If not provided, the Context's ID will be a UUID generated by the service. Must be 4-128 characters in length. Valid characters are `/a-z-/`. Must be unique across all Contexts in the parent MetadataStore. (Otherwise the request will fail with ALREADY_EXISTS, or PERMISSION_DENIED if the caller can't view the preexisting Context.) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.contexts.get()`
 
@@ -4650,7 +4689,7 @@ Updates a stored Context.
 | `params.name` | `string` | Yes | Immutable. The resource name of the Context. |
 | `params.updateMask` | `string` | No | Optional. A FieldMask indicating which fields should be updated. |
 | `params.allowMissing` | `boolean` | No | If set to true, and the Context is not found, a new Context is created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.contexts.delete()`
 
@@ -4669,7 +4708,7 @@ Purges Contexts.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The metadata store to purge Contexts from. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.contexts.addContextArtifactsAndExecutions()`
 
@@ -4678,7 +4717,7 @@ Adds a set of Artifacts and Executions to a Context. If any of the Artifacts or 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.context` | `string` | Yes | Required. The resource name of the Context that the Artifacts and Executions belong to. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.contexts.addContextChildren()`
 
@@ -4687,7 +4726,7 @@ Adds a set of Contexts as children to a parent Context. If any of the child Cont
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.context` | `string` | Yes | Required. The resource name of the parent Context. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.contexts.removeContextChildren()`
 
@@ -4696,7 +4735,7 @@ Remove a set of children contexts from a parent Context. If any of the child Con
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.context` | `string` | Yes | Required. The resource name of the parent Context. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/contexts/{context}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.contexts.queryContextLineageSubgraph()`
 
@@ -4762,7 +4801,7 @@ Creates an Execution associated with a MetadataStore.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the MetadataStore where the Execution should be created. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
 | `params.executionId` | `string` | No | The {execution} portion of the resource name with the format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/executions/{execution}` If not provided, the Execution's ID will be a UUID generated by the service. Must be 4-128 characters in length. Valid characters are `/a-z-/`. Must be unique across all Executions in the parent MetadataStore. (Otherwise the request will fail with ALREADY_EXISTS, or PERMISSION_DENIED if the caller can't view the preexisting Execution.) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.executions.get()`
 
@@ -4793,7 +4832,7 @@ Updates a stored Execution.
 | `params.name` | `string` | Yes | Output only. The resource name of the Execution. |
 | `params.updateMask` | `string` | No | Optional. A FieldMask indicating which fields should be updated. |
 | `params.allowMissing` | `boolean` | No | If set to true, and the Execution is not found, a new Execution is created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.executions.delete()`
 
@@ -4811,7 +4850,7 @@ Purges Executions.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The metadata store to purge Executions from. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.executions.addExecutionEvents()`
 
@@ -4820,7 +4859,7 @@ Adds Events to the specified Execution. An Event indicates whether an Artifact w
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.execution` | `string` | Yes | Required. The resource name of the Execution that the Events connect Artifacts with. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/executions/{execution}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.executions.queryExecutionInputsAndOutputs()`
 
@@ -4886,7 +4925,7 @@ Creates a MetadataSchema.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the MetadataStore where the MetadataSchema should be created. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
 | `params.metadataSchemaId` | `string` | No | The {metadata_schema} portion of the resource name with the format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}/metadataSchemas/{metadataschema}` If not provided, the MetadataStore's ID will be a UUID generated by the service. Must be 4-128 characters in length. Valid characters are `/a-z-/`. Must be unique across all MetadataSchemas in the parent Location. (Otherwise the request will fail with ALREADY_EXISTS, or PERMISSION_DENIED if the caller can't view the preexisting MetadataSchema.) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.metadataStores.metadataSchemas.get()`
 
@@ -4916,7 +4955,7 @@ Searches all of the resources in automl.googleapis.com, datalabeling.googleapis.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The location that the migratable resources should be searched from. It's the Vertex AI location that the resources can be migrated to, not the resources' original location. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migratableResources.batchMigrate()`
 
@@ -4925,7 +4964,7 @@ Batch migrates resources from ml.googleapis.com, automl.googleapis.com, and data
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The location of the migrated resource will live in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.migratableResources.operations`
 
@@ -4983,7 +5022,7 @@ Creates a ModelMonitor.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the ModelMonitor in. Format: `projects/{project}/locations/{location}` |
 | `params.modelMonitorId` | `string` | No | Optional. The ID to use for the Model Monitor, which will become the final component of the model monitor resource name. The maximum length is 63 characters, and valid characters are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.modelMonitors.patch()`
 
@@ -4993,7 +5032,7 @@ Updates a ModelMonitor.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Resource name of the ModelMonitor. Format: `projects/{project}/locations/{location}/modelMonitors/{model_monitor}`. |
 | `params.updateMask` | `string` | No | Required. Mask specifying which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.modelMonitors.get()`
 
@@ -5031,7 +5070,7 @@ Searches Model Monitoring Stats generated within a given time window.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.modelMonitor` | `string` | Yes | Required. ModelMonitor resource name. Format: `projects/{project}/locations/{location}/modelMonitors/{model_monitor}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.modelMonitors.searchModelMonitoringAlerts()`
 
@@ -5040,7 +5079,7 @@ Returns the Model Monitoring alerts.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.modelMonitor` | `string` | Yes | Required. ModelMonitor resource name. Format: `projects/{project}/locations/{location}/modelMonitors/{model_monitor}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.modelMonitors.operations`
 
@@ -5098,7 +5137,7 @@ Creates a ModelMonitoringJob.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the ModelMonitoringJob. Format: `projects/{project}/locations/{location}/modelMoniitors/{model_monitor}` |
 | `params.modelMonitoringJobId` | `string` | No | Optional. The ID to use for the Model Monitoring Job, which will become the final component of the model monitoring job resource name. The maximum length is 63 characters, and valid characters are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.modelMonitors.modelMonitoringJobs.get()`
 
@@ -5134,7 +5173,7 @@ Deletes a ModelMonitoringJob.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the NotebookRuntime resource. Format: `projects/{project}/locations/{location}/notebookRuntimes/{notebook_runtime}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookRuntimes.generateAccessToken()`
 
@@ -5143,7 +5182,7 @@ Internal only: Called from Compute Engine instance to obtain EUC for owner Anony
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource requesting the OAuth2 token. Format: `projects/{project}/locations/{location}/notebookRuntimes/{notebook_runtime}` `projects/{project}/locations/{location}/notebookExecutionJobs/{notebook_execution_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookRuntimes.assign()`
 
@@ -5152,7 +5191,7 @@ Assigns a NotebookRuntime to a user for a particular Notebook file. This method 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to get the NotebookRuntime assignment. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookRuntimes.get()`
 
@@ -5190,7 +5229,7 @@ Upgrades a NotebookRuntime.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the NotebookRuntime resource to be upgrade. Instead of checking whether the name is in valid NotebookRuntime resource name format, directly throw NotFound exception if there is no such NotebookRuntime in spanner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookRuntimes.start()`
 
@@ -5199,7 +5238,7 @@ Starts a NotebookRuntime.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the NotebookRuntime resource to be started. Instead of checking whether the name is in valid NotebookRuntime resource name format, directly throw NotFound exception if there is no such NotebookRuntime in spanner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookRuntimes.stop()`
 
@@ -5208,7 +5247,7 @@ Stops a NotebookRuntime.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the NotebookRuntime resource to be stopped. Instead of checking whether the name is in valid NotebookRuntime resource name format, directly throw NotFound exception if there is no such NotebookRuntime in spanner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.notebookRuntimes.operations`
 
@@ -5262,7 +5301,7 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the NotebookExecutionJob resource. Format: `projects/{project}/locations/{location}/notebookExecutionJobs/{notebook_execution_jobs}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookExecutionJobs.generateAccessToken()`
 
@@ -5271,7 +5310,7 @@ Internal only: Called from Compute Engine instance to obtain EUC for owner Anony
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource requesting the OAuth2 token. Format: `projects/{project}/locations/{location}/notebookRuntimes/{notebook_runtime}` `projects/{project}/locations/{location}/notebookExecutionJobs/{notebook_execution_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookExecutionJobs.create()`
 
@@ -5281,7 +5320,7 @@ Creates a NotebookExecutionJob.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the NotebookExecutionJob. Format: `projects/{project}/locations/{location}` |
 | `params.notebookExecutionJobId` | `string` | No | Optional. User specified ID for the NotebookExecutionJob. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.notebookExecutionJobs.get()`
 
@@ -5369,7 +5408,7 @@ Creates a PersistentResource.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the PersistentResource in. Format: `projects/{project}/locations/{location}` |
 | `params.persistentResourceId` | `string` | No | Required. The ID to use for the PersistentResource, which become the final component of the PersistentResource's resource name. The maximum length is 63 characters, and valid characters are `/^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.persistentResources.get()`
 
@@ -5405,7 +5444,7 @@ Updates a PersistentResource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Resource name of a PersistentResource. |
 | `params.updateMask` | `string` | No | Required. Specify the fields to be overwritten in the PersistentResource by the update method. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.persistentResources.reboot()`
 
@@ -5414,7 +5453,7 @@ Reboots a PersistentResource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the PersistentResource resource. Format: `projects/{project_id_or_number}/locations/{location_id}/persistentResources/{persistent_resource_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.persistentResources.operations`
 
@@ -5471,7 +5510,7 @@ Creates a TrainingPipeline. A created TrainingPipeline right away will be attemp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the TrainingPipeline in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.trainingPipelines.get()`
 
@@ -5508,7 +5547,7 @@ Cancels a TrainingPipeline. Starts asynchronous cancellation on the TrainingPipe
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the TrainingPipeline to cancel. Format: `projects/{project}/locations/{location}/trainingPipelines/{training_pipeline}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.trainingPipelines.operations`
 
@@ -5566,7 +5605,7 @@ Creates a PipelineJob. A PipelineJob will run immediately when created.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the PipelineJob in. Format: `projects/{project}/locations/{location}` |
 | `params.pipelineJobId` | `string` | No | The ID to use for the PipelineJob, which will become the final component of the PipelineJob name. If not provided, an ID will be automatically generated. This value should be less than 128 characters, and valid characters are `/a-z-/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.pipelineJobs.get()`
 
@@ -5604,7 +5643,7 @@ Batch deletes PipelineJobs The Operation is atomic. If it fails, none of the Pip
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the PipelineJobs' parent resource. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.pipelineJobs.cancel()`
 
@@ -5613,7 +5652,7 @@ Cancels a PipelineJob. Starts asynchronous cancellation on the PipelineJob. The 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the PipelineJob to cancel. Format: `projects/{project}/locations/{location}/pipelineJobs/{pipeline_job}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.pipelineJobs.batchCancel()`
 
@@ -5622,7 +5661,7 @@ Batch cancel PipelineJobs. Firstly the server will check if all the jobs are in 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the PipelineJobs' parent resource. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.pipelineJobs.operations`
 
@@ -5679,7 +5718,7 @@ Queries using a reasoning engine.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the ReasoningEngine resource to use. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.streamQuery()`
 
@@ -5688,7 +5727,7 @@ Streams queries using a reasoning engine.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the ReasoningEngine resource to use. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.create()`
 
@@ -5697,7 +5736,7 @@ Creates a reasoning engine.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the ReasoningEngine in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.get()`
 
@@ -5726,7 +5765,7 @@ Updates a reasoning engine.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the ReasoningEngine. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
 | `params.updateMask` | `string` | No | Optional. Mask specifying which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.delete()`
 
@@ -5829,7 +5868,7 @@ Create a Memory.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the ReasoningEngine to create the Memory under. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.memories.get()`
 
@@ -5847,7 +5886,7 @@ Update a Memory.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the Memory. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/memories/{memory}` |
 | `params.updateMask` | `string` | No | Optional. Mask specifying which fields to update. Supported fields: * `display_name` * `description` * `fact` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.memories.list()`
 
@@ -5859,6 +5898,7 @@ List Memories.
 | `params.filter` | `string` | No | Optional. The standard list filter. More detail in [AIP-160](https://google.aip.dev/160). Supported fields (equality match only): * `scope` (as a JSON string) |
 | `params.pageSize` | `integer` | No | Optional. The standard list page size. |
 | `params.pageToken` | `string` | No | Optional. The standard list page token. |
+| `params.orderBy` | `string` | No | Optional. The standard list order by string. If not specified, the default order is `create_time desc`. If specified, the default sorting order of provided fields is ascending. More detail in [AIP-132](https://google.aip.dev/132). Supported fields: * `create_time` * `update_time` |
 
 #### `projects.locations.reasoningEngines.memories.delete()`
 
@@ -5875,7 +5915,7 @@ Generate memories.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the ReasoningEngine to generate memories for. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.memories.retrieve()`
 
@@ -5884,7 +5924,7 @@ Retrieve memories.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the ReasoningEngine to retrieve memories from. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.reasoningEngines.memories.operations`
 
@@ -5932,6 +5972,95 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
 | `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
 
+### `projects.locations.reasoningEngines.a2a`
+
+### `projects.locations.reasoningEngines.a2a.v1`
+
+#### `projects.locations.reasoningEngines.a2a.v1.card()`
+
+Get request for reasoning engine instance via the A2A get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` |
+| `params.historyLength` | `string` | No | Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. |
+
+### `projects.locations.reasoningEngines.a2a.v1.message`
+
+#### `projects.locations.reasoningEngines.a2a.v1.message.stream()`
+
+Streams queries using a reasoning engine instance via the A2A streaming protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. e.g., v1/message:stream. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.reasoningEngines.a2a.v1.message.send()`
+
+Send post request for reasoning engine instance via the A2A post protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. |
+| `params.a2aEndpoint` | `string` | Yes | Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.reasoningEngines.a2a.v1.tasks`
+
+#### `projects.locations.reasoningEngines.a2a.v1.tasks.cancel()`
+
+Send post request for reasoning engine instance via the A2A post protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. |
+| `params.a2aEndpoint` | `string` | Yes | Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.reasoningEngines.a2a.v1.tasks.pushNotificationConfigs()`
+
+Get request for reasoning engine instance via the A2A get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` |
+| `params.historyLength` | `string` | No | Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. |
+
+#### `projects.locations.reasoningEngines.a2a.v1.tasks.a2aGetReasoningEngine()`
+
+Get request for reasoning engine instance via the A2A get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` |
+| `params.historyLength` | `string` | No | Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. |
+
+#### `projects.locations.reasoningEngines.a2a.v1.tasks.subscribe()`
+
+Stream get request for reasoning engine instance via the A2A stream get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123:subscribe`. |
+
+### `projects.locations.reasoningEngines.a2a.v1.tasks.pushNotificationConfigs`
+
+#### `projects.locations.reasoningEngines.a2a.v1.tasks.pushNotificationConfigs.a2aGetReasoningEngine()`
+
+Get request for reasoning engine instance via the A2A get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` |
+| `params.historyLength` | `string` | No | Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. |
+
 ### `projects.locations.reasoningEngines.sandboxEnvironments`
 
 #### `projects.locations.reasoningEngines.sandboxEnvironments.create()`
@@ -5941,7 +6070,7 @@ Creates a SandboxEnvironment in a given reasoning engine.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the reasoning engine to create the SandboxEnvironment in. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.sandboxEnvironments.get()`
 
@@ -5977,7 +6106,7 @@ Executes using a sandbox environment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the sandbox environment to execute. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sandboxEnvironments/{sandbox_environment}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.reasoningEngines.sandboxEnvironments.operations`
 
@@ -6034,7 +6163,7 @@ Creates a new Session.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the location to create the session in. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.sessions.get()`
 
@@ -6064,7 +6193,7 @@ Updates the specific Session.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the session. Format: 'projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sessions/{session}'. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reasoningEngines.sessions.delete()`
 
@@ -6081,7 +6210,7 @@ Appends an event to a given session.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the session to append event to. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sessions/{session}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.reasoningEngines.sessions.operations`
 
@@ -6151,7 +6280,7 @@ Creates a Schedule.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Schedule in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.schedules.delete()`
 
@@ -6188,7 +6317,7 @@ Pauses a Schedule. Will mark Schedule.state to 'PAUSED'. If the schedule is paus
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Schedule resource to be paused. Format: `projects/{project}/locations/{location}/schedules/{schedule}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.schedules.resume()`
 
@@ -6197,7 +6326,7 @@ Resumes a paused Schedule to start scheduling new runs. Will mark Schedule.state
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Schedule resource to be resumed. Format: `projects/{project}/locations/{location}/schedules/{schedule}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.schedules.patch()`
 
@@ -6207,7 +6336,7 @@ Updates an active or paused Schedule. When the Schedule is updated, new runs wil
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the Schedule. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. See google.protobuf.FieldMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.schedules.operations`
 
@@ -6264,7 +6393,7 @@ Creates a SpecialistPool.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent Project name for the new SpecialistPool. The form is `projects/{project}/locations/{location}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.specialistPools.get()`
 
@@ -6302,7 +6431,7 @@ Updates a SpecialistPool.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SpecialistPool. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.specialistPools.operations`
 
@@ -6359,7 +6488,7 @@ Creates a Tensorboard.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the Tensorboard in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.get()`
 
@@ -6377,7 +6506,7 @@ Updates a Tensorboard.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the Tensorboard. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}` |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Tensorboard resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field is overwritten if it's in the mask. If the user does not provide a mask then all fields are overwritten if new values are specified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.list()`
 
@@ -6481,7 +6610,7 @@ Creates a TensorboardExperiment.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Tensorboard to create the TensorboardExperiment in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}` |
 | `params.tensorboardExperimentId` | `string` | No | Required. The ID to use for the Tensorboard experiment, which becomes the final component of the Tensorboard experiment's resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.experiments.get()`
 
@@ -6499,7 +6628,7 @@ Updates a TensorboardExperiment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the TensorboardExperiment. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the TensorboardExperiment resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field is overwritten if it's in the mask. If the user does not provide a mask then all fields are overwritten if new values are specified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.experiments.list()`
 
@@ -6529,7 +6658,7 @@ Batch create TensorboardTimeSeries that belong to a TensorboardExperiment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the TensorboardExperiment to create the TensorboardTimeSeries in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` The TensorboardRuns referenced by the parent fields in the CreateTensorboardTimeSeriesRequest messages must be sub resources of this TensorboardExperiment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.experiments.write()`
 
@@ -6538,7 +6667,7 @@ Write time series data points of multiple TensorboardTimeSeries in multiple Tens
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.tensorboardExperiment` | `string` | Yes | Required. The resource name of the TensorboardExperiment to write data to. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.tensorboards.experiments.operations`
 
@@ -6596,7 +6725,7 @@ Creates a TensorboardRun.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the TensorboardExperiment to create the TensorboardRun in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` |
 | `params.tensorboardRunId` | `string` | No | Required. The ID to use for the Tensorboard run, which becomes the final component of the Tensorboard run's resource name. This value should be 1-128 characters, and valid characters are `/a-z-/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.experiments.runs.batchCreate()`
 
@@ -6605,7 +6734,7 @@ Batch create TensorboardRuns.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the TensorboardExperiment to create the TensorboardRuns in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}` The parent field in the CreateTensorboardRunRequest messages must match this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.experiments.runs.get()`
 
@@ -6623,7 +6752,7 @@ Updates a TensorboardRun.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the TensorboardRun. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the TensorboardRun resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field is overwritten if it's in the mask. If the user does not provide a mask then all fields are overwritten if new values are specified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.experiments.runs.list()`
 
@@ -6653,7 +6782,7 @@ Write time series data points into multiple TensorboardTimeSeries under a Tensor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.tensorboardRun` | `string` | Yes | Required. The resource name of the TensorboardRun to write data to. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.tensorboards.experiments.runs.operations`
 
@@ -6711,7 +6840,7 @@ Creates a TensorboardTimeSeries.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the TensorboardRun to create the TensorboardTimeSeries in. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}` |
 | `params.tensorboardTimeSeriesId` | `string` | No | Optional. The user specified unique ID to use for the TensorboardTimeSeries, which becomes the final component of the TensorboardTimeSeries's resource name. This value should match "a-z0-9{0, 127}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.experiments.runs.timeSeries.get()`
 
@@ -6729,7 +6858,7 @@ Updates a TensorboardTimeSeries.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the TensorboardTimeSeries. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the TensorboardTimeSeries resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field is overwritten if it's in the mask. If the user does not provide a mask then all fields are overwritten if new values are specified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tensorboards.experiments.runs.timeSeries.list()`
 
@@ -6778,7 +6907,7 @@ Exports a TensorboardTimeSeries' data. Data is returned in paginated responses.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.tensorboardTimeSeries` | `string` | Yes | Required. The resource name of the TensorboardTimeSeries to export data from. Format: `projects/{project}/locations/{location}/tensorboards/{tensorboard}/experiments/{experiment}/runs/{run}/timeSeries/{time_series}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.tensorboards.experiments.runs.timeSeries.operations`
 
@@ -6835,7 +6964,7 @@ Creates a Study. A resource name will be generated after creation of the Study.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the CustomJob in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.get()`
 
@@ -6870,7 +6999,7 @@ Looks a study up using the user-defined display_name field instead of the fully 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to get the Study from. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.studies.operations`
 
@@ -6927,7 +7056,7 @@ Adds one or more Trials to a Study, with parameter values suggested by Vertex AI
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project and location that the Study belongs to. Format: `projects/{project}/locations/{location}/studies/{study}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.create()`
 
@@ -6936,7 +7065,7 @@ Adds a user provided Trial to a Study.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Study to create the Trial in. Format: `projects/{project}/locations/{location}/studies/{study}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.get()`
 
@@ -6963,7 +7092,7 @@ Adds a measurement of the objective metrics to a Trial. This measurement is assu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.trialName` | `string` | Yes | Required. The name of the trial to add measurement. Format: `projects/{project}/locations/{location}/studies/{study}/trials/{trial}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.complete()`
 
@@ -6972,7 +7101,7 @@ Marks a Trial as complete.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The Trial's name. Format: `projects/{project}/locations/{location}/studies/{study}/trials/{trial}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.delete()`
 
@@ -6989,7 +7118,7 @@ Checks whether a Trial should stop or not. Returns a long-running operation. Whe
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.trialName` | `string` | Yes | Required. The Trial's name. Format: `projects/{project}/locations/{location}/studies/{study}/trials/{trial}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.stop()`
 
@@ -6998,7 +7127,7 @@ Stops a Trial.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The Trial's name. Format: `projects/{project}/locations/{location}/studies/{study}/trials/{trial}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.studies.trials.listOptimalTrials()`
 
@@ -7007,7 +7136,7 @@ Lists the pareto-optimal Trials for multi-objective Study or the optimal Trials 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the Study that the optimal Trial belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.studies.trials.operations`
 
@@ -7064,7 +7193,7 @@ Creates a RagCorpus.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Location to create the RagCorpus in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.ragCorpora.patch()`
 
@@ -7073,7 +7202,7 @@ Updates a RagCorpus.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the RagCorpus. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.ragCorpora.get()`
 
@@ -7157,7 +7286,7 @@ Import files from Google Cloud Storage or Google Drive into a RagCorpus.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the RagCorpus resource into which to import files. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.ragCorpora.ragFiles.get()`
 
@@ -7232,6 +7361,20 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
 | `params.timeout` | `string` | No | The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. |
 
+### `projects.publishers`
+
+### `projects.publishers.models`
+
+#### `projects.publishers.models.enableModel()`
+
+Enables model for the project if prerequisites are met (e.g. completed questionnaire and consents, or an active Private Offer).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project requesting access for named model. Format: `projects/{project}` |
+| `params.name` | `string` | Yes | Required. The name of the PublisherModel resource. Format: `publishers/{publisher}/models/{publisher_model}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.modelGardenEula`
 
 #### `projects.modelGardenEula.check()`
@@ -7241,7 +7384,7 @@ Checks the EULA acceptance status of a publisher model.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project requesting access for named model. The format is `projects/{project}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.modelGardenEula.accept()`
 
@@ -7250,7 +7393,7 @@ Accepts the EULA acceptance status of a publisher model.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project requesting access for named model. The format is `projects/{project}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `datasets`
 
@@ -7261,7 +7404,7 @@ Creates a Dataset.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | No | Required. The resource name of the Location to create the Dataset in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datasets.get()`
 
@@ -7280,7 +7423,7 @@ Updates a Dataset.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of the Dataset. Format: `projects/{project}/locations/{location}/datasets/{dataset}` |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask. Updatable fields: * `display_name` * `description` * `labels` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datasets.list()`
 
@@ -7312,7 +7455,7 @@ Create a version from a Dataset.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the Dataset resource. Format: `projects/{project}/locations/{location}/datasets/{dataset}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datasets.datasetVersions.patch()`
 
@@ -7322,7 +7465,7 @@ Updates a DatasetVersion.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of the DatasetVersion. Format: `projects/{project}/locations/{location}/datasets/{dataset}/datasetVersions/{dataset_version}` |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see google.protobuf.FieldMask. Updatable fields: * `display_name` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datasets.datasetVersions.delete()`
 
@@ -7371,7 +7514,7 @@ Creates a BatchPredictionJob. A BatchPredictionJob once created will right away 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | No | Required. The resource name of the Location to create the BatchPredictionJob in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `batchPredictionJobs.get()`
 
@@ -7402,13 +7545,13 @@ Perform an online prediction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `endpoints.predictLongRunning()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `endpoints.fetchPredictOperation()`
 
@@ -7417,7 +7560,7 @@ Fetch an asynchronous online prediction operation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `endpoints.countTokens()`
 
@@ -7426,7 +7569,7 @@ Perform a token counting.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to perform token counting. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `endpoints.generateContent()`
 
@@ -7435,7 +7578,7 @@ Generate content with multimodal inputs.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `endpoints.streamGenerateContent()`
 
@@ -7444,7 +7587,7 @@ Generate content with multimodal inputs with streaming support.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `endpoints.computeTokens()`
 
@@ -7453,7 +7596,7 @@ Return a list of tokens based on the input text.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to get lists of tokens and token ids. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `endpoints.chat`
 
@@ -7464,7 +7607,7 @@ Exposes an OpenAI-compatible endpoint for chat completions.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `publishers`
 
@@ -7477,13 +7620,13 @@ Perform an online prediction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publishers.models.predictLongRunning()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publishers.models.fetchPredictOperation()`
 
@@ -7492,7 +7635,7 @@ Fetch an asynchronous online prediction operation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to serve the prediction. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` or `projects/{project}/locations/{location}/publishers/{publisher}/models/{model}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publishers.models.countTokens()`
 
@@ -7501,7 +7644,7 @@ Perform a token counting.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to perform token counting. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publishers.models.generateContent()`
 
@@ -7510,7 +7653,7 @@ Generate content with multimodal inputs.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publishers.models.streamGenerateContent()`
 
@@ -7519,7 +7662,7 @@ Generate content with multimodal inputs with streaming support.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publishers.models.computeTokens()`
 
@@ -7528,7 +7671,7 @@ Return a list of tokens based on the input text.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to get lists of tokens and token ids. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publishers.models.get()`
 
@@ -7567,7 +7710,7 @@ Queries using a reasoning engine.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the ReasoningEngine resource to use. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reasoningEngines.streamQuery()`
 
@@ -7576,7 +7719,7 @@ Streams queries using a reasoning engine.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the ReasoningEngine resource to use. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reasoningEngines.create()`
 
@@ -7585,7 +7728,7 @@ Creates a reasoning engine.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | No | Required. The resource name of the Location to create the ReasoningEngine in. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reasoningEngines.get()`
 
@@ -7614,7 +7757,7 @@ Updates a reasoning engine.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the ReasoningEngine. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
 | `params.updateMask` | `string` | No | Optional. Mask specifying which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reasoningEngines.delete()`
 
@@ -7634,7 +7777,7 @@ Create a Memory.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the ReasoningEngine to create the Memory under. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reasoningEngines.memories.get()`
 
@@ -7652,7 +7795,7 @@ Update a Memory.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the Memory. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/memories/{memory}` |
 | `params.updateMask` | `string` | No | Optional. Mask specifying which fields to update. Supported fields: * `display_name` * `description` * `fact` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reasoningEngines.memories.list()`
 
@@ -7664,6 +7807,7 @@ List Memories.
 | `params.filter` | `string` | No | Optional. The standard list filter. More detail in [AIP-160](https://google.aip.dev/160). Supported fields (equality match only): * `scope` (as a JSON string) |
 | `params.pageSize` | `integer` | No | Optional. The standard list page size. |
 | `params.pageToken` | `string` | No | Optional. The standard list page token. |
+| `params.orderBy` | `string` | No | Optional. The standard list order by string. If not specified, the default order is `create_time desc`. If specified, the default sorting order of provided fields is ascending. More detail in [AIP-132](https://google.aip.dev/132). Supported fields: * `create_time` * `update_time` |
 
 #### `reasoningEngines.memories.delete()`
 
@@ -7680,7 +7824,7 @@ Generate memories.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the ReasoningEngine to generate memories for. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reasoningEngines.memories.retrieve()`
 
@@ -7689,7 +7833,96 @@ Retrieve memories.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the ReasoningEngine to retrieve memories from. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `reasoningEngines.a2a`
+
+### `reasoningEngines.a2a.v1`
+
+#### `reasoningEngines.a2a.v1.card()`
+
+Get request for reasoning engine instance via the A2A get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` |
+| `params.historyLength` | `string` | No | Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. |
+
+### `reasoningEngines.a2a.v1.message`
+
+#### `reasoningEngines.a2a.v1.message.stream()`
+
+Streams queries using a reasoning engine instance via the A2A streaming protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. e.g., v1/message:stream. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `reasoningEngines.a2a.v1.message.send()`
+
+Send post request for reasoning engine instance via the A2A post protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. |
+| `params.a2aEndpoint` | `string` | Yes | Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `reasoningEngines.a2a.v1.tasks`
+
+#### `reasoningEngines.a2a.v1.tasks.cancel()`
+
+Send post request for reasoning engine instance via the A2A post protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. |
+| `params.a2aEndpoint` | `string` | Yes | Required. The a2a endpoint path, captured from the URL. e.g., v1/message:send |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `reasoningEngines.a2a.v1.tasks.pushNotificationConfigs()`
+
+Get request for reasoning engine instance via the A2A get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` |
+| `params.historyLength` | `string` | No | Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. |
+
+#### `reasoningEngines.a2a.v1.tasks.a2aGetReasoningEngine()`
+
+Get request for reasoning engine instance via the A2A get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` |
+| `params.historyLength` | `string` | No | Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. |
+
+#### `reasoningEngines.a2a.v1.tasks.subscribe()`
+
+Stream get request for reasoning engine instance via the A2A stream get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123:subscribe`. |
+
+### `reasoningEngines.a2a.v1.tasks.pushNotificationConfigs`
+
+#### `reasoningEngines.a2a.v1.tasks.pushNotificationConfigs.a2aGetReasoningEngine()`
+
+Get request for reasoning engine instance via the A2A get protocol apis.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The full resource path of the reasoning engine, captured from the URL. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
+| `params.a2aEndpoint` | `string` | Yes | Required. The http endpoint extracted from the URL path. i.e. `v1/tasks/123` |
+| `params.historyLength` | `string` | No | Optional. The optional query parameter for the getTask endpoint. Mapped from "?history_length=". This indicates how many turns of history to return. If not set, the default value is 0, which means all the history will be returned. |
 
 ### `reasoningEngines.sessions`
 
@@ -7700,7 +7933,7 @@ Creates a new Session.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the location to create the session in. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reasoningEngines.sessions.get()`
 
@@ -7730,7 +7963,7 @@ Updates the specific Session.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the session. Format: 'projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sessions/{session}'. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to control which fields get updated. If the mask is not present, all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reasoningEngines.sessions.delete()`
 
@@ -7747,7 +7980,7 @@ Appends an event to a given session.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the session to append event to. Format: `projects/{project}/locations/{location}/reasoningEngines/{reasoning_engine}/sessions/{session}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `reasoningEngines.sessions.events`
 
@@ -7771,4 +8004,4 @@ Upload a file into a RagCorpus.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the RagCorpus resource into which to upload the file. Format: `projects/{project}/locations/{location}/ragCorpora/{rag_corpus}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
