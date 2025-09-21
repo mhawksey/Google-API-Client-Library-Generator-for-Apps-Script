@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Datastore API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:20 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:12:15 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:33 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:40 GMT
 
 
@@ -23,7 +23,7 @@ Exports a copy of all or a subset of entities from Google Cloud Datastore to ano
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. Project ID against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.import()`
 
@@ -32,7 +32,7 @@ Imports entities into Google Cloud Datastore. Existing entities with the same ke
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. Project ID against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.lookup()`
 
@@ -41,7 +41,7 @@ Looks up entities by key.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.runQuery()`
 
@@ -50,7 +50,7 @@ Queries for entities.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.runAggregationQuery()`
 
@@ -59,7 +59,7 @@ Runs an aggregation query.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.beginTransaction()`
 
@@ -68,7 +68,7 @@ Begins a new transaction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.commit()`
 
@@ -77,7 +77,7 @@ Commits a transaction, optionally creating, deleting or modifying some entities.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.rollback()`
 
@@ -86,7 +86,7 @@ Rolls back a transaction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.allocateIds()`
 
@@ -95,7 +95,7 @@ Allocates IDs for the given keys, which is useful for referencing an entity befo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.reserveIds()`
 
@@ -104,7 +104,7 @@ Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the project against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.operations`
 
@@ -152,7 +152,7 @@ Creates the specified index. A newly created index's initial state is `CREATING`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Project ID against which to make the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.indexes.delete()`
 
