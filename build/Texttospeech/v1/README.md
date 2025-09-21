@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Text-to-Speech API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:08 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:53:36 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:39 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:46 GMT
 
 
@@ -32,7 +32,7 @@ Synthesizes speech synchronously: receive results after all text input has been 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
 
@@ -45,7 +45,7 @@ Synthesizes long form text asynchronously.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The resource states of the request in the form of `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.operations`
 
@@ -85,4 +85,4 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
