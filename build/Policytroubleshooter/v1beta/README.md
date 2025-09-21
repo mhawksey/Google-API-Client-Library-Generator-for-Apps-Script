@@ -4,8 +4,8 @@ Auto-generated client library for using the **Policy Troubleshooter API (version
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:52:00 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:36:49 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:44:33 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:44:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:44 GMT
 
 
@@ -22,4 +22,4 @@ Checks whether a member has a specific permission for a specific resource, and e
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
