@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud DNS API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:25 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:13:58 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:23:41 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:23:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:08 GMT
 
 
@@ -26,8 +26,8 @@ Enumerates ResourceRecordSets that you have created but not yet deleted.
 | `params.managedZone` | `string` | Yes | Identifies the managed zone addressed by this request. Can be the managed zone name or ID. |
 | `params.maxResults` | `integer` | No | Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return. |
 | `params.pageToken` | `string` | No | Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request. |
-| `params.name` | `string` | No | Restricts the list to return only records with this fully qualified domain name. |
-| `params.type` | `string` | No | Restricts the list to return only records of this type. If present, the "name" parameter must also be present. |
+| `params.name` | `string` | No | Restricts the list to return only records with this fully qualified domain name. Mutually exclusive with the {@code filter} field. |
+| `params.type` | `string` | No | Restricts the list to return only records of this type. If present, the "name" parameter must also be present. Mutually exclusive with the {@code filter} field. |
 
 #### `resourceRecordSets.create()`
 
@@ -38,7 +38,7 @@ Creates a new ResourceRecordSet.
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.managedZone` | `string` | Yes | Identifies the managed zone addressed by this request. Can be the managed zone name or ID. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resourceRecordSets.get()`
 
@@ -75,7 +75,7 @@ Applies a partial update to an existing ResourceRecordSet.
 | `params.name` | `string` | Yes | Fully qualified domain name. |
 | `params.type` | `string` | Yes | RRSet type. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `changes`
 
@@ -88,7 +88,7 @@ Atomically updates the ResourceRecordSet collection.
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.managedZone` | `string` | Yes | Identifies the managed zone addressed by this request. Can be the managed zone name or ID. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `changes.get()`
 
@@ -186,7 +186,7 @@ Creates a new ManagedZone.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedZones.get()`
 
@@ -228,7 +228,7 @@ Applies a partial update to an existing ManagedZone.
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.managedZone` | `string` | Yes | Identifies the managed zone addressed by this request. Can be the managed zone name or ID. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedZones.update()`
 
@@ -239,7 +239,7 @@ Updates an existing ManagedZone.
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.managedZone` | `string` | Yes | Identifies the managed zone addressed by this request. Can be the managed zone name or ID. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedZones.setIamPolicy()`
 
@@ -248,7 +248,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedZones.getIamPolicy()`
 
@@ -257,7 +257,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedZones.testIamPermissions()`
 
@@ -266,23 +266,23 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `policies`
 
 #### `policies.create()`
 
-Creates a new Policy.
+Creates a new policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `policies.get()`
 
-Fetches the representation of an existing Policy.
+Fetches the representation of an existing policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -292,7 +292,7 @@ Fetches the representation of an existing Policy.
 
 #### `policies.list()`
 
-Enumerates all Policies associated with a project.
+Enumerates all policies associated with a project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -302,7 +302,7 @@ Enumerates all Policies associated with a project.
 
 #### `policies.delete()`
 
-Deletes a previously created Policy. Fails if the policy is still being referenced by a network.
+Deletes a previously created policy. Fails if the policy is still being referenced by a network.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -312,25 +312,25 @@ Deletes a previously created Policy. Fails if the policy is still being referenc
 
 #### `policies.patch()`
 
-Applies a partial update to an existing Policy.
+Applies a partial update to an existing policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.policy` | `string` | Yes | User given friendly name of the policy addressed by this request. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `policies.update()`
 
-Updates an existing Policy.
+Updates an existing policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.policy` | `string` | Yes | User given friendly name of the policy addressed by this request. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `responsePolicies`
 
@@ -342,7 +342,7 @@ Creates a new Response Policy
 |---|---|---|---|
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `responsePolicies.get()`
 
@@ -383,7 +383,7 @@ Applies a partial update to an existing Response Policy.
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.responsePolicy` | `string` | Yes | User assigned name of the response policy addressed by this request. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `responsePolicies.update()`
 
@@ -394,7 +394,7 @@ Updates an existing Response Policy.
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.responsePolicy` | `string` | Yes | User assigned name of the Response Policy addressed by this request. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `responsePolicyRules`
 
@@ -407,7 +407,7 @@ Creates a new Response Policy Rule.
 | `params.project` | `string` | Yes | Identifies the project addressed by this request. |
 | `params.responsePolicy` | `string` | Yes | User assigned name of the Response Policy containing the Response Policy Rule. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `responsePolicyRules.get()`
 
@@ -452,7 +452,7 @@ Applies a partial update to an existing Response Policy Rule.
 | `params.responsePolicy` | `string` | Yes | User assigned name of the Response Policy containing the Response Policy Rule. |
 | `params.responsePolicyRule` | `string` | Yes | User assigned name of the Response Policy Rule addressed by this request. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `responsePolicyRules.update()`
 
@@ -464,4 +464,4 @@ Updates an existing Response Policy Rule.
 | `params.responsePolicy` | `string` | Yes | User assigned name of the Response Policy containing the Response Policy Rule. |
 | `params.responsePolicyRule` | `string` | Yes | User assigned name of the Response Policy Rule addressed by this request. |
 | `params.clientOperationId` | `string` | No | For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
