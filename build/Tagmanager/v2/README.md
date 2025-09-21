@@ -4,8 +4,8 @@ Auto-generated client library for using the **Tag Manager API (version: v2)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:55 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:53:23 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:26 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:33 GMT
 
 
@@ -41,7 +41,7 @@ Updates a GTM Account.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Account's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the account in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.user_permissions`
 
@@ -52,7 +52,7 @@ Creates a user's Account & Container access.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Account's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.user_permissions.list()`
 
@@ -78,7 +78,7 @@ Updates a user's Account & Container access.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM UserPermission's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.user_permissions.delete()`
 
@@ -97,7 +97,7 @@ Creates a Container.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Account's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.list()`
 
@@ -141,7 +141,7 @@ Updates a Container.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Container's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the container in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.combine()`
 
@@ -213,7 +213,7 @@ Creates a Workspace.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM parent Container's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.delete()`
 
@@ -239,7 +239,7 @@ Updates a Workspace.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Workspace's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the workspace in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.list()`
 
@@ -274,7 +274,7 @@ Resolves a merge conflict for a workspace entity by updating it to the resolved 
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Workspace's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the entity_in_workspace in the merge conflict. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.quick_preview()`
 
@@ -291,7 +291,7 @@ Creates a Container Version from the entities present in the workspace, deletes 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.containers.workspaces.variables`
 
@@ -302,7 +302,7 @@ Creates a GTM Variable.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.variables.list()`
 
@@ -329,7 +329,7 @@ Updates a GTM Variable.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Variable's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the variable in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.variables.delete()`
 
@@ -395,7 +395,7 @@ Creates a GTM Trigger.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.triggers.list()`
 
@@ -422,7 +422,7 @@ Updates a GTM Trigger.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Trigger's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the trigger in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.triggers.delete()`
 
@@ -450,7 +450,7 @@ Creates a GTM Tag.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.tags.list()`
 
@@ -477,7 +477,7 @@ Updates a GTM Tag.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Tag's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the tag in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.tags.delete()`
 
@@ -505,7 +505,7 @@ Creates a Google tag config.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.gtag_config.list()`
 
@@ -532,7 +532,7 @@ Updates a Google tag config.
 |---|---|---|---|
 | `params.path` | `string` | Yes | Google tag config's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the config in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.gtag_config.delete()`
 
@@ -551,7 +551,7 @@ Creates a GTM Custom Template.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.templates.import_from_gallery()`
 
@@ -590,7 +590,7 @@ Updates a GTM Template.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Custom Template's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the templates in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.templates.delete()`
 
@@ -618,7 +618,7 @@ Creates a GTM Folder.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.folders.list()`
 
@@ -654,7 +654,7 @@ Updates a GTM Folder.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Folder's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the folder in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.folders.delete()`
 
@@ -674,7 +674,7 @@ Moves entities to a GTM Folder. If {folder_id} in the request path equals 0, thi
 | `params.tagId` | `string` | No | The tags to be moved to the folder. |
 | `params.variableId` | `string` | No | The variables to be moved to the folder. |
 | `params.triggerId` | `string` | No | The triggers to be moved to the folder. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.folders.revert()`
 
@@ -694,7 +694,7 @@ Creates a GTM Zone.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.zones.list()`
 
@@ -721,7 +721,7 @@ Updates a GTM Zone.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Zone's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the zone in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.zones.delete()`
 
@@ -749,7 +749,7 @@ Creates a GTM Client.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.clients.list()`
 
@@ -776,7 +776,7 @@ Updates a GTM Client.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Client's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the client in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.clients.delete()`
 
@@ -804,7 +804,7 @@ Creates a GTM Transformation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Workspace's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.transformations.list()`
 
@@ -831,7 +831,7 @@ Updates a GTM Transformation.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Transformation's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the transformation in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.workspaces.transformations.delete()`
 
@@ -869,7 +869,7 @@ Updates a Container Version.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM ContainerVersion's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the container version in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.versions.delete()`
 
@@ -941,7 +941,7 @@ Creates a GTM Environment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | GTM Container's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.environments.list()`
 
@@ -968,7 +968,7 @@ Updates a GTM Environment.
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Environment's API relative path. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the environment in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.environments.delete()`
 
@@ -985,4 +985,4 @@ Re-generates the authorization code for a GTM Environment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.path` | `string` | Yes | GTM Environment's API relative path. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
