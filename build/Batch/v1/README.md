@@ -4,8 +4,8 @@ Auto-generated client library for using the **Batch API (version: v1)** in Googl
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:12 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:53:49 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:05:30 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:05:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:48 GMT
 
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.jobs`
 
@@ -87,7 +87,7 @@ Create a Job.
 | `params.parent` | `string` | Yes | Required. The parent resource name where the Job will be created. Pattern: "projects/{project}/locations/{location}" |
 | `params.jobId` | `string` | No | ID used to uniquely identify the Job within its parent scope. This field should contain at most 63 characters and must start with lowercase characters. Only lowercase characters, numbers and '-' are accepted. The '-' character cannot be the first or the last one. A system generated ID will be used if the field is not set. The job.name field in the request will be ignored and the created resource name of the Job will be "{parent}/jobs/{job_id}". |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.get()`
 
@@ -114,7 +114,7 @@ Cancel a Job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Job name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.list()`
 
@@ -160,4 +160,4 @@ Report agent's state, e.g. agent status and tasks information
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: projects/{project}/locations/{location} {project} should be a project number. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
