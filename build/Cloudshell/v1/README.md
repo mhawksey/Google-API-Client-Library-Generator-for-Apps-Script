@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Shell API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:36 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:03:24 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:46 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:44 GMT
 
 
@@ -50,7 +50,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users`
 
@@ -71,7 +71,7 @@ Starts an existing environment, allowing clients to connect to it. The returned 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.environments.authorize()`
 
@@ -80,7 +80,7 @@ Sends OAuth credentials to a running environment on behalf of a user. When this 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the resource that should receive the credentials, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.environments.addPublicKey()`
 
@@ -89,7 +89,7 @@ Adds a public SSH key to an environment, allowing clients with the corresponding
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environment` | `string` | Yes | Environment this key should be added to, e.g. `users/me/environments/default`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.environments.removePublicKey()`
 
@@ -98,4 +98,4 @@ Removes a public SSH key from an environment. Clients will no longer be able to 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.environment` | `string` | Yes | Environment this key should be removed from, e.g. `users/me/environments/default`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
