@@ -4,8 +4,8 @@ Auto-generated client library for using the **BigQuery Reservation API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:34 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:54:23 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:05:57 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:05:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:19 GMT
 
 
@@ -56,7 +56,7 @@ Updates a BI reservation. Only fields specified in the `field_mask` are updated.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the singleton BI reservation. Reservation names have the form `projects/{project_id}/locations/{location_id}/biReservation`. |
 | `params.updateMask` | `string` | No | A list of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.reservations`
 
@@ -68,7 +68,7 @@ Creates a new reservation resource.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Project, location. E.g., `projects/myproject/locations/US` |
 | `params.reservationId` | `string` | No | The reservation ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reservations.list()`
 
@@ -104,7 +104,7 @@ Updates an existing reservation resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the reservation, e.g., `projects/*/locations/*/reservations/team1-prod`. The reservation_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reservations.failoverReservation()`
 
@@ -113,7 +113,7 @@ Fail over a reservation to the secondary location. The operation should be done 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the reservation to failover. E.g., `projects/myproject/locations/US/reservations/team1-prod` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reservations.getIamPolicy()`
 
@@ -135,7 +135,7 @@ Sets an access control policy for a resource. Replaces any existing policy. Supp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reservations.testIamPermissions()`
 
@@ -144,7 +144,7 @@ Gets your permissions on a resource. Returns an empty set of permissions if the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.reservations.assignments`
 
@@ -160,7 +160,7 @@ Creates an assignment object which allows the given project to submit jobs of a 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name of the assignment E.g. `projects/myproject/locations/US/reservations/team1-prod` |
 | `params.assignmentId` | `string` | No | The optional assignment ID. Assignment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. Max length is 64 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reservations.assignments.list()`
 
@@ -199,7 +199,7 @@ Moves an assignment under a new reservation. This differs from removing an exist
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the assignment, e.g. `projects/myproject/locations/US/reservations/team1-prod/assignments/123` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reservations.assignments.patch()`
 
@@ -209,7 +209,7 @@ Updates an existing assignment. Only the `priority` field can be updated.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the resource. E.g.: `projects/myproject/locations/US/reservations/team1-prod/assignments/123`. The assignment_id must only contain lower case alphanumeric characters or dashes and the max length is 64 characters. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reservations.assignments.getIamPolicy()`
 
@@ -231,7 +231,7 @@ Sets an access control policy for a resource. Replaces any existing policy. Supp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reservations.assignments.testIamPermissions()`
 
@@ -240,7 +240,7 @@ Gets your permissions on a resource. Returns an empty set of permissions if the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.capacityCommitments`
 
@@ -253,7 +253,7 @@ Creates a new capacity commitment resource.
 | `params.parent` | `string` | Yes | Required. Resource name of the parent reservation. E.g., `projects/myproject/locations/US` |
 | `params.enforceSingleAdminProjectPerOrg` | `boolean` | No | If true, fail the request if another project in the organization has a capacity commitment. |
 | `params.capacityCommitmentId` | `string` | No | The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.capacityCommitments.list()`
 
@@ -290,7 +290,7 @@ Updates an existing capacity commitment. Only `plan` and `renewal_plan` fields c
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the capacity commitment, e.g., `projects/myproject/locations/US/capacityCommitments/123` The commitment_id must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. |
 | `params.updateMask` | `string` | No | Standard field mask for the set of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.capacityCommitments.split()`
 
@@ -299,7 +299,7 @@ Splits capacity commitment to two commitments of the same plan and `commitment_e
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name e.g.,: `projects/myproject/locations/US/capacityCommitments/123` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.capacityCommitments.merge()`
 
@@ -308,7 +308,7 @@ Merges capacity commitments of the same plan into a single commitment. The resul
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Parent resource that identifies admin project and location e.g., `projects/myproject/locations/us` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.reservationGroups`
 
@@ -320,7 +320,7 @@ Creates a new reservation group.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Project, location. E.g., `projects/myproject/locations/US` |
 | `params.reservationGroupId` | `string` | No | Required. The reservation group ID. It must only contain lower case alphanumeric characters or dashes. It must start with a letter and must not end with a dash. Its maximum length is 64 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.reservationGroups.get()`
 
