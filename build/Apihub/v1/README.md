@@ -4,8 +4,8 @@ Auto-generated client library for using the **API hub API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:22 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:52:40 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:26 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:40 GMT
 
 
@@ -25,7 +25,7 @@ Search across API-Hub resources.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The resource name of the location which will be of the type `projects/{project_id}/locations/{location_id}`. This field is used to identify the instance of API-Hub in which resources should be searched. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.collectApiData()`
 
@@ -34,7 +34,7 @@ Collect API data from a source and push it to Hub's collect layer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The regional location of the API hub instance and its resources. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lookupRuntimeProjectAttachment()`
 
@@ -54,7 +54,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -100,7 +100,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.plugins`
 
@@ -119,7 +119,7 @@ Enables a plugin. The `state` of the plugin after enabling is `ENABLED`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the plugin to enable. Format: `projects/{project}/locations/{location}/plugins/{plugin}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.plugins.disable()`
 
@@ -128,7 +128,7 @@ Disables a plugin. The `state` of the plugin after disabling is `DISABLED`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the plugin to disable. Format: `projects/{project}/locations/{location}/plugins/{plugin}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.plugins.create()`
 
@@ -138,7 +138,7 @@ Create an API Hub plugin resource in the API hub. Once a plugin is created, it c
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this plugin will be created. Format: `projects/{project}/locations/{location}`. |
 | `params.pluginId` | `string` | No | Optional. The ID to use for the Plugin resource, which will become the final component of the Plugin's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another Plugin resource in the API hub instance. * If not provided, a system generated id will be used. This value should be 4-63 characters, overall resource name which will be of format `projects/{project}/locations/{location}/plugins/{plugin}`, its length is limited to 1000 characters and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.plugins.list()`
 
@@ -175,7 +175,7 @@ Update the styleGuide to be used for liniting in by API hub.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the style guide. Format: `projects/{project}/locations/{location}/plugins/{plugin}/styleGuide` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.plugins.instances`
 
@@ -187,7 +187,7 @@ Creates a Plugin instance in the API hub.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the plugin instance resource. Format: `projects/{project}/locations/{location}/plugins/{plugin}` |
 | `params.pluginInstanceId` | `string` | No | Optional. The ID to use for the plugin instance, which will become the final component of the plugin instance's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another plugin instance in the plugin resource. * If not provided, a system generated id will be used. This value should be 4-63 characters, and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.plugins.instances.executeAction()`
 
@@ -196,7 +196,7 @@ Executes a plugin instance in the API hub.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the plugin instance to execute. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.plugins.instances.get()`
 
@@ -224,7 +224,7 @@ Enables a plugin instance in the API hub.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the plugin instance to enable. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.plugins.instances.disableAction()`
 
@@ -233,7 +233,7 @@ Disables a plugin instance in the API hub.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the plugin instance to disable. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.plugins.instances.patch()`
 
@@ -247,7 +247,7 @@ Updates a plugin instance in the API hub. The following fields in the plugin_ins
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The unique name of the plugin instance resource. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.plugins.instances.delete()`
 
@@ -256,6 +256,15 @@ Deletes a plugin instance in the API hub.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the plugin instance to delete. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}`. |
+
+#### `projects.locations.plugins.instances.manageSourceData()`
+
+Manages data for a given plugin instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the plugin instance for which data needs to be managed. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.plugins.styleGuide`
 
@@ -277,7 +286,7 @@ Create an API resource in the API hub. Once an API resource is created, versions
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for the API resource. Format: `projects/{project}/locations/{location}` |
 | `params.apiId` | `string` | No | Optional. The ID to use for the API resource, which will become the final component of the API's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another API resource in the API hub. * If not provided, a system generated id will be used. This value should be 4-500 characters, and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.get()`
 
@@ -326,7 +335,7 @@ Update an API resource in the API hub. The following fields in the API can be up
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the API resource in the API Hub. Format: `projects/{project}/locations/{location}/apis/{api}` |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.delete()`
 
@@ -347,7 +356,7 @@ Create an API version for an API resource in the API hub.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for API version. Format: `projects/{project}/locations/{location}/apis/{api}` |
 | `params.versionId` | `string` | No | Optional. The ID to use for the API version, which will become the final component of the version's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another version in the API resource. * If not provided, a system generated id will be used. This value should be 4-500 characters, overall resource name which will be of format `projects/{project}/locations/{location}/apis/{api}/versions/{version}`, its length is limited to 700 characters and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.versions.get()`
 
@@ -392,7 +401,7 @@ Update API version. The following fields in the version can be updated currently
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the version. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.versions.delete()`
 
@@ -413,7 +422,7 @@ Add a spec to an API version in the API hub. Multiple specs can be added to an A
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for Spec. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` |
 | `params.specId` | `string` | No | Optional. The ID to use for the spec, which will become the final component of the spec's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another spec in the API resource. * If not provided, a system generated id will be used. This value should be 4-500 characters, overall resource name which will be of format `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}`, its length is limited to 1000 characters and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.versions.specs.get()`
 
@@ -462,7 +471,7 @@ Update spec. The following fields in the spec can be updated:
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the spec. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.versions.specs.delete()`
 
@@ -479,7 +488,7 @@ Lints the requested spec and updates the corresponding API Spec with the lint re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the spec to be linted. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/specs/{spec}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.apis.versions.operations`
 
@@ -491,7 +500,7 @@ Create an apiOperation in an API version. An apiOperation can be created only if
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for the operation resource. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}` |
 | `params.apiOperationId` | `string` | No | Optional. The ID to use for the operation resource, which will become the final component of the operation's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another operation resource in the API hub. * If not provided, a system generated id will be used. This value should be 4-500 characters, overall resource name which will be of format `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}`, its length is limited to 700 characters, and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.versions.operations.get()`
 
@@ -532,7 +541,7 @@ Update an operation in an API version. The following fields in the ApiOperation 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the operation. Format: `projects/{project}/locations/{location}/apis/{api}/versions/{version}/operations/{operation}` |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apis.versions.operations.delete()`
 
@@ -562,7 +571,7 @@ Create a deployment resource in the API hub. Once a deployment resource is creat
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for the deployment resource. Format: `projects/{project}/locations/{location}` |
 | `params.deploymentId` | `string` | No | Optional. The ID to use for the deployment resource, which will become the final component of the deployment's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another deployment resource in the API hub. * If not provided, a system generated id will be used. This value should be 4-500 characters, and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.deployments.get()`
 
@@ -617,7 +626,7 @@ Update a deployment resource in the API hub. The following fields in the deploym
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the deployment. Format: `projects/{project}/locations/{location}/deployments/{deployment}` |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.deployments.delete()`
 
@@ -637,7 +646,7 @@ Create a user defined attribute. Certain pre defined attributes are already crea
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for Attribute. Format: `projects/{project}/locations/{location}` |
 | `params.attributeId` | `string` | No | Optional. The ID to use for the attribute, which will become the final component of the attribute's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another attribute resource in the API hub. * If not provided, a system generated id will be used. This value should be 4-500 characters, and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.attributes.get()`
 
@@ -663,7 +672,7 @@ Update the attribute. The following fields in the Attribute resource can be upda
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the attribute in the API Hub. Format: `projects/{project}/locations/{location}/attributes/{attribute}` |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.attributes.delete()`
 
@@ -694,7 +703,7 @@ Create an External API resource in the API hub.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for the External API resource. Format: `projects/{project}/locations/{location}` |
 | `params.externalApiId` | `string` | No | Optional. The ID to use for the External API resource, which will become the final component of the External API's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified id is already used by another External API resource in the API hub. * If not provided, a system generated id will be used. This value should be 4-500 characters, and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.externalApis.get()`
 
@@ -722,7 +731,7 @@ Update an External API resource in the API hub. The following fields can be upda
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Format: `projects/{project}/locations/{location}/externalApi/{externalApi}`. |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.externalApis.delete()`
 
@@ -752,7 +761,7 @@ Create a dependency between two entities in the API hub.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for the dependency resource. Format: `projects/{project}/locations/{location}` |
 | `params.dependencyId` | `string` | No | Optional. The ID to use for the dependency resource, which will become the final component of the dependency's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if duplicate id is provided by the client. * If not provided, a system generated id will be used. This value should be 4-500 characters, and valid characters are `a-z[0-9]-_`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dependencies.get()`
 
@@ -772,7 +781,7 @@ Update a dependency based on the update_mask provided in the request. The follow
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the dependency in the API Hub. Format: `projects/{project}/locations/{location}/dependencies/{dependency}` |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dependencies.delete()`
 
@@ -803,7 +812,7 @@ Create a curation resource in the API hub. Once a curation resource is created, 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for the curation resource. Format: `projects/{project}/locations/{location}` |
 | `params.curationId` | `string` | No | Optional. The ID to use for the curation resource, which will become the final component of the curations's resource name. This field is optional. * If provided, the same will be used. The service will throw an error if the specified ID is already used by another curation resource in the API hub. * If not provided, a system generated ID will be used. This value should be 4-500 characters, and valid characters are /a-z[0-9]-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.curations.get()`
 
@@ -836,7 +845,7 @@ Update a curation resource in the API hub. The following fields in the curation 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the curation. Format: `projects/{project}/locations/{location}/curations/{curation}` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.curations.delete()`
 
@@ -896,7 +905,7 @@ Create a host project registration. A Google cloud project can be registered as 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for the host project. Format: `projects/{project}/locations/{location}` |
 | `params.hostProjectRegistrationId` | `string` | No | Required. The ID to use for the Host Project Registration, which will become the final component of the host project registration's resource name. The ID must be the same as the Google cloud project specified in the host_project_registration.gcp_project field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.hostProjectRegistrations.get()`
 
@@ -928,11 +937,11 @@ Provisions instance resources for the API Hub.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for the Api Hub instance resource. Format: `projects/{project}/locations/{location}` |
 | `params.apiHubInstanceId` | `string` | No | Optional. Identifier to assign to the Api Hub instance. Must be unique within scope of the parent resource. If the field is not provided, system generated id will be used. This value should be 4-40 characters, and valid characters are `/a-z[0-9]-_/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.apiHubInstances.delete()`
 
-Deletes the API hub instance.
+Deletes the API hub instance. Deleting the API hub instance will also result in the removal of all associated runtime project attachments and the host project registration.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -964,7 +973,7 @@ Attaches a runtime project to the host project.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for the Runtime Project Attachment. Format: `projects/{project}/locations/{location}` |
 | `params.runtimeProjectAttachmentId` | `string` | No | Required. The ID to use for the Runtime Project Attachment, which will become the final component of the Runtime Project Attachment's name. The ID must be the same as the project ID of the Google cloud project specified in the runtime_project_attachment.runtime_project field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimeProjectAttachments.get()`
 
