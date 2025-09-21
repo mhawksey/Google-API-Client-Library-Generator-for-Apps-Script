@@ -4,8 +4,8 @@ Auto-generated client library for using the **Service Networking API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:51 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:46:29 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:48:10 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:48:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:26 GMT
 
 
@@ -50,7 +50,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services`
 
@@ -61,7 +61,7 @@ Disables VPC service controls for a connection.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.enableVpcServiceControls()`
 
@@ -70,7 +70,7 @@ Enables VPC service controls for a connection.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.addSubnetwork()`
 
@@ -79,7 +79,7 @@ For service producers, provisions a new subnet in a peered service's shared VPC 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. A tenant project in the service producer organization, in the following format: services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type that represents the tenant project. Only `projects` are supported. {resource-id} is the tenant project numeric id, such as `123456`. {service} the name of the peering service, such as `service-peering.example.com`. This service must already be enabled in the service consumer's project. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.searchRange()`
 
@@ -88,7 +88,7 @@ Service producers can use this method to find a currently unused range within co
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. This is in a form services/{service}. {service} the name of the private access management service, for example 'service-peering.example.com'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.validate()`
 
@@ -97,7 +97,7 @@ Service producers use this method to validate if the consumer provided network, 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. This is in a form services/{service} where {service} is the name of the private access management service. For example 'service-peering.example.com'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services.connections`
 
@@ -117,7 +117,7 @@ Creates a private connection that establishes a VPC Network Peering connection t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.connections.deleteConnection()`
 
@@ -126,7 +126,7 @@ Deletes a private service access connection.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The private service connection that connects to a service producer organization. The name includes both the private service name and the VPC network peering name in the format of `services/{peering_service_name}/connections/{vpc_peering_name}`. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com/connections/servicenetworking-googleapis-com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.connections.patch()`
 
@@ -137,7 +137,7 @@ Updates the allocated ranges that are assigned to a connection.
 | `params.name` | `string` | Yes | Required. The private service connection that connects to a service producer organization. The name includes both the private service name and the VPC network peering name in the format of `services/{peering_service_name}/connections/{vpc_peering_name}`. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com/connections/servicenetworking-googleapis-com`. |
 | `params.updateMask` | `string` | No | The update mask. If this is omitted, it defaults to "*". You can only update the listed peering ranges. |
 | `params.force` | `boolean` | No | If a previously defined allocated range is removed, force flag must be set to true. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services.projects`
 
@@ -160,7 +160,7 @@ Service producers use this method to update the configuration of their connectio
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource identifying the connection for which the consumer config is being updated in the format: `services/{service}/projects/{project}/global/networks/{network}` {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. {project} is the number of the project that contains the service consumer's VPC network e.g. `12345`. {network} is the name of the service consumer's VPC network. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.projects.global.networks.get()`
 
@@ -198,7 +198,7 @@ Creates a peered DNS domain which sends requests for records in given namespace 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource identifying the connection for which the peered DNS domain will be created in the format: `services/{service}/projects/{project}/global/networks/{network}` {service} is the peering service that is managing connectivity for the service producer's organization. For Google services that support this functionality, this value is `servicenetworking.googleapis.com`. {project} is the number of the project that contains the service consumer's VPC network e.g. `12345`. {network} is the name of the service consumer's VPC network. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.projects.global.networks.peeredDnsDomains.delete()`
 
@@ -225,7 +225,7 @@ Service producers can use this method to add roles in the shared VPC host projec
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. This is in a form services/{service} where {service} is the name of the private access management service. For example 'service-peering.example.com'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services.dnsZones`
 
@@ -236,7 +236,7 @@ Service producers can use this method to add private DNS zones in the shared pro
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.dnsZones.remove()`
 
@@ -245,7 +245,7 @@ Service producers can use this method to remove private DNS zones in the shared 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services.dnsRecordSets`
 
@@ -256,7 +256,7 @@ Service producers can use this method to add DNS record sets to private DNS zone
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.dnsRecordSets.remove()`
 
@@ -265,7 +265,7 @@ Service producers can use this method to remove DNS record sets from private DNS
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.dnsRecordSets.update()`
 
@@ -274,7 +274,7 @@ Service producers can use this method to update DNS record sets from private DNS
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.dnsRecordSets.get()`
 
