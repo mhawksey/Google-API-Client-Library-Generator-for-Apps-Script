@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud SQL Admin API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:30 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:55:30 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:01 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:06 GMT
 
 
@@ -42,7 +42,7 @@ Creates a Cloud SQL instance as a clone of the source instance. Using this opera
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the source as well as the clone Cloud SQL instance. |
 | `params.instance` | `string` | Yes | The ID of the Cloud SQL instance to be cloned (source). This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.delete()`
 
@@ -65,7 +65,7 @@ Demotes the stand-alone instance to be a Cloud SQL read replica for an external 
 |---|---|---|---|
 | `params.project` | `string` | Yes | ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.demote()`
 
@@ -75,7 +75,7 @@ Demotes an existing standalone instance to be a Cloud SQL read replica for an ex
 |---|---|---|---|
 | `params.project` | `string` | Yes | Required. ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Required. Cloud SQL instance name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.export()`
 
@@ -85,7 +85,7 @@ Exports data from a Cloud SQL instance to a Cloud Storage bucket as a SQL dump o
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance to be exported. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.failover()`
 
@@ -95,7 +95,7 @@ Initiates a manual failover of a high availability (HA) primary instance to a st
 |---|---|---|---|
 | `params.project` | `string` | Yes | ID of the project that contains the read replica. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.reencrypt()`
 
@@ -105,7 +105,7 @@ Reencrypt CMEK instance with latest key version.
 |---|---|---|---|
 | `params.project` | `string` | Yes | ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.get()`
 
@@ -124,7 +124,7 @@ Imports data into a Cloud SQL instance from a SQL dump or CSV file in Cloud Stor
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.insert()`
 
@@ -133,7 +133,7 @@ Creates a new Cloud SQL instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project to which the newly created Cloud SQL instances should belong. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.list()`
 
@@ -172,7 +172,7 @@ Partially updates settings of a Cloud SQL instance by merging the request with t
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.promoteReplica()`
 
@@ -202,6 +202,7 @@ Deletes all client certificates and generates a new server SSL certificate for t
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
+| `params.mode` | `string` | No | Optional. Reset SSL mode to use. |
 
 #### `instances.restart()`
 
@@ -220,7 +221,7 @@ Restores a backup of a Cloud SQL instance. Using this operation might cause your
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.rotateServerCa()`
 
@@ -230,7 +231,7 @@ Rotates the server certificate to one signed by the Certificate Authority (CA) v
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.RotateServerCertificate()`
 
@@ -240,7 +241,7 @@ Rotates the server certificate version to one previously added with the addServe
 |---|---|---|---|
 | `params.project` | `string` | Yes | Required. Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Required. Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.startReplica()`
 
@@ -268,7 +269,7 @@ Truncate MySQL general and slow query log tables MySQL only.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the Cloud SQL project. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.update()`
 
@@ -278,7 +279,7 @@ Updates settings of a Cloud SQL instance. Using this operation might cause your 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.executeSql()`
 
@@ -288,7 +289,7 @@ Execute SQL statements.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Required. Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Required. Database instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.acquireSsrsLease()`
 
@@ -298,7 +299,7 @@ Acquire a lease for the setup of SQL Server Reporting Services (SSRS).
 |---|---|---|---|
 | `params.project` | `string` | Yes | Required. Project ID of the project that contains the instance (Example: project-id). |
 | `params.instance` | `string` | Yes | Required. Cloud SQL instance ID. This doesn't include the project ID. It's composed of lowercase letters, numbers, and hyphens, and it must start with a letter. The total length must be 98 characters or less (Example: instance-id). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.releaseSsrsLease()`
 
@@ -316,7 +317,7 @@ Point in time restore for an instance managed by Google Cloud Backup and Disaste
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where you created this instance. Format: projects/{project} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sslCerts`
 
@@ -328,7 +329,7 @@ Generates a short-lived X509 certificate containing the provided public key and 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the Cloud SQL project. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sslCerts.delete()`
 
@@ -358,7 +359,7 @@ Creates an SSL certificate and returns it along with the private key and server 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sslCerts.list()`
 
@@ -381,7 +382,7 @@ Reschedules the maintenance on the given instance.
 |---|---|---|---|
 | `params.project` | `string` | Yes | ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.verifyExternalSyncSettings()`
 
@@ -391,7 +392,7 @@ Verify External primary instance external sync settings.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.startExternalSync()`
 
@@ -401,7 +402,7 @@ Start External primary instance migration.
 |---|---|---|---|
 | `params.project` | `string` | Yes | ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.performDiskShrink()`
 
@@ -411,7 +412,7 @@ Perform Disk Shrink on primary instance.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.getDiskShrinkConfig()`
 
@@ -430,7 +431,7 @@ Reset Replica Size to primary instance disk size.
 |---|---|---|---|
 | `params.project` | `string` | Yes | ID of the project that contains the read replica. |
 | `params.instance` | `string` | Yes | Cloud SQL read replica instance name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.getLatestRecoveryTime()`
 
@@ -472,7 +473,7 @@ Creates a new backup run on demand.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backupRuns.list()`
 
@@ -494,7 +495,7 @@ Creates a backup for a Cloud SQL instance. This API can be used only to create o
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this backup is created. Format: projects/{project} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `Backups.GetBackup()`
 
@@ -523,7 +524,7 @@ Updates the retention period and description of the backup. You can use this API
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the backup. Format: projects/{project}/backups/{backup}. |
 | `params.updateMask` | `string` | No | The list of fields that you can update. You can update only the description and retention period of the final backup. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `Backups.DeleteBackup()`
 
@@ -553,7 +554,7 @@ Generates a short-lived X509 certificate containing the provided public key and 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Cloud SQL instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `databases`
 
@@ -585,7 +586,7 @@ Inserts a resource containing information about a database inside a Cloud SQL in
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Database instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `databases.list()`
 
@@ -605,7 +606,7 @@ Partially updates a resource containing information about a database inside a Cl
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Database instance ID. This does not include the project ID. |
 | `params.database` | `string` | Yes | Name of the database to be updated in the instance. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `databases.update()`
 
@@ -616,7 +617,7 @@ Updates a resource containing information about a database inside a Cloud SQL in
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Database instance ID. This does not include the project ID. |
 | `params.database` | `string` | Yes | Name of the database to be updated in the instance. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `flags`
 
@@ -702,7 +703,7 @@ Creates a new user in a Cloud SQL instance.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID of the project that contains the instance. |
 | `params.instance` | `string` | Yes | Database instance ID. This does not include the project ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.list()`
 
@@ -723,4 +724,4 @@ Updates an existing user in a Cloud SQL instance.
 | `params.instance` | `string` | Yes | Database instance ID. This does not include the project ID. |
 | `params.host` | `string` | No | Optional. Host of the user in the instance. |
 | `params.name` | `string` | No | Name of the user in the instance. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
