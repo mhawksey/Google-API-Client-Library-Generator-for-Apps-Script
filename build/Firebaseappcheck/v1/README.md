@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase App Check API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:15:23 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:54 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:10 GMT
 
 
@@ -44,7 +44,7 @@ Updates the specified Service configuration.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The relative resource name of the service configuration object, in the format: ``` projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) * `oauth2.googleapis.com` (Google Identity for iOS) |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of names of fields in the Service to update. Example: `enforcement_mode`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.services.batchUpdate()`
 
@@ -53,7 +53,7 @@ Atomically updates the specified Service configurations.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent project name shared by all Service configurations being updated, in the format ``` projects/{project_number} ``` The parent collection in the `name` field of any resource being updated must match this field, or the entire batch fails. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.services.resourcePolicies`
 
@@ -83,7 +83,7 @@ Creates the specified ResourcePolicy configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The relative resource name of the parent Service in which the specified ResourcePolicy will be created, in the format: ``` projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported service ID. Currently, the following service IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.services.resourcePolicies.patch()`
 
@@ -93,7 +93,7 @@ Updates the specified ResourcePolicy configuration.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Identifier. The relative name of the resource policy object, in the format: ``` projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id} ``` Note that the `service_id` element must be a supported service ID. Currently, the following service IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS) `resource_policy_id` is a system-generated UID. |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of names of fields in the ResourcePolicy to update. Example: `enforcement_mode`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.services.resourcePolicies.delete()`
 
@@ -111,7 +111,7 @@ Atomically updates the specified ResourcePolicy configurations.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent service name, in the format ``` projects/{project_number}/services/{service_id} ``` The parent collection in the `name` field of any resource being updated must match this field, or the entire batch fails. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps`
 
@@ -122,7 +122,7 @@ Validates a [SafetyNet token](https://developer.android.com/training/safetynet/a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the Android app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.generatePlayIntegrityChallenge()`
 
@@ -131,7 +131,7 @@ Generates a challenge that protects the integrity of an immediately following in
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.exchangePlayIntegrityToken()`
 
@@ -140,7 +140,7 @@ Validates an [integrity verdict response token from Play Integrity](https://deve
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the Android app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.exchangeDeviceCheckToken()`
 
@@ -149,7 +149,7 @@ Accepts a [`device_token`](https://developer.apple.com/documentation/devicecheck
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the iOS app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.exchangeRecaptchaV3Token()`
 
@@ -158,7 +158,7 @@ Validates a [reCAPTCHA v3 response token](https://developers.google.com/recaptch
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the web app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.exchangeRecaptchaEnterpriseToken()`
 
@@ -167,7 +167,7 @@ Validates a [reCAPTCHA Enterprise response token](https://cloud.google.com/recap
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the web app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.exchangeCustomToken()`
 
@@ -176,7 +176,7 @@ Validates a custom token signed using your project's Admin SDK service account c
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.exchangeDebugToken()`
 
@@ -185,7 +185,7 @@ Validates a debug token secret that you have previously created using CreateDebu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.generateAppAttestChallenge()`
 
@@ -194,7 +194,7 @@ Generates a challenge that protects the integrity of an immediately following ca
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the iOS app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.exchangeAppAttestAttestation()`
 
@@ -203,7 +203,7 @@ Accepts an App Attest CBOR attestation and verifies it with Apple using your pre
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the iOS app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.exchangeAppAttestAssertion()`
 
@@ -212,7 +212,7 @@ Accepts an App Attest assertion and an artifact previously obtained from Exchang
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the iOS app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.appAttestConfig`
 
@@ -241,7 +241,7 @@ Updates the AppAttestConfig for the specified app. While this configuration is i
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The relative resource name of the App Attest configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/appAttestConfig ``` |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of names of fields in the AppAttestConfig to update. Example: `token_ttl`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.deviceCheckConfig`
 
@@ -270,7 +270,7 @@ Updates the DeviceCheckConfig for the specified app. While this configuration is
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The relative resource name of the DeviceCheck configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/deviceCheckConfig ``` |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of names of fields in the DeviceCheckConfig to update. Example: `key_id,private_key`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.recaptchaV3Config`
 
@@ -299,7 +299,7 @@ Updates the RecaptchaV3Config for the specified app. While this configuration is
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/recaptchaV3Config ``` |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of names of fields in the RecaptchaV3Config to update. Example: `site_secret`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.recaptchaEnterpriseConfig`
 
@@ -328,7 +328,7 @@ Updates the RecaptchaEnterpriseConfig for the specified app. While this configur
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The relative resource name of the reCAPTCHA Enterprise configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ``` |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of names of fields in the RecaptchaEnterpriseConfig to update. Example: `site_key`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.safetyNetConfig`
 
@@ -357,7 +357,7 @@ Updates the SafetyNetConfig for the specified app. While this configuration is i
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The relative resource name of the SafetyNet configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/safetyNetConfig ``` |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of names of fields in the SafetyNetConfig to update. Example: `token_ttl`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.playIntegrityConfig`
 
@@ -386,7 +386,7 @@ Updates the PlayIntegrityConfig for the specified app. While this configuration 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The relative resource name of the Play Integrity configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/playIntegrityConfig ``` |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of names of fields in the PlayIntegrityConfig to update. Example: `token_ttl`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.apps.debugTokens`
 
@@ -415,7 +415,7 @@ Creates a new DebugToken for the specified app. For security reasons, after the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The relative resource name of the parent app in which the specified DebugToken will be created, in the format: ``` projects/{project_number}/apps/{app_id} ``` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.debugTokens.patch()`
 
@@ -425,7 +425,7 @@ Updates the specified DebugToken. For security reasons, the `token` field cannot
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The relative resource name of the debug token, in the format: ``` projects/{project_number}/apps/{app_id}/debugTokens/{debug_token_id} ``` |
 | `params.updateMask` | `string` | No | Required. A comma-separated list of names of fields in the DebugToken to update. Example: `display_name`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.apps.debugTokens.delete()`
 
@@ -454,7 +454,7 @@ Validates a debug token secret that you have previously created using CreateDebu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `oauthClients.generateAppAttestChallenge()`
 
@@ -463,7 +463,7 @@ Generates a challenge that protects the integrity of an immediately following ca
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the iOS app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `oauthClients.exchangeAppAttestAttestation()`
 
@@ -472,7 +472,7 @@ Accepts an App Attest CBOR attestation and verifies it with Apple using your pre
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the iOS app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `oauthClients.exchangeAppAttestAssertion()`
 
@@ -481,4 +481,4 @@ Accepts an App Attest assertion and an artifact previously obtained from Exchang
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.app` | `string` | Yes | Required. The relative resource name of the iOS app, in the format: ``` projects/{project_number}/apps/{app_id} ``` If necessary, the `project_number` element can be replaced with the project ID of the Firebase project. Learn more about using project identifiers in Google's [AIP 2510](https://google.aip.dev/cloud/2510) standard. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
