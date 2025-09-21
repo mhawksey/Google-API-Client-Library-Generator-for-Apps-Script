@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Document AI API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:32 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:10 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:23:50 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:23:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:17 GMT
 
 
@@ -46,7 +46,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -94,7 +94,7 @@ Processes a single document.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Processor or ProcessorVersion to use for processing. If a Processor is specified, the server will use its default version. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.batchProcess()`
 
@@ -103,7 +103,7 @@ LRO endpoint to batch process many documents. The output is written to Cloud Sto
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of Processor or ProcessorVersion. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.list()`
 
@@ -130,7 +130,7 @@ Creates a processor from the ProcessorType provided. The processor will be at `E
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent (project and location) under which to create the processor. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.delete()`
 
@@ -147,7 +147,7 @@ Enables a processor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The processor resource name to be enabled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.disable()`
 
@@ -156,7 +156,7 @@ Disables a processor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The processor resource name to be disabled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.setDefaultProcessorVersion()`
 
@@ -165,7 +165,7 @@ Set the default (active) version of a Processor that will be used in ProcessDocu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.processor` | `string` | Yes | Required. The resource name of the Processor to change default version. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.processors.processorVersions`
 
@@ -176,7 +176,7 @@ Processes a single document.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Processor or ProcessorVersion to use for processing. If a Processor is specified, the server will use its default version. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.processorVersions.batchProcess()`
 
@@ -185,7 +185,7 @@ LRO endpoint to batch process many documents. The output is written to Cloud Sto
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of Processor or ProcessorVersion. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.processorVersions.train()`
 
@@ -194,7 +194,7 @@ Trains a new processor version. Operation metadata is returned as TrainProcessor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent (project, location and processor) to create the new version for. Format: `projects/{project}/locations/{location}/processors/{processor}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.processorVersions.get()`
 
@@ -229,7 +229,7 @@ Deploys the processor version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The processor version resource name to be deployed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.processorVersions.undeploy()`
 
@@ -238,7 +238,7 @@ Undeploys the processor version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The processor version resource name to be undeployed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processors.processorVersions.evaluateProcessorVersion()`
 
@@ -247,7 +247,7 @@ Evaluates a ProcessorVersion against annotated documents, producing an Evaluatio
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.processorVersion` | `string` | Yes | Required. The resource name of the ProcessorVersion to evaluate. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.processors.processorVersions.evaluations`
 
@@ -278,7 +278,7 @@ Send a document for Human Review. The input document should be processed by the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.humanReviewConfig` | `string` | Yes | Required. The resource name of the HumanReviewConfig that the document will be reviewed with. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.processorTypes`
 
