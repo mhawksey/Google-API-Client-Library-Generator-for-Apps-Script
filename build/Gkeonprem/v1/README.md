@@ -4,8 +4,8 @@ Auto-generated client library for using the **GKE On-Prem API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:36:31 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:22:48 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:26:32 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:26:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:37 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.bareMetalClusters`
 
@@ -88,7 +88,7 @@ Creates a new bare metal cluster in a given project and location.
 | `params.bareMetalClusterId` | `string` | No | Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/ |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
 | `params.allowPreflightFailure` | `boolean` | No | Optional. If set to true, CLM will force CCFE to persist the cluster resource in RMS when the creation fails during standalone preflight checks. In that case the subsequent create call will fail with "cluster already exists" error and hence a update cluster is required to fix the cluster. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalClusters.delete()`
 
@@ -110,7 +110,7 @@ Enrolls an existing bare metal user cluster and its node pools to the Anthos On-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the project and location where the cluster is enrolled in. Format: "projects/{project}/locations/{location}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalClusters.get()`
 
@@ -157,7 +157,7 @@ Updates the parameters of a single bare metal Cluster.
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the BareMetalCluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all populated fields in the BareMetalCluster message will be updated. Empty fields will be ignored unless a field mask is used. |
 | `params.allowMissing` | `boolean` | No | If set to true, and the bare metal cluster is not found, the request will create a new bare metal cluster with the provided configuration. The user must have both create and update permission to call Update with allow_missing set to true. |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalClusters.queryVersionConfig()`
 
@@ -177,7 +177,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalClusters.getIamPolicy()`
 
@@ -195,7 +195,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.bareMetalClusters.operations`
 
@@ -229,7 +229,7 @@ Creates a new bare metal node pool in a given project, location and Bare Metal c
 | `params.parent` | `string` | Yes | Required. The parent resource where this node pool will be created. projects/{project}/locations/{location}/bareMetalClusters/{cluster} |
 | `params.bareMetalNodePoolId` | `string` | No | The ID to use for the node pool, which will become the final component of the node pool's resource name. This value must be up to 63 characters, and valid characters are /a-z-/. The value must not be permitted to be a UUID (or UUID-like: anything matching /^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i). |
 | `params.validateOnly` | `boolean` | No | If set, only validate the request, but do not actually create the node pool. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalClusters.bareMetalNodePools.delete()`
 
@@ -250,7 +250,7 @@ Enrolls an existing bare metal node pool to the Anthos On-Prem API within a give
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this node pool will be created. projects/{project}/locations/{location}/bareMetalClusters/{cluster} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalClusters.bareMetalNodePools.get()`
 
@@ -293,7 +293,7 @@ Updates the parameters of a single bare metal node pool.
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the BareMetalNodePool resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all populated fields in the BareMetalNodePool message will be updated. Empty fields will be ignored unless a field mask is used. |
 | `params.allowMissing` | `boolean` | No | If set to true, and the bare metal node pool is not found, the request will create a new bare metal node pool with the provided configuration. The user must have both create and update permission to call Update with allow_missing set to true. |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalClusters.bareMetalNodePools.setIamPolicy()`
 
@@ -302,7 +302,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalClusters.bareMetalNodePools.getIamPolicy()`
 
@@ -320,7 +320,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.bareMetalClusters.bareMetalNodePools.operations`
 
@@ -352,7 +352,7 @@ Enrolls an existing VMware user cluster and its node pools to the Anthos On-Prem
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the project and location where the cluster is Enrolled in. Format: "projects/{project}/locations/{location}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareClusters.unenroll()`
 
@@ -376,7 +376,7 @@ Creates a new VMware user cluster in a given project and location.
 | `params.vmwareClusterId` | `string` | No | User provided identifier that is used as part of the resource name; This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format. |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
 | `params.allowPreflightFailure` | `boolean` | No | Optional. If set to true, CLM will force CCFE to persist the cluster resource in RMS when the creation fails during standalone preflight checks. In that case the subsequent create call will fail with "cluster already exists" error and hence a update cluster is required to fix the cluster. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareClusters.delete()`
 
@@ -423,7 +423,7 @@ Updates the parameters of a single VMware cluster.
 | `params.name` | `string` | Yes | Immutable. The VMware user cluster resource name. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the VMwareCluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all populated fields in the VmwareCluster message will be updated. Empty fields will be ignored unless a field mask is used. |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareClusters.queryVersionConfig()`
 
@@ -443,7 +443,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareClusters.getIamPolicy()`
 
@@ -461,7 +461,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.vmwareClusters.operations`
 
@@ -495,7 +495,7 @@ Creates a new VMware node pool in a given project, location and VMWare cluster.
 | `params.parent` | `string` | Yes | Required. The parent resource where this node pool will be created. projects/{project}/locations/{location}/vmwareClusters/{cluster} |
 | `params.vmwareNodePoolId` | `string` | No | The ID to use for the node pool, which will become the final component of the node pool's resource name. This value must be up to 40 characters and follow RFC-1123 (https://tools.ietf.org/html/rfc1123) format. The value must not be permitted to be a UUID (or UUID-like: anything matching /^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i). |
 | `params.validateOnly` | `boolean` | No | If set, only validate the request, but do not actually create the node pool. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareClusters.vmwareNodePools.delete()`
 
@@ -538,7 +538,7 @@ Updates the parameters of a single VMware node pool.
 | `params.name` | `string` | Yes | Immutable. The resource name of this node pool. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the VMwareNodePool resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all populated fields in the VMwareNodePool message will be updated. Empty fields will be ignored unless a field mask is used. |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareClusters.vmwareNodePools.enroll()`
 
@@ -547,7 +547,7 @@ Enrolls a VMware node pool to Anthos On-Prem API
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where the node pool is enrolled in. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareClusters.vmwareNodePools.unenroll()`
 
@@ -567,7 +567,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareClusters.vmwareNodePools.getIamPolicy()`
 
@@ -585,7 +585,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.vmwareClusters.vmwareNodePools.operations`
 
@@ -620,7 +620,7 @@ Creates a new VMware admin cluster in a given project and location. The API need
 | `params.vmwareAdminClusterId` | `string` | No | Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/ |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
 | `params.allowPreflightFailure` | `boolean` | No | Optional. If set to true, CLM will force CCFE to persist the cluster resource in RMS when the creation fails during standalone preflight checks. In that case the subsequent create call will fail with "cluster already exists" error and hence a update cluster is required to fix the cluster. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareAdminClusters.list()`
 
@@ -651,7 +651,7 @@ Enrolls an existing VMware admin cluster to the Anthos On-Prem API within a give
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the project and location where the cluster is enrolled in. Format: "projects/{project}/locations/{location}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareAdminClusters.unenroll()`
 
@@ -674,7 +674,7 @@ Updates the parameters of a single VMware admin cluster.
 | `params.name` | `string` | Yes | Immutable. The VMware admin cluster resource name. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the VMwareAdminCluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all populated fields in the VmwareAdminCluster message will be updated. Empty fields will be ignored unless a field mask is used. |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareAdminClusters.setIamPolicy()`
 
@@ -683,7 +683,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vmwareAdminClusters.getIamPolicy()`
 
@@ -701,7 +701,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.vmwareAdminClusters.operations`
 
@@ -736,7 +736,7 @@ Creates a new bare metal admin cluster in a given project and location. The API 
 | `params.bareMetalAdminClusterId` | `string` | No | Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/ |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
 | `params.allowPreflightFailure` | `boolean` | No | Optional. If set to true, CLM will force CCFE to persist the cluster resource in RMS when the creation fails during standalone preflight checks. In that case the subsequent create call will fail with "cluster already exists" error and hence a update cluster is required to fix the cluster. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalAdminClusters.list()`
 
@@ -767,7 +767,7 @@ Enrolls an existing bare metal admin cluster to the Anthos On-Prem API within a 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the project and location where the cluster is enrolled in. Format: "projects/{project}/locations/{location}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalAdminClusters.unenroll()`
 
@@ -790,7 +790,7 @@ Updates the parameters of a single bare metal admin cluster.
 | `params.name` | `string` | Yes | Immutable. The bare metal admin cluster resource name. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the BareMetalAdminCluster resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all populated fields in the BareMetalAdminCluster message will be updated. Empty fields will be ignored unless a field mask is used. |
 | `params.validateOnly` | `boolean` | No | Validate the request without actually doing any updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalAdminClusters.queryVersionConfig()`
 
@@ -808,7 +808,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bareMetalAdminClusters.getIamPolicy()`
 
@@ -826,7 +826,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.bareMetalAdminClusters.operations`
 
