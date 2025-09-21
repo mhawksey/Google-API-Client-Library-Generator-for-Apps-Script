@@ -128,28 +128,36 @@ function getService_() {
 }
 
 /**
- * Lists files using the configured service account.
+ * Lists files using a service account token.
+ * This function is now async to handle the Promise returned by the Drive library.
  */
-function listFilesWithServiceAccount() {
+async function listFilesWithServiceAccount() {
   const service = getService_();
   if (!service.hasAccess()) {
     console.log('Service Account authentication failed: ' + service.getLastError());
     return;
   }
-  
+
   const token = service.getAccessToken();
 
-  // This is where the generated library is used with the custom token.
+  // Instantiate the Drive library with the service account token.
   const drive = new Drive({
-    token: token 
+    token: token
   });
 
-  const files = drive.files.list({
-    supportsAllDrives: true,
-    pageSize: 10
-  });
-  
-  console.log('Files found via service account:', JSON.stringify(files, null, 2));
+  try {
+    // Use 'await' to wait for the asynchronous API call to complete.
+    const response = await drive.files.list({
+      supportsAllDrives: true,
+      pageSize: 10
+    });
+
+    // The actual list of files is in the 'data' property of the response.
+    console.log('Files found via service account:', JSON.stringify(response.data, null, 2));
+    
+  } catch (e) {
+    console.error(`Error listing files: ${e.message}`);
+  }
 }
 ```
 
