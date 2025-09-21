@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Analytics Admin API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:51 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:51:55 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:03:45 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:03:45 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:57 GMT
 
 
@@ -50,7 +50,7 @@ Updates an account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of this account. Format: accounts/{account} Example: "accounts/100" |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Field names must be in snake case (for example, "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.provisionAccountTicket()`
 
@@ -58,7 +58,7 @@ Requests a ticket for creating an account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.getDataSharingSettings()`
 
@@ -75,7 +75,7 @@ Searches through all changes to an account or its children given the specified s
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.account` | `string` | Yes | Required. The account resource for which to return change history resources. Format: accounts/{account} Example: `accounts/100` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.runAccessReport()`
 
@@ -84,7 +84,7 @@ Returns a customized report of data access records. The report provides records 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.entity` | `string` | Yes | The Data Access Report supports requesting at the property level or account level. If requested at the account level, Data Access Reports include all access for all properties under that account. To request at the property level, entity should be for example 'properties/123' if "123" is your Google Analytics property ID. To request at the account level, entity should be for example 'accounts/1234' if "1234" is your Google Analytics Account ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accountSummaries`
 
@@ -124,7 +124,7 @@ Creates a Google Analytics property with the specified location and attributes.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.delete()`
 
@@ -142,7 +142,7 @@ Updates a property.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of this property. Format: properties/{property_id} Example: "properties/1000" |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.acknowledgeUserDataCollection()`
 
@@ -151,7 +151,7 @@ Acknowledges the terms of user data collection for the specified property. This 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.property` | `string` | Yes | Required. The property for which to acknowledge user data collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.getDataRetentionSettings()`
 
@@ -169,7 +169,7 @@ Updates the singleton data retention settings for this property.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name for this DataRetentionSetting resource. Format: properties/{property}/dataRetentionSettings |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.runAccessReport()`
 
@@ -178,7 +178,7 @@ Returns a customized report of data access records. The report provides records 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.entity` | `string` | Yes | The Data Access Report supports requesting at the property level or account level. If requested at the account level, Data Access Reports include all access for all properties under that account. To request at the property level, entity should be for example 'properties/123' if "123" is your Google Analytics property ID. To request at the account level, entity should be for example 'accounts/1234' if "1234" is your Google Analytics Account ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `properties.firebaseLinks`
 
@@ -189,7 +189,7 @@ Creates a FirebaseLink. Properties can have at most one FirebaseLink.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: properties/{property_id} Example: `properties/1234` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.firebaseLinks.delete()`
 
@@ -218,7 +218,7 @@ Creates a GoogleAdsLink.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Example format: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.googleAdsLinks.patch()`
 
@@ -228,7 +228,7 @@ Updates a GoogleAdsLink on a property
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Format: properties/{propertyId}/googleAdsLinks/{googleAdsLinkId} Note: googleAdsLinkId is not the Google Ads customer ID. |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.googleAdsLinks.delete()`
 
@@ -257,7 +257,7 @@ Deprecated: Use `CreateKeyEvent` instead. Creates a conversion event with the sp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent property where this conversion event will be created. Format: properties/123 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.conversionEvents.patch()`
 
@@ -267,7 +267,7 @@ Deprecated: Use `UpdateKeyEvent` instead. Updates a conversion event with the sp
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of this conversion event. Format: properties/{property}/conversionEvents/{conversion_event} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.conversionEvents.get()`
 
@@ -304,7 +304,7 @@ Creates a Key Event.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent property where this Key Event will be created. Format: properties/123 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.keyEvents.patch()`
 
@@ -314,7 +314,7 @@ Updates a Key Event.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of this key event. Format: properties/{property}/keyEvents/{key_event} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Field names must be in snake case (e.g., "field_to_update"). Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.keyEvents.get()`
 
@@ -351,7 +351,7 @@ Creates a CustomDimension.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Example format: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.customDimensions.patch()`
 
@@ -361,7 +361,7 @@ Updates a CustomDimension on a property.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name for this CustomDimension resource. Format: properties/{property}/customDimensions/{customDimension} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.customDimensions.list()`
 
@@ -380,7 +380,7 @@ Archives a CustomDimension on a property.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the CustomDimension to archive. Example format: properties/1234/customDimensions/5678 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.customDimensions.get()`
 
@@ -399,7 +399,7 @@ Creates a CustomMetric.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Example format: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.customMetrics.patch()`
 
@@ -409,7 +409,7 @@ Updates a CustomMetric on a property.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name for this CustomMetric resource. Format: properties/{property}/customMetrics/{customMetric} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.customMetrics.list()`
 
@@ -428,7 +428,7 @@ Archives a CustomMetric on a property.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the CustomMetric to archive. Example format: properties/1234/customMetrics/5678 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.customMetrics.get()`
 
@@ -447,7 +447,7 @@ Creates a DataStream.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Example format: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.dataStreams.delete()`
 
@@ -465,7 +465,7 @@ Updates a DataStream on a property.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of this Data Stream. Format: properties/{property_id}/dataStreams/{stream_id} Example: "properties/1000/dataStreams/2000" |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Omitted fields will not be updated. To replace the entire entity, use one path with the string "*" to match all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.dataStreams.list()`
 
@@ -512,7 +512,7 @@ Creates a measurement protocol secret.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this secret will be created. Format: properties/{property}/dataStreams/{dataStream} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.dataStreams.measurementProtocolSecrets.delete()`
 
@@ -530,4 +530,4 @@ Updates a measurement protocol secret.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of this secret. This secret may be a child of any type of stream. Format: properties/{property}/dataStreams/{dataStream}/measurementProtocolSecrets/{measurementProtocolSecret} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. Omitted fields will not be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
