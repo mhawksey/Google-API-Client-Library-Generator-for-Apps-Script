@@ -4,8 +4,8 @@ Auto-generated client library for using the **Policy Simulator API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:46:37 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:36:41 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:44:30 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:44:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:42 GMT
 
 
@@ -80,7 +80,7 @@ Creates and starts a Replay using the given ReplayConfig.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this Replay will be created. This resource must be a project, folder, or organization with a location. Example: `projects/my-example-project/locations/global` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.replays.operations`
 
@@ -160,7 +160,7 @@ Creates and starts a Replay using the given ReplayConfig.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this Replay will be created. This resource must be a project, folder, or organization with a location. Example: `projects/my-example-project/locations/global` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `folders.locations.replays.operations`
 
@@ -228,7 +228,7 @@ Creates and starts a Replay using the given ReplayConfig.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this Replay will be created. This resource must be a project, folder, or organization with a location. Example: `projects/my-example-project/locations/global` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.replays.operations`
 
@@ -291,7 +291,7 @@ CreateOrgPolicyViolationsPreview creates an OrgPolicyViolationsPreview for the p
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The organization under which this OrgPolicyViolationsPreview will be created. Example: `organizations/my-example-org/locations/global` |
 | `params.orgPolicyViolationsPreviewId` | `string` | No | Optional. An optional user-specified ID for the OrgPolicyViolationsPreview. If not provided, a random ID will be generated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.orgPolicyViolationsPreviews.operations`
 
