@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Policy API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:10 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:00:49 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:44 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:14 GMT
 
 
@@ -23,7 +23,7 @@ Creates an enterprise file from the content provided by user. Returns a public d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Required. The customer for which the file upload will apply. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers`
 
@@ -36,7 +36,7 @@ Gets the resolved policy values for a list of policies that match a search query
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.policies.orgunits`
 
@@ -47,7 +47,7 @@ Modify multiple policy values that are applied to a specific org unit. All targe
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.policies.orgunits.batchInherit()`
 
@@ -56,7 +56,7 @@ Modify multiple policy values that are applied to a specific org unit so that th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.policies.groups`
 
@@ -67,7 +67,7 @@ Modify multiple policy values that are applied to a specific group. All targets 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.policies.groups.batchDelete()`
 
@@ -76,7 +76,7 @@ Delete multiple policy values that are applied to a specific group. All targets 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.policies.groups.listGroupPriorityOrdering()`
 
@@ -85,7 +85,7 @@ Retrieve a group priority ordering for an app. The target app must be supplied i
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.policies.groups.updateGroupPriorityOrdering()`
 
@@ -94,7 +94,7 @@ Update a group priority ordering for an app. The target app must be supplied in 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.policies.networks`
 
@@ -105,7 +105,7 @@ Creates a certificate at a specified OU for a customer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Required. The customer for which the certificate will apply. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.policies.networks.removeCertificate()`
 
@@ -114,7 +114,7 @@ Remove an existing certificate by guid.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Required. The customer whose certificate will be removed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.policies.networks.removeNetwork()`
 
@@ -123,7 +123,7 @@ Remove an existing network by guid.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Required. The customer whose network will be removed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.policies.networks.defineNetwork()`
 
@@ -132,7 +132,7 @@ Define a new network.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | Required. The customer who will own this new network. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.policySchemas`
 
