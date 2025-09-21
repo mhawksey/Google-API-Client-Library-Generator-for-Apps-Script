@@ -4,8 +4,8 @@ Auto-generated client library for using the **Notebooks API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:30 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:34:26 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:37:02 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:37:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:14 GMT
 
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.runtimes`
 
@@ -107,7 +107,7 @@ Creates a new Runtime in a given project and location.
 | `params.parent` | `string` | Yes | Required. Format: `parent=projects/{project_id}/locations/{location}` |
 | `params.runtimeId` | `string` | No | Required. User-defined unique ID of this Runtime. |
 | `params.requestId` | `string` | No | Idempotent request UUID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.patch()`
 
@@ -118,7 +118,7 @@ Update Notebook Runtime configuration.
 | `params.name` | `string` | Yes | Output only. The resource name of the runtime. Format: `projects/{project}/locations/{location}/runtimes/{runtimeId}` |
 | `params.updateMask` | `string` | No | Required. Specifies the path, relative to `Runtime`, of the field to update. For example, to change the software configuration kernels, the `update_mask` parameter would be specified as `software_config.kernels`, and the `PATCH` request body would specify the new value, as follows: { "software_config":{ "kernels": [{ 'repository': 'gcr.io/deeplearning-platform-release/pytorch-gpu', 'tag': 'latest' }], } } Currently, only the following fields can be updated: - `software_config.kernels` - `software_config.post_startup_script` - `software_config.custom_gpu_driver_path` - `software_config.idle_shutdown` - `software_config.idle_shutdown_timeout` - `software_config.disable_terminal` - `labels` |
 | `params.requestId` | `string` | No | Idempotent request UUID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.delete()`
 
@@ -136,7 +136,7 @@ Starts a Managed Notebook Runtime. Perform "Start" on GPU instances; "Resume" on
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.stop()`
 
@@ -145,7 +145,7 @@ Stops a Managed Notebook Runtime. Perform "Stop" on GPU instances; "Suspend" on 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.switch()`
 
@@ -154,7 +154,7 @@ Switch a Managed Notebook Runtime.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.reset()`
 
@@ -163,7 +163,7 @@ Resets a Managed Notebook Runtime.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.upgrade()`
 
@@ -172,7 +172,7 @@ Upgrades a Managed Notebook Runtime to the latest version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.reportEvent()`
 
@@ -181,7 +181,7 @@ Reports and processes a runtime event.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.refreshRuntimeTokenInternal()`
 
@@ -190,7 +190,7 @@ Gets an access token for the consumer service account that the customer attached
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.diagnose()`
 
@@ -199,7 +199,7 @@ Creates a Diagnostic File and runs Diagnostic Tool given a Runtime.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtimes_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.migrate()`
 
@@ -208,7 +208,7 @@ Migrate an existing Runtime to a new Workbench Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/runtimes/{runtime_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.setIamPolicy()`
 
@@ -217,7 +217,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.runtimes.getIamPolicy()`
 
@@ -235,7 +235,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances`
 
@@ -267,7 +267,7 @@ Creates a new Instance in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: `parent=projects/{project_id}/locations/{location}` |
 | `params.instanceId` | `string` | No | Required. User-defined unique ID of this instance. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.register()`
 
@@ -276,7 +276,7 @@ Registers an existing legacy notebook instance to the Notebooks API server. Lega
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: `parent=projects/{project_id}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.setAccelerator()`
 
@@ -285,7 +285,7 @@ Updates the guest accelerators of a single Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.setMachineType()`
 
@@ -294,7 +294,7 @@ Updates the machine type of a single Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.updateConfig()`
 
@@ -303,7 +303,7 @@ Update Notebook Instance configurations.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.updateShieldedInstanceConfig()`
 
@@ -312,7 +312,7 @@ Updates the Shielded instance configuration of a single Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.setLabels()`
 
@@ -321,7 +321,7 @@ Replaces all the labels of an Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.updateMetadataItems()`
 
@@ -330,7 +330,7 @@ Add/update metadata items for an instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.delete()`
 
@@ -347,7 +347,7 @@ Starts a notebook instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.stop()`
 
@@ -356,7 +356,7 @@ Stops a notebook instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.reset()`
 
@@ -365,7 +365,7 @@ Resets a notebook instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.report()`
 
@@ -374,7 +374,7 @@ Allows notebook instances to report their latest instance information to the Not
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.isUpgradeable()`
 
@@ -400,7 +400,7 @@ Upgrades a notebook instance to the latest version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.rollback()`
 
@@ -409,7 +409,7 @@ Rollbacks a notebook instance to the previous version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.diagnose()`
 
@@ -418,7 +418,7 @@ Creates a Diagnostic File and runs Diagnostic Tool given an Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.upgradeInternal()`
 
@@ -427,7 +427,7 @@ Allows notebook instances to call this endpoint to upgrade themselves. Do not us
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.reportEvent()`
 
@@ -436,7 +436,7 @@ Reports and processes an instance event.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.migrate()`
 
@@ -445,7 +445,7 @@ Migrates an existing User-Managed Notebook to Workbench Instances.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.setIamPolicy()`
 
@@ -454,7 +454,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.getIamPolicy()`
 
@@ -472,7 +472,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.environments`
 
@@ -502,7 +502,7 @@ Creates a new Environment.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}` |
 | `params.environmentId` | `string` | No | Required. User-defined unique ID of this environment. The `environment_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.environments.delete()`
 
@@ -550,7 +550,7 @@ Creates a new Scheduled Notebook in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: `parent=projects/{project_id}/locations/{location}` |
 | `params.scheduleId` | `string` | No | Required. User-defined unique ID of this schedule. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.schedules.trigger()`
 
@@ -559,7 +559,7 @@ Triggers execution of an existing schedule.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `parent=projects/{project_id}/locations/{location}/schedules/{schedule_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.executions`
 
@@ -599,4 +599,4 @@ Creates a new Execution in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: `parent=projects/{project_id}/locations/{location}` |
 | `params.executionId` | `string` | No | Required. User-defined unique ID of this execution. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
