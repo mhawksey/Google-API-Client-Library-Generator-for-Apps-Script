@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Hosting API (version: v1b
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:39 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:15:56 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:22 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:22 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:35 GMT
 
 
@@ -44,7 +44,7 @@ Sets the Hosting metadata for a specific site.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The site for which to update the SiteConfig, in the format: sites/ site-name/config |
 | `params.updateMask` | `string` | No | A set of field names from your [site configuration](../sites.SiteConfig) that you want to update. A field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a default mask of only [`max_versions`](../sites.SiteConfig.max_versions) will be used. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.create()`
 
@@ -55,7 +55,7 @@ Creates a new Hosting Site in the specified parent Firebase project. Note that H
 | `params.parent` | `string` | Yes | Required. The Firebase project in which to create a Hosting site, in the format: projects/PROJECT_IDENTIFIER Refer to the `Site` [`name`](../projects#Site.FIELDS.name) field for details about PROJECT_IDENTIFIER values. |
 | `params.siteId` | `string` | No | Required. Immutable. A globally unique identifier for the Hosting site. This identifier is used to construct the Firebase-provisioned subdomains for the site, so it must also be a valid domain name label. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validates that the site_id is available and that the request would succeed, returning the expected resulting site or error. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.patch()`
 
@@ -65,7 +65,7 @@ Updates attributes of the specified Hosting Site.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). |
 | `params.updateMask` | `string` | No | A set of field names from your Site that you want to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.get()`
 
@@ -104,7 +104,7 @@ Creates a `CustomDomain`.
 | `params.parent` | `string` | Yes | Required. The custom domain's parent, specifically a Firebase Hosting `Site`. |
 | `params.customDomainId` | `string` | No | Required. The ID of the `CustomDomain`, which is the domain name you'd like to use with Firebase Hosting. |
 | `params.validateOnly` | `boolean` | No | If true, Hosting validates that it's possible to complete your request but doesn't actually create a new `CustomDomain`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.customDomains.patch()`
 
@@ -116,7 +116,7 @@ Updates the specified `CustomDomain`.
 | `params.updateMask` | `string` | No | The set of field names from your `CustomDomain` that you want to update. A field will be overwritten if, and only if, it's in the mask. If you don't provide a mask, Hosting updates the entire `CustomDomain`. |
 | `params.allowMissing` | `boolean` | No | If true, Hosting creates the `CustomDomain` if it doesn't already exist. |
 | `params.validateOnly` | `boolean` | No | If true, Hosting validates that it's possible to complete your request but doesn't actually create or update the `CustomDomain`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.customDomains.get()`
 
@@ -155,7 +155,7 @@ Undeletes the specified `CustomDomain` if it has been soft-deleted. Hosting reta
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the `CustomDomain` to delete. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.sites.customDomains.operations`
 
@@ -205,7 +205,7 @@ Creates a domain mapping on the specified site.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent to create the domain association for, in the format: sites/site-name |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.domains.update()`
 
@@ -214,7 +214,7 @@ Updates the specified domain mapping, creating the mapping as if it does not exi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the domain association to update or create, if an association doesn't already exist. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.domains.delete()`
 
@@ -235,7 +235,7 @@ Creates a new version for the specified site.
 | `params.parent` | `string` | Yes | Required. The site in which to create the version, in the format: sites/ SITE_ID |
 | `params.versionId` | `string` | No | A unique id for the new version. This is was only specified for legacy version creations, and should be blank. |
 | `params.sizeBytes` | `string` | No | The self-reported size of the version. This value is used for a pre-emptive quota check for legacy version uploads. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.versions.patch()`
 
@@ -245,7 +245,7 @@ Creates a new version for the specified site.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create). |
 | `params.updateMask` | `string` | No | A set of field names from your [version](../sites.versions) that you want to update. A field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a default mask of only [`status`](../sites.versions#Version.FIELDS.status) will be used. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.versions.delete()`
 
@@ -262,7 +262,7 @@ Deletes the specified version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.versions.list()`
 
@@ -290,7 +290,7 @@ Creates a new version on the specified target site using the content of the spec
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The target site for the cloned version, in the format: sites/ SITE_ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.sites.versions.files`
 
@@ -333,7 +333,7 @@ Creates a new release, which makes the content of the specified version actively
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID |
 | `params.versionName` | `string` | No |  The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.sites.channels`
 
@@ -355,7 +355,7 @@ Creates a new channel in the specified site.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The site in which to create this channel, in the format: sites/ SITE_ID |
 | `params.channelId` | `string` | No | Required. Immutable. A unique ID within the site that identifies the channel. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.channels.get()`
 
@@ -373,7 +373,7 @@ Updates information for the specified channel of the specified site. Implicitly 
 |---|---|---|---|
 | `params.name` | `string` | Yes | The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID |
 | `params.updateMask` | `string` | No | A comma-separated list of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.sites.channels.delete()`
 
@@ -411,7 +411,7 @@ Creates a new release, which makes the content of the specified version actively
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID |
 | `params.versionName` | `string` | No |  The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sites`
 
@@ -431,7 +431,7 @@ Sets the Hosting metadata for a specific site.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The site for which to update the SiteConfig, in the format: sites/ site-name/config |
 | `params.updateMask` | `string` | No | A set of field names from your [site configuration](../sites.SiteConfig) that you want to update. A field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a default mask of only [`max_versions`](../sites.SiteConfig.max_versions) will be used. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sites.domains`
 
@@ -460,7 +460,7 @@ Creates a domain mapping on the specified site.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent to create the domain association for, in the format: sites/site-name |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sites.domains.update()`
 
@@ -469,7 +469,7 @@ Updates the specified domain mapping, creating the mapping as if it does not exi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the domain association to update or create, if an association doesn't already exist. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sites.domains.delete()`
 
@@ -490,7 +490,7 @@ Creates a new version for the specified site.
 | `params.parent` | `string` | Yes | Required. The site in which to create the version, in the format: sites/ SITE_ID |
 | `params.versionId` | `string` | No | A unique id for the new version. This is was only specified for legacy version creations, and should be blank. |
 | `params.sizeBytes` | `string` | No | The self-reported size of the version. This value is used for a pre-emptive quota check for legacy version uploads. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sites.versions.patch()`
 
@@ -500,7 +500,7 @@ Creates a new version for the specified site.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create). |
 | `params.updateMask` | `string` | No | A set of field names from your [version](../sites.versions) that you want to update. A field will be overwritten if, and only if, it's in the mask. If a mask is not provided then a default mask of only [`status`](../sites.versions#Version.FIELDS.status) will be used. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sites.versions.delete()`
 
@@ -517,7 +517,7 @@ Deletes the specified version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The version to which to add files, in the format: sites/SITE_ID /versions/VERSION_ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sites.versions.list()`
 
@@ -545,7 +545,7 @@ Creates a new version on the specified target site using the content of the spec
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The target site for the cloned version, in the format: sites/ SITE_ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sites.versions.files`
 
@@ -588,7 +588,7 @@ Creates a new release, which makes the content of the specified version actively
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID |
 | `params.versionName` | `string` | No |  The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sites.channels`
 
@@ -610,7 +610,7 @@ Creates a new channel in the specified site.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The site in which to create this channel, in the format: sites/ SITE_ID |
 | `params.channelId` | `string` | No | Required. Immutable. A unique ID within the site that identifies the channel. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sites.channels.get()`
 
@@ -628,7 +628,7 @@ Updates information for the specified channel of the specified site. Implicitly 
 |---|---|---|---|
 | `params.name` | `string` | Yes | The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID |
 | `params.updateMask` | `string` | No | A comma-separated list of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sites.channels.delete()`
 
@@ -666,4 +666,4 @@ Creates a new release, which makes the content of the specified version actively
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The site or channel to which the release belongs, in either of the following formats: - sites/SITE_ID - sites/SITE_ID/channels/CHANNEL_ID |
 | `params.versionName` | `string` | No |  The unique identifier for a version, in the format: sites/SITE_ID/versions/ VERSION_ID The SITE_ID in this version identifier must match the SITE_ID in the `parent` parameter. This query parameter must be empty if the `type` field in the request body is `SITE_DISABLE`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
