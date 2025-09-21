@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Analytics API (version: v3)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:46 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:51:47 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:03:39 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:03:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:49 GMT
 
 
@@ -103,7 +103,7 @@ Adds a new user to the given account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to create the user link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.accountUserLinks.list()`
 
@@ -123,7 +123,7 @@ Updates permissions for an existing user on the given account.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to update the account-user link for. |
 | `params.linkId` | `string` | Yes | Link ID to update the account-user link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.accounts`
 
@@ -142,7 +142,9 @@ Lists all accounts to which the user has access.
 
 Hashes the given Client ID.
 
-| `params.resource` | `object` | Yes | The request body. |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.customDataSources`
 
@@ -177,7 +179,7 @@ Create a new custom dimension.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID for the custom dimension to create. |
 | `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to create. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.customDimensions.list()`
 
@@ -200,7 +202,7 @@ Updates an existing custom dimension. This method supports patch semantics.
 | `params.customDimensionId` | `string` | Yes | Custom dimension ID for the custom dimension to update. |
 | `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set. |
 | `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.customDimensions.update()`
 
@@ -212,7 +214,7 @@ Updates an existing custom dimension.
 | `params.customDimensionId` | `string` | Yes | Custom dimension ID for the custom dimension to update. |
 | `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set. |
 | `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.customMetrics`
 
@@ -234,7 +236,7 @@ Create a new custom metric.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID for the custom metric to create. |
 | `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to create. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.customMetrics.list()`
 
@@ -257,7 +259,7 @@ Updates an existing custom metric. This method supports patch semantics.
 | `params.customMetricId` | `string` | Yes | Custom metric ID for the custom metric to update. |
 | `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set. |
 | `params.webPropertyId` | `string` | Yes | Web property ID for the custom metric to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.customMetrics.update()`
 
@@ -269,7 +271,7 @@ Updates an existing custom metric.
 | `params.customMetricId` | `string` | Yes | Custom metric ID for the custom metric to update. |
 | `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set. |
 | `params.webPropertyId` | `string` | Yes | Web property ID for the custom metric to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.experiments`
 
@@ -304,7 +306,7 @@ Create a new experiment.
 | `params.accountId` | `string` | Yes | Account ID to create the experiment for. |
 | `params.profileId` | `string` | Yes | View (Profile) ID to create the experiment for. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to create the experiment for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.experiments.list()`
 
@@ -328,7 +330,7 @@ Update an existing experiment. This method supports patch semantics.
 | `params.experimentId` | `string` | Yes | Experiment ID of the experiment to update. |
 | `params.profileId` | `string` | Yes | View (Profile) ID of the experiment to update. |
 | `params.webPropertyId` | `string` | Yes | Web property ID of the experiment to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.experiments.update()`
 
@@ -340,7 +342,7 @@ Update an existing experiment.
 | `params.experimentId` | `string` | Yes | Experiment ID of the experiment to update. |
 | `params.profileId` | `string` | Yes | View (Profile) ID of the experiment to update. |
 | `params.webPropertyId` | `string` | Yes | Web property ID of the experiment to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.filters`
 
@@ -369,7 +371,7 @@ Create a new filter.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to create filter for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.filters.list()`
 
@@ -389,7 +391,7 @@ Updates an existing filter. This method supports patch semantics.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to which the filter belongs. |
 | `params.filterId` | `string` | Yes | ID of the filter to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.filters.update()`
 
@@ -399,7 +401,7 @@ Updates an existing filter.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to which the filter belongs. |
 | `params.filterId` | `string` | Yes | ID of the filter to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.goals`
 
@@ -423,7 +425,7 @@ Create a new goal.
 | `params.accountId` | `string` | Yes | Account ID to create the goal for. |
 | `params.profileId` | `string` | Yes | View (Profile) ID to create the goal for. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to create the goal for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.goals.list()`
 
@@ -447,7 +449,7 @@ Updates an existing goal. This method supports patch semantics.
 | `params.goalId` | `string` | Yes | Index of the goal to be updated. |
 | `params.profileId` | `string` | Yes | View (Profile) ID to update the goal. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to update the goal. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.goals.update()`
 
@@ -459,7 +461,7 @@ Updates an existing goal.
 | `params.goalId` | `string` | Yes | Index of the goal to be updated. |
 | `params.profileId` | `string` | Yes | View (Profile) ID to update the goal. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to update the goal. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.profileFilterLinks`
 
@@ -494,7 +496,7 @@ Create a new profile filter link.
 | `params.accountId` | `string` | Yes | Account ID to create profile filter link for. |
 | `params.profileId` | `string` | Yes | Profile ID to create filter link for. |
 | `params.webPropertyId` | `string` | Yes | Web property Id to create profile filter link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.profileFilterLinks.list()`
 
@@ -518,7 +520,7 @@ Update an existing profile filter link. This method supports patch semantics.
 | `params.linkId` | `string` | Yes | ID of the profile filter link to be updated. |
 | `params.profileId` | `string` | Yes | Profile ID to which filter link belongs |
 | `params.webPropertyId` | `string` | Yes | Web property Id to which profile filter link belongs |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.profileFilterLinks.update()`
 
@@ -530,7 +532,7 @@ Update an existing profile filter link.
 | `params.linkId` | `string` | Yes | ID of the profile filter link to be updated. |
 | `params.profileId` | `string` | Yes | Profile ID to which filter link belongs |
 | `params.webPropertyId` | `string` | Yes | Web property Id to which profile filter link belongs |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.profileUserLinks`
 
@@ -554,7 +556,7 @@ Adds a new user to the given view (profile).
 | `params.accountId` | `string` | Yes | Account ID to create the user link for. |
 | `params.profileId` | `string` | Yes | View (Profile) ID to create the user link for. |
 | `params.webPropertyId` | `string` | Yes | Web Property ID to create the user link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.profileUserLinks.list()`
 
@@ -578,7 +580,7 @@ Updates permissions for an existing user on the given view (profile).
 | `params.linkId` | `string` | Yes | Link ID to update the user link for. |
 | `params.profileId` | `string` | Yes | View (Profile ID) to update the user link for. |
 | `params.webPropertyId` | `string` | Yes | Web Property ID to update the user link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.profiles`
 
@@ -610,7 +612,7 @@ Create a new view (profile).
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to create the view (profile) for. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to create the view (profile) for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.profiles.list()`
 
@@ -632,7 +634,7 @@ Updates an existing view (profile). This method supports patch semantics.
 | `params.accountId` | `string` | Yes | Account ID to which the view (profile) belongs |
 | `params.profileId` | `string` | Yes | ID of the view (profile) to be updated. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to which the view (profile) belongs |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.profiles.update()`
 
@@ -643,7 +645,7 @@ Updates an existing view (profile).
 | `params.accountId` | `string` | Yes | Account ID to which the view (profile) belongs |
 | `params.profileId` | `string` | Yes | ID of the view (profile) to be updated. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to which the view (profile) belongs |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.remarketingAudience`
 
@@ -675,7 +677,7 @@ Creates a new remarketing audience.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The account ID for which to create the remarketing audience. |
 | `params.webPropertyId` | `string` | Yes | Web property ID for which to create the remarketing audience. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.remarketingAudience.list()`
 
@@ -698,7 +700,7 @@ Updates an existing remarketing audience. This method supports patch semantics.
 | `params.accountId` | `string` | Yes | The account ID of the remarketing audience to update. |
 | `params.remarketingAudienceId` | `string` | Yes | The ID of the remarketing audience to update. |
 | `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audience to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.remarketingAudience.update()`
 
@@ -709,7 +711,7 @@ Updates an existing remarketing audience.
 | `params.accountId` | `string` | Yes | The account ID of the remarketing audience to update. |
 | `params.remarketingAudienceId` | `string` | Yes | The ID of the remarketing audience to update. |
 | `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audience to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.segments`
 
@@ -755,7 +757,7 @@ Create a new unsampled report.
 | `params.accountId` | `string` | Yes | Account ID to create the unsampled report for. |
 | `params.profileId` | `string` | Yes | View (Profile) ID to create the unsampled report for. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to create the unsampled report for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.unsampledReports.list()`
 
@@ -780,7 +782,7 @@ Delete data associated with a previous upload.
 | `params.accountId` | `string` | Yes | Account Id for the uploads to be deleted. |
 | `params.customDataSourceId` | `string` | Yes | Custom data source Id for the uploads to be deleted. |
 | `params.webPropertyId` | `string` | Yes | Web property Id for the uploads to be deleted. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.uploads.get()`
 
@@ -845,7 +847,7 @@ Creates a webProperty-Google Ads link.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | ID of the Google Analytics account to create the link for. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to create the link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.webPropertyAdWordsLinks.list()`
 
@@ -867,7 +869,7 @@ Updates an existing webProperty-Google Ads link. This method supports patch sema
 | `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
 | `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property-Google Ads link ID. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.webPropertyAdWordsLinks.update()`
 
@@ -878,7 +880,7 @@ Updates an existing webProperty-Google Ads link.
 | `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
 | `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property-Google Ads link ID. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.webproperties`
 
@@ -898,7 +900,7 @@ Create a new property if the account has fewer than 20 properties. Web propertie
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to create the web property for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.webproperties.list()`
 
@@ -918,7 +920,7 @@ Updates an existing web property. This method supports patch semantics.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to which the web property belongs |
 | `params.webPropertyId` | `string` | Yes | Web property ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.webproperties.update()`
 
@@ -928,7 +930,7 @@ Updates an existing web property.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to which the web property belongs |
 | `params.webPropertyId` | `string` | Yes | Web property ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `management.webpropertyUserLinks`
 
@@ -950,7 +952,7 @@ Adds a new user to the given web property.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID to create the user link for. |
 | `params.webPropertyId` | `string` | Yes | Web Property ID to create the user link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.webpropertyUserLinks.list()`
 
@@ -972,7 +974,7 @@ Updates permissions for an existing user on the given web property.
 | `params.accountId` | `string` | Yes | Account ID to update the account-user link for. |
 | `params.linkId` | `string` | Yes | Link ID to update the account-user link for. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to update the account-user link for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `metadata`
 
@@ -992,13 +994,17 @@ Lists all columns for a report type
 
 Creates an account ticket.
 
-| `params.resource` | `object` | Yes | The request body. |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `provisioning.createAccountTree()`
 
 Provision account.
 
-| `params.resource` | `object` | Yes | The request body. |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `userDeletion`
 
@@ -1008,4 +1014,6 @@ Provision account.
 
 Insert or update a user deletion requests.
 
-| `params.resource` | `object` | Yes | The request body. |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
