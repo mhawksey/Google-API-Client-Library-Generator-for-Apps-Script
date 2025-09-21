@@ -4,8 +4,8 @@ Auto-generated client library for using the **AdMob API (version: v1)** in Googl
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:10 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:50 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:52 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:04 GMT
 
 
@@ -42,7 +42,7 @@ Generates an AdMob Network report based on the provided report specification. Re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.mediationReport`
 
@@ -53,7 +53,7 @@ Generates an AdMob Mediation report based on the provided report specification. 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.apps`
 
