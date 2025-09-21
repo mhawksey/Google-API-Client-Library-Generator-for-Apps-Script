@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Games Services Managem
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:36:06 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:22:11 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:26:04 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:26:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:12 GMT
 
 
@@ -52,7 +52,7 @@ Resets achievements with the given IDs for all players. This method is only avai
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `events`
 
@@ -92,7 +92,7 @@ Resets events with the given IDs for all players. This method is only available 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `players`
 
@@ -164,4 +164,4 @@ Resets scores for the leaderboards with the given IDs for all players. This meth
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
