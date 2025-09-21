@@ -4,8 +4,8 @@ Auto-generated client library for using the **PageSpeed Insights API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:46:04 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:35:30 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:37:54 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:37:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:56 GMT
 
 
