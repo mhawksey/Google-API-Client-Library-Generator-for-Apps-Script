@@ -4,8 +4,8 @@ Auto-generated client library for using the **Recommender API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:29 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:44:24 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:46:13 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:46:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:24 GMT
 
 
@@ -37,7 +37,7 @@ Updates a Recommender Config. This will create a new revision of the config.
 | `params.name` | `string` | Yes | Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
 | `params.validateOnly` | `boolean` | No | If true, validate the request and preview the change, but do not actually update it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.recommenders.recommendations`
 
@@ -67,7 +67,7 @@ Mark the Recommendation State as Dismissed. Users can use this method to indicat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.recommenders.recommendations.markClaimed()`
 
@@ -76,7 +76,7 @@ Marks the Recommendation State as Claimed. Users can use this method to indicate
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.recommenders.recommendations.markSucceeded()`
 
@@ -85,7 +85,7 @@ Marks the Recommendation State as Succeeded. Users can use this method to indica
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.recommenders.recommendations.markFailed()`
 
@@ -94,7 +94,7 @@ Marks the Recommendation State as Failed. Users can use this method to indicate 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.insightTypes`
 
@@ -115,7 +115,7 @@ Updates an InsightTypeConfig change. This will create a new revision of the conf
 | `params.name` | `string` | Yes | Identifier. Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
 | `params.validateOnly` | `boolean` | No | If true, validate the request and preview the change, but do not actually update it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.insightTypes.insights`
 
@@ -145,7 +145,7 @@ Marks the Insight State as Accepted. Users can use this method to indicate to th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the insight. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `billingAccounts`
 
@@ -170,7 +170,7 @@ Updates a Recommender Config. This will create a new revision of the config.
 | `params.name` | `string` | Yes | Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
 | `params.validateOnly` | `boolean` | No | If true, validate the request and preview the change, but do not actually update it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `billingAccounts.locations.recommenders.recommendations`
 
@@ -200,7 +200,7 @@ Mark the Recommendation State as Dismissed. Users can use this method to indicat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.locations.recommenders.recommendations.markClaimed()`
 
@@ -209,7 +209,7 @@ Marks the Recommendation State as Claimed. Users can use this method to indicate
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.locations.recommenders.recommendations.markSucceeded()`
 
@@ -218,7 +218,7 @@ Marks the Recommendation State as Succeeded. Users can use this method to indica
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.locations.recommenders.recommendations.markFailed()`
 
@@ -227,7 +227,7 @@ Marks the Recommendation State as Failed. Users can use this method to indicate 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `billingAccounts.locations.insightTypes`
 
@@ -248,7 +248,7 @@ Updates an InsightTypeConfig change. This will create a new revision of the conf
 | `params.name` | `string` | Yes | Identifier. Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
 | `params.validateOnly` | `boolean` | No | If true, validate the request and preview the change, but do not actually update it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `billingAccounts.locations.insightTypes.insights`
 
@@ -278,7 +278,7 @@ Marks the Insight State as Accepted. Users can use this method to indicate to th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the insight. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `folders`
 
@@ -314,7 +314,7 @@ Marks the Insight State as Accepted. Users can use this method to indicate to th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the insight. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `folders.locations.recommenders`
 
@@ -346,7 +346,7 @@ Mark the Recommendation State as Dismissed. Users can use this method to indicat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.locations.recommenders.recommendations.markClaimed()`
 
@@ -355,7 +355,7 @@ Marks the Recommendation State as Claimed. Users can use this method to indicate
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.locations.recommenders.recommendations.markSucceeded()`
 
@@ -364,7 +364,7 @@ Marks the Recommendation State as Succeeded. Users can use this method to indica
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.locations.recommenders.recommendations.markFailed()`
 
@@ -373,7 +373,7 @@ Marks the Recommendation State as Failed. Users can use this method to indicate 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations`
 
@@ -398,7 +398,7 @@ Updates a Recommender Config. This will create a new revision of the config.
 | `params.name` | `string` | Yes | Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
 | `params.validateOnly` | `boolean` | No | If true, validate the request and preview the change, but do not actually update it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.recommenders.recommendations`
 
@@ -428,7 +428,7 @@ Mark the Recommendation State as Dismissed. Users can use this method to indicat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.recommenders.recommendations.markClaimed()`
 
@@ -437,7 +437,7 @@ Marks the Recommendation State as Claimed. Users can use this method to indicate
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.recommenders.recommendations.markSucceeded()`
 
@@ -446,7 +446,7 @@ Marks the Recommendation State as Succeeded. Users can use this method to indica
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.recommenders.recommendations.markFailed()`
 
@@ -455,7 +455,7 @@ Marks the Recommendation State as Failed. Users can use this method to indicate 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the recommendation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.insightTypes`
 
@@ -476,7 +476,7 @@ Updates an InsightTypeConfig change. This will create a new revision of the conf
 | `params.name` | `string` | Yes | Identifier. Name of insight type config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/config |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
 | `params.validateOnly` | `boolean` | No | If true, validate the request and preview the change, but do not actually update it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.insightTypes.insights`
 
@@ -506,4 +506,4 @@ Marks the Insight State as Accepted. Users can use this method to indicate to th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the insight. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
