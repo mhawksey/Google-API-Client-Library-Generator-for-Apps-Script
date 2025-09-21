@@ -4,8 +4,8 @@ Auto-generated client library for using the **Web Risk API (version: v1)** in Go
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:03:02 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:55:33 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:24 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:24 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:00 GMT
 
 
@@ -52,7 +52,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.submissions`
 
@@ -63,7 +63,7 @@ Creates a Submission of a URI suspected of containing phishing content to be rev
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project that is making the submission. This string is in the format "projects/{project_number}". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `threatLists`
 
