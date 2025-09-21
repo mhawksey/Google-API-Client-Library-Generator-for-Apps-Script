@@ -4,8 +4,8 @@ Auto-generated client library for using the **Workflows API (version: v1beta)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:03:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:55:54 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:42 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:42 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:16 GMT
 
 
@@ -97,7 +97,7 @@ Creates a new workflow. If a workflow with the specified name already exists in 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location} |
 | `params.workflowId` | `string` | No | Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflows.delete()`
 
@@ -115,4 +115,4 @@ Updates an existing workflow. Running this method has no impact on already runni
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow} |
 | `params.updateMask` | `string` | No | List of fields to be updated. If not present, the entire workflow will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
