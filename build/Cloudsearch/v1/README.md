@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Search API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:33 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:03:19 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:43 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:43 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:40 GMT
 
 
@@ -51,7 +51,7 @@ Checks whether an item is accessible by specified principal. Principal must be a
 |---|---|---|---|
 | `params.name` | `string` | Yes | Item name, format: datasources/{source_id}/items/{item_id} |
 | `params.debugOptions.enableDebugging` | `boolean` | No | If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `debug.datasources.items.searchByViewUrl()`
 
@@ -60,7 +60,7 @@ Fetches the item whose viewUrl exactly matches that of the URL provided in the r
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Source name, format: datasources/{source_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `debug.datasources.items.unmappedids`
 
@@ -122,7 +122,7 @@ Update customer settings. **Note:** This API requires an admin account to execut
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.updateMask` | `string` | No | Update mask to control which fields get updated. If you specify a field in the update_mask but don't specify its value here, that field will be cleared. If the mask is not present or empty, all fields will be updated. Currently supported field paths: vpc_settings and audit_logging_settings |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `settings.searchapplications`
 
@@ -151,7 +151,7 @@ Creates a search application. **Note:** This API requires an admin account to ex
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `settings.searchapplications.update()`
 
@@ -161,7 +161,7 @@ Updates a search application. **Note:** This API requires an admin account to ex
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the Search Application. Format: searchapplications/{application_id}. |
 | `params.updateMask` | `string` | No | Only applies to [`settings.searchapplications.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch). Update mask to control which fields to update. Example field paths: `search_application.name`, `search_application.displayName`. * If `update_mask` is non-empty, then only the fields specified in the `update_mask` are updated. * If you specify a field in the `update_mask`, but don't specify its value in the `search_application`, then that field is cleared. * If the `update_mask` is not present or empty or has the value `*`, then all fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `settings.searchapplications.patch()`
 
@@ -171,7 +171,7 @@ Updates a search application. **Note:** This API requires an admin account to ex
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the Search Application. Format: searchapplications/{application_id}. |
 | `params.updateMask` | `string` | No | Only applies to [`settings.searchapplications.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.searchapplications/patch). Update mask to control which fields to update. Example field paths: `search_application.name`, `search_application.displayName`. * If `update_mask` is non-empty, then only the fields specified in the `update_mask` are updated. * If you specify a field in the `update_mask`, but don't specify its value in the `search_application`, then that field is cleared. * If the `update_mask` is not present or empty or has the value `*`, then all fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `settings.searchapplications.delete()`
 
@@ -189,7 +189,7 @@ Resets a search application to default settings. This will return an empty respo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the search application to be reset. Format: applications/{application_id}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `settings.datasources`
 
@@ -199,7 +199,7 @@ Creates a datasource. **Note:** This API requires an admin account to execute.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `settings.datasources.delete()`
 
@@ -226,7 +226,7 @@ Updates a datasource. **Note:** This API requires an admin account to execute.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `settings.datasources.patch()`
 
@@ -237,7 +237,7 @@ Updates a datasource. **Note:** This API requires an admin account to execute.
 | `params.name` | `string` | Yes | The name of the datasource resource. Format: datasources/{source_id}. The name is ignored when creating a datasource. |
 | `params.debugOptions.enableDebugging` | `boolean` | No | If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field. |
 | `params.updateMask` | `string` | No | Only applies to [`settings.datasources.patch`](https://developers.google.com/cloud-search/docs/reference/rest/v1/settings.datasources/patch). Update mask to control which fields to update. Example field paths: `name`, `displayName`. * If `update_mask` is non-empty, then only the fields specified in the `update_mask` are updated. * If you specify a field in the `update_mask`, but don't specify its value in the source, that field is cleared. * If the `update_mask` is not present or empty or has the value `*`, then all fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `settings.datasources.list()`
 
@@ -257,7 +257,7 @@ Enables `third party` support in Google Cloud Search. **Note:** This API require
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `indexing`
 
@@ -270,7 +270,7 @@ Updates the schema of a data source. This method does not perform incremental up
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the data source to update Schema. Format: datasources/{source_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `indexing.datasources.getSchema()`
 
@@ -334,7 +334,7 @@ Updates Item ACL, metadata, and content. It will insert the Item if it does not 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the Item. Format: datasources/{source_id}/items/{item_id} This is a required field. The maximum length is 1536 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `indexing.datasources.items.upload()`
 
@@ -343,7 +343,7 @@ Creates an upload session for uploading item content. For items smaller than 100
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the Item to start a resumable upload. Format: datasources/{source_id}/items/{item_id}. The maximum length is 1536 bytes. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `indexing.datasources.items.poll()`
 
@@ -352,7 +352,7 @@ Polls for unreserved items from the indexing queue and marks a set as reserved, 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the Data Source to poll items. Format: datasources/{source_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `indexing.datasources.items.push()`
 
@@ -361,7 +361,7 @@ Pushes an item onto a queue for later polling and updating. This API requires an
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the item to push into the indexing queue. Format: datasources/{source_id}/items/{ID} This is a required field. The maximum length is 1536 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `indexing.datasources.items.unreserve()`
 
@@ -370,7 +370,7 @@ Unreserves all items from a queue, making them all eligible to be polled. This m
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the Data Source to unreserve all items. Format: datasources/{source_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `indexing.datasources.items.deleteQueueItems()`
 
@@ -379,7 +379,7 @@ Deletes all items in a queue. This method is useful for deleting stale items. Th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the Data Source to delete items in a queue. Format: datasources/{source_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `query`
 
@@ -389,7 +389,7 @@ Provides suggestions for autocompleting the query. **Note:** This API requires a
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `query.search()`
 
@@ -397,7 +397,7 @@ The Cloud Search Query API provides the search method, which returns the most re
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `query.removeActivity()`
 
@@ -405,7 +405,7 @@ Provides functionality to remove logged activity for a user. Currently to be use
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `query.debugSearch()`
 
@@ -413,7 +413,7 @@ Returns Debug information for Cloud Search Query API provides the search method.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `query.sources`
 
@@ -577,4 +577,4 @@ Uploads media for indexing. The upload endpoint supports direct and resumable up
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceName` | `string` | Yes | Name of the media that is being downloaded. See ReadRequest.resource_name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
