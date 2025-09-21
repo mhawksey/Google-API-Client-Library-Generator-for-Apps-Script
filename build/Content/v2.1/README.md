@@ -4,8 +4,8 @@ Auto-generated client library for using the **Content API for Shopping (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:30 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:05:26 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:15:21 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:15:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:21 GMT
 
 
@@ -39,7 +39,7 @@ Retrieves, inserts, updates, and deletes multiple Merchant Center (sub-)accounts
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.delete()`
 
@@ -68,7 +68,7 @@ Creates a Merchant Center sub-account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the managing account. This must be a multi-client account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.link()`
 
@@ -78,7 +78,7 @@ Performs an action on a link between two Merchant Center accounts, namely accoun
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. |
 | `params.accountId` | `string` | Yes | The ID of the account that should be linked. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.list()`
 
@@ -112,7 +112,7 @@ Updates a Merchant Center account. Any fields that are not provided are deleted 
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. |
 | `params.accountId` | `string` | Yes | The ID of the account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.updatelabels()`
 
@@ -122,7 +122,7 @@ Updates labels that are assigned to the Merchant Center account by CSS user.
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the managing account. |
 | `params.accountId` | `string` | Yes | The ID of the account whose labels are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.requestphoneverification()`
 
@@ -132,7 +132,7 @@ Request verification code to start phone verification.
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account. |
 | `params.accountId` | `string` | Yes | Required. The ID of the account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.verifyphonenumber()`
 
@@ -142,7 +142,7 @@ Validates verification code to verify phone number for the account. If successfu
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and accountId must be the ID of a sub-account of this account. |
 | `params.accountId` | `string` | Yes | Required. The ID of the account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.credentials`
 
@@ -153,7 +153,7 @@ Uploads credentials for the Merchant Center account. If credentials already exis
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Required. The merchant id of the account these credentials belong to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.labels`
 
@@ -174,7 +174,7 @@ Creates a new label, not assigned to any account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Required. The id of the account this label belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.labels.patch()`
 
@@ -184,7 +184,7 @@ Updates a label.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Required. The id of the account this label belongs to. |
 | `params.labelId` | `string` | Yes | Required. The id of the label to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.labels.delete()`
 
@@ -204,7 +204,7 @@ Links return carrier to a merchant account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Required. The Merchant Center Account Id under which the Return Carrier is to be linked. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.returncarrier.patch()`
 
@@ -214,7 +214,7 @@ Updates a return carrier in the merchant account.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Required. The Merchant Center Account Id under which the Return Carrier is to be linked. |
 | `params.carrierAccountId` | `string` | Yes | Required. The Google-provided unique carrier ID, used to update the resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.returncarrier.delete()`
 
@@ -241,7 +241,7 @@ Retrieves multiple Merchant Center account statuses in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accountstatuses.get()`
 
@@ -273,7 +273,7 @@ Retrieves and updates tax settings of multiple accounts in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounttax.get()`
 
@@ -302,7 +302,7 @@ Updates the tax settings of the account. Any fields that are not provided are de
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. |
 | `params.accountId` | `string` | Yes | The ID of the account for which to get/update account tax settings. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `datafeeds`
 
@@ -312,7 +312,7 @@ Deletes, fetches, gets, inserts and updates multiple datafeeds in a single reque
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datafeeds.delete()`
 
@@ -348,7 +348,7 @@ Registers a datafeed configuration with your Merchant Center account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the account that manages the datafeed. This account cannot be a multi-client account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datafeeds.list()`
 
@@ -368,7 +368,7 @@ Updates a datafeed configuration of your Merchant Center account. Any fields tha
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the account that manages the datafeed. This account cannot be a multi-client account. |
 | `params.datafeedId` | `string` | Yes | The ID of the datafeed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `datafeedstatuses`
 
@@ -378,7 +378,7 @@ Gets multiple Merchant Center datafeed statuses in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datafeedstatuses.get()`
 
@@ -410,7 +410,7 @@ Retrieves and/or updates the LIA settings of multiple accounts in a single reque
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `liasettings.get()`
 
@@ -512,7 +512,7 @@ Updates the LIA settings of the account. Any fields that are not provided are de
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. |
 | `params.accountId` | `string` | Yes | The ID of the account for which to get or update LIA settings. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `localinventory`
 
@@ -522,7 +522,7 @@ Updates local inventory for multiple products or stores in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `localinventory.insert()`
 
@@ -532,7 +532,7 @@ Updates the local inventory of a product in your Merchant Center account.
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the account that contains the product. This account cannot be a multi-client account. |
 | `params.productId` | `string` | Yes | The REST ID of the product for which to update local inventory. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `pos`
 
@@ -542,7 +542,7 @@ Batches multiple POS-related calls in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `pos.delete()`
 
@@ -572,7 +572,7 @@ Creates a store for the given merchant.
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the POS or inventory data provider. |
 | `params.targetMerchantId` | `string` | Yes | The ID of the target merchant. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `pos.inventory()`
 
@@ -582,7 +582,7 @@ Submit inventory for the given merchant.
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the POS or inventory data provider. |
 | `params.targetMerchantId` | `string` | Yes | The ID of the target merchant. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `pos.list()`
 
@@ -601,7 +601,7 @@ Submit a sale event for the given merchant.
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the POS or inventory data provider. |
 | `params.targetMerchantId` | `string` | Yes | The ID of the target merchant. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `products`
 
@@ -611,7 +611,7 @@ Retrieves, inserts, and deletes multiple products in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `products.delete()`
 
@@ -640,7 +640,7 @@ Uploads a product to your Merchant Center account. If an item with the same chan
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the account that contains the product. This account cannot be a multi-client account. |
 | `params.feedId` | `string` | No | The Content API Supplemental Feed ID. If present then product insertion applies to the data in a supplemental feed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `products.update()`
 
@@ -651,7 +651,7 @@ Updates an existing product in your Merchant Center account. Only updates attrib
 | `params.merchantId` | `string` | Yes | The ID of the account that contains the product. This account cannot be a multi-client account. |
 | `params.productId` | `string` | Yes | The REST ID of the product for which to update. |
 | `params.updateMask` | `string` | No | The comma-separated list of product attributes to be updated. Example: `"title,salePrice"`. Attributes specified in the update mask without a value specified in the body will be deleted from the product. *You must specify the update mask to delete attributes.* Only top-level product attributes can be updated. If not defined, product attributes with set values will be updated and other attributes will stay unchanged. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `products.list()`
 
@@ -671,7 +671,7 @@ Gets the statuses of multiple products in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `productstatuses.get()`
 
@@ -711,7 +711,7 @@ Register a Merchant Center account for pubsub notifications. Note that cloud top
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionalinventory`
 
@@ -721,7 +721,7 @@ Updates regional inventory for multiple products or regions in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionalinventory.insert()`
 
@@ -731,7 +731,7 @@ Updates the regional inventory of a product in your Merchant Center account. If 
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the account that contains the product. This account cannot be a multi-client account. |
 | `params.productId` | `string` | Yes | The REST ID of the product for which to update the regional inventory. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `returnaddress`
 
@@ -741,7 +741,7 @@ Batches multiple return address related calls in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `returnaddress.delete()`
 
@@ -768,7 +768,7 @@ Inserts a return address for the Merchant Center account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The Merchant Center account to insert a return address for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `returnaddress.list()`
 
@@ -789,7 +789,7 @@ Batches multiple return policy related calls in a single request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `returnpolicy.delete()`
 
@@ -816,7 +816,7 @@ Inserts a return policy for the Merchant Center account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The Merchant Center account to insert a return policy for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `returnpolicy.list()`
 
@@ -834,7 +834,7 @@ Retrieves and updates the shipping settings of multiple accounts in a single req
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `shippingsettings.get()`
 
@@ -887,7 +887,7 @@ Updates the shipping settings of the account. Any fields that are not provided a
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the managing account. If this parameter is not the same as accountId, then this account must be a multi-client account and `accountId` must be the ID of a sub-account of this account. |
 | `params.accountId` | `string` | Yes | The ID of the account for which to get/update shipping settings. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `collections`
 
@@ -917,7 +917,7 @@ Uploads a collection to your Merchant Center account. If a collection with the s
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the account that contains the collection. This account cannot be a multi-client account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `collections.delete()`
 
@@ -970,7 +970,7 @@ Creates a new conversion source.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the account that owns the new conversion source. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `conversionsources.patch()`
 
@@ -981,7 +981,7 @@ Updates information of an existing conversion source.
 | `params.merchantId` | `string` | Yes | Required. The ID of the account that owns the new conversion source. |
 | `params.conversionSourceId` | `string` | Yes | Required. The ID of the conversion source to be updated. |
 | `params.updateMask` | `string` | No | Optional. List of fields being updated. The following fields can be updated: `attribution_settings`, `display_name`, `currency_code`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `conversionsources.delete()`
 
@@ -1000,7 +1000,7 @@ Re-enables an archived conversion source.
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the account that owns the new conversion source. |
 | `params.conversionSourceId` | `string` | Yes | Required. The ID of the conversion source to be undeleted. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `conversionsources.get()`
 
@@ -1039,7 +1039,7 @@ Requests a review of free listings in a specific region. This method deprecated.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `freelistingsprogram.checkoutsettings`
 
@@ -1058,7 +1058,7 @@ Enrolls merchant in `Checkout` program.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `freelistingsprogram.checkoutsettings.delete()`
 
@@ -1085,7 +1085,7 @@ Requests a review of Shopping ads in a specific region. This method deprecated. 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `csses`
 
@@ -1116,7 +1116,7 @@ Updates labels that are assigned to a CSS domain by its CSS group.
 |---|---|---|---|
 | `params.cssGroupId` | `string` | Yes | Required. The CSS group ID of the updated CSS domain. |
 | `params.cssDomainId` | `string` | Yes | Required. The ID of the updated CSS domain. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `reports`
 
@@ -1127,7 +1127,7 @@ Retrieves merchant performance metrics matching the search query and optionally 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. Id of the merchant making the call. Must be a standalone account or an MCA subaccount. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `merchantsupport`
 
@@ -1140,7 +1140,7 @@ Provide a list of merchant's issues with a support content and available actions
 | `params.merchantId` | `string` | Yes | Required. The ID of the account to fetch issues for. |
 | `params.languageCode` | `string` | No | Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code used to localize support content. If not set, the result will be in default language `en-US`. |
 | `params.timeZone` | `string` | No | Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in support content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `merchantsupport.renderproductissues()`
 
@@ -1152,7 +1152,7 @@ Provide a list of issues for merchant's product with a support content and avail
 | `params.productId` | `string` | Yes | Required. The [REST_ID](https://developers.google.com/shopping-content/reference/rest/v2.1/products#Product.FIELDS.id) of the product to fetch issues for. |
 | `params.languageCode` | `string` | No | Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code used to localize support content. If not set, the result will be in default language `en-US`. |
 | `params.timeZone` | `string` | No | Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in support content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `merchantsupport.triggeraction()`
 
@@ -1162,7 +1162,7 @@ Start an action. The action can be requested by merchants in third-party applica
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the merchant's account. |
 | `params.languageCode` | `string` | No | Optional. Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) used to localize the response. If not set, the result will be in default language `en-US`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regions`
 
@@ -1183,7 +1183,7 @@ Creates a region definition in your Merchant Center account.
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The id of the merchant for which to create region definition. |
 | `params.regionId` | `string` | No | Required. The id of the region to create. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regions.patch()`
 
@@ -1194,7 +1194,7 @@ Updates a region definition in your Merchant Center account.
 | `params.merchantId` | `string` | Yes | Required. The id of the merchant for which to update region definition. |
 | `params.regionId` | `string` | Yes | Required. The id of the region to update. |
 | `params.updateMask` | `string` | No | Optional. The comma-separated field mask indicating the fields to update. Example: `"displayName,postalCodeArea.regionCode"`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regions.delete()`
 
@@ -1224,7 +1224,7 @@ Inserts a promotion for your Merchant Center account. If the promotion already e
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the account that contains the collection. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `promotions.get()`
 
@@ -1266,7 +1266,7 @@ Reports an interaction on a recommendation for a merchant.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The ID of the account that wants to report an interaction. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `returnpolicyonline`
 
@@ -1286,7 +1286,7 @@ Creates a new return policy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The id of the merchant for which to retrieve the return policy online object. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `returnpolicyonline.delete()`
 
@@ -1305,7 +1305,7 @@ Updates an existing return policy.
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | Required. The id of the merchant for which to retrieve the return policy online object. |
 | `params.returnPolicyId` | `string` | Yes | Required. The id of the return policy to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `returnpolicyonline.list()`
 
@@ -1324,7 +1324,7 @@ Creates new order tracking signal.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The ID of the merchant for which the order signal is created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `productdeliverytime`
 
@@ -1335,7 +1335,7 @@ Creates or updates the delivery time of a product.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.merchantId` | `string` | Yes | The Google merchant ID of the account that contains the product. This account cannot be a multi-client account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `productdeliverytime.get()`
 
