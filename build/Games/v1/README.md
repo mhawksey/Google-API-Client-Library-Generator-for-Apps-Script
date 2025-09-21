@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Games Services API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:36:03 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:22:03 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:58 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:07 GMT
 
 
@@ -81,7 +81,7 @@ Updates multiple achievements for the currently authenticated player.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `applications`
 
@@ -148,7 +148,7 @@ Records a batch of changes to the number of times events have occurred for the c
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.language` | `string` | No | The preferred language to use for strings returned by this method. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `leaderboards`
 
@@ -302,7 +302,7 @@ Submits multiple scores to leaderboards.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.language` | `string` | No | The preferred language to use for strings returned by this method. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `snapshots`
 
@@ -343,7 +343,7 @@ Associate the PGS Player principal encoded in the provided recall session id wit
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `recall.retrieveTokens()`
 
@@ -376,7 +376,7 @@ Delete a Recall token linking the PGS Player principal identified by the Recall 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `recall.resetPersona()`
 
@@ -384,7 +384,7 @@ Delete all Recall tokens linking the given persona to any player (with or withou
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accesstokens`
 
