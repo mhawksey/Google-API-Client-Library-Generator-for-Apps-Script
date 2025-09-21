@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Marketing Platform Admin AP
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:43:01 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:26:03 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:34:00 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:34:00 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:16 GMT
 
 
@@ -43,7 +43,7 @@ Creates the link between the Analytics account and the Google Marketing Platform
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this Analytics account link will be created. Format: organizations/{org_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.analyticsAccountLinks.delete()`
 
@@ -60,4 +60,4 @@ Updates the service level for an Analytics property.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.analyticsAccountLink` | `string` | Yes | Required. The parent AnalyticsAccountLink scope where this property is in. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
