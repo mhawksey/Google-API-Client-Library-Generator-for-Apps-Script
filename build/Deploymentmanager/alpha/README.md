@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Deployment Manager V2 API (v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:27 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:12:26 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:43 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:43 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:06 GMT
 
 
@@ -24,7 +24,7 @@ Creates a composite type.
 |---|---|---|---|
 | `params.project` | `string` | Yes | The project ID for this request. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `compositeTypes.update()`
 
@@ -35,7 +35,7 @@ Updates a composite type.
 | `params.project` | `string` | Yes | The project ID for this request. |
 | `params.compositeType` | `string` | Yes | The name of the composite type for this request. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `compositeTypes.patch()`
 
@@ -46,7 +46,7 @@ Patches a composite type.
 | `params.project` | `string` | Yes | The project ID for this request. |
 | `params.compositeType` | `string` | Yes | The name of the composite type for this request. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `compositeTypes.delete()`
 
@@ -92,7 +92,7 @@ Creates a deployment and all of the resources described by the deployment manife
 | `params.preview` | `boolean` | No | If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it. |
 | `params.createPolicy` | `string` | No | Sets the policy to use for creating new resources. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `deployments.update()`
 
@@ -106,7 +106,7 @@ Updates a deployment and all of the resources described by the deployment manife
 | `params.deletePolicy` | `string` | No | Sets the policy to use for deleting resources. |
 | `params.preview` | `boolean` | No | If set to true, updates the deployment and creates and updates the "shell" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `deployments.patch()`
 
@@ -120,7 +120,7 @@ Patches a deployment and all of the resources described by the deployment manife
 | `params.deletePolicy` | `string` | No | Sets the policy to use for deleting resources. |
 | `params.preview` | `boolean` | No | If set to true, updates the deployment and creates and updates the "shell" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `deployments.delete()`
 
@@ -163,7 +163,7 @@ Cancels and removes the preview currently associated with the deployment.
 |---|---|---|---|
 | `params.project` | `string` | Yes | The project ID for this request. |
 | `params.deployment` | `string` | Yes | The name of the deployment for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `deployments.stop()`
 
@@ -173,7 +173,7 @@ Stops an ongoing operation. This does not roll back any work that has already be
 |---|---|---|---|
 | `params.project` | `string` | Yes | The project ID for this request. |
 | `params.deployment` | `string` | Yes | The name of the deployment for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `deployments.getIamPolicy()`
 
@@ -194,7 +194,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `deployments.testIamPermissions()`
 
@@ -205,7 +205,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `manifests`
 
@@ -293,7 +293,7 @@ Creates a type provider.
 |---|---|---|---|
 | `params.project` | `string` | Yes | The project ID for this request. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `typeProviders.update()`
 
@@ -304,7 +304,7 @@ Updates a type provider.
 | `params.project` | `string` | Yes | The project ID for this request. |
 | `params.typeProvider` | `string` | Yes | The name of the type provider for this request. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `typeProviders.patch()`
 
@@ -315,7 +315,7 @@ Patches a type provider.
 | `params.project` | `string` | Yes | The project ID for this request. |
 | `params.typeProvider` | `string` | Yes | The name of the type provider for this request. |
 | `params.header.bypassBillingFilter` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `typeProviders.delete()`
 
