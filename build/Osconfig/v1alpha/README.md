@@ -4,8 +4,8 @@ Auto-generated client library for using the **OS Config API (version: v1alpha)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:48 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:34:58 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:37:28 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:37:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:35 GMT
 
 
@@ -29,7 +29,7 @@ Create an OS policy assignment. This method also creates the first revision of t
 | `params.parent` | `string` | Yes | Required. The parent resource name in the form: projects/{project}/locations/{location} |
 | `params.osPolicyAssignmentId` | `string` | No | Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is only idempotent if a `request_id` is provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.osPolicyAssignments.patch()`
 
@@ -41,7 +41,7 @@ Update an existing OS policy assignment. This method creates a new revision of t
 | `params.updateMask` | `string` | No | Optional. Field mask that controls which fields of the assignment should be updated. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the OS policy assignment is not found, a new OS policy assignment will be created. In this situation, `update_mask` is ignored. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is only idempotent if a `request_id` is provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.osPolicyAssignments.get()`
 
@@ -97,7 +97,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instanceOSPoliciesCompliances`
 
