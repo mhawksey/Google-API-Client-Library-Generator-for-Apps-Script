@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Trace API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:31:35 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:03:55 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:14:08 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:14:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:09 GMT
 
 
@@ -23,7 +23,7 @@ Sends trace spans to Cloud Trace. Spans cannot be updated. If the trace ID and s
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. ID of the Cloud project where the trace data is stored. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.traces`
 
