@@ -4,8 +4,8 @@ Auto-generated client library for using the **Authorized Buyers Marketplace API 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:03 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:53:39 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:05:21 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:05:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:37 GMT
 
 
@@ -45,7 +45,7 @@ Subscribe to the auction package for the specified buyer. Once subscribed, the b
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.auctionPackages.unsubscribe()`
 
@@ -54,7 +54,7 @@ Unsubscribe from the auction package for the specified buyer. Once unsubscribed,
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.auctionPackages.subscribeClients()`
 
@@ -63,7 +63,7 @@ Subscribe the specified clients of the buyer to the auction package. If a client
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.auctionPackage` | `string` | Yes | Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.auctionPackages.unsubscribeClients()`
 
@@ -72,7 +72,7 @@ Unsubscribe from the auction package for the specified clients of the buyer. Uns
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.auctionPackage` | `string` | Yes | Required. Name of the auction package. Format: `buyers/{accountId}/auctionPackages/{auctionPackageId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `buyers.clients`
 
@@ -102,7 +102,7 @@ Creates a new client.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the buyer. Format: `buyers/{accountId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.clients.patch()`
 
@@ -112,7 +112,7 @@ Updates an existing client.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the client. Format: `buyers/{accountId}/clients/{clientAccountId}` |
 | `params.updateMask` | `string` | No | List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.clients.activate()`
 
@@ -121,7 +121,7 @@ Activates an existing client. The state of the client will be updated to "ACTIVE
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.clients.deactivate()`
 
@@ -130,7 +130,7 @@ Deactivates an existing client. The state of the client will be updated to "INAC
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `buyers.clients.users`
 
@@ -159,7 +159,7 @@ Creates a new client user in "INVITED" state. An email invitation will be sent t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the client. Format: `buyers/{accountId}/clients/{clientAccountId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.clients.users.delete()`
 
@@ -176,7 +176,7 @@ Activates an existing client user. The state of the client user will be updated 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.clients.users.deactivate()`
 
@@ -185,7 +185,7 @@ Deactivates an existing client user. The state of the client user will be update
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `buyers/{buyerAccountId}/clients/{clientAccountId}/clientUsers/{userId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `buyers.finalizedDeals`
 
@@ -216,7 +216,7 @@ Pauses serving of the given finalized deal. This call only pauses the serving st
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.finalizedDeals.resume()`
 
@@ -225,7 +225,7 @@ Resumes serving of the given finalized deal. Calling this method for an running 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.finalizedDeals.addCreative()`
 
@@ -234,7 +234,7 @@ Add creative to be used in the bidding process for a finalized deal. For program
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.deal` | `string` | Yes | Required. Name of the finalized deal in the format of: `buyers/{accountId}/finalizedDeals/{dealId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.finalizedDeals.setReadyToServe()`
 
@@ -243,7 +243,7 @@ Sets the given finalized deal as ready to serve. By default, deals are set as re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.deal` | `string` | Yes | Required. Format: `buyers/{accountId}/finalizedDeals/{dealId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `buyers.proposals`
 
@@ -263,7 +263,7 @@ Updates the proposal at the given revision number. If the revision number in the
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The name of the proposal serving as a unique identifier. Format: buyers/{accountId}/proposals/{proposalId} |
 | `params.updateMask` | `string` | No | List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.proposals.list()`
 
@@ -283,7 +283,7 @@ Cancels an ongoing negotiation on a proposal. This does not cancel or end servin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.proposal` | `string` | Yes | Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.proposals.accept()`
 
@@ -292,7 +292,7 @@ Accepts the proposal at the given revision number. If the revision number in the
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.proposals.addNote()`
 
@@ -301,7 +301,7 @@ Creates a note for this proposal and sends to the seller. This method is not sup
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.proposal` | `string` | Yes | Name of the proposal. Format: `buyers/{accountId}/proposals/{proposalId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.proposals.sendRfp()`
 
@@ -310,7 +310,7 @@ Sends a request for proposal (RFP) to a publisher to initiate the negotiation re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.buyer` | `string` | Yes | Required. The current buyer who is sending the RFP in the format: `buyers/{accountId}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `buyers.proposals.deals`
 
@@ -330,7 +330,7 @@ Updates the given deal at the buyer known revision number. If the server revisio
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The unique identifier of the deal. Auto-generated by the server when a deal is created. Format: buyers/{accountId}/proposals/{proposalId}/deals/{dealId} |
 | `params.updateMask` | `string` | No | List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.proposals.deals.batchUpdate()`
 
@@ -339,7 +339,7 @@ Batch updates multiple deals in the same proposal.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the proposal containing the deals to batch update. Format: buyers/{accountId}/proposals/{proposalId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.proposals.deals.list()`
 
