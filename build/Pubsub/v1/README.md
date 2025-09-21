@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Pub/Sub API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:06 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:43:54 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:45:48 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:45:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:46:53 GMT
 
 
@@ -25,7 +25,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.topics.getIamPolicy()`
 
@@ -43,7 +43,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.topics.create()`
 
@@ -52,7 +52,7 @@ Creates the given topic with the given name. See the [resource name rules] (http
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.topics.patch()`
 
@@ -61,7 +61,7 @@ Updates an existing topic by updating the fields specified in the update mask. N
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.topics.publish()`
 
@@ -70,7 +70,7 @@ Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does no
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.topic` | `string` | Yes | Required. The messages in the request will be published on this topic. Format is `projects/{project}/topics/{topic}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.topics.get()`
 
@@ -131,7 +131,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.getIamPolicy()`
 
@@ -149,7 +149,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.detach()`
 
@@ -166,7 +166,7 @@ Creates a subscription to a given topic. See the [resource name rules] (https://
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.get()`
 
@@ -183,7 +183,7 @@ Updates an existing subscription by updating the fields specified in the update 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.list()`
 
@@ -210,7 +210,7 @@ Modifies the ack deadline for a specific message. This method is useful to indic
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | Required. The name of the subscription. Format is `projects/{project}/subscriptions/{sub}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.acknowledge()`
 
@@ -219,7 +219,7 @@ Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeReque
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | Required. The subscription whose message is being acknowledged. Format is `projects/{project}/subscriptions/{sub}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.pull()`
 
@@ -228,7 +228,7 @@ Pulls messages from the server.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | Required. The subscription from which messages should be pulled. Format is `projects/{project}/subscriptions/{sub}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.modifyPushConfig()`
 
@@ -237,7 +237,7 @@ Modifies the `PushConfig` for a specified subscription. This may be used to chan
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | Required. The name of the subscription. Format is `projects/{project}/subscriptions/{sub}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.seek()`
 
@@ -246,7 +246,7 @@ Seeks an existing subscription to a point in time or to a given snapshot, whiche
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | Required. The subscription to affect. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.snapshots`
 
@@ -257,7 +257,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.snapshots.getIamPolicy()`
 
@@ -275,7 +275,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.snapshots.get()`
 
@@ -302,7 +302,7 @@ Creates a snapshot from the requested subscription. Snapshots are used in [Seek]
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. User-provided name for this snapshot. If the name is not provided in the request, the server will assign a random name for this snapshot on the same project as the subscription. Note that for REST API requests, you must specify a name. See the [resource name rules](https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names). Format is `projects/{project}/snapshots/{snap}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.snapshots.patch()`
 
@@ -311,7 +311,7 @@ Updates an existing snapshot by updating the fields specified in the update mask
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Optional. The name of the snapshot. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.snapshots.delete()`
 
@@ -330,7 +330,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.schemas.getIamPolicy()`
 
@@ -348,7 +348,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.schemas.create()`
 
@@ -358,7 +358,7 @@ Creates a schema.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in which to create the schema. Format is `projects/{project-id}`. |
 | `params.schemaId` | `string` | No | The ID to use for the schema, which will become the final component of the schema's resource name. See https://cloud.google.com/pubsub/docs/pubsub-basics#resource_names for resource name constraints. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.schemas.get()`
 
@@ -398,7 +398,7 @@ Commits a new schema revision to an existing schema.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the schema we are revising. Format is `projects/{project}/schemas/{schema}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.schemas.rollback()`
 
@@ -407,7 +407,7 @@ Creates a new schema revision that is a copy of the provided revision_id.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The schema being rolled back with revision id. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.schemas.deleteRevision()`
 
@@ -433,7 +433,7 @@ Validates a schema.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.schemas.validateMessage()`
 
@@ -442,4 +442,4 @@ Validates a message against a schema.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in which to validate schemas. Format is `projects/{project-id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
