@@ -4,8 +4,8 @@ Auto-generated client library for using the **Workflow Executions API (version: 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:03:12 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:55:46 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:36 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:36 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:11 GMT
 
 
@@ -40,7 +40,7 @@ Creates a new execution using the latest revision of the given workflow.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the workflow for which an execution should be created. Format: projects/{project}/locations/{location}/workflows/{workflow} The latest revision of the workflow will be used. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflows.executions.get()`
 
@@ -58,4 +58,4 @@ Cancels an execution of the given name.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the execution to be cancelled. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
