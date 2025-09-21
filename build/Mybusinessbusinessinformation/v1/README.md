@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Business Information A
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:48 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:19 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:36:03 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:36:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:29 GMT
 
 
@@ -40,7 +40,7 @@ Update attributes for a given location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. |
 | `params.attributeMask` | `string` | No | Required. Attribute name of attributes that you'd like to update. Represented by `attributes/{attribute}`. Updates: All attributes provided in the attributes field that you would like to update must be set in the `attribute_mask`. Attributes set in the above list but not in the `attribute_mask` will be ignored. Deletes: If you'd like to delete certain attributes, they must be specified in the `attribute_mask` with no matching entry in the attributes list. If you'd like to delete all attributes set on a location, you should look up all the applicable attributes for the location and then add them to the `attribute_mask` with an empty attributes field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.getAttributes()`
 
@@ -77,7 +77,7 @@ Updates the specified location.
 | `params.name` | `string` | Yes | Google identifier for this location in the form: `locations/{location_id}`. |
 | `params.updateMask` | `string` | No | Required. The specific fields to update. |
 | `params.validateOnly` | `boolean` | No | Optional. If true, the request is validated without actually updating the location. When this field is set, we will only return validation errors if there were any. The response will be empty if no errors were found. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.delete()`
 
@@ -150,7 +150,7 @@ Search all of the possible locations that are a match to the specified request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts`
 
@@ -178,4 +178,4 @@ Creates a new Location that will be owned by the logged in user.
 | `params.parent` | `string` | Yes | Required. The name of the account in which to create this location. |
 | `params.validateOnly` | `boolean` | No | Optional. If true, the request is validated without actually creating the location. |
 | `params.requestId` | `string` | No | Optional. A unique request ID for the server to detect duplicated requests. We recommend using UUIDs. Max length is 50 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
