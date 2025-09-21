@@ -4,8 +4,8 @@ Auto-generated client library for using the **Checks API (version: v1alpha)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:05 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:00:39 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:37 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:37 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:07 GMT
 
 
@@ -72,7 +72,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.apps.operations.wait()`
 
@@ -81,7 +81,7 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.apps.reports`
 
@@ -127,7 +127,7 @@ Uploads the results of local Code Compliance analysis and generates a scan of pr
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the repo. Example: `accounts/123/repos/456` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.repos.scans.get()`
 
@@ -156,7 +156,7 @@ Analyze a piece of content with the provided set of policies.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `media`
 
@@ -167,4 +167,4 @@ Analyzes the uploaded app bundle and returns a google.longrunning.Operation cont
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the app. Example: `accounts/123/apps/456` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
