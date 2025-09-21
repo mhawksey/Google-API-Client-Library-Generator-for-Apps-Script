@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase ML API (version: v1beta2)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:43 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:16:03 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:28 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:40 GMT
 
 
@@ -33,7 +33,7 @@ Creates a model in Firebase ML. The longrunning operation will eventually return
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent project resource where the model is to be created. The parent must have the form `projects/{project_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.models.patch()`
 
@@ -43,7 +43,7 @@ Updates a model. The longrunning operation will eventually return a Model.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the Model. Model names have the form `projects/{project_id}/models/{model_id}` The name is ignored when creating a model. |
 | `params.updateMask` | `string` | No | The update mask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.models.get()`
 
