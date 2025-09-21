@@ -4,8 +4,8 @@ Auto-generated client library for using the **Looker (Google Cloud core) API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:49 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:25:38 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:33:41 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:33:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:00 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances`
 
@@ -104,7 +104,7 @@ Creates a new Instance in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}`. |
 | `params.instanceId` | `string` | No | Required. The unique instance identifier. Must contain only lowercase letters, numbers, or hyphens, with the first character a letter and the last a letter or a number. 63 characters maximum. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.delete()`
 
@@ -123,7 +123,7 @@ Update Instance.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
 | `params.updateMask` | `string` | No | Required. Field mask used to specify the fields to be overwritten in the Instance resource by the update. The fields specified in the mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.restart()`
 
@@ -132,7 +132,7 @@ Restart instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.restore()`
 
@@ -141,7 +141,7 @@ Restore Looker instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Instance being restored Format: projects/{project}/locations/{location}/instances/{instance} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.import()`
 
@@ -150,7 +150,7 @@ Import instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.export()`
 
@@ -159,7 +159,7 @@ Export instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances.backups`
 
@@ -186,7 +186,7 @@ Backup Looker instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: projects/{project}/locations/{location}/instances/{instance} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.backups.delete()`
 
