@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Management API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:08 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:00:44 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:40 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:10 GMT
 
 
@@ -297,7 +297,7 @@ Create a telemetry notification config.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this notification config will be created. Format: `customers/{customer}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.telemetry.notificationConfigs.delete()`
 
@@ -346,7 +346,7 @@ Creates a Chrome browser profile remote command.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: customers/{customer_id}/profiles/{profile_permanent_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.profiles.commands.get()`
 
@@ -375,4 +375,4 @@ Moves a third party chrome profile user to a destination OU. All profiles associ
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
