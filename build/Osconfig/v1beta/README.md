@@ -4,8 +4,8 @@ Auto-generated client library for using the **OS Config API (version: v1beta)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:50 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:35:02 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:37:32 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:37:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:38 GMT
 
 
@@ -25,7 +25,7 @@ Patch VM instances by creating and running a patch job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project in which to run this patch in the form `projects/*` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchJobs.get()`
 
@@ -42,7 +42,7 @@ Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the patch in the form `projects/*/patchJobs/*` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchJobs.list()`
 
@@ -78,7 +78,7 @@ Create an OS Config patch deployment.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to apply this patch deployment to in the form `projects/*`. |
 | `params.patchDeploymentId` | `string` | No | Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchDeployments.get()`
 
@@ -114,7 +114,7 @@ Update an OS Config patch deployment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment. |
 | `params.updateMask` | `string` | No | Optional. Field mask that controls which fields of the patch deployment should be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchDeployments.pause()`
 
@@ -123,7 +123,7 @@ Change state of patch deployment to "PAUSED". Patch deployment in paused state d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchDeployments.resume()`
 
@@ -132,7 +132,7 @@ Change state of patch deployment back to "ACTIVE". Patch deployment in active st
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.guestPolicies`
 
@@ -144,7 +144,7 @@ Create an OS Config guest policy.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent using one of the following forms: `projects/{project_number}`. |
 | `params.guestPolicyId` | `string` | No | Required. The logical name of the guest policy in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.guestPolicies.get()`
 
@@ -172,7 +172,7 @@ Update an OS Config guest policy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Unique name of the resource in this project using one of the following forms: `projects/{project_number}/guestPolicies/{guest_policy_id}`. |
 | `params.updateMask` | `string` | No | Field mask that controls which fields of the guest policy should be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.guestPolicies.delete()`
 
@@ -193,4 +193,4 @@ Lookup the effective guest policy that applies to a VM instance. This lookup mer
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.instance` | `string` | Yes | Required. The VM instance whose policies are being looked up. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
