@@ -4,8 +4,8 @@ Auto-generated client library for using the **Smart Device Management API (versi
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:09 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:46:51 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:48:30 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:48:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:47 GMT
 
 
@@ -42,7 +42,7 @@ Executes a command to device managed by the enterprise.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the device requested. For example: "enterprises/XYZ/devices/123" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `enterprises.structures`
 
