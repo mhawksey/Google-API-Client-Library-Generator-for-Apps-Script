@@ -4,8 +4,8 @@ Auto-generated client library for using the **On-Demand Scanning API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:41 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:34:46 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:37:18 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:37:18 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:27 GMT
 
 
@@ -73,7 +73,7 @@ Initiates an analysis of the provided packages.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent of the resource for which analysis is requested. Format: projects/[project_name]/locations/[location] |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.scans.vulnerabilities`
 
