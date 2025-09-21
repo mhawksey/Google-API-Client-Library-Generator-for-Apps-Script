@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Memorystore for Memcached AP
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:43:08 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:26:14 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:34:09 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:34:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:25 GMT
 
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances`
 
@@ -106,7 +106,7 @@ Creates a new Instance in a given location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region |
 | `params.instanceId` | `string` | No | Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.patch()`
 
@@ -116,7 +116,7 @@ Updates an existing Instance in a given project and location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Unique name of the resource in this scope including project and location using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` Note: Memcached instances are managed and addressed at the regional level so `location_id` here refers to a Google Cloud region; however, users may choose which zones Memcached nodes should be provisioned in within an instance. Refer to zones field for more details. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. * `displayName` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.updateParameters()`
 
@@ -125,7 +125,7 @@ Updates the defined Memcached parameters for an existing instance. This method o
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the Memcached instance for which the parameters should be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.delete()`
 
@@ -142,7 +142,7 @@ Deletes a single Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the Memcached instance for which parameter group updates should be applied. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.rescheduleMaintenance()`
 
@@ -151,7 +151,7 @@ Reschedules upcoming maintenance event.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.instance` | `string` | Yes | Required. Memcache instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.upgrade()`
 
@@ -160,4 +160,4 @@ Upgrades the Memcache instance to a newer memcached engine version specified in 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Memcache instance resource name using the form: `projects/{project}/locations/{location}/instances/{instance}` where `location_id` refers to a GCP region. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
