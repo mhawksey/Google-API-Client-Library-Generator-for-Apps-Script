@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Controls Partner API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:42 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:01:54 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:12:37 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:12:37 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:32 GMT
 
 
@@ -56,7 +56,7 @@ Creates a new customer.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource Format: `organizations/{organization}/locations/{location}` |
 | `params.customerId` | `string` | No | Required. The customer id to use for the customer, which will become the final component of the customer's resource name. The specified value must be a valid Google cloud organization id. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.customers.patch()`
 
@@ -66,7 +66,7 @@ Update details of a single customer
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.customers.delete()`
 
