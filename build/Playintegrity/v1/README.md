@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Integrity API (version
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:46:27 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:36:18 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:44:13 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:44:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:27 GMT
 
 
@@ -23,7 +23,7 @@ Decodes the integrity token and returns the token payload.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes |  Package name of the app the attached integrity token belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.decodePcIntegrityToken()`
 
@@ -32,7 +32,7 @@ Decodes the PC integrity token and returns the PC token payload.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app the attached integrity token belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `deviceRecall`
 
@@ -43,4 +43,4 @@ Writes recall bits for the device where Play Integrity API token is obtained. Th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. Package name of the app the attached integrity token belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
