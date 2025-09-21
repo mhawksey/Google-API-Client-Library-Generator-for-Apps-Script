@@ -4,8 +4,8 @@ Auto-generated client library for using the **AdSense Platform API (version: v1a
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:14 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:57 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:58 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:12 GMT
 
 
@@ -52,7 +52,7 @@ Creates a sub-account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Platform to create an account for. Format: platforms/{platform} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `platforms.accounts.close()`
 
@@ -61,7 +61,7 @@ Closes a sub-account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Account to close. Format: platforms/{platform}/accounts/{account_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `platforms.accounts.events`
 
@@ -72,7 +72,7 @@ Creates an account event.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Account to log events about. Format: platforms/{platform}/accounts/{account} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `platforms.accounts.sites`
 
@@ -101,7 +101,7 @@ Creates a site for a specified account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Account to create site. Format: platforms/{platform}/accounts/{account_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `platforms.accounts.sites.requestReview()`
 
@@ -169,7 +169,7 @@ Update a Platform Group.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Format: accounts/{account}/platforms/{platform}/groups/{platform_group} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update - currently only supports updating the `description` field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.platforms.childAccounts`
 
@@ -201,4 +201,4 @@ Update a Platform Child Site.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Format: accounts/{account}/platforms/{platform}/childAccounts/{child_account}/sites/{platform_child_site} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update - currently only supports updating the `platform_group` field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
