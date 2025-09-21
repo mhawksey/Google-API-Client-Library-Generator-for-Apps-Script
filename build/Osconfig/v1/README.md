@@ -4,8 +4,8 @@ Auto-generated client library for using the **OS Config API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:55 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:35:11 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:37:38 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:37:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:43 GMT
 
 
@@ -36,7 +36,7 @@ UpdateProjectFeatureSettings sets the VM Manager features for a project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Immutable. Name specifies the URL for the ProjectFeatureSettings resource: projects/project_id/locations/global/projectFeatureSettings. |
 | `params.updateMask` | `string` | No | Optional. Field mask that controls which fields of the ProjectFeatureSettings should be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.osPolicyAssignments`
 
@@ -49,7 +49,7 @@ Create an OS policy assignment. This method also creates the first revision of t
 | `params.parent` | `string` | Yes | Required. The parent resource name in the form: projects/{project}/locations/{location}. Note: Specify the zone of your VMs as the location. |
 | `params.osPolicyAssignmentId` | `string` | No | Required. The logical name of the OS policy assignment in the project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is only idempotent if a `request_id` is provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.osPolicyAssignments.patch()`
 
@@ -61,7 +61,7 @@ Update an existing OS policy assignment. This method creates a new revision of t
 | `params.updateMask` | `string` | No | Optional. Field mask that controls which fields of the assignment should be updated. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the OS policy assignment is not found, a new OS policy assignment will be created. In this situation, `update_mask` is ignored. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is only idempotent if a `request_id` is provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.osPolicyAssignments.get()`
 
@@ -117,7 +117,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances`
 
@@ -197,7 +197,7 @@ Patch VM instances by creating and running a patch job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project in which to run this patch in the form `projects/*` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchJobs.get()`
 
@@ -214,7 +214,7 @@ Cancel a patch job. The patch job must be active. Canceled patch jobs cannot be 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the patch in the form `projects/*/patchJobs/*` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchJobs.list()`
 
@@ -250,7 +250,7 @@ Create an OS Config patch deployment.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project to apply this patch deployment to in the form `projects/*`. |
 | `params.patchDeploymentId` | `string` | No | Required. A name for the patch deployment in the project. When creating a name the following rules apply: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the project. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchDeployments.get()`
 
@@ -286,7 +286,7 @@ Update an OS Config patch deployment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment. |
 | `params.updateMask` | `string` | No | Optional. Field mask that controls which fields of the patch deployment should be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchDeployments.pause()`
 
@@ -295,7 +295,7 @@ Change state of patch deployment to "PAUSED". Patch deployment in paused state d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patchDeployments.resume()`
 
@@ -304,4 +304,4 @@ Change state of patch deployment back to "ACTIVE". Patch deployment in active st
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the patch deployment in the form `projects/*/patchDeployments/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
