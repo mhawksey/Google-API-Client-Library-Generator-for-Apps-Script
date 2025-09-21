@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: issueresolu
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:43:38 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:32:03 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:34:40 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:34:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:39 GMT
 
 
@@ -40,7 +40,7 @@ Provide a list of business's account issues with an issue resolution content and
 | `params.name` | `string` | Yes | Required. The account to fetch issues for. Format: `accounts/{account}` |
 | `params.languageCode` | `string` | No | Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code used to localize issue resolution content. If not set, the result will be in default language `en-US`. |
 | `params.timeZone` | `string` | No | Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in an issue resolution content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `issueresolution.renderproductissues()`
 
@@ -51,7 +51,7 @@ Provide a list of issues for business's product with an issue resolution content
 | `params.name` | `string` | Yes | Required. The name of the product to fetch issues for. Format: `accounts/{account}/products/{product}` |
 | `params.languageCode` | `string` | No | Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code used to localize an issue resolution content. If not set, the result will be in default language `en-US`. |
 | `params.timeZone` | `string` | No | Optional. The [IANA](https://www.iana.org/time-zones) timezone used to localize times in an issue resolution content. For example 'America/Los_Angeles'. If not set, results will use as a default UTC. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `issueresolution.triggeraction()`
 
@@ -61,4 +61,4 @@ Start an action. The action can be requested by a business in third-party applic
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The business's account that is triggering the action. Format: `accounts/{account}` |
 | `params.languageCode` | `string` | No | Optional. Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) used to localize the response. If not set, the result will be in default language `en-US`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
