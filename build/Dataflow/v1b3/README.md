@@ -4,8 +4,8 @@ Auto-generated client library for using the **Dataflow API (version: v1b3)** in 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:44 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:11:17 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:15:43 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:15:43 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:43 GMT
 
 
@@ -33,7 +33,7 @@ Send a worker_message to the service.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | The project to send the WorkerMessages to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.snapshots`
 
@@ -69,7 +69,7 @@ Creates a Dataflow job. To create a job, we recommend using `projects.locations.
 | `params.view` | `string` | No | The level of information requested in response. |
 | `params.replaceJobId` | `string` | No | Deprecated. This field is now in the Job message. |
 | `params.location` | `string` | No | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.get()`
 
@@ -92,7 +92,7 @@ Updates the state of an existing Cloud Dataflow job. To update the state of an e
 | `params.jobId` | `string` | Yes | The job ID. |
 | `params.location` | `string` | No | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. |
 | `params.updateMask` | `string` | No | The list of fields to update relative to Job. If empty, only RequestedJobState will be considered for update. If the FieldMask is not empty and RequestedJobState is none/empty, The fields specified in the update mask will be the only ones considered for update. If both RequestedJobState and update_mask are specified, an error will be returned as we cannot update both state and mask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.list()`
 
@@ -130,7 +130,7 @@ Snapshot the state of a streaming job.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | The project which owns the job to be snapshotted. |
 | `params.jobId` | `string` | Yes | The job to be snapshotted. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.getMetrics()`
 
@@ -153,7 +153,7 @@ Get encoded debug configuration for component. Not cacheable.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | The project id. |
 | `params.jobId` | `string` | Yes | The job id. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.debug.sendCapture()`
 
@@ -163,7 +163,7 @@ Send encoded debug capture data for component.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | The project id. |
 | `params.jobId` | `string` | Yes | The job id. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.jobs.messages`
 
@@ -192,7 +192,7 @@ Reports the status of dataflow WorkItems leased by a worker.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | The project which owns the WorkItem's job. |
 | `params.jobId` | `string` | Yes | The job which the WorkItem is part of. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.jobs.workItems.lease()`
 
@@ -202,7 +202,7 @@ Leases a dataflow WorkItem to run.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Identifies the project this worker belongs to. |
 | `params.jobId` | `string` | Yes | Identifies the workflow job this worker belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.templates`
 
@@ -213,7 +213,7 @@ Creates a Cloud Dataflow job from a template. Do not enter confidential informat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the Cloud Platform project that the job belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.templates.launch()`
 
@@ -227,7 +227,7 @@ Launches a template. To launch a template, we recommend using `projects.location
 | `params.dynamicTemplate.gcsPath` | `string` | No | Path to the dynamic template specification file on Cloud Storage. The file must be a JSON serialized `DynamicTemplateFileSpec` object. |
 | `params.dynamicTemplate.stagingLocation` | `string` | No | Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`. |
 | `params.location` | `string` | No | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.templates.get()`
 
@@ -250,7 +250,7 @@ Send a worker_message to the service.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | The project to send the WorkerMessages to. |
 | `params.location` | `string` | Yes | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.snapshots`
 
@@ -296,7 +296,7 @@ Creates a Dataflow job. To create a job, we recommend using `projects.locations.
 | `params.location` | `string` | Yes | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. |
 | `params.view` | `string` | No | The level of information requested in response. |
 | `params.replaceJobId` | `string` | No | Deprecated. This field is now in the Job message. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.get()`
 
@@ -319,7 +319,7 @@ Updates the state of an existing Cloud Dataflow job. To update the state of an e
 | `params.location` | `string` | Yes | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains this job. |
 | `params.jobId` | `string` | Yes | The job ID. |
 | `params.updateMask` | `string` | No | The list of fields to update relative to Job. If empty, only RequestedJobState will be considered for update. If the FieldMask is not empty and RequestedJobState is none/empty, The fields specified in the update mask will be the only ones considered for update. If both RequestedJobState and update_mask are specified, an error will be returned as we cannot update both state and mask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.list()`
 
@@ -344,7 +344,7 @@ Snapshot the state of a streaming job.
 | `params.projectId` | `string` | Yes | The project which owns the job to be snapshotted. |
 | `params.location` | `string` | Yes | The location that contains this job. |
 | `params.jobId` | `string` | Yes | The job to be snapshotted. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.getMetrics()`
 
@@ -380,7 +380,7 @@ Get encoded debug configuration for component. Not cacheable.
 | `params.projectId` | `string` | Yes | The project id. |
 | `params.location` | `string` | Yes | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. |
 | `params.jobId` | `string` | Yes | The job id. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.debug.sendCapture()`
 
@@ -391,7 +391,7 @@ Send encoded debug capture data for component.
 | `params.projectId` | `string` | Yes | The project id. |
 | `params.location` | `string` | Yes | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. |
 | `params.jobId` | `string` | Yes | The job id. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.debug.getWorkerStacktraces()`
 
@@ -402,7 +402,7 @@ Get worker stacktraces from debug capture.
 | `params.projectId` | `string` | Yes | The project id. |
 | `params.location` | `string` | Yes | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the job specified by job_id. |
 | `params.jobId` | `string` | Yes | The job for which to get stacktraces. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.jobs.snapshots`
 
@@ -461,7 +461,7 @@ Reports the status of dataflow WorkItems leased by a worker.
 | `params.projectId` | `string` | Yes | The project which owns the WorkItem's job. |
 | `params.location` | `string` | Yes | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the WorkItem's job. |
 | `params.jobId` | `string` | Yes | The job which the WorkItem is part of. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.workItems.lease()`
 
@@ -472,7 +472,7 @@ Leases a dataflow WorkItem to run.
 | `params.projectId` | `string` | Yes | Identifies the project this worker belongs to. |
 | `params.location` | `string` | Yes | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) that contains the WorkItem's job. |
 | `params.jobId` | `string` | Yes | Identifies the workflow job this worker belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.templates`
 
@@ -484,7 +484,7 @@ Creates a Cloud Dataflow job from a template. Do not enter confidential informat
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the Cloud Platform project that the job belongs to. |
 | `params.location` | `string` | Yes | The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.templates.launch()`
 
@@ -498,7 +498,7 @@ Launches a template. To launch a template, we recommend using `projects.location
 | `params.gcsPath` | `string` | No | A Cloud Storage path to the template to use to create the job. Must be valid Cloud Storage URL, beginning with `gs://`. |
 | `params.dynamicTemplate.gcsPath` | `string` | No | Path to the dynamic template specification file on Cloud Storage. The file must be a JSON serialized `DynamicTemplateFileSpec` object. |
 | `params.dynamicTemplate.stagingLocation` | `string` | No | Cloud Storage path for staging dependencies. Must be a valid Cloud Storage URL, beginning with `gs://`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.templates.get()`
 
@@ -521,4 +521,4 @@ Launch a job with a FlexTemplate.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the Cloud Platform project that the job belongs to. |
 | `params.location` | `string` | Yes | Required. The [regional endpoint] (https://cloud.google.com/dataflow/docs/concepts/regional-endpoints) to which to direct the request. E.g., us-central1, us-west1. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
