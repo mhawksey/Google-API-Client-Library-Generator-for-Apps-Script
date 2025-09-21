@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Developer Reporting AP
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:46:24 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:36:09 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:44:06 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:44:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:22 GMT
 
 
@@ -46,7 +46,7 @@ Queries the metrics in the metric set.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. Format: apps/{app}/crashRateMetricSet |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `vitals.anrrate`
 
@@ -65,7 +65,7 @@ Queries the metrics in the metric set.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. Format: apps/{app}/anrRateMetricSet |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `vitals.lmkrate`
 
@@ -84,7 +84,7 @@ Queries the metrics in the metric set.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. Format: apps/{app}/lmkRateMetricSet |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `vitals.excessivewakeuprate`
 
@@ -103,7 +103,7 @@ Queries the metrics in the metric set.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `vitals.stuckbackgroundwakelockrate`
 
@@ -122,7 +122,7 @@ Queries the metrics in the metric set.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. Format: apps/{app}/stuckBackgroundWakelockRateMetricSet |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `vitals.slowstartrate`
 
@@ -141,7 +141,7 @@ Queries the metrics in the metric set.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. Format: apps/{app}/slowStartRateMetricSet |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `vitals.slowrenderingrate`
 
@@ -160,7 +160,7 @@ Queries the metrics in the metric set.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `vitals.errors`
 
@@ -249,7 +249,7 @@ Queries the metrics in the metrics set.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. Format: apps/{app}/errorCountMetricSet |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `apps`
 
