@@ -4,8 +4,8 @@ Auto-generated client library for using the **Service Management API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:47 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:46:22 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:48:03 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:48:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:20 GMT
 
 
@@ -62,7 +62,7 @@ Creates a new managed service. A managed service is immutable, and is subject to
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.delete()`
 
@@ -96,7 +96,7 @@ Generates and returns a report (errors, warnings and changes from existing confi
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.setIamPolicy()`
 
@@ -105,7 +105,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.getIamPolicy()`
 
@@ -114,7 +114,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.testIamPermissions()`
 
@@ -123,7 +123,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services.configs`
 
@@ -154,7 +154,7 @@ Creates a new service configuration (version) for a managed service. This method
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.serviceName` | `string` | Yes | Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.configs.submit()`
 
@@ -163,7 +163,7 @@ Creates a new service configuration (version) for a managed service based on use
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.serviceName` | `string` | Yes | Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services.rollouts`
 
@@ -194,7 +194,7 @@ Creates a new service configuration rollout. Based on rollout, the Google Servic
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.serviceName` | `string` | Yes | Required. The name of the service. See the [overview](https://cloud.google.com/service-management/overview) for naming requirements. For example: `example.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services.consumers`
 
@@ -205,7 +205,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.consumers.getIamPolicy()`
 
@@ -214,7 +214,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.consumers.testIamPermissions()`
 
@@ -223,4 +223,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
