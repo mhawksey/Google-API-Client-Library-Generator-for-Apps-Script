@@ -4,9 +4,9 @@ Auto-generated client library for using the **Compute Engine API (version: beta)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:31:52 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:31:52 GMT
-- **Created:** Sun, 31 Aug 2025 23:31:52 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:14:34 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:14:34 GMT
+- **Created:** Sun, 21 Sep 2025 17:14:34 GMT
 
 
 
@@ -269,7 +269,7 @@ Creates an address resource in the specified project by using the data included 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalAddresses.delete()`
 
@@ -290,7 +290,7 @@ Moves the specified address resource from one project to another project.
 | `params.address` | `string` | Yes | Name of the address resource to move. |
 | `params.project` | `string` | Yes | Source project ID which the Address is moved from. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalAddresses.testIamPermissions()`
 
@@ -300,7 +300,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalAddresses.setLabels()`
 
@@ -310,7 +310,7 @@ Sets the labels on a GlobalAddress. To learn more about labels, read the Labelin
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `addresses`
 
@@ -362,7 +362,7 @@ Creates an address resource in the specified project by using the data included 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `addresses.delete()`
 
@@ -385,7 +385,7 @@ Moves the specified address resource.
 | `params.project` | `string` | Yes | Source project ID which the Address is moved from. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `addresses.testIamPermissions()`
 
@@ -396,7 +396,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `addresses.setLabels()`
 
@@ -408,7 +408,7 @@ Sets the labels on an Address. To learn more about labels, read the Labeling Res
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `images`
 
@@ -453,7 +453,7 @@ Creates an image in the specified project using the data included in the request
 | `params.forceCreate` | `boolean` | No | Force image creation if true. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `images.setLabels()`
 
@@ -463,7 +463,7 @@ Sets the labels on an image. To learn more about labels, read the Labeling Resou
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `images.delete()`
 
@@ -484,7 +484,7 @@ Sets the deprecation status of an image. If an empty request body is given, clea
 | `params.image` | `string` | Yes | Image name. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `images.getIamPolicy()`
 
@@ -505,7 +505,7 @@ Patches the specified image with the data included in the request. Only the foll
 | `params.image` | `string` | Yes | Name of the image resource to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `images.setIamPolicy()`
 
@@ -515,7 +515,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `images.testIamPermissions()`
 
@@ -525,7 +525,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `imageFamilyViews`
 
@@ -586,7 +586,7 @@ Creates a snapshot in the specified project using the data included in the reque
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `snapshots.setLabels()`
 
@@ -596,7 +596,7 @@ Sets the labels on a snapshot. To learn more about labels, read the Labeling Res
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `snapshots.delete()`
 
@@ -626,7 +626,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `snapshots.testIamPermissions()`
 
@@ -636,7 +636,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionSnapshots`
 
@@ -673,7 +673,7 @@ Creates a snapshot in the specified region using the data included in the reques
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSnapshots.setLabels()`
 
@@ -685,7 +685,7 @@ Sets the labels on a regional snapshot. To learn more about labels, read the Lab
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSnapshots.delete()`
 
@@ -718,7 +718,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSnapshots.testIamPermissions()`
 
@@ -729,7 +729,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `disks`
 
@@ -782,7 +782,7 @@ Creates a persistent disk in the specified project using the data in the request
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.sourceImage` | `string` | No | Source image to restore onto a disk. This field is optional. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.setLabels()`
 
@@ -794,7 +794,7 @@ Sets the labels on a disk. To learn more about labels, read the Labeling Resourc
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.bulkSetLabels()`
 
@@ -806,7 +806,7 @@ Sets the labels on many disks at once. To learn more about labels, read the Labe
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | No | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.delete()`
 
@@ -830,7 +830,7 @@ Creates a snapshot of a specified persistent disk. For regular snapshot creation
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.resize()`
 
@@ -842,7 +842,7 @@ Resizes the specified persistent disk. You can only increase the size of the dis
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.addResourcePolicies()`
 
@@ -854,7 +854,7 @@ Adds existing resource policies to a disk. You can only add one policy which wil
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.removeResourcePolicies()`
 
@@ -866,7 +866,7 @@ Removes resource policies from a disk.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.getIamPolicy()`
 
@@ -888,7 +888,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.testIamPermissions()`
 
@@ -899,7 +899,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.update()`
 
@@ -913,7 +913,7 @@ Updates the specified disk with the data included in the request. The update is 
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.startAsyncReplication()`
 
@@ -925,7 +925,7 @@ Starts asynchronous replication. Must be invoked on the primary disk.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.stopAsyncReplication()`
 
@@ -947,7 +947,7 @@ Stops asynchronous replication for a consistency group of disks. Can be invoked 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. This must be the zone of the primary or secondary disks in the consistency group. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `disks.bulkInsert()`
 
@@ -958,7 +958,7 @@ Bulk create a set of disks.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionDisks`
 
@@ -996,7 +996,7 @@ Creates a persistent regional disk in the specified project using the data inclu
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.sourceImage` | `string` | No | Source image to restore onto a disk. This field is optional. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.setLabels()`
 
@@ -1008,7 +1008,7 @@ Sets the labels on the target regional disk.
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.delete()`
 
@@ -1031,7 +1031,7 @@ Creates a snapshot of a specified persistent disk. For regular snapshot creation
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.resize()`
 
@@ -1043,7 +1043,7 @@ Resizes the specified regional persistent disk.
 | `params.project` | `string` | Yes | The project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.addResourcePolicies()`
 
@@ -1055,7 +1055,7 @@ Adds existing resource policies to a regional disk. You can only add one policy 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.removeResourcePolicies()`
 
@@ -1067,7 +1067,7 @@ Removes resource policies from a regional disk.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.getIamPolicy()`
 
@@ -1089,7 +1089,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.testIamPermissions()`
 
@@ -1100,7 +1100,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.update()`
 
@@ -1114,7 +1114,7 @@ Update the specified disk with the data included in the request. Update is perfo
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.startAsyncReplication()`
 
@@ -1126,7 +1126,7 @@ Starts asynchronous replication. Must be invoked on the primary disk.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.stopAsyncReplication()`
 
@@ -1148,7 +1148,7 @@ Stops asynchronous replication for a consistency group of disks. Can be invoked 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. This must be the region of the primary or secondary disks in the consistency group. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionDisks.bulkInsert()`
 
@@ -1159,7 +1159,7 @@ Bulk create a set of disks.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `firewalls`
 
@@ -1193,7 +1193,7 @@ Creates a firewall rule in the specified project using the data included in the 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewalls.delete()`
 
@@ -1214,7 +1214,7 @@ Updates the specified firewall rule with the data included in the request. Note 
 | `params.firewall` | `string` | Yes | Name of the firewall rule to update. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewalls.patch()`
 
@@ -1225,7 +1225,7 @@ Updates the specified firewall rule with the data included in the request. This 
 | `params.firewall` | `string` | Yes | Name of the firewall rule to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewalls.testIamPermissions()`
 
@@ -1235,7 +1235,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `firewallPolicies`
 
@@ -1268,7 +1268,7 @@ Creates a new policy in the specified project using the data included in the req
 |---|---|---|---|
 | `params.parentId` | `string` | No | Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewallPolicies.delete()`
 
@@ -1287,7 +1287,7 @@ Patches the specified policy with the data included in the request.
 |---|---|---|---|
 | `params.firewallPolicy` | `string` | Yes | Name of the firewall policy to update. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewallPolicies.getRule()`
 
@@ -1315,7 +1315,7 @@ Inserts a rule into a firewall policy.
 |---|---|---|---|
 | `params.firewallPolicy` | `string` | Yes | Name of the firewall policy to update. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewallPolicies.addPacketMirroringRule()`
 
@@ -1325,7 +1325,7 @@ Inserts a packet mirroring rule into a firewall policy.
 |---|---|---|---|
 | `params.firewallPolicy` | `string` | Yes | Name of the firewall policy to update. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewallPolicies.removeRule()`
 
@@ -1356,7 +1356,7 @@ Patches a rule of the specified priority.
 | `params.firewallPolicy` | `string` | Yes | Name of the firewall policy to update. |
 | `params.priority` | `integer` | No | The priority of the rule to patch. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewallPolicies.patchPacketMirroringRule()`
 
@@ -1367,7 +1367,7 @@ Patches a packet mirroring rule of the specified priority.
 | `params.firewallPolicy` | `string` | Yes | Name of the firewall policy to update. |
 | `params.priority` | `integer` | No | The priority of the rule to patch. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewallPolicies.addAssociation()`
 
@@ -1378,7 +1378,7 @@ Inserts an association for the specified firewall policy.
 | `params.firewallPolicy` | `string` | Yes | Name of the firewall policy to update. |
 | `params.replaceExistingAssociation` | `boolean` | No | Indicates whether or not to replace it if an association of the attachment already exists. This is false by default, in which case an error will be returned if an association already exists. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewallPolicies.removeAssociation()`
 
@@ -1443,7 +1443,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `firewallPolicies.testIamPermissions()`
 
@@ -1452,7 +1452,7 @@ Returns permissions that a caller has on the specified resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `networkFirewallPolicies`
 
@@ -1486,7 +1486,7 @@ Creates a new policy in the specified project using the data included in the req
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkFirewallPolicies.delete()`
 
@@ -1507,7 +1507,7 @@ Patches the specified policy with the data included in the request.
 | `params.firewallPolicy` | `string` | Yes | Name of the firewall policy to update. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkFirewallPolicies.getRule()`
 
@@ -1540,7 +1540,7 @@ Inserts a rule into a firewall policy.
 | `params.minPriority` | `integer` | No | When rule.priority is not specified, auto choose a unused priority between minPriority and maxPriority>. This field is exclusive with rule.priority. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkFirewallPolicies.addPacketMirroringRule()`
 
@@ -1553,7 +1553,7 @@ Inserts a packet mirroring rule into a firewall policy.
 | `params.minPriority` | `integer` | No | When rule.priority is not specified, auto choose a unused priority between minPriority and maxPriority>. This field is exclusive with rule.priority. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkFirewallPolicies.removeRule()`
 
@@ -1587,7 +1587,7 @@ Patches a rule of the specified priority.
 | `params.priority` | `integer` | No | The priority of the rule to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkFirewallPolicies.patchPacketMirroringRule()`
 
@@ -1599,7 +1599,7 @@ Patches a packet mirroring rule of the specified priority.
 | `params.priority` | `integer` | No | The priority of the rule to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkFirewallPolicies.getIamPolicy()`
 
@@ -1619,7 +1619,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkFirewallPolicies.testIamPermissions()`
 
@@ -1629,7 +1629,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkFirewallPolicies.addAssociation()`
 
@@ -1641,7 +1641,7 @@ Inserts an association for the specified firewall policy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.replaceExistingAssociation` | `boolean` | No | Indicates whether or not to replace it if an association of the attachment already exists. This is false by default, in which case an error will be returned if an association already exists. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkFirewallPolicies.removeAssociation()`
 
@@ -1725,7 +1725,7 @@ Creates a new network firewall policy in the specified project and region.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkFirewallPolicies.delete()`
 
@@ -1748,7 +1748,7 @@ Patches the specified network firewall policy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkFirewallPolicies.getRule()`
 
@@ -1773,7 +1773,7 @@ Inserts a rule into a network firewall policy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkFirewallPolicies.removeRule()`
 
@@ -1798,7 +1798,7 @@ Patches a rule of the specified priority.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkFirewallPolicies.cloneRules()`
 
@@ -1835,7 +1835,7 @@ Inserts an association for the specified network firewall policy.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.replaceExistingAssociation` | `boolean` | No | Indicates whether or not to replace it if an association already exists. This is false by default, in which case an error will be returned if an association already exists. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkFirewallPolicies.patchAssociation()`
 
@@ -1847,7 +1847,7 @@ Updates an association for the specified network firewall policy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkFirewallPolicies.removeAssociation()`
 
@@ -1891,7 +1891,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkFirewallPolicies.testIamPermissions()`
 
@@ -1902,7 +1902,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `securityPolicies`
 
@@ -1937,7 +1937,7 @@ Creates a new policy in the specified project using the data included in the req
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | If true, the request will not be committed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `securityPolicies.delete()`
 
@@ -1959,7 +1959,7 @@ Patches the specified policy with the data included in the request. To clear fie
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
 | `params.updateMask` | `string` | No | Indicates fields to be cleared as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `securityPolicies.getRule()`
 
@@ -1980,7 +1980,7 @@ Inserts a rule into a security policy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
 | `params.validateOnly` | `boolean` | No | If true, the request will not be committed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `securityPolicies.removeRule()`
 
@@ -2003,7 +2003,7 @@ Patches a rule at the specified priority. To clear fields in the rule, leave the
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
 | `params.updateMask` | `string` | No | Indicates fields to be cleared as part of this request. |
 | `params.validateOnly` | `boolean` | No | If true, the request will not be committed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `securityPolicies.listPreconfiguredExpressionSets()`
 
@@ -2026,7 +2026,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `securityPolicies.setLabels()`
 
@@ -2036,7 +2036,7 @@ Sets the labels on a security policy. To learn more about labels, read the Label
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `securityPolicies.aggregatedList()`
 
@@ -2089,7 +2089,7 @@ Creates a new policy in the specified project using the data included in the req
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | If true, the request will not be committed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSecurityPolicies.delete()`
 
@@ -2113,7 +2113,7 @@ Patches the specified policy with the data included in the request. To clear fie
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
 | `params.updateMask` | `string` | No | Indicates fields to be cleared as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSecurityPolicies.getRule()`
 
@@ -2136,7 +2136,7 @@ Inserts a rule into a security policy.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
 | `params.validateOnly` | `boolean` | No | If true, the request will not be committed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSecurityPolicies.removeRule()`
 
@@ -2161,7 +2161,7 @@ Patches a rule at the specified priority. To clear fields in the rule, leave the
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
 | `params.updateMask` | `string` | No | Indicates fields to be cleared as part of this request. |
 | `params.validateOnly` | `boolean` | No | If true, the request will not be committed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSecurityPolicies.setLabels()`
 
@@ -2173,7 +2173,7 @@ Sets the labels on a security policy. To learn more about labels, read the Label
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizationSecurityPolicies`
 
@@ -2206,7 +2206,7 @@ Creates a new policy in the specified project using the data included in the req
 |---|---|---|---|
 | `params.parentId` | `string` | No | Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizationSecurityPolicies.delete()`
 
@@ -2225,7 +2225,8 @@ Patches the specified policy with the data included in the request. Use of this 
 |---|---|---|---|
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.updateMask` | `string` | No | Indicates fields to be cleared as part of this request. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizationSecurityPolicies.getRule()`
 
@@ -2244,7 +2245,7 @@ Inserts a rule into a security policy.
 |---|---|---|---|
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizationSecurityPolicies.removeRule()`
 
@@ -2265,7 +2266,8 @@ Patches a rule at the specified priority. Use of this API to modify firewall pol
 | `params.priority` | `integer` | No | The priority of the rule to patch. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.updateMask` | `string` | No | Indicates fields to be cleared as part of this request. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizationSecurityPolicies.listPreconfiguredExpressionSets()`
 
@@ -2289,7 +2291,7 @@ Inserts an association for the specified security policy. This has billing impli
 | `params.replaceExistingAssociation` | `boolean` | No | Indicates whether or not to replace it if an association of the attachment already exists. This is false by default, in which case an error will be returned if an association already exists. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizationSecurityPolicies.removeAssociation()`
 
@@ -2407,7 +2409,7 @@ Creates an instance resource in the specified project using the data included in
 | `params.sourceInstanceTemplate` | `string` | No | Specifies instance template to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to an instance template: - https://www.googleapis.com/compute/v1/projects/project /global/instanceTemplates/instanceTemplate - projects/project/global/instanceTemplates/instanceTemplate - global/instanceTemplates/instanceTemplate  |
 | `params.sourceMachineImage` | `string` | No | Specifies the machine image to use to create the instance. This field is optional. It can be a full or partial URL. For example, the following are all valid URLs to a machine image: - https://www.googleapis.com/compute/v1/projects/project/global/global /machineImages/machineImage - projects/project/global/global/machineImages/machineImage - global/machineImages/machineImage  |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.delete()`
 
@@ -2465,7 +2467,7 @@ Mark the host as faulty and try to restart the instance on a new host.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.addAccessConfig()`
 
@@ -2478,7 +2480,7 @@ Adds an access config to an instance's network interface.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.deleteAccessConfig()`
 
@@ -2504,7 +2506,7 @@ Updates the specified access config from an instance's network interface with th
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.addNetworkInterface()`
 
@@ -2516,7 +2518,7 @@ Adds one dynamic network interface to an active instance.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.deleteNetworkInterface()`
 
@@ -2541,7 +2543,7 @@ Updates an instance's network interface. This method can only update an interfac
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setScheduling()`
 
@@ -2553,7 +2555,7 @@ Sets an instance's scheduling options. You can only call this method on a stoppe
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.getSerialPortOutput()`
 
@@ -2610,7 +2612,7 @@ Attaches an existing Disk resource to an instance. You must first create the dis
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.detachDisk()`
 
@@ -2634,7 +2636,7 @@ Changes the number and/or type of accelerator for a stopped instance to the valu
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setMachineType()`
 
@@ -2646,7 +2648,7 @@ Changes the machine type for a stopped instance to the machine type specified in
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setMetadata()`
 
@@ -2658,7 +2660,7 @@ Sets metadata for the specified instance to the data included in the request.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setMinCpuPlatform()`
 
@@ -2670,7 +2672,7 @@ Changes the minimum CPU platform that this instance should use. This method can 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setTags()`
 
@@ -2682,7 +2684,7 @@ Sets network tags for the specified instance to the data included in the request
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setLabels()`
 
@@ -2694,7 +2696,7 @@ Sets labels on an instance. To learn more about labels, read the Labeling Resour
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setName()`
 
@@ -2706,7 +2708,7 @@ Sets name of an instance.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setDiskAutoDelete()`
 
@@ -2742,7 +2744,7 @@ Starts an instance that was stopped using the instances().stop method. For more 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.stop()`
 
@@ -2777,7 +2779,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.testIamPermissions()`
 
@@ -2788,7 +2790,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setServiceAccount()`
 
@@ -2800,7 +2802,7 @@ Sets the service account on the instance. For more information, read Changing th
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setDeletionProtection()`
 
@@ -2836,7 +2838,7 @@ Resumes an instance that was suspended using the instances().suspend method.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.addResourcePolicies()`
 
@@ -2848,7 +2850,7 @@ Adds existing resource policies to an instance. You can only add one policy righ
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.removeResourcePolicies()`
 
@@ -2860,7 +2862,7 @@ Removes resource policies from an instance.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.update()`
 
@@ -2874,7 +2876,7 @@ Updates an instance only if the necessary resources are available. This method c
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.updateShieldedVmConfig()`
 
@@ -2886,7 +2888,7 @@ Updates the Shielded VM config for a VM instance. You can only use this method o
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.updateShieldedInstanceConfig()`
 
@@ -2898,7 +2900,7 @@ Updates the Shielded Instance config for an instance. You can only use this meth
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.updateDisplayDevice()`
 
@@ -2910,7 +2912,7 @@ Updates the Display config for a VM instance. You can only use this method on a 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setShieldedVmIntegrityPolicy()`
 
@@ -2922,7 +2924,7 @@ Sets the Shielded VM integrity policy for a VM instance. You can only use this m
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setShieldedInstanceIntegrityPolicy()`
 
@@ -2934,7 +2936,7 @@ Sets the Shielded Instance integrity policy for an instance. You can only use th
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.setSecurityPolicy()`
 
@@ -2946,7 +2948,7 @@ Sets the Google Cloud Armor security policy for the specified instance. For more
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | Name of the zone scoping this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.getShieldedVmIdentity()`
 
@@ -2977,7 +2979,7 @@ Creates multiple instances. Count specifies the number of instances to create. F
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.getEffectiveFirewalls()`
 
@@ -3000,7 +3002,7 @@ Patches partner metadata of the specified instance.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.getPartnerMetadata()`
 
@@ -3024,7 +3026,7 @@ Creates multiple instances in a given region. Count specifies the number of inst
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `reservations`
 
@@ -3076,7 +3078,7 @@ Creates a new reservation. For more information, read Reserving zonal resources.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | Name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reservations.delete()`
 
@@ -3099,7 +3101,7 @@ Resizes the reservation (applicable to standalone reservations only). For more i
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.reservation` | `string` | Yes | Name of the reservation to update. |
 | `params.zone` | `string` | Yes | Name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reservations.update()`
 
@@ -3113,7 +3115,7 @@ Update share settings of the reservation.
 | `params.reservation` | `string` | Yes | Name of the reservation to update. |
 | `params.updateMask` | `string` | No | Update_mask indicates fields to be updated as part of this request. |
 | `params.zone` | `string` | Yes | Name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reservations.getIamPolicy()`
 
@@ -3135,7 +3137,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reservations.testIamPermissions()`
 
@@ -3146,7 +3148,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reservations.performMaintenance()`
 
@@ -3158,7 +3160,7 @@ Perform maintenance on an extended reservation
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.reservation` | `string` | Yes | The name of the reservation. Name should conform to RFC1035 or be a resource ID. |
 | `params.zone` | `string` | Yes | Name of the zone for this request. Zone name should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `instanceGroups`
 
@@ -3210,7 +3212,7 @@ Creates an instance group in the specified project using the parameters that are
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where you want to create the instance group. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroups.delete()`
 
@@ -3233,7 +3235,7 @@ Adds a list of instances to the specified instance group. All of the instances i
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroups.removeInstances()`
 
@@ -3245,7 +3247,7 @@ Removes one or more instances from the specified instance group, but does not de
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroups.listInstances()`
 
@@ -3261,7 +3263,7 @@ Lists the instances in the specified instance group. The orderBy query parameter
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
 | `params.zone` | `string` | Yes | The name of the zone where the instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroups.setNamedPorts()`
 
@@ -3273,7 +3275,7 @@ Sets the named ports for the specified instance group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroups.testIamPermissions()`
 
@@ -3284,7 +3286,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionInstanceGroups`
 
@@ -3326,7 +3328,7 @@ Lists the instances in the specified instance group and displays information abo
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroups.setNamedPorts()`
 
@@ -3338,7 +3340,7 @@ Sets the named ports for the specified regional instance group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroups.testIamPermissions()`
 
@@ -3349,7 +3351,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `instanceGroupManagers`
 
@@ -3401,7 +3403,7 @@ Creates a managed instance group using the information that you specify in the r
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where you want to create the managed instance group. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.update()`
 
@@ -3413,7 +3415,7 @@ Updates a managed instance group using the information that you specify in the r
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where you want to create the managed instance group. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.patch()`
 
@@ -3425,7 +3427,7 @@ Updates a managed instance group using the information that you specify in the r
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where you want to create the managed instance group. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.delete()`
 
@@ -3448,7 +3450,7 @@ Flags the specified instances in the managed instance group for immediate deleti
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.suspendInstances()`
 
@@ -3460,7 +3462,7 @@ Flags the specified instances in the managed instance group to be immediately su
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.resumeInstances()`
 
@@ -3472,7 +3474,7 @@ Flags the specified instances in the managed instance group to be resumed. This 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.stopInstances()`
 
@@ -3484,7 +3486,7 @@ Flags the specified instances in the managed instance group to be immediately st
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.startInstances()`
 
@@ -3496,7 +3498,7 @@ Flags the specified instances in the managed instance group to be started. This 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.abandonInstances()`
 
@@ -3508,7 +3510,7 @@ Flags the specified instances to be removed from the managed instance group. Aba
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.recreateInstances()`
 
@@ -3520,7 +3522,7 @@ Flags the specified VM instances in the managed instance group to be immediately
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.resize()`
 
@@ -3544,7 +3546,7 @@ Resizes the managed instance group with advanced configuration options like disa
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.setInstanceTemplate()`
 
@@ -3556,7 +3558,7 @@ Specifies the instance template to use when creating new instances in this group
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.setTargetPools()`
 
@@ -3568,7 +3570,7 @@ Modifies the target pools to which all instances in this managed instance group 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.setAutoHealingPolicies()`
 
@@ -3580,7 +3582,7 @@ Motifies the autohealing policy for the instances in this managed instance group
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.listManagedInstances()`
 
@@ -3637,7 +3639,7 @@ Inserts or updates per-instance configurations for the managed instance group. p
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. It should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.patchPerInstanceConfigs()`
 
@@ -3649,7 +3651,7 @@ Inserts or patches per-instance configurations for the managed instance group. p
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. It should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.deletePerInstanceConfigs()`
 
@@ -3660,7 +3662,7 @@ Deletes selected per-instance configurations for the managed instance group.
 | `params.instanceGroupManager` | `string` | Yes | The name of the managed instance group. It should conform to RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. It should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.applyUpdatesToInstances()`
 
@@ -3671,7 +3673,7 @@ Applies changes to selected instances on the managed instance group. This method
 | `params.instanceGroupManager` | `string` | Yes | The name of the managed instance group, should conform to RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. Should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.testIamPermissions()`
 
@@ -3682,7 +3684,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagers.createInstances()`
 
@@ -3694,7 +3696,7 @@ Creates instances with per-instance configurations in this managed instance grou
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located. It should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `instanceGroupManagerResizeRequests`
 
@@ -3719,7 +3721,7 @@ Creates a new resize request that starts provisioning VMs immediately or queues 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the managed instance group is located and where the resize request will be created. Name should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceGroupManagerResizeRequests.list()`
 
@@ -3795,7 +3797,7 @@ Creates a managed instance group using the information that you specify in the r
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.update()`
 
@@ -3807,7 +3809,7 @@ Updates a managed instance group using the information that you specify in the r
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.patch()`
 
@@ -3819,7 +3821,7 @@ Updates a managed instance group using the information that you specify in the r
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.delete()`
 
@@ -3842,7 +3844,7 @@ Flags the specified instances in the managed instance group to be immediately de
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.suspendInstances()`
 
@@ -3854,7 +3856,7 @@ Flags the specified instances in the managed instance group to be immediately su
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.resumeInstances()`
 
@@ -3866,7 +3868,7 @@ Flags the specified instances in the managed instance group to be resumed. This 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.stopInstances()`
 
@@ -3878,7 +3880,7 @@ Flags the specified instances in the managed instance group to be immediately st
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.startInstances()`
 
@@ -3890,7 +3892,7 @@ Flags the specified instances in the managed instance group to be started. This 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.abandonInstances()`
 
@@ -3902,7 +3904,7 @@ Flags the specified instances to be immediately removed from the managed instanc
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.recreateInstances()`
 
@@ -3914,7 +3916,7 @@ Flags the specified VM instances in the managed instance group to be immediately
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.resize()`
 
@@ -3938,7 +3940,7 @@ Resizes the regional managed instance group with advanced configuration options 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. It must be a string that meets the requirements in RFC1035. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.setInstanceTemplate()`
 
@@ -3950,7 +3952,7 @@ Sets the instance template to use when creating new instances or recreating inst
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.setTargetPools()`
 
@@ -3962,7 +3964,7 @@ Modifies the target pools to which all new instances in this group are assigned.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.setAutoHealingPolicies()`
 
@@ -3974,7 +3976,7 @@ Modifies the autohealing policy for the instances in this managed instance group
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.listManagedInstances()`
 
@@ -4031,7 +4033,7 @@ Inserts or updates per-instance configurations for the managed instance group. p
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request, should conform to RFC1035. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.patchPerInstanceConfigs()`
 
@@ -4043,7 +4045,7 @@ Inserts or patches per-instance configurations for the managed instance group. p
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request, should conform to RFC1035. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.deletePerInstanceConfigs()`
 
@@ -4054,7 +4056,7 @@ Deletes selected per-instance configurations for the managed instance group.
 | `params.instanceGroupManager` | `string` | Yes | The name of the managed instance group. It should conform to RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request, should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.applyUpdatesToInstances()`
 
@@ -4065,7 +4067,7 @@ Apply updates to selected instances the managed instance group.
 | `params.instanceGroupManager` | `string` | Yes | The name of the managed instance group, should conform to RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request, should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.testIamPermissions()`
 
@@ -4076,7 +4078,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagers.createInstances()`
 
@@ -4088,7 +4090,7 @@ Creates instances with per-instance configurations in this regional managed inst
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region where the managed instance group is located. It should conform to RFC1035. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionInstanceGroupManagerResizeRequests`
 
@@ -4113,7 +4115,7 @@ Creates a new Resize Request that starts provisioning VMs immediately or queues 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. Name should conform to RFC1035. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceGroupManagerResizeRequests.list()`
 
@@ -4204,7 +4206,7 @@ Creates an autoscaler in the specified project using the data included in the re
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | Name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `autoscalers.update()`
 
@@ -4216,7 +4218,7 @@ Updates an autoscaler in the specified project using the data included in the re
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | Name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `autoscalers.patch()`
 
@@ -4228,7 +4230,7 @@ Updates an autoscaler in the specified project using the data included in the re
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | Name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `autoscalers.delete()`
 
@@ -4250,7 +4252,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionAutoscalers`
 
@@ -4287,7 +4289,7 @@ Creates an autoscaler in the specified project using the data included in the re
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionAutoscalers.update()`
 
@@ -4299,7 +4301,7 @@ Updates an autoscaler in the specified project using the data included in the re
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionAutoscalers.patch()`
 
@@ -4311,7 +4313,7 @@ Updates an autoscaler in the specified project using the data included in the re
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionAutoscalers.delete()`
 
@@ -4333,7 +4335,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `backendBuckets`
 
@@ -4380,7 +4382,7 @@ Creates a BackendBucket resource in the specified project using the data include
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendBuckets.delete()`
 
@@ -4401,7 +4403,7 @@ Updates the specified BackendBucket resource with the data included in the reque
 | `params.backendBucket` | `string` | Yes | Name of the BackendBucket resource to update. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendBuckets.patch()`
 
@@ -4412,7 +4414,7 @@ Updates the specified BackendBucket resource with the data included in the reque
 | `params.backendBucket` | `string` | Yes | Name of the BackendBucket resource to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendBuckets.addSignedUrlKey()`
 
@@ -4423,7 +4425,7 @@ Adds a key for validating requests with signed URLs for this backend bucket.
 | `params.backendBucket` | `string` | Yes | Name of the BackendBucket resource to which the Signed URL Key should be added. The name should conform to RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendBuckets.deleteSignedUrlKey()`
 
@@ -4445,7 +4447,7 @@ Sets the edge security policy for the specified backend bucket.
 | `params.backendBucket` | `string` | Yes | Name of the BackendBucket resource to which the security policy should be set. The name should conform to RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendBuckets.getIamPolicy()`
 
@@ -4465,7 +4467,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendBuckets.testIamPermissions()`
 
@@ -4475,7 +4477,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `backendServices`
 
@@ -4537,7 +4539,7 @@ Creates a BackendService resource in the specified project using the data includ
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendServices.delete()`
 
@@ -4558,7 +4560,7 @@ Updates the specified BackendService resource with the data included in the requ
 | `params.backendService` | `string` | Yes | Name of the BackendService resource to update. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendServices.patch()`
 
@@ -4569,7 +4571,7 @@ Patches the specified BackendService resource with the data included in the requ
 | `params.backendService` | `string` | Yes | Name of the BackendService resource to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendServices.addSignedUrlKey()`
 
@@ -4580,7 +4582,7 @@ Adds a key for validating requests with signed URLs for this backend service.
 | `params.backendService` | `string` | Yes | Name of the BackendService resource to which the Signed URL Key should be added. The name should conform to RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendServices.deleteSignedUrlKey()`
 
@@ -4602,7 +4604,7 @@ Sets the Google Cloud Armor security policy for the specified backend service. F
 | `params.backendService` | `string` | Yes | Name of the BackendService resource to which the security policy should be set. The name should conform to RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendServices.setEdgeSecurityPolicy()`
 
@@ -4613,7 +4615,7 @@ Sets the edge security policy for the specified backend service.
 | `params.backendService` | `string` | Yes | Name of the BackendService resource to which the edge security policy should be set. The name should conform to RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendServices.getEffectiveSecurityPolicies()`
 
@@ -4632,7 +4634,7 @@ Gets the most recent health check results for this BackendService. Example reque
 |---|---|---|---|
 | `params.backendService` | `string` | Yes | Name of the BackendService resource to which the queried instance belongs. |
 | `params.project` | `string` | Yes |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendServices.getIamPolicy()`
 
@@ -4652,7 +4654,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `backendServices.testIamPermissions()`
 
@@ -4662,7 +4664,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionBackendServices`
 
@@ -4713,7 +4715,7 @@ Creates a regional BackendService resource in the specified project using the da
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionBackendServices.delete()`
 
@@ -4736,7 +4738,7 @@ Updates the specified regional BackendService resource with the data included in
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionBackendServices.patch()`
 
@@ -4748,7 +4750,7 @@ Updates the specified regional BackendService resource with the data included in
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionBackendServices.setSecurityPolicy()`
 
@@ -4760,7 +4762,7 @@ Sets the Google Cloud Armor security policy for the specified backend service. F
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionBackendServices.getHealth()`
 
@@ -4771,7 +4773,7 @@ Gets the most recent health check results for this regional BackendService.
 | `params.backendService` | `string` | Yes | Name of the BackendService resource for which to get health. |
 | `params.project` | `string` | Yes |  |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionBackendServices.getIamPolicy()`
 
@@ -4793,7 +4795,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionBackendServices.testIamPermissions()`
 
@@ -4804,7 +4806,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advice`
 
@@ -4816,7 +4818,7 @@ Advise how, where and when to create the requested amount of instances with spec
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionCommitments`
 
@@ -4868,7 +4870,7 @@ Creates a commitment in the specified project using the data included in the req
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionCommitments.updateReservations()`
 
@@ -4880,7 +4882,7 @@ Transfers GPUs or Local SSD disks between reservations that are attached to the 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionCommitments.update()`
 
@@ -4894,7 +4896,7 @@ Updates the specified commitment with the data included in the request. Update i
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionCommitments.testIamPermissions()`
 
@@ -4905,7 +4907,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `crossSiteNetworks`
 
@@ -4940,7 +4942,7 @@ Creates a cross-site network in the specified project in the given scope using t
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
 | `params.validateOnly` | `boolean` | No | [Input Only] Validate the new configuration, but don't create it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `crossSiteNetworks.delete()`
 
@@ -4963,7 +4965,7 @@ Updates the specified cross-site network with the data included in the request. 
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
 | `params.validateOnly` | `boolean` | No | [Input Only] Validate the new configuration, but don't update it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `diskTypes`
 
@@ -5053,7 +5055,7 @@ Patch Zonal Disk Settings
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionDiskSettings`
 
@@ -5076,7 +5078,7 @@ Patch Regional Disk Settings
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `interconnectAttachments`
 
@@ -5129,7 +5131,7 @@ Creates an InterconnectAttachment in the specified project using the data includ
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | If true, the request will not be committed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectAttachments.patch()`
 
@@ -5141,7 +5143,7 @@ Updates the specified interconnect attachment with the data included in the requ
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectAttachments.delete()`
 
@@ -5163,7 +5165,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectAttachments.setLabels()`
 
@@ -5175,7 +5177,7 @@ Sets the labels on an InterconnectAttachment. To learn more about labels, read t
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `interconnectAttachmentGroups`
 
@@ -5209,7 +5211,7 @@ Creates a InterconnectAttachmentGroup in the specified project in the given scop
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectAttachmentGroups.delete()`
 
@@ -5231,7 +5233,7 @@ Patches the specified InterconnectAttachmentGroup resource with the data include
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
 | `params.updateMask` | `string` | No | The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectAttachmentGroups.getIamPolicy()`
 
@@ -5251,7 +5253,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectAttachmentGroups.testIamPermissions()`
 
@@ -5261,7 +5263,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectAttachmentGroups.getOperationalStatus()`
 
@@ -5282,7 +5284,7 @@ Creates an Interconnect in the specified project using the data included in the 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnects.list()`
 
@@ -5343,7 +5345,7 @@ Updates the specified Interconnect with the data included in the request. This m
 | `params.interconnect` | `string` | Yes | Name of the interconnect to update. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnects.testIamPermissions()`
 
@@ -5353,7 +5355,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnects.setLabels()`
 
@@ -5363,7 +5365,7 @@ Sets the labels on an Interconnect. To learn more about labels, read the Labelin
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `interconnectGroups`
 
@@ -5397,7 +5399,7 @@ Creates a InterconnectGroup in the specified project in the given scope using th
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectGroups.delete()`
 
@@ -5419,7 +5421,7 @@ Patches the specified InterconnectGroup resource with the data included in the r
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
 | `params.updateMask` | `string` | No | The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectGroups.getOperationalStatus()`
 
@@ -5448,7 +5450,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectGroups.testIamPermissions()`
 
@@ -5458,7 +5460,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `interconnectGroups.createMembers()`
 
@@ -5468,7 +5470,7 @@ Create Interconnects with redundancy by creating them in a specified interconnec
 |---|---|---|---|
 | `params.interconnectGroup` | `string` | Yes | Name of the group resource to create members for. |
 | `params.project` | `string` | Yes | Project ID for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `externalVpnGateways`
 
@@ -5480,7 +5482,7 @@ Creates a ExternalVpnGateway in the specified project using the data included in
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `externalVpnGateways.list()`
 
@@ -5522,7 +5524,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `externalVpnGateways.setLabels()`
 
@@ -5532,7 +5534,7 @@ Sets the labels on an ExternalVpnGateway. To learn more about labels, read the L
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `globalForwardingRules`
 
@@ -5566,7 +5568,7 @@ Creates a GlobalForwardingRule resource in the specified project using the data 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalForwardingRules.delete()`
 
@@ -5587,7 +5589,7 @@ Changes target URL for the GlobalForwardingRule resource. The new target should 
 | `params.forwardingRule` | `string` | Yes | Name of the ForwardingRule resource in which target is to be set. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalForwardingRules.patch()`
 
@@ -5598,7 +5600,7 @@ Updates the specified forwarding rule with the data included in the request. Thi
 | `params.forwardingRule` | `string` | Yes | Name of the ForwardingRule resource to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalForwardingRules.testIamPermissions()`
 
@@ -5608,7 +5610,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalForwardingRules.setLabels()`
 
@@ -5618,7 +5620,7 @@ Sets the labels on the specified resource. To learn more about labels, read the 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `forwardingRules`
 
@@ -5670,7 +5672,7 @@ Creates a ForwardingRule resource in the specified project and region using the 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forwardingRules.delete()`
 
@@ -5693,7 +5695,7 @@ Changes target URL for forwarding rule. The new target should be of the same typ
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forwardingRules.patch()`
 
@@ -5705,7 +5707,7 @@ Updates the specified forwarding rule with the data included in the request. Thi
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forwardingRules.testIamPermissions()`
 
@@ -5716,7 +5718,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `forwardingRules.setLabels()`
 
@@ -5728,7 +5730,7 @@ Sets the labels on the specified resource. To learn more about labels, read the 
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `futureReservations`
 
@@ -5741,7 +5743,7 @@ Creates a new Future Reservation.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | Name of the zone for this request. Name should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `futureReservations.get()`
 
@@ -5804,7 +5806,7 @@ Updates the specified future reservation.
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
 | `params.zone` | `string` | Yes | Name of the zone for this request. Name should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `futureReservations.cancel()`
 
@@ -5852,7 +5854,7 @@ Creates a regional HealthCheckService resource in the specified project and regi
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionHealthCheckServices.delete()`
 
@@ -5875,7 +5877,7 @@ Updates the specified regional HealthCheckService resource with the data include
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionHealthCheckServices.testIamPermissions()`
 
@@ -5886,7 +5888,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `healthChecks`
 
@@ -5935,7 +5937,7 @@ Creates a HealthCheck resource in the specified project using the data included 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `healthChecks.delete()`
 
@@ -5956,7 +5958,7 @@ Updates a HealthCheck resource in the specified project using the data included 
 | `params.healthCheck` | `string` | Yes | Name of the HealthCheck resource to update. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `healthChecks.patch()`
 
@@ -5967,7 +5969,7 @@ Updates a HealthCheck resource in the specified project using the data included 
 | `params.healthCheck` | `string` | Yes | Name of the HealthCheck resource to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `healthChecks.testIamPermissions()`
 
@@ -5977,7 +5979,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionHealthChecks`
 
@@ -6014,7 +6016,7 @@ Creates a HealthCheck resource in the specified project using the data included 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionHealthChecks.delete()`
 
@@ -6037,7 +6039,7 @@ Updates a HealthCheck resource in the specified project using the data included 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionHealthChecks.patch()`
 
@@ -6049,7 +6051,7 @@ Updates a HealthCheck resource in the specified project using the data included 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionHealthChecks.testIamPermissions()`
 
@@ -6060,7 +6062,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `httpHealthChecks`
 
@@ -6094,7 +6096,7 @@ Creates a HttpHealthCheck resource in the specified project using the data inclu
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `httpHealthChecks.delete()`
 
@@ -6115,7 +6117,7 @@ Updates a HttpHealthCheck resource in the specified project using the data inclu
 | `params.httpHealthCheck` | `string` | Yes | Name of the HttpHealthCheck resource to update. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `httpHealthChecks.patch()`
 
@@ -6126,7 +6128,7 @@ Updates a HttpHealthCheck resource in the specified project using the data inclu
 | `params.httpHealthCheck` | `string` | Yes | Name of the HttpHealthCheck resource to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `httpHealthChecks.testIamPermissions()`
 
@@ -6136,7 +6138,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `httpsHealthChecks`
 
@@ -6170,7 +6172,7 @@ Creates a HttpsHealthCheck resource in the specified project using the data incl
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `httpsHealthChecks.delete()`
 
@@ -6191,7 +6193,7 @@ Updates a HttpsHealthCheck resource in the specified project using the data incl
 | `params.httpsHealthCheck` | `string` | Yes | Name of the HttpsHealthCheck resource to update. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `httpsHealthChecks.patch()`
 
@@ -6202,7 +6204,7 @@ Updates a HttpsHealthCheck resource in the specified project using the data incl
 | `params.httpsHealthCheck` | `string` | Yes | Name of the HttpsHealthCheck resource to patch. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `httpsHealthChecks.testIamPermissions()`
 
@@ -6212,7 +6214,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `instanceTemplates`
 
@@ -6248,7 +6250,7 @@ Creates an instance template in the specified project using the data that is inc
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceTemplates.delete()`
 
@@ -6293,7 +6295,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instanceTemplates.testIamPermissions()`
 
@@ -6303,7 +6305,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionInstanceTemplates`
 
@@ -6342,7 +6344,7 @@ Creates an instance template in the specified project and region using the globa
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstanceTemplates.delete()`
 
@@ -6376,7 +6378,7 @@ Patch Instance settings
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
 | `params.zone` | `string` | Yes | The zone scoping this request. It should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `instantSnapshots`
 
@@ -6413,7 +6415,7 @@ Creates an instant snapshot in the specified zone.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | Name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instantSnapshots.setLabels()`
 
@@ -6425,7 +6427,7 @@ Sets the labels on a instantSnapshot in the given zone. To learn more about labe
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instantSnapshots.delete()`
 
@@ -6458,7 +6460,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instantSnapshots.testIamPermissions()`
 
@@ -6469,7 +6471,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instantSnapshots.aggregatedList()`
 
@@ -6521,7 +6523,7 @@ Creates an instant snapshot in the specified region.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstantSnapshots.setLabels()`
 
@@ -6533,7 +6535,7 @@ Sets the labels on a instantSnapshot in the given region. To learn more about la
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstantSnapshots.delete()`
 
@@ -6566,7 +6568,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionInstantSnapshots.testIamPermissions()`
 
@@ -6577,7 +6579,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `interconnectLocations`
 
@@ -6646,7 +6648,7 @@ Returns permissions that a caller has on the specified resource. *Caution* This 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `licenses`
 
@@ -6690,7 +6692,7 @@ Create a License resource in the specified project. *Caution* This resource is i
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `licenses.update()`
 
@@ -6702,7 +6704,7 @@ Updates a License resource in the specified project. *Caution* This resource is 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `licenses.getIamPolicy()`
 
@@ -6722,7 +6724,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `licenses.testIamPermissions()`
 
@@ -6732,7 +6734,7 @@ Returns permissions that a caller has on the specified resource. *Caution* This 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `machineImages`
 
@@ -6767,7 +6769,7 @@ Creates a machine image in the specified project using the data that is included
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.sourceInstance` | `string` | No | Required. Source instance that is used to create the machine image from. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `machineImages.setLabels()`
 
@@ -6777,7 +6779,7 @@ Sets the labels on a machine image. To learn more about labels, read the Labelin
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `machineImages.delete()`
 
@@ -6807,7 +6809,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `machineImages.testIamPermissions()`
 
@@ -6817,7 +6819,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `machineTypes`
 
@@ -6895,7 +6897,7 @@ Creates a multi-MIG in the specified project.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents you from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionMultiMigs.delete()`
 
@@ -6958,7 +6960,7 @@ Creates a NetworkAttachment in the specified project in the given scope using th
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region of this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkAttachments.delete()`
 
@@ -6981,7 +6983,7 @@ Patches the specified NetworkAttachment resource with the data included in the r
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkAttachments.getIamPolicy()`
 
@@ -7003,7 +7005,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkAttachments.testIamPermissions()`
 
@@ -7014,7 +7016,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `networkEdgeSecurityServices`
 
@@ -7038,7 +7040,7 @@ Creates a new service in the specified project using the data included in the re
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | If true, the request will not be committed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkEdgeSecurityServices.delete()`
 
@@ -7063,7 +7065,7 @@ Patches the specified policy with the data included in the request.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | Indicates fields to be updated as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkEdgeSecurityServices.aggregatedList()`
 
@@ -7130,7 +7132,7 @@ Creates a network endpoint group in the specified project using the parameters t
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where you want to create the network endpoint group. It should comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkEndpointGroups.delete()`
 
@@ -7153,7 +7155,7 @@ Attach a list of network endpoints to the specified network endpoint group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the network endpoint group is located. It should comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkEndpointGroups.detachNetworkEndpoints()`
 
@@ -7165,7 +7167,7 @@ Detach a list of network endpoints from the specified network endpoint group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone where the network endpoint group is located. It should comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkEndpointGroups.listNetworkEndpoints()`
 
@@ -7181,7 +7183,7 @@ Lists the network endpoints in the specified network endpoint group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
 | `params.zone` | `string` | Yes | The name of the zone where the network endpoint group is located. It should comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networkEndpointGroups.testIamPermissions()`
 
@@ -7192,7 +7194,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `globalNetworkEndpointGroups`
 
@@ -7226,7 +7228,7 @@ Creates a network endpoint group in the specified project using the parameters t
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalNetworkEndpointGroups.delete()`
 
@@ -7247,7 +7249,7 @@ Attach a network endpoint to the specified network endpoint group.
 | `params.networkEndpointGroup` | `string` | Yes | The name of the network endpoint group where you are attaching network endpoints to. It should comply with RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalNetworkEndpointGroups.detachNetworkEndpoints()`
 
@@ -7258,7 +7260,7 @@ Detach the network endpoint from the specified network endpoint group.
 | `params.networkEndpointGroup` | `string` | Yes | The name of the network endpoint group where you are removing network endpoints. It should comply with RFC1035. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalNetworkEndpointGroups.listNetworkEndpoints()`
 
@@ -7309,7 +7311,7 @@ Creates a network endpoint group in the specified project using the parameters t
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region where you want to create the network endpoint group. It should comply with RFC1035. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkEndpointGroups.delete()`
 
@@ -7332,7 +7334,7 @@ Attach a list of network endpoints to the specified network endpoint group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region where you want to create the network endpoint group. It should comply with RFC1035. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkEndpointGroups.detachNetworkEndpoints()`
 
@@ -7344,7 +7346,7 @@ Detach the network endpoint from the specified network endpoint group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region where the network endpoint group is located. It should comply with RFC1035. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNetworkEndpointGroups.listNetworkEndpoints()`
 
@@ -7393,7 +7395,7 @@ Creates a network in the specified project using the data included in the reques
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networks.delete()`
 
@@ -7414,7 +7416,7 @@ Patches the specified network with the data included in the request. Only routin
 | `params.network` | `string` | Yes | Name of the network to update. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networks.updatePeering()`
 
@@ -7425,7 +7427,7 @@ Updates the specified network peering with the data included in the request. You
 | `params.network` | `string` | Yes | Name of the network resource which the updated peering is belonging to. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networks.addPeering()`
 
@@ -7436,7 +7438,7 @@ Adds a peering to the specified network.
 | `params.network` | `string` | Yes | Name of the network resource to add peering to. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networks.requestRemovePeering()`
 
@@ -7447,7 +7449,7 @@ Requests to remove a peering from the specified network. Applicable only for Pee
 | `params.network` | `string` | Yes | Name of the network resource to remove peering from. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networks.removePeering()`
 
@@ -7458,7 +7460,7 @@ Removes a peering from the specified network.
 | `params.network` | `string` | Yes | Name of the network resource to remove peering from. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networks.switchToCustomMode()`
 
@@ -7478,7 +7480,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `networks.getEffectiveFirewalls()`
 
@@ -7557,7 +7559,7 @@ Creates a NodeGroup resource in the specified project using the data included in
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeGroups.delete()`
 
@@ -7580,7 +7582,7 @@ Adds specified number of nodes to the node group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeGroups.deleteNodes()`
 
@@ -7592,7 +7594,7 @@ Deletes specified nodes from the node group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeGroups.listNodes()`
 
@@ -7619,7 +7621,7 @@ Updates the node template of the node group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeGroups.patch()`
 
@@ -7631,7 +7633,7 @@ Updates the specified node group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeGroups.simulateMaintenanceEvent()`
 
@@ -7643,7 +7645,7 @@ Simulates maintenance event on specified nodes from the node group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeGroups.performMaintenance()`
 
@@ -7655,7 +7657,7 @@ Perform maintenance on a subset of nodes in the node group.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeGroups.getIamPolicy()`
 
@@ -7677,7 +7679,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeGroups.testIamPermissions()`
 
@@ -7688,7 +7690,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `nodeTemplates`
 
@@ -7740,7 +7742,7 @@ Creates a NodeTemplate resource in the specified project using the data included
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeTemplates.delete()`
 
@@ -7773,7 +7775,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `nodeTemplates.testIamPermissions()`
 
@@ -7784,7 +7786,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `nodeTypes`
 
@@ -7862,7 +7864,7 @@ Create a NotificationEndpoint in the specified project in the given region using
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionNotificationEndpoints.delete()`
 
@@ -7884,7 +7886,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `packetMirrorings`
 
@@ -7907,7 +7909,7 @@ Creates a PacketMirroring resource in the specified project and region using the
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `packetMirrorings.patch()`
 
@@ -7919,7 +7921,7 @@ Patches the specified PacketMirroring resource with the data included in the req
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `packetMirrorings.delete()`
 
@@ -7970,7 +7972,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
 
@@ -7990,7 +7992,7 @@ Sets metadata common to all instances within the specified project using the dat
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.setUsageExportBucket()`
 
@@ -8000,7 +8002,7 @@ Enables the usage export feature and sets the usage export bucket where reports 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.moveInstance()`
 
@@ -8010,17 +8012,17 @@ Moves an instance and its attached persistent disks from one zone to another. *N
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.moveDisk()`
 
-Moves a persistent disk from one zone to another.
+Starting September 29, 2025, you can't use the moveDisk API on new projects. To move a disk to a different region or zone, follow the steps in [Change the location of a disk](https://{$universe.dns_names.final_documentation_domain}/compute/docs/disks/migrate-to-hyperdisk#migrate-to-hd). Projects that already use the moveDisk API can continue usage until September 29, 2026. Starting November 1, 2025, API responses will include a warning message in the response body about the upcoming deprecation. You can skip the message to continue using the service without interruption.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.listXpnHosts()`
 
@@ -8034,7 +8036,7 @@ Lists all shared VPC host projects visible to the user in an organization.
 | `params.pageToken` | `string` | No | Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.enableXpnHost()`
 
@@ -8062,7 +8064,7 @@ Enable service resource (a.k.a service project) for a host project, so that subn
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.disableXpnResource()`
 
@@ -8072,7 +8074,7 @@ Disable a service resource (also known as service project) associated with this 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getXpnHost()`
 
@@ -8103,7 +8105,7 @@ Sets the default network tier of the project. The default network tier is used w
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.setManagedProtectionTier()`
 
@@ -8113,7 +8115,7 @@ Sets the Cloud Armor Managed Protection (CAMP) tier of the project. To set PLUS 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.setCloudArmorTier()`
 
@@ -8123,7 +8125,7 @@ Sets the Cloud Armor tier of the project. To set ENTERPRISE or above the billing
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `publicAdvertisedPrefixes`
 
@@ -8157,7 +8159,7 @@ Creates a PublicAdvertisedPrefix in the specified project using the parameters t
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publicAdvertisedPrefixes.delete()`
 
@@ -8178,7 +8180,7 @@ Patches the specified Router resource with the data included in the request. Thi
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.publicAdvertisedPrefix` | `string` | Yes | Name of the PublicAdvertisedPrefix resource to patch. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publicAdvertisedPrefixes.announce()`
 
@@ -8232,7 +8234,7 @@ Creates a global PublicDelegatedPrefix in the specified project using the parame
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `globalPublicDelegatedPrefixes.delete()`
 
@@ -8253,7 +8255,7 @@ Patches the specified global PublicDelegatedPrefix resource with the data includ
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.publicDelegatedPrefix` | `string` | Yes | Name of the PublicDelegatedPrefix resource to patch. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `publicDelegatedPrefixes`
 
@@ -8290,7 +8292,7 @@ Creates a PublicDelegatedPrefix in the specified project in the given region usi
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region of this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publicDelegatedPrefixes.delete()`
 
@@ -8313,7 +8315,7 @@ Patches the specified PublicDelegatedPrefix resource with the data included in t
 | `params.publicDelegatedPrefix` | `string` | Yes | Name of the PublicDelegatedPrefix resource to patch. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `publicDelegatedPrefixes.announce()`
 
@@ -8442,7 +8444,7 @@ Creates a subnetwork in the specified project using the data included in the req
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subnetworks.delete()`
 
@@ -8465,7 +8467,7 @@ Expands the IP CIDR range of the subnetwork to a specified value.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.subnetwork` | `string` | Yes | Name of the Subnetwork resource to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subnetworks.patch()`
 
@@ -8478,7 +8480,7 @@ Patches the specified subnetwork with the data included in the request. Only cer
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.subnetwork` | `string` | Yes | Name of the Subnetwork resource to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subnetworks.getIamPolicy()`
 
@@ -8500,7 +8502,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subnetworks.testIamPermissions()`
 
@@ -8511,7 +8513,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subnetworks.setPrivateIpGoogleAccess()`
 
@@ -8523,7 +8525,7 @@ Set whether VMs in this subnet can access Google services without assigning exte
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.subnetwork` | `string` | Yes | Name of the Subnetwork resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `networkProfiles`
 
@@ -8582,7 +8584,7 @@ Patches the given PreviewFeature. This method is used to enable or disable a Pre
 | `params.previewFeature` | `string` | Yes | Name of the PreviewFeature for this request. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `reservationBlocks`
 
@@ -8624,7 +8626,7 @@ Allows customers to perform maintenance on a reservation block
 | `params.reservation` | `string` | Yes | The name of the reservation. Name should conform to RFC1035 or be a resource ID. |
 | `params.reservationBlock` | `string` | Yes | The name of the reservation block. Name should conform to RFC1035 or be a resource ID. |
 | `params.zone` | `string` | Yes | Name of the zone for this request. Zone name should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `reservationSubBlocks`
 
@@ -8716,7 +8718,7 @@ Creates a new resource policy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resourcePolicies.delete()`
 
@@ -8740,7 +8742,7 @@ Modify the specified resource policy.
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resourcePolicy` | `string` | Yes | Id of the resource policy to patch. |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resourcePolicies.getIamPolicy()`
 
@@ -8762,7 +8764,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `resourcePolicies.testIamPermissions()`
 
@@ -8773,7 +8775,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `routes`
 
@@ -8807,7 +8809,7 @@ Creates a Route resource in the specified project using the data included in the
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routes.delete()`
 
@@ -8827,7 +8829,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `routers`
 
@@ -8850,7 +8852,7 @@ Creates a Router resource in the specified project and region using the data inc
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routers.update()`
 
@@ -8862,7 +8864,7 @@ Updates the specified Router resource with the data included in the request. Thi
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.router` | `string` | Yes | Name of the Router resource to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routers.patch()`
 
@@ -8874,7 +8876,7 @@ Patches the specified Router resource with the data included in the request. Thi
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.router` | `string` | Yes | Name of the Router resource to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routers.delete()`
 
@@ -8962,7 +8964,7 @@ Preview fields auto-generated during router create and update operations. Callin
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.router` | `string` | Yes | Name of the Router resource to query. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routers.testIamPermissions()`
 
@@ -8973,7 +8975,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routers.updateRoutePolicy()`
 
@@ -8985,7 +8987,7 @@ Updates or creates new Route Policy
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.router` | `string` | Yes | Name of the Router resource where Route Policy is defined. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routers.patchRoutePolicy()`
 
@@ -8997,7 +8999,7 @@ Patches Route Policy
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.router` | `string` | Yes | Name of the Router resource where Route Policy is defined. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routers.deleteRoutePolicy()`
 
@@ -9097,6 +9099,7 @@ Returns the specified ServiceAttachment resource in the given scope.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region of this request. |
 | `params.serviceAttachment` | `string` | Yes | Name of the ServiceAttachment resource to return. |
+| `params.showNatIps` | `boolean` | No | Indicates whether NAT IPs should be included in the response. |
 
 #### `serviceAttachments.insert()`
 
@@ -9107,7 +9110,7 @@ Creates a ServiceAttachment in the specified project in the given scope using th
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region of this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `serviceAttachments.delete()`
 
@@ -9130,7 +9133,7 @@ Patches the specified ServiceAttachment resource with the data included in the r
 | `params.region` | `string` | Yes | The region scoping this request and should conform to RFC1035. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.serviceAttachment` | `string` | Yes | The resource id of the ServiceAttachment to patch. It should conform to RFC1035 resource name or be a string form on an unsigned long number. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `serviceAttachments.getIamPolicy()`
 
@@ -9152,7 +9155,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `serviceAttachments.testIamPermissions()`
 
@@ -9163,7 +9166,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `snapshotSettings`
 
@@ -9184,7 +9187,7 @@ Patch snapshot settings.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionSnapshotSettings`
 
@@ -9207,7 +9210,7 @@ Patch region snapshot settings.
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sslCertificates`
 
@@ -9241,7 +9244,7 @@ Creates a SslCertificate resource in the specified project using the data includ
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sslCertificates.delete()`
 
@@ -9276,7 +9279,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionSslCertificates`
 
@@ -9313,7 +9316,7 @@ Creates a SslCertificate resource in the specified project and region using the 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSslCertificates.delete()`
 
@@ -9335,7 +9338,7 @@ Returns permissions that a caller has on the specified resource and region.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sslPolicies`
 
@@ -9369,7 +9372,7 @@ Returns the specified SSL policy resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sslPolicies.delete()`
 
@@ -9390,7 +9393,7 @@ Patches the specified SSL policy with the data included in the request.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.sslPolicy` | `string` | Yes | Name of the SSL policy to update. The name must be 1-63 characters long, and comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sslPolicies.listAvailableFeatures()`
 
@@ -9413,7 +9416,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `sslPolicies.aggregatedList()`
 
@@ -9465,7 +9468,7 @@ Creates a new policy in the specified project and region using the data included
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSslPolicies.delete()`
 
@@ -9488,7 +9491,7 @@ Patches the specified SSL policy with the data included in the request.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.sslPolicy` | `string` | Yes | Name of the SSL policy to update. The name must be 1-63 characters long, and comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionSslPolicies.listAvailableFeatures()`
 
@@ -9513,7 +9516,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `storagePoolTypes`
 
@@ -9606,7 +9609,7 @@ Creates a storage pool in the specified project using the data in the request.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `storagePools.delete()`
 
@@ -9639,7 +9642,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `storagePools.testIamPermissions()`
 
@@ -9650,7 +9653,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `storagePools.update()`
 
@@ -9663,7 +9666,7 @@ Updates the specified storagePool with the data included in the request. The upd
 | `params.storagePool` | `string` | Yes | The storagePool name for this request. |
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `storagePools.listDisks()`
 
@@ -9712,7 +9715,7 @@ Creates a TargetGrpcProxy in the specified project in the given scope using the 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetGrpcProxies.delete()`
 
@@ -9733,7 +9736,7 @@ Patches the specified TargetGrpcProxy resource with the data included in the req
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetGrpcProxy` | `string` | Yes | Name of the TargetGrpcProxy resource to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetGrpcProxies.testIamPermissions()`
 
@@ -9743,7 +9746,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `targetHttpProxies`
 
@@ -9777,7 +9780,7 @@ Creates a TargetHttpProxy resource in the specified project using the data inclu
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpProxies.delete()`
 
@@ -9798,7 +9801,7 @@ Patches the specified TargetHttpProxy resource with the data included in the req
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpProxy` | `string` | Yes | Name of the TargetHttpProxy resource to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpProxies.setUrlMap()`
 
@@ -9809,7 +9812,7 @@ Changes the URL map for TargetHttpProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpProxy` | `string` | Yes | Name of the TargetHttpProxy to set a URL map for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpProxies.aggregatedList()`
 
@@ -9834,7 +9837,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionTargetHttpProxies`
 
@@ -9871,7 +9874,7 @@ Creates a TargetHttpProxy resource in the specified project and region using the
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionTargetHttpProxies.delete()`
 
@@ -9894,7 +9897,7 @@ Changes the URL map for TargetHttpProxy.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpProxy` | `string` | Yes | Name of the TargetHttpProxy to set a URL map for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionTargetHttpProxies.testIamPermissions()`
 
@@ -9905,7 +9908,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `targetHttpsProxies`
 
@@ -9954,7 +9957,7 @@ Creates a TargetHttpsProxy resource in the specified project using the data incl
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpsProxies.patch()`
 
@@ -9965,7 +9968,7 @@ Patches the specified TargetHttpsProxy resource with the data included in the re
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpsProxy` | `string` | Yes | Name of the TargetHttpsProxy resource to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpsProxies.delete()`
 
@@ -9986,7 +9989,7 @@ Changes the URL map for TargetHttpsProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpsProxy` | `string` | Yes | Name of the TargetHttpsProxy resource whose URL map is to be set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpsProxies.setSslCertificates()`
 
@@ -9997,7 +10000,7 @@ Replaces SslCertificates for TargetHttpsProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpsProxy` | `string` | Yes | Name of the TargetHttpsProxy resource to set an SslCertificates resource for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpsProxies.setCertificateMap()`
 
@@ -10008,7 +10011,7 @@ Changes the Certificate Map for TargetHttpsProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpsProxy` | `string` | Yes | Name of the TargetHttpsProxy resource whose CertificateMap is to be set. The name must be 1-63 characters long, and comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpsProxies.setSslPolicy()`
 
@@ -10019,7 +10022,7 @@ Sets the SSL policy for TargetHttpsProxy. The SSL policy specifies the server-si
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpsProxy` | `string` | Yes | Name of the TargetHttpsProxy resource whose SSL policy is to be set. The name must be 1-63 characters long, and comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpsProxies.setQuicOverride()`
 
@@ -10030,7 +10033,7 @@ Sets the QUIC override policy for TargetHttpsProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpsProxy` | `string` | Yes | Name of the TargetHttpsProxy resource to set the QUIC override policy for. The name should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetHttpsProxies.testIamPermissions()`
 
@@ -10040,7 +10043,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionTargetHttpsProxies`
 
@@ -10077,7 +10080,7 @@ Creates a TargetHttpsProxy resource in the specified project and region using th
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionTargetHttpsProxies.delete()`
 
@@ -10100,7 +10103,7 @@ Patches the specified regional TargetHttpsProxy resource with the data included 
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpsProxy` | `string` | Yes | Name of the TargetHttpsProxy resource to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionTargetHttpsProxies.setUrlMap()`
 
@@ -10112,7 +10115,7 @@ Changes the URL map for TargetHttpsProxy.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpsProxy` | `string` | Yes | Name of the TargetHttpsProxy to set a URL map for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionTargetHttpsProxies.setSslCertificates()`
 
@@ -10124,7 +10127,7 @@ Replaces SslCertificates for TargetHttpsProxy.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetHttpsProxy` | `string` | Yes | Name of the TargetHttpsProxy resource to set an SslCertificates resource for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionTargetHttpsProxies.testIamPermissions()`
 
@@ -10135,7 +10138,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `targetInstances`
 
@@ -10187,7 +10190,7 @@ Creates a TargetInstance resource in the specified project and zone using the da
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.zone` | `string` | Yes | Name of the zone scoping this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetInstances.delete()`
 
@@ -10210,7 +10213,7 @@ Sets the Google Cloud Armor security policy for the specified target instance. F
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetInstance` | `string` | Yes | Name of the TargetInstance resource to which the security policy should be set. The name should conform to RFC1035. |
 | `params.zone` | `string` | Yes | Name of the zone scoping this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetInstances.testIamPermissions()`
 
@@ -10221,7 +10224,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `targetPools`
 
@@ -10273,7 +10276,7 @@ Creates a target pool in the specified project and region using the data include
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetPools.delete()`
 
@@ -10295,7 +10298,7 @@ Gets the most recent health check results for each IP for the instance that is r
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.targetPool` | `string` | Yes | Name of the TargetPool resource to which the queried instance belongs. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetPools.addHealthCheck()`
 
@@ -10307,7 +10310,7 @@ Adds health check URLs to a target pool.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetPool` | `string` | Yes | Name of the target pool to add a health check to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetPools.removeHealthCheck()`
 
@@ -10319,7 +10322,7 @@ Removes health check URL from a target pool.
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetPool` | `string` | Yes | Name of the target pool to remove health checks from. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetPools.addInstance()`
 
@@ -10331,7 +10334,7 @@ Adds an instance to a target pool.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetPool` | `string` | Yes | Name of the TargetPool resource to add instances to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetPools.removeInstance()`
 
@@ -10343,7 +10346,7 @@ Removes instance URL from a target pool.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetPool` | `string` | Yes | Name of the TargetPool resource to remove instances from. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetPools.setBackup()`
 
@@ -10356,7 +10359,7 @@ Changes a backup target pool's configurations.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetPool` | `string` | Yes | Name of the TargetPool resource to set a backup pool for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetPools.setSecurityPolicy()`
 
@@ -10368,7 +10371,7 @@ Sets the Google Cloud Armor security policy for the specified target pool. For m
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetPool` | `string` | Yes | Name of the TargetPool resource to which the security policy should be set. The name should conform to RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetPools.testIamPermissions()`
 
@@ -10379,7 +10382,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `targetSslProxies`
 
@@ -10413,7 +10416,7 @@ Creates a TargetSslProxy resource in the specified project using the data includ
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetSslProxies.delete()`
 
@@ -10434,7 +10437,7 @@ Changes the BackendService for TargetSslProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetSslProxy` | `string` | Yes | Name of the TargetSslProxy resource whose BackendService resource is to be set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetSslProxies.setSslCertificates()`
 
@@ -10445,7 +10448,7 @@ Changes SslCertificates for TargetSslProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetSslProxy` | `string` | Yes | Name of the TargetSslProxy resource whose SslCertificate resource is to be set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetSslProxies.setCertificateMap()`
 
@@ -10456,7 +10459,7 @@ Changes the Certificate Map for TargetSslProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetSslProxy` | `string` | Yes | Name of the TargetSslProxy resource whose CertificateMap is to be set. The name must be 1-63 characters long, and comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetSslProxies.setProxyHeader()`
 
@@ -10467,7 +10470,7 @@ Changes the ProxyHeaderType for TargetSslProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetSslProxy` | `string` | Yes | Name of the TargetSslProxy resource whose ProxyHeader is to be set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetSslProxies.setSslPolicy()`
 
@@ -10478,7 +10481,7 @@ Sets the SSL policy for TargetSslProxy. The SSL policy specifies the server-side
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetSslProxy` | `string` | Yes | Name of the TargetSslProxy resource whose SSL policy is to be set. The name must be 1-63 characters long, and comply with RFC1035. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetSslProxies.testIamPermissions()`
 
@@ -10488,7 +10491,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `targetTcpProxies`
 
@@ -10537,7 +10540,7 @@ Creates a TargetTcpProxy resource in the specified project using the data includ
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetTcpProxies.delete()`
 
@@ -10558,7 +10561,7 @@ Changes the BackendService for TargetTcpProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetTcpProxy` | `string` | Yes | Name of the TargetTcpProxy resource whose BackendService resource is to be set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetTcpProxies.setProxyHeader()`
 
@@ -10569,7 +10572,7 @@ Changes the ProxyHeaderType for TargetTcpProxy.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.targetTcpProxy` | `string` | Yes | Name of the TargetTcpProxy resource whose ProxyHeader is to be set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetTcpProxies.testIamPermissions()`
 
@@ -10579,7 +10582,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionTargetTcpProxies`
 
@@ -10616,7 +10619,7 @@ Creates a TargetTcpProxy resource in the specified project and region using the 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionTargetTcpProxies.delete()`
 
@@ -10638,7 +10641,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `targetVpnGateways`
 
@@ -10690,7 +10693,7 @@ Creates a target VPN gateway in the specified project and region using the data 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetVpnGateways.delete()`
 
@@ -10712,7 +10715,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `targetVpnGateways.setLabels()`
 
@@ -10724,7 +10727,7 @@ Sets the labels on a TargetVpnGateway. To learn more about labels, read the Labe
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `urlMaps`
 
@@ -10773,7 +10776,7 @@ Creates a UrlMap resource in the specified project using the data included in th
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `urlMaps.delete()`
 
@@ -10794,7 +10797,7 @@ Updates the specified UrlMap resource with the data included in the request.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.urlMap` | `string` | Yes | Name of the UrlMap resource to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `urlMaps.patch()`
 
@@ -10805,7 +10808,7 @@ Patches the specified UrlMap resource with the data included in the request. Thi
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.urlMap` | `string` | Yes | Name of the UrlMap resource to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `urlMaps.validate()`
 
@@ -10815,7 +10818,7 @@ Runs static validation for the UrlMap. In particular, the tests of the provided 
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.urlMap` | `string` | Yes | Name of the UrlMap resource to be validated as. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `urlMaps.invalidateCache()`
 
@@ -10826,7 +10829,7 @@ Initiates a cache invalidation operation, invalidating the specified path, scope
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.urlMap` | `string` | Yes | Name of the UrlMap scoping this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `urlMaps.testIamPermissions()`
 
@@ -10836,7 +10839,7 @@ Returns permissions that a caller has on the specified resource.
 |---|---|---|---|
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `regionUrlMaps`
 
@@ -10873,7 +10876,7 @@ Creates a UrlMap resource in the specified project using the data included in th
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | begin_interface: MixerMutationRequestBuilder Request ID to support idempotency. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionUrlMaps.delete()`
 
@@ -10896,7 +10899,7 @@ Updates the specified UrlMap resource with the data included in the request.
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | begin_interface: MixerMutationRequestBuilder Request ID to support idempotency. |
 | `params.urlMap` | `string` | Yes | Name of the UrlMap resource to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionUrlMaps.patch()`
 
@@ -10908,7 +10911,7 @@ Patches the specified UrlMap resource with the data included in the request. Thi
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | begin_interface: MixerMutationRequestBuilder Request ID to support idempotency. |
 | `params.urlMap` | `string` | Yes | Name of the UrlMap resource to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionUrlMaps.validate()`
 
@@ -10919,7 +10922,7 @@ Runs static validation for the UrlMap. In particular, the tests of the provided 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.urlMap` | `string` | Yes | Name of the UrlMap resource to be validated as. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionUrlMaps.invalidateCache()`
 
@@ -10931,7 +10934,7 @@ Initiates a cache invalidation operation, invalidating the specified path, scope
 | `params.region` | `string` | Yes | Name of the region scoping this request. |
 | `params.requestId` | `string` | No | begin_interface: MixerMutationRequestBuilder Request ID to support idempotency. |
 | `params.urlMap` | `string` | Yes | Name of the UrlMap scoping this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `regionUrlMaps.testIamPermissions()`
 
@@ -10942,7 +10945,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `vpnGateways`
 
@@ -11004,7 +11007,7 @@ Creates a VPN gateway in the specified project and region using the data include
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `vpnGateways.delete()`
 
@@ -11026,7 +11029,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `vpnGateways.setLabels()`
 
@@ -11038,7 +11041,7 @@ Sets the labels on a VpnGateway. To learn more about labels, read the Labeling R
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `vpnTunnels`
 
@@ -11090,7 +11093,7 @@ Creates a VpnTunnel resource in the specified project and region using the data 
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `vpnTunnels.delete()`
 
@@ -11112,7 +11115,7 @@ Returns permissions that a caller has on the specified resource.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | The name of the region for this request. |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `vpnTunnels.setLabels()`
 
@@ -11124,7 +11127,7 @@ Sets the labels on a VpnTunnel. To learn more about labels, read the Labeling Re
 | `params.region` | `string` | Yes | The region for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `wireGroups`
 
@@ -11162,7 +11165,7 @@ Creates a wire group in the specified project in the given scope using the param
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). end_interface: MixerMutationRequestBuilder |
 | `params.validateOnly` | `boolean` | No | [Input Only] Validate the new configuration, but don't create it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `wireGroups.delete()`
 
@@ -11187,7 +11190,7 @@ Updates the specified wire group resource with the data included in the request.
 | `params.updateMask` | `string` | No | update_mask indicates fields to be updated as part of this request. |
 | `params.validateOnly` | `boolean` | No | [Input Only] Validate the new configuration, but don't update it. |
 | `params.wireGroup` | `string` | Yes | Name of the WireGroups resource to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `zones`
 
