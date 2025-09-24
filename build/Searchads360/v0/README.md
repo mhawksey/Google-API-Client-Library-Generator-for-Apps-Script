@@ -4,8 +4,8 @@ Auto-generated client library for using the **Search Ads 360 Reporting API (vers
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:05 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:45:24 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:47:08 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:47:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:27 GMT
 
 
@@ -50,7 +50,7 @@ Returns all rows that match the search query. List of thrown errors: [Authentica
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Required. The ID of the customer being queried. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `searchAds360Fields`
 
@@ -68,4 +68,4 @@ Returns all fields that match the search [query](/search-ads/reporting/concepts/
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

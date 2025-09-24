@@ -4,8 +4,8 @@ Auto-generated client library for using the **Storage Batch Operations API (vers
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:39 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:47:23 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:07 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:12 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.jobs`
 
@@ -107,7 +107,7 @@ Creates a batch job.
 | `params.parent` | `string` | Yes | Required. Value for parent. |
 | `params.jobId` | `string` | No | Required. The optional `job_id` for this Job . If not specified, an id is generated. `job_id` should be no more than 128 characters and must include only characters available in DNS names, as defined by RFC-1123. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID in case you need to retry your request. Requests with same `request_id` will be ignored for at least 60 minutes since the first request. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.delete()`
 
@@ -125,4 +125,4 @@ Cancels a batch job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The `name` of the job to cancel. Format: projects/{project_id}/locations/global/jobs/{job_id}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Dataproc API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:14 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:12:03 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:23 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:29 GMT
 
 
@@ -62,7 +62,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.operations.getIamPolicy()`
 
@@ -71,7 +71,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.operations.testIamPermissions()`
 
@@ -80,7 +80,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.regions.autoscalingPolicies`
 
@@ -91,7 +91,7 @@ Creates new autoscaling policy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The "resource name" of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.create, the resource name of the location has the following format: projects/{project_id}/locations/{location} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.autoscalingPolicies.update()`
 
@@ -100,7 +100,7 @@ Updates (replaces) autoscaling policy.Disabled check for update_mask, because al
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.autoscalingPolicies.get()`
 
@@ -135,7 +135,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.autoscalingPolicies.getIamPolicy()`
 
@@ -144,7 +144,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.autoscalingPolicies.testIamPermissions()`
 
@@ -153,7 +153,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.regions.clusters`
 
@@ -167,7 +167,7 @@ Creates a cluster in a project. The returned Operation.metadata will be ClusterO
 | `params.region` | `string` | Yes | Required. The Dataproc region in which to handle the request. |
 | `params.requestId` | `string` | No | Optional. A unique ID used to identify the request. If the server receives two CreateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
 | `params.actionOnFailedPrimaryWorkers` | `string` | No | Optional. Failure action when primary worker creation fails. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.patch()`
 
@@ -181,7 +181,7 @@ Updates a cluster in a project. The returned Operation.metadata will be ClusterO
 | `params.gracefulDecommissionTimeout` | `string` | No | Optional. Timeout for graceful YARN decommissioning. Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress. Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs). Default timeout is 0 (for forceful decommission), and the maximum allowed timeout is 1 day. (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).Only supported on Dataproc image versions 1.2 and higher. |
 | `params.updateMask` | `string` | No | Required. Specifies the path, relative to Cluster, of the field to update. For example, to change the number of workers in a cluster to 5, the update_mask parameter would be specified as config.worker_config.num_instances, and the PATCH request body would specify the new value, as follows: { "config":{ "workerConfig":{ "numInstances":"5" } } } Similarly, to change the number of preemptible workers in a cluster to 5, the update_mask parameter would be config.secondary_worker_config.num_instances, and the PATCH request body would be set as follows: { "config":{ "secondaryWorkerConfig":{ "numInstances":"5" } } } *Note:* Currently, only the following fields can be updated: *Mask* *Purpose* *labels* Update labels *config.worker_config.num_instances* Resize primary worker group *config.secondary_worker_config.num_instances* Resize secondary worker group config.autoscaling_config.policy_uri Use, stop using, or change autoscaling policies  |
 | `params.requestId` | `string` | No | Optional. A unique ID used to identify the request. If the server receives two UpdateClusterRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.UpdateClusterRequest)s with the same id, then the second request will be ignored and the first google.longrunning.Operation created and stored in the backend is returned.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.stop()`
 
@@ -192,7 +192,7 @@ Stops a cluster in a project.
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud Platform project the cluster belongs to. |
 | `params.region` | `string` | Yes | Required. The Dataproc region in which to handle the request. |
 | `params.clusterName` | `string` | Yes | Required. The cluster name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.start()`
 
@@ -203,7 +203,7 @@ Starts a cluster in a project.
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud Platform project the cluster belongs to. |
 | `params.region` | `string` | Yes | Required. The Dataproc region in which to handle the request. |
 | `params.clusterName` | `string` | Yes | Required. The cluster name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.repair()`
 
@@ -214,7 +214,7 @@ Repairs a cluster.
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud Platform project the cluster belongs to. |
 | `params.region` | `string` | Yes | Required. The Dataproc region in which to handle the request. |
 | `params.clusterName` | `string` | Yes | Required. The cluster name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.delete()`
 
@@ -260,7 +260,7 @@ Gets cluster diagnostic information. The returned Operation.metadata will be Clu
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud Platform project that the cluster belongs to. |
 | `params.region` | `string` | Yes | Required. The Dataproc region in which to handle the request. |
 | `params.clusterName` | `string` | Yes | Required. The cluster name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.injectCredentials()`
 
@@ -271,7 +271,7 @@ Inject encrypted credentials into all of the VMs in a cluster.The target cluster
 | `params.project` | `string` | Yes | Required. The ID of the Google Cloud Platform project the cluster belongs to, of the form projects/. |
 | `params.region` | `string` | Yes | Required. The region containing the cluster, of the form regions/. |
 | `params.cluster` | `string` | Yes | Required. The cluster, in the form clusters/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.setIamPolicy()`
 
@@ -280,7 +280,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.getIamPolicy()`
 
@@ -289,7 +289,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.testIamPermissions()`
 
@@ -298,7 +298,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.regions.clusters.nodeGroups`
 
@@ -312,7 +312,7 @@ Creates a node group in a cluster. The returned Operation.metadata is NodeGroupO
 | `params.nodeGroupId` | `string` | No | Optional. An optional node group ID. Generated if not specified.The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of from 3 to 33 characters. |
 | `params.requestId` | `string` | No | Optional. A unique ID used to identify the request. If the server receives two CreateNodeGroupRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateNodeGroupRequest) with the same ID, the second request is ignored and the first google.longrunning.Operation created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
 | `params.parentOperationId` | `string` | No | Optional. operation id of the parent operation sending the create request |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.nodeGroups.resize()`
 
@@ -321,7 +321,7 @@ Resizes a node group in a cluster. The returned Operation.metadata is NodeGroupO
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the node group to resize. Format: projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.nodeGroups.repair()`
 
@@ -330,7 +330,7 @@ Repair nodes in a node group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the node group to resize. Format: projects/{project}/regions/{region}/clusters/{cluster}/nodeGroups/{nodeGroup} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.clusters.nodeGroups.get()`
 
@@ -350,7 +350,7 @@ Submits a job to a cluster.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud Platform project that the job belongs to. |
 | `params.region` | `string` | Yes | Required. The Dataproc region in which to handle the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.jobs.submitAsOperation()`
 
@@ -360,7 +360,7 @@ Submits job to a cluster.
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud Platform project that the job belongs to. |
 | `params.region` | `string` | Yes | Required. The Dataproc region in which to handle the request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.jobs.get()`
 
@@ -396,7 +396,7 @@ Updates a job in a project.
 | `params.region` | `string` | Yes | Required. The Dataproc region in which to handle the request. |
 | `params.jobId` | `string` | Yes | Required. The job ID. |
 | `params.updateMask` | `string` | No | Required. Specifies the path, relative to Job, of the field to update. For example, to update the labels of a Job the update_mask parameter would be specified as labels, and the PATCH request body would specify the new value. *Note:* Currently, labels is the only field that can be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.jobs.cancel()`
 
@@ -407,7 +407,7 @@ Starts a job cancellation request. To access the job resource after cancellation
 | `params.projectId` | `string` | Yes | Required. The ID of the Google Cloud Platform project that the job belongs to. |
 | `params.region` | `string` | Yes | Required. The Dataproc region in which to handle the request. |
 | `params.jobId` | `string` | Yes | Required. The job ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.jobs.delete()`
 
@@ -426,7 +426,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.jobs.getIamPolicy()`
 
@@ -435,7 +435,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.jobs.testIamPermissions()`
 
@@ -444,7 +444,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.regions.workflowTemplates`
 
@@ -455,7 +455,7 @@ Creates new workflow template.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create, the resource name of the location has the following format: projects/{project_id}/locations/{location} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.workflowTemplates.get()`
 
@@ -473,7 +473,7 @@ Instantiates a template and begins execution.The returned Operation can be used 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.workflowTemplates.instantiateInline()`
 
@@ -483,7 +483,7 @@ Instantiates a template and begins execution.This method is equivalent to execut
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.instantiateinline, the resource name of the location has the following format: projects/{project_id}/locations/{location} |
 | `params.requestId` | `string` | No | Optional. A tag that prevents multiple concurrent workflow instances with the same tag from running. This mitigates risk of concurrent instances started due to retries.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.workflowTemplates.update()`
 
@@ -492,7 +492,7 @@ Updates (replaces) workflow template. The updated template must contain version 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.workflowTemplates.list()`
 
@@ -520,7 +520,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.workflowTemplates.getIamPolicy()`
 
@@ -529,7 +529,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.regions.workflowTemplates.testIamPermissions()`
 
@@ -538,7 +538,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations`
 
@@ -588,7 +588,7 @@ Analyze a Batch for possible recommendations and insights.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified name of the batch to analyze in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.batches.create()`
 
@@ -599,7 +599,7 @@ Creates a batch workload that executes asynchronously.
 | `params.parent` | `string` | Yes | Required. The parent resource where this batch will be created. |
 | `params.batchId` | `string` | No | Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/. |
 | `params.requestId` | `string` | No | Optional. A unique ID used to identify the request. If the service receives two CreateBatchRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first Batch created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.batches.get()`
 
@@ -638,7 +638,7 @@ Write wrapper objects from dataplane to spanner
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified name of the spark application to write data about in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/batches/BATCH_ID/sparkApplications/APPLICATION_ID" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.batches.sparkApplications.search()`
 
@@ -865,7 +865,7 @@ Creates new autoscaling policy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The "resource name" of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies.create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.autoscalingPolicies.create, the resource name of the location has the following format: projects/{project_id}/locations/{location} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.autoscalingPolicies.update()`
 
@@ -874,7 +874,7 @@ Updates (replaces) autoscaling policy.Disabled check for update_mask, because al
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The "resource name" of the autoscaling policy, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/regions/{region}/autoscalingPolicies/{policy_id} For projects.locations.autoscalingPolicies, the resource name of the policy has the following format: projects/{project_id}/locations/{location}/autoscalingPolicies/{policy_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.autoscalingPolicies.get()`
 
@@ -909,7 +909,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.autoscalingPolicies.getIamPolicy()`
 
@@ -918,7 +918,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.autoscalingPolicies.testIamPermissions()`
 
@@ -927,7 +927,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.sessions`
 
@@ -940,7 +940,7 @@ Create an interactive session asynchronously.
 | `params.parent` | `string` | Yes | Required. The parent resource where this session will be created. |
 | `params.sessionId` | `string` | No | Required. The ID to use for the session, which becomes the final component of the session's resource name.This value must be 4-63 characters. Valid characters are /a-z-/. |
 | `params.requestId` | `string` | No | Optional. A unique ID used to identify the request. If the service receives two CreateSessionRequests (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.CreateSessionRequest)s with the same ID, the second request is ignored, and the first Session is created and stored in the backend.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sessions.get()`
 
@@ -968,7 +968,7 @@ Terminates the interactive session.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the session resource to terminate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sessions.delete()`
 
@@ -988,7 +988,7 @@ Write wrapper objects from dataplane to spanner
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified name of the spark application to write data about in the format "projects/PROJECT_ID/locations/DATAPROC_REGION/sessions/SESSION_ID/sparkApplications/APPLICATION_ID" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sessions.sparkApplications.search()`
 
@@ -1220,7 +1220,7 @@ Create a session template synchronously.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this session template will be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sessionTemplates.patch()`
 
@@ -1229,7 +1229,7 @@ Updates the session template synchronously.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Identifier. The resource name of the session template. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sessionTemplates.get()`
 
@@ -1267,7 +1267,7 @@ Creates new workflow template.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.create, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.create, the resource name of the location has the following format: projects/{project_id}/locations/{location} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflowTemplates.get()`
 
@@ -1285,7 +1285,7 @@ Instantiates a template and begins execution.The returned Operation can be used 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates.instantiate, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflowTemplates.instantiateInline()`
 
@@ -1295,7 +1295,7 @@ Instantiates a template and begins execution.This method is equivalent to execut
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the region or location, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates,instantiateinline, the resource name of the region has the following format: projects/{project_id}/regions/{region} For projects.locations.workflowTemplates.instantiateinline, the resource name of the location has the following format: projects/{project_id}/locations/{location} |
 | `params.requestId` | `string` | No | Optional. A tag that prevents multiple concurrent workflow instances with the same tag from running. This mitigates risk of concurrent instances started due to retries.It is recommended to always set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The tag must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflowTemplates.update()`
 
@@ -1304,7 +1304,7 @@ Updates (replaces) workflow template. The updated template must contain version 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the workflow template, as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflowTemplates.list()`
 
@@ -1332,7 +1332,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflowTemplates.getIamPolicy()`
 
@@ -1341,7 +1341,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflowTemplates.testIamPermissions()`
 
@@ -1350,4 +1350,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

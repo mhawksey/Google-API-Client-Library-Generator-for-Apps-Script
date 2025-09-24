@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Identity-Aware Proxy API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:07 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:24:10 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:27:14 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:27:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:15 GMT
 
 
@@ -23,7 +23,7 @@ Sets the access control policy for an Identity-Aware Proxy protected resource. R
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.getIamPolicy()`
 
@@ -32,7 +32,7 @@ Gets the access control policy for an Identity-Aware Proxy protected resource. M
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.testIamPermissions()`
 
@@ -41,7 +41,7 @@ Returns permissions that a caller has on the Identity-Aware Proxy protected reso
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.getIapSettings()`
 
@@ -59,7 +59,7 @@ Updates the IAP settings on a particular IAP protected resource. It replaces all
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the IAP protected resource. |
 | `params.updateMask` | `string` | No | The field mask specifying which IAP settings should be updated. If omitted, then all of the settings are updated. See https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. Note: All IAP reauth settings must always be set together, using the field mask: `iapSettings.accessSettings.reauthSettings`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.validateAttributeExpression()`
 
@@ -96,7 +96,7 @@ Creates a new TunnelDestGroup.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Google Cloud Project ID and location. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}`. |
 | `params.tunnelDestGroupId` | `string` | No | Required. The ID to use for the TunnelDestGroup, which becomes the final component of the resource name. This value must be 4-63 characters, and valid characters are `[a-z]-`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.iap_tunnel.locations.destGroups.get()`
 
@@ -122,7 +122,7 @@ Updates a TunnelDestGroup.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-). |
 | `params.updateMask` | `string` | No | A field mask that specifies which IAP settings to update. If omitted, then all of the settings are updated. See https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.brands`
 
@@ -141,7 +141,7 @@ Constructs a new OAuth brand for the project if one does not exist. The created 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. GCP Project number/id under which the brand is to be created. In the following format: projects/{project_number/id}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.brands.get()`
 
@@ -160,7 +160,7 @@ Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Path to create the client in. In the following format: projects/{project_number/id}/brands/{brand}. The project must belong to a G Suite account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.brands.identityAwareProxyClients.list()`
 
@@ -187,7 +187,7 @@ Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the secret w
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the Identity Aware Proxy client to that will have its secret reset. In the following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.brands.identityAwareProxyClients.delete()`
 

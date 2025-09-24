@@ -4,8 +4,8 @@ Auto-generated client library for using the **Android Device Provisioning Partne
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:59 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:52:09 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:03:58 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:03:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:11 GMT
 
 
@@ -59,7 +59,7 @@ Creates a customer for zero-touch enrollment. After the method returns successfu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource ID in the format `partners/[PARTNER_ID]` that identifies the reseller. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.customers.list()`
 
@@ -80,7 +80,7 @@ Claims a device for a customer and adds it to zero-touch enrollment. If the devi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The ID of the reseller partner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.devices.unclaim()`
 
@@ -89,7 +89,7 @@ Unclaims a device from a customer and removes it from zero-touch enrollment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The ID of the reseller partner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.devices.findByIdentifier()`
 
@@ -98,7 +98,7 @@ Finds devices by hardware identifiers, such as IMEI.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The ID of the reseller partner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.devices.findByOwner()`
 
@@ -107,7 +107,7 @@ Finds devices claimed for customers. The results only contain devices registered
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The ID of the reseller partner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.devices.get()`
 
@@ -124,7 +124,7 @@ Gets a device's SIM lock state.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The ID of the partner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.devices.metadata()`
 
@@ -134,7 +134,7 @@ Updates reseller metadata associated with the device. Android devices only.
 |---|---|---|---|
 | `params.metadataOwnerId` | `string` | Yes | Required. The owner of the newly set metadata. Set this to the partner ID. |
 | `params.deviceId` | `string` | Yes | Required. The ID of the device. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.devices.claimAsync()`
 
@@ -143,7 +143,7 @@ Claims a batch of devices for a customer asynchronously. Adds the devices to zer
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The ID of the reseller partner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.devices.unclaimAsync()`
 
@@ -152,7 +152,7 @@ Unclaims a batch of devices for a customer asynchronously. Removes the devices f
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The reseller partner ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.devices.updateMetadataAsync()`
 
@@ -161,7 +161,7 @@ Updates the reseller metadata attached to a batch of devices. This method update
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The reseller partner ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers`
 
@@ -183,7 +183,7 @@ Creates a new configuration. Once created, a customer can apply the configuratio
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The customer that manages the configuration. An API resource name in the format `customers/[CUSTOMER_ID]`. This field has custom validation in CreateConfigurationRequestValidator |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.configurations.get()`
 
@@ -201,7 +201,7 @@ Updates a configuration's field values.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by the server. |
 | `params.updateMask` | `string` | No | Required. The field mask applied to the target `Configuration` before updating the fields. To learn more about using field masks, read [FieldMask](/protocol-buffers/docs/reference/google.protobuf#fieldmask) in the Protocol Buffers documentation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.configurations.delete()`
 
@@ -256,7 +256,7 @@ Unclaims a device from a customer and removes it from zero-touch enrollment. Aft
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The customer managing the device. An API resource name in the format `customers/[CUSTOMER_ID]`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.devices.applyConfiguration()`
 
@@ -265,7 +265,7 @@ Applies a Configuration to the device to register the device for zero-touch enro
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The customer managing the device. An API resource name in the format `customers/[CUSTOMER_ID]`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.devices.removeConfiguration()`
 
@@ -274,4 +274,4 @@ Removes a configuration from device.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The customer managing the device in the format `customers/[CUSTOMER_ID]`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

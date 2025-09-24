@@ -4,8 +4,8 @@ Auto-generated client library for using the **Reader Revenue Subscription Linkin
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:13 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:44:05 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:45:57 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:45:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:07 GMT
 
 
@@ -51,4 +51,4 @@ Updates the reader entitlements for a publication reader. The entire reader enti
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the singleton. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Defaults to all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

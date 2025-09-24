@@ -12,13 +12,11 @@ class Websecurityscanner {
    * @param {object} [config.backoff] - Configuration for exponential backoff.
    */
   constructor(config = {}) {
-    // "Private" properties using the underscore convention
     this._token = config.token || ScriptApp.getOAuthToken();
     this._backoffConfig = Object.assign({ retries: 3, baseDelay: 1000 }, config.backoff);
     this._rootUrl = 'https://websecurityscanner.googleapis.com/';
     this._servicePath = '';
 
-    // --- Public Interface Initialization ---
 
     this.projects = {};
 
@@ -26,172 +24,278 @@ class Websecurityscanner {
 
     /**
      * Creates a new ScanConfig.
-     * @param {string} params.parent - (Required) Required. The parent resource name where the scan is created, which should be a project resource name in the format 'projects/{projectId}'.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name where the scan is created, which should be a project resource name in the format 'projects/{projectId}'.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.create = (params) => this._makeRequest('v1/{+parent}/scanConfigs', 'POST', params);
+    this.projects.scanConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/scanConfigs', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes an existing ScanConfig and its child resources.
-     * @param {string} params.name - (Required) Required. The resource name of the ScanConfig to be deleted. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the ScanConfig to be deleted. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.delete = (params) => this._makeRequest('v1/{+name}', 'DELETE', params);
+    this.projects.scanConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Gets a ScanConfig.
-     * @param {string} params.name - (Required) Required. The resource name of the ScanConfig to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the ScanConfig to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.scanConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists ScanConfigs under a given project.
-     * @param {integer} params.pageSize - The maximum number of ScanConfigs to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
-     * @param {string} params.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
-     * @param {string} params.parent - (Required) Required. The parent resource name, which should be a project resource name in the format 'projects/{projectId}'.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of ScanConfigs to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
+     * @param {string} apiParams.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which should be a project resource name in the format 'projects/{projectId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.list = (params) => this._makeRequest('v1/{+parent}/scanConfigs', 'GET', params);
+    this.projects.scanConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/scanConfigs', 'GET', apiParams, clientConfig);
 
     /**
      * Updates a ScanConfig. This method support partial update of a ScanConfig.
-     * @param {string} params.name - (Required) Identifier. The resource name of the ScanConfig. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system.
-     * @param {string} params.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the ScanConfig. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'. The ScanConfig IDs are generated by the system.
+     * @param {string} apiParams.updateMask - Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.patch = (params) => this._makeRequest('v1/{+name}', 'PATCH', params);
+    this.projects.scanConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Start a ScanRun according to the given ScanConfig.
-     * @param {string} params.name - (Required) Required. The resource name of the ScanConfig to be used. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the ScanConfig to be used. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.start = (params) => this._makeRequest('v1/{+name}:start', 'POST', params);
+    this.projects.scanConfigs.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:start', 'POST', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns = {};
 
     /**
      * Gets a ScanRun.
-     * @param {string} params.name - (Required) Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the ScanRun to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.scanRuns.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.scanConfigs.scanRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists ScanRuns under a given ScanConfig, in descending order of ScanRun stop time.
-     * @param {integer} params.pageSize - The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
-     * @param {string} params.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
-     * @param {string} params.parent - (Required) Required. The parent resource name, which should be a scan resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}'.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of ScanRuns to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
+     * @param {string} apiParams.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which should be a scan resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.scanRuns.list = (params) => this._makeRequest('v1/{+parent}/scanRuns', 'GET', params);
+    this.projects.scanConfigs.scanRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/scanRuns', 'GET', apiParams, clientConfig);
 
     /**
      * Stops a ScanRun. The stopped ScanRun is returned.
-     * @param {string} params.name - (Required) Required. The resource name of the ScanRun to be stopped. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the ScanRun to be stopped. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.scanRuns.stop = (params) => this._makeRequest('v1/{+name}:stop', 'POST', params);
+    this.projects.scanConfigs.scanRuns.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:stop', 'POST', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns.crawledUrls = {};
 
     /**
      * List CrawledUrls under a given ScanRun.
-     * @param {integer} params.pageSize - The maximum number of CrawledUrls to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
-     * @param {string} params.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
-     * @param {string} params.parent - (Required) Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of CrawledUrls to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
+     * @param {string} apiParams.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.scanRuns.crawledUrls.list = (params) => this._makeRequest('v1/{+parent}/crawledUrls', 'GET', params);
+    this.projects.scanConfigs.scanRuns.crawledUrls.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/crawledUrls', 'GET', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns.findings = {};
 
     /**
      * Gets a Finding.
-     * @param {string} params.name - (Required) Required. The resource name of the Finding to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{findingId}'.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Finding to be returned. The name follows the format of 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}/findings/{findingId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.scanRuns.findings.get = (params) => this._makeRequest('v1/{+name}', 'GET', params);
+    this.projects.scanConfigs.scanRuns.findings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * List Findings under a given ScanRun.
-     * @param {string} params.filter - The filter expression. The expression must be in the format: . Supported field: 'finding_type'. Supported operator: '='.
-     * @param {integer} params.pageSize - The maximum number of Findings to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
-     * @param {string} params.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
-     * @param {string} params.parent - (Required) Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - The filter expression. The expression must be in the format: . Supported field: 'finding_type'. Supported operator: '='.
+     * @param {integer} apiParams.pageSize - The maximum number of Findings to return, can be limited by server. If not specified or not positive, the implementation will select a reasonable value.
+     * @param {string} apiParams.pageToken - A token identifying a page of results to be returned. This should be a `next_page_token` value returned from a previous List request. If unspecified, the first page of results is returned.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.scanRuns.findings.list = (params) => this._makeRequest('v1/{+parent}/findings', 'GET', params);
+    this.projects.scanConfigs.scanRuns.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/findings', 'GET', apiParams, clientConfig);
 
     this.projects.scanConfigs.scanRuns.findingTypeStats = {};
 
     /**
      * List all FindingTypeStats under a given ScanRun.
-     * @param {string} params.parent - (Required) Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which should be a scan run resource name in the format 'projects/{projectId}/scanConfigs/{scanConfigId}/scanRuns/{scanRunId}'.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.scanConfigs.scanRuns.findingTypeStats.list = (params) => this._makeRequest('v1/{+parent}/findingTypeStats', 'GET', params);
+    this.projects.scanConfigs.scanRuns.findingTypeStats.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/findingTypeStats', 'GET', apiParams, clientConfig);
   }
 
-  /**
-   * @private Builds the full request URL and options object.
-   */
-  _buildRequestDetails(path, httpMethod, params) {
-    let url = this._rootUrl + this._servicePath + path;
-    const remainingParams = { ...params };
-    // Fix: Correctly handle {+param} style parameters and other potential special chars.
+/**
+ * @private Builds the full request URL and options object for a request.
+ */
+_buildRequestDetails(path, httpMethod, apiParams, clientConfig = {}) {
+    let url;
+    if (path.startsWith('/upload/')) {
+        url = 'https://www.googleapis.com' + path;
+    } else {
+        url = this._rootUrl + this._servicePath + path;
+    }
+
+    const remainingParams = { ...apiParams };
     const pathParams = url.match(/{[^{}]+}/g) || [];
 
     pathParams.forEach(placeholder => {
-      const isPlus = placeholder.startsWith('{+');
-      const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
-      if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        url = url.replace(placeholder, remainingParams[paramName]);
-        delete remainingParams[paramName];
-      }
+        const isPlus = placeholder.startsWith('{+');
+        const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
+        if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
+            url = url.replace(placeholder, remainingParams[paramName]);
+            delete remainingParams[paramName];
+        }
     });
 
+    const options = {
+        method: httpMethod,
+        headers: {
+            'Authorization': 'Bearer ' + this._token,
+            ...(clientConfig.headers || {}),
+        },
+        muteHttpExceptions: true,
+    };
+
+    if (apiParams && apiParams.media && apiParams.media.body) {
+        let mediaBlob;
+        // Check if the body is already a blob by "duck typing" for the getBytes method.
+        if (apiParams.media.body.getBytes && typeof apiParams.media.body.getBytes === 'function') {
+            mediaBlob = apiParams.media.body;
+        } else {
+            // If it's not a blob (e.g., a string or byte array), create one.
+            mediaBlob = Utilities.newBlob(apiParams.media.body);
+        }
+
+        const hasMetadata = apiParams.requestBody && Object.keys(apiParams.requestBody).length > 0;
+
+        if (hasMetadata) {
+            // ** Multipart Upload (Media + Metadata) **
+            remainingParams.uploadType = 'multipart';
+            
+            const boundary = '----' + Utilities.getUuid();
+            const metadata = apiParams.requestBody;
+
+            let requestData = '--' + boundary + '\r\n';
+            requestData += 'Content-Type: application/json; charset=UTF-8\r\n\r\n';
+            requestData += JSON.stringify(metadata) + '\r\n';
+            requestData += '--' + boundary + '\r\n';
+            requestData += 'Content-Type: ' + apiParams.media.mimeType + '\r\n\r\n';
+            
+            const payloadBytes = Utilities.newBlob(requestData).getBytes()
+                .concat(mediaBlob.getBytes())
+                .concat(Utilities.newBlob('\r\n--' + boundary + '--').getBytes());
+
+            options.contentType = 'multipart/related; boundary=' + boundary;
+            options.payload = payloadBytes;
+
+        } else {
+            // ** Simple Media Upload (Media only) **
+            remainingParams.uploadType = 'media';
+
+            options.contentType = mediaBlob.getContentType();
+            options.payload = mediaBlob.getBytes();
+        }
+
+    } else if (apiParams && apiParams.requestBody) {
+        options.contentType = 'application/json';
+        options.payload = JSON.stringify(apiParams.requestBody);
+    }
     const queryParts = [];
     for (const key in remainingParams) {
-      if (key !== 'resource') {
-        queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
-      }
+        if (key !== 'requestBody' && key !== 'media') {
+            queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
+        }
     }
     if (queryParts.length > 0) {
-      url += '?' + queryParts.join('&');
+        url += '?' + queryParts.join('&');
     }
 
-    const options = {
-      method: httpMethod,
-      headers: { 'Authorization': 'Bearer ' + this._token },
-      contentType: 'application/json',
-      muteHttpExceptions: true,
-    };
-    if (params && params.resource) {
-      options.payload = JSON.stringify(params.resource);
-    }
-    
     return { url, options };
-  }
+}
 
   /**
    * @private Makes the HTTP request with exponential backoff for retries.
+   * @return {Promise<object>} A promise that resolves with the response object.
    */
-  _makeRequest(path, httpMethod, params) {
-    const { url, options } = this._buildRequestDetails(path, httpMethod, params);
+  async _makeRequest(path, httpMethod, apiParams, clientConfig = {}) {
+    const isMediaDownload = apiParams.alt === 'media';
+
+    const { url, options } = this._buildRequestDetails(path, httpMethod, apiParams, clientConfig);
 
     for (let i = 0; i <= this._backoffConfig.retries; i++) {
       const response = UrlFetchApp.fetch(url, options);
       const responseCode = response.getResponseCode();
-      const responseText = response.getContentText(); // Simplified call
+      const responseHeaders = response.getAllHeaders();
 
       if (responseCode >= 200 && responseCode < 300) {
-        return responseText ? JSON.parse(responseText) : {};
+        // Prioritize responseType:'blob' and media downloads to return raw data.
+        if ((clientConfig && (clientConfig.responseType === 'blob' || clientConfig.responseType === 'stream')) || isMediaDownload) {
+          return {
+            data: response.getBlob(),
+            status: responseCode,
+            headers: responseHeaders,
+          };
+        }
+
+        const responseText = response.getContentText();
+        // Handle empty responses, which are valid (e.g., a 204 No Content).
+        const responseBody = responseText ? JSON.parse(responseText) : {};
+        return {
+          data: responseBody,
+          status: responseCode,
+          headers: responseHeaders,
+        };
       }
 
       const retryableErrors = [429, 500, 503];
@@ -201,15 +305,22 @@ class Websecurityscanner {
         continue;
       }
 
+      const responseText = response.getContentText(); // Get response text for error
+      let errorMessage = `Request failed with status ${responseCode}`;
       try {
-        // Return parsed error if possible, otherwise a generic error object
-        return JSON.parse(responseText);
+        const errorObj = JSON.parse(responseText);
+        if (errorObj.error && errorObj.error.message) {
+          errorMessage += `: ${errorObj.error.message}`;
+        }
       } catch (e) {
-        return { error: { code: responseCode, message: responseText } };
+        // If the error response isn't JSON, include the raw text.
+        if (responseText) {
+          errorMessage += `. Response: ${responseText}`;
+        }
       }
+      throw new Error(errorMessage);
     }
-    
-    // This line is technically unreachable if retries >= 0, but good for safety.
+
     throw new Error('Request failed after multiple retries.');
   }
 }

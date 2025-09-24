@@ -4,8 +4,8 @@ Auto-generated client library for using the **Authorized Buyers Marketplace API 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:01 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:53:36 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:05:17 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:05:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:34 GMT
 
 
@@ -43,7 +43,7 @@ Creates a data segment owned by the listed curator. The data segment will be cre
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this data segment will be created. v1alpha format: `buyers/{accountId}` v1beta format: `curators/{accountId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `curators.dataSegments.patch()`
 
@@ -53,7 +53,7 @@ Updates a data segment.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Identifier. The unique identifier for the data segment. Account ID corresponds to the account ID that created the segment. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format: `curators/{curatorAccountId}/dataSegments/{curatorDataSegmentId}` |
 | `params.updateMask` | `string` | No | Optional. List of fields to be updated. If empty or unspecified, the service will update all fields populated in the update request excluding the output only fields and primitive fields with default value. Note that explicit field mask is required in order to reset a primitive field back to its default value, for example, false for boolean fields, 0 for integer fields. A special field mask consisting of a single path "*" can be used to indicate full replacement(the equivalent of PUT method), updatable fields unset or unspecified in the input will be cleared or set to default value. Output only fields will be ignored regardless of the value of updateMask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `curators.dataSegments.activate()`
 
@@ -62,7 +62,7 @@ Activates a data segment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of data segment to activate. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `curators.dataSegments.deactivate()`
 
@@ -71,4 +71,4 @@ Deactivates a data segment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of data segment to deactivate. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

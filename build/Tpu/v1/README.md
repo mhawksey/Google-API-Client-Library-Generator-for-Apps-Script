@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud TPU API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:23 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:53:50 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:52 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:59 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -103,7 +103,7 @@ Creates a node.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
 | `params.nodeId` | `string` | No | The unqualified resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.delete()`
 
@@ -120,7 +120,7 @@ Reimages a node's OS.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.stop()`
 
@@ -129,7 +129,7 @@ Stops a node, this operation is only available with single TPU nodes.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.start()`
 
@@ -138,7 +138,7 @@ Starts a node.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.tensorflowVersions`
 

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Filestore API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:10 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:15:12 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:44 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:02 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances`
 
@@ -106,7 +106,7 @@ Creates an instance. When creating from a backup, the capacity of the new instan
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The instance's project and location, in the format `projects/{project_id}/locations/{location}`. In Filestore, locations map to Google Cloud zones, for example **us-west1-b**. |
 | `params.instanceId` | `string` | No | Required. The name of the instance to create. The name must be unique for the specified project and location. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.patch()`
 
@@ -116,7 +116,7 @@ Updates the settings of a specific instance.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the instance, in the format `projects/{project}/locations/{location}/instances/{instance}`. |
 | `params.updateMask` | `string` | No | Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields: * "description" * "file_shares" * "labels" * "performance_config" * "deletion_protection_enabled" * "deletion_protection_reason" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.restore()`
 
@@ -125,7 +125,7 @@ Restores an existing instance's file share from a backup. The capacity of the in
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.revert()`
 
@@ -134,7 +134,7 @@ Revert an existing instance's file system to a specified snapshot.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.delete()`
 
@@ -152,7 +152,7 @@ Promote the standby instance (replica).
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances.snapshots`
 
@@ -185,7 +185,7 @@ Creates a snapshot.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The Filestore Instance to create the snapshots of, in the format `projects/{project_id}/locations/{location}/instances/{instance_id}` |
 | `params.snapshotId` | `string` | No | Required. The ID to use for the snapshot. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.snapshots.delete()`
 
@@ -203,7 +203,7 @@ Updates the settings of a specific snapshot.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the snapshot, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}/snapshots/{snapshot_id}`. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.backups`
 
@@ -235,7 +235,7 @@ Creates a backup.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The backup's project and location, in the format `projects/{project_number}/locations/{location}`. In Filestore, backup locations map to Google Cloud regions, for example **us-west1**. |
 | `params.backupId` | `string` | No | Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. Values that do not match this pattern will trigger an INVALID_ARGUMENT error. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.backups.delete()`
 
@@ -253,4 +253,4 @@ Updates the settings of a specific backup.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

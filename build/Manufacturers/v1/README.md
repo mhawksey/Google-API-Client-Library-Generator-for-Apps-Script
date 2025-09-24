@@ -4,8 +4,8 @@ Auto-generated client library for using the **Manufacturer Center API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:59 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:25:59 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:33:57 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:33:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:13 GMT
 
 
@@ -47,7 +47,7 @@ Inserts or updates the attributes of the product in a Manufacturer Center accoun
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Parent ID in the format `accounts/{account_id}`. `account_id` - The ID of the Manufacturer Center account. |
 | `params.name` | `string` | Yes | Name in the format `{target_country}:{content_language}:{product_id}`. `target_country` - The target country of the product as a CLDR territory code (for example, US). `content_language` - The content language of the product as a two-letter ISO 639-1 language code (for example, en). `product_id` - The ID of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#id. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.products.delete()`
 
@@ -70,7 +70,7 @@ Updates (or creates if allow_missing = true) a product certification which links
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The unique name identifier of a product certification Format: accounts/{account}/languages/{language_code}/productCertifications/{id} Where `id` is a some unique identifier and `language_code` is a 2-letter ISO 639-1 code of a Shopping supported language according to https://support.google.com/merchants/answer/160637. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update according to aip.dev/134. However, only full update is supported as of right now. Therefore, it can be either ignored or set to "*". Setting any other values will returns UNIMPLEMENTED error. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.languages.productCertifications.list()`
 

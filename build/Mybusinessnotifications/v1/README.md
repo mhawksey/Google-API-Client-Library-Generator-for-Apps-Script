@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Notifications API (ver
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:51 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:26 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:36:09 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:36:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:34 GMT
 
 
@@ -32,4 +32,4 @@ Sets the pubsub notification setting for the account informing Google which topi
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name this setting is for. This is of the form `accounts/{account_id}/notificationSetting`. |
 | `params.updateMask` | `string` | No | Required. The specific fields that should be updated. The only editable field is notification_setting. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

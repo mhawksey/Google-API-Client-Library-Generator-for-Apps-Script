@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Drive API (version: v2)** i
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:44 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:31 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:08 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:33 GMT
 
 
@@ -114,7 +114,7 @@ Subscribe to changes for a user.
 | `params.teamDriveId` | `string` | No | Deprecated: Use `driveId` instead. |
 | `params.includePermissionsForView` | `string` | No | Specifies which additional view's permissions to include in the response. Only `published` is supported. |
 | `params.includeLabels` | `string` | No | A comma-separated list of IDs of labels to include in the `labelInfo` part of the response. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `channels`
 
@@ -124,7 +124,7 @@ Stops watching resources through this channel.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `children`
 
@@ -157,7 +157,7 @@ Inserts a file into a folder.
 | `params.enforceSingleParent` | `boolean` | No | Deprecated: Adding files to multiple folders is no longer supported. Use `shortcuts` instead. |
 | `params.supportsAllDrives` | `boolean` | No | Whether the requesting application supports both My Drives and shared drives. |
 | `params.supportsTeamDrives` | `boolean` | No | Deprecated: Use `supportsAllDrives` instead. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `children.list()`
 
@@ -199,7 +199,7 @@ Creates a new comment on the given file.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID of the file. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `comments.list()`
 
@@ -221,7 +221,7 @@ Updates an existing comment.
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID of the file. |
 | `params.commentId` | `string` | Yes | The ID of the comment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `comments.update()`
 
@@ -231,7 +231,7 @@ Updates an existing comment.
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID of the file. |
 | `params.commentId` | `string` | Yes | The ID of the comment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `drives`
 
@@ -269,7 +269,7 @@ Creates a new shared drive.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestId` | `string` | Yes | Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a shared drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same shared drive. If the shared drive already exists a 409 error will be returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `drives.list()`
 
@@ -298,7 +298,7 @@ Updates the metadata for a shared drive.
 |---|---|---|---|
 | `params.driveId` | `string` | Yes | The ID of the shared drive. |
 | `params.useDomainAdminAccess` | `boolean` | No | Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the shared drive belongs. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `files`
 
@@ -321,7 +321,7 @@ Creates a copy of the specified file.
 | `params.visibility` | `string` | No | The visibility of the new file. This parameter is only relevant when the source is not a native Google Doc and convert=false. |
 | `params.includePermissionsForView` | `string` | No | Specifies which additional view's permissions to include in the response. Only `published` is supported. |
 | `params.includeLabels` | `string` | No | A comma-separated list of IDs of labels to include in the `labelInfo` part of the response. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `files.delete()`
 
@@ -397,11 +397,11 @@ Generates a set of file IDs which can be provided in insert or copy requests.
 | `params.visibility` | `string` | No | The visibility of the new file. This parameter is only relevant when convert=false. |
 | `params.includePermissionsForView` | `string` | No | Specifies which additional view's permissions to include in the response. Only `published` is supported. |
 | `params.includeLabels` | `string` | No | A comma-separated list of IDs of labels to include in the `labelInfo` part of the response. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `files.list()`
 
- Lists the user's files. This method accepts the `q` parameter, which is a search query combining one or more search terms. For more information, see the [Search for files & folders](/workspace/drive/api/guides/search-files) guide. *Note:* This method returns *all* files by default, including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to remove trashed files from the results.
+ Lists the user's files. For more information, see [Search for files and folders](/workspace/drive/api/guides/search-files). This method accepts the `q` parameter, which is a search query combining one or more search terms. This method returns *all* files by default, including trashed files. If you don't want trashed files to appear in the list, use the `trashed=false` query parameter to remove trashed files from the results.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -439,7 +439,7 @@ Modifies the set of labels applied to a file. Returns a list of the labels that 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID of the file to which the labels belong. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `files.patch()`
 
@@ -466,7 +466,7 @@ Updates a file's metadata and/or content. When calling this method, only populat
 | `params.useContentAsIndexableText` | `boolean` | No | Whether to use the content as indexable text. |
 | `params.includePermissionsForView` | `string` | No | Specifies which additional view's permissions to include in the response. Only `published` is supported. |
 | `params.includeLabels` | `string` | No | A comma-separated list of IDs of labels to include in the `labelInfo` part of the response. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `files.touch()`
 
@@ -506,7 +506,7 @@ Restores a file from the trash. The currently authenticated user must own the fi
 
 #### `files.update()`
 
- Updates a file's metadata and/or content. When calling this method, only populate fields in the request that you want to modify. When updating fields, some fields might be changed automatically, such as `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:*`*/*` Note: Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid MIME type can be uploaded. For more information on uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
+ Updates a file's metadata, content, or both. When calling this method, only populate fields in the request that you want to modify. When updating fields, some fields might be changed automatically, such as `modifiedDate`. This method supports patch semantics. This method supports an */upload* URI and accepts uploaded media with the following characteristics: - *Maximum file size:* 5,120 GB - *Accepted Media MIME types:* `*/*` (Specify a valid MIME type, rather than the literal `*/*` value. The literal `*/*` is only used to indicate that any valid MIME type can be uploaded. For more information, see [Google Workspace and Google Drive supported MIME types](/workspace/drive/api/guides/mime-types).) For more information on uploading files, see [Upload file data](/workspace/drive/api/guides/manage-uploads).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -529,7 +529,7 @@ Restores a file from the trash. The currently authenticated user must own the fi
 | `params.useContentAsIndexableText` | `boolean` | No | Whether to use the content as indexable text. |
 | `params.includePermissionsForView` | `string` | No | Specifies which additional view's permissions to include in the response. Only `published` is supported. |
 | `params.includeLabels` | `string` | No | A comma-separated list of IDs of labels to include in the `labelInfo` part of the response. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `files.watch()`
 
@@ -546,7 +546,7 @@ Subscribes to changes to a file.
 | `params.updateViewedDate` | `boolean` | No | Deprecated: Use files.update with modifiedDateBehavior=noChange, updateViewedDate=true and an empty request body. |
 | `params.projection` | `string` | No | Deprecated: This parameter has no function. |
 | `params.includeLabels` | `string` | No | A comma-separated list of IDs of labels to include in the `labelInfo` part of the response. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `parents`
 
@@ -579,7 +579,7 @@ Adds a parent folder for a file.
 | `params.enforceSingleParent` | `boolean` | No | Deprecated: Adding files to multiple folders is no longer supported. Use `shortcuts` instead. |
 | `params.supportsAllDrives` | `boolean` | No | Whether the requesting application supports both My Drives and shared drives. |
 | `params.supportsTeamDrives` | `boolean` | No | Deprecated: Use `supportsAllDrives` instead. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `parents.list()`
 
@@ -639,7 +639,7 @@ Inserts a permission for a file or shared drive. **Warning:** Concurrent permiss
 | `params.supportsTeamDrives` | `boolean` | No | Deprecated: Use `supportsAllDrives` instead. |
 | `params.useDomainAdminAccess` | `boolean` | No | Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to which the shared drive belongs. |
 | `params.enforceExpansiveAccess` | `boolean` | No | Whether the request should enforce expansive access rules. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `permissions.list()`
 
@@ -669,7 +669,7 @@ Updates a permission using patch semantics. **Warning:** Concurrent permissions 
 | `params.transferOwnership` | `boolean` | No | Whether changing a role to `owner` downgrades the current owners to writers. Does nothing if the specified role is not `owner`. |
 | `params.useDomainAdminAccess` | `boolean` | No | Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to which the shared drive belongs. |
 | `params.enforceExpansiveAccess` | `boolean` | No | Whether the request should enforce expansive access rules. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `permissions.update()`
 
@@ -685,7 +685,7 @@ Updates a permission. **Warning:** Concurrent permissions operations on the same
 | `params.transferOwnership` | `boolean` | No | Whether changing a role to `owner` downgrades the current owners to writers. Does nothing if the specified role is not `owner`. |
 | `params.useDomainAdminAccess` | `boolean` | No | Issue the request as a domain administrator; if set to true, then the requester will be granted access if the file ID parameter refers to a shared drive and the requester is an administrator of the domain to which the shared drive belongs. |
 | `params.enforceExpansiveAccess` | `boolean` | No | Whether the request should enforce expansive access rules. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `properties`
 
@@ -716,7 +716,7 @@ Adds a property to a file, or updates it if it already exists.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID of the file. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.list()`
 
@@ -735,7 +735,7 @@ Updates a property.
 | `params.fileId` | `string` | Yes | The ID of the file. |
 | `params.propertyKey` | `string` | Yes | The key of the property. |
 | `params.visibility` | `string` | No | The visibility of the property. Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.update()`
 
@@ -746,7 +746,7 @@ Updates a property.
 | `params.fileId` | `string` | Yes | The ID of the file. |
 | `params.propertyKey` | `string` | Yes | The key of the property. |
 | `params.visibility` | `string` | No | The visibility of the property. Allowed values are PRIVATE and PUBLIC. (Default: PRIVATE) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `replies`
 
@@ -779,7 +779,7 @@ Creates a new reply to the given comment.
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID of the file. |
 | `params.commentId` | `string` | Yes | The ID of the comment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `replies.list()`
 
@@ -802,7 +802,7 @@ Updates an existing reply.
 | `params.fileId` | `string` | Yes | The ID of the file. |
 | `params.commentId` | `string` | Yes | The ID of the comment. |
 | `params.replyId` | `string` | Yes | The ID of the reply. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `replies.update()`
 
@@ -813,7 +813,7 @@ Updates an existing reply.
 | `params.fileId` | `string` | Yes | The ID of the file. |
 | `params.commentId` | `string` | Yes | The ID of the comment. |
 | `params.replyId` | `string` | Yes | The ID of the reply. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `revisions`
 
@@ -853,7 +853,7 @@ Updates a revision.
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID for the file. |
 | `params.revisionId` | `string` | Yes | The ID for the revision. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `revisions.update()`
 
@@ -863,7 +863,7 @@ Updates a revision.
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID for the file. |
 | `params.revisionId` | `string` | Yes | The ID for the revision. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `teamdrives`
 
@@ -891,7 +891,7 @@ Deprecated: Use `drives.insert` instead.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestId` | `string` | Yes | Required. An ID, such as a random UUID, which uniquely identifies this user's request for idempotent creation of a Team Drive. A repeated request by the same user and with the same request ID will avoid creating duplicates by attempting to create the same Team Drive. If the Team Drive already exists a 409 error will be returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `teamdrives.list()`
 
@@ -912,4 +912,4 @@ Deprecated: Use `drives.update` instead.
 |---|---|---|---|
 | `params.teamDriveId` | `string` | Yes | The ID of the Team Drive |
 | `params.useDomainAdminAccess` | `boolean` | No | Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the Team Drive belongs. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

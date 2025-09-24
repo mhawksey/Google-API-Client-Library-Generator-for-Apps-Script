@@ -4,8 +4,8 @@ Auto-generated client library for using the **Assured Workloads API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:55 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:53:26 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:05:08 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:05:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:24 GMT
 
 
@@ -49,7 +49,7 @@ Creates Assured Workload.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the new Workload's parent. Must be of the form `organizations/{org_id}/locations/{location_id}`. |
 | `params.externalId` | `string` | No | Optional. A identifier associated with the workload and underlying projects which allows for the break down of billing costs for a workload. The value provided for the identifier will add a label to the workload and contained projects with the identifier as the value. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.workloads.patch()`
 
@@ -59,7 +59,7 @@ Updates an existing workload. Currently allows updating of workload display_name
 |---|---|---|---|
 | `params.name` | `string` | Yes | Optional. The resource name of the workload. Format: organizations/{organization}/locations/{location}/workloads/{workload} Read-only. |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.workloads.restrictAllowedResources()`
 
@@ -68,7 +68,7 @@ Restrict the list of resources allowed in the Workload environment. The current 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Workload. This is the workloads's relative path in the API, formatted as "organizations/{organization_id}/locations/{location_id}/workloads/{workload_id}". For example, "organizations/123/locations/us-east1/workloads/assured-workload-1". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.workloads.delete()`
 
@@ -156,7 +156,7 @@ Acknowledges an existing violation. By acknowledging a violation, users acknowle
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Violation to acknowledge. Format: organizations/{organization}/locations/{location}/workloads/{workload}/violations/{violation} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.workloads.updates`
 
@@ -177,4 +177,4 @@ This endpoint creates a new operation to apply the given update.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the update. Format: organizations/{org_id}/locations/{location_id}/workloads/{workload_id}/updates/{update_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

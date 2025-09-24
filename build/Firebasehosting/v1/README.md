@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Hosting API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:41 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:16:00 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:25 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:37 GMT
 
 
@@ -42,7 +42,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
 
@@ -67,4 +67,4 @@ CancelOperation is a part of the google.longrunning.Operations interface, but is
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

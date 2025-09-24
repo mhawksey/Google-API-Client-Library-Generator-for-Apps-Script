@@ -4,8 +4,8 @@ Auto-generated client library for using the **Service Networking API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:49 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:46:26 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:48:07 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:48:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:23 GMT
 
 
@@ -35,7 +35,7 @@ Updates the allocated ranges that are assigned to a connection. The response fro
 | `params.name` | `string` | Yes | The service producer peering service that is managing peering connectivity for a service producer organization. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com`. |
 | `params.updateMask` | `string` | No | The update mask. If this is omitted, it defaults to "*". You can only update the listed peering ranges. |
 | `params.force` | `boolean` | No | If a previously defined allocated range is removed, force flag must be set to true. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.addSubnetwork()`
 
@@ -44,7 +44,7 @@ For service producers, provisions a new subnet in a peered service's shared VPC 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. A tenant project in the service producer organization, in the following format: services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type that represents the tenant project. Only `projects` are supported. {resource-id} is the tenant project numeric id, such as `123456`. {service} the name of the peering service, such as `service-peering.example.com`. This service must already be enabled in the service consumer's project. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.searchRange()`
 
@@ -53,7 +53,7 @@ Service producers can use this method to find a currently unused range within co
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. This is in a form services/{service}. {service} the name of the private access management service, for example 'service-peering.example.com'. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `services.connections`
 
@@ -73,4 +73,4 @@ Creates a private connection that establishes a VPC Network Peering connection t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The service that is managing peering connectivity for a service producer's organization. For Google services that support this functionality, this value is `services/servicenetworking.googleapis.com`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

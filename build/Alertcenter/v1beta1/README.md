@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Workspace Alert Center API 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:36 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:51:27 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:03:25 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:03:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:35 GMT
 
 
@@ -53,7 +53,7 @@ Restores, or "undeletes", an alert that was marked for deletion within the past 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.alertId` | `string` | Yes | Required. The identifier of the alert to undelete. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `alerts.getMetadata()`
 
@@ -70,7 +70,7 @@ Performs batch delete operation on alerts.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `alerts.batchUndelete()`
 
@@ -78,7 +78,7 @@ Performs batch undelete operation on alerts.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `alerts.feedback`
 
@@ -90,7 +90,7 @@ Creates new feedback for an alert. Attempting to create a feedback for a non-exi
 |---|---|---|---|
 | `params.alertId` | `string` | Yes | Required. The identifier of the alert this feedback belongs to. |
 | `params.customerId` | `string` | No | Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `alerts.feedback.list()`
 
@@ -119,4 +119,4 @@ Updates the customer-level settings.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerId` | `string` | No | Optional. The unique identifier of the Google Workspace account of the customer the alert settings are associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Transcoder API (version: v1)** in 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:40 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:54:03 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:55:04 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:55:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:11 GMT
 
 
@@ -27,7 +27,7 @@ Creates a job in the specified region.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.list()`
 
@@ -68,7 +68,7 @@ Creates a job template in the specified region.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}` |
 | `params.jobTemplateId` | `string` | No | Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobTemplates.list()`
 

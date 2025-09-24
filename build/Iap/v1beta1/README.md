@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Identity-Aware Proxy API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:05 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:24:07 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:27:12 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:27:12 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:12 GMT
 
 
@@ -23,7 +23,7 @@ Sets the access control policy for an Identity-Aware Proxy protected resource. R
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1beta1.getIamPolicy()`
 
@@ -32,7 +32,7 @@ Gets the access control policy for an Identity-Aware Proxy protected resource. M
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1beta1.testIamPermissions()`
 
@@ -41,4 +41,4 @@ Returns permissions that a caller has on the Identity-Aware Proxy protected reso
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

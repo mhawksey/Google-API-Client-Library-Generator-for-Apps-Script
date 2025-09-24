@@ -4,8 +4,8 @@ Auto-generated client library for using the **Tag Manager API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:52 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:47:41 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:23 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:29 GMT
 
 
@@ -39,7 +39,7 @@ Updates a GTM Account.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the account in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.permissions`
 
@@ -50,7 +50,7 @@ Creates a user's Account & Container Permissions.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.permissions.list()`
 
@@ -77,7 +77,7 @@ Updates a user's Account & Container Permissions.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.permissionId` | `string` | Yes | The GTM User ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.permissions.delete()`
 
@@ -97,7 +97,7 @@ Creates a Container.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.list()`
 
@@ -125,7 +125,7 @@ Updates a Container.
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the container in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.delete()`
 
@@ -146,7 +146,7 @@ Creates a Container Version.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.versions.get()`
 
@@ -168,7 +168,7 @@ Updates a Container Version.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.containerVersionId` | `string` | Yes | The GTM Container Version ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the container version in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.versions.delete()`
 
@@ -232,7 +232,7 @@ Creates a GTM Variable.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.variables.list()`
 
@@ -263,7 +263,7 @@ Updates a GTM Variable.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.variableId` | `string` | Yes | The GTM Variable ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the variable in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.variables.delete()`
 
@@ -285,7 +285,7 @@ Creates a GTM Trigger.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.triggers.list()`
 
@@ -316,7 +316,7 @@ Updates a GTM Trigger.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.triggerId` | `string` | Yes | The GTM Trigger ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the trigger in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.triggers.delete()`
 
@@ -338,7 +338,7 @@ Creates a GTM Tag.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.tags.list()`
 
@@ -369,7 +369,7 @@ Updates a GTM Tag.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.tagId` | `string` | Yes | The GTM Tag ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the tag in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.tags.delete()`
 
@@ -391,7 +391,7 @@ Creates a GTM Folder.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.folders.list()`
 
@@ -422,7 +422,7 @@ Updates a GTM Folder.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.folderId` | `string` | Yes | The GTM Folder ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the folder in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.folders.delete()`
 
@@ -460,7 +460,7 @@ Moves entities to a GTM Folder.
 | `params.tagId` | `string` | No | The tags to be moved to the folder. |
 | `params.variableId` | `string` | No | The variables to be moved to the folder. |
 | `params.triggerId` | `string` | No | The triggers to be moved to the folder. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.containers.environments`
 
@@ -472,7 +472,7 @@ Creates a GTM Environment.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.environments.list()`
 
@@ -503,7 +503,7 @@ Updates a GTM Environment.
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.environmentId` | `string` | Yes | The GTM Environment ID. |
 | `params.fingerprint` | `string` | No | When provided, this fingerprint must match the fingerprint of the environment in storage. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.containers.environments.delete()`
 
@@ -526,4 +526,4 @@ Re-generates the authorization code for a GTM Environment.
 | `params.accountId` | `string` | Yes | The GTM Account ID. |
 | `params.containerId` | `string` | Yes | The GTM Container ID. |
 | `params.environmentId` | `string` | Yes | The GTM Environment ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

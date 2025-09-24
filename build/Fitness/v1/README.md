@@ -4,8 +4,8 @@ Auto-generated client library for using the **Fitness API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:59 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:21:55 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:52 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:01 GMT
 
 
@@ -25,7 +25,7 @@ Creates a new data source that is unique across all data sources belonging to th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | Create the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.dataSources.list()`
 
@@ -44,7 +44,7 @@ Updates the specified data source. The dataStreamId, dataType, type, dataStreamN
 |---|---|---|---|
 | `params.userId` | `string` | Yes | Update the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
 | `params.dataSourceId` | `string` | Yes | The data stream ID of the data source to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.dataSources.get()`
 
@@ -75,7 +75,7 @@ Adds data points to a dataset. The dataset need not be previously created. All p
 | `params.userId` | `string` | Yes | Patch a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
 | `params.dataSourceId` | `string` | Yes | The data stream ID of the data source that created the dataset. |
 | `params.datasetId` | `string` | Yes | This field is not used, and can be safely omitted. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.dataSources.datasets.get()`
 
@@ -121,7 +121,7 @@ Aggregates data of a certain type or stream into buckets divided by a given type
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | Aggregate data for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.sessions`
 
@@ -133,7 +133,7 @@ Updates or insert a given session.
 |---|---|---|---|
 | `params.userId` | `string` | Yes | Create sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time. |
 | `params.sessionId` | `string` | Yes | The ID of the session to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.sessions.list()`
 

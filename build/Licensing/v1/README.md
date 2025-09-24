@@ -4,8 +4,8 @@ Auto-generated client library for using the **Enterprise License Manager API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:39 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:25:20 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:33:11 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:33:11 GMT
 - **Created:** Sun, 20 Jul 2025 16:36:00 GMT
 
 
@@ -44,7 +44,7 @@ Assign a license.
 |---|---|---|---|
 | `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
 | `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `licenseAssignments.listForProduct()`
 
@@ -78,7 +78,7 @@ Reassign a user's product SKU with a different SKU in the same product.
 | `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
 | `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
 | `params.userId` | `string` | Yes | The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `licenseAssignments.patch()`
 
@@ -89,4 +89,4 @@ Reassign a user's product SKU with a different SKU in the same product. This met
 | `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
 | `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
 | `params.userId` | `string` | Yes | The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

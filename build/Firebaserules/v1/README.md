@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Rules API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:48 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:21:36 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:37 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:37 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:48 GMT
 
 
@@ -23,7 +23,7 @@ Test `Source` for syntactic and semantic correctness. Issues present, if any, wi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Tests may either provide `source` or a `Ruleset` resource name. For tests against `source`, the resource name must refer to the project: Format: `projects/{project_id}` For tests against a `Ruleset`, this must be the `Ruleset` resource name: Format: `projects/{project_id}/rulesets/{ruleset_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.rulesets`
 
@@ -34,7 +34,7 @@ Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name for Project which owns this `Ruleset`. Format: `projects/{project_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.rulesets.get()`
 
@@ -78,7 +78,7 @@ Create a `Release`. Release names should reflect the developer's deployment prac
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.releases.patch()`
 
@@ -87,7 +87,7 @@ Update a `Release` via PATCH. Only updates to `ruleset_name` will be honored. `R
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.releases.get()`
 

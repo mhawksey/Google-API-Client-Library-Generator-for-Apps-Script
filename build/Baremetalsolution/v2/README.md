@@ -4,8 +4,8 @@ Auto-generated client library for using the **Bare Metal Solution API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:10 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:53:46 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:05:27 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:05:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:44 GMT
 
 
@@ -75,7 +75,7 @@ Update details of a single server.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/instances/{instance}` |
 | `params.updateMask` | `string` | No | The list of fields to update. The currently supported fields are: `labels` `hyperthreading_enabled` `os_image` `ssh_keys` `kms_key_version` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.reimage()`
 
@@ -84,7 +84,7 @@ Perform reimage operation on a single server.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.enableHyperthreading()`
 
@@ -93,7 +93,7 @@ Perform enable hyperthreading operation on a single server.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.disableHyperthreading()`
 
@@ -102,7 +102,7 @@ Perform disable hyperthreading operation on a single server.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.rename()`
 
@@ -111,7 +111,7 @@ RenameInstance sets a new name for an instance. Use with caution, previous names
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The `name` field is used to identify the instance. Format: projects/{project}/locations/{location}/instances/{instance} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.reset()`
 
@@ -120,7 +120,7 @@ Perform an ungraceful, hard reset on a server. Equivalent to shutting the power 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.start()`
 
@@ -129,7 +129,7 @@ Starts a server that was shutdown.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.stop()`
 
@@ -138,7 +138,7 @@ Stop a running server.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.enableInteractiveSerialConsole()`
 
@@ -147,7 +147,7 @@ Enable the interactive serial console feature on an instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.disableInteractiveSerialConsole()`
 
@@ -156,7 +156,7 @@ Disable the interactive serial console feature on an instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.detachLun()`
 
@@ -165,7 +165,7 @@ Detach LUN from Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.instance` | `string` | Yes | Required. Name of the instance. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.sshKeys`
 
@@ -187,7 +187,7 @@ Register a public SSH key in the specified project for use with the interactive 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent containing the SSH keys. |
 | `params.sshKeyId` | `string` | No | Required. The ID to use for the key, which will become the final component of the key's resource name. This value must match the regex: [a-zA-Z0-9@.\-_]{1,64} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sshKeys.delete()`
 
@@ -226,7 +226,7 @@ Update details of a single storage volume.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}` |
 | `params.updateMask` | `string` | No | The list of fields to update. The only currently supported fields are: 'labels' |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.volumes.rename()`
 
@@ -235,7 +235,7 @@ RenameVolume sets a new name for a volume. Use with caution, previous names beco
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The `name` field is used to identify the volume. Format: projects/{project}/locations/{location}/volumes/{volume} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.volumes.evict()`
 
@@ -244,7 +244,7 @@ Skips volume's cooloff and deletes it now. Volume must be in cooloff state.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Volume. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.volumes.resize()`
 
@@ -253,7 +253,7 @@ Emergency Volume resize.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.volume` | `string` | Yes | Required. Volume to resize. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.volumes.snapshots`
 
@@ -264,7 +264,7 @@ Takes a snapshot of a boot volume. Returns INVALID_ARGUMENT if called for a non-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The volume to snapshot. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.volumes.snapshots.restoreVolumeSnapshot()`
 
@@ -273,7 +273,7 @@ Uses the specified snapshot to restore its parent volume. Returns INVALID_ARGUME
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.volumeSnapshot` | `string` | Yes | Required. Name of the snapshot which will be used to restore its parent volume. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.volumes.snapshots.delete()`
 
@@ -328,7 +328,7 @@ Skips lun's cooloff and deletes it now. Lun must be in cooloff state.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the lun. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.networks`
 
@@ -367,7 +367,7 @@ Update details of a single network.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}` |
 | `params.updateMask` | `string` | No | The list of fields to update. The only currently supported fields are: `labels`, `reservations`, `vrf.vlan_attachments` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.networks.rename()`
 
@@ -376,7 +376,7 @@ RenameNetwork sets a new name for a network. Use with caution, previous names be
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The `name` field is used to identify the network. Format: projects/{project}/locations/{location}/networks/{network} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.nfsShares`
 
@@ -407,7 +407,7 @@ Update details of a single NFS share.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The name of the NFS share. |
 | `params.updateMask` | `string` | No | The list of fields to update. The only currently supported fields are: `labels` `allowed_clients` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nfsShares.create()`
 
@@ -416,7 +416,7 @@ Create an NFS share.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent project and location. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nfsShares.rename()`
 
@@ -425,7 +425,7 @@ RenameNfsShare sets a new name for an nfsshare. Use with caution, previous names
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The `name` field is used to identify the nfsshare. Format: projects/{project}/locations/{location}/nfsshares/{nfsshare} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nfsShares.delete()`
 
@@ -456,7 +456,7 @@ Submit a provisioning configuration for a given project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent project and location containing the ProvisioningConfig. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.provisioningConfigs.get()`
 
@@ -474,7 +474,7 @@ Create new ProvisioningConfig.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent project and location containing the ProvisioningConfig. |
 | `params.email` | `string` | No | Optional. Email provided to send a confirmation with provisioning config to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.provisioningConfigs.patch()`
 
@@ -485,7 +485,7 @@ Update existing ProvisioningConfig.
 | `params.name` | `string` | Yes | Output only. The system-generated name of the provisioning config. This follows the UUID format. |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
 | `params.email` | `string` | No | Optional. Email provided to send a confirmation with provisioning config to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.operations`
 

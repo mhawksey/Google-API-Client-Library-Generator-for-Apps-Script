@@ -4,8 +4,8 @@ Auto-generated client library for using the **Gmail API (version: v1)** in Googl
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:41:38 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:22:53 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:26:35 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:26:35 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:40 GMT
 
 
@@ -31,7 +31,7 @@ Set up or update a push notification watch on the given user mailbox.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.stop()`
 
@@ -59,7 +59,7 @@ Creates a new draft with the `DRAFT` label.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.drafts.get()`
 
@@ -90,7 +90,7 @@ Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bc
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.drafts.update()`
 
@@ -100,7 +100,7 @@ Replaces a draft's content.
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.id` | `string` | Yes | The ID of the draft to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.history`
 
@@ -153,7 +153,7 @@ Deletes many messages by message ID. Provides no guarantees that messages were n
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.messages.import()`
 
@@ -166,7 +166,7 @@ Imports a message into only this user's mailbox, with standard email delivery sc
 | `params.neverMarkSpam` | `boolean` | No | Ignore the Gmail spam classifier decision and never mark this email as SPAM in the mailbox. |
 | `params.processForCalendar` | `boolean` | No | Process calendar invites in the email and add any extracted meetings to the Google Calendar for this user. |
 | `params.deleted` | `boolean` | No | Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.messages.insert()`
 
@@ -177,7 +177,7 @@ Directly inserts a message into only this user's mailbox similar to `IMAP APPEND
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.internalDateSource` | `string` | No | Source for Gmail's internal date of the message. |
 | `params.deleted` | `boolean` | No | Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.messages.get()`
 
@@ -197,7 +197,7 @@ Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` heade
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.messages.list()`
 
@@ -220,7 +220,7 @@ Modifies the labels on the specified message.
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.id` | `string` | Yes | The ID of the message to modify. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.messages.batchModify()`
 
@@ -229,7 +229,7 @@ Modifies the labels on the specified messages.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.messages.attachments`
 
@@ -252,7 +252,7 @@ Creates a new label.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.labels.delete()`
 
@@ -288,7 +288,7 @@ Updates the specified label.
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.id` | `string` | Yes | The ID of the label to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.labels.patch()`
 
@@ -298,7 +298,7 @@ Patch the specified label.
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.id` | `string` | Yes | The ID of the label to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.threads`
 
@@ -361,7 +361,7 @@ Modifies the labels applied to the thread. This applies to all messages in the t
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.id` | `string` | Yes | The ID of the thread to modify. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.settings`
 
@@ -380,7 +380,7 @@ Updates IMAP settings.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.getPop()`
 
@@ -397,7 +397,7 @@ Updates POP settings.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.getVacation()`
 
@@ -414,7 +414,7 @@ Updates vacation responder settings.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.getLanguage()`
 
@@ -431,7 +431,7 @@ Updates language settings. If successful, the return object contains the `displa
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.getAutoForwarding()`
 
@@ -448,7 +448,7 @@ Updates the auto-forwarding setting for the specified account. A verified forwar
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.settings.sendAs`
 
@@ -476,7 +476,7 @@ Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.sendAs.update()`
 
@@ -486,7 +486,7 @@ Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTM
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 | `params.sendAsEmail` | `string` | Yes | The send-as alias to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.sendAs.patch()`
 
@@ -496,7 +496,7 @@ Patch the specified send-as alias.
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 | `params.sendAsEmail` | `string` | Yes | The send-as alias to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.sendAs.delete()`
 
@@ -545,7 +545,7 @@ Insert (upload) the given S/MIME config for the specified send-as alias. Note th
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.sendAsEmail` | `string` | Yes | The email address that appears in the "From:" header for mail sent using this alias. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.sendAs.smimeInfo.delete()`
 
@@ -578,7 +578,7 @@ Creates and configures a client-side encryption identity that's authorized to se
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.cse.identities.delete()`
 
@@ -616,7 +616,7 @@ Associates a different key pair with an existing client-side encryption identity
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
 | `params.emailAddress` | `string` | Yes | The email address of the client-side encryption identity to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.settings.cse.keypairs`
 
@@ -627,7 +627,7 @@ Creates and uploads a client-side encryption S/MIME public key certificate chain
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.cse.keypairs.disable()`
 
@@ -637,7 +637,7 @@ Turns off a client-side encryption key pair. The authenticated user can no longe
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
 | `params.keyPairId` | `string` | Yes | The identifier of the key pair to turn off. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.cse.keypairs.enable()`
 
@@ -647,7 +647,7 @@ Turns on a client-side encryption key pair that was turned off. The key pair bec
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
 | `params.keyPairId` | `string` | Yes | The identifier of the key pair to turn on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.cse.keypairs.get()`
 
@@ -676,7 +676,7 @@ Deletes a client-side encryption key pair permanently and immediately. You can o
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
 | `params.keyPairId` | `string` | Yes | The identifier of the key pair to obliterate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.settings.filters`
 
@@ -704,7 +704,7 @@ Creates a filter. Note: you can only create a maximum of 1,000 filters.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.filters.delete()`
 
@@ -741,7 +741,7 @@ Creates a forwarding address. If ownership verification is required, a message w
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.forwardingAddresses.delete()`
 
@@ -778,7 +778,7 @@ Adds a delegate with its verification status set directly to `accepted`, without
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.delegates.delete()`
 

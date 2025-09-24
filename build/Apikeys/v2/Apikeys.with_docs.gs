@@ -12,22 +12,23 @@ class Apikeys {
    * @param {object} [config.backoff] - Configuration for exponential backoff.
    */
   constructor(config = {}) {
-    // "Private" properties using the underscore convention
     this._token = config.token || ScriptApp.getOAuthToken();
     this._backoffConfig = Object.assign({ retries: 3, baseDelay: 1000 }, config.backoff);
     this._rootUrl = 'https://apikeys.googleapis.com/';
     this._servicePath = '';
 
-    // --- Public Interface Initialization ---
 
-    this.operations = {};
+    this.keys = {};
 
     /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {string} params.name - (Required) The name of the operation resource.
-     * @return {object} The API response object.
+     * Find the parent project and resource name of the API key that matches the key string in the request. If the API key has been purged, resource name will not be set. The service account must have the `apikeys.keys.lookup` permission on the parent project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.keyString - Required. Finds the project that owns the key string value.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.operations.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
+    this.keys.lookupKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/keys:lookupKey', 'GET', apiParams, clientConfig);
 
     this.projects = {};
 
@@ -36,127 +37,218 @@ class Apikeys {
     this.projects.locations.keys = {};
 
     /**
-     * Patches the modifiable fields of an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.name - (Required) Output only. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.updateMask - The field mask specifies which fields to be updated as part of this request. All other fields are ignored. Mutable fields are: `display_name`, `restrictions`, and `annotations`. If an update mask is not provided, the service treats it as an implied mask equivalent to all allowed fields that are set on the wire. If the field mask has a special value "*", the service treats it equivalent to replace all allowed mutable fields.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
+     * Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to be undeleted.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.keys.patch = (params) => this._makeRequest('v2/{+name}', 'PATCH', params);
-
-    /**
-     * Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.etag - Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency.
-     * @param {string} params.name - (Required) Required. The resource name of the API key to be deleted.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.keys.delete = (params) => this._makeRequest('v2/{+name}', 'DELETE', params);
+    this.projects.locations.keys.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
 
     /**
      * Lists the API keys owned by a project. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {integer} params.pageSize - Optional. Specifies the maximum number of results to be returned at a time.
-     * @param {string} params.pageToken - Optional. Requests a specific page of results.
-     * @param {string} params.parent - (Required) Required. Lists all API keys associated with this project.
-     * @param {boolean} params.showDeleted - Optional. Indicate that keys deleted in the past 30 days should also be returned.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. Specifies the maximum number of results to be returned at a time.
+     * @param {string} apiParams.pageToken - Optional. Requests a specific page of results.
+     * @param {string} apiParams.parent - (Required) Required. Lists all API keys associated with this project.
+     * @param {boolean} apiParams.showDeleted - Optional. Indicate that keys deleted in the past 30 days should also be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.keys.list = (params) => this._makeRequest('v2/{+parent}/keys', 'GET', params);
-
-    /**
-     * Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.name - (Required) Required. The resource name of the API key to be undeleted.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.keys.undelete = (params) => this._makeRequest('v2/{+name}:undelete', 'POST', params);
-
-    /**
-     * Gets the metadata for an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.name - (Required) Required. The resource name of the API key to get.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.keys.get = (params) => this._makeRequest('v2/{+name}', 'GET', params);
-
-    /**
-     * Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.keyId - User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
-     * @param {string} params.parent - (Required) Required. The project in which the API key is created.
-     * @param {object} params.resource - The request body.
-     * @return {object} The API response object.
-     */
-    this.projects.locations.keys.create = (params) => this._makeRequest('v2/{+parent}/keys', 'POST', params);
+    this.projects.locations.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/keys', 'GET', apiParams, clientConfig);
 
     /**
      * Get the key string for an API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {string} params.name - (Required) Required. The resource name of the API key to be retrieved.
-     * @return {object} The API response object.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to be retrieved.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.keys.getKeyString = (params) => this._makeRequest('v2/{+name}/keyString', 'GET', params);
-
-    this.keys = {};
+    this.projects.locations.keys.getKeyString = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/keyString', 'GET', apiParams, clientConfig);
 
     /**
-     * Find the parent project and resource name of the API key that matches the key string in the request. If the API key has been purged, resource name will not be set. The service account must have the `apikeys.keys.lookup` permission on the parent project.
-     * @param {string} params.keyString - Required. Finds the project that owns the key string value.
-     * @return {object} The API response object.
+     * Patches the modifiable fields of an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Output only. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {string} apiParams.updateMask - The field mask specifies which fields to be updated as part of this request. All other fields are ignored. Mutable fields are: `display_name`, `restrictions`, and `annotations`. If an update mask is not provided, the service treats it as an implied mask equivalent to all allowed fields that are set on the wire. If the field mask has a special value "*", the service treats it equivalent to replace all allowed mutable fields.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.keys.lookupKey = (params) => this._makeRequest('v2/keys:lookupKey', 'GET', params);
+    this.projects.locations.keys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.keyId - User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string.
+     * @param {string} apiParams.parent - (Required) Required. The project in which the API key is created.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/keys', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets the metadata for an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to get.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.operations = {};
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
   }
 
-  /**
-   * @private Builds the full request URL and options object.
-   */
-  _buildRequestDetails(path, httpMethod, params) {
-    let url = this._rootUrl + this._servicePath + path;
-    const remainingParams = { ...params };
-    // Fix: Correctly handle {+param} style parameters and other potential special chars.
+/**
+ * @private Builds the full request URL and options object for a request.
+ */
+_buildRequestDetails(path, httpMethod, apiParams, clientConfig = {}) {
+    let url;
+    if (path.startsWith('/upload/')) {
+        url = 'https://www.googleapis.com' + path;
+    } else {
+        url = this._rootUrl + this._servicePath + path;
+    }
+
+    const remainingParams = { ...apiParams };
     const pathParams = url.match(/{[^{}]+}/g) || [];
 
     pathParams.forEach(placeholder => {
-      const isPlus = placeholder.startsWith('{+');
-      const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
-      if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
-        url = url.replace(placeholder, remainingParams[paramName]);
-        delete remainingParams[paramName];
-      }
+        const isPlus = placeholder.startsWith('{+');
+        const paramName = placeholder.slice(isPlus ? 2 : 1, -1);
+        if (Object.prototype.hasOwnProperty.call(remainingParams, paramName)) {
+            url = url.replace(placeholder, remainingParams[paramName]);
+            delete remainingParams[paramName];
+        }
     });
 
+    const options = {
+        method: httpMethod,
+        headers: {
+            'Authorization': 'Bearer ' + this._token,
+            ...(clientConfig.headers || {}),
+        },
+        muteHttpExceptions: true,
+    };
+
+    if (apiParams && apiParams.media && apiParams.media.body) {
+        let mediaBlob;
+        // Check if the body is already a blob by "duck typing" for the getBytes method.
+        if (apiParams.media.body.getBytes && typeof apiParams.media.body.getBytes === 'function') {
+            mediaBlob = apiParams.media.body;
+        } else {
+            // If it's not a blob (e.g., a string or byte array), create one.
+            mediaBlob = Utilities.newBlob(apiParams.media.body);
+        }
+
+        const hasMetadata = apiParams.requestBody && Object.keys(apiParams.requestBody).length > 0;
+
+        if (hasMetadata) {
+            // ** Multipart Upload (Media + Metadata) **
+            remainingParams.uploadType = 'multipart';
+            
+            const boundary = '----' + Utilities.getUuid();
+            const metadata = apiParams.requestBody;
+
+            let requestData = '--' + boundary + '\r\n';
+            requestData += 'Content-Type: application/json; charset=UTF-8\r\n\r\n';
+            requestData += JSON.stringify(metadata) + '\r\n';
+            requestData += '--' + boundary + '\r\n';
+            requestData += 'Content-Type: ' + apiParams.media.mimeType + '\r\n\r\n';
+            
+            const payloadBytes = Utilities.newBlob(requestData).getBytes()
+                .concat(mediaBlob.getBytes())
+                .concat(Utilities.newBlob('\r\n--' + boundary + '--').getBytes());
+
+            options.contentType = 'multipart/related; boundary=' + boundary;
+            options.payload = payloadBytes;
+
+        } else {
+            // ** Simple Media Upload (Media only) **
+            remainingParams.uploadType = 'media';
+
+            options.contentType = mediaBlob.getContentType();
+            options.payload = mediaBlob.getBytes();
+        }
+
+    } else if (apiParams && apiParams.requestBody) {
+        options.contentType = 'application/json';
+        options.payload = JSON.stringify(apiParams.requestBody);
+    }
     const queryParts = [];
     for (const key in remainingParams) {
-      if (key !== 'resource') {
-        queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
-      }
+        if (key !== 'requestBody' && key !== 'media') {
+            queryParts.push(`${encodeURIComponent(key)}=${encodeURIComponent(remainingParams[key])}`);
+        }
     }
     if (queryParts.length > 0) {
-      url += '?' + queryParts.join('&');
+        url += '?' + queryParts.join('&');
     }
 
-    const options = {
-      method: httpMethod,
-      headers: { 'Authorization': 'Bearer ' + this._token },
-      contentType: 'application/json',
-      muteHttpExceptions: true,
-    };
-    if (params && params.resource) {
-      options.payload = JSON.stringify(params.resource);
-    }
-    
     return { url, options };
-  }
+}
 
   /**
    * @private Makes the HTTP request with exponential backoff for retries.
+   * @return {Promise<object>} A promise that resolves with the response object.
    */
-  _makeRequest(path, httpMethod, params) {
-    const { url, options } = this._buildRequestDetails(path, httpMethod, params);
+  async _makeRequest(path, httpMethod, apiParams, clientConfig = {}) {
+    const isMediaDownload = apiParams.alt === 'media';
+
+    const { url, options } = this._buildRequestDetails(path, httpMethod, apiParams, clientConfig);
 
     for (let i = 0; i <= this._backoffConfig.retries; i++) {
       const response = UrlFetchApp.fetch(url, options);
       const responseCode = response.getResponseCode();
-      const responseText = response.getContentText(); // Simplified call
+      const responseHeaders = response.getAllHeaders();
 
       if (responseCode >= 200 && responseCode < 300) {
-        return responseText ? JSON.parse(responseText) : {};
+        // Prioritize responseType:'blob' and media downloads to return raw data.
+        if ((clientConfig && (clientConfig.responseType === 'blob' || clientConfig.responseType === 'stream')) || isMediaDownload) {
+          return {
+            data: response.getBlob(),
+            status: responseCode,
+            headers: responseHeaders,
+          };
+        }
+
+        const responseText = response.getContentText();
+        // Handle empty responses, which are valid (e.g., a 204 No Content).
+        const responseBody = responseText ? JSON.parse(responseText) : {};
+        return {
+          data: responseBody,
+          status: responseCode,
+          headers: responseHeaders,
+        };
       }
 
       const retryableErrors = [429, 500, 503];
@@ -166,15 +258,22 @@ class Apikeys {
         continue;
       }
 
+      const responseText = response.getContentText(); // Get response text for error
+      let errorMessage = `Request failed with status ${responseCode}`;
       try {
-        // Return parsed error if possible, otherwise a generic error object
-        return JSON.parse(responseText);
+        const errorObj = JSON.parse(responseText);
+        if (errorObj.error && errorObj.error.message) {
+          errorMessage += `: ${errorObj.error.message}`;
+        }
       } catch (e) {
-        return { error: { code: responseCode, message: responseText } };
+        // If the error response isn't JSON, include the raw text.
+        if (responseText) {
+          errorMessage += `. Response: ${responseText}`;
+        }
       }
+      throw new Error(errorMessage);
     }
-    
-    // This line is technically unreachable if retries >= 0, but good for safety.
+
     throw new Error('Request failed after multiple retries.');
   }
 }

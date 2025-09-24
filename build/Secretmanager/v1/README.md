@@ -4,8 +4,8 @@ Auto-generated client library for using the **Secret Manager API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:15 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:45:38 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:47:21 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:47:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:42 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -59,7 +59,7 @@ Creates a new Secret containing no SecretVersions.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the project to associate with the Secret, in the format `projects/*` or `projects/*/locations/*`. |
 | `params.secretId` | `string` | No | Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.secrets.addVersion()`
 
@@ -68,7 +68,7 @@ Creates a new SecretVersion containing secret data and attaches it to an existin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.secrets.get()`
 
@@ -86,7 +86,7 @@ Updates metadata of an existing Secret.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the Secret in the format `projects/*/secrets/*`. |
 | `params.updateMask` | `string` | No | Required. Specifies the fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.secrets.delete()`
 
@@ -104,7 +104,7 @@ Sets the access control policy on the specified secret. Replaces any existing po
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.secrets.getIamPolicy()`
 
@@ -122,7 +122,7 @@ Returns permissions that a caller has for the specified secret. If the secret do
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.secrets.versions`
 
@@ -160,7 +160,7 @@ Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to disable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.secrets.versions.enable()`
 
@@ -169,7 +169,7 @@ Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to enable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.secrets.versions.destroy()`
 
@@ -178,7 +178,7 @@ Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and i
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to destroy in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.secrets`
 
@@ -201,7 +201,7 @@ Creates a new Secret containing no SecretVersions.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the project to associate with the Secret, in the format `projects/*` or `projects/*/locations/*`. |
 | `params.secretId` | `string` | No | Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.addVersion()`
 
@@ -210,7 +210,7 @@ Creates a new SecretVersion containing secret data and attaches it to an existin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.get()`
 
@@ -228,7 +228,7 @@ Updates metadata of an existing Secret.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the Secret in the format `projects/*/secrets/*`. |
 | `params.updateMask` | `string` | No | Required. Specifies the fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.delete()`
 
@@ -246,7 +246,7 @@ Sets the access control policy on the specified secret. Replaces any existing po
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.getIamPolicy()`
 
@@ -264,7 +264,7 @@ Returns permissions that a caller has for the specified secret. If the secret do
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.secrets.versions`
 
@@ -302,7 +302,7 @@ Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to disable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.versions.enable()`
 
@@ -311,7 +311,7 @@ Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to enable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.versions.destroy()`
 
@@ -320,4 +320,4 @@ Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and i
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to destroy in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

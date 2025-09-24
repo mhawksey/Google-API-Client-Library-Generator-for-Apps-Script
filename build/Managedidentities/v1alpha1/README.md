@@ -4,8 +4,8 @@ Auto-generated client library for using the **Managed Service for Microsoft Acti
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:51 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:25:42 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:33:44 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:33:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:02 GMT
 
 
@@ -75,7 +75,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.global.domains`
 
@@ -87,7 +87,7 @@ Creates a Microsoft AD Domain in a given project. Operation
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Resource project name and location using the form: `projects/{project_id}/locations/global` |
 | `params.domainName` | `string` | No | The fully qualified domain name. e.g. mydomain.myorganization.com, with the following restrictions: * Must contain only lowercase letters, numbers, periods and hyphens. * Must start with a letter. * Must contain between 2-64 characters. * Must end with a number or a letter. * Must not start with period. * Must be unique within the project. * First segment length (mydomain form example above) shouldn't exceed 15 chars. * The last segment cannot be fully numeric. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.resetAdminPassword()`
 
@@ -96,7 +96,7 @@ Resets managed identities admin password identified by managed_identities_admin_
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.list()`
 
@@ -126,7 +126,7 @@ Updates the metadata and configuration of a specified domain. Operation
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Unique name of the domain in this scope including projects and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}`. |
 | `params.updateMask` | `string` | No | Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Domain: * `labels` * `locations` * `authorized_networks` * `audit_logs_enabled` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.delete()`
 
@@ -143,7 +143,7 @@ Adds AD trust in a given domain. Operation
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.reconfigureTrust()`
 
@@ -152,7 +152,7 @@ Updates the dns conditional forwarder. Operation
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource domain name, project name and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.detachTrust()`
 
@@ -161,7 +161,7 @@ Removes identified trust. Operation
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.validateTrust()`
 
@@ -170,7 +170,7 @@ Validate the trust state Operation
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource domain name, project name, and location using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.restore()`
 
@@ -179,7 +179,7 @@ RestoreDomain restores domain backup mentioned in the RestoreDomainRequest
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. resource name for the domain to which the backup belongs |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.getLdapssettings()`
 
@@ -197,7 +197,7 @@ Patches a single ldaps settings.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the LDAPS settings. Uses the form: `projects/{project}/locations/{location}/domains/{domain}`. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.extendSchema()`
 
@@ -206,7 +206,7 @@ Extend Schema for Domain
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.enableMigration()`
 
@@ -215,7 +215,7 @@ Enable Domain Migration
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.disableMigration()`
 
@@ -224,7 +224,7 @@ Disable Domain Migration
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.checkMigrationPermission()`
 
@@ -233,7 +233,7 @@ AuditMigration API gets the current state of DomainMigration
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.domain` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.domainJoinMachine()`
 
@@ -242,7 +242,7 @@ DomainJoinMachine API joins a Compute Engine VM to the domain
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.domain` | `string` | Yes | Required. The domain resource name using the form: projects/{project_id}/locations/global/domains/{domain_name} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.setIamPolicy()`
 
@@ -251,7 +251,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.getIamPolicy()`
 
@@ -269,7 +269,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.global.domains.sqlIntegrations`
 
@@ -303,7 +303,7 @@ Creates a Backup for a domain.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The domain resource name using the form: `projects/{project_id}/locations/global/domains/{domain_name}` |
 | `params.backupId` | `string` | No | Required. Backup Id, unique name to identify the backups with the following restrictions: * Must be lowercase letters, numbers, and hyphens * Must start with a letter. * Must contain between 1-63 characters. * Must end with a number or a letter. * Must be unique within the domain. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.backups.list()`
 
@@ -333,7 +333,7 @@ Updates the labels for specified Backup.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The unique name of the Backup in the form of projects/{project_id}/locations/global/domains/{domain_name}/backups/{name} |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Backup: * `labels` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.backups.delete()`
 
@@ -350,7 +350,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.domains.backups.getIamPolicy()`
 
@@ -368,7 +368,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.global.peerings`
 
@@ -380,7 +380,7 @@ Creates a Peering for Managed AD instance.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource project name and location using the form: `projects/{project_id}/locations/global` |
 | `params.peeringId` | `string` | No | Required. Peering Id, unique name to identify peering. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.peerings.list()`
 
@@ -410,7 +410,7 @@ Updates the labels for specified Peering.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Unique name of the peering in this scope including projects and location using the form: `projects/{project_id}/locations/global/peerings/{peering_id}`. |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. The elements of the repeated paths field may only include these fields from Peering: * `labels` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.peerings.delete()`
 
@@ -427,7 +427,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.peerings.getIamPolicy()`
 
@@ -445,4 +445,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

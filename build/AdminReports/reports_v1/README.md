@@ -4,8 +4,8 @@ Auto-generated client library for using the **Admin SDK API (version: reports_v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:07 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:44 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:46 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:57 GMT
 
 
@@ -53,7 +53,7 @@ Start receiving notifications for account activities. For more information, see 
 | `params.pageToken` | `string` | No | The token to specify next page. A report with multiple pages has a `nextPageToken` property in the response. In your follow-on request getting the next page of the report, enter the `nextPageToken` value in the `pageToken` query string. |
 | `params.startTime` | `string` | No | Sets the beginning of the range of time shown in the report. The date is in the RFC 3339 format, for example 2010-10-28T10:26:35.000Z. The report returns all activities from `startTime` until `endTime`. The `startTime` must be before the `endTime` (if specified) and the current time when the request is made, or the API returns an error. |
 | `params.groupIdFilter` | `string` | No | `Deprecated`. This field is deprecated and is no longer supported. Comma separated group ids (obfuscated) on which user activities are filtered, i.e. the response will contain activities for only those users that are a part of at least one of the group ids mentioned here. Format: "id:abc123,id:xyz456" *Important:* To filter by groups, you must explicitly add the groups to your filtering groups allowlist. For more information about adding groups to filtering groups allowlist, see [Filter results by Google Group](https://support.google.com/a/answer/11482175) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `channels`
 
@@ -63,7 +63,7 @@ Stop watching resources through this channel.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customerUsageReports`
 

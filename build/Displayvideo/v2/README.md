@@ -4,8 +4,8 @@ Auto-generated client library for using the **Display & Video 360 API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:14 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:13:34 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:23:23 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:23:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:52 GMT
 
 
@@ -35,7 +35,7 @@ Edits targeting options under a single advertiser. The operation will delete the
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.get()`
 
@@ -63,7 +63,7 @@ Creates a new advertiser. Returns the newly created advertiser if successful. **
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.patch()`
 
@@ -73,7 +73,7 @@ Updates an existing advertiser. Returns the updated advertiser if successful.
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser. Assigned by the system. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.delete()`
 
@@ -122,7 +122,7 @@ Bulk edits targeting options under multiple line items. The operation will delet
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the line items belong to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.lineItems.get()`
 
@@ -152,7 +152,7 @@ Creates a new line item. Returns the newly created line item if successful. YouT
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the line item belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.lineItems.patch()`
 
@@ -171,7 +171,7 @@ Updates an existing line item. Returns the updated line item if successful. Requ
 | `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the line item belongs to. |
 | `params.lineItemId` | `string` | Yes | Output only. The unique ID of the line item. Assigned by the system. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.lineItems.delete()`
 
@@ -195,7 +195,7 @@ Creates a new line item with settings (including targeting) inherited from the i
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser this line item belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.lineItems.duplicate()`
 
@@ -205,7 +205,7 @@ Duplicates a line item. Returns the ID of the created line item if successful. Y
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser this line item belongs to. |
 | `params.lineItemId` | `string` | Yes | Required. The ID of the line item to duplicate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.lineItems.bulkUpdate()`
 
@@ -222,7 +222,7 @@ Updates multiple line items. Requests to this endpoint cannot be made concurrent
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser this line item belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers.lineItems.targetingTypes`
 
@@ -270,7 +270,7 @@ Assigns a targeting option to a line item. Returns the assigned targeting option
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the line item belongs to. |
 | `params.lineItemId` | `string` | Yes | Required. The ID of the line item the assigned targeting option will belong to. |
 | `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.lineItems.targetingTypes.assignedTargetingOptions.delete()`
 
@@ -326,7 +326,7 @@ Assigns a targeting option to an advertiser. Returns the assigned targeting opti
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser. |
 | `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_INVENTORY_MODE` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.targetingTypes.assignedTargetingOptions.delete()`
 
@@ -347,7 +347,7 @@ Uploads an asset. Returns the ID of the newly uploaded asset if successful. The 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser this asset belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers.campaigns`
 
@@ -392,7 +392,7 @@ Creates a new campaign. Returns the newly created campaign if successful.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the campaign belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.campaigns.patch()`
 
@@ -403,7 +403,7 @@ Updates an existing campaign. Returns the updated campaign if successful.
 | `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the campaign belongs to. |
 | `params.campaignId` | `string` | Yes | Output only. The unique ID of the campaign. Assigned by the system. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.campaigns.delete()`
 
@@ -476,7 +476,7 @@ Creates a new channel. Returns the newly created channel if successful.
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | The ID of the advertiser that owns the created channel. |
 | `params.partnerId` | `string` | No | The ID of the partner that owns the created channel. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.channels.patch()`
 
@@ -488,7 +488,7 @@ Updates a channel. Returns the updated channel if successful.
 | `params.channelId` | `string` | Yes | Output only. The unique ID of the channel. Assigned by the system. |
 | `params.partnerId` | `string` | No | The ID of the partner that owns the created channel. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers.channels.sites`
 
@@ -515,7 +515,7 @@ Creates a site in a channel.
 | `params.advertiserId` | `string` | Yes | The ID of the advertiser that owns the parent channel. |
 | `params.channelId` | `string` | Yes | Required. The ID of the parent channel in which the site will be created. |
 | `params.partnerId` | `string` | No | The ID of the partner that owns the parent channel. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.channels.sites.delete()`
 
@@ -536,7 +536,7 @@ Bulk edits sites under a single channel. The operation will delete the sites pro
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | The ID of the advertiser that owns the parent channel. |
 | `params.channelId` | `string` | Yes | Required. The ID of the parent channel to which the sites belong. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.channels.sites.replace()`
 
@@ -546,7 +546,7 @@ Replaces all of the sites under a single channel. The operation will replace the
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | The ID of the advertiser that owns the parent channel. |
 | `params.channelId` | `string` | Yes | Required. The ID of the parent channel whose sites will be replaced. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers.creatives`
 
@@ -578,7 +578,7 @@ Creates a new creative. Returns the newly created creative if successful. A ["St
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the creative belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.creatives.patch()`
 
@@ -589,7 +589,7 @@ Updates an existing creative. Returns the updated creative if successful. A ["St
 | `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the creative belongs to. |
 | `params.creativeId` | `string` | Yes | Output only. The unique ID of the creative. Assigned by the system. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.creatives.delete()`
 
@@ -643,7 +643,7 @@ Creates a new insertion order. Returns the newly created insertion order if succ
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the insertion order belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.insertionOrders.patch()`
 
@@ -654,7 +654,7 @@ Updates an existing insertion order. Returns the updated insertion order if succ
 | `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the insertion order belongs to. |
 | `params.insertionOrderId` | `string` | Yes | Output only. The unique ID of the insertion order. Assigned by the system. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.insertionOrders.delete()`
 
@@ -733,7 +733,7 @@ Assigns a targeting option to an insertion order. Returns the assigned targeting
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the insertion order belongs to. |
 | `params.insertionOrderId` | `string` | Yes | Required. The ID of the insertion order the assigned targeting option will belong to. |
 | `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_VIEWABILITY` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.delete()`
 
@@ -829,7 +829,7 @@ Creates a new location list. Returns the newly created location list if successf
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the DV360 advertiser to which the location list belongs. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.locationLists.patch()`
 
@@ -840,7 +840,7 @@ Updates a location list. Returns the updated location list if successful.
 | `params.advertiserId` | `string` | Yes | Required. The ID of the DV360 advertiser to which the location lists belongs. |
 | `params.locationListId` | `string` | Yes | Output only. The unique ID of the location list. Assigned by the system. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers.locationLists.assignedLocations`
 
@@ -865,7 +865,7 @@ Creates an assignment between a location and a location list.
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the DV360 advertiser to which the location list belongs. |
 | `params.locationListId` | `string` | Yes | Required. The ID of the location list for which the assignment will be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.locationLists.assignedLocations.delete()`
 
@@ -885,7 +885,7 @@ Bulk edits multiple assignments between locations and a single location list. Th
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the DV360 advertiser to which the location list belongs. |
 | `params.locationListId` | `string` | Yes | Required. The ID of the location list to which these assignments are assigned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers.manualTriggers`
 
@@ -917,7 +917,7 @@ Creates a new manual trigger. Returns the newly created manual trigger if succes
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.manualTriggers.patch()`
 
@@ -928,7 +928,7 @@ Updates a manual trigger. Returns the updated manual trigger if successful. **Wa
 | `params.advertiserId` | `string` | Yes | Required. Immutable. The unique ID of the advertiser that the manual trigger belongs to. |
 | `params.triggerId` | `string` | Yes | Output only. The unique ID of the manual trigger. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.manualTriggers.activate()`
 
@@ -938,7 +938,7 @@ Activates a manual trigger. Each activation of the manual trigger must be at lea
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser that the manual trigger belongs. |
 | `params.triggerId` | `string` | Yes | Required. The ID of the manual trigger to activate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.manualTriggers.deactivate()`
 
@@ -948,7 +948,7 @@ Deactivates a manual trigger. **Warning:** Line Items using manual triggers no l
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser that the manual trigger belongs. |
 | `params.triggerId` | `string` | Yes | Required. The ID of the manual trigger to deactivate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers.negativeKeywordLists`
 
@@ -978,7 +978,7 @@ Creates a new negative keyword list. Returns the newly created negative keyword 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the DV360 advertiser to which the negative keyword list will belong. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.negativeKeywordLists.patch()`
 
@@ -989,7 +989,7 @@ Updates a negative keyword list. Returns the updated negative keyword list if su
 | `params.advertiserId` | `string` | Yes | Required. The ID of the DV360 advertiser to which the negative keyword list belongs. |
 | `params.negativeKeywordListId` | `string` | Yes | Output only. The unique ID of the negative keyword list. Assigned by the system. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.negativeKeywordLists.delete()`
 
@@ -1023,7 +1023,7 @@ Creates a negative keyword in a negative keyword list.
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs. |
 | `params.negativeKeywordListId` | `string` | Yes | Required. The ID of the parent negative keyword list in which the negative keyword will be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.negativeKeywordLists.negativeKeywords.delete()`
 
@@ -1043,7 +1043,7 @@ Bulk edits negative keywords in a single negative keyword list. The operation wi
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs. |
 | `params.negativeKeywordListId` | `string` | Yes | Required. The ID of the parent negative keyword list to which the negative keywords belong. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `advertisers.negativeKeywordLists.negativeKeywords.replace()`
 
@@ -1053,7 +1053,7 @@ Replaces all negative keywords in a single negative keyword list. The operation 
 |---|---|---|---|
 | `params.advertiserId` | `string` | Yes | Required. The ID of the DV360 advertiser to which the parent negative keyword list belongs. |
 | `params.negativeKeywordListId` | `string` | Yes | Required. The ID of the parent negative keyword list to which the negative keywords belong. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers.youtubeAdGroupAds`
 
@@ -1199,7 +1199,7 @@ Creates a new custom bidding algorithm. Returns the newly created custom bidding
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customBiddingAlgorithms.patch()`
 
@@ -1209,7 +1209,7 @@ Updates an existing custom bidding algorithm. Returns the updated custom bidding
 |---|---|---|---|
 | `params.customBiddingAlgorithmId` | `string` | Yes | Output only. The unique ID of the custom bidding algorithm. Assigned by the system. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customBiddingAlgorithms.uploadScript()`
 
@@ -1232,7 +1232,7 @@ Creates a new custom bidding script. Returns the newly created script if success
 | `params.customBiddingAlgorithmId` | `string` | Yes | Required. The ID of the custom bidding algorithm that owns the script. |
 | `params.partnerId` | `string` | No | The ID of the partner that owns the parent custom bidding algorithm. Only this partner will have write access to this custom bidding script. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that owns the parent custom bidding algorithm. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customBiddingAlgorithms.scripts.get()`
 
@@ -1301,7 +1301,7 @@ Updates an existing Floodlight group. Returns the updated Floodlight group if su
 | `params.floodlightGroupId` | `string` | Yes | Output only. The unique ID of the Floodlight group. Assigned by the system. |
 | `params.partnerId` | `string` | No | Required. The partner context by which the Floodlight group is being accessed. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `floodlightGroups.floodlightActivities`
 
@@ -1362,7 +1362,7 @@ Creates a new guaranteed order. Returns the newly created guaranteed order if su
 |---|---|---|---|
 | `params.partnerId` | `string` | No | The ID of the partner that the request is being made within. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that the request is being made within. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `guaranteedOrders.get()`
 
@@ -1397,7 +1397,7 @@ Updates an existing guaranteed order. Returns the updated guaranteed order if su
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
 | `params.partnerId` | `string` | No | The ID of the partner that the request is being made within. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that the request is being made within. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `guaranteedOrders.editGuaranteedOrderReadAccessors()`
 
@@ -1406,7 +1406,7 @@ Edits read advertisers of a guaranteed order.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.guaranteedOrderId` | `string` | Yes | Required. The ID of the guaranteed order to edit. The ID is of the format `{exchange}-{legacy_guaranteed_order_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `inventorySourceGroups`
 
@@ -1441,7 +1441,7 @@ Creates a new inventory source group. Returns the newly created inventory source
 |---|---|---|---|
 | `params.partnerId` | `string` | No | The ID of the partner that owns the inventory source group. Only this partner will have write access to this group. Only advertisers to which this group is explicitly shared will have read access to this group. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that owns the inventory source group. The parent partner will not have access to this group. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inventorySourceGroups.patch()`
 
@@ -1453,7 +1453,7 @@ Updates an inventory source group. Returns the updated inventory source group if
 | `params.partnerId` | `string` | No | The ID of the partner that owns the inventory source group. Only this partner has write access to this group. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that owns the inventory source group. The parent partner does not have access to this group. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inventorySourceGroups.delete()`
 
@@ -1490,7 +1490,7 @@ Creates an assignment between an inventory source and an inventory source group.
 | `params.inventorySourceGroupId` | `string` | Yes | Required. The ID of the inventory source group to which the assignment will be assigned. |
 | `params.partnerId` | `string` | No | The ID of the partner that owns the parent inventory source group. Only this partner will have write access to this assigned inventory source. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that owns the parent inventory source group. The parent partner will not have access to this assigned inventory source. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inventorySourceGroups.assignedInventorySources.delete()`
 
@@ -1510,7 +1510,7 @@ Bulk edits multiple assignments between inventory sources and a single inventory
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.inventorySourceGroupId` | `string` | Yes | Required. The ID of the inventory source group to which the assignments are assigned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `inventorySources`
 
@@ -1544,7 +1544,7 @@ Creates a new inventory source. Returns the newly created inventory source if su
 |---|---|---|---|
 | `params.partnerId` | `string` | No | The ID of the partner that the request is being made within. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that the request is being made within. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inventorySources.patch()`
 
@@ -1556,7 +1556,7 @@ Updates an existing inventory source. Returns the updated inventory source if su
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
 | `params.partnerId` | `string` | No | The ID of the partner that the request is being made within. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that the request is being made within. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inventorySources.editInventorySourceReadWriteAccessors()`
 
@@ -1565,7 +1565,7 @@ Edits read/write accessors of an inventory source. Returns the updated read_writ
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.inventorySourceId` | `string` | Yes | Required. The ID of inventory source to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `partners`
 
@@ -1576,7 +1576,7 @@ Edits targeting options under a single partner. The operation will delete the as
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The ID of the partner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.get()`
 
@@ -1630,7 +1630,7 @@ Creates a new channel. Returns the newly created channel if successful.
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | The ID of the partner that owns the created channel. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that owns the created channel. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.channels.patch()`
 
@@ -1642,7 +1642,7 @@ Updates a channel. Returns the updated channel if successful.
 | `params.channelId` | `string` | Yes | Output only. The unique ID of the channel. Assigned by the system. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that owns the created channel. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `partners.channels.sites`
 
@@ -1669,7 +1669,7 @@ Creates a site in a channel.
 | `params.partnerId` | `string` | Yes | The ID of the partner that owns the parent channel. |
 | `params.channelId` | `string` | Yes | Required. The ID of the parent channel in which the site will be created. |
 | `params.advertiserId` | `string` | No | The ID of the advertiser that owns the parent channel. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.channels.sites.delete()`
 
@@ -1690,7 +1690,7 @@ Bulk edits sites under a single channel. The operation will delete the sites pro
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | The ID of the partner that owns the parent channel. |
 | `params.channelId` | `string` | Yes | Required. The ID of the parent channel to which the sites belong. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.channels.sites.replace()`
 
@@ -1700,7 +1700,7 @@ Replaces all of the sites under a single channel. The operation will replace the
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | The ID of the partner that owns the parent channel. |
 | `params.channelId` | `string` | Yes | Required. The ID of the parent channel whose sites will be replaced. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `partners.targetingTypes`
 
@@ -1737,7 +1737,7 @@ Assigns a targeting option to a partner. Returns the assigned targeting option i
 |---|---|---|---|
 | `params.partnerId` | `string` | Yes | Required. The ID of the partner. |
 | `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_CHANNEL` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `partners.targetingTypes.assignedTargetingOptions.delete()`
 
@@ -1757,7 +1757,7 @@ Creates an SDF Download Task. Returns an Operation. An SDF Download Task is a lo
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sdfdownloadtasks.operations`
 
@@ -1803,7 +1803,7 @@ Searches for targeting options of a given type based on the given search terms.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.targetingType` | `string` | Yes | Required. The type of targeting options to retrieve. Accepted values are: * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_BUSINESS_CHAIN` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users`
 
@@ -1832,7 +1832,7 @@ Creates a new user. Returns the newly created user if successful. This method ha
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.patch()`
 
@@ -1842,7 +1842,7 @@ Updates an existing user. Returns the updated user if successful. This method ha
 |---|---|---|---|
 | `params.userId` | `string` | Yes | Output only. The unique ID of the user. Assigned by the system. |
 | `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.delete()`
 
@@ -1859,7 +1859,7 @@ Bulk edits user roles for a user. The operation will delete the assigned user ro
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | Required. The ID of the user to which the assigned user roles belong. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `media`
 
@@ -1870,7 +1870,7 @@ Uploads media. Upload is supported on the URI `/upload/media/{resource_name=**}?
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceName` | `string` | Yes | Name of the media that is being downloaded. See ReadRequest.resource_name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `media.download()`
 

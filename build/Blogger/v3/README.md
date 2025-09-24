@@ -4,8 +4,8 @@ Auto-generated client library for using the **Blogger API (version: v3)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:51 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:54:52 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:18 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:18 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:46 GMT
 
 
@@ -127,7 +127,7 @@ Inserts a page.
 |---|---|---|---|
 | `params.blogId` | `string` | Yes |  |
 | `params.isDraft` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `pages.list()`
 
@@ -152,7 +152,7 @@ Patches a page.
 | `params.pageId` | `string` | Yes |  |
 | `params.publish` | `boolean` | No |  |
 | `params.revert` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `pages.publish()`
 
@@ -182,7 +182,7 @@ Updates a page by blog id and page id.
 | `params.pageId` | `string` | Yes |  |
 | `params.publish` | `boolean` | No |  |
 | `params.revert` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `posts`
 
@@ -230,7 +230,7 @@ Inserts a post.
 | `params.fetchBody` | `boolean` | No |  |
 | `params.fetchImages` | `boolean` | No |  |
 | `params.isDraft` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `posts.list()`
 
@@ -264,7 +264,7 @@ Patches a post.
 | `params.maxComments` | `integer` | No |  |
 | `params.publish` | `boolean` | No |  |
 | `params.revert` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `posts.publish()`
 
@@ -309,7 +309,7 @@ Updates a post by blog id and post id.
 | `params.maxComments` | `integer` | No |  |
 | `params.publish` | `boolean` | No |  |
 | `params.revert` | `boolean` | No |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `blogs`
 

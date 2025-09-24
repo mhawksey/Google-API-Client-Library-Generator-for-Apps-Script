@@ -4,8 +4,8 @@ Auto-generated client library for using the **Service Directory API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:42 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:46:15 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:47:57 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:47:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:14 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -48,7 +48,7 @@ Creates a namespace, and returns the new namespace.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the project and location the namespace will be created in. |
 | `params.namespaceId` | `string` | No | Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.list()`
 
@@ -78,7 +78,7 @@ Updates a namespace.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name for the namespace in the format `projects/*/locations/*/namespaces/*`. |
 | `params.updateMask` | `string` | No | Required. List of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.delete()`
 
@@ -95,7 +95,7 @@ Gets the IAM Policy for a resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.setIamPolicy()`
 
@@ -104,7 +104,7 @@ Sets the IAM Policy for a resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.testIamPermissions()`
 
@@ -113,7 +113,7 @@ Tests IAM permissions for a resource (namespace, service or service workload onl
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.namespaces.services`
 
@@ -124,7 +124,7 @@ Returns a service and its associated endpoints. Resolving a service is not consi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the service to resolve. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.services.create()`
 
@@ -134,7 +134,7 @@ Creates a service, and returns the new service.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the namespace this service will belong to. |
 | `params.serviceId` | `string` | No | Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.services.list()`
 
@@ -164,7 +164,7 @@ Updates a service.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name for the service in the format `projects/*/locations/*/namespaces/*/services/*`. |
 | `params.updateMask` | `string` | No | Required. List of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.services.delete()`
 
@@ -181,7 +181,7 @@ Gets the IAM Policy for a resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.services.setIamPolicy()`
 
@@ -190,7 +190,7 @@ Sets the IAM Policy for a resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.services.testIamPermissions()`
 
@@ -199,7 +199,7 @@ Tests IAM permissions for a resource (namespace, service or service workload onl
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.namespaces.services.endpoints`
 
@@ -211,7 +211,7 @@ Creates an endpoint, and returns the new endpoint.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the service that this endpoint provides. |
 | `params.endpointId` | `string` | No | Required. The Resource ID must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z](?:[-a-z0-9]{0,61}[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.services.endpoints.list()`
 
@@ -241,7 +241,7 @@ Updates an endpoint.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name for the endpoint in the format `projects/*/locations/*/namespaces/*/services/*/endpoints/*`. |
 | `params.updateMask` | `string` | No | Required. List of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.services.endpoints.delete()`
 
@@ -260,7 +260,7 @@ Gets the IAM Policy for a resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.workloads.setIamPolicy()`
 
@@ -269,7 +269,7 @@ Sets the IAM Policy for a resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.namespaces.workloads.testIamPermissions()`
 
@@ -278,4 +278,4 @@ Tests IAM permissions for a resource (namespace, service or service workload onl
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

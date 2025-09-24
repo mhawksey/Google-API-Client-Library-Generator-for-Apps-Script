@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Lineage API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:56 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:11:35 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:15:59 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:15:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:00 GMT
 
 
@@ -26,7 +26,7 @@ Creates new lineage events together with their parents: process and run. Updates
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project and its location that should own the process, run, and lineage event. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.searchLinks()`
 
@@ -35,7 +35,7 @@ Retrieve a list of links connected to a specific asset. Links represent the data
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project and location you want search in. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.batchSearchLinkProcesses()`
 
@@ -44,7 +44,7 @@ Retrieve information about LineageProcesses associated with specific links. Line
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project and location where you want to search. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.operations`
 
@@ -82,7 +82,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.processes`
 
@@ -94,7 +94,7 @@ Creates a new process.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project and its location that should own the process. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processes.patch()`
 
@@ -106,7 +106,7 @@ Updates a process.
 | `params.updateMask` | `string` | No | The list of fields to update. Currently not used. The whole message is updated. |
 | `params.allowMissing` | `boolean` | No | If set to true and the process is not found, the request inserts it. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processes.get()`
 
@@ -145,7 +145,7 @@ Creates a new run.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the process that should own the run. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processes.runs.patch()`
 
@@ -156,7 +156,7 @@ Updates a run.
 | `params.name` | `string` | Yes | Immutable. The resource name of the run. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}`. Can be specified or auto-assigned. {run} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.` |
 | `params.updateMask` | `string` | No | The list of fields to update. Currently not used. The whole message is updated. |
 | `params.allowMissing` | `boolean` | No | If set to true and the run is not found, the request creates it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processes.runs.get()`
 
@@ -195,7 +195,7 @@ Creates a new lineage event.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the run that should own the lineage event. |
 | `params.requestId` | `string` | No | Optional. A unique identifier for this request. Restricted to 36 ASCII characters. A random UUID is recommended. This request is idempotent only if a `request_id` is provided. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.processes.runs.lineageEvents.get()`
 

@@ -4,8 +4,8 @@ Auto-generated client library for using the **VM Migration API (version: v1alpha
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:02:44 GMT
-- **Last Modified:** Mon, 01 Sep 2025 00:02:44 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:00 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:00 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:41 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.sources`
 
@@ -107,7 +107,7 @@ Creates a new Source in a given project and location.
 | `params.parent` | `string` | Yes | Required. The Source's parent. |
 | `params.sourceId` | `string` | No | Required. The source identifier. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.patch()`
 
@@ -118,7 +118,7 @@ Updates the parameters of a single Source.
 | `params.name` | `string` | Yes | Output only. The Source name. |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Source resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.delete()`
 
@@ -185,7 +185,7 @@ Creates a new UtilizationReport.
 | `params.parent` | `string` | Yes | Required. The Utilization Report's parent. |
 | `params.utilizationReportId` | `string` | No | Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.utilizationReports.delete()`
 
@@ -227,7 +227,7 @@ Creates a new DatacenterConnector in a given Source.
 | `params.parent` | `string` | Yes | Required. The DatacenterConnector's parent. Required. The Source in where the new DatacenterConnector will be created. For example: `projects/my-project/locations/us-central1/sources/my-source` |
 | `params.datacenterConnectorId` | `string` | No | Required. The datacenterConnector identifier. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.datacenterConnectors.delete()`
 
@@ -245,7 +245,7 @@ Upgrades the appliance relate to this DatacenterConnector to the in-place update
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.datacenterConnector` | `string` | Yes | Required. The DatacenterConnector name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.sources.migratingVms`
 
@@ -258,7 +258,7 @@ Creates a new MigratingVm in a given Source.
 | `params.parent` | `string` | Yes | Required. The MigratingVm's parent. |
 | `params.migratingVmId` | `string` | No | Required. The migratingVm identifier. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.list()`
 
@@ -291,7 +291,7 @@ Updates the parameters of a single MigratingVm.
 | `params.name` | `string` | Yes | Output only. The identifier of the MigratingVm. |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the MigratingVm resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.delete()`
 
@@ -308,7 +308,7 @@ Starts migration for a VM. Starts the process of uploading data and creating sna
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.resumeMigration()`
 
@@ -317,7 +317,7 @@ Resumes a migration for a VM. When called on a paused migration, will start the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.pauseMigration()`
 
@@ -326,7 +326,7 @@ Pauses a migration for a VM. If cycle tasks are running they will be cancelled, 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.finalizeMigration()`
 
@@ -335,7 +335,7 @@ Marks a migration as completed, deleting migration resources that are no longer 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.extendMigration()`
 
@@ -344,7 +344,7 @@ Extend the migrating VM time to live.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.sources.migratingVms.cloneJobs`
 
@@ -357,7 +357,7 @@ Initiates a Clone of a specific migrating VM.
 | `params.parent` | `string` | Yes | Required. The Clone's parent. |
 | `params.cloneJobId` | `string` | No | Required. The clone job identifier. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.cloneJobs.cancel()`
 
@@ -366,7 +366,7 @@ Initiates the cancellation of a running clone job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The clone job id |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.cloneJobs.list()`
 
@@ -399,7 +399,7 @@ Initiates a Cutover of a specific migrating VM. The returned LRO is completed wh
 | `params.parent` | `string` | Yes | Required. The Cutover's parent. |
 | `params.cutoverJobId` | `string` | No | Required. The cutover job identifier. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.cutoverJobs.cancel()`
 
@@ -408,7 +408,7 @@ Initiates the cancellation of a running cutover job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The cutover job id |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.migratingVms.cutoverJobs.list()`
 
@@ -463,7 +463,7 @@ Creates a new disk migration job in a given Source.
 | `params.parent` | `string` | Yes | Required. The DiskMigrationJob's parent. |
 | `params.diskMigrationJobId` | `string` | No | Required. The DiskMigrationJob identifier. The maximum length of this value is 63 characters. Valid characters are lower case Latin letters, digits and hyphen. It must start with a Latin letter and must not end with a hyphen. |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.diskMigrationJobs.list()`
 
@@ -494,7 +494,7 @@ Updates the parameters of a single DiskMigrationJob.
 | `params.name` | `string` | Yes | Output only. Identifier. The identifier of the DiskMigrationJob. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the DiskMigrationJob resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask, then a mask equivalent to all fields that are populated (have a non-empty value), will be implied. |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.diskMigrationJobs.delete()`
 
@@ -511,7 +511,7 @@ Runs the disk migration job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the DiskMigrationJob. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.diskMigrationJobs.cancel()`
 
@@ -520,7 +520,7 @@ Cancels the disk migration job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the DiskMigrationJob. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.groups`
 
@@ -553,7 +553,7 @@ Creates a new Group in a given project and location.
 | `params.parent` | `string` | Yes | Required. The Group's parent. |
 | `params.groupId` | `string` | No | Required. The group identifier. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.groups.patch()`
 
@@ -564,7 +564,7 @@ Updates the parameters of a single Group.
 | `params.name` | `string` | Yes | Output only. The Group name. |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Group resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.groups.delete()`
 
@@ -582,7 +582,7 @@ Adds a MigratingVm to a Group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.group` | `string` | Yes | Required. The full path name of the Group to add to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.groups.removeGroupMigration()`
 
@@ -591,7 +591,7 @@ Removes a MigratingVm from a Group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.group` | `string` | Yes | Required. The name of the Group. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.targetProjects`
 
@@ -624,7 +624,7 @@ Creates a new TargetProject in a given project. NOTE: TargetProject is a global 
 | `params.parent` | `string` | Yes | Required. The TargetProject's parent. |
 | `params.targetProjectId` | `string` | No | Required. The target_project identifier. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.targetProjects.patch()`
 
@@ -635,7 +635,7 @@ Updates the parameters of a single TargetProject. NOTE: TargetProject is a globa
 | `params.name` | `string` | Yes | Output only. The name of the target project. |
 | `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the TargetProject resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.targetProjects.delete()`
 
@@ -677,7 +677,7 @@ Creates a new ImageImport in a given project.
 | `params.parent` | `string` | Yes | Required. The ImageImport's parent. |
 | `params.imageImportId` | `string` | No | Required. The image import identifier. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen. |
 | `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.imageImports.delete()`
 
@@ -712,9 +712,9 @@ Gets details of a single ImageImportJob.
 
 #### `projects.locations.imageImports.imageImportJobs.cancel()`
 
-Initiates the cancellation of a running clone job.
+Initiates the cancellation of a running ImageImportJob.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The image import job id. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

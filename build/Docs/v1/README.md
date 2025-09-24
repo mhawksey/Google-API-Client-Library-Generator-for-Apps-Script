@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Docs API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:27 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:03 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:23:44 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:23:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:11 GMT
 
 
@@ -32,7 +32,7 @@ Creates a blank document using the title given in the request. Other fields in t
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.batchUpdate()`
 
@@ -41,4 +41,4 @@ Applies one or more updates to the document. Each request is validated before be
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.documentId` | `string` | Yes | The ID of the document to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

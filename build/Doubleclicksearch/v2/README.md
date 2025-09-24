@@ -4,8 +4,8 @@ Auto-generated client library for using the **Search Ads 360 API (version: v2)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:42 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:28 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:05 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:30 GMT
 
 
@@ -60,7 +60,7 @@ Inserts a batch of new conversions into DoubleClick Search.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `conversion.update()`
 
@@ -68,7 +68,7 @@ Updates a batch of conversions in DoubleClick Search.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `conversion.updateAvailability()`
 
@@ -76,7 +76,7 @@ Updates the availabilities of a batch of floodlight activities in DoubleClick Se
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `reports`
 
@@ -86,7 +86,7 @@ Generates and returns a report immediately.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `reports.get()`
 
@@ -120,7 +120,7 @@ Inserts a report request into the reporting system.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `savedColumns`
 

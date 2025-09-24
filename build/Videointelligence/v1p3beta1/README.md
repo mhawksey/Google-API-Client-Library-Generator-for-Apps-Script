@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Video Intelligence API (vers
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:02:31 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:54:42 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:55:40 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:55:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:50 GMT
 
 
@@ -22,4 +22,4 @@ Performs asynchronous video annotation. Progress and results can be retrieved th
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

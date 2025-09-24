@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Labeling API (version: v1beta
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:54 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:11:32 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:15:56 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:15:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:57 GMT
 
 
@@ -62,7 +62,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Dataset resource parent, format: projects/{project_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.datasets.get()`
 
@@ -98,7 +98,7 @@ Imports data into dataset based on source locations defined in request. It can b
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.datasets.exportData()`
 
@@ -107,7 +107,7 @@ Exports data and annotations from dataset.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Dataset resource name, format: projects/{project_id}/datasets/{dataset_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.datasets.dataItems`
 
@@ -239,7 +239,7 @@ Create a FeedbackMessage object.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. FeedbackMessage resource parent, format: projects/{project_id}/datasets/{dataset_id}/annotatedDatasets/{annotated_dataset_id}/feedbackThreads/{feedback_thread_id}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.datasets.annotatedDatasets.feedbackThreads.feedbackMessages.get()`
 
@@ -276,7 +276,7 @@ Delete a FeedbackMessage.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the dataset to request labeling task, format: projects/{project_id}/datasets/{dataset_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.datasets.video`
 
@@ -287,7 +287,7 @@ Starts a labeling task for video. The type of video labeling task is configured 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the dataset to request labeling task, format: projects/{project_id}/datasets/{dataset_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.datasets.text`
 
@@ -298,7 +298,7 @@ Starts a labeling task for text. The type of text labeling task is configured by
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the data set to request labeling task, format: projects/{project_id}/datasets/{dataset_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.datasets.evaluations`
 
@@ -319,7 +319,7 @@ Searches example comparisons from an evaluation. The return format is a list of 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the Evaluation resource to search for example comparisons from. Format: "projects/{project_id}/datasets/{dataset_id}/evaluations/ {evaluation_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.annotationSpecSets`
 
@@ -330,7 +330,7 @@ Creates an annotation spec set by providing a set of labels.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. AnnotationSpecSet resource parent, format: projects/{project_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.annotationSpecSets.get()`
 
@@ -368,7 +368,7 @@ Creates an instruction for how data should be labeled.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Instruction resource parent, format: projects/{project_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instructions.get()`
 
@@ -419,7 +419,7 @@ Searches evaluations within a project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Evaluation job resource parent. Format: "projects/{project_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.evaluationJobs.patch()`
 
@@ -429,7 +429,7 @@ Updates an evaluation job. You can only update certain fields of the job's Evalu
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. After you create a job, Data Labeling Service assigns a name to the job with the following format: "projects/{project_id}/evaluationJobs/ {evaluation_job_id}" |
 | `params.updateMask` | `string` | No | Optional. Mask for which fields to update. You can only provide the following fields: * `evaluationJobConfig.humanAnnotationConfig.instruction` * `evaluationJobConfig.exampleCount` * `evaluationJobConfig.exampleSamplePercentage` You can provide more than one of these fields by separating them with commas. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.evaluationJobs.get()`
 
@@ -446,7 +446,7 @@ Pauses an evaluation job. Pausing an evaluation job that is already in a `PAUSED
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the evaluation job that is going to be paused. Format: "projects/{project_id}/evaluationJobs/{evaluation_job_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.evaluationJobs.resume()`
 
@@ -455,7 +455,7 @@ Resumes a paused evaluation job. A deleted evaluation job can't be resumed. Resu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the evaluation job that is going to be resumed. Format: "projects/{project_id}/evaluationJobs/{evaluation_job_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.evaluationJobs.delete()`
 

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Real-time Bidding API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:44:08 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:46:01 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:46:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:11 GMT
 
 
@@ -61,7 +61,7 @@ Updates a bidder's endpoint.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the endpoint resource that must follow the pattern `bidders/{bidderAccountId}/endpoints/{endpointId}`, where {bidderAccountId} is the account ID of the bidder who operates this endpoint, and {endpointId} is a unique ID assigned by the server. |
 | `params.updateMask` | `string` | No | Field mask to use for partial in-place updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `bidders.creatives`
 
@@ -84,7 +84,7 @@ Watches all creatives pertaining to a bidder. It is sufficient to invoke this en
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. To watch all creatives pertaining to the bidder and all its child seat accounts, the bidder must follow the pattern `bidders/{bidderAccountId}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `bidders.pretargetingConfigs`
 
@@ -113,7 +113,7 @@ Creates a pretargeting configuration. A pretargeting configuration's state (Pret
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the bidder to create the pretargeting configuration for. Format: bidders/{bidderAccountId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.pretargetingConfigs.patch()`
 
@@ -123,7 +123,7 @@ Updates a pretargeting configuration.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the pretargeting configuration that must follow the pattern `bidders/{bidder_account_id}/pretargetingConfigs/{config_id}` |
 | `params.updateMask` | `string` | No | Field mask to use for partial in-place updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.pretargetingConfigs.delete()`
 
@@ -140,7 +140,7 @@ Activates a pretargeting configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the pretargeting configuration. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.pretargetingConfigs.suspend()`
 
@@ -149,7 +149,7 @@ Suspends a pretargeting configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the pretargeting configuration. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.pretargetingConfigs.addTargetedSites()`
 
@@ -158,7 +158,7 @@ Adds targeted sites to the pretargeting configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pretargetingConfig` | `string` | Yes | Required. The name of the pretargeting configuration. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.pretargetingConfigs.removeTargetedSites()`
 
@@ -167,7 +167,7 @@ Removes targeted sites from the pretargeting configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pretargetingConfig` | `string` | Yes | Required. The name of the pretargeting configuration. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.pretargetingConfigs.addTargetedApps()`
 
@@ -176,7 +176,7 @@ Adds targeted apps to the pretargeting configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pretargetingConfig` | `string` | Yes | Required. The name of the pretargeting configuration. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.pretargetingConfigs.removeTargetedApps()`
 
@@ -185,7 +185,7 @@ Removes targeted apps from the pretargeting configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pretargetingConfig` | `string` | Yes | Required. The name of the pretargeting configuration. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.pretargetingConfigs.addTargetedPublishers()`
 
@@ -194,7 +194,7 @@ Adds targeted publishers to the pretargeting config.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pretargetingConfig` | `string` | Yes | Required. The name of the pretargeting configuration. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.pretargetingConfigs.removeTargetedPublishers()`
 
@@ -203,7 +203,7 @@ Removes targeted publishers from the pretargeting config.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.pretargetingConfig` | `string` | Yes | Required. The name of the pretargeting configuration. Format: bidders/{bidderAccountId}/pretargetingConfig/{configId} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `bidders.publisherConnections`
 
@@ -234,7 +234,7 @@ Batch approves multiple publisher connections.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The bidder for whom publisher connections will be approved. Format: `bidders/{bidder}` where `{bidder}` is the account ID of the bidder. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.publisherConnections.batchReject()`
 
@@ -243,7 +243,7 @@ Batch rejects multiple publisher connections.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The bidder for whom publisher connections will be rejected. Format: `bidders/{bidder}` where `{bidder}` is the account ID of the bidder. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `buyers`
 
@@ -302,7 +302,7 @@ Creates a creative.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent buyer that the new creative belongs to that must follow the pattern `buyers/{buyerAccountId}`, where `{buyerAccountId}` represents the account ID of the buyer who owns a creative. For a bidder accessing creatives on behalf of a child seat buyer, `{buyerAccountId}` should represent the account ID of the child seat buyer. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.creatives.patch()`
 
@@ -312,7 +312,7 @@ Updates a creative.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the creative. Follows the pattern `buyers/{buyer}/creatives/{creative}`, where `{buyer}` represents the account ID of the buyer who owns the creative, and `{creative}` is the buyer-specific creative ID that references this creative in the bid response. |
 | `params.updateMask` | `string` | No | Field mask to use for partial in-place updates. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `buyers.userLists`
 
@@ -341,7 +341,7 @@ Creates a new user list.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent buyer of the user list to be retrieved, which must follow the pattern `buyers/{buyerAccountId}`, where `{buyerAccountId}` represents the account ID of the buyer who owns the user list. For a bidder accessing user lists on behalf of a child seat buyer, `{buyerAccountId}` should represent the account ID of the child seat buyer. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.userLists.update()`
 
@@ -350,7 +350,7 @@ Updates the given user list. Only user lists with URLRestrictions can be updated
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the user list that must follow the pattern `buyers/{buyer}/userLists/{user_list}`, where `{buyer}` represents the account ID of the buyer who owns the user list. For a bidder accessing user lists on behalf of a child seat buyer, `{buyer}` represents the account ID of the child seat buyer. `{user_list}` is an int64 identifier assigned by Google to uniquely identify a user list. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.userLists.open()`
 
@@ -359,7 +359,7 @@ Changes the status of a user list to OPEN. This allows new users to be added to 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the user list to open. See UserList.name |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.userLists.close()`
 
@@ -368,7 +368,7 @@ Changes the status of a user list to CLOSED. This prevents new users from being 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the user list to close. See UserList.name |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.userLists.getRemarketingTag()`
 

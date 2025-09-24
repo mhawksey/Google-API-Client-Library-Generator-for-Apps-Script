@@ -4,8 +4,8 @@ Auto-generated client library for using the **Ad Exchange Buyer API II (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:20:58 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:30 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:33 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:43 GMT
 
 
@@ -26,7 +26,7 @@ Creates a creative.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The account that this creative belongs to. Can be used to filter the response of the creatives.list method. |
 | `params.duplicateIdMode` | `string` | No | Indicates if multiple creatives can share an ID or not. Default is NO_DUPLICATES (one ID per creative). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.creatives.update()`
 
@@ -36,7 +36,7 @@ Updates a creative.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The account that this creative belongs to. Can be used to filter the response of the creatives.list method. |
 | `params.creativeId` | `string` | Yes | The buyer-defined creative ID of this creative. Can be used to filter the response of the creatives.list method. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.creatives.get()`
 
@@ -66,7 +66,7 @@ Watches a creative. Will result in push notifications being sent to the topic wh
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The account of the creative to watch. |
 | `params.creativeId` | `string` | Yes | The creative ID to watch for status changes. Specify "-" to watch all creatives under the above account. If both creative-level and account-level notifications are sent, only a single notification will be sent to the creative-level notification topic. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.creatives.stopWatching()`
 
@@ -76,7 +76,7 @@ Stops watching a creative. Will stop push notifications being sent to the topics
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The account of the creative to stop notifications for. |
 | `params.creativeId` | `string` | Yes | The creative ID of the creative to stop notifications for. Specify "-" to specify stopping account level notifications. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.creatives.dealAssociations`
 
@@ -88,7 +88,7 @@ Associate an existing deal with a creative.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The account the creative belongs to. |
 | `params.creativeId` | `string` | Yes | The ID of the creative associated with the deal. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.creatives.dealAssociations.remove()`
 
@@ -98,7 +98,7 @@ Remove the association between a deal and a creative.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | The account the creative belongs to. |
 | `params.creativeId` | `string` | Yes | The ID of the creative associated with the deal. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.creatives.dealAssociations.list()`
 
@@ -141,7 +141,7 @@ Creates a new client buyer.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Unique numerical account ID for the buyer of which the client buyer is a customer; the sponsor buyer to create a client for. (required) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.clients.update()`
 
@@ -151,7 +151,7 @@ Updates an existing client buyer.
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Unique numerical account ID for the buyer of which the client buyer is a customer; the sponsor buyer to update a client for. (required) |
 | `params.clientAccountId` | `string` | Yes | Unique numerical account ID of the client to update. (required) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.clients.users`
 
@@ -175,7 +175,7 @@ Updates an existing client user. Only the user status can be changed on update.
 | `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 | `params.clientAccountId` | `string` | Yes | Numerical account ID of the client buyer that the user to be retrieved is associated with. (required) |
 | `params.userId` | `string` | Yes | Numerical identifier of the user to retrieve. (required) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.clients.users.get()`
 
@@ -197,7 +197,7 @@ Creates and sends out an email invitation to access an Ad Exchange client buyer 
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Numerical account ID of the client's sponsor buyer. (required) |
 | `params.clientAccountId` | `string` | Yes | Numerical account ID of the client buyer that the user should be associated with. (required) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.clients.invitations.get()`
 
@@ -238,7 +238,7 @@ Create the given proposal. Each created proposal and any deals it contains are a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.proposals.update()`
 
@@ -248,7 +248,7 @@ Update the given proposal at the client known revision number. If the server rev
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.proposalId` | `string` | Yes | The unique ID of the proposal. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.proposals.list()`
 
@@ -270,7 +270,7 @@ Create a new note and attach it to the proposal. The note is assigned a unique I
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.proposalId` | `string` | Yes | The ID of the proposal to attach the note to. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.proposals.cancelNegotiation()`
 
@@ -280,7 +280,7 @@ Cancel an ongoing negotiation on a proposal. This does not cancel or end serving
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.proposalId` | `string` | Yes | The ID of the proposal to cancel negotiation for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.proposals.accept()`
 
@@ -290,7 +290,7 @@ Mark the proposal as accepted at the given revision number. If the number does n
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.proposalId` | `string` | Yes | The ID of the proposal to accept. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.proposals.completeSetup()`
 
@@ -300,7 +300,7 @@ You can opt-in to manually update proposals to indicate that setup is complete. 
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.proposalId` | `string` | Yes | The ID of the proposal to mark as setup completed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.proposals.pause()`
 
@@ -310,7 +310,7 @@ Update the given proposal to pause serving. This method will set the `DealServin
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.proposalId` | `string` | Yes | The ID of the proposal to pause. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.proposals.resume()`
 
@@ -320,7 +320,7 @@ Update the given proposal to resume serving. This method will set the `DealServi
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.proposalId` | `string` | Yes | The ID of the proposal to resume. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.finalizedProposals`
 
@@ -344,7 +344,7 @@ Update given deals to pause serving. This method will set the `DealServingMetada
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.proposalId` | `string` | Yes | The proposal_id of the proposal containing the deals. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.finalizedProposals.resume()`
 
@@ -354,7 +354,7 @@ Update given deals to resume serving. This method will set the `DealServingMetad
 |---|---|---|---|
 | `params.accountId` | `string` | Yes | Account ID of the buyer. |
 | `params.proposalId` | `string` | Yes | The proposal_id of the proposal containing the deals. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.products`
 
@@ -413,7 +413,7 @@ Creates the specified filter set for the account with the given account ID.
 |---|---|---|---|
 | `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
 | `params.isTransient` | `boolean` | No | Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.accounts.filterSets.get()`
 
@@ -573,7 +573,7 @@ Creates the specified filter set for the account with the given account ID.
 |---|---|---|---|
 | `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
 | `params.isTransient` | `boolean` | No | Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `bidders.filterSets.get()`
 
@@ -735,7 +735,7 @@ Creates the specified filter set for the account with the given account ID.
 |---|---|---|---|
 | `params.ownerName` | `string` | Yes | Name of the owner (bidder or account) of the filter set to be created. For example: - For a bidder-level filter set for bidder 123: `bidders/123` - For an account-level filter set for the buyer account representing bidder 123: `bidders/123/accounts/123` - For an account-level filter set for the child seat buyer account 456 whose bidder is 123: `bidders/123/accounts/456` |
 | `params.isTransient` | `boolean` | No | Whether the filter set is transient, or should be persisted indefinitely. By default, filter sets are not transient. If transient, it will be available for at least 1 hour after creation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `buyers.filterSets.get()`
 

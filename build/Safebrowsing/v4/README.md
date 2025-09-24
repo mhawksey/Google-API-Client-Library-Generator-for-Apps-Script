@@ -4,8 +4,8 @@ Auto-generated client library for using the **Safe Browsing API (version: v4)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:57 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:45:10 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:46:55 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:46:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:11 GMT
 
 
@@ -22,7 +22,7 @@ Finds the threat entries that match the Safe Browsing lists.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `threatListUpdates`
 
@@ -32,7 +32,7 @@ Fetches the most recent threat list updates. A client can request updates for mu
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `encodedUpdates`
 
@@ -51,7 +51,7 @@ Finds the full hashes that match the requested hash prefixes.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `encodedFullHashes`
 
@@ -70,7 +70,7 @@ Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_RE
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `threatLists`
 

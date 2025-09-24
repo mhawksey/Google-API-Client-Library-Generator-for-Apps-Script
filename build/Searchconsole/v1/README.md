@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Search Console API (version
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:09 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:45:28 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:47:11 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:47:11 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:30 GMT
 
 
@@ -24,7 +24,7 @@ Index inspection.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `searchanalytics`
 
@@ -35,7 +35,7 @@ Query your data with filters and parameters that you define. Returns zero or mor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `urlTestingTools`
 
@@ -47,7 +47,7 @@ Runs Mobile-Friendly Test for a given URL.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `sitemaps`
 

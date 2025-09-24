@@ -4,8 +4,8 @@ Auto-generated client library for using the **Database Migration API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:58 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:11:39 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:02 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:04 GMT
 
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.migrationJobs`
 
@@ -107,7 +107,7 @@ Creates a new migration job in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent, which owns this collection of migration jobs. |
 | `params.migrationJobId` | `string` | No | Required. The ID of the instance to create. |
 | `params.requestId` | `string` | No | A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.patch()`
 
@@ -118,7 +118,7 @@ Updates the parameters of a single migration job.
 | `params.name` | `string` | Yes | The name (URI) of this migration job resource, in the form of: projects/{project}/locations/{location}/migrationJobs/{migrationJob}. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the migration job resource by the update. |
 | `params.requestId` | `string` | No | A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.delete()`
 
@@ -137,7 +137,7 @@ Start an already created migration job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to start. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.stop()`
 
@@ -146,7 +146,7 @@ Stops a running migration job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to stop. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.resume()`
 
@@ -155,7 +155,7 @@ Resume a migration job that is currently stopped and is resumable (was stopped d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to resume. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.promote()`
 
@@ -164,7 +164,7 @@ Promote a migration job, stopping replication to the destination and promoting t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to promote. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.verify()`
 
@@ -173,7 +173,7 @@ Verify a migration job, making sure the destination can reach the source and tha
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to verify. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.restart()`
 
@@ -182,7 +182,7 @@ Restart a stopped or failed migration job, resetting the destination instance to
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the migration job resource to restart. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.generateSshScript()`
 
@@ -191,7 +191,7 @@ Generate a SSH configuration script to configure the reverse SSH connectivity.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.migrationJob` | `string` | Yes | Name of the migration job resource to generate the SSH script. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.setIamPolicy()`
 
@@ -200,7 +200,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.migrationJobs.getIamPolicy()`
 
@@ -218,7 +218,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connectionProfiles`
 
@@ -251,7 +251,7 @@ Creates a new connection profile in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent, which owns this collection of connection profiles. |
 | `params.connectionProfileId` | `string` | No | Required. The connection profile identifier. |
 | `params.requestId` | `string` | No | A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectionProfiles.patch()`
 
@@ -262,7 +262,7 @@ Update the configuration of a single connection profile.
 | `params.name` | `string` | Yes | The name of this connection profile resource in the form of projects/{project}/locations/{location}/connectionProfiles/{connectionProfile}. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the connection profile resource by the update. |
 | `params.requestId` | `string` | No | A unique id used to identify the request. If the server receives two requests with the same id, then the second request will be ignored. It is recommended to always set this value to a UUID. The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectionProfiles.delete()`
 
@@ -281,7 +281,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectionProfiles.getIamPolicy()`
 
@@ -299,4 +299,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

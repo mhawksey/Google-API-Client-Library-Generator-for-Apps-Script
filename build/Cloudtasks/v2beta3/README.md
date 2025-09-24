@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Tasks API (version: v2beta3)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:45 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:03:41 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:59 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:57 GMT
 
 
@@ -46,7 +46,7 @@ Creates or Updates a CMEK config. Updates the Customer Managed Encryption Key as
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The config resource name which includes the project and location and must end in 'cmekConfig', in the format projects/PROJECT_ID/locations/LOCATION_ID/cmekConfig` |
 | `params.updateMask` | `string` | No | List of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.getCmekConfig()`
 
@@ -86,7 +86,7 @@ Creates a queue. Queues created with this method allow tasks to live for a maxim
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The location name in which the queue will be created. For example: `projects/PROJECT_ID/locations/LOCATION_ID` The list of allowed locations can be obtained by calling Cloud Tasks' implementation of ListLocations. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queues.patch()`
 
@@ -96,7 +96,7 @@ Updates a queue. This method creates the queue if it does not exist and updates 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Caller-specified and required in CreateQueue, after which it becomes output only. The queue name. The queue name must have the following format: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), or periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects) * `LOCATION_ID` is the canonical ID for the queue's location. The list of available locations can be obtained by calling ListLocations. For more information, see https://cloud.google.com/about/locations/. * `QUEUE_ID` can contain letters ([A-Za-z]), numbers ([0-9]), or hyphens (-). The maximum length is 100 characters. |
 | `params.updateMask` | `string` | No | A mask used to specify which fields of the queue are being updated. If empty, then all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queues.delete()`
 
@@ -113,7 +113,7 @@ Purges a queue by deleting all of its tasks. All tasks created before this metho
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queues.pause()`
 
@@ -122,7 +122,7 @@ Pauses the queue. If a queue is paused then the system will stop dispatching tas
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queues.resume()`
 
@@ -131,7 +131,7 @@ Resume a queue. This method resumes a queue after it has been PAUSED or DISABLED
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The queue name. For example: `projects/PROJECT_ID/location/LOCATION_ID/queues/QUEUE_ID` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queues.getIamPolicy()`
 
@@ -142,7 +142,7 @@ Gets the access control policy for a Queue. Returns an empty policy if the resou
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queues.setIamPolicy()`
 
@@ -153,7 +153,7 @@ Sets the access control policy for a Queue. Replaces any existing policy. Note: 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queues.testIamPermissions()`
 
@@ -162,7 +162,7 @@ Returns permissions that a caller has on a Queue. If the resource does not exist
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.queues.tasks`
 
@@ -195,7 +195,7 @@ Creates a task and adds it to a queue. Tasks cannot be updated after creation; t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The queue name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queues.tasks.delete()`
 
@@ -212,7 +212,7 @@ Forces a task to run now. When this method is called, Cloud Tasks will dispatch 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The task name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queues.tasks.buffer()`
 
@@ -222,4 +222,4 @@ Creates and buffers a new task without the need to explicitly define a Task mess
 |---|---|---|---|
 | `params.queue` | `string` | Yes | Required. The parent queue name. For example: projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID` The queue must already exist. |
 | `params.taskId` | `string` | Yes | Optional. Task ID for the task being created. If not provided, a random task ID is assigned to the task. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

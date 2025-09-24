@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Storage for Firebase API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:50 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:21:40 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:40 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:50 GMT
 
 
@@ -59,7 +59,7 @@ Links a Google Cloud Storage bucket to a Firebase project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.buckets.removeFirebase()`
 
@@ -68,7 +68,7 @@ Unlinks a linked Google Cloud Storage bucket from a Firebase project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.bucket` | `string` | Yes | Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.defaultBucket`
 
@@ -79,4 +79,4 @@ Creates a Spark tier-eligible Cloud Storage bucket and links it to your Firebase
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where the default bucket will be created, `projects/{project_id_or_number}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

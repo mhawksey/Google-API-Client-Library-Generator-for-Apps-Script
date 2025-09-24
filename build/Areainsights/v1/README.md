@@ -4,8 +4,8 @@ Auto-generated client library for using the **Places Aggregate API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:47 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:53:12 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:55 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:10 GMT
 
 
@@ -22,4 +22,4 @@ This method lets you retrieve insights about areas using a variety of filter suc
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

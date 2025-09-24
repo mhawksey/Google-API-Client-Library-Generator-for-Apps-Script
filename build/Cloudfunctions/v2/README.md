@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Functions API (version: v2)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:59 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:02:20 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:12:56 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:12:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:54 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 ### `projects.locations.operations`
 
@@ -60,7 +60,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.getIamPolicy()`
 
@@ -78,7 +78,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.get()`
 
@@ -109,7 +109,7 @@ Creates a new function. If a function with the given name already exists in the 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project and location in which the function should be created, specified in the format `projects/*/locations/*` |
 | `params.functionId` | `string` | No | The ID to use for the function, which will become the final component of the function's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.patch()`
 
@@ -119,7 +119,7 @@ Updates existing function.
 |---|---|---|---|
 | `params.name` | `string` | Yes | A user-defined name of the function. Function names must be unique globally and match pattern `projects/*/locations/*/functions/*` |
 | `params.updateMask` | `string` | No | The list of fields to be updated. If no field mask is provided, all fields will be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.setupFunctionUpgradeConfig()`
 
@@ -128,7 +128,7 @@ Creates a 2nd Gen copy of the function configuration based on the 1st Gen functi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the function which should have configuration copied for upgrade. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.abortFunctionUpgrade()`
 
@@ -137,7 +137,7 @@ Aborts generation upgrade process for a function with the given name from the sp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the function for which upgrade should be aborted. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.redirectFunctionUpgradeTraffic()`
 
@@ -146,7 +146,7 @@ Changes the traffic target of a function from the original 1st Gen function to t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the function for which traffic target should be changed to 2nd Gen from 1st Gen. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.rollbackFunctionUpgradeTraffic()`
 
@@ -155,7 +155,7 @@ Reverts the traffic target of a function from the 2nd Gen copy to the original 1
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the function for which traffic target should be changed back to 1st Gen from 2nd Gen. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.commitFunctionUpgrade()`
 
@@ -164,7 +164,7 @@ Finalizes the upgrade after which function upgrade can not be rolled back. This 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the function for which upgrade should be finalized. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.delete()`
 
@@ -189,7 +189,7 @@ Returns a signed URL for uploading a function source code. For more information 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project and location in which the Google Cloud Storage signed URL should be generated, specified in the format `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.generateDownloadUrl()`
 
@@ -198,7 +198,7 @@ Returns a signed URL for downloading deployed function source code. The URL is o
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of function for which source code Google Cloud Storage signed URL should be generated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.functions.detachFunction()`
 
@@ -207,7 +207,7 @@ Detaches 2nd Gen function to Cloud Run function.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the function for which should be detached. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.runtimes`
 

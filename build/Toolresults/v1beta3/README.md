@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Tool Results API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:11 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:53:40 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:42 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:50 GMT
 
 
@@ -42,7 +42,7 @@ Creates a History. The returned History will have the id set. May return any of 
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | A Project id. Required. |
 | `params.requestId` | `string` | No | A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.histories.get()`
 
@@ -75,7 +75,7 @@ Creates an Execution. The returned Execution will have the id set. May return an
 | `params.projectId` | `string` | Yes | A Project id. Required. |
 | `params.historyId` | `string` | Yes | A History id. Required. |
 | `params.requestId` | `string` | No | A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.histories.executions.list()`
 
@@ -108,7 +108,7 @@ Updates an existing Execution with the supplied partial entity. May return any o
 | `params.historyId` | `string` | Yes | Required. |
 | `params.executionId` | `string` | Yes | Required. |
 | `params.requestId` | `string` | No | A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.histories.executions.steps`
 
@@ -131,7 +131,7 @@ Creates a Step. The returned Step will have the id set. May return any of the fo
 | `params.historyId` | `string` | Yes | Required. A History id. |
 | `params.executionId` | `string` | Yes | Required. An Execution id. |
 | `params.requestId` | `string` | No | A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.histories.executions.steps.get()`
 
@@ -167,7 +167,7 @@ Updates an existing Step with the supplied partial entity. May return any of the
 | `params.executionId` | `string` | Yes | A Execution id. Required. |
 | `params.stepId` | `string` | Yes | A Step id. Required. |
 | `params.requestId` | `string` | No | A unique request ID for server to detect duplicated requests. For example, a UUID. Optional, but strongly recommended. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.histories.executions.steps.publishXunitXmlFiles()`
 
@@ -179,7 +179,7 @@ Publish xml files to an existing Step. May return any of the following canonical
 | `params.historyId` | `string` | Yes | A History id. Required. |
 | `params.executionId` | `string` | Yes | A Execution id. Required. |
 | `params.stepId` | `string` | Yes | A Step id. Note: This step must include a TestExecutionStep. Required. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.histories.executions.steps.getPerfMetricsSummary()`
 
@@ -246,7 +246,7 @@ Creates a PerfMetricsSummary resource. Returns the existing one if it has alread
 | `params.historyId` | `string` | Yes | A tool results history ID. |
 | `params.executionId` | `string` | Yes | A tool results execution ID. |
 | `params.stepId` | `string` | Yes | A tool results step ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.histories.executions.steps.perfSampleSeries`
 
@@ -260,7 +260,7 @@ Creates a PerfSampleSeries. May return any of the following error code(s): - ALR
 | `params.historyId` | `string` | Yes | A tool results history ID. |
 | `params.executionId` | `string` | Yes | A tool results execution ID. |
 | `params.stepId` | `string` | Yes | A tool results step ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.histories.executions.steps.perfSampleSeries.get()`
 
@@ -299,7 +299,7 @@ Creates a batch of PerfSamples - a client can submit multiple batches of Perf Sa
 | `params.executionId` | `string` | Yes | A tool results execution ID. |
 | `params.stepId` | `string` | Yes | A tool results step ID. |
 | `params.sampleSeriesId` | `string` | Yes | A sample series id |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.histories.executions.steps.perfSampleSeries.samples.list()`
 

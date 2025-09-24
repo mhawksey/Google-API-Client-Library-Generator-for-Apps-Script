@@ -4,8 +4,8 @@ Auto-generated client library for using the **YouTube Reporting API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:03:34 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:56:24 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:57:10 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:57:10 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:37 GMT
 
 
@@ -36,7 +36,7 @@ Creates a job and returns it.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.onBehalfOfContentOwner` | `string` | No | The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `jobs.list()`
 

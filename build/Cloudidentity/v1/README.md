@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Identity API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:06 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:25:06 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:03 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:01 GMT
 
 
@@ -23,7 +23,7 @@ Creates a device. Only company-owned device may be created. **Note**: This metho
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | No | Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.get()`
 
@@ -63,7 +63,7 @@ Wipes all data on the specified device.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.cancelWipe()`
 
@@ -72,7 +72,7 @@ Cancels an unfinished device wipe. This operation can be used to cancel device w
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}`, where device is the unique ID assigned to the Device. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `devices.deviceUsers`
 
@@ -127,7 +127,7 @@ Approves device to access user data.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.deviceUsers.block()`
 
@@ -136,7 +136,7 @@ Blocks device from accessing user data
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.deviceUsers.wipe()`
 
@@ -145,7 +145,7 @@ Wipes the user's account on a device. Other data on the device that is not assoc
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.deviceUsers.cancelWipe()`
 
@@ -154,7 +154,7 @@ Cancels an unfinished user account wipe. This operation can be used to cancel de
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Device in format: `devices/{device}/deviceUsers/{device_user}`, where device is the unique ID assigned to the Device, and device_user is the unique ID assigned to the User. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `devices.deviceUsers.clientStates`
 
@@ -188,7 +188,7 @@ Updates the client state for the device user **Note**: This method is available 
 | `params.name` | `string` | Yes | Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where partner corresponds to the partner storing the data. For partners belonging to the "BeyondCorp Alliance", this is the partner ID specified to you by Google. For all other callers, this is a string of the form: `{customer}-suffix`, where `customer` is your customer ID. The *suffix* is any string the caller specifies. This string will be displayed verbatim in the administration console. This suffix is used in setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID can be obtained from the URL: `GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response contains the customer ID starting with the letter 'C'. The customer ID to be used in this API is the string after the letter 'C' (not including 'C') |
 | `params.customer` | `string` | No | Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer}`, where customer is the customer to whom the device belongs. |
 | `params.updateMask` | `string` | No | Optional. Comma-separated list of fully qualified names of fields to be updated. If not specified, all updatable fields in ClientState are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `groups`
 
@@ -199,7 +199,7 @@ Creates a Group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.initialGroupConfig` | `string` | No | Optional. The initial configuration option for the `Group`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.get()`
 
@@ -226,7 +226,7 @@ Updates a `Group`.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Group`. Shall be of the form `groups/{group}`. |
 | `params.updateMask` | `string` | No | Required. The names of fields to update. May only contain the following field names: `display_name`, `description`, `labels`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.updateSecuritySettings()`
 
@@ -236,7 +236,7 @@ Update Security Settings
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the security settings. Shall be of the form `groups/{group_id}/securitySettings`. |
 | `params.updateMask` | `string` | No | Required. The fully-qualified names of fields to update. May only contain the following field: `member_restriction.query`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.delete()`
 
@@ -286,7 +286,7 @@ Creates a `Membership`.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent `Group` resource under which to create the `Membership`. Must be of the form `groups/{group}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.memberships.get()`
 
@@ -332,7 +332,7 @@ Modifies the `MembershipRole`s of a `Membership`.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The [resource name](https://cloud.google.com/apis/design/resource_names) of the `Membership` whose roles are to be modified. Must be of the form `groups/{group}/memberships/{membership}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.memberships.searchTransitiveMemberships()`
 
@@ -393,7 +393,7 @@ Creates an InboundSamlSsoProfile for a customer. When the target customer has en
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inboundSamlSsoProfiles.patch()`
 
@@ -403,7 +403,7 @@ Updates an InboundSamlSsoProfile. When the target customer has enabled [Multi-pa
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the SAML SSO profile. |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inboundSamlSsoProfiles.delete()`
 
@@ -466,7 +466,7 @@ Adds an IdpCredential. Up to 2 credentials are allowed. When the target customer
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The InboundSamlSsoProfile that owns the IdpCredential. Format: `inboundSamlSsoProfiles/{sso_profile_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `inboundOidcSsoProfiles`
 
@@ -476,7 +476,7 @@ Creates an InboundOidcSsoProfile for a customer. When the target customer has en
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inboundOidcSsoProfiles.patch()`
 
@@ -486,7 +486,7 @@ Updates an InboundOidcSsoProfile. When the target customer has enabled [Multi-pa
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the OIDC SSO profile. |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inboundOidcSsoProfiles.delete()`
 
@@ -530,7 +530,7 @@ Creates an InboundSsoAssignment for users and devices in a `Customer` under a gi
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inboundSsoAssignments.patch()`
 
@@ -540,7 +540,7 @@ Updates an InboundSsoAssignment. The body of this request is the `inbound_sso_as
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the Inbound SSO Assignment. |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inboundSsoAssignments.delete()`
 
@@ -611,7 +611,7 @@ Sends a UserInvitation to email. If the `UserInvitation` does not exist for this
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. `UserInvitation` name in the format `customers/{customer}/userinvitations/{user_email_address}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.userinvitations.cancel()`
 
@@ -620,7 +620,7 @@ Cancels a UserInvitation that was already sent.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. `UserInvitation` name in the format `customers/{customer}/userinvitations/{user_email_address}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.userinvitations.isInvitableUser()`
 

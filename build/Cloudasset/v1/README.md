@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Asset API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:27 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:01:22 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:07:07 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:07:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:08 GMT
 
 
@@ -33,7 +33,7 @@ Exports assets with time and resource types to a given Cloud Storage location/Bi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The relative name of the root asset. This can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"), or a folder number (such as "folders/123"). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.batchGetAssetsHistory()`
 
@@ -103,7 +103,7 @@ Analyzes IAM policies asynchronously to answer which identities have what access
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.scope` | `string` | Yes | Required. The relative name of the root asset. Only resources and IAM policies within the scope will be analyzed. This can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). To know how to get organization ID, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-organization#retrieving_your_organization_id). To know how to get folder or project ID, visit [here ](https://cloud.google.com/resource-manager/docs/creating-managing-folders#viewing_or_listing_folders_and_projects). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.analyzeMove()`
 
@@ -122,7 +122,7 @@ Issue a job that queries assets using a SQL statement compatible with [BigQuery 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The relative name of the root asset. This can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"), or a folder number (such as "folders/123"). Only assets belonging to the `parent` will be returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.analyzeOrgPolicies()`
 
@@ -267,7 +267,7 @@ Creates a feed in a parent project/folder/organization to listen to its asset up
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project/folder/organization where this feed should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `feeds.get()`
 
@@ -292,7 +292,7 @@ Updates an asset feed configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The format will be projects/{project_number}/feeds/{client-assigned_feed_identifier} or folders/{folder_number}/feeds/{client-assigned_feed_identifier} or organizations/{organization_number}/feeds/{client-assigned_feed_identifier} The client-assigned feed identifier must be unique within the parent project/folder/organization. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `feeds.delete()`
 
@@ -312,7 +312,7 @@ Creates a saved query in a parent project/folder/organization.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project/folder/organization where this saved_query should be created in. It can only be an organization number (such as "organizations/123"), a folder number (such as "folders/123"), a project ID (such as "projects/my-project-id"), or a project number (such as "projects/12345"). |
 | `params.savedQueryId` | `string` | No | Required. The ID to use for the saved query, which must be unique in the specified parent. It will become the final component of the saved query's resource name. This value should be 4-63 characters, and valid characters are `a-z-`. Notice that this field is required in the saved query creation, and the `name` field of the `saved_query` will be ignored. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `savedQueries.get()`
 
@@ -341,7 +341,7 @@ Updates a saved query.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the saved query. The format must be: * projects/project_number/savedQueries/saved_query_id * folders/folder_number/savedQueries/saved_query_id * organizations/organization_number/savedQueries/saved_query_id |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `savedQueries.delete()`
 

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Portability API (version: v1b
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:09 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:11:55 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:16 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:16 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:22 GMT
 
 
@@ -22,7 +22,7 @@ Initiates a new Archive job for the Portability API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `archiveJobs`
 
@@ -41,7 +41,7 @@ Retries a failed Portability Archive job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The Archive job ID you're retrying. This is returned by the InitiatePortabilityArchiveResponse. Retrying is only executed if the initial job failed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `archiveJobs.cancel()`
 
@@ -50,7 +50,7 @@ Cancels a Portability Archive job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `authorization`
 
@@ -60,7 +60,7 @@ Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This m
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accessType`
 
@@ -70,4 +70,4 @@ Gets the access type of the token.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

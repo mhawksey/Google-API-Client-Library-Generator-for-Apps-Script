@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Resource Manager API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:17 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:02:47 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:20 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:16 GMT
 
 
@@ -23,7 +23,7 @@ Creates a Project resource. Initially, the Project resource is owned by its crea
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.useLegacyStack` | `boolean` | No | A now unused experiment opt-out option. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.list()`
 
@@ -50,7 +50,7 @@ Updates the attributes of the Project identified by the specified `project_id` (
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | The project ID (for example, `my-project-123`). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.delete()`
 
@@ -67,7 +67,7 @@ Restores the Project identified by the specified `project_id` (for example, `my-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The project ID (for example, `foo-bar-123`). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getAncestry()`
 
@@ -76,7 +76,7 @@ Gets a list of ancestors in the resource hierarchy for the Project identified by
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The Project ID (for example, `my-project-123`). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getIamPolicy()`
 
@@ -85,7 +85,7 @@ Returns the IAM access control policy for the specified Project. Permission is d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.setIamPolicy()`
 
@@ -94,7 +94,7 @@ Sets the IAM access control policy for the specified Project. CAUTION: This meth
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.testIamPermissions()`
 
@@ -103,7 +103,7 @@ Returns permissions that a caller has on the specified Project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations`
 
@@ -133,7 +133,7 @@ Updates an Organization resource identified by the specified resource name.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the organization. This is the organization's relative path in the API. Its format is "organizations/[organization_id]". For example, "organizations/1234". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.setIamPolicy()`
 
@@ -142,7 +142,7 @@ Sets the access control policy on an Organization resource. Replaces any existin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.getIamPolicy()`
 
@@ -151,7 +151,7 @@ Gets the access control policy for an Organization resource. May be empty if no 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.testIamPermissions()`
 
@@ -160,4 +160,4 @@ Returns permissions that a caller has on the specified Organization. The `resour
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

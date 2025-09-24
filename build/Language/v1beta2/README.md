@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:32 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:25:04 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:27:52 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:27:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:49 GMT
 
 
@@ -22,7 +22,7 @@ Analyzes the sentiment of the provided text.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.analyzeEntities()`
 
@@ -30,7 +30,7 @@ Finds named entities (currently proper names and common nouns) in the text along
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.analyzeEntitySentiment()`
 
@@ -38,7 +38,7 @@ Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment as
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.analyzeSyntax()`
 
@@ -46,7 +46,7 @@ Analyzes the syntax of the text and provides sentence boundaries and tokenizatio
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.classifyText()`
 
@@ -54,7 +54,7 @@ Classifies a document into categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.moderateText()`
 
@@ -62,7 +62,7 @@ Moderates a document for harmful and sensitive categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.annotateText()`
 
@@ -70,4 +70,4 @@ A convenience method that provides all syntax, sentiment, entity, and classifica
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

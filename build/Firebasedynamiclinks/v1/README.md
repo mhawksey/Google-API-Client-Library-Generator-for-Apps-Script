@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Dynamic Links API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:37 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:35:37 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:19 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:19 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:32 GMT
 
 
@@ -22,7 +22,7 @@ Creates a managed short Dynamic Link given either a valid long Dynamic Link or d
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `shortLinks`
 
@@ -32,7 +32,7 @@ Creates a short Dynamic Link given either a valid long Dynamic Link or details s
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `v1`
 
@@ -52,7 +52,7 @@ Get iOS strong/weak-match info for post-install attribution.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.reopenAttribution()`
 
@@ -60,4 +60,4 @@ Get iOS reopen attribution for app universal link open deeplinking.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

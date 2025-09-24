@@ -4,8 +4,8 @@ Auto-generated client library for using the **reCAPTCHA Enterprise API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:19 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:44:12 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:46:04 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:46:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:14 GMT
 
 
@@ -25,7 +25,7 @@ Creates an Assessment of the likelihood an event is legitimate.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in which the assessment is created, in the format `projects/{project}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.assessments.annotate()`
 
@@ -34,7 +34,7 @@ Annotates a previously created Assessment to provide additional information on w
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Assessment, in the format `projects/{project}/assessments/{assessment}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.keys`
 
@@ -45,7 +45,7 @@ Creates a new reCAPTCHA Enterprise key.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project in which the key is created, in the format `projects/{project}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.keys.list()`
 
@@ -81,7 +81,7 @@ Updates the specified key.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name for the Key in the format `projects/{project}/keys/{key}`. |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields of the key get updated. If the mask is not present, all fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.keys.delete()`
 
@@ -98,7 +98,7 @@ Migrates an existing key from reCAPTCHA to reCAPTCHA Enterprise. Once a key is m
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the key to be migrated, in the format `projects/{project}/keys/{key}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.keys.addIpOverride()`
 
@@ -111,7 +111,7 @@ Adds an IP override to a key. The following restrictions hold:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the key to which the IP override is added, in the format `projects/{project}/keys/{key}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.keys.removeIpOverride()`
 
@@ -124,7 +124,7 @@ Removes an IP override from a key. The following restrictions hold:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the key from which the IP override is removed, in the format `projects/{project}/keys/{key}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.keys.listIpOverrides()`
 
@@ -153,7 +153,7 @@ Creates a new FirewallPolicy, specifying conditions at which reCAPTCHA Enterpris
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project this policy applies to, in the format `projects/{project}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.firewallpolicies.list()`
 
@@ -181,7 +181,7 @@ Updates the specified firewall policy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name for the FirewallPolicy in the format `projects/{project}/firewallpolicies/{firewallpolicy}`. |
 | `params.updateMask` | `string` | No | Optional. The mask to control which fields of the policy get updated. If the mask is not present, all fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.firewallpolicies.delete()`
 
@@ -198,7 +198,7 @@ Reorders all firewall policies.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the project to list the policies for, in the format `projects/{project}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.relatedaccountgroups`
 
@@ -233,4 +233,4 @@ Search group memberships related to a given account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.project` | `string` | Yes | Required. The name of the project to search related account group memberships from. Specify the project name in the following format: `projects/{project}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

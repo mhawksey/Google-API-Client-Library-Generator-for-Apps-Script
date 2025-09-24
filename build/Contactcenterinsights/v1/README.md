@@ -4,8 +4,8 @@ Auto-generated client library for using the **Contact Center AI Insights API (ve
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:16 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:32:16 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:15:00 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:15:00 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:58 GMT
 
 
@@ -34,7 +34,7 @@ Updates project-level settings.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the settings resource. Format: projects/{project}/locations/{location}/settings |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.getEncryptionSpec()`
 
@@ -51,7 +51,7 @@ Query metrics.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.queryPerformanceOverview()`
 
@@ -60,7 +60,7 @@ Generates a summary of predefined performance metrics for a set of conversations
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.listAllFeedbackLabels()`
 
@@ -80,7 +80,7 @@ Upload feedback labels from an external source in bulk. Currently supports label
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bulkDownloadFeedbackLabels()`
 
@@ -89,7 +89,7 @@ Download feedback labels in bulk from an external source. Currently supports exp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.bulkDeleteFeedbackLabels()`
 
@@ -98,7 +98,7 @@ Delete feedback labels in bulk using a filter.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.operations`
 
@@ -139,7 +139,7 @@ Creates a conversation. Note that this method does not support audio transcripti
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
 | `params.conversationId` | `string` | No | A unique ID for the new conversation. This ID will become the final component of the conversation's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.upload()`
 
@@ -148,7 +148,7 @@ Create a long-running conversation upload operation. This method differs from `C
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the conversation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.patch()`
 
@@ -159,7 +159,7 @@ Updates a conversation.
 | `params.name` | `string` | Yes | Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation} |
 | `params.updateMask` | `string` | No | The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `agent_id` * `language_code` * `labels` * `metadata` * `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or `ttl` * `data_source.gcs_source.audio_uri` or `data_source.dialogflow_source.audio_uri` |
 | `params.allowMissing` | `boolean` | No | Optional. Defaults to false. If set to true, and the conversation is not found, a new conversation will be created. In this situation, `update_mask` is ignored. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.get()`
 
@@ -199,7 +199,7 @@ Samples conversations based on user configuration and handles the sampled conver
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.bulkAnalyze()`
 
@@ -208,7 +208,7 @@ Analyzes multiple conversations in a single request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to create analyses in. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.bulkDelete()`
 
@@ -217,7 +217,7 @@ Deletes multiple conversations in a single request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.ingest()`
 
@@ -226,7 +226,7 @@ Imports conversations and processes them according to the user's configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for new conversations. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.calculateStats()`
 
@@ -246,7 +246,7 @@ Creates an analysis. The long running operation is done when the analysis has co
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the analysis. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.analyses.get()`
 
@@ -285,7 +285,7 @@ Create feedback label.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the feedback label. |
 | `params.feedbackLabelId` | `string` | No | Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.feedbackLabels.list()`
 
@@ -314,7 +314,7 @@ Update feedback label.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.feedbackLabels.delete()`
 
@@ -333,7 +333,7 @@ Create Assessment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the assessment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.assessments.get()`
 
@@ -370,7 +370,7 @@ Publish an Assessment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the assessment to publish. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.assessments.appeal()`
 
@@ -379,7 +379,7 @@ Appeal an Assessment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the assessment to appeal. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.assessments.finalize()`
 
@@ -388,7 +388,7 @@ Finalize an Assessment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the assessment to finalize. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.conversations.assessments.notes`
 
@@ -399,7 +399,7 @@ Create Note.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the note. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.assessments.notes.list()`
 
@@ -419,7 +419,7 @@ Update Note.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is empty, all updateable fields will be updated. Acceptable fields include: * `content` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.assessments.notes.delete()`
 
@@ -439,7 +439,7 @@ Creates a dataset.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
 | `params.datasetId` | `string` | No | Optional. The ID to use for the dataset. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.list()`
 
@@ -468,7 +468,7 @@ Updates a dataset.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Identifier. Resource name of the dataset. Format: projects/{project}/locations/{location}/datasets/{dataset} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.delete()`
 
@@ -496,7 +496,7 @@ Upload feedback labels from an external source in bulk. Currently supports label
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.bulkDownloadFeedbackLabels()`
 
@@ -505,7 +505,7 @@ Download feedback labels in bulk from an external source. Currently supports exp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.bulkDeleteFeedbackLabels()`
 
@@ -514,7 +514,7 @@ Delete feedback labels in bulk using a filter.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for new feedback labels. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.datasets.conversations`
 
@@ -556,7 +556,7 @@ Samples conversations based on user configuration and handles the sampled conver
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the dataset. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.conversations.bulkAnalyze()`
 
@@ -565,7 +565,7 @@ Analyzes multiple conversations in a single request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to create analyses in. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.conversations.bulkDelete()`
 
@@ -574,7 +574,7 @@ Deletes multiple conversations in a single request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.conversations.ingest()`
 
@@ -583,7 +583,7 @@ Imports conversations and processes them according to the user's configuration.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for new conversations. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.conversations.calculateStats()`
 
@@ -592,7 +592,7 @@ Gets conversation statistics.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The location of the conversations. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.datasets.conversations.analyses`
 
@@ -603,7 +603,7 @@ Creates an analysis. The long running operation is done when the analysis has co
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the analysis. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.conversations.analyses.get()`
 
@@ -642,7 +642,7 @@ Create feedback label.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the feedback label. |
 | `params.feedbackLabelId` | `string` | No | Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.conversations.feedbackLabels.list()`
 
@@ -671,7 +671,7 @@ Update feedback label.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.datasets.conversations.feedbackLabels.delete()`
 
@@ -690,7 +690,7 @@ Export insights data to a destination defined in the request body.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to export data from. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.insightsdata`
 
@@ -701,7 +701,7 @@ Export insights data to a destination defined in the request body.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to export data from. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.issueModels`
 
@@ -712,7 +712,7 @@ Creates an issue model.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the issue model. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.issueModels.patch()`
 
@@ -722,7 +722,7 @@ Updates an issue model.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.issueModels.get()`
 
@@ -755,7 +755,7 @@ Deploys an issue model. Returns an error if a model is already deployed. An issu
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The issue model to deploy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.issueModels.undeploy()`
 
@@ -764,7 +764,7 @@ Undeploys an issue model. An issue model can not be used in analysis after it ha
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The issue model to undeploy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.issueModels.export()`
 
@@ -773,7 +773,7 @@ Exports an issue model to the provided destination.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The issue model to export. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.issueModels.import()`
 
@@ -782,7 +782,7 @@ Imports an issue model from a Cloud Storage bucket.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the issue model. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.issueModels.calculateIssueModelStats()`
 
@@ -818,7 +818,7 @@ Updates an issue.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the issue. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.issueModels.issues.create()`
 
@@ -827,7 +827,7 @@ Creates an issue.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the issue. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.issueModels.issues.delete()`
 
@@ -846,7 +846,7 @@ Creates a phrase matcher.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the phrase matcher. Required. The location to create a phrase matcher for. Format: `projects//locations/` or `projects//locations/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.phraseMatchers.get()`
 
@@ -883,7 +883,7 @@ Updates a phrase matcher.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the phrase matcher. Format: projects/{project}/locations/{location}/phraseMatchers/{phrase_matcher} |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.analysisRules`
 
@@ -894,7 +894,7 @@ Creates a analysis rule.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the analysis rule. Required. The location to create a analysis rule for. Format: `projects//locations/` or `projects//locations/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.analysisRules.get()`
 
@@ -922,7 +922,7 @@ Updates a analysis rule.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the analysis rule. Format: projects/{project}/locations/{location}/analysisRules/{analysis_rule} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is not provided, the update will be applied to all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.analysisRules.delete()`
 
@@ -942,7 +942,7 @@ Creates an assessment rule.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the assessment rule. Required. The location to create a assessment rule for. Format: `projects//locations/` or `projects//locations/` |
 | `params.assessmentRuleId` | `string` | No | Optional. A unique ID for the new AssessmentRule. This ID will become the final component of the AssessmentRule's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.assessmentRules.get()`
 
@@ -970,7 +970,7 @@ Updates an assessment rule.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the assessment rule. Format: projects/{project}/locations/{location}/assessmentRules/{assessment_rule} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is not provided, the update will be applied to all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.assessmentRules.delete()`
 
@@ -989,7 +989,7 @@ Initializes a location-level encryption key specification. An error will result 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the encryption key specification resource. Format: projects/{project}/locations/{location}/encryptionSpec |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.views`
 
@@ -1000,7 +1000,7 @@ Creates a view.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the view. Required. The location to create a view for. Format: `projects//locations/` or `projects//locations/` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.views.get()`
 
@@ -1028,7 +1028,7 @@ Updates a view.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the view. Format: projects/{project}/locations/{location}/views/{view} |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.views.delete()`
 
@@ -1048,7 +1048,7 @@ Creates a QaQuestionTag.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the QaQuestionTag. |
 | `params.qaQuestionTagId` | `string` | No | Optional. A unique ID for the new QaQuestionTag. This ID will become the final component of the QaQuestionTag's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaQuestionTags.get()`
 
@@ -1066,7 +1066,7 @@ Updates a QaQuestionTag.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Resource name for the QaQuestionTag Format projects/{project}/locations/{location}/qaQuestionTags/{qa_question_tag} In the above format, the last segment, i.e., qa_question_tag, is a server-generated ID corresponding to the tag resource. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `qa_question_tag_name` - the name of the tag * `qa_question_ids` - the list of questions the tag applies to |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaQuestionTags.delete()`
 
@@ -1095,7 +1095,7 @@ Create a QaScorecard.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the QaScorecard. |
 | `params.qaScorecardId` | `string` | No | Optional. A unique ID for the new QaScorecard. This ID will become the final component of the QaScorecard's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.get()`
 
@@ -1113,7 +1113,7 @@ Updates a QaScorecard.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The scorecard name. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `description` * `display_name` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.delete()`
 
@@ -1145,7 +1145,7 @@ Creates a QaScorecardRevision.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the QaScorecardRevision. |
 | `params.qaScorecardRevisionId` | `string` | No | Optional. A unique ID for the new QaScorecardRevision. This ID will become the final component of the QaScorecardRevision's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.revisions.get()`
 
@@ -1162,7 +1162,7 @@ Fine tune one or more QaModels.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource for new fine tuning job instance. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.revisions.deploy()`
 
@@ -1171,7 +1171,7 @@ Deploy a QaScorecardRevision.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the QaScorecardRevision to deploy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.revisions.undeploy()`
 
@@ -1180,7 +1180,7 @@ Undeploy a QaScorecardRevision.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the QaScorecardRevision to undeploy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.revisions.delete()`
 
@@ -1213,7 +1213,7 @@ Create a QaQuestion.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the QaQuestion. |
 | `params.qaQuestionId` | `string` | No | Optional. A unique ID for the new question. This ID will become the final component of the question's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z0-9-]{4,64}$`. Valid characters are `a-z-`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.revisions.qaQuestions.get()`
 
@@ -1231,7 +1231,7 @@ Updates a QaQuestion.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the question. Format: projects/{project}/locations/{location}/qaScorecards/{qa_scorecard}/revisions/{revision}/qaQuestions/{qa_question} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `abbreviation` * `answer_choices` * `answer_instructions` * `order` * `question_body` * `tags` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.qaScorecards.revisions.qaQuestions.delete()`
 
@@ -1260,8 +1260,8 @@ Create AuthorizedViewSet
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedViewSet. |
-| `params.authorizedViewSetId` | `string` | No | Optional. A unique ID for the new AuthorizedViewSet. This ID will become the final component of the AuthorizedViewSet's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See aip.dev/122#resource-id-segments |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.authorizedViewSetId` | `string` | No | Optional. A unique ID for the new AuthorizedViewSet. This ID will become the final component of the AuthorizedViewSet's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.get()`
 
@@ -1291,7 +1291,7 @@ Updates an AuthorizedViewSet.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the AuthorizedViewSet. Format: projects/{project}/locations/{location}/authorizedViewSets/{authorized_view_set} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `display_name` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.delete()`
 
@@ -1311,7 +1311,7 @@ Query metrics.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.queryPerformanceOverview()`
 
@@ -1320,7 +1320,7 @@ Generates a summary of predefined performance metrics for a set of conversations
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.create()`
 
@@ -1329,8 +1329,8 @@ Create AuthorizedView
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the AuthorizedView. |
-| `params.authorizedViewId` | `string` | No | Optional. A unique ID for the new AuthorizedView. This ID will become the final component of the AuthorizedView's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See aip.dev/122#resource-id-segments |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.authorizedViewId` | `string` | No | Optional. A unique ID for the new AuthorizedView. This ID will become the final component of the AuthorizedView's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. See https://google.aip.dev/122#resource-id-segments |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.get()`
 
@@ -1372,7 +1372,7 @@ Updates an AuthorizedView.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the AuthorizedView. Format: projects/{project}/locations/{location}/authorizedViewSets/{authorized_view_set}/authorizedViews/{authorized_view} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `conversation_filter` * `display_name` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.delete()`
 
@@ -1389,7 +1389,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.getIamPolicy()`
 
@@ -1407,7 +1407,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.authorizedViewSets.authorizedViews.operations`
 
@@ -1478,7 +1478,7 @@ Analyzes multiple conversations in a single request.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource to create analyses in. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.calculateStats()`
 
@@ -1498,7 +1498,7 @@ Creates an analysis. The long running operation is done when the analysis has co
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the analysis. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.analyses.get()`
 
@@ -1537,7 +1537,7 @@ Create feedback label.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the feedback label. |
 | `params.feedbackLabelId` | `string` | No | Optional. The ID of the feedback label to create. If one is not specified it will be generated by the server. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.list()`
 
@@ -1566,7 +1566,7 @@ Update feedback label.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.feedbackLabels.delete()`
 
@@ -1585,7 +1585,7 @@ Create Assessment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the assessment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.get()`
 
@@ -1622,7 +1622,7 @@ Publish an Assessment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the assessment to publish. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.appeal()`
 
@@ -1631,7 +1631,7 @@ Appeal an Assessment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the assessment to appeal. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.finalize()`
 
@@ -1640,7 +1640,7 @@ Finalize an Assessment.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the assessment to finalize. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes`
 
@@ -1651,7 +1651,7 @@ Create Note.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the note. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.list()`
 
@@ -1671,7 +1671,7 @@ Update Note.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the note. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment}/notes/{note} |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. If the update_mask is empty, all updateable fields will be updated. Acceptable fields include: * `content` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.delete()`
 

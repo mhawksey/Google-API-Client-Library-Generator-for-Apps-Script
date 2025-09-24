@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Cloud Support API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:41 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:03:33 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:52 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:50 GMT
 
 
@@ -23,7 +23,7 @@ Create a file attachment on a case or Cloud resource. The attachment must have t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the case or Cloud resource to which the attachment should be attached. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `media.download()`
 
@@ -72,7 +72,7 @@ Create a new case and associate it with a parent. It must have the following fie
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent under which the case should be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `cases.patch()`
 
@@ -82,7 +82,7 @@ Update a case. Only some fields can be updated. EXAMPLES: cURL: ```shell case="p
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name for the case. |
 | `params.updateMask` | `string` | No | A list of attributes of the case that should be updated. Supported values are `priority`, `display_name`, and `subscriber_email_addresses`. If no fields are specified, all supported fields are updated. Be careful - if you do not provide a field mask, then you might accidentally clear some fields. For example, if you leave the field mask empty and do not provide a value for `subscriber_email_addresses`, then `subscriber_email_addresses` is updated to empty. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `cases.escalate()`
 
@@ -91,7 +91,7 @@ Escalate a case, starting the Google Cloud Support escalation management process
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the case to be escalated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `cases.close()`
 
@@ -100,7 +100,7 @@ Close a case. EXAMPLES: cURL: ```shell case="projects/some-project/cases/4359534
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the case to close. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `cases.attachments`
 
@@ -133,7 +133,7 @@ Add a new comment to a case. The comment must have the following fields set: `bo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the case to which the comment should be added. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `caseClassifications`
 

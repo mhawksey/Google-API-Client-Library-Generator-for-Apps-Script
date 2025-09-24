@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Resource Manager API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:22 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:02:56 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:26 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:23 GMT
 
 
@@ -40,7 +40,7 @@ Create a Lien which applies to the resource denoted by the `parent` field. Calle
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `liens.delete()`
 
@@ -59,7 +59,7 @@ Lists `Constraints` that could be applied on the specified resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource to list `Constraints` for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.listOrgPolicies()`
 
@@ -68,7 +68,7 @@ Lists all the `Policies` set for a particular resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource to list Policies for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getOrgPolicy()`
 
@@ -77,7 +77,7 @@ Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource the `Policy` is set on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getEffectiveOrgPolicy()`
 
@@ -86,7 +86,7 @@ Gets the effective `Policy` on a resource. This is the result of merging `Polici
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | The name of the resource to start computing the effective `Policy`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.setOrgPolicy()`
 
@@ -95,7 +95,7 @@ Updates the specified `Policy` on the resource. Creates a new `Policy` for that 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Resource name of the resource to attach the `Policy`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.clearOrgPolicy()`
 
@@ -104,7 +104,7 @@ Clears a `Policy` from a resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource for the `Policy` to clear. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.get()`
 
@@ -130,7 +130,7 @@ Request that a new Project be created. The result is an Operation which can be u
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.update()`
 
@@ -139,7 +139,7 @@ Updates the attributes of the Project identified by the specified `project_id` (
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | The project ID (for example, `my-project-123`). Required. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.delete()`
 
@@ -156,7 +156,7 @@ Restores the Project identified by the specified `project_id` (for example, `my-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The project ID (for example, `foo-bar-123`). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getAncestry()`
 
@@ -165,7 +165,7 @@ Gets a list of ancestors in the resource hierarchy for the Project identified by
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. The Project ID (for example, `my-project-123`). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getIamPolicy()`
 
@@ -174,7 +174,7 @@ Returns the IAM access control policy for the specified Project. Permission is d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.setIamPolicy()`
 
@@ -183,7 +183,7 @@ Sets the IAM access control policy for the specified Project. CAUTION: This meth
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.testIamPermissions()`
 
@@ -192,7 +192,7 @@ Returns permissions that a caller has on the specified Project. For additional i
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `folders`
 
@@ -203,7 +203,7 @@ Lists `Constraints` that could be applied on the specified resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource to list `Constraints` for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.listOrgPolicies()`
 
@@ -212,7 +212,7 @@ Lists all the `Policies` set for a particular resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource to list Policies for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getOrgPolicy()`
 
@@ -221,7 +221,7 @@ Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource the `Policy` is set on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getEffectiveOrgPolicy()`
 
@@ -230,7 +230,7 @@ Gets the effective `Policy` on a resource. This is the result of merging `Polici
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | The name of the resource to start computing the effective `Policy`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.setOrgPolicy()`
 
@@ -239,7 +239,7 @@ Updates the specified `Policy` on the resource. Creates a new `Policy` for that 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Resource name of the resource to attach the `Policy`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.clearOrgPolicy()`
 
@@ -248,7 +248,7 @@ Clears a `Policy` from a resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource for the `Policy` to clear. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations`
 
@@ -259,7 +259,7 @@ Lists `Constraints` that could be applied on the specified resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource to list `Constraints` for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.listOrgPolicies()`
 
@@ -268,7 +268,7 @@ Lists all the `Policies` set for a particular resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource to list Policies for. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.getOrgPolicy()`
 
@@ -277,7 +277,7 @@ Gets a `Policy` on a resource. If no `Policy` is set on the resource, a `Policy`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource the `Policy` is set on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.getEffectiveOrgPolicy()`
 
@@ -286,7 +286,7 @@ Gets the effective `Policy` on a resource. This is the result of merging `Polici
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | The name of the resource to start computing the effective `Policy`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.setOrgPolicy()`
 
@@ -295,7 +295,7 @@ Updates the specified `Policy` on the resource. Creates a new `Policy` for that 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Resource name of the resource to attach the `Policy`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.clearOrgPolicy()`
 
@@ -304,7 +304,7 @@ Clears a `Policy` from a resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Name of the resource for the `Policy` to clear. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.search()`
 
@@ -312,7 +312,7 @@ Searches Organization resources that are visible to the user and satisfy the spe
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.get()`
 
@@ -329,7 +329,7 @@ Sets the access control policy on an Organization resource. Replaces any existin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.getIamPolicy()`
 
@@ -338,7 +338,7 @@ Gets the access control policy for an Organization resource. May be empty if no 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.testIamPermissions()`
 
@@ -347,7 +347,7 @@ Returns permissions that a caller has on the specified Organization. The `resour
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `operations`
 

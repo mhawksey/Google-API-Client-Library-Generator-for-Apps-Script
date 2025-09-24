@@ -4,8 +4,8 @@ Auto-generated client library for using the **AdMob API (version: v1beta)** in G
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:08 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:47 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:49 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:01 GMT
 
 
@@ -42,7 +42,7 @@ Generates an AdMob Network report based on the provided report specification. Re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.mediationReport`
 
@@ -53,7 +53,7 @@ Generates an AdMob Mediation report based on the provided report specification. 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.campaignReport`
 
@@ -64,7 +64,7 @@ Generates Campaign Report based on provided specifications.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.apps`
 
@@ -75,7 +75,7 @@ Creates an app under the specified AdMob account. This method has limited access
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the account for which the app is being created. Example: accounts/pub-9876543210987654 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.apps.list()`
 
@@ -96,7 +96,7 @@ Creates an ad unit under the specified AdMob account. This method has limited ac
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the account to create the specified ad unit for. Example: accounts/pub-9876543210987654 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.adUnits.list()`
 
@@ -128,7 +128,7 @@ Create an ad unit mapping under the specific AdMob account and ad unit. This met
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent which owns the ad unit mapping. Format: accounts/{publisher_id}/adUnits/{ad_unit_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.mediationGroups`
 
@@ -150,7 +150,7 @@ Create a mediation group under the specific AdMob account. This method has limit
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent which owns the mediation group. Format: accounts/{publisher_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.mediationGroups.patch()`
 
@@ -160,7 +160,7 @@ Update the specified mediation group under the specified AdMob account. This met
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for this mediation group. Format is: accounts/{publisher_id}/mediationGroups/{mediation_group_id} Example: accounts/pub-9876543210987654/mediationGroups/0123456789 |
 | `params.updateMask` | `string` | No | List of mediation group fields to be updated. Updates to repeated fields such as items in a list will fully replace the existing value(s) with the new value(s). Updates to individual values in a map can be done by indexing by the key. The following field masks are supported for mediation group updates: - "mediation_group_lines[\"{mediation_group_line_id}\"]" clang-format off - "mediation_group_lines[\"{mediation_group_line_id}\"].ad_unit_mappings[\"{ad_unit_id}\"]" clang-format on - "mediation_group_lines[\"{mediation_group_line_id}\"].cpm_micros" - "mediation_group_lines[\"{mediation_group_line_id}\"].cpm_mode" - "mediation_group_lines[\"{mediation_group_line_id}\"].state" - "mediation_group_lines[\"{mediation_group_line_id}\"].display_name" - "targeting.ad_unit_ids" To update a mediation group with a new mediation group line, use a distinct negative number for the "mediation_group_line_id". For Example: update_mask { paths: "mediation_group_lines[\"123456789012345\"].cpm_micros" } |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.mediationGroups.mediationAbExperiments`
 
@@ -171,7 +171,7 @@ Create an A/B testing experiment for a specified AdMob account and a mediation g
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent which owns the mediation group. Format: accounts/{publisher_id}/mediationGroups/{mediation_group_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.mediationGroups.mediationAbExperiments.stop()`
 
@@ -180,7 +180,7 @@ Stop the mediation A/B experiment and choose a variant. This method has limited 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the mediation group, the experiment for which to choose a variant for. Example: accounts/pub-9876543210987654/mediationGroups/0123456789/ mediationAbExperiments |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.adUnitMappings`
 
@@ -191,7 +191,7 @@ Batch create the ad unit mappings under the specific AdMob account. The maximum 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The AdMob account which owns this collection of ad unit mappings. Format: accounts/{publisher_id} See https://support.google.com/admob/answer/2784578 for instructions on how to find your AdMob publisher ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.adSources`
 

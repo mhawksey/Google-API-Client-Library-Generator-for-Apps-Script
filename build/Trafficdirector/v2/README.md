@@ -4,8 +4,8 @@ Auto-generated client library for using the **Traffic Director API (version: v2)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:31 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:53:56 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:58 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:05 GMT
 
 
@@ -19,4 +19,4 @@ Auto-generated client library for using the **Traffic Director API (version: v2)
 #### `discovery.client_status()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Advisory Notifications API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:18 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:51:04 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:03:04 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:03:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:19 GMT
 
 
@@ -33,7 +33,7 @@ Update notification settings.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings or projects/{projects}/locations/{location}/settings. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.notifications`
 
@@ -77,7 +77,7 @@ Update notification settings.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the settings to retrieve. Format: organizations/{organization}/locations/{location}/settings or projects/{projects}/locations/{location}/settings. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.notifications`
 

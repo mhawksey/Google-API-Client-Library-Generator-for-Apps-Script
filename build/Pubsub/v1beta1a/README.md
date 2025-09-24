@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Pub/Sub API (version: v1beta
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:01 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:43:47 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:45:41 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:45:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:46:48 GMT
 
 
@@ -22,7 +22,7 @@ Creates the given topic with the given name.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `topics.publish()`
 
@@ -30,7 +30,7 @@ Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `topics.publishBatch()`
 
@@ -38,7 +38,7 @@ Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `topics.get()`
 
@@ -74,7 +74,7 @@ Creates a subscription on a given topic for a given subscriber. If the subscript
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.get()`
 
@@ -108,7 +108,7 @@ Modifies the PushConfig for a specified subscription. This method can be used to
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.pull()`
 
@@ -116,7 +116,7 @@ Pulls a single message from the server. If return_immediately is true, and no me
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.pullBatch()`
 
@@ -124,7 +124,7 @@ Pulls messages from the server. Returns an empty list if there are no messages a
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.modifyAckDeadline()`
 
@@ -132,7 +132,7 @@ Modifies the Ack deadline for a message received from a pull request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.acknowledge()`
 
@@ -140,4 +140,4 @@ Acknowledges a particular received message: the Pub/Sub system can remove the gi
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

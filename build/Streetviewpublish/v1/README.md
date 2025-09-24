@@ -4,8 +4,8 @@ Auto-generated client library for using the **Street View Publish API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:44 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:47:31 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:14 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:20 GMT
 
 
@@ -26,7 +26,7 @@ Creates an upload session to start uploading photo bytes. The method uses the up
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `photo.create()`
 
@@ -40,7 +40,7 @@ After the client finishes uploading the photo with the returned UploadRef, Creat
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `photo.get()`
 
@@ -74,7 +74,7 @@ Updates the metadata of a Photo, such as pose, place association, connections, e
 |---|---|---|---|
 | `params.id` | `string` | Yes | A unique identifier for a photo. |
 | `params.updateMask` | `string` | No | Required. Mask that identifies fields on the photo metadata to update. If not present, the old Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields are valid: * `pose.heading` * `pose.lat_lng_pair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` * `connections` * `places` > Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the new contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is empty, all connections are removed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `photo.delete()`
 
@@ -118,7 +118,7 @@ Updates the metadata of Photos, such as pose, place association, connections, et
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `photos.batchDelete()`
 
@@ -126,7 +126,7 @@ Deletes a list of Photos and their metadata. Note that if BatchDeletePhotos fail
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `photoSequence`
 
@@ -136,7 +136,7 @@ Creates an upload session to start uploading photo sequence data. The upload URL
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `photoSequence.create()`
 
@@ -149,7 +149,7 @@ After the client finishes uploading the PhotoSequence with the returned UploadRe
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.inputType` | `string` | No | Required. The input form of PhotoSequence. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `photoSequence.get()`
 

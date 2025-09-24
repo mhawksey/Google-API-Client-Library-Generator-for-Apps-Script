@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Run Admin API (version: v2)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:49 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:44:55 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:46:42 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:46:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:56 GMT
 
 
@@ -49,7 +49,7 @@ Export image for a given resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the resource of which image metadata should be exported. Format: `projects/{project_id_or_number}/locations/{location}/services/{service}/revisions/{revision}` for Revision `projects/{project_id_or_number}/locations/{location}/jobs/{job}/executions/{execution}` for Execution |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.operations`
 
@@ -87,7 +87,7 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.builds`
 
@@ -98,7 +98,7 @@ Submits a build in a given project.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project and location to build in. Location must be a region, e.g., 'us-central1' or 'global' if the global builder is to be used. Format: `projects/{project}/locations/{location}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.jobs`
 
@@ -111,7 +111,7 @@ Creates a Job.
 | `params.parent` | `string` | Yes | Required. The location and project in which this Job should be created. Format: projects/{project}/locations/{location}, where {project} can be project id or number. |
 | `params.jobId` | `string` | No | Required. The unique identifier for the Job. The name of the job becomes {parent}/jobs/{job_id}. |
 | `params.validateOnly` | `boolean` | No | Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.get()`
 
@@ -141,7 +141,7 @@ Updates a Job.
 | `params.name` | `string` | Yes | The fully qualified name of this Job. Format: projects/{project}/locations/{location}/jobs/{job} |
 | `params.validateOnly` | `boolean` | No | Indicates that the request should be validated and default values populated, without persisting the request or updating any resources. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and if the Job does not exist, it will create a new one. Caller must have both create and update permissions for this call if this is set to true. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.delete()`
 
@@ -160,7 +160,7 @@ Triggers creation of a new Execution of this Job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The full name of the Job. Format: projects/{project}/locations/{location}/jobs/{job}, where {project} can be project id or number. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.getIamPolicy()`
 
@@ -178,7 +178,7 @@ Sets the IAM Access control policy for the specified Job. Overwrites any existin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.testIamPermissions()`
 
@@ -187,7 +187,7 @@ Returns permissions that a caller has on the specified Project. There are no per
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.jobs.executions`
 
@@ -236,7 +236,7 @@ Cancels an Execution.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Execution to cancel. Format: `projects/{project}/locations/{location}/jobs/{job}/executions/{execution}`, where `{project}` can be project id or number. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.jobs.executions.tasks`
 
@@ -270,7 +270,7 @@ Creates a new Service in a given project and location.
 | `params.parent` | `string` | Yes | Required. The location and project in which this service should be created. Format: projects/{project}/locations/{location}, where {project} can be project id or number. Only lowercase characters, digits, and hyphens. |
 | `params.serviceId` | `string` | No | Required. The unique identifier for the Service. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the service becomes {parent}/services/{service_id}. |
 | `params.validateOnly` | `boolean` | No | Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.services.get()`
 
@@ -301,7 +301,7 @@ Updates a Service.
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. |
 | `params.validateOnly` | `boolean` | No | Indicates that the request should be validated and default values populated, without persisting the request or updating any resources. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and if the Service does not exist, it will create a new one. The caller must have 'run.services.create' permissions if this is set to true and the Service does not exist. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.services.delete()`
 
@@ -329,7 +329,7 @@ Sets the IAM Access control policy for the specified Service. Overwrites any exi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.services.testIamPermissions()`
 
@@ -338,7 +338,7 @@ Returns permissions that a caller has on the specified Project. There are no per
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.services.revisions`
 
@@ -391,7 +391,7 @@ Creates a new WorkerPool in a given project and location.
 | `params.parent` | `string` | Yes | Required. The location and project in which this worker pool should be created. Format: `projects/{project}/locations/{location}`, where `{project}` can be project id or number. Only lowercase characters, digits, and hyphens. |
 | `params.workerPoolId` | `string` | No | Required. The unique identifier for the WorkerPool. It must begin with letter, and cannot end with hyphen; must contain fewer than 50 characters. The name of the worker pool becomes `{parent}/workerPools/{worker_pool_id}`. |
 | `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workerPools.get()`
 
@@ -423,7 +423,7 @@ Updates a WorkerPool.
 | `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or updating any resources. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and if the WorkerPool does not exist, it will create a new one. The caller must have 'run.workerpools.create' permissions if this is set to true and the WorkerPool does not exist. |
 | `params.forceNewRevision` | `boolean` | No | Optional. If set to true, a new revision will be created from the template even if the system doesn't detect any changes from the previously deployed revision. This may be useful for cases where the underlying resources need to be recreated or reinitialized. For example if the image is specified by label, but the underlying image digest has changed) or if the container performs deployment initialization work that needs to be performed again. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workerPools.delete()`
 
@@ -451,7 +451,7 @@ Sets the IAM Access control policy for the specified WorkerPool. Overwrites any 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workerPools.testIamPermissions()`
 
@@ -460,7 +460,7 @@ Returns permissions that a caller has on the specified Project. There are no per
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.workerPools.revisions`
 

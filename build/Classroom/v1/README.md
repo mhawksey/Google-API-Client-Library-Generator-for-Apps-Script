@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Classroom API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:01:01 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:53 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:53 GMT
 - **Created:** Sun, 20 Jul 2025 16:20:50 GMT
 
 
@@ -36,7 +36,7 @@ Creates a course. The user specified in `ownerId` is the owner of the created co
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.get()`
 
@@ -67,7 +67,7 @@ Updates a course. This method returns the following error codes:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.id` | `string` | Yes | Identifier of the course to update. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.patch()`
 
@@ -93,7 +93,7 @@ Updates one or more fields in a course. This method returns the following error 
 |---|---|---|---|
 | `params.id` | `string` | Yes | Identifier of the course to update. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the course to update. This field is required to do an update. The update will fail if invalid fields are specified. The following fields are valid: * `name` * `section` * `descriptionHeading` * `description` * `room` * `courseState` * `ownerId` Note: patches to ownerId are treated as being effective immediately, but in practice it may take some time for the ownership transfer of all affected resources to complete. When set in a query parameter, this field should be specified as `updateMask=,,...` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.delete()`
 
@@ -153,7 +153,7 @@ Updates grading period settings of a course. Individual grading periods can be a
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Required. The identifier of the course. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields in the GradingPeriodSettings to update. The GradingPeriodSettings `grading_periods` list will be fully replaced by the grading periods specified in the update request. For example: * Grading periods included in the list without an ID are considered additions, and a new ID will be assigned when the request is made. * Grading periods that currently exist, but are missing from the request will be considered deletions. * Grading periods with an existing ID and modified data are considered edits. Unmodified data will be left as is. * Grading periods included with an unknown ID will result in an error. The following fields may be specified: * `grading_periods` * `apply_to_existing_coursework` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `courses.aliases`
 
@@ -172,7 +172,7 @@ Creates an alias for a course. This method returns the following error codes:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course to alias. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.aliases.delete()`
 
@@ -222,7 +222,7 @@ Creates course work. The resulting course work (and corresponding student submis
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.patch()`
 
@@ -241,7 +241,7 @@ Updates one or more fields of a course work. See google.classroom.v1.CourseWork 
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the course work. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the course work to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `CourseWork` object. If a field that does not support empty values is included in the update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` * `submission_modification_mode` * `topic_id` * `grading_period_id` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.delete()`
 
@@ -301,11 +301,15 @@ Modifies assignee mode and options of a coursework. Only a teacher of the course
 
 * `NOT_FOUND` if the requested course or course work does not exist.
 
+* `FAILED_PRECONDITION` for the following request error:
+
+* EmptyAssignees
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the coursework. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.getAddOnContext()`
 
@@ -345,7 +349,7 @@ Updates a rubric. See google.classroom.v1.Rubric for details of which fields can
 | `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
 | `params.id` | `string` | No | Optional. Identifier of the rubric. |
 | `params.updateMask` | `string` | No | Optional. Mask that identifies which fields on the rubric to update. This field is required to do an update. The update fails if invalid fields are specified. There are multiple options to define the criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list. Only one of these can be used at a time to define a rubric. The rubric `criteria` list is fully replaced by the rubric criteria specified in the update request. For example, if a criterion or level is missing from the request, it is deleted. New criteria and levels are added and an ID is assigned. Existing criteria and levels retain the previously assigned ID if the ID is specified in the request. The following fields can be specified by teachers: * `criteria` * `source_spreadsheet_id` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `courses.courseWork.studentSubmissions`
 
@@ -381,7 +385,7 @@ Updates one or more fields of a student submission. See google.classroom.v1.Stud
 | `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
 | `params.id` | `string` | Yes | Identifier of the student submission. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the student submission to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields may be specified by teachers: * `draft_grade` * `assigned_grade` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.studentSubmissions.list()`
 
@@ -418,7 +422,7 @@ Turns in a student submission. Turning in a student submission transfers ownersh
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
 | `params.id` | `string` | Yes | Identifier of the student submission. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.studentSubmissions.reclaim()`
 
@@ -437,7 +441,7 @@ Reclaims a student submission on behalf of the student that owns it. Reclaiming 
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
 | `params.id` | `string` | Yes | Identifier of the student submission. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.studentSubmissions.return()`
 
@@ -454,7 +458,7 @@ Returns a student submission. Returning a student submission transfers ownership
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
 | `params.id` | `string` | Yes | Identifier of the student submission. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.studentSubmissions.modifyAttachments()`
 
@@ -471,7 +475,7 @@ Modifies attachments of student submission. Attachments may only be added to stu
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
 | `params.id` | `string` | Yes | Identifier of the student submission. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `courses.courseWork.addOnAttachments`
 
@@ -526,7 +530,7 @@ Creates an add-on attachment under a post. Requires the add-on to have permissio
 | `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
 | `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
 | `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.addOnAttachments.patch()`
 
@@ -545,7 +549,7 @@ Updates an add-on attachment. Requires the add-on to have been the original crea
 | `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
 | `params.postId` | `string` | No | Required. Identifier of the post under which the attachment is attached. |
 | `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.addOnAttachments.delete()`
 
@@ -584,7 +588,7 @@ Updates data associated with an add-on attachment submission. Requires the add-o
 | `params.submissionId` | `string` | Yes | Required. Identifier of the student's submission. |
 | `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
 | `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.addOnAttachments.studentSubmissions.get()`
 
@@ -626,7 +630,7 @@ Updates a rubric. See google.classroom.v1.Rubric for details of which fields can
 | `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
 | `params.id` | `string` | Yes | Optional. Identifier of the rubric. |
 | `params.updateMask` | `string` | No | Optional. Mask that identifies which fields on the rubric to update. This field is required to do an update. The update fails if invalid fields are specified. There are multiple options to define the criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list. Only one of these can be used at a time to define a rubric. The rubric `criteria` list is fully replaced by the rubric criteria specified in the update request. For example, if a criterion or level is missing from the request, it is deleted. New criteria and levels are added and an ID is assigned. Existing criteria and levels retain the previously assigned ID if the ID is specified in the request. The following fields can be specified by teachers: * `criteria` * `source_spreadsheet_id` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.rubrics.create()`
 
@@ -650,7 +654,7 @@ Creates a rubric. The requesting user and course owner must have rubrics creatio
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.rubrics.get()`
 
@@ -735,7 +739,7 @@ Creates an announcement. This method returns the following error codes:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.announcements.get()`
 
@@ -787,7 +791,7 @@ Updates one or more fields of an announcement. This method returns the following
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the announcement. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the announcement to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Announcement object. If a field that does not support empty values is included in the update mask and not set in the Announcement object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `text` * `state` * `scheduled_time` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.announcements.modifyAssignees()`
 
@@ -799,11 +803,15 @@ Modifies assignee mode and options of an announcement. Only a teacher of the cou
 
 * `NOT_FOUND` if the requested course or course work does not exist.
 
+* `FAILED_PRECONDITION` for the following request error:
+
+* EmptyAssignees
+
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the announcement. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.announcements.getAddOnContext()`
 
@@ -876,7 +884,7 @@ Creates an add-on attachment under a post. Requires the add-on to have permissio
 | `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
 | `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
 | `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.announcements.addOnAttachments.patch()`
 
@@ -895,7 +903,7 @@ Updates an add-on attachment. Requires the add-on to have been the original crea
 | `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
 | `params.postId` | `string` | No | Required. Identifier of the post under which the attachment is attached. |
 | `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.announcements.addOnAttachments.delete()`
 
@@ -935,7 +943,7 @@ Creates a course work material. This method returns the following error codes:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWorkMaterials.get()`
 
@@ -989,7 +997,7 @@ Updates one or more fields of a course work material. This method returns the fo
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the course work material. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the course work material to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the course work material object. If a field that does not support empty values is included in the update mask and not set in the course work material object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `scheduled_time` * `topic_id` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWorkMaterials.delete()`
 
@@ -1077,7 +1085,7 @@ Creates an add-on attachment under a post. Requires the add-on to have permissio
 | `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
 | `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
 | `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWorkMaterials.addOnAttachments.patch()`
 
@@ -1096,7 +1104,7 @@ Updates an add-on attachment. Requires the add-on to have been the original crea
 | `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
 | `params.postId` | `string` | No | Required. Identifier of the post under which the attachment is attached. |
 | `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWorkMaterials.addOnAttachments.delete()`
 
@@ -1136,7 +1144,7 @@ Creates a topic. This method returns the following error codes:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.topics.patch()`
 
@@ -1155,7 +1163,7 @@ Updates one or more fields of a topic. This method returns the following error c
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the topic. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the topic to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Topic object. If a field that does not support empty values is included in the update mask and not set in the Topic object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified: * `name` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.topics.delete()`
 
@@ -1276,7 +1284,7 @@ Creates an add-on attachment under a post. Requires the add-on to have permissio
 | `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
 | `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
 | `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.posts.addOnAttachments.patch()`
 
@@ -1295,7 +1303,7 @@ Updates an add-on attachment. Requires the add-on to have been the original crea
 | `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
 | `params.itemId` | `string` | No | Identifier of the post under which the attachment is attached. |
 | `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.posts.addOnAttachments.delete()`
 
@@ -1334,7 +1342,7 @@ Updates data associated with an add-on attachment submission. Requires the add-o
 | `params.submissionId` | `string` | Yes | Required. Identifier of the student's submission. |
 | `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
 | `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.posts.addOnAttachments.studentSubmissions.get()`
 
@@ -1381,7 +1389,7 @@ Creates a teacher of a course. Domain administrators are permitted to [directly 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.teachers.get()`
 
@@ -1455,7 +1463,7 @@ Adds a user as a student of a course. Domain administrators are permitted to [di
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course to create the student in. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.enrollmentCode` | `string` | No | Enrollment code of the course to create the student in. This code is required if userId corresponds to the requesting user; it may be omitted if the requesting user has administrative permissions to create students for any user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.students.get()`
 
@@ -1561,7 +1569,7 @@ Creates a guardian invitation, and sends an email to the guardian asking them to
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.studentId` | `string` | Yes | ID of the student (in standard format) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `userProfiles.guardianInvitations.patch()`
 
@@ -1580,7 +1588,7 @@ Modifies a guardian invitation. Currently, the only valid modification is to cha
 | `params.studentId` | `string` | Yes | The ID of the student whose guardian invitation is to be modified. |
 | `params.invitationId` | `string` | Yes | The `id` field of the `GuardianInvitation` to be modified. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the course to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields are valid: * `state` When set in a query parameter, this field should be specified as `updateMask=,,...` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `userProfiles.guardians`
 
@@ -1655,7 +1663,7 @@ Creates an invitation. Only one invitation for a user and course may exist at a 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `invitations.get()`
 
@@ -1744,7 +1752,7 @@ Creates a `Registration`, causing Classroom to start sending notifications from 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `registrations.delete()`
 

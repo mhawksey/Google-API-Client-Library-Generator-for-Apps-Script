@@ -4,8 +4,8 @@ Auto-generated client library for using the **Serverless VPC Access API (version
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:02:57 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:55:19 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:14 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:14 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:53 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 ### `projects.locations.operations`
 
@@ -61,7 +61,7 @@ Creates a Serverless VPC Access connector, returns an operation.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project ID and location in which the configuration should be created, specified in the format `projects/*/locations/*`. |
 | `params.connectorId` | `string` | No | Required. The ID to use for this connector. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectors.patch()`
 
@@ -71,7 +71,7 @@ Updates a Serverless VPC Access connector, returns an operation.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name in the format `projects/*/locations/*/connectors/*`. |
 | `params.updateMask` | `string` | No | The fields to update on the entry group. If absent or empty, all modifiable fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connectors.get()`
 

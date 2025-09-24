@@ -4,8 +4,8 @@ Auto-generated client library for using the **Calendar API (version: v3)** in Go
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:56 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:55:02 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:27 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:56 GMT
 
 
@@ -42,7 +42,7 @@ Creates an access control rule.
 |---|---|---|---|
 | `params.calendarId` | `string` | Yes | Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. |
 | `params.sendNotifications` | `boolean` | No | Whether to send notifications about the calendar sharing change. Optional. The default is True. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `acl.list()`
 
@@ -68,7 +68,7 @@ Updates an access control rule. This method supports patch semantics.
 | `params.calendarId` | `string` | Yes | Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. |
 | `params.ruleId` | `string` | Yes | ACL rule identifier. |
 | `params.sendNotifications` | `boolean` | No | Whether to send notifications about the calendar sharing change. Note that there are no notifications on access removal. Optional. The default is True. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `acl.update()`
 
@@ -79,7 +79,7 @@ Updates an access control rule.
 | `params.calendarId` | `string` | Yes | Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. |
 | `params.ruleId` | `string` | Yes | ACL rule identifier. |
 | `params.sendNotifications` | `boolean` | No | Whether to send notifications about the calendar sharing change. Note that there are no notifications on access removal. Optional. The default is True. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `acl.watch()`
 
@@ -95,7 +95,7 @@ Watch for changes to ACL resources.
 If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken.
 Learn more about incremental synchronization.
 Optional. The default is to return all entries. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `calendarList`
 
@@ -122,7 +122,7 @@ Inserts an existing calendar into the user's calendar list.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.colorRgbFormat` | `boolean` | No | Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `calendarList.list()`
 
@@ -149,7 +149,7 @@ Updates an existing calendar on the user's calendar list. This method supports p
 |---|---|---|---|
 | `params.calendarId` | `string` | Yes | Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. |
 | `params.colorRgbFormat` | `boolean` | No | Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `calendarList.update()`
 
@@ -159,7 +159,7 @@ Updates an existing calendar on the user's calendar list.
 |---|---|---|---|
 | `params.calendarId` | `string` | Yes | Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. |
 | `params.colorRgbFormat` | `boolean` | No | Whether to use the foregroundColor and backgroundColor fields to write the calendar colors (RGB). If this feature is used, the index-based colorId field will be set to the best matching option automatically. Optional. The default is False. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `calendarList.watch()`
 
@@ -177,7 +177,7 @@ To ensure client state consistency minAccessRole query parameter cannot be speci
 If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken.
 Learn more about incremental synchronization.
 Optional. The default is to return all entries. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `calendars`
 
@@ -209,7 +209,9 @@ Returns metadata for a calendar.
 
 Creates a secondary calendar.
 
-| `params.resource` | `object` | Yes | The request body. |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `calendars.patch()`
 
@@ -218,7 +220,7 @@ Updates metadata for a calendar. This method supports patch semantics.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.calendarId` | `string` | Yes | Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `calendars.update()`
 
@@ -227,7 +229,7 @@ Updates metadata for a calendar.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.calendarId` | `string` | Yes | Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `channels`
 
@@ -235,7 +237,9 @@ Updates metadata for a calendar.
 
 Stop watching resources through this channel
 
-| `params.resource` | `object` | Yes | The request body. |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `colors`
 
@@ -281,7 +285,7 @@ Deprecated behavior: If a non-default event is imported, its type will be change
 | `params.calendarId` | `string` | Yes | Calendar identifier. To retrieve calendar IDs call the calendarList.list method. If you want to access the primary calendar of the currently logged in user, use the "primary" keyword. |
 | `params.conferenceDataVersion` | `integer` | No | Version number of conference data supported by the API client. Version 0 assumes no conference data support and ignores conference data in the event's body. Version 1 enables support for copying of ConferenceData as well as for creating new conferences using the createRequest field of conferenceData. The default is 0. |
 | `params.supportsAttachments` | `boolean` | No | Whether API client performing operation supports event attachments. Optional. The default is False. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `events.insert()`
 
@@ -297,7 +301,7 @@ Creates an event.
 Whether to send notifications about the creation of the new event. Note that some emails might still be sent even if you set the value to false. The default is false. |
 | `params.sendUpdates` | `string` | No | Whether to send notifications about the creation of the new event. Note that some emails might still be sent. The default is false. |
 | `params.supportsAttachments` | `boolean` | No | Whether API client performing operation supports event attachments. Optional. The default is False. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `events.instances()`
 
@@ -399,7 +403,7 @@ Updates an event. This method supports patch semantics.
 Whether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false. |
 | `params.sendUpdates` | `string` | No | Guests who should receive notifications about the event update (for example, title changes, etc.). |
 | `params.supportsAttachments` | `boolean` | No | Whether API client performing operation supports event attachments. Optional. The default is False. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `events.quickAdd()`
 
@@ -430,7 +434,7 @@ Updates an event.
 Whether to send notifications about the event update (for example, description changes, etc.). Note that some emails might still be sent even if you set the value to false. The default is false. |
 | `params.sendUpdates` | `string` | No | Guests who should receive notifications about the event update (for example, title changes, etc.). |
 | `params.supportsAttachments` | `boolean` | No | Whether API client performing operation supports event attachments. Optional. The default is False. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `events.watch()`
 
@@ -483,7 +487,7 @@ Optional. The default is to return all entries. |
 | `params.timeMin` | `string` | No | Lower bound (exclusive) for an event's end time to filter by. Optional. The default is not to filter by end time. Must be an RFC3339 timestamp with mandatory time zone offset, for example, 2011-06-03T10:00:00-07:00, 2011-06-03T10:00:00Z. Milliseconds may be provided but are ignored. If timeMax is set, timeMin must be smaller than timeMax. |
 | `params.timeZone` | `string` | No | Time zone used in the response. Optional. The default is the time zone of the calendar. |
 | `params.updatedMin` | `string` | No | Lower bound for an event's last modification time (as a RFC3339 timestamp) to filter by. When specified, entries deleted since this time will always be included regardless of showDeleted. Optional. The default is not to filter by last modification time. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `freebusy`
 
@@ -491,7 +495,9 @@ Optional. The default is to return all entries. |
 
 Returns free/busy information for a set of calendars.
 
-| `params.resource` | `object` | Yes | The request body. |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `settings`
 
@@ -528,4 +534,4 @@ Watch for changes to Settings resources.
 If the syncToken expires, the server will respond with a 410 GONE response code and the client should clear its storage and perform a full synchronization without any syncToken.
 Learn more about incremental synchronization.
 Optional. The default is to return all entries. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

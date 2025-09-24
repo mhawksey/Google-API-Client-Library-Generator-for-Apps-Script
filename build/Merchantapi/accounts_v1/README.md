@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: accounts_v1
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:43:12 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:43:12 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:34:13 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:34:13 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:12 GMT
 
 
@@ -30,7 +30,7 @@ Creates a Merchant Center account with additional configuration. Adds the user t
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.delete()`
 
@@ -49,7 +49,7 @@ Updates an account regardless of its type: standalone, advanced account or sub-a
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the account. Format: `accounts/{account}` |
 | `params.updateMask` | `string` | No | Optional. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `account_name` - `adult_content` - `language_code` - `time_zone` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.list()`
 
@@ -70,6 +70,13 @@ List all sub-accounts for a given advanced account. This is a convenience wrappe
 | `params.provider` | `string` | Yes | Required. The aggregation service provider. Format: `accounts/{accountId}` |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of accounts to return. The service may return fewer than this value. If unspecified, at most 250 accounts are returned. The maximum value is 500; values above 500 are coerced to 500. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `accounts.list` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided in the `accounts.list` request must match the call that provided the page token. |
+
+#### `accounts.getAccountForGcpRegistration()`
+
+Retrieves the merchant account that the calling GCP is registered with.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 
 ### `accounts.issues`
 
@@ -112,7 +119,7 @@ Propose an account service.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the parent account for the service. Format: `accounts/{account}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.services.approve()`
 
@@ -121,7 +128,7 @@ Approve an account service proposal.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the account service to approve. Format: `accounts/{account}/services/{service}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.services.reject()`
 
@@ -130,7 +137,7 @@ Reject an account service (both proposed and approve services can be rejected).
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the account service to reject. Format: `accounts/{account}/services/{service}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.relationships`
 
@@ -150,7 +157,7 @@ Updates the account relationship. Executing this method requires admin access.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the account relationship. Format: `accounts/{account}/relationships/{relationship}`. For example, `accounts/123456/relationships/567890`. |
 | `params.updateMask` | `string` | No | Optional. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `account_id_alias` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.relationships.list()`
 
@@ -180,7 +187,7 @@ Creates a Merchant Center account user. Executing this method requires admin acc
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the account for which a user will be created. Format: `accounts/{account}` |
 | `params.userId` | `string` | No | Required. The email address of the user (for example, `john.doe@gmail.com`). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.users.delete()`
 
@@ -198,7 +205,7 @@ Updates a Merchant Center account user. Executing this method requires admin acc
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the user. Format: `accounts/{account}/user/{email}` Use `me` to refer to your own email address, for example `accounts/{account}/users/me`. |
 | `params.updateMask` | `string` | No | Optional. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `access_rights` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.users.list()`
 
@@ -228,7 +235,7 @@ Updates the autofeed settings of an account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the autofeed settings. Format: `accounts/{account}/autofeedSettings`. |
 | `params.updateMask` | `string` | No | Required. List of fields being updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.automaticImprovements`
 
@@ -248,7 +255,7 @@ Updates the automatic improvements of an account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the automatic improvements. Format: `accounts/{account}/automaticImprovements`. |
 | `params.updateMask` | `string` | No | Required. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `item_updates` - `item_updates.account_level_settings` - `image_improvements` - `image_improvements.account_level_settings` - `shipping_improvements` - `shipping_improvements.allow_shipping_improvements` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.businessIdentity`
 
@@ -268,7 +275,7 @@ Updates the business identity of an account. Executing this method requires admi
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the business identity. Format: `accounts/{account}/businessIdentity` |
 | `params.updateMask` | `string` | No | Optional. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `black_owned` - `latino_owned` - `promotions_consent` - `small_business` - `veteran_owned` - `women_owned` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.businessInfo`
 
@@ -288,7 +295,7 @@ Updates the business info of an account. Executing this method requires admin ac
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the business info. Format: `accounts/{account}/businessInfo` |
 | `params.updateMask` | `string` | No | Optional. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `address` - `customer_service` - `korean_business_registration_number` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.developerRegistration`
 
@@ -299,7 +306,7 @@ Registers the GCP used for the API call to the shopping account passed in the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the developer registration to be created for the merchant account that the GCP will be registered with. Format: `accounts/{account}/developerRegistration` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.developerRegistration.getDeveloperRegistration()`
 
@@ -316,7 +323,7 @@ Unregister the calling GCP from the calling shopping account. Note that the GCP 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the developer registration to be created for the merchant account that the GCP will be registered with. Format: `accounts/{account}/developerRegistration` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.emailPreferences`
 
@@ -336,7 +343,7 @@ Updates the email preferences for a Merchant Center account user. Advanced accou
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the EmailPreferences. The endpoint is only supported for the authenticated user. |
 | `params.updateMask` | `string` | No | Required. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `news_and_tips` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.gbpAccounts`
 
@@ -357,7 +364,7 @@ Link the specified merchant to a GBP account for all countries. To run this meth
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent resource to which the GBP account is linked. Format: `accounts/{account}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.homepage`
 
@@ -377,7 +384,7 @@ Updates a store's homepage. Executing this method requires admin access.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the store's homepage. Format: `accounts/{account}/homepage` |
 | `params.updateMask` | `string` | No | Optional. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `uri` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.homepage.claim()`
 
@@ -390,7 +397,7 @@ Claims a store's homepage. Executing this method requires admin access. If the h
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the homepage to claim. Format: `accounts/{account}/homepage` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.homepage.unclaim()`
 
@@ -399,7 +406,7 @@ Unclaims a store's homepage. Executing this method requires admin access.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the homepage to unclaim. Format: `accounts/{account}/homepage` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.omnichannelSettings`
 
@@ -428,7 +435,7 @@ Create the omnichannel settings for a given merchant.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this omnichannel setting will be created. Format: `accounts/{account}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.omnichannelSettings.patch()`
 
@@ -438,7 +445,7 @@ Update the omnichannel setting for a given merchant in a given country.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the omnichannel setting. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}` |
 | `params.updateMask` | `string` | No | Required. The list of fields to be updated. The following fields are supported in snake_case only: - `lsf_type` - `in_stock` - `pickup` - `odo` - `about` - `inventory_verification` Full replacement with wildcard `*`is supported, while empty/implied update mask is not. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.omnichannelSettings.requestInventoryVerification()`
 
@@ -447,7 +454,7 @@ Requests inventory verification for a given merchant in a given country.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the omnichannel setting to request inventory verification. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.omnichannelSettings.lfpProviders`
 
@@ -468,7 +475,7 @@ Link the specified merchant to a LFP provider for the specified country.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the LFP provider resource to link. Format: `accounts/{account}/omnichannelSettings/{omnichannel_setting}/lfpProviders/{lfp_provider}`. The `lfp_provider` is the LFP provider ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.onlineReturnPolicies`
 
@@ -497,7 +504,7 @@ Creates a new return policy for a given business.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The Merchant Center account for which the return policy will be created. Format: `accounts/{account}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.onlineReturnPolicies.delete()`
 
@@ -534,7 +541,7 @@ Enable participation in the specified program for the account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the program for which to enable participation for the given account. Format: `accounts/{account}/programs/{program}`. For example, `accounts/123456/programs/free-listings`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.programs.disable()`
 
@@ -543,7 +550,7 @@ Disable participation in the specified program for the account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the program for which to disable participation for the given account. Format: `accounts/{account}/programs/{program}`. For example, `accounts/123456/programs/free-listings`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.programs.checkoutSettings`
 
@@ -562,7 +569,7 @@ Creates `CheckoutSettings` for the given merchant.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The merchant account for which the `CheckoutSettings` will be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.programs.checkoutSettings.updateCheckoutSettings()`
 
@@ -572,7 +579,7 @@ Updates `CheckoutSettings` for the given merchant.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the program configuration settings. Format: `accounts/{account}/programs/{program}/checkoutSettings` |
 | `params.updateMask` | `string` | No | Required. List of fields being updated. The following fields are supported (in both `snake_case` and `lowerCamelCase`): - `eligible_destinations` - `uri_settings` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.programs.checkoutSettings.deleteCheckoutSettings()`
 
@@ -600,7 +607,7 @@ Creates a region definition in your Merchant Center account. Executing this meth
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account to create a region for. Format: `accounts/{account}` |
 | `params.regionId` | `string` | No | Required. The identifier for the region, unique over all regions of the same account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.regions.batchCreate()`
 
@@ -609,7 +616,7 @@ Creates one or more regions in your Merchant Center account. Executing this meth
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account to create one or more regions for. Format: `accounts/{account}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.regions.patch()`
 
@@ -619,7 +626,7 @@ Updates a region definition in your Merchant Center account. Executing this meth
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the region. Format: `accounts/{account}/regions/{region}` |
 | `params.updateMask` | `string` | No | Optional. The comma-separated field mask indicating the fields to update. Example: `"displayName,postalCodeArea.regionCode"`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.regions.batchUpdate()`
 
@@ -628,7 +635,7 @@ Updates one or more regions in your Merchant Center account. Executing this meth
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account to update one or more regions for. Format: `accounts/{account}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.regions.delete()`
 
@@ -644,8 +651,8 @@ Deletes multiple regions by name from your Merchant Center account. Executing th
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The account to create a region for. Format: `accounts/{account}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. The account to delete one or more regions from. Format: `accounts/{account}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.regions.list()`
 
@@ -674,7 +681,7 @@ Replace the shipping setting of a business with the request shipping setting. Ex
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account for which this shipping setting will be inserted. If you are using an advanced account, you must specify the unique identifier of the sub-account for which you want to insert the shipping setting. Format: `accounts/{ACCOUNT_ID}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.termsOfServiceAgreementStates`
 

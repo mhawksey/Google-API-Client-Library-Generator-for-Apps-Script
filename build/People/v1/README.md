@@ -4,8 +4,8 @@ Auto-generated client library for using the **People API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:46:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:35:51 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:43:51 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:43:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:10 GMT
 
 
@@ -32,7 +32,7 @@ Create a new contact and return the person resource for that contact. The reques
 |---|---|---|---|
 | `params.personFields` | `string` | No | Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined |
 | `params.sources` | `string` | No | Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `people.deleteContact()`
 
@@ -70,7 +70,7 @@ Update contact data for an existing contact person. Any non-contact data will no
 | `params.updatePersonFields` | `string` | No | Required. A field mask to restrict which fields on the person are updated. Multiple fields can be specified by separating them with commas. All updated fields will be replaced. Valid values are: * addresses * biographies * birthdays * calendarUrls * clientData * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * relations * sipAddresses * urls * userDefined |
 | `params.personFields` | `string` | No | Optional. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined |
 | `params.sources` | `string` | No | Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `people.updateContactPhoto()`
 
@@ -79,7 +79,7 @@ Update a contact's photo. Mutate requests for the same user should be sent seque
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceName` | `string` | Yes | Required. Person resource name |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `people.searchContacts()`
 
@@ -98,7 +98,7 @@ Delete a batch of contacts. Any non-contact data will not be deleted. Mutate req
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `people.batchCreateContacts()`
 
@@ -106,7 +106,7 @@ Create a batch of new contacts and return the PersonResponses for the newly Muta
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `people.batchUpdateContacts()`
 
@@ -114,7 +114,7 @@ Update a batch of contacts and return a map of resource names to PersonResponses
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `people.get()`
 
@@ -205,7 +205,7 @@ Copies an "Other contact" to a new contact in the user's "myContacts" group Muta
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceName` | `string` | Yes | Required. The resource name of the "Other contact" to copy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `otherContacts.search()`
 
@@ -235,7 +235,7 @@ Create a new contact group owned by the authenticated user. Created contact grou
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `contactGroups.delete()`
 
@@ -274,7 +274,7 @@ Update the name of an existing contact group owned by the authenticated user. Up
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceName` | `string` | Yes | The resource name for the contact group, assigned by the server. An ASCII string, in the form of `contactGroups/{contact_group_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `contactGroups.members`
 
@@ -285,4 +285,4 @@ Modify the members of a contact group owned by the authenticated user. The only 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resourceName` | `string` | Yes | Required. The resource name of the contact group to modify. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

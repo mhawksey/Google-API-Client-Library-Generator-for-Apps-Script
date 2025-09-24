@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Testing API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:02 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:53:30 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:33 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:39 GMT
 
 
@@ -26,7 +26,7 @@ Creates and runs a matrix of tests according to the given specifications. Unsupp
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | The GCE project under which this job will run. |
 | `params.requestId` | `string` | No | A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.testMatrices.get()`
 
@@ -55,7 +55,7 @@ POST /v1/projects/{project_id}/deviceSessions
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The Compute Engine project under which this device will be allocated. "projects/{project_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.deviceSessions.list()`
 
@@ -83,7 +83,7 @@ POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.deviceSessions.patch()`
 
@@ -93,7 +93,7 @@ PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSessi
 |---|---|---|---|
 | `params.name` | `string` | Yes | Optional. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `applicationDetailService`
 
@@ -104,7 +104,7 @@ Gets the details of an Android application APK.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.bundleLocation.gcsPath` | `string` | No | A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `testEnvironmentCatalog`
 

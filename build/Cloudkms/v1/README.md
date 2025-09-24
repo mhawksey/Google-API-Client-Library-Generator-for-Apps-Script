@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Key Management Service (KMS)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:10 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:25:10 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:06 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:05 GMT
 
 
@@ -24,15 +24,15 @@ Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.auto
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` `projects/{PROJECT_NUMBER}/autokeyConfig`. |
 | `params.updateMask` | `string` | No | Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getAutokeyConfig()`
 
-Returns the AutokeyConfig for a folder.
+Returns the AutokeyConfig for a folder or project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig`. |
+| `params.name` | `string` | Yes | Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or `projects/{PROJECT_NUMBER}/autokeyConfig`. |
 
 #### `folders.getKajPolicyConfig()`
 
@@ -50,9 +50,27 @@ Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*/kajPolicyConfig". |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
+
+#### `projects.updateAutokeyConfig()`
+
+Updates the AutokeyConfig for a folder. The caller must have both `cloudkms.autokeyConfigs.update` permission on the parent folder and `cloudkms.cryptoKeys.setIamPolicy` permission on the provided key project. A KeyHandle creation in the folder's descendant projects will use this configuration to determine where to create the resulting CryptoKey.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` `projects/{PROJECT_NUMBER}/autokeyConfig`. |
+| `params.updateMask` | `string` | No | Required. Masks which fields of the AutokeyConfig to update, e.g. `keyProject`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.getAutokeyConfig()`
+
+Returns the AutokeyConfig for a folder or project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or `projects/{PROJECT_NUMBER}/autokeyConfig`. |
 
 #### `projects.showEffectiveAutokeyConfig()`
 
@@ -78,7 +96,7 @@ Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*/kajPolicyConfig". |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.showEffectiveKeyAccessJustificationsPolicyConfig()`
 
@@ -114,7 +132,7 @@ Updates the EkmConfig singleton resource for a given project and location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name for the EkmConfig in the format `projects/*/locations/*/ekmConfig`. |
 | `params.updateMask` | `string` | No | Required. List of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.generateRandomBytes()`
 
@@ -123,7 +141,7 @@ Generate random bytes using the Cloud KMS randomness source in the provided loca
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | The project-specific location in which to generate random bytes. For example, "projects/my-project/locations/us-central1". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.list()`
 
@@ -135,7 +153,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -165,7 +183,7 @@ Creates a new KeyHandle, triggering the provisioning of a new CryptoKey for CMEK
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the resource project and location to create the KeyHandle in, e.g. `projects/{PROJECT_ID}/locations/{LOCATION}`. |
 | `params.keyHandleId` | `string` | No | Optional. Id of the KeyHandle. Must be unique to the resource project and location. If not provided by the caller, a new UUID is used. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyHandles.get()`
 
@@ -216,7 +234,7 @@ Creates a new EkmConnection in a given Project and Location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the location associated with the EkmConnection, in the format `projects/*/locations/*`. |
 | `params.ekmConnectionId` | `string` | No | Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.ekmConnections.patch()`
 
@@ -226,7 +244,7 @@ Updates an EkmConnection's metadata.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name for the EkmConnection in the format `projects/*/locations/*/ekmConnections/*`. |
 | `params.updateMask` | `string` | No | Required. List of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.ekmConnections.verifyConnectivity()`
 
@@ -243,7 +261,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.ekmConnections.getIamPolicy()`
 
@@ -261,7 +279,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.keyRings`
 
@@ -293,7 +311,7 @@ Create a new KeyRing in a given Project and Location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the location associated with the KeyRings, in the format `projects/*/locations/*`. |
 | `params.keyRingId` | `string` | No | Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.setIamPolicy()`
 
@@ -302,7 +320,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.getIamPolicy()`
 
@@ -320,7 +338,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.keyRings.cryptoKeys`
 
@@ -354,7 +372,7 @@ Create a new CryptoKey within a KeyRing. CryptoKey.purpose and CryptoKey.version
 | `params.parent` | `string` | Yes | Required. The name of the KeyRing associated with the CryptoKeys. |
 | `params.cryptoKeyId` | `string` | No | Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}` |
 | `params.skipInitialVersionCreation` | `boolean` | No | If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.patch()`
 
@@ -364,7 +382,7 @@ Update a CryptoKey.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name for this CryptoKey in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*`. |
 | `params.updateMask` | `string` | No | Required. List of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.updatePrimaryVersion()`
 
@@ -373,7 +391,7 @@ Update the version of a CryptoKey that will be used in Encrypt. Returns an error
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKey to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.encrypt()`
 
@@ -382,7 +400,7 @@ Encrypts data, so that it can only be recovered by a call to Decrypt. The Crypto
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKey or CryptoKeyVersion to use for encryption. If a CryptoKey is specified, the server will use its primary version. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.decrypt()`
 
@@ -391,7 +409,7 @@ Decrypts data that was protected by Encrypt. The CryptoKey.purpose must be ENCRY
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKey to use for decryption. The server will choose the appropriate version. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.setIamPolicy()`
 
@@ -400,7 +418,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.getIamPolicy()`
 
@@ -418,7 +436,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions`
 
@@ -459,7 +477,7 @@ Create a new CryptoKeyVersion in a CryptoKey. The server will assign the next se
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the CryptoKey associated with the CryptoKeyVersions. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.import()`
 
@@ -468,7 +486,7 @@ Import wrapped key material into a CryptoKeyVersion. All requests must specify a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the CryptoKey to be imported into. The create permission is only required on this key when creating a new CryptoKeyVersion. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.patch()`
 
@@ -478,7 +496,7 @@ Update a CryptoKeyVersion's metadata. state may be changed between ENABLED and D
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name for this CryptoKeyVersion in the format `projects/*/locations/*/keyRings/*/cryptoKeys/*/cryptoKeyVersions/*`. |
 | `params.updateMask` | `string` | No | Required. List of fields to be updated in this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.destroy()`
 
@@ -487,7 +505,7 @@ Schedule a CryptoKeyVersion for destruction. Upon calling this method, CryptoKey
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to destroy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.restore()`
 
@@ -496,7 +514,7 @@ Restore a CryptoKeyVersion in the DESTROY_SCHEDULED state. Upon restoration of t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to restore. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.rawEncrypt()`
 
@@ -505,7 +523,7 @@ Encrypts data using portable cryptographic primitives. Most users should choose 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to use for encryption. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.rawDecrypt()`
 
@@ -514,7 +532,7 @@ Decrypts data that was originally encrypted using a raw cryptographic mechanism.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to use for decryption. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.asymmetricSign()`
 
@@ -523,7 +541,7 @@ Signs data using a CryptoKeyVersion with CryptoKey.purpose ASYMMETRIC_SIGN, prod
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to use for signing. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.asymmetricDecrypt()`
 
@@ -532,7 +550,7 @@ Decrypts data that was encrypted with a public key retrieved from GetPublicKey c
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to use for decryption. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.macSign()`
 
@@ -541,7 +559,7 @@ Signs data using a CryptoKeyVersion with CryptoKey.purpose MAC, producing a tag 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to use for signing. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.macVerify()`
 
@@ -550,7 +568,7 @@ Verifies MAC tag using a CryptoKeyVersion with CryptoKey.purpose MAC, and return
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to use for verification. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.decapsulate()`
 
@@ -559,7 +577,7 @@ Decapsulates data that was encapsulated with a public key retrieved from GetPubl
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the CryptoKeyVersion to use for decapsulation. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.keyRings.importJobs`
 
@@ -591,7 +609,7 @@ Create a new ImportJob within a KeyRing. ImportJob.import_method is required.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the KeyRing associated with the ImportJobs. |
 | `params.importJobId` | `string` | No | Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.importJobs.setIamPolicy()`
 
@@ -600,7 +618,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keyRings.importJobs.getIamPolicy()`
 
@@ -618,7 +636,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.ekmConfig`
 
@@ -629,7 +647,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.ekmConfig.getIamPolicy()`
 
@@ -647,7 +665,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations`
 
@@ -667,4 +685,4 @@ Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*/kajPolicyConfig". |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

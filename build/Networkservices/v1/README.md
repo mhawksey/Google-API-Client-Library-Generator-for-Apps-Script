@@ -4,8 +4,8 @@ Auto-generated client library for using the **Network Services API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:28 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:34:21 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:36:58 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:36:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:12 GMT
 
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.lbTrafficExtensions`
 
@@ -107,7 +107,7 @@ Creates a new `LbTrafficExtension` resource in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent resource of the `LbTrafficExtension` resource. Must be in the format `projects/{project}/locations/{location}`. |
 | `params.lbTrafficExtensionId` | `string` | No | Required. User-provided ID of the `LbTrafficExtension` resource to be created. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server ignores the second request This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lbTrafficExtensions.patch()`
 
@@ -118,7 +118,7 @@ Updates the parameters of the specified `LbTrafficExtension` resource.
 | `params.name` | `string` | Yes | Required. Identifier. Name of the `LbTrafficExtension` resource in the following format: `projects/{project}/locations/{location}/lbTrafficExtensions/{lb_traffic_extension}`. |
 | `params.updateMask` | `string` | No | Optional. Used to specify the fields to be overwritten in the `LbTrafficExtension` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field is overwritten if it is in the mask. If the user does not specify a mask, then all fields are overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server ignores the second request This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lbTrafficExtensions.delete()`
 
@@ -160,7 +160,7 @@ Creates a new `LbRouteExtension` resource in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent resource of the `LbRouteExtension` resource. Must be in the format `projects/{project}/locations/{location}`. |
 | `params.lbRouteExtensionId` | `string` | No | Required. User-provided ID of the `LbRouteExtension` resource to be created. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server ignores the second request This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lbRouteExtensions.patch()`
 
@@ -171,7 +171,7 @@ Updates the parameters of the specified `LbRouteExtension` resource.
 | `params.name` | `string` | Yes | Required. Identifier. Name of the `LbRouteExtension` resource in the following format: `projects/{project}/locations/{location}/lbRouteExtensions/{lb_route_extension}`. |
 | `params.updateMask` | `string` | No | Optional. Used to specify the fields to be overwritten in the `LbRouteExtension` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field is overwritten if it is in the mask. If the user does not specify a mask, then all fields are overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server ignores the second request This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.lbRouteExtensions.delete()`
 
@@ -213,7 +213,7 @@ Creates a new `AuthzExtension` resource in a given project and location.
 | `params.parent` | `string` | Yes | Required. The parent resource of the `AuthzExtension` resource. Must be in the format `projects/{project}/locations/{location}`. |
 | `params.authzExtensionId` | `string` | No | Required. User-provided ID of the `AuthzExtension` resource to be created. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server ignores the second request This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authzExtensions.patch()`
 
@@ -224,7 +224,7 @@ Updates the parameters of the specified `AuthzExtension` resource.
 | `params.name` | `string` | Yes | Required. Identifier. Name of the `AuthzExtension` resource in the following format: `projects/{project}/locations/{location}/authzExtensions/{authz_extension}`. |
 | `params.updateMask` | `string` | No | Required. Used to specify the fields to be overwritten in the `AuthzExtension` resource by the update. The fields specified in the `update_mask` are relative to the resource, not the full request. A field is overwritten if it is in the mask. If the user does not specify a mask, then all fields are overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server can ignore the request if it has already been completed. The server guarantees that for 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server ignores the second request This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.authzExtensions.delete()`
 
@@ -264,7 +264,7 @@ Creates a new EndpointPolicy in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the EndpointPolicy. Must be in the format `projects/*/locations/global`. |
 | `params.endpointPolicyId` | `string` | No | Required. Short name of the EndpointPolicy resource to be created. E.g. "CustomECS". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpointPolicies.patch()`
 
@@ -274,7 +274,7 @@ Updates the parameters of a single EndpointPolicy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the EndpointPolicy resource. It matches pattern `projects/{project}/locations/global/endpointPolicies/{endpoint_policy}`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the EndpointPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.endpointPolicies.delete()`
 
@@ -313,7 +313,7 @@ Creates a new `WasmPlugin` resource in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the `WasmPlugin` resource. Must be in the format `projects/{project}/locations/global`. |
 | `params.wasmPluginId` | `string` | No | Required. User-provided ID of the `WasmPlugin` resource to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.wasmPlugins.patch()`
 
@@ -323,7 +323,7 @@ Updates the parameters of the specified `WasmPlugin` resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the `WasmPlugin` resource in the following format: `projects/{project}/locations/{location}/wasmPlugins/{wasm_plugin}`. |
 | `params.updateMask` | `string` | No | Optional. Used to specify the fields to be overwritten in the `WasmPlugin` resource by the update. The fields specified in the `update_mask` field are relative to the resource, not the full request. An omitted `update_mask` field is treated as an implied `update_mask` field equivalent to all fields that are populated (that have a non-empty value). The `update_mask` field supports a special value `*`, which means that each field in the given `WasmPlugin` resource (including the empty ones) replaces the current value. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.wasmPlugins.delete()`
 
@@ -361,7 +361,7 @@ Creates a new `WasmPluginVersion` resource in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the `WasmPluginVersion` resource. Must be in the format `projects/{project}/locations/global/wasmPlugins/{wasm_plugin}`. |
 | `params.wasmPluginVersionId` | `string` | No | Required. User-provided ID of the `WasmPluginVersion` resource to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.wasmPlugins.versions.delete()`
 
@@ -399,7 +399,7 @@ Creates a new Gateway in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the Gateway. Must be in the format `projects/*/locations/*`. |
 | `params.gatewayId` | `string` | No | Required. Short name of the Gateway resource to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gateways.patch()`
 
@@ -409,7 +409,7 @@ Updates the parameters of a single Gateway.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Gateway resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.gateways.delete()`
 
@@ -468,7 +468,7 @@ Creates a new GrpcRoute in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the GrpcRoute. Must be in the format `projects/*/locations/global`. |
 | `params.grpcRouteId` | `string` | No | Required. Short name of the GrpcRoute resource to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.grpcRoutes.patch()`
 
@@ -478,7 +478,7 @@ Updates the parameters of a single GrpcRoute.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the GrpcRoute resource. It matches pattern `projects/*/locations/global/grpcRoutes/` |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the GrpcRoute resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.grpcRoutes.delete()`
 
@@ -517,7 +517,7 @@ Creates a new HttpRoute in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the HttpRoute. Must be in the format `projects/*/locations/global`. |
 | `params.httpRouteId` | `string` | No | Required. Short name of the HttpRoute resource to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.httpRoutes.patch()`
 
@@ -527,7 +527,7 @@ Updates the parameters of a single HttpRoute.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the HttpRoute resource. It matches pattern `projects/*/locations/global/httpRoutes/http_route_name>`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the HttpRoute resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.httpRoutes.delete()`
 
@@ -566,7 +566,7 @@ Creates a new TcpRoute in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the TcpRoute. Must be in the format `projects/*/locations/global`. |
 | `params.tcpRouteId` | `string` | No | Required. Short name of the TcpRoute resource to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tcpRoutes.patch()`
 
@@ -576,7 +576,7 @@ Updates the parameters of a single TcpRoute.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the TcpRoute resource. It matches pattern `projects/*/locations/global/tcpRoutes/tcp_route_name>`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the TcpRoute resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tcpRoutes.delete()`
 
@@ -615,7 +615,7 @@ Creates a new TlsRoute in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the TlsRoute. Must be in the format `projects/*/locations/global`. |
 | `params.tlsRouteId` | `string` | No | Required. Short name of the TlsRoute resource to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tlsRoutes.patch()`
 
@@ -625,7 +625,7 @@ Updates the parameters of a single TlsRoute.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the TlsRoute resource. It matches pattern `projects/*/locations/global/tlsRoutes/tls_route_name>`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the TlsRoute resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.tlsRoutes.delete()`
 
@@ -663,7 +663,7 @@ Creates a new ServiceBinding in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the ServiceBinding. Must be in the format `projects/*/locations/*`. |
 | `params.serviceBindingId` | `string` | No | Required. Short name of the ServiceBinding resource to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.serviceBindings.patch()`
 
@@ -673,7 +673,7 @@ Updates the parameters of a single ServiceBinding.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the ServiceBinding resource. It matches pattern `projects/*/locations/*/serviceBindings/`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the ServiceBinding resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.serviceBindings.delete()`
 
@@ -712,7 +712,7 @@ Creates a new Mesh in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the Mesh. Must be in the format `projects/*/locations/global`. |
 | `params.meshId` | `string` | No | Required. Short name of the Mesh resource to be created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.meshes.patch()`
 
@@ -722,7 +722,7 @@ Updates the parameters of a single Mesh.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the Mesh resource. It matches pattern `projects/*/locations/global/meshes/`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Mesh resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.meshes.delete()`
 
@@ -780,7 +780,7 @@ Creates a new ServiceLbPolicy in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the ServiceLbPolicy. Must be in the format `projects/{project}/locations/{location}`. |
 | `params.serviceLbPolicyId` | `string` | No | Required. Short name of the ServiceLbPolicy resource to be created. E.g. for resource name `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`. the id is value of {service_lb_policy_name} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.serviceLbPolicies.patch()`
 
@@ -790,7 +790,7 @@ Updates the parameters of a single ServiceLbPolicy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Name of the ServiceLbPolicy resource. It matches pattern `projects/{project}/locations/{location}/serviceLbPolicies/{service_lb_policy_name}`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the ServiceLbPolicy resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.serviceLbPolicies.delete()`
 
@@ -809,7 +809,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.edgeCacheKeysets.getIamPolicy()`
 
@@ -827,7 +827,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.edgeCacheOrigins`
 
@@ -838,7 +838,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.edgeCacheOrigins.getIamPolicy()`
 
@@ -856,7 +856,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.edgeCacheServices`
 
@@ -867,7 +867,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.edgeCacheServices.getIamPolicy()`
 
@@ -885,4 +885,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

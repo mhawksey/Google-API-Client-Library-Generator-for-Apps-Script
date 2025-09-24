@@ -4,8 +4,8 @@ Auto-generated client library for using the **Security Command Center API (versi
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:19 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:45:46 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:47:28 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:47:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:46 GMT
 
 
@@ -32,7 +32,7 @@ Updates an organization's settings.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The relative resource name of the settings. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/organizationSettings". |
 | `params.updateMask` | `string` | No | The FieldMask to use when updating the settings resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.operations`
 
@@ -70,7 +70,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.sources`
 
@@ -81,7 +81,7 @@ Creates a source.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the new source's parent. Its format should be "organizations/[organization_id]". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.sources.getIamPolicy()`
 
@@ -90,7 +90,7 @@ Gets the access control policy on the specified Source.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.sources.get()`
 
@@ -117,7 +117,7 @@ Sets the access control policy on the specified Source.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.sources.testIamPermissions()`
 
@@ -126,7 +126,7 @@ Sets the access control policy on the specified Source.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.sources.patch()`
 
@@ -136,7 +136,7 @@ Updates a source.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The relative resource name of this source. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}" |
 | `params.updateMask` | `string` | No | The FieldMask to use when updating the source resource. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.sources.findings`
 
@@ -148,7 +148,7 @@ Creates a finding. The corresponding source must exist for finding creation to s
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the new finding's parent. Its format should be "organizations/[organization_id]/sources/[source_id]". |
 | `params.findingId` | `string` | No | Required. Unique identifier provided by the client within the parent scope. It must be alphanumeric and less than or equal to 32 characters and greater than 0 characters in length. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.sources.findings.group()`
 
@@ -157,7 +157,7 @@ Filters an organization or source's findings and groups them by their specified 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the source to groupBy. Its format is "organizations/[organization_id]/sources/[source_id]". To groupBy across all sources provide a source_id of `-`. For example: organizations/{organization_id}/sources/- |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.sources.findings.list()`
 
@@ -180,7 +180,7 @@ Updates the state of a finding.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The relative resource name of the finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}/finding/{finding_id}". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.sources.findings.patch()`
 
@@ -190,7 +190,7 @@ Creates or updates a finding. The corresponding source must exist for a finding 
 |---|---|---|---|
 | `params.name` | `string` | Yes | The relative resource name of this finding. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Example: "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}" |
 | `params.updateMask` | `string` | No | The FieldMask to use when updating the finding resource. This field should not be specified when creating a finding. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.sources.findings.updateSecurityMarks()`
 
@@ -201,7 +201,7 @@ Updates security marks.
 | `params.name` | `string` | Yes | The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks". |
 | `params.updateMask` | `string` | No | The FieldMask to use when updating the security marks resource. |
 | `params.startTime` | `string` | No | The time at which the updated SecurityMarks take effect. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.assets`
 
@@ -212,7 +212,7 @@ Filters an organization's assets and groups them by their specified properties.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the organization to groupBy. Its format is "organizations/[organization_id]". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.assets.list()`
 
@@ -236,7 +236,7 @@ Runs asset discovery. The discovery is tracked with a long-running operation. Th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the organization to run asset discovery for. Its format is "organizations/[organization_id]". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.assets.updateSecurityMarks()`
 
@@ -247,4 +247,4 @@ Updates security marks.
 | `params.name` | `string` | Yes | The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: "organizations/{organization_id}/assets/{asset_id}/securityMarks" "organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks". |
 | `params.updateMask` | `string` | No | The FieldMask to use when updating the security marks resource. |
 | `params.startTime` | `string` | No | The time at which the updated SecurityMarks take effect. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

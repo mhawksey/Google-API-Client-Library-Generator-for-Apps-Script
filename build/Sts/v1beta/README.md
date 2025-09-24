@@ -4,8 +4,8 @@ Auto-generated client library for using the **Security Token Service API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:46 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:47:34 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:17 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:23 GMT
 
 
@@ -22,4 +22,4 @@ Exchanges a credential for a Google OAuth 2.0 access token. The token asserts an
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

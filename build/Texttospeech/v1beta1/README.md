@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Text-to-Speech API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:05 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:53:33 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:54:36 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:54:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:42 GMT
 
 
@@ -25,7 +25,7 @@ Synthesizes long form text asynchronously.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The resource states of the request in the form of `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.operations`
 
@@ -66,4 +66,4 @@ Synthesizes speech synchronously: receive results after all text input has been 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

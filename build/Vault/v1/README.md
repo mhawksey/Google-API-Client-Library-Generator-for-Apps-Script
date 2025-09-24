@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Vault API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:56:59 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:54:21 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:55:21 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:55:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:28 GMT
 
 
@@ -50,7 +50,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `matters`
 
@@ -60,7 +60,7 @@ Creates a matter with the given name and description. The initial state is open,
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.update()`
 
@@ -69,7 +69,7 @@ Updates the specified matter. This updates only the name and description of the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.close()`
 
@@ -78,7 +78,7 @@ Closes the specified matter. Returns the matter with updated state.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.reopen()`
 
@@ -87,7 +87,7 @@ Reopens the specified matter. Returns the matter with updated state.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.delete()`
 
@@ -104,7 +104,7 @@ Undeletes the specified matter. Returns the matter with updated state.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.get()`
 
@@ -133,7 +133,7 @@ Adds an account as a matter collaborator.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.removePermissions()`
 
@@ -142,7 +142,7 @@ Removes an account as a matter collaborator.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.count()`
 
@@ -151,7 +151,7 @@ Counts the accounts processed by the specified query.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `matters.exports`
 
@@ -162,7 +162,7 @@ Creates an export.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.exports.delete()`
 
@@ -201,7 +201,7 @@ Creates a hold in the specified matter.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.holds.update()`
 
@@ -211,7 +211,7 @@ Updates the scope (organizational unit or accounts) and query parameters of a ho
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
 | `params.holdId` | `string` | Yes | The ID of the hold. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.holds.delete()`
 
@@ -251,7 +251,7 @@ Adds accounts to a hold. Returns a list of accounts that have been successfully 
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
 | `params.holdId` | `string` | Yes | The hold ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.holds.removeHeldAccounts()`
 
@@ -261,7 +261,7 @@ Removes the specified accounts from a hold. Returns a list of statuses in the sa
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
 | `params.holdId` | `string` | Yes | The hold ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `matters.holds.accounts`
 
@@ -273,7 +273,7 @@ Adds an account to a hold. Accounts can be added only to a hold that does not ha
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The matter ID. |
 | `params.holdId` | `string` | Yes | The hold ID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.holds.accounts.delete()`
 
@@ -303,7 +303,7 @@ Creates a saved query.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.matterId` | `string` | Yes | The ID of the matter to create the saved query in. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `matters.savedQueries.delete()`
 

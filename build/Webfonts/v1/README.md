@@ -4,8 +4,8 @@ Auto-generated client library for using the **Web Fonts Developer API (version: 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:03:00 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:55:29 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:21 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:21 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:58 GMT
 
 

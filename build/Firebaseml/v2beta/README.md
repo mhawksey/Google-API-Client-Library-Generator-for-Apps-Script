@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase ML API (version: v2beta)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:35:45 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:21:28 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:25:31 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:25:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:43 GMT
 
 
@@ -29,7 +29,7 @@ Perform a token counting.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.endpoint` | `string` | Yes | Required. The name of the Endpoint requested to perform token counting. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.generateContent()`
 
@@ -38,7 +38,7 @@ Generate content with multimodal inputs.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.publishers.models.streamGenerateContent()`
 
@@ -47,4 +47,4 @@ Generate content with multimodal inputs with streaming support.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.model` | `string` | Yes | Required. The fully qualified name of the publisher model or tuned model endpoint to use. Publisher model format: `projects/{project}/locations/{location}/publishers/*/models/*` Tuned model endpoint format: `projects/{project}/locations/{location}/endpoints/{endpoint}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Error Reporting API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:48 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:02:03 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:12:44 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:12:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:40 GMT
 
 
@@ -41,7 +41,7 @@ Replace the data for the specified group. Fails if the group does not exist.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The group resource name. Written as `projects/{projectID}/groups/{group_id}` or `projects/{projectID}/locations/{location}/groups/{group_id}` Examples: `projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/us-central1/groups/my-group` In the group resource name, the `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.groupStats`
 
@@ -96,7 +96,7 @@ Report an individual error event and record the event to a log. This endpoint ac
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectName` | `string` | Yes | Required. The resource name of the Google Cloud Platform project. Written as `projects/{projectId}`, where `{projectId}` is the [Google Cloud Platform project ID](https://support.google.com/cloud/answer/6158840). Example: // `projects/my-project-123`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations`
 
@@ -125,7 +125,7 @@ Replace the data for the specified group. Fails if the group does not exist.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The group resource name. Written as `projects/{projectID}/groups/{group_id}` or `projects/{projectID}/locations/{location}/groups/{group_id}` Examples: `projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/us-central1/groups/my-group` In the group resource name, the `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.groupStats`
 

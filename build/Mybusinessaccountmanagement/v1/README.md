@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Account Management API
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:45 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:15 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:35:59 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:35:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:26 GMT
 
 
@@ -23,7 +23,7 @@ Moves a location from an account that the user owns to another account that the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the location to transfer. `locations/{location_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations.admins`
 
@@ -42,7 +42,7 @@ Invites the specified user to become an administrator for the specified location
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the location this admin is created for. `locations/{location_id}/admins`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.admins.delete()`
 
@@ -60,7 +60,7 @@ Updates the Admin for the specified location. Only the AdminRole of the Admin ca
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. |
 | `params.updateMask` | `string` | No | Required. The specific fields that should be updated. The only editable field is role. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts`
 
@@ -89,7 +89,7 @@ Creates an account with the specified name and type under the given parent. - Pe
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.patch()`
 
@@ -100,7 +100,7 @@ Updates the specified business account. Personal accounts cannot be updated usin
 | `params.name` | `string` | Yes | Immutable. The resource name, in the format `accounts/{account_id}`. |
 | `params.updateMask` | `string` | No | Required. The specific fields that should be updated. The only editable field is `accountName`. |
 | `params.validateOnly` | `boolean` | No | Optional. If true, the request is validated without actually updating the account. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.invitations`
 
@@ -111,7 +111,7 @@ Accepts the specified invitation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the invitation that is being accepted. `accounts/{account_id}/invitations/{invitation_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.invitations.decline()`
 
@@ -120,7 +120,7 @@ Declines the specified invitation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the account invitation that is being declined. `accounts/{account_id}/invitations/{invitation_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.invitations.list()`
 
@@ -148,7 +148,7 @@ Invites the specified user to become an administrator for the specified account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the account this admin is created for. `accounts/{account_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.admins.delete()`
 
@@ -166,4 +166,4 @@ Updates the Admin for the specified Account Admin.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name. For account admins, this is in the form: `accounts/{account_id}/admins/{admin_id}` For location admins, this is in the form: `locations/{location_id}/admins/{admin_id}` This field will be ignored if set during admin creation. |
 | `params.updateMask` | `string` | No | Required. The specific fields that should be updated. The only editable field is role. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

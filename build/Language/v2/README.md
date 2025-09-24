@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:42:35 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:25:12 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:33:06 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:33:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:54 GMT
 
 
@@ -22,7 +22,7 @@ Analyzes the sentiment of the provided text.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.analyzeEntities()`
 
@@ -30,7 +30,7 @@ Finds named entities (currently proper names and common nouns) in the text along
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.classifyText()`
 
@@ -38,7 +38,7 @@ Classifies a document into categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.moderateText()`
 
@@ -46,7 +46,7 @@ Moderates a document for harmful and sensitive categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `documents.annotateText()`
 
@@ -54,4 +54,4 @@ A convenience method that provides all features in one call.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

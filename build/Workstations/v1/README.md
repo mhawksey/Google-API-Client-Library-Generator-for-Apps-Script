@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Workstations API (version: v
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:03:28 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:56:11 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:59 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:59 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:29 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.workstationClusters`
 
@@ -106,7 +106,7 @@ Creates a new workstation cluster.
 | `params.parent` | `string` | Yes | Required. Parent resource name. |
 | `params.workstationClusterId` | `string` | No | Required. ID to use for the workstation cluster. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.patch()`
 
@@ -118,7 +118,7 @@ Updates an existing workstation cluster.
 | `params.updateMask` | `string` | No | Required. Mask that specifies which fields in the workstation cluster should be updated. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
 | `params.allowMissing` | `boolean` | No | Optional. If set, and the workstation cluster is not found, a new workstation cluster will be created. In this situation, update_mask is ignored. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.delete()`
 
@@ -171,7 +171,7 @@ Creates a new workstation configuration.
 | `params.parent` | `string` | Yes | Required. Parent resource name. |
 | `params.workstationConfigId` | `string` | No | Required. ID to use for the workstation configuration. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.patch()`
 
@@ -183,7 +183,7 @@ Updates an existing workstation configuration.
 | `params.updateMask` | `string` | No | Required. Mask specifying which fields in the workstation configuration should be updated. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
 | `params.allowMissing` | `boolean` | No | Optional. If set and the workstation configuration is not found, a new workstation configuration will be created. In this situation, update_mask is ignored. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.delete()`
 
@@ -203,7 +203,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.getIamPolicy()`
 
@@ -221,7 +221,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.workstationClusters.workstationConfigs.workstations`
 
@@ -263,7 +263,7 @@ Creates a new workstation.
 | `params.parent` | `string` | Yes | Required. Parent resource name. |
 | `params.workstationId` | `string` | No | Required. ID to use for the workstation. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.workstations.patch()`
 
@@ -275,7 +275,7 @@ Updates an existing workstation.
 | `params.updateMask` | `string` | No | Required. Mask specifying which fields in the workstation configuration should be updated. |
 | `params.validateOnly` | `boolean` | No | Optional. If set, validate the request and preview the review, but do not actually apply it. |
 | `params.allowMissing` | `boolean` | No | Optional. If set and the workstation configuration is not found, a new workstation configuration is created. In this situation, update_mask is ignored. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.workstations.delete()`
 
@@ -294,7 +294,7 @@ Starts running a workstation so that users can connect to it.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the workstation to start. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.workstations.stop()`
 
@@ -303,7 +303,7 @@ Stops running a workstation, reducing costs.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the workstation to stop. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.workstations.generateAccessToken()`
 
@@ -312,7 +312,7 @@ Returns a short-lived credential that can be used to send authenticated and auth
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.workstation` | `string` | Yes | Required. Name of the workstation for which the access token should be generated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.workstations.setIamPolicy()`
 
@@ -321,7 +321,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workstationClusters.workstationConfigs.workstations.getIamPolicy()`
 
@@ -339,4 +339,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

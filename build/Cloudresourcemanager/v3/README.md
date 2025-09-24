@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Resource Manager API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:26 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:03:05 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:33 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:30 GMT
 
 
@@ -40,7 +40,7 @@ Create a Lien which applies to the resource denoted by the `parent` field. Calle
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `liens.delete()`
 
@@ -97,7 +97,7 @@ Creates a folder in the resource hierarchy. Returns an `Operation` which can be 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.patch()`
 
@@ -107,7 +107,7 @@ Updates a folder, changing its `display_name`. Changes to the folder `display_na
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the folder. Its format is `folders/{folder_id}`, for example: "folders/1234". |
 | `params.updateMask` | `string` | No | Required. Fields to be updated. Only the `display_name` can be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.move()`
 
@@ -116,7 +116,7 @@ Moves a folder under a new resource parent. Returns an `Operation` which can be 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Folder to move. Must be of the form folders/{folder_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.delete()`
 
@@ -133,7 +133,7 @@ Cancels the deletion request for a folder. This method may be called on a folder
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the folder to undelete. Must be of the form `folders/{folder_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getIamPolicy()`
 
@@ -142,7 +142,7 @@ Gets the access control policy for a folder. The returned policy may be empty if
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.setIamPolicy()`
 
@@ -151,7 +151,7 @@ Sets the access control policy on a folder, replacing any existing policy. The `
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.testIamPermissions()`
 
@@ -160,7 +160,7 @@ Returns permissions that a caller has on the specified folder. The `resource` fi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `folders.capabilities`
 
@@ -180,7 +180,7 @@ Updates the Capability.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Identifier. The resource name of the capability. Must be in the following form: * `folders/{folder_id}/capabilities/{capability_name}` For example, `folders/123/capabilities/app-management` Following are the allowed {capability_name} values: * `app-management` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Only [Capability.value] can be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations`
 
@@ -209,7 +209,7 @@ Gets the access control policy for an organization resource. The policy may be e
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.setIamPolicy()`
 
@@ -218,7 +218,7 @@ Sets the access control policy on an organization resource. Replaces any existin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.testIamPermissions()`
 
@@ -227,7 +227,7 @@ Returns the permissions that a caller has on the specified organization. The `re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
 
@@ -266,7 +266,7 @@ Request that a new project be created. The result is an `Operation` which can be
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.patch()`
 
@@ -276,7 +276,7 @@ Updates the `display_name` and labels of the project identified by the specified
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The unique resource name of the project. It is an int64 generated number prefixed by "projects/". Example: `projects/415104041262` |
 | `params.updateMask` | `string` | No | Optional. An update mask to selectively update fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.move()`
 
@@ -285,7 +285,7 @@ Move a project to another place in your resource hierarchy, under a new resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the project to move. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.delete()`
 
@@ -302,7 +302,7 @@ Restores the project identified by the specified `name` (for example, `projects/
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the project (for example, `projects/415104041262`). Required. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.getIamPolicy()`
 
@@ -311,7 +311,7 @@ Returns the IAM access control policy for the specified project, in the format `
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.setIamPolicy()`
 
@@ -320,7 +320,7 @@ Sets the IAM access control policy for the specified project, in the format `pro
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.testIamPermissions()`
 
@@ -329,7 +329,7 @@ Returns permissions that a caller has on the specified project, in the format `p
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations`
 
@@ -350,7 +350,7 @@ Updates tag bindings directly attached to a GCP resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the TagBindingCollection, following the convention: `locations/{location}/tagBindingCollections/{encoded-full-resource-name}` where the encoded-full-resource-name is the UTF-8 encoded name of the GCP resource the TagBindings are bound to. "locations/global/tagBindingCollections/%2f%2fcloudresourcemanager.googleapis.com%2fprojects%2f123" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations.effectiveTagBindingCollections`
 
@@ -381,7 +381,7 @@ Creates a TagBinding between a TagValue and a Google Cloud resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.validateOnly` | `boolean` | No | Optional. Set to true to perform the validations necessary for creating the resource, but not actually perform the action. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagBindings.delete()`
 
@@ -438,7 +438,7 @@ Creates a new TagKey. If another request with the same parameters is sent while 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.validateOnly` | `boolean` | No | Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagKeys.patch()`
 
@@ -449,7 +449,7 @@ Updates the attributes of the TagKey resource.
 | `params.name` | `string` | Yes | Immutable. The resource name for a TagKey. Must be in the format `tagKeys/{tag_key_id}`, where `tag_key_id` is the generated numeric id for the TagKey. |
 | `params.updateMask` | `string` | No | Fields to be updated. The mask may only contain `description` or `etag`. If omitted entirely, both `description` and `etag` are assumed to be significant. |
 | `params.validateOnly` | `boolean` | No | Set as true to perform validations necessary for updating the resource, but not actually perform the action. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagKeys.delete()`
 
@@ -468,7 +468,7 @@ Gets the access control policy for a TagKey. The returned policy may be empty if
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagKeys.setIamPolicy()`
 
@@ -477,7 +477,7 @@ Sets the access control policy on a TagKey, replacing any existing policy. The `
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagKeys.testIamPermissions()`
 
@@ -486,7 +486,7 @@ Returns permissions that a caller has on the specified TagKey. The `resource` fi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `tagValues`
 
@@ -523,7 +523,7 @@ Creates a TagValue as a child of the specified TagKey. If a another request with
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.validateOnly` | `boolean` | No | Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagValues.patch()`
 
@@ -534,7 +534,7 @@ Updates the attributes of the TagValue resource.
 | `params.name` | `string` | Yes | Immutable. Resource name for TagValue in the format `tagValues/456`. |
 | `params.updateMask` | `string` | No | Optional. Fields to be updated. |
 | `params.validateOnly` | `boolean` | No | Optional. True to perform validations necessary for updating the resource, but not actually perform the action. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagValues.delete()`
 
@@ -553,7 +553,7 @@ Gets the access control policy for a TagValue. The returned policy may be empty 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagValues.setIamPolicy()`
 
@@ -562,7 +562,7 @@ Sets the access control policy on a TagValue, replacing any existing policy. The
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagValues.testIamPermissions()`
 
@@ -571,7 +571,7 @@ Returns permissions that a caller has on the specified TagValue. The `resource` 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `tagValues.tagHolds`
 
@@ -583,7 +583,7 @@ Creates a TagHold. Returns ALREADY_EXISTS if a TagHold with the same resource an
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the TagHold's parent TagValue. Must be of the form: `tagValues/{tag-value-id}`. |
 | `params.validateOnly` | `boolean` | No | Optional. Set to true to perform the validations necessary for creating the resource, but not actually perform the action. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tagValues.tagHolds.delete()`
 

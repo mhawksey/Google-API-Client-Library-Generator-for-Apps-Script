@@ -4,8 +4,8 @@ Auto-generated client library for using the **API Management API (version: v1alp
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:30 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:22:30 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:32 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:47 GMT
 
 
@@ -46,7 +46,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -92,7 +92,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.observationSources`
 
@@ -105,7 +105,7 @@ CreateObservationSource creates a new ObservationSource but does not affect any 
 | `params.parent` | `string` | Yes | Required. Value for parent. |
 | `params.observationSourceId` | `string` | No | Required. The ID to use for the Observation Source. This value should be 4-63 characters, and valid characters are /a-z-/. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.observationSources.get()`
 
@@ -144,7 +144,7 @@ CreateObservationJob creates a new ObservationJob but does not have any effecton
 | `params.parent` | `string` | Yes | Required. The parent resource where this ObservationJob will be created. Format: projects/{project}/locations/{location} |
 | `params.observationJobId` | `string` | No | Required. The ID to use for the Observation Job. This value should be 4-63 characters, and valid characters are /a-z-/. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.observationJobs.get()`
 
@@ -179,7 +179,7 @@ Enables the given ObservationJob.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the ObservationJob to enable. Format: projects/{project}/locations/{location}/observationJobs/{job} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.observationJobs.disable()`
 
@@ -188,7 +188,7 @@ Disables the given ObservationJob.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the ObservationJob to disable. Format: projects/{project}/locations/{location}/observationJobs/{job} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.observationJobs.apiObservations`
 
@@ -217,7 +217,7 @@ BatchEditTagsApiObservations adds or removes Tags for ApiObservations.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource shared by all ApiObservations being edited. Format: projects/{project}/locations/{location}/observationJobs/{observation_job} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.observationJobs.apiObservations.apiOperations`
 

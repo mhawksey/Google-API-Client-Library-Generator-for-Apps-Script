@@ -4,8 +4,8 @@ Auto-generated client library for using the **Gmail Postmaster Tools API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:41:41 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:22:57 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:26:38 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:26:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:42 GMT
 
 

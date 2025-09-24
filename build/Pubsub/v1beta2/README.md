@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Pub/Sub API (version: v1beta
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:03 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:43:50 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:45:44 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:45:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:46:51 GMT
 
 
@@ -25,7 +25,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.getIamPolicy()`
 
@@ -43,7 +43,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.create()`
 
@@ -52,7 +52,7 @@ Creates a subscription to a given topic. If the subscription already exists, ret
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.get()`
 
@@ -87,7 +87,7 @@ Modifies the ack deadline for a specific message. This method is useful to indic
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | The name of the subscription. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.acknowledge()`
 
@@ -96,7 +96,7 @@ Acknowledges the messages associated with the `ack_ids` in the `AcknowledgeReque
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | The subscription whose message is being acknowledged. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.pull()`
 
@@ -105,7 +105,7 @@ Pulls messages from the server. Returns an empty list if there are no messages a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | The subscription from which messages should be pulled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.subscriptions.modifyPushConfig()`
 
@@ -114,7 +114,7 @@ Modifies the `PushConfig` for a specified subscription. This may be used to chan
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | The name of the subscription. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.topics`
 
@@ -125,7 +125,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.topics.getIamPolicy()`
 
@@ -143,7 +143,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.topics.create()`
 
@@ -152,7 +152,7 @@ Creates the given topic with the given name.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the topic. It must have the format `"projects/{project}/topics/{topic}"`. `{topic}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.topics.publish()`
 
@@ -161,7 +161,7 @@ Adds one or more messages to the topic. Returns `NOT_FOUND` if the topic does no
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.topic` | `string` | Yes | The messages in the request will be published on this topic. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.topics.get()`
 

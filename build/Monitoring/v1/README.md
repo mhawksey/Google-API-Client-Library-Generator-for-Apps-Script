@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Monitoring API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:41 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:06 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:35:52 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:35:52 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:21 GMT
 
 
@@ -36,7 +36,7 @@ Creates a new custom dashboard. For examples on how you can use this API to crea
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The project on which to execute the request. The format is: projects/[PROJECT_ID_OR_NUMBER] The [PROJECT_ID_OR_NUMBER] must match the dashboard resource name. |
 | `params.validateOnly` | `boolean` | No | If set, validate the request and preview the review, but do not actually save it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.dashboards.list()`
 
@@ -72,7 +72,7 @@ Replaces an existing custom dashboard with a new definition.This method requires
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the dashboard. |
 | `params.validateOnly` | `boolean` | No | If set, validate the request and preview the review, but do not actually save it. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.location`
 
@@ -90,7 +90,7 @@ Evaluate a PromQL query at a single point in time.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The project on which to execute the request. Data associcated with the project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. |
 | `params.location` | `string` | Yes | Location of the resource information. Has to be "global" now. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.location.prometheus.api.v1.query_range()`
 
@@ -100,7 +100,7 @@ Evaluate a PromQL query with start, end time range.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The project on which to execute the request. Data associcated with the project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. |
 | `params.location` | `string` | Yes | Location of the resource information. Has to be "global" now. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.location.prometheus.api.v1.labels()`
 
@@ -110,7 +110,7 @@ Lists labels for metrics.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The workspace on which to execute the request. It is not part of the open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER. |
 | `params.location` | `string` | Yes | Location of the resource information. Has to be "global" now. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.location.prometheus.api.v1.series()`
 
@@ -120,7 +120,7 @@ Lists metadata for metrics.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The workspace on which to execute the request. It is not part of the open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. The format is: projects/PROJECT_ID_OR_NUMBER. |
 | `params.location` | `string` | Yes | Location of the resource information. Has to be "global" for now. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.location.prometheus.api.v1.query_exemplars()`
 
@@ -130,7 +130,7 @@ Lists exemplars relevant to a given PromQL query,
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The project on which to execute the request. Data associcated with the project's workspace stored under the The format is: projects/PROJECT_ID_OR_NUMBER. Open source API but used as a request path prefix to distinguish different virtual Prometheus instances of Google Prometheus Engine. |
 | `params.location` | `string` | Yes | Location of the resource information. Has to be "global" now. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.location.prometheus.api.v1.label`
 
@@ -191,7 +191,7 @@ Adds a MonitoredProject with the given project ID to the specified Metrics Scope
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the existing Metrics Scope that will monitor this project. Example: locations/global/metricsScopes/{SCOPING_PROJECT_ID_OR_NUMBER} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.global.metricsScopes.projects.delete()`
 

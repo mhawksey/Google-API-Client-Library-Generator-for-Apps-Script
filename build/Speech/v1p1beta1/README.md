@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Speech-to-Text API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:17 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:47:02 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:48:43 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:48:43 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:56 GMT
 
 
@@ -48,7 +48,7 @@ Create a set of phrase hints. Each item in the set can be a single word or a mul
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this phrase set will be created. Format: `projects/{project}/locations/{location}` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.phraseSets.get()`
 
@@ -76,7 +76,7 @@ Update a phrase set.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the phrase set. |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.phraseSets.delete()`
 
@@ -95,7 +95,7 @@ Create a custom class.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this custom class will be created. Format: `projects/{project}/locations/{location}/customClasses` Speech-to-Text supports three locations: `global`, `us` (US North America), and `eu` (Europe). If you are calling the `speech.googleapis.com` endpoint, use the `global` location. To specify a region, use a [regional endpoint](https://cloud.google.com/speech-to-text/docs/endpoints) with matching `us` or `eu` location value. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.customClasses.get()`
 
@@ -123,7 +123,7 @@ Update a custom class.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource name of the custom class. |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.customClasses.delete()`
 
@@ -141,7 +141,7 @@ Performs synchronous speech recognition: receive results after all audio has bee
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `speech.longrunningrecognize()`
 
@@ -149,4 +149,4 @@ Performs asynchronous speech recognition: receive results via the google.longrun
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

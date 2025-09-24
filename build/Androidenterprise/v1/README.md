@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play EMM API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:01 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:52:13 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:02 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:14 GMT
 
 
@@ -45,7 +45,7 @@ Updates the device policy. To ensure the policy is properly enforced, you need t
 | `params.userId` | `string` | Yes | The ID of the user. |
 | `params.deviceId` | `string` | Yes | The ID of the device. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields to update. If not set, all modifiable fields will be modified. When set in a query parameter, this field should be specified as updateMask=<field1>,<field2>,... |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.getState()`
 
@@ -66,7 +66,7 @@ Sets whether a device's access to Google services is enabled or disabled. The de
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
 | `params.userId` | `string` | Yes | The ID of the user. |
 | `params.deviceId` | `string` | Yes | The ID of the device. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.forceReportUpload()`
 
@@ -87,7 +87,7 @@ Returns a token for device enrollment. The DPC can encode this token within the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | Required. The ID of the enterprise. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `enterprises`
 
@@ -114,7 +114,7 @@ Enrolls an enterprise with the calling EMM.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.token` | `string` | Yes | Required. The token provided by the enterprise to register the EMM. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.setAccount()`
 
@@ -123,7 +123,7 @@ Sets the account that will be used to authenticate to the API as the enterprise.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.sendTestPushNotification()`
 
@@ -172,7 +172,7 @@ Sets the store layout for the enterprise. By default, storeLayoutType is set to 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.generateSignupUrl()`
 
@@ -209,7 +209,7 @@ Returns a unique token to access an embeddable UI. To generate a web UI, pass th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.generateEnterpriseUpgradeUrl()`
 
@@ -252,7 +252,7 @@ Adds or updates an entitlement to an app for a user. **Note:** This item has bee
 | `params.userId` | `string` | Yes | The ID of the user. |
 | `params.entitlementId` | `string` | Yes | The ID of the entitlement (a product ID), e.g. "app:com.google.android.gm". |
 | `params.install` | `boolean` | No | Set to true to also install the product on all the user's devices where possible. Failure to install on one or more devices will not prevent this operation from returning successfully, as long as the entitlement was successfully assigned to the user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `entitlements.delete()`
 
@@ -327,7 +327,7 @@ Requests to install the latest version of an app to a device. If the app is alre
 | `params.userId` | `string` | Yes | The ID of the user. |
 | `params.deviceId` | `string` | Yes | The Android ID of the device. |
 | `params.installId` | `string` | Yes | The ID of the product represented by the install, e.g. "app:com.google.android.gm". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `installs.delete()`
 
@@ -373,7 +373,7 @@ Adds or updates a per-device managed configuration for an app for the specified 
 | `params.userId` | `string` | Yes | The ID of the user. |
 | `params.deviceId` | `string` | Yes | The Android ID of the device. |
 | `params.managedConfigurationForDeviceId` | `string` | Yes | The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedconfigurationsfordevice.delete()`
 
@@ -416,7 +416,7 @@ Adds or updates the managed configuration settings for an app for the specified 
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
 | `params.userId` | `string` | Yes | The ID of the user. |
 | `params.managedConfigurationForUserId` | `string` | Yes | The ID of the managed configuration (a product ID), e.g. "app:com.google.android.gm". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `managedconfigurationsforuser.delete()`
 
@@ -502,7 +502,7 @@ Generates a URL that can be rendered in an iframe to display the permissions (if
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
 | `params.productId` | `string` | Yes | The ID of the product. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `products.unapprove()`
 
@@ -532,7 +532,7 @@ Generates new credentials for the service account associated with this enterpris
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `serviceaccountkeys.list()`
 
@@ -570,7 +570,7 @@ Inserts a new cluster in a page.
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
 | `params.pageId` | `string` | Yes | The ID of the page. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `storelayoutclusters.get()`
 
@@ -591,7 +591,7 @@ Updates a cluster.
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
 | `params.pageId` | `string` | Yes | The ID of the page. |
 | `params.clusterId` | `string` | Yes | The ID of the cluster. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `storelayoutclusters.delete()`
 
@@ -620,7 +620,7 @@ Inserts a new store page.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `storelayoutpages.get()`
 
@@ -639,7 +639,7 @@ Updates the content of a store page.
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
 | `params.pageId` | `string` | Yes | The ID of the page. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `storelayoutpages.delete()`
 
@@ -659,7 +659,7 @@ Creates a new EMM-managed user. The Users resource passed in the body of the req
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.update()`
 
@@ -669,7 +669,7 @@ Updates the details of an EMM-managed user. Can be used with EMM-managed users o
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
 | `params.userId` | `string` | Yes | The ID of the user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.list()`
 
@@ -733,7 +733,7 @@ Modifies the set of products that a user is entitled to access (referred to as *
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
 | `params.userId` | `string` | Yes | The ID of the user. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `webapps`
 
@@ -761,7 +761,7 @@ Creates a new web app for the enterprise.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `webapps.update()`
 
@@ -771,7 +771,7 @@ Updates an existing web app.
 |---|---|---|---|
 | `params.enterpriseId` | `string` | Yes | The ID of the enterprise. |
 | `params.webAppId` | `string` | Yes | The ID of the web app. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `webapps.delete()`
 

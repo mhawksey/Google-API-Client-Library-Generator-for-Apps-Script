@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Resource Manager API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:24 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:03:00 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:29 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:29 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:26 GMT
 
 
@@ -43,7 +43,7 @@ Search for folders that match specific filter criteria. Search provides an event
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.get()`
 
@@ -60,7 +60,7 @@ Creates a Folder in the resource hierarchy. Returns an Operation which can be us
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | No | Required. The resource name of the new Folder's parent. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.patch()`
 
@@ -70,7 +70,7 @@ Updates a Folder, changing its display_name. Changes to the folder display_name 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The resource name of the Folder. Its format is `folders/{folder_id}`, for example: "folders/1234". |
 | `params.updateMask` | `string` | No | Required. Fields to be updated. Only the `display_name` can be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.move()`
 
@@ -79,7 +79,7 @@ Moves a Folder under a new resource parent. Returns an Operation which can be us
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Folder to move. Must be of the form folders/{folder_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.delete()`
 
@@ -96,7 +96,7 @@ Cancels the deletion request for a Folder. This method may only be called on a F
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Folder to undelete. Must be of the form `folders/{folder_id}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.getIamPolicy()`
 
@@ -105,7 +105,7 @@ Gets the access control policy for a Folder. The returned policy may be empty if
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.setIamPolicy()`
 
@@ -114,7 +114,7 @@ Sets the access control policy on a Folder, replacing any existing policy. The `
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.testIamPermissions()`
 
@@ -123,4 +123,4 @@ Returns permissions that a caller has on the specified Folder. The `resource` fi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

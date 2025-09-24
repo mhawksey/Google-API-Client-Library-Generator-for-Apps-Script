@@ -4,8 +4,8 @@ Auto-generated client library for using the **YouTube Analytics API (version: v2
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:03:32 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:56:20 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:57:06 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:57:06 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:34 GMT
 
 
@@ -23,7 +23,7 @@ Creates a group.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.onBehalfOfContentOwner` | `string` | No | This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.list()`
 
@@ -43,7 +43,7 @@ Modifies a group. For example, you could change a group's title.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.onBehalfOfContentOwner` | `string` | No | This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.delete()`
 
@@ -63,7 +63,7 @@ Creates a group item.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.onBehalfOfContentOwner` | `string` | No | This parameter can only be used in a properly authorized request. **Note:** This parameter is intended exclusively for YouTube content partners that own and manage many different YouTube channels. The `onBehalfOfContentOwner` parameter indicates that the request's authorization credentials identify a YouTube user who is acting on behalf of the content owner specified in the parameter value. It allows content owners to authenticate once and get access to all their video and channel data, without having to provide authentication credentials for each individual channel. The account that the user authenticates with must be linked to the specified YouTube content owner. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groupItems.list()`
 

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Organization Policy API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:45 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:34:54 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:37:25 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:37:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:33 GMT
 
 
@@ -63,7 +63,7 @@ Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.policies.patch()`
 
@@ -73,7 +73,7 @@ Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND`
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number. |
 | `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten in the policy by the set. The fields specified in the update_mask are relative to the policy, not the full request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.policies.delete()`
 
@@ -133,7 +133,7 @@ Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.policies.patch()`
 
@@ -143,7 +143,7 @@ Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND`
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number. |
 | `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten in the policy by the set. The fields specified in the update_mask are relative to the policy, not the full request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.policies.delete()`
 
@@ -203,7 +203,7 @@ Creates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The Google Cloud resource that will parent the new policy. Must be in one of the following forms: * `projects/{project_number}` * `projects/{project_id}` * `folders/{folder_id}` * `organizations/{organization_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.policies.patch()`
 
@@ -213,7 +213,7 @@ Updates a policy. Returns a `google.rpc.Status` with `google.rpc.Code.NOT_FOUND`
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. The resource name of the policy. Must be one of the following forms, where `constraint_name` is the name of the constraint which this policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, `projects/123/policies/compute.disableSerialPortAccess`. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number. |
 | `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten in the policy by the set. The fields specified in the update_mask are relative to the policy, not the full request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.policies.delete()`
 
@@ -233,7 +233,7 @@ Creates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Must be in the following form: * `organizations/{organization_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.customConstraints.patch()`
 
@@ -242,7 +242,7 @@ Updates a custom constraint. Returns a `google.rpc.Status` with `google.rpc.Code
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Name of the constraint. This is unique within the organization. Format of the name should be * `organizations/{organization_id}/customConstraints/{custom_constraint_id}` Example: `organizations/123/customConstraints/custom.createOnlyE2TypeVms` The max length is 70 characters and the minimum length is 1. Note that the prefix `organizations/{organization_id}/customConstraints/` is not counted. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.customConstraints.get()`
 

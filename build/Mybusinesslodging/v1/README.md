@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Lodging API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:50 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:33:23 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:36:06 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:36:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:31 GMT
 
 
@@ -33,7 +33,7 @@ Updates the Lodging of a specific location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Google identifier for this location in the form: `locations/{location_id}/lodging` |
 | `params.updateMask` | `string` | No | Required. The specific fields to update. Use "*" to update all fields, which may include unsetting empty fields in the request. Repeated field items cannot be individually updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `locations.lodging`
 

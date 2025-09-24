@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Billing Budget API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:42 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:54:34 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:06 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:29 GMT
 
 
@@ -25,7 +25,7 @@ Creates a new budget. See [Quotas and limits](https://cloud.google.com/billing/q
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the billing account to create the budget in. Values are of the form `billingAccounts/{billingAccountId}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.budgets.patch()`
 
@@ -35,7 +35,7 @@ Updates a budget and returns the updated budget. WARNING: There are some fields 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the budget. The resource name implies the scope of a budget. Values are of the form `billingAccounts/{billingAccountId}/budgets/{budgetId}`. |
 | `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided budget to update. Read-only fields (such as `name`) cannot be changed. If this is not provided, then only fields with non-default values from the request are updated. See https://developers.google.com/protocol-buffers/docs/proto3#default for more details about default values. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `billingAccounts.budgets.get()`
 

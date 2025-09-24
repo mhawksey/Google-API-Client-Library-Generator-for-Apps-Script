@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Asset API (version: v1beta1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:25 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:01:18 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:07:04 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:07:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:04 GMT
 
 
@@ -23,7 +23,7 @@ Exports assets with time and resource types to a given Cloud Storage location. T
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The relative name of the root asset. This can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id"), a project number (such as "projects/12345"), or a folder number (such as "folders/123"). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.batchGetAssetsHistory()`
 
@@ -56,7 +56,7 @@ Exports assets with time and resource types to a given Cloud Storage location. T
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The relative name of the root asset. This can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id"), a project number (such as "projects/12345"), or a folder number (such as "folders/123"). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `folders.operations`
 
@@ -77,7 +77,7 @@ Exports assets with time and resource types to a given Cloud Storage location. T
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The relative name of the root asset. This can only be an organization number (such as "organizations/123"), a project ID (such as "projects/my-project-id"), a project number (such as "projects/12345"), or a folder number (such as "folders/123"). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.batchGetAssetsHistory()`
 

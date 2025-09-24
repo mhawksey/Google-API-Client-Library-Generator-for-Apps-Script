@@ -4,8 +4,8 @@ Auto-generated client library for using the **Essential Contacts API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:56 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:49 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:24:25 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:24:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:46 GMT
 
 
@@ -25,7 +25,7 @@ Adds a new contact for a resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.contacts.patch()`
 
@@ -35,7 +35,7 @@ Updates a contact. Note: A contact's email address cannot be changed.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id} |
 | `params.updateMask` | `string` | No | Optional. The update mask applied to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.contacts.list()`
 
@@ -81,7 +81,7 @@ Allows a contact admin to send a test message to contact to verify that it has b
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `folders`
 
@@ -94,7 +94,7 @@ Adds a new contact for a resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.contacts.patch()`
 
@@ -104,7 +104,7 @@ Updates a contact. Note: A contact's email address cannot be changed.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id} |
 | `params.updateMask` | `string` | No | Optional. The update mask applied to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.contacts.list()`
 
@@ -150,7 +150,7 @@ Allows a contact admin to send a test message to contact to verify that it has b
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations`
 
@@ -163,7 +163,7 @@ Adds a new contact for a resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource to save this contact for. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.contacts.patch()`
 
@@ -173,7 +173,7 @@ Updates a contact. Note: A contact's email address cannot be changed.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The identifier for the contact. Format: {resource_type}/{resource_id}/contacts/{contact_id} |
 | `params.updateMask` | `string` | No | Optional. The update mask applied to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.contacts.list()`
 
@@ -219,4 +219,4 @@ Allows a contact admin to send a test message to contact to verify that it has b
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | Required. The name of the resource to send the test message for. All contacts must either be set directly on this resource or inherited from another resource that is an ancestor of this one. Format: organizations/{organization_id}, folders/{folder_id} or projects/{project_id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

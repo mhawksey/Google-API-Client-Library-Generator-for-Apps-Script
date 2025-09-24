@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Android Developer API 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:06 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:52:20 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:08 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:21 GMT
 
 
@@ -23,7 +23,7 @@ Grant access for a user to the given developer account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The developer account to add the user to. Format: developers/{developer} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.list()`
 
@@ -43,7 +43,7 @@ Updates access for the user to the developer account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name for this user, following the pattern "developers/{developer}/users/{email}". |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.delete()`
 
@@ -62,7 +62,7 @@ Grant access for a user to the given package.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The user which needs permission. Format: developers/{developer}/users/{user} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `grants.patch()`
 
@@ -72,7 +72,7 @@ Updates access for the user to the given package.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name for this grant, following the pattern "developers/{developer}/users/{email}/grants/{package_name}". If this grant is for a draft app, the app ID will be used in this resource name instead of the package name. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `grants.delete()`
 
@@ -91,7 +91,7 @@ Create an app recovery action with recovery status as DRAFT. Note that this acti
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. Package name of the app on which recovery action is performed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apprecovery.deploy()`
 
@@ -101,7 +101,7 @@ Deploy an already created app recovery action with recovery status DRAFT. Note t
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. Package name of the app for which recovery action is deployed. |
 | `params.appRecoveryId` | `string` | Yes | Required. ID corresponding to the app recovery action to deploy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apprecovery.list()`
 
@@ -120,7 +120,7 @@ Incrementally update targeting for a recovery action. Note that only the criteri
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. Package name of the app for which recovery action is to be updated. |
 | `params.appRecoveryId` | `string` | Yes | Required. ID corresponding to the app recovery action. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `apprecovery.cancel()`
 
@@ -130,7 +130,7 @@ Cancel an already executing app recovery action. Note that this action changes s
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. Package name of the app for which recovery action cancellation is requested. |
 | `params.appRecoveryId` | `string` | Yes | Required. ID corresponding to the app recovery action. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `purchases`
 
@@ -166,7 +166,7 @@ Acknowledges a purchase of an inapp item.
 | `params.packageName` | `string` | Yes | The package name of the application the inapp product was sold in (for example, 'com.some.thing'). |
 | `params.productId` | `string` | Yes | The inapp product SKU (for example, 'com.some.thing.inapp1'). |
 | `params.token` | `string` | Yes | The token provided to the user's device when the inapp product was purchased. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `purchases.products.consume()`
 
@@ -209,7 +209,7 @@ Defers a user's subscription purchase until a specified future expiration time.
 | `params.packageName` | `string` | Yes | The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). |
 | `params.subscriptionId` | `string` | Yes | The purchased subscription ID (for example, 'monthly001'). |
 | `params.token` | `string` | Yes | The token provided to the user's device when the subscription was purchased. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `purchases.subscriptions.refund()`
 
@@ -240,7 +240,7 @@ Acknowledges a subscription purchase.
 | `params.packageName` | `string` | Yes | The package name of the application for which this subscription was purchased (for example, 'com.some.thing'). |
 | `params.subscriptionId` | `string` | Yes | Note: Since May 21, 2025, subscription_id is not required, and not recommended for subscription with add-ons. The purchased subscription ID (for example, 'monthly001'). |
 | `params.token` | `string` | Yes | The token provided to the user's device when the subscription was purchased. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `purchases.subscriptionsv2`
 
@@ -261,7 +261,17 @@ Revoke a subscription purchase for the user.
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). |
 | `params.token` | `string` | Yes | Required. The token provided to the user's device when the subscription was purchased. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `purchases.subscriptionsv2.cancel()`
+
+Cancel a subscription purchase for the user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.packageName` | `string` | Yes | Required. The package of the application for which this subscription was purchased (for example, 'com.some.thing'). |
+| `params.token` | `string` | Yes | Required. The token provided to the user's device when the subscription was purchased. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `purchases.voidedpurchases`
 
@@ -289,7 +299,7 @@ Creates a new edit for an app.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `edits.get()`
 
@@ -356,7 +366,7 @@ Creates a new APK without uploading the APK itself to Google Play, instead hosti
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `edits.bundles`
 
@@ -424,7 +434,7 @@ Updates details of an app.
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `edits.details.patch()`
 
@@ -434,7 +444,7 @@ Patches details of an app.
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `edits.expansionfiles`
 
@@ -459,7 +469,7 @@ Updates the APK's expansion file configuration to reference another APK's expans
 | `params.editId` | `string` | Yes | Identifier of the edit. |
 | `params.apkVersionCode` | `integer` | Yes | The version code of the APK whose expansion file configuration is being read or modified. |
 | `params.expansionFileType` | `string` | Yes | The file type of the file configuration which is being read or modified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `edits.expansionfiles.patch()`
 
@@ -471,7 +481,7 @@ Patches the APK's expansion file configuration to reference another APK's expans
 | `params.editId` | `string` | Yes | Identifier of the edit. |
 | `params.apkVersionCode` | `integer` | Yes | The version code of the APK whose expansion file configuration is being read or modified. |
 | `params.expansionFileType` | `string` | Yes | The file type of the expansion file configuration which is being updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `edits.expansionfiles.upload()`
 
@@ -542,7 +552,7 @@ Creates or updates a localized store listing.
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
 | `params.language` | `string` | Yes | Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `edits.listings.patch()`
 
@@ -553,7 +563,7 @@ Patches a localized store listing.
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
 | `params.language` | `string` | Yes | Language localization code (a BCP-47 language tag; for example, "de-AT" for Austrian German). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `edits.listings.get()`
 
@@ -614,7 +624,7 @@ Updates testers. Note: Testers resource does not support email lists.
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
 | `params.track` | `string` | Yes | The track to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `edits.testers.patch()`
 
@@ -625,7 +635,7 @@ Patches testers. Note: Testers resource does not support email lists.
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
 | `params.track` | `string` | Yes | The track to update. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `edits.tracks`
 
@@ -657,7 +667,7 @@ Updates a track.
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
 | `params.track` | `string` | Yes | Identifier of the track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `edits.tracks.patch()`
 
@@ -668,7 +678,7 @@ Patches a track.
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.editId` | `string` | Yes | Identifier of the edit. |
 | `params.track` | `string` | Yes | Identifier of the track. [More on track name](https://developers.google.com/android-publisher/tracks#ff-track-name) |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `edits.tracks.create()`
 
@@ -678,7 +688,7 @@ Creates a new track.
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. Package name of the app. |
 | `params.editId` | `string` | Yes | Required. Identifier of the edit. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `externaltransactions`
 
@@ -690,7 +700,7 @@ Creates a new external transaction.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this external transaction will be created. Format: applications/{package_name} |
 | `params.externalTransactionId` | `string` | No | Required. The id to use for the external transaction. Must be unique across all other transactions for the app. This value should be 1-63 characters and valid characters are /a-zA-Z0-9_-/. Do not use this field to store any Personally Identifiable Information (PII) such as emails. Attempting to store PII in this field may result in requests being blocked. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `externaltransactions.refundexternaltransaction()`
 
@@ -699,7 +709,7 @@ Refunds or partially refunds an existing external transaction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the external transaction that will be refunded. Format: applications/{package_name}/externalTransactions/{external_transaction} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `externaltransactions.getexternaltransaction()`
 
@@ -769,7 +779,7 @@ Creates an in-app product (a managed product or a subscription). This method sho
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.autoConvertMissingPrices` | `boolean` | No | If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inappproducts.update()`
 
@@ -782,7 +792,7 @@ Updates an in-app product (a managed product or a subscription). This method sho
 | `params.autoConvertMissingPrices` | `boolean` | No | If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. |
 | `params.allowMissing` | `boolean` | No | If set to true, and the in-app product with the given package_name and sku doesn't exist, the in-app product will be created. |
 | `params.latencyTolerance` | `string` | No | Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inappproducts.batchUpdate()`
 
@@ -791,7 +801,7 @@ Updates or inserts one or more in-app products (managed products or subscription
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inappproducts.patch()`
 
@@ -803,7 +813,7 @@ Patches an in-app product (a managed product or a subscription). This method sho
 | `params.sku` | `string` | Yes | Unique identifier for the in-app product. |
 | `params.autoConvertMissingPrices` | `boolean` | No | If true the prices for all regions targeted by the parent app that don't have a price specified for this in-app product will be auto converted to the target currency based on the default price. Defaults to false. |
 | `params.latencyTolerance` | `string` | No | Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `inappproducts.delete()`
 
@@ -822,7 +832,7 @@ Deletes in-app products (managed products or subscriptions). Set the latencyTole
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `internalappsharingartifacts`
 
@@ -881,7 +891,7 @@ Writes the Safety Labels declaration of an app.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. Package name of the app. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `applications.deviceTierConfigs`
 
@@ -893,7 +903,7 @@ Creates a new device tier config for an app.
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.allowUnknownDevices` | `boolean` | No | Whether the service should accept device IDs that are unknown to Play's device catalog. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `applications.deviceTierConfigs.get()`
 
@@ -923,7 +933,7 @@ Calculates the region prices, using today's exchange rate and country-specific p
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The app package name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `monetization.onetimeproducts`
 
@@ -967,7 +977,7 @@ Creates or updates a one-time product.
 | `params.regionsVersion.version` | `string` | No | Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the one-time product with the given package_name and product_id doesn't exist, the one-time product will be created. If a new one-time product is created, update_mask is ignored. |
 | `params.latencyTolerance` | `string` | No | Optional. The latency tolerance for the propagation of this product upsert. Defaults to latency-sensitive. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.onetimeproducts.batchUpdate()`
 
@@ -976,7 +986,7 @@ Creates or updates one or more one-time products.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) for which the one-time products should be updated. Must be equal to the package_name field on all the OneTimeProduct resources. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.onetimeproducts.delete()`
 
@@ -995,7 +1005,7 @@ Deletes one or more one-time products.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) for which the one-time products should be deleted. Must be equal to the package_name field on all the OneTimeProduct resources. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `monetization.onetimeproducts.purchaseOptions`
 
@@ -1007,7 +1017,7 @@ Activates or deactivates purchase options across one or multiple one-time produc
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the updated purchase options. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent one-time product, if all updated purchase options belong to the same one-time product. If this batch update spans multiple one-time products, set this field to "-". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.onetimeproducts.purchaseOptions.batchDelete()`
 
@@ -1017,7 +1027,7 @@ Deletes purchase options across one or multiple one-time products. By default th
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the purchase options to delete. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent one-time product, if all purchase options to delete belong to the same one-time product. If this batch delete spans multiple one-time products, set this field to "-". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `monetization.onetimeproducts.purchaseOptions.offers`
 
@@ -1042,7 +1052,7 @@ Reads one or more one-time product offers.
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the updated offers. Must be equal to the package_name field on all the updated OneTimeProductOffer resources. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent one-time product, if all updated offers belong to the same product. If this request spans multiple one-time products, set this field to "-". |
 | `params.purchaseOptionId` | `string` | Yes | Required. The parent purchase option (ID) for which the offers should be updated. May be specified as '-' to update offers from multiple purchase options. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.onetimeproducts.purchaseOptions.offers.batchUpdate()`
 
@@ -1053,7 +1063,7 @@ Creates or updates one or more one-time product offers.
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the updated offers. Must be equal to the package_name field on all the updated OneTimeProductOffer resources. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent one-time product, if all updated offers belong to the same product. If this request spans multiple one-time products, set this field to "-". |
 | `params.purchaseOptionId` | `string` | Yes | Required. The parent purchase option (ID) for which the offers should be updated. May be specified as '-' to update offers from multiple purchase options. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.onetimeproducts.purchaseOptions.offers.batchUpdateStates()`
 
@@ -1064,7 +1074,7 @@ Updates a batch of one-time product offer states.
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the updated one-time product offers. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent one-time product, if all updated offers belong to the same one-time product. If this batch update spans multiple one-time products, set this field to "-". |
 | `params.purchaseOptionId` | `string` | Yes | Required. The purchase option ID of the parent purchase option, if all updated offers belong to the same purchase option. If this batch update spans multiple purchase options, set this field to "-". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.onetimeproducts.purchaseOptions.offers.batchDelete()`
 
@@ -1075,7 +1085,7 @@ Deletes one or more one-time product offers.
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the offers to delete. Must be equal to the package_name field on all the OneTimeProductOffer resources. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent one-time product, if all offers to delete belong to the same product. If this request spans multiple one-time products, set this field to "-". |
 | `params.purchaseOptionId` | `string` | Yes | Required. The parent purchase option (ID) for which the offers should be deleted. May be specified as '-' to update offers from multiple purchase options. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.onetimeproducts.purchaseOptions.offers.activate()`
 
@@ -1087,7 +1097,7 @@ Activates a one-time product offer.
 | `params.productId` | `string` | Yes | Required. The parent one-time product (ID) of the offer to activate. |
 | `params.purchaseOptionId` | `string` | Yes | Required. The parent purchase option (ID) of the offer to activate. |
 | `params.offerId` | `string` | Yes | Required. The offer ID of the offer to activate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.onetimeproducts.purchaseOptions.offers.cancel()`
 
@@ -1099,7 +1109,7 @@ Cancels a one-time product offer.
 | `params.productId` | `string` | Yes | Required. The parent one-time product (ID) of the offer to cancel. |
 | `params.purchaseOptionId` | `string` | Yes | Required. The parent purchase option (ID) of the offer to cancel. |
 | `params.offerId` | `string` | Yes | Required. The offer ID of the offer to cancel. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.onetimeproducts.purchaseOptions.offers.deactivate()`
 
@@ -1111,7 +1121,7 @@ Deactivates a one-time product offer.
 | `params.productId` | `string` | Yes | Required. The parent one-time product (ID) of the offer to deactivate. |
 | `params.purchaseOptionId` | `string` | Yes | Required. The parent purchase option (ID) of the offer to deactivate. |
 | `params.offerId` | `string` | Yes | Required. The offer ID of the offer to deactivate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `monetization.subscriptions`
 
@@ -1153,7 +1163,7 @@ Creates a new subscription. Newly added base plans will remain in draft state un
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) for which the subscription should be created. Must be equal to the package_name field on the Subscription resource. |
 | `params.productId` | `string` | No | Required. The ID to use for the subscription. For the requirements on this format, see the documentation of the product_id field on the Subscription resource. |
 | `params.regionsVersion.version` | `string` | No | Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.patch()`
 
@@ -1167,7 +1177,7 @@ Updates an existing subscription.
 | `params.regionsVersion.version` | `string` | No | Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the subscription with the given package_name and product_id doesn't exist, the subscription will be created. If a new subscription is created, update_mask is ignored. |
 | `params.latencyTolerance` | `string` | No | Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.batchUpdate()`
 
@@ -1176,7 +1186,7 @@ Updates a batch of subscriptions. Set the latencyTolerance field on nested reque
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) for which the subscriptions should be updated. Must be equal to the package_name field on all the Subscription resources. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.delete()`
 
@@ -1195,7 +1205,7 @@ Deprecated: subscription archiving is not supported.
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the app of the subscription to delete. |
 | `params.productId` | `string` | Yes | Required. The unique product ID of the subscription to delete. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `monetization.subscriptions.basePlans`
 
@@ -1218,7 +1228,7 @@ Activates a base plan. Once activated, base plans will be available to new subsc
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the base plan to activate. |
 | `params.productId` | `string` | Yes | Required. The parent subscription (ID) of the base plan to activate. |
 | `params.basePlanId` | `string` | Yes | Required. The unique base plan ID of the base plan to activate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.deactivate()`
 
@@ -1229,7 +1239,7 @@ Deactivates a base plan. Once deactivated, the base plan will become unavailable
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the base plan to deactivate. |
 | `params.productId` | `string` | Yes | Required. The parent subscription (ID) of the base plan to deactivate. |
 | `params.basePlanId` | `string` | Yes | Required. The unique base plan ID of the base plan to deactivate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.batchUpdateStates()`
 
@@ -1239,7 +1249,7 @@ Activates or deactivates base plans across one or multiple subscriptions. Set th
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the updated base plans. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent subscription, if all updated base plans belong to the same subscription. If this batch update spans multiple subscriptions, set this field to "-". Must be set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.migratePrices()`
 
@@ -1250,7 +1260,7 @@ Migrates subscribers from one or more legacy price cohorts to the current price.
 | `params.packageName` | `string` | Yes | Required. Package name of the parent app. Must be equal to the package_name field on the Subscription resource. |
 | `params.productId` | `string` | Yes | Required. The ID of the subscription to update. Must be equal to the product_id field on the Subscription resource. |
 | `params.basePlanId` | `string` | Yes | Required. The unique base plan ID of the base plan to update prices on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.batchMigratePrices()`
 
@@ -1260,7 +1270,7 @@ Batch variant of the MigrateBasePlanPrices endpoint. Set the latencyTolerance fi
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) for which the subscriptions should be created or updated. Must be equal to the package_name field on all the Subscription resources. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this batch update spans multiple subscriptions, set this field to "-". Must be set. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `monetization.subscriptions.basePlans.offers`
 
@@ -1284,7 +1294,7 @@ Reads one or more subscription offers.
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) for which the subscriptions should be created or updated. Must be equal to the package_name field on all the requests. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this request spans multiple subscriptions, set this field to "-". Must be set. |
 | `params.basePlanId` | `string` | Yes | Required. The parent base plan (ID) for which the offers should be read. May be specified as '-' to read offers from multiple base plans. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.offers.list()`
 
@@ -1309,7 +1319,7 @@ Creates a new subscription offer. Only auto-renewing base plans can have subscri
 | `params.basePlanId` | `string` | Yes | Required. The parent base plan (ID) for which the offer should be created. Must be equal to the base_plan_id field on the SubscriptionOffer resource. |
 | `params.offerId` | `string` | No | Required. The ID to use for the offer. For the requirements on this format, see the documentation of the offer_id field on the SubscriptionOffer resource. |
 | `params.regionsVersion.version` | `string` | No | Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.offers.patch()`
 
@@ -1325,7 +1335,7 @@ Updates an existing subscription offer.
 | `params.regionsVersion.version` | `string` | No | Required. A string representing the version of available regions being used for the specified resource. Regional prices and latest supported version for the resource have to be specified according to the information published in [this article](https://support.google.com/googleplay/android-developer/answer/10532353). Each time the supported locations substantially change, the version will be incremented. Using this field will ensure that creating and updating the resource with an older region's version and set of regional prices and currencies will succeed even though a new version is available. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the subscription offer with the given package_name, product_id, base_plan_id and offer_id doesn't exist, an offer will be created. If a new offer is created, update_mask is ignored. |
 | `params.latencyTolerance` | `string` | No | Optional. The latency tolerance for the propagation of this product update. Defaults to latency-sensitive. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.offers.batchUpdate()`
 
@@ -1336,7 +1346,7 @@ Updates a batch of subscription offers. Set the latencyTolerance field on nested
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the updated subscription offers. Must be equal to the package_name field on all the updated SubscriptionOffer resources. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this request spans multiple subscriptions, set this field to "-". Must be set. |
 | `params.basePlanId` | `string` | Yes | Required. The parent base plan (ID) for which the offers should be updated. May be specified as '-' to update offers from multiple base plans. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.offers.activate()`
 
@@ -1348,7 +1358,7 @@ Activates a subscription offer. Once activated, subscription offers will be avai
 | `params.productId` | `string` | Yes | Required. The parent subscription (ID) of the offer to activate. |
 | `params.basePlanId` | `string` | Yes | Required. The parent base plan (ID) of the offer to activate. |
 | `params.offerId` | `string` | Yes | Required. The unique offer ID of the offer to activate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.offers.deactivate()`
 
@@ -1360,7 +1370,7 @@ Deactivates a subscription offer. Once deactivated, existing subscribers will ma
 | `params.productId` | `string` | Yes | Required. The parent subscription (ID) of the offer to deactivate. |
 | `params.basePlanId` | `string` | Yes | Required. The parent base plan (ID) of the offer to deactivate. |
 | `params.offerId` | `string` | Yes | Required. The unique offer ID of the offer to deactivate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.offers.batchUpdateStates()`
 
@@ -1371,7 +1381,7 @@ Updates a batch of subscription offer states. Set the latencyTolerance field on 
 | `params.packageName` | `string` | Yes | Required. The parent app (package name) of the updated subscription offers. Must be equal to the package_name field on all the updated SubscriptionOffer resources. |
 | `params.productId` | `string` | Yes | Required. The product ID of the parent subscription, if all updated offers belong to the same subscription. If this request spans multiple subscriptions, set this field to "-". Must be set. |
 | `params.basePlanId` | `string` | Yes | Required. The parent base plan (ID) for which the offers should be updated. May be specified as '-' to update offers from multiple base plans. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `monetization.subscriptions.basePlans.offers.delete()`
 
@@ -1416,7 +1426,7 @@ Replies to a single review, or updates an existing reply.
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.reviewId` | `string` | Yes | Unique identifier for a review. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `systemapks`
 
@@ -1430,7 +1440,7 @@ Creates an APK which is suitable for inclusion in a system image from an already
 |---|---|---|---|
 | `params.packageName` | `string` | Yes | Package name of the app. |
 | `params.versionCode` | `string` | Yes | The version code of the App Bundle. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `systemapks.variants.list()`
 

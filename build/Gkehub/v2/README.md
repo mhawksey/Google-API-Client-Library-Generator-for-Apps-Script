@@ -4,8 +4,8 @@ Auto-generated client library for using the **GKE Hub API (version: v2)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:36:28 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:22:43 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:26:28 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:26:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:34 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -66,7 +66,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.memberships`
 
@@ -101,7 +101,7 @@ Creates membershipFeature under a given parent.
 | `params.parent` | `string` | Yes | Required. The name of parent where the MembershipFeature will be created. Specified in the format `projects/*/locations/*/memberships/*`. |
 | `params.requestId` | `string` | No | Idempotent request UUID. |
 | `params.featureId` | `string` | No | Required. The ID of the membership_feature to create. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.memberships.features.delete()`
 
@@ -122,4 +122,4 @@ Updates an existing MembershipFeature.
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. |
 | `params.requestId` | `string` | No | Idempotent request UUID. |
 | `params.allowMissing` | `boolean` | No | Optional. If set to true, and the MembershipFeature is not found, a new MembershipFeature will be created. In this situation, `update_mask` is ignored. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

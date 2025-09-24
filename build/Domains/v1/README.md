@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Domains API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:34:38 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:14:21 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:23:59 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:23:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:25 GMT
 
 
@@ -28,6 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -85,7 +86,7 @@ Registers a new domain name and creates a corresponding `Registration` resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the `Registration`. Must be in the format `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.retrieveTransferParameters()`
 
@@ -103,7 +104,7 @@ Deprecated: For more information, see [Cloud Domains feature deprecation](https:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the `Registration`. Must be in the format `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.retrieveImportableDomains()`
 
@@ -122,7 +123,7 @@ Deprecated: For more information, see [Cloud Domains feature deprecation](https:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the Registration. Must be in the format `projects/*/locations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.list()`
 
@@ -157,7 +158,7 @@ Updates select fields of a `Registration` resource, notably `labels`. To update 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Name of the `Registration` resource, in the format `projects/*/locations/*/registrations/`. |
 | `params.updateMask` | `string` | No | Required. The field mask describing which fields to update as a comma-separated list. For example, if only the labels are being updated, the `update_mask` is `"labels"`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.configureManagementSettings()`
 
@@ -166,7 +167,7 @@ Updates a `Registration`'s management settings.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.registration` | `string` | Yes | Required. The name of the `Registration` whose management settings are being updated, in the format `projects/*/locations/*/registrations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.configureDnsSettings()`
 
@@ -175,7 +176,7 @@ Updates a `Registration`'s DNS settings.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.registration` | `string` | Yes | Required. The name of the `Registration` whose DNS settings are being updated, in the format `projects/*/locations/*/registrations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.retrieveGoogleDomainsDnsRecords()`
 
@@ -202,7 +203,7 @@ Updates a `Registration`'s contact settings. Some changes require confirmation b
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.registration` | `string` | Yes | Required. The name of the `Registration` whose contact settings are being updated, in the format `projects/*/locations/*/registrations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.export()`
 
@@ -211,7 +212,7 @@ Deprecated: For more information, see [Cloud Domains feature deprecation](https:
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the `Registration` to export, in the format `projects/*/locations/*/registrations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.delete()`
 
@@ -236,7 +237,7 @@ Resets the authorization code of the `Registration` to a new random string. You 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.registration` | `string` | Yes | Required. The name of the `Registration` whose authorization code is being reset, in the format `projects/*/locations/*/registrations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.initiatePushTransfer()`
 
@@ -245,7 +246,7 @@ Initiates the `Push Transfer` process to transfer the domain to another registra
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.registration` | `string` | Yes | Required. The name of the `Registration` for which the push transfer is initiated, in the format `projects/*/locations/*/registrations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.renewDomain()`
 
@@ -254,7 +255,7 @@ Renews a recently expired domain. This method can only be called on domains that
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.registration` | `string` | Yes | Required. The name of the `Registration` whish is being renewed, in the format `projects/*/locations/*/registrations/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.setIamPolicy()`
 
@@ -263,7 +264,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.registrations.getIamPolicy()`
 
@@ -281,4 +282,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

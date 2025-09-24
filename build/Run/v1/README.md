@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Run Admin API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:47 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:44:52 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:46:38 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:46:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:52 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 ### `projects.locations.operations`
 
@@ -66,7 +66,7 @@ Waits until the specified long-running operation is done or reaches at most a sp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to wait on. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.authorizeddomains`
 
@@ -152,7 +152,7 @@ Create a new domain mapping.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID |
 | `params.dryRun` | `string` | No | Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.domainmappings.list()`
 
@@ -207,7 +207,7 @@ Sets the IAM Access control policy for the specified job. Overwrites any existin
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.testIamPermissions()`
 
@@ -216,7 +216,7 @@ Returns permissions that a caller has on the specified job. There are no permiss
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.routes`
 
@@ -276,7 +276,7 @@ Creates a new Service. Service creation will trigger a new deployment. Use GetSe
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` |
 | `params.dryRun` | `string` | No | Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.services.replaceService()`
 
@@ -286,7 +286,7 @@ Replaces a service. Only the spec and metadata labels and annotations are modifi
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified name of the service to replace. It can be any of the following forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` * `projects/{project_id_or_number}/regions/{region}/services/{service_name}` |
 | `params.dryRun` | `string` | No | Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.services.delete()`
 
@@ -316,7 +316,7 @@ Sets the IAM Access control policy for the specified Service. Overwrites any exi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.services.testIamPermissions()`
 
@@ -325,7 +325,7 @@ Returns permissions that a caller has on the specified Project. There are no per
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.workerpools`
 
@@ -345,7 +345,7 @@ Sets the IAM Access control policy for the specified worker pool. Overwrites any
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workerpools.testIamPermissions()`
 
@@ -354,7 +354,7 @@ Returns permissions that a caller has on the specified worker pool. There are no
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.authorizeddomains`
 
@@ -454,7 +454,7 @@ Create a new domain mapping.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The namespace in which the domain mapping should be created. For Cloud Run (fully managed), replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID |
 | `params.dryRun` | `string` | No | Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `namespaces.domainmappings.list()`
 
@@ -559,7 +559,7 @@ Cancel an execution.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the execution to cancel. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `namespaces.jobs`
 
@@ -570,7 +570,7 @@ Create a job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The namespace in which the job should be created. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `namespaces.jobs.replaceJob()`
 
@@ -579,7 +579,7 @@ Replace a job. Only the spec and metadata labels and annotations are modifiable.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the job being replaced. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `namespaces.jobs.delete()`
 
@@ -598,7 +598,7 @@ Get information about a job.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the job to retrieve. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID |
+| `params.name` | `string` | Yes | Required. The name of the job to retrieve. It takes the form namespaces/{namespace}/jobs/{job_name} and the `endpoint` must be regional. Replace {namespace} with the project ID or number. |
 
 #### `namespaces.jobs.list()`
 
@@ -622,7 +622,7 @@ Trigger creation of a new execution of this job.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the job to run. Replace {namespace} with the project ID or number. It takes the form namespaces/{namespace}. For example: namespaces/PROJECT_ID |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `namespaces.routes`
 
@@ -682,7 +682,7 @@ Creates a new Service. Service creation will trigger a new deployment. Use GetSe
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/services` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` |
 | `params.dryRun` | `string` | No | Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `namespaces.services.replaceService()`
 
@@ -692,7 +692,7 @@ Replaces a service. Only the spec and metadata labels and annotations are modifi
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified name of the service to replace. It can be any of the following forms: * `namespaces/{project_id_or_number}/services/{service_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/services/{service_name}` * `projects/{project_id_or_number}/regions/{region}/services/{service_name}` |
 | `params.dryRun` | `string` | No | Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `namespaces.services.delete()`
 
@@ -735,7 +735,7 @@ Creates a new WorkerPool. WorkerPool creation will trigger a new deployment. Use
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource's parent. In Cloud Run, it may be one of the following: * `{project_id_or_number}` * `namespaces/{project_id_or_number}` * `namespaces/{project_id_or_number}/workerpools` * `projects/{project_id_or_number}/locations/{region}` * `projects/{project_id_or_number}/regions/{region}` |
 | `params.dryRun` | `string` | No | Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `namespaces.workerpools.replaceWorkerPool()`
 
@@ -745,7 +745,7 @@ Replaces a worker pool. Only the spec and metadata labels and annotations are mo
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified name of the worker pool to replace. It can be any of the following forms: * `namespaces/{project_id_or_number}/workerpools/{worker_pool_name}` (only when the `endpoint` is regional) * `projects/{project_id_or_number}/locations/{region}/workerpools/{worker_pool_name}` * `projects/{project_id_or_number}/regions/{region}/workerpools/{worker_pool_name}` |
 | `params.dryRun` | `string` | No | Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `namespaces.workerpools.delete()`
 

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Vertex AI Search for commerce API 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:42 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:44:43 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:46:31 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:46:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:44 GMT
 
 
@@ -32,7 +32,7 @@ Update the alert config of the requested project.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Immutable. The name of the AlertConfig singleton resource. Format: projects/*/alertConfig |
 | `params.updateMask` | `string` | No | Indicates which fields in the provided AlertConfig to update. If not set, all supported fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations`
 
@@ -66,7 +66,7 @@ Exports analytics metrics. `Operation.response` is of type `ExportAnalyticsMetri
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.catalog` | `string` | Yes | Required. Full resource name of the parent catalog. Expected format: `projects/*/locations/*/catalogs/*` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.list()`
 
@@ -86,7 +86,7 @@ Updates the Catalogs.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Immutable. The fully qualified resource name of the catalog. |
 | `params.updateMask` | `string` | No | Indicates which fields in the provided Catalog to update. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.setDefaultBranch()`
 
@@ -101,7 +101,7 @@ Set a specified branch id as default branch. API methods such as SearchService.S
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.catalog` | `string` | Yes | Full resource name of the catalog, such as `projects/*/locations/global/catalogs/default_catalog`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.getDefaultBranch()`
 
@@ -127,7 +127,7 @@ Updates the CompletionConfigs.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Immutable. Fully qualified name `projects/*/locations/*/catalogs/*/completionConfig` |
 | `params.updateMask` | `string` | No | Indicates which fields in the provided CompletionConfig to update. The following are the only supported fields: * CompletionConfig.matching_order * CompletionConfig.max_suggestions * CompletionConfig.min_prefix_length * CompletionConfig.auto_learning If not set, all supported fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.getAttributesConfig()`
 
@@ -145,7 +145,7 @@ Updates the AttributesConfig. The catalog attributes in the request will be upda
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Immutable. The fully qualified resource name of the attribute config. Format: `projects/*/locations/*/catalogs/*/attributesConfig` |
 | `params.updateMask` | `string` | No | Indicates which fields in the provided AttributesConfig to update. The following is the only supported field: * AttributesConfig.catalog_attributes If not set, all supported fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.completeQuery()`
 
@@ -171,7 +171,7 @@ Manages overal generative question feature state -- enables toggling feature on 
 |---|---|---|---|
 | `params.catalog` | `string` | Yes | Required. Resource name of the affected catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} |
 | `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided GenerativeQuestionsFeatureConfig to update. If not set or empty, all supported fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.getGenerativeQuestionFeature()`
 
@@ -189,7 +189,7 @@ Allows management of individual questions.
 |---|---|---|---|
 | `params.catalog` | `string` | Yes | Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} |
 | `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided GenerativeQuestionConfig to update. The following are NOT supported: * GenerativeQuestionConfig.frequency If not set or empty, all supported fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.getConversationalSearchCustomizationConfig()`
 
@@ -207,7 +207,7 @@ Updates the conversational search customization config for a given catalog.
 |---|---|---|---|
 | `params.catalog` | `string` | Yes | Required. Resource name of the catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} |
 | `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided ConversationalSearchCustomizationConfig to update. If not set or empty, all supported fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.operations`
 
@@ -252,7 +252,7 @@ Creates a Product.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent catalog resource name, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch`. |
 | `params.productId` | `string` | No | Required. The ID to use for the Product, which will become the final component of the Product.name. If the caller does not have permission to create the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. This field must be unique among all Products with the same parent. Otherwise, an ALREADY_EXISTS error is returned. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.branches.products.get()`
 
@@ -283,7 +283,7 @@ Updates a Product.
 | `params.name` | `string` | Yes | Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. |
 | `params.updateMask` | `string` | No | Indicates which fields in the provided Product to update. The immutable and output only fields are NOT supported. If not set, all supported fields (the fields that are neither immutable nor output only) are updated. If an unsupported or unknown field is provided, an INVALID_ARGUMENT error is returned. The attribute key can be updated by setting the mask path as "attributes.${key_name}". If a key name is present in the mask but not in the patching product from the request, this key will be deleted after the update. |
 | `params.allowMissing` | `boolean` | No | If set to true, and the Product is not found, a new Product will be created. In this situation, `update_mask` is ignored. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.branches.products.delete()`
 
@@ -300,7 +300,7 @@ Permanently deletes all selected Products under a branch. This process is asynch
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the branch under which the products are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}/branches/${branchId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.branches.products.import()`
 
@@ -309,7 +309,7 @@ Bulk import of multiple Products. Request processing may be synchronous. Non-exi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch` If no updateMask is specified, requires products.create permission. If updateMask is specified, requires products.update permission. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.branches.products.export()`
 
@@ -318,7 +318,7 @@ Exports multiple Products.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of a Branch, and `default_branch` for branch_id component is supported. For example `projects/1234/locations/global/catalogs/default_catalog/branches/default_branch` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.branches.products.setInventory()`
 
@@ -327,7 +327,7 @@ Updates inventory information for a Product while respecting the last update tim
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.branches.products.addFulfillmentPlaces()`
 
@@ -336,7 +336,7 @@ We recommend that you use the ProductService.AddLocalInventories method instead 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.product` | `string` | Yes | Required. Full resource name of Product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.branches.products.removeFulfillmentPlaces()`
 
@@ -345,7 +345,7 @@ We recommend that you use the ProductService.RemoveLocalInventories method inste
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.product` | `string` | Yes | Required. Full resource name of Product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.branches.products.addLocalInventories()`
 
@@ -354,7 +354,7 @@ Updates local inventory information for a Product at a list of places, while res
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.product` | `string` | Yes | Required. Full resource name of Product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.branches.products.removeLocalInventories()`
 
@@ -363,7 +363,7 @@ Remove local inventory information for a Product at a list of places at a remova
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.product` | `string` | Yes | Required. Full resource name of Product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/some_product_id`. If the caller does not have permission to access the Product, regardless of whether or not it exists, a PERMISSION_DENIED error is returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.attributesConfig`
 
@@ -374,7 +374,7 @@ Adds the specified CatalogAttribute to the AttributesConfig. If the CatalogAttri
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.attributesConfig` | `string` | Yes | Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.attributesConfig.removeCatalogAttribute()`
 
@@ -383,7 +383,7 @@ Removes the specified CatalogAttribute from the AttributesConfig. If the Catalog
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.attributesConfig` | `string` | Yes | Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.attributesConfig.batchRemoveCatalogAttributes()`
 
@@ -392,7 +392,7 @@ Removes all specified CatalogAttributes from the AttributesConfig.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.attributesConfig` | `string` | Yes | Required. The attributes config resource shared by all catalog attributes being deleted. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.attributesConfig.replaceCatalogAttribute()`
 
@@ -401,7 +401,7 @@ Replaces the specified CatalogAttribute in the AttributesConfig by updating the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.attributesConfig` | `string` | Yes | Required. Full AttributesConfig resource name. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/attributesConfig` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.placements`
 
@@ -412,7 +412,16 @@ Performs a search. This feature is only available for users who have Retail Sear
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.placement` | `string` | Yes | Required. The resource name of the Retail Search serving config, such as `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.catalogs.placements.conversationalSearch()`
+
+Performs a conversational search. This feature is only available for users who have Conversational Search enabled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.placement` | `string` | Yes | Required. The resource name of the search engine placement, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.placements.predict()`
 
@@ -421,7 +430,7 @@ Makes a recommendation prediction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.placement` | `string` | Yes | Required. Full resource name of the format: `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.servingConfigs`
 
@@ -432,7 +441,16 @@ Performs a search. This feature is only available for users who have Retail Sear
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.placement` | `string` | Yes | Required. The resource name of the Retail Search serving config, such as `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` or the name of the legacy placement resource, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search`. This field is used to identify the serving config name and the set of models that are used to make the search. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.catalogs.servingConfigs.conversationalSearch()`
+
+Performs a conversational search. This feature is only available for users who have Conversational Search enabled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.placement` | `string` | Yes | Required. The resource name of the search engine placement, such as `projects/*/locations/global/catalogs/default_catalog/placements/default_search` or `projects/*/locations/global/catalogs/default_catalog/servingConfigs/default_serving_config` This field is used to identify the serving config name and the set of models that will be used to make the search. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.servingConfigs.predict()`
 
@@ -441,7 +459,7 @@ Makes a recommendation prediction.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.placement` | `string` | Yes | Required. Full resource name of the format: `{placement=projects/*/locations/global/catalogs/default_catalog/servingConfigs/*}` or `{placement=projects/*/locations/global/catalogs/default_catalog/placements/*}`. We recommend using the `servingConfigs` resource. `placements` is a legacy resource. The ID of the Recommendations AI serving config or placement. Before you can request predictions from your model, you must create at least one serving config or placement for it. For more information, see [Manage serving configs] (https://cloud.google.com/retail/docs/manage-configs). The full list of available serving configs can be seen at https://console.cloud.google.com/ai/retail/catalogs/default_catalog/configs |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.servingConfigs.create()`
 
@@ -451,7 +469,7 @@ Creates a ServingConfig. A maximum of 100 ServingConfigs are allowed in a Catalo
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Full resource name of parent. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` |
 | `params.servingConfigId` | `string` | No | Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.servingConfigs.delete()`
 
@@ -469,7 +487,7 @@ Updates a ServingConfig.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/servingConfig/*` |
 | `params.updateMask` | `string` | No | Indicates which fields in the provided ServingConfig to update. The following are NOT supported: * ServingConfig.name If not set, all supported fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.servingConfigs.get()`
 
@@ -496,7 +514,7 @@ Enables a Control on the specified ServingConfig. The control is added in the la
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.servingConfig` | `string` | Yes | Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.servingConfigs.removeControl()`
 
@@ -505,7 +523,7 @@ Disables a Control on the specified ServingConfig. The control is removed from t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.servingConfig` | `string` | Yes | Required. The source ServingConfig resource name . Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/servingConfigs/{serving_config_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.completionData`
 
@@ -516,7 +534,7 @@ Bulk import of processed completion dataset. Request processing is asynchronous.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The catalog which the suggestions dataset belongs to. Format: `projects/1234/locations/global/catalogs/default_catalog`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.controls`
 
@@ -528,7 +546,7 @@ Creates a Control. If the Control to create already exists, an ALREADY_EXISTS er
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Full resource name of parent catalog. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` |
 | `params.controlId` | `string` | No | Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.controls.delete()`
 
@@ -546,7 +564,7 @@ Updates a Control. Control cannot be set to a different oneof field, if so an IN
 |---|---|---|---|
 | `params.name` | `string` | Yes | Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*` |
 | `params.updateMask` | `string` | No | Indicates which fields in the provided Control to update. The following are NOT supported: * Control.name If not set or empty, all supported fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.controls.get()`
 
@@ -586,7 +604,7 @@ Allows management of multiple questions.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Optional. Resource name of the parent catalog. Format: projects/{project}/locations/{location}/catalogs/{catalog} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.models`
 
@@ -598,7 +616,7 @@ Creates a new model.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource under which to create the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}` |
 | `params.dryRun` | `boolean` | No | Optional. Whether to run a dry run to validate the request (without actually creating the model). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.models.get()`
 
@@ -615,7 +633,7 @@ Pauses the training of an existing model.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the model to pause. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.models.resume()`
 
@@ -624,7 +642,7 @@ Resumes the training of an existing model.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the model to resume. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.models.delete()`
 
@@ -652,7 +670,7 @@ Update of model metadata. Only fields that currently can be updated are: `filter
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The fully qualified resource name of the model. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` catalog_id has char limit of 50. recommendation_model_id has char limit of 40. |
 | `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided 'model' to update. If not set, by default updates all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.models.tune()`
 
@@ -661,7 +679,7 @@ Tunes an existing model.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the model to tune. Format: `projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/models/{model_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.userEvents`
 
@@ -673,7 +691,7 @@ Writes a single user event.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent catalog resource name, such as `projects/1234/locations/global/catalogs/default_catalog`. |
 | `params.writeAsync` | `boolean` | No | If set to true, the user event will be written asynchronously after validation, and the API will respond without waiting for the write. Therefore, silent failures can occur even if the API returns success. In case of silent failures, error messages can be found in Stackdriver logs. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.userEvents.collect()`
 
@@ -682,7 +700,7 @@ Writes a single user event from the browser. For larger user event payload over 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent catalog name, such as `projects/1234/locations/global/catalogs/default_catalog`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.userEvents.purge()`
 
@@ -691,7 +709,7 @@ Deletes permanently all user events specified by the filter provided. Depending 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the catalog under which the events are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.userEvents.import()`
 
@@ -700,7 +718,7 @@ Bulk import of User events. Request processing might be synchronous. Events that
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. `projects/1234/locations/global/catalogs/default_catalog` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.userEvents.export()`
 
@@ -709,7 +727,7 @@ Exports user events. `Operation.response` is of type `ExportResponse`. `Operatio
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of a Catalog. For example `projects/1234/locations/global/catalogs/default_catalog` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.userEvents.rejoin()`
 
@@ -718,7 +736,7 @@ Starts a user-event rejoin operation with latest product catalog. Events are not
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent catalog resource name, such as `projects/1234/locations/global/catalogs/default_catalog`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.operations`
 

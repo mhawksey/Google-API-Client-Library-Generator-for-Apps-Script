@@ -4,8 +4,8 @@ Auto-generated client library for using the **Service Control API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:37 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:46:08 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:47:50 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:47:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:07 GMT
 
 
@@ -23,7 +23,7 @@ Attempts to allocate quota for the specified consumer. It should be called befor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.serviceName` | `string` | Yes | Name of the service as specified in the service configuration. For example, `"pubsub.googleapis.com"`. See google.api.Service for the definition of a service name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.check()`
 
@@ -32,7 +32,7 @@ Checks whether an operation on a service should be allowed to proceed based on t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.serviceName` | `string` | Yes | The service name as specified in its service configuration. For example, `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service) for the definition of a service name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.report()`
 
@@ -41,4 +41,4 @@ Reports operation results to Google Service Control, such as logs and metrics. I
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.serviceName` | `string` | Yes | The service name as specified in its service configuration. For example, `"pubsub.googleapis.com"`. See [google.api.Service](https://cloud.google.com/service-management/reference/rpc/google.api#google.api.Service) for the definition of a service name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

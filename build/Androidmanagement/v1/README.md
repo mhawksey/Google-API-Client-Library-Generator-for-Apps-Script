@@ -4,8 +4,8 @@ Auto-generated client library for using the **Android Management API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:22:03 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:52:16 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:04:05 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:04:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:17 GMT
 
 
@@ -39,7 +39,7 @@ Creates an enterprise. This is the last step in the enterprise signup flow. See 
 | `params.signupUrlName` | `string` | No | The name of the SignupUrl used to sign up for the enterprise. Set this when creating a customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises) and not when creating a deprecated EMM-managed enterprise (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises). |
 | `params.enterpriseToken` | `string` | No | The enterprise token appended to the callback URL. Set this when creating a customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises) and not when creating a deprecated EMM-managed enterprise (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises). |
 | `params.agreementAccepted` | `boolean` | No | Whether the enterprise admin has seen and agreed to the managed Google Play Agreement (https://www.android.com/enterprise/terms/). Do not set this field for any customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises). Set this to field to true for all EMM-managed enterprises (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.delete()`
 
@@ -65,7 +65,7 @@ Updates an enterprise. See also: SigninDetail
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the enterprise in the form enterprises/{enterpriseId}. |
 | `params.updateMask` | `string` | No | The field mask indicating the fields to update. If not set, all modifiable fields will be modified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.list()`
 
@@ -85,7 +85,7 @@ Generates an enterprise upgrade URL to upgrade an existing managed Google Play A
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the enterprise to be upgraded in the form enterprises/{enterpriseId}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `enterprises.enrollmentTokens`
 
@@ -96,7 +96,7 @@ Creates an enrollment token for a given enterprise. It's up to the caller's resp
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the enterprise in the form enterprises/{enterpriseId}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.enrollmentTokens.delete()`
 
@@ -133,7 +133,7 @@ Creates a web token to access an embeddable managed Google Play web UI for a giv
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the enterprise in the form enterprises/{enterpriseId}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `enterprises.devices`
 
@@ -163,7 +163,7 @@ Updates a device.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}. |
 | `params.updateMask` | `string` | No | The field mask indicating the fields to update. If not set, all modifiable fields will be modified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.devices.delete()`
 
@@ -182,7 +182,7 @@ Issues a command to a device. The Operation resource returned contains a Command
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `enterprises.devices.operations`
 
@@ -241,7 +241,7 @@ Updates or creates a policy.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}. |
 | `params.updateMask` | `string` | No | The field mask indicating the fields to update. If not set, all modifiable fields will be modified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.policies.delete()`
 
@@ -258,7 +258,7 @@ Updates or creates applications in a policy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Policy containing the ApplicationPolicy objects to be updated, in the form enterprises/{enterpriseId}/policies/{policyId}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.policies.removePolicyApplications()`
 
@@ -267,7 +267,7 @@ Removes applications in a policy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the policy containing the ApplicationPolicy objects to be removed, in the form enterprises/{enterpriseId}/policies/{policyId}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `enterprises.applications`
 
@@ -289,7 +289,7 @@ Creates a web app.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | The name of the enterprise in the form enterprises/{enterpriseId}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.webApps.get()`
 
@@ -317,7 +317,7 @@ Updates a web app.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}. |
 | `params.updateMask` | `string` | No | The field mask indicating the fields to update. If not set, all modifiable fields will be modified. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.webApps.delete()`
 
@@ -336,7 +336,7 @@ Creates a migration token, to migrate an existing device from being managed by t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The enterprise in which this migration token is created. This must be the same enterprise which already manages the device in the Play EMM API. Format: enterprises/{enterprise} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `enterprises.migrationTokens.get()`
 

@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Site Verification API (vers
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:55:05 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:46:44 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:48:23 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:48:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:40 GMT
 
 
@@ -36,7 +36,9 @@ Get the most current data for a website or domain.
 
 Get a verification token for placing on a website or domain.
 
-| `params.resource` | `object` | Yes | The request body. |
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `webResource.insert()`
 
@@ -45,7 +47,7 @@ Attempt verification of a website or domain.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.verificationMethod` | `string` | Yes | The method to use for verifying a site or domain. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `webResource.list()`
 
@@ -59,7 +61,7 @@ Modify the list of owners for your website or domain. This method supports patch
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.id` | `string` | Yes | The id of a verified site or domain. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `webResource.update()`
 
@@ -68,4 +70,4 @@ Modify the list of owners for your website or domain.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.id` | `string` | Yes | The id of a verified site or domain. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

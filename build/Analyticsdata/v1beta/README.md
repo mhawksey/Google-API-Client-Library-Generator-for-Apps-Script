@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Analytics Data API (version
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:53 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:51:58 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:03:49 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:03:49 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:00 GMT
 
 
@@ -23,7 +23,7 @@ Returns a customized report of your Google Analytics event data. Reports contain
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.property` | `string` | Yes | A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.runPivotReport()`
 
@@ -32,7 +32,7 @@ Returns a customized pivot report of your Google Analytics event data. Pivot rep
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.property` | `string` | Yes | A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Within a batch request, this property should either be unspecified or consistent with the batch-level property. Example: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.batchRunReports()`
 
@@ -41,7 +41,7 @@ Returns multiple reports in a batch. All reports must be for the same Google Ana
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.property` | `string` | Yes | A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be specified for the batch. The property within RunReportRequest may either be unspecified or consistent with this property. Example: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.batchRunPivotReports()`
 
@@ -50,7 +50,7 @@ Returns multiple pivot reports in a batch. All reports must be for the same Goog
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.property` | `string` | Yes | A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). This property must be specified for the batch. The property within RunPivotReportRequest may either be unspecified or consistent with this property. Example: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.getMetadata()`
 
@@ -67,7 +67,7 @@ Returns a customized report of realtime event data for your property. Events app
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.property` | `string` | Yes | A Google Analytics property identifier whose events are tracked. Specified in the URL path and not the body. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). Example: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.checkCompatibility()`
 
@@ -76,7 +76,7 @@ This compatibility method lists dimensions and metrics that can be added to a re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.property` | `string` | Yes | A Google Analytics property identifier whose events are tracked. To learn more, see [where to find your Property ID](https://developers.google.com/analytics/devguides/reporting/data/v1/property-id). `property` should be the same value as in your `runReport` request. Example: properties/1234 |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `properties.audienceExports`
 
@@ -87,7 +87,7 @@ Creates an audience export for later retrieval. This method quickly returns the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource where this audience export will be created. Format: `properties/{property}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.audienceExports.query()`
 
@@ -96,7 +96,7 @@ Retrieves an audience export of users. After creating an audience, the users are
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the audience export to retrieve users from. Format: `properties/{property}/audienceExports/{audience_export}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `properties.audienceExports.get()`
 

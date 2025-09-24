@@ -4,8 +4,8 @@ Auto-generated client library for using the **Certificate Manager API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:59 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:55:05 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:31 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:31 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:59 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.certificates`
 
@@ -106,7 +106,7 @@ Creates a new Certificate in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the certificate. Must be in the format `projects/*/locations/*`. |
 | `params.certificateId` | `string` | No | Required. A user-provided name of the certificate. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.certificates.patch()`
 
@@ -116,7 +116,7 @@ Updates a Certificate.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/*/locations/*/certificates/*`. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.certificates.delete()`
 
@@ -156,7 +156,7 @@ Creates a new CertificateMap in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the certificate map. Must be in the format `projects/*/locations/*`. |
 | `params.certificateMapId` | `string` | No | Required. A user-provided name of the certificate map. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.certificateMaps.patch()`
 
@@ -166,7 +166,7 @@ Updates a CertificateMap.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. A user-defined name of the Certificate Map. Certificate Map names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*`. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.certificateMaps.delete()`
 
@@ -206,7 +206,7 @@ Creates a new CertificateMapEntry in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the certificate map entry. Must be in the format `projects/*/locations/*/certificateMaps/*`. |
 | `params.certificateMapEntryId` | `string` | No | Required. A user-provided name of the certificate map entry. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.certificateMaps.certificateMapEntries.patch()`
 
@@ -216,7 +216,7 @@ Updates a CertificateMapEntry.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. A user-defined name of the Certificate Map Entry. Certificate Map Entry names must be unique globally and match pattern `projects/*/locations/*/certificateMaps/*/certificateMapEntries/*`. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.certificateMaps.certificateMapEntries.delete()`
 
@@ -256,7 +256,7 @@ Creates a new DnsAuthorization in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the dns authorization. Must be in the format `projects/*/locations/*`. |
 | `params.dnsAuthorizationId` | `string` | No | Required. A user-provided name of the dns authorization. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dnsAuthorizations.patch()`
 
@@ -266,7 +266,7 @@ Updates a DnsAuthorization.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. A user-defined name of the dns authorization. DnsAuthorization names must be unique globally and match pattern `projects/*/locations/*/dnsAuthorizations/*`. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dnsAuthorizations.delete()`
 
@@ -306,7 +306,7 @@ Creates a new CertificateIssuanceConfig in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the certificate issuance config. Must be in the format `projects/*/locations/*`. |
 | `params.certificateIssuanceConfigId` | `string` | No | Required. A user-provided name of the certificate config. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.certificateIssuanceConfigs.patch()`
 
@@ -316,7 +316,7 @@ Updates a CertificateIssuanceConfig.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. A user-defined name of the certificate issuance config. CertificateIssuanceConfig names must be unique globally and match pattern `projects/*/locations/*/certificateIssuanceConfigs/*`. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.certificateIssuanceConfigs.delete()`
 
@@ -356,7 +356,7 @@ Creates a new TrustConfig in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the TrustConfig. Must be in the format `projects/*/locations/*`. |
 | `params.trustConfigId` | `string` | No | Required. A user-provided name of the TrustConfig. Must match the regexp `[a-z0-9-]{1,63}`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.trustConfigs.patch()`
 
@@ -366,7 +366,7 @@ Updates a TrustConfig.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. A user-defined name of the trust config. TrustConfig names must be unique globally and match pattern `projects/*/locations/*/trustConfigs/*`. |
 | `params.updateMask` | `string` | No | Required. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.trustConfigs.delete()`
 

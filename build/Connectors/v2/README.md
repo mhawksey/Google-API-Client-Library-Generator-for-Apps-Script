@@ -4,8 +4,8 @@ Auto-generated client library for using the **Connectors API (version: v2)** in 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:09 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:32:09 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:14:53 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:14:53 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:50 GMT
 
 
@@ -43,7 +43,7 @@ ExchangeAuthCode exchanges the OAuth authorization code (and other necessary dat
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.refreshAccessToken()`
 
@@ -52,7 +52,7 @@ RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.executeSqlQuery()`
 
@@ -63,7 +63,7 @@ Executes a SQL statement specified in the body of the request. An example of thi
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.connection` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections.actions`
 
@@ -74,7 +74,7 @@ Executes an action with the name specified in the request. The input parameters 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.actions.list()`
 
@@ -115,7 +115,7 @@ Executes a specific tool.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the Tool. Format: projects/{project}/locations/{location}/connections/{connection}/tools/{tool} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections.entityTypes`
 
@@ -170,7 +170,7 @@ Creates a new entity row of the specified entity type in the external system. Th
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.entityTypes.entities.patch()`
 
@@ -179,7 +179,7 @@ Updates an existing entity row matching the entity type and entity id specified 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.entityTypes.entities.updateEntitiesWithConditions()`
 
@@ -189,7 +189,7 @@ Updates entities based on conditions specified in the request and not on entity 
 |---|---|---|---|
 | `params.entityType` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
 | `params.conditions` | `string` | No | Required. Conditions to be used when updating entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.entityTypes.entities.delete()`
 

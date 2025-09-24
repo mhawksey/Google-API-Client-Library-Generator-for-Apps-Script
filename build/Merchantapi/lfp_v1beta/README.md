@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: lfp_v1beta)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:43:44 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:32:07 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:34:46 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:34:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:42 GMT
 
 
@@ -25,7 +25,7 @@ Inserts a `LfpInventory` resource for the given target merchant account. If the 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The LFP provider account. Format: `accounts/{account}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.lfpMerchantStates`
 
@@ -46,7 +46,7 @@ Inserts a `LfpSale` for the given merchant.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The LFP provider account. Format: `accounts/{lfp_partner}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.lfpStores`
 
@@ -65,7 +65,7 @@ Inserts a store for the target merchant. If the store with the same store code a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The LFP provider account Format: `accounts/{account}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.lfpStores.delete()`
 

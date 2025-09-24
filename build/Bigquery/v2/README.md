@@ -4,8 +4,8 @@ Auto-generated client library for using the **BigQuery API (version: v2)** in Go
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:23 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:54:05 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:05:43 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:05:43 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:02 GMT
 
 
@@ -45,7 +45,7 @@ Creates a new empty dataset.
 |---|---|---|---|
 | `params.accessPolicyVersion` | `integer` | No | Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. This version refers to the schema version of the access policy and not the version of access policy. This field's value can be equal or more than the access policy schema provided in the request. For example, * Requests with conditional access policy binding in datasets must specify version 3. * But dataset with no conditional role bindings in access policy may specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional bindings, request will be rejected. This field will be mapped to IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM. |
 | `params.projectId` | `string` | Yes | Required. Project ID of the new dataset |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datasets.list()`
 
@@ -69,7 +69,7 @@ Updates information in an existing dataset. The update method replaces the entir
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the dataset being updated |
 | `params.projectId` | `string` | Yes | Required. Project ID of the dataset being updated |
 | `params.updateMode` | `string` | No | Optional. Specifies the fields of dataset that update/patch operation is targeting By default, both metadata and ACL fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datasets.undelete()`
 
@@ -79,7 +79,7 @@ Undeletes a dataset which is within time travel window based on datasetId. If a 
 |---|---|---|---|
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of dataset being deleted |
 | `params.projectId` | `string` | Yes | Required. Project ID of the dataset to be undeleted |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `datasets.update()`
 
@@ -91,7 +91,7 @@ Updates information in an existing dataset. The update method replaces the entir
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the dataset being updated |
 | `params.projectId` | `string` | Yes | Required. Project ID of the dataset being updated |
 | `params.updateMode` | `string` | No | Optional. Specifies the fields of dataset that update/patch operation is targeting By default, both metadata and ACL fields are updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `jobs`
 
@@ -152,7 +152,7 @@ Starts a new asynchronous job. This API has two different kinds of endpoint URIs
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Project ID of project that will be billed for the job. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `jobs.list()`
 
@@ -177,7 +177,7 @@ Runs a BigQuery SQL query synchronously and returns query results if the query c
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.projectId` | `string` | Yes | Required. Project ID of the query request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `models`
 
@@ -221,7 +221,7 @@ Patch specific fields in the specified model.
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the model to patch. |
 | `params.modelId` | `string` | Yes | Required. Model ID of the model to patch. |
 | `params.projectId` | `string` | Yes | Required. Project ID of the model to patch. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
 
@@ -272,7 +272,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routines.insert()`
 
@@ -282,7 +282,7 @@ Creates a new routine in the dataset.
 |---|---|---|---|
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the new routine |
 | `params.projectId` | `string` | Yes | Required. Project ID of the new routine |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routines.list()`
 
@@ -304,7 +304,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routines.testIamPermissions()`
 
@@ -313,7 +313,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `routines.update()`
 
@@ -324,7 +324,7 @@ Updates information in an existing routine. The update method replaces the entir
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the routine to update |
 | `params.projectId` | `string` | Yes | Required. Project ID of the routine to update |
 | `params.routineId` | `string` | Yes | Required. Routine ID of the routine to update |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `rowAccessPolicies`
 
@@ -337,7 +337,7 @@ Deletes provided row access policies.
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the table to delete the row access policies. |
 | `params.projectId` | `string` | Yes | Required. Project ID of the table to delete the row access policies. |
 | `params.tableId` | `string` | Yes | Required. Table ID of the table to delete the row access policies. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `rowAccessPolicies.delete()`
 
@@ -369,7 +369,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `rowAccessPolicies.insert()`
 
@@ -380,7 +380,7 @@ Creates a row access policy.
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the table to get the row access policy. |
 | `params.projectId` | `string` | Yes | Required. Project ID of the table to get the row access policy. |
 | `params.tableId` | `string` | Yes | Required. Table ID of the table to get the row access policy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `rowAccessPolicies.list()`
 
@@ -401,7 +401,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `rowAccessPolicies.update()`
 
@@ -413,7 +413,7 @@ Updates a row access policy.
 | `params.policyId` | `string` | Yes | Required. Policy ID of the row access policy. |
 | `params.projectId` | `string` | Yes | Required. Project ID of the table to get the row access policy. |
 | `params.tableId` | `string` | Yes | Required. Table ID of the table to get the row access policy. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `tabledata`
 
@@ -426,7 +426,7 @@ Streams data into BigQuery one record at a time without needing to run a load jo
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the destination. |
 | `params.projectId` | `string` | Yes | Required. Project ID of the destination. |
 | `params.tableId` | `string` | Yes | Required. Table ID of the destination. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tabledata.list()`
 
@@ -475,7 +475,7 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tables.insert()`
 
@@ -485,7 +485,7 @@ Creates a new, empty table in the dataset.
 |---|---|---|---|
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the new table |
 | `params.projectId` | `string` | Yes | Required. Project ID of the new table |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tables.list()`
 
@@ -508,7 +508,7 @@ Updates information in an existing table. The update method replaces the entire 
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the table to update |
 | `params.projectId` | `string` | Yes | Required. Project ID of the table to update |
 | `params.tableId` | `string` | Yes | Required. Table ID of the table to update |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tables.setIamPolicy()`
 
@@ -517,7 +517,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tables.testIamPermissions()`
 
@@ -526,7 +526,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `tables.update()`
 
@@ -538,4 +538,4 @@ Updates information in an existing table. The update method replaces the entire 
 | `params.datasetId` | `string` | Yes | Required. Dataset ID of the table to update |
 | `params.projectId` | `string` | Yes | Required. Project ID of the table to update |
 | `params.tableId` | `string` | Yes | Required. Table ID of the table to update |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

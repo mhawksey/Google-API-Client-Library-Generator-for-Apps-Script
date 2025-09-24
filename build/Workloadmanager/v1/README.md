@@ -4,8 +4,8 @@ Auto-generated client library for using the **Workload Manager API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:03:22 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:56:00 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:49 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:49 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:21 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.evaluations`
 
@@ -107,7 +107,7 @@ Creates a new Evaluation in a given project and location.
 | `params.parent` | `string` | Yes | Required. The resource prefix of the evaluation location using the form: `projects/{project_id}/locations/{location_id}` |
 | `params.evaluationId` | `string` | No | Required. Id of the requesting object |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.evaluations.delete()`
 
@@ -148,7 +148,7 @@ Creates a new Execution in a given project and location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Execution using the form: 'projects/{project}/locations/{location}/evaluations/{evaluation}/executions/{execution}' |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.evaluations.executions.delete()`
 
@@ -211,7 +211,7 @@ Write the data insights to workload manager data warehouse.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.location` | `string` | Yes | Required. The GCP location. The format is: projects/{project}/locations/{location}. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.insights.delete()`
 

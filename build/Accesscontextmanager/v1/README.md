@@ -4,8 +4,8 @@ Auto-generated client library for using the **Access Context Manager API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:20:54 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:50:22 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:02:27 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:02:27 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:36 GMT
 
 
@@ -50,7 +50,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accessPolicies`
 
@@ -78,7 +78,7 @@ Creates an access policy. This method fails if the organization already has an a
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.patch()`
 
@@ -88,7 +88,7 @@ Updates an access policy. The long-running operation from this RPC has a success
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Identifier. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}` |
 | `params.updateMask` | `string` | No | Required. Mask to control which fields get updated. Must be non-empty. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.delete()`
 
@@ -105,7 +105,7 @@ Sets the IAM policy for the specified Access Context Manager access policy. This
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.getIamPolicy()`
 
@@ -114,7 +114,7 @@ Gets the IAM policy for the specified Access Context Manager access policy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.testIamPermissions()`
 
@@ -123,7 +123,7 @@ Returns the IAM permissions that the caller has on the specified Access Context 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accessPolicies.accessLevels`
 
@@ -154,7 +154,7 @@ Creates an access level. The long-running operation from this RPC has a successf
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name for the access policy which owns this Access Level. Format: `accessPolicies/{policy_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.accessLevels.patch()`
 
@@ -164,7 +164,7 @@ Updates an access level. The long-running operation from this RPC has a successf
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`. |
 | `params.updateMask` | `string` | No | Required. Mask to control which fields get updated. Must be non-empty. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.accessLevels.delete()`
 
@@ -181,7 +181,7 @@ Replaces all existing access levels in an access policy with the access levels p
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name for the access policy which owns these Access Levels. Format: `accessPolicies/{policy_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.accessLevels.testIamPermissions()`
 
@@ -190,7 +190,7 @@ Returns the IAM permissions that the caller has on the specified Access Context 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accessPolicies.servicePerimeters`
 
@@ -219,7 +219,7 @@ Creates a service perimeter. The long-running operation from this RPC has a succ
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name for the access policy which owns this Service Perimeter. Format: `accessPolicies/{policy_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.servicePerimeters.patch()`
 
@@ -229,7 +229,7 @@ Updates a service perimeter. The long-running operation from this RPC has a succ
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Resource name for the `ServicePerimeter`. Format: `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`, you cannot change its `name`. |
 | `params.updateMask` | `string` | No | Required. Mask to control which fields get updated. Must be non-empty. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.servicePerimeters.delete()`
 
@@ -246,7 +246,7 @@ Replace all existing service perimeters in an access policy with the service per
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name for the access policy which owns these Service Perimeters. Format: `accessPolicies/{policy_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.servicePerimeters.commit()`
 
@@ -255,7 +255,7 @@ Commits the dry-run specification for all the service perimeters in an access po
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name for the parent Access Policy which owns all Service Perimeters in scope for the commit operation. Format: `accessPolicies/{policy_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.servicePerimeters.testIamPermissions()`
 
@@ -264,7 +264,7 @@ Returns the IAM permissions that the caller has on the specified Access Context 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accessPolicies.authorizedOrgsDescs`
 
@@ -293,7 +293,7 @@ Creates an authorized orgs desc. The long-running operation from this RPC has a 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name for the access policy which owns this Authorized Orgs Desc. Format: `accessPolicies/{policy_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.authorizedOrgsDescs.patch()`
 
@@ -303,7 +303,7 @@ Updates an authorized orgs desc. The long-running operation from this RPC has a 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`. |
 | `params.updateMask` | `string` | No | Required. Mask to control which fields get updated. Must be non-empty. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accessPolicies.authorizedOrgsDescs.delete()`
 
@@ -361,7 +361,7 @@ Creates a GcpUserAccessBinding. If the client specifies a name, the server ignor
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Example: "organizations/256" |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.gcpUserAccessBindings.patch()`
 
@@ -372,7 +372,7 @@ Updates a GcpUserAccessBinding. Completion of this long-running operation does n
 | `params.name` | `string` | Yes | Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N" |
 | `params.updateMask` | `string` | No | Required. Only the fields specified in this mask are updated. Because name and group_key cannot be changed, update_mask is required and may only contain the following fields: `access_levels`, `dry_run_access_levels`, `session_settings`, `scoped_access_settings`. update_mask { paths: "access_levels" } |
 | `params.append` | `boolean` | No | Optional. This field controls whether or not certain repeated settings in the update request overwrite or append to existing settings on the binding. If true, then append. Otherwise overwrite. So far, only scoped_access_settings with session_settings supports appending. Global access_levels, access_levels in scoped_access_settings, dry_run_access_levels, and session_settings are not compatible with append functionality, and the request will return an error if append=true when these settings are in the update_mask. The request will also return an error if append=true when "scoped_access_settings" is not set in the update_mask. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.gcpUserAccessBindings.delete()`
 

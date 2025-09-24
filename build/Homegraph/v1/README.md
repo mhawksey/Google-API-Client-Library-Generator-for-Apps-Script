@@ -4,8 +4,8 @@ Auto-generated client library for using the **HomeGraph API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:41:55 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:23:27 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:26:57 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:26:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:58 GMT
 
 
@@ -22,7 +22,7 @@ Requests Google to send an `action.devices.SYNC` [intent](https://developers.hom
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.reportStateAndNotification()`
 
@@ -30,7 +30,7 @@ Reports device state and optionally sends device notifications. Called by your s
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.query()`
 
@@ -38,7 +38,7 @@ Gets the current states in Home Graph for the given set of the third-party user'
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `devices.sync()`
 
@@ -46,7 +46,7 @@ Gets all the devices associated with the given third-party user. The third-party
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `agentUsers`
 

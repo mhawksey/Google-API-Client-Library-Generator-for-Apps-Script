@@ -4,8 +4,8 @@ Auto-generated client library for using the **Air Quality API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:21:34 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:51:24 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:03:22 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:03:22 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:31 GMT
 
 
@@ -22,7 +22,7 @@ The Current Conditions endpoint provides hourly air quality information in more 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `history`
 
@@ -32,7 +32,7 @@ Returns air quality history for a specific location for a given time range.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `forecast`
 
@@ -42,7 +42,7 @@ Returns air quality forecast for a specific location for a given time range.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `mapTypes`
 

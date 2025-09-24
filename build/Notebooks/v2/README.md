@@ -4,8 +4,8 @@ Auto-generated client library for using the **Notebooks API (version: v2)** in G
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:32 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:34:30 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:37:05 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:37:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:17 GMT
 
 
@@ -74,7 +74,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.instances`
 
@@ -107,7 +107,7 @@ Creates a new Instance in a given project and location.
 | `params.parent` | `string` | Yes | Required. Format: `parent=projects/{project_id}/locations/{location}` |
 | `params.instanceId` | `string` | No | Required. User-defined unique ID of this instance. |
 | `params.requestId` | `string` | No | Optional. Idempotent request UUID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.patch()`
 
@@ -118,7 +118,7 @@ UpdateInstance updates an Instance.
 | `params.name` | `string` | Yes | Output only. The name of this notebook instance. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
 | `params.updateMask` | `string` | No | Required. Mask used to update an instance. Updatable fields: * `labels` * `gce_setup.min_cpu_platform` * `gce_setup.metadata` * `gce_setup.machine_type` * `gce_setup.accelerator_configs` * `gce_setup.accelerator_configs.type` * `gce_setup.accelerator_configs.core_count` * `gce_setup.gpu_driver_config` * `gce_setup.gpu_driver_config.enable_gpu_driver` * `gce_setup.gpu_driver_config.custom_gpu_driver_path` * `gce_setup.shielded_instance_config` * `gce_setup.shielded_instance_config.enable_secure_boot` * `gce_setup.shielded_instance_config.enable_vtpm` * `gce_setup.shielded_instance_config.enable_integrity_monitoring` * `gce_setup.reservation_affinity` * `gce_setup.reservation_affinity.consume_reservation_type` * `gce_setup.reservation_affinity.key` * `gce_setup.reservation_affinity.values` * `gce_setup.tags` * `gce_setup.container_image` * `gce_setup.container_image.repository` * `gce_setup.container_image.tag` * `gce_setup.disable_public_ip` * `disable_proxy_access` |
 | `params.requestId` | `string` | No | Optional. Idempotent request UUID. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.delete()`
 
@@ -136,7 +136,7 @@ Starts a notebook instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.stop()`
 
@@ -145,7 +145,7 @@ Stops a notebook instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.reset()`
 
@@ -154,7 +154,7 @@ Resets a notebook instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.checkUpgradability()`
 
@@ -171,7 +171,7 @@ Upgrades a notebook instance to the latest version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.resizeDisk()`
 
@@ -180,7 +180,7 @@ Resize a notebook instance disk to a higher capacity.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.notebookInstance` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.rollback()`
 
@@ -189,7 +189,7 @@ Rollbacks a notebook instance to the previous version.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.diagnose()`
 
@@ -198,7 +198,7 @@ Creates a Diagnostic File and runs Diagnostic Tool given an Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.getConfig()`
 
@@ -215,7 +215,7 @@ RestoreInstance restores an Instance from a BackupSource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.reportInfoSystem()`
 
@@ -224,7 +224,7 @@ Allows notebook instances to report their latest instance information to the Not
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.upgradeSystem()`
 
@@ -233,7 +233,7 @@ Allows notebook instances to upgrade themselves. Do not use this method directly
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project_id}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.checkAuthorization()`
 
@@ -242,7 +242,7 @@ Initiated by Cloud Console for Oauth consent flow for Workbench Instances. Do no
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the Notebook Instance resource. Format: `projects/{project}/locations/{location}/instances/{instance}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.generateAccessToken()`
 
@@ -251,7 +251,7 @@ Called by VM to return an EUC for the instance owner. Do not use this method dir
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/instances/{instance_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.setIamPolicy()`
 
@@ -260,7 +260,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.getIamPolicy()`
 
@@ -278,4 +278,4 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

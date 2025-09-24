@@ -4,8 +4,8 @@ Auto-generated client library for using the **CSS API (version: v1)** in Google 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:32:35 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:05:34 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:15:28 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:15:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:29 GMT
 
 
@@ -44,7 +44,7 @@ Updates labels assigned to CSS/MC accounts by a CSS domain.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The label resource name. Format: accounts/{account} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.labels`
 
@@ -65,7 +65,7 @@ Creates a new label, not assigned to any account.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent account. Format: accounts/{account} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.labels.patch()`
 
@@ -74,7 +74,7 @@ Updates a label.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The resource name of the label. Format: accounts/{account}/labels/{label} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.labels.delete()`
 
@@ -94,7 +94,7 @@ Uploads a CssProductInput to your CSS Center account. If an input with the same 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account where this CSS Product will be inserted. Format: accounts/{account} |
 | `params.feedId` | `string` | No | Optional. DEPRECATED. Feed id is not required for CSS Products. The primary or supplemental feed id. If CSS Product already exists and feed id provided is different, then the CSS Product will be moved to a new feed. Note: For now, CSSs do not need to provide feed ids as we create feeds on the fly. We do not have supplemental feed support for CSS Products yet. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.cssProductInputs.patch()`
 
@@ -104,7 +104,7 @@ Updates the existing Css Product input in your CSS Center account. After inserti
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. The name of the CSS Product input. Format: `accounts/{account}/cssProductInputs/{css_product_input}`, where the last section `css_product_input` consists of 3 parts: contentLanguage~feedLabel~offerId. Example: accounts/123/cssProductInputs/de~DE~rawProvidedId123 |
 | `params.updateMask` | `string` | No | The list of CSS product attributes to be updated. If the update mask is omitted, then it is treated as implied field mask equivalent to all fields that are populated (have a non-empty value). Attributes specified in the update mask without a value specified in the body will be deleted from the CSS product. Update mask can only be specified for top level fields in attributes and custom attributes. To specify the update mask for custom attributes you need to add the `custom_attribute.` prefix. Providing special "*" value for full CSS product replacement is not supported. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.cssProductInputs.delete()`
 

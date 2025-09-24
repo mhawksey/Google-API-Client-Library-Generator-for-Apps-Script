@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Build API (version: v2)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:24:35 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:01:40 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:12:24 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:12:24 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:22 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -55,7 +55,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections`
 
@@ -67,7 +67,7 @@ Creates a Connection.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Project and location where the connection will be created. Format: `projects/*/locations/*`. |
 | `params.connectionId` | `string` | No | Required. The ID to use for the Connection, which will become the final component of the Connection's resource name. Names must be unique per-project per-location. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.get()`
 
@@ -98,7 +98,7 @@ Updates a single connection.
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
 | `params.allowMissing` | `boolean` | No | If set to true, and the connection is not found a new connection will be created. In this situation `update_mask` is ignored. The creation will succeed only if the input connection has all the necessary information (e.g a github_config with both user_oauth_token and installation_id properties). |
 | `params.etag` | `string` | No | The current etag of the connection. If an etag is provided and does not match the current etag of the connection, update will be blocked and an ABORTED error will be returned. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.delete()`
 
@@ -118,7 +118,7 @@ ProcessWebhook is called by the external SCM for notifying of events.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Project and location where the webhook will be received. Format: `projects/*/locations/*`. |
 | `params.webhookKey` | `string` | No | Arbitrary additional key to find the matching repository for a webhook event if needed. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.fetchLinkableRepositories()`
 
@@ -137,7 +137,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.getIamPolicy()`
 
@@ -155,7 +155,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections.repositories`
 
@@ -167,7 +167,7 @@ Creates a Repository.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The connection to contain the repository. If the request is part of a BatchCreateRepositoriesRequest, this field should be empty or match the parent specified there. |
 | `params.repositoryId` | `string` | No | Required. The ID to use for the repository, which will become the final component of the repository's resource name. This ID should be unique in the connection. Allows alphanumeric characters and any of -._~%!$&'()*+,;=@. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.repositories.batchCreate()`
 
@@ -176,7 +176,7 @@ Creates multiple repositories inside a connection.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The connection to contain all the repositories being created. Format: projects/*/locations/*/connections/* The parent field in the CreateRepositoryRequest messages must either be empty or match this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.repositories.get()`
 
@@ -215,7 +215,7 @@ Fetches read/write token of a given repository.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.repository` | `string` | Yes | Required. The resource name of the repository in the format `projects/*/locations/*/connections/*/repositories/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.repositories.accessReadToken()`
 
@@ -224,7 +224,7 @@ Fetches read token of a given repository.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.repository` | `string` | Yes | Required. The resource name of the repository in the format `projects/*/locations/*/connections/*/repositories/*`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.repositories.fetchGitRefs()`
 

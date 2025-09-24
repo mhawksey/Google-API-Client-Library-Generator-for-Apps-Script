@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: inventories
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:43:30 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:43:30 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:34:31 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:34:31 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:30 GMT
 
 
@@ -37,7 +37,7 @@ Inserts a `LocalInventory` resource to a product in your merchant account. Repla
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account and product where this inventory will be inserted. Format: `accounts/{account}/products/{product}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.products.localInventories.delete()`
 
@@ -66,7 +66,7 @@ Inserts a `RegionalInventory` to a given product in your merchant account. Repla
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account and product where this inventory will be inserted. Format: `accounts/{account}/products/{product}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.products.regionalInventories.delete()`
 

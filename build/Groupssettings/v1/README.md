@@ -4,8 +4,8 @@ Auto-generated client library for using the **Groups Settings API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:41:46 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:23:09 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:26:45 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:26:45 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:50 GMT
 
 
@@ -31,7 +31,7 @@ Updates an existing resource.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.groupUniqueId` | `string` | Yes | The group's email address. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.patch()`
 
@@ -40,4 +40,4 @@ Updates an existing resource. This method supports patch semantics.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.groupUniqueId` | `string` | Yes | The group's email address. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

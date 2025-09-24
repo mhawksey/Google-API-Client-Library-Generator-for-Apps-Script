@@ -4,8 +4,8 @@ Auto-generated client library for using the **Security Posture API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:54:29 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:45:57 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:47:40 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:47:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:56 GMT
 
 
@@ -54,7 +54,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.postures`
 
@@ -96,7 +96,7 @@ Creates a new Posture.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
 | `params.postureId` | `string` | No | Required. An identifier for the posture. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.postures.patch()`
 
@@ -107,7 +107,7 @@ Updates a revision of an existing Posture. If the posture revision that you upda
 | `params.name` | `string` | Yes | Required. Identifier. The name of the posture, in the format `organizations/{organization}/locations/global/postures/{posture_id}`. |
 | `params.updateMask` | `string` | No | Required. The fields in the Posture to update. You can update only the following fields: * Posture.description * Posture.policy_sets * Posture.state |
 | `params.revisionId` | `string` | No | Required. The revision ID of the posture to update. If the posture revision that you update is currently deployed, then a new revision of the posture is created. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.postures.delete()`
 
@@ -125,7 +125,7 @@ Extracts existing policies from an organization, folder, or project, and applies
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations.locations.postureDeployments`
 
@@ -156,7 +156,7 @@ Creates a new PostureDeployment in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
 | `params.postureDeploymentId` | `string` | No | Required. An identifier for the posture deployment. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.postureDeployments.patch()`
 
@@ -166,7 +166,7 @@ Updates an existing PostureDeployment. To prevent concurrent updates from overwr
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Identifier. The name of the posture deployment, in the format `organizations/{organization}/locations/global/postureDeployments/{deployment_id}`. |
 | `params.updateMask` | `string` | No | Required. The fields in the PostureDeployment to update. You can update only the following fields: * PostureDeployment.posture_id * PostureDeployment.posture_revision_id |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `organizations.locations.postureDeployments.delete()`
 
@@ -227,7 +227,7 @@ Validates a specified infrastructure-as-code (IaC) configuration, and creates a 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name, in the format `organizations/{organization}/locations/global`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects`
 

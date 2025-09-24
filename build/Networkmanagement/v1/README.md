@@ -4,8 +4,8 @@ Auto-generated client library for using the **Network Management API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:45:16 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:34:03 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:36:42 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:36:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:01 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -76,7 +76,7 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.global.connectivityTests`
 
@@ -108,7 +108,7 @@ Creates a new Connectivity Test. After you create a test, the reachability analy
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the Connectivity Test to create: `projects/{project_id}/locations/global` |
 | `params.testId` | `string` | No | Required. The logical name of the Connectivity Test in your project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the customer project |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.connectivityTests.patch()`
 
@@ -118,7 +118,7 @@ Updates the configuration of an existing `ConnectivityTest`. After you update a 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Unique name of the resource using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}` |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.connectivityTests.rerun()`
 
@@ -127,7 +127,7 @@ Rerun an existing `ConnectivityTest`. After the user triggers the rerun, the rea
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Connectivity Test resource name using the form: `projects/{project_id}/locations/global/connectivityTests/{test_id}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.connectivityTests.delete()`
 
@@ -144,7 +144,7 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.global.connectivityTests.getIamPolicy()`
 
@@ -162,7 +162,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.networkMonitoringProviders`
 
@@ -192,7 +192,7 @@ Creates a NetworkMonitoringProvider resource.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent value for CreateNetworkMonitoringProviderRequest. Format: projects/{project}/locations/{location} |
 | `params.networkMonitoringProviderId` | `string` | No | Required. The ID to use for the NetworkMonitoringProvider resource, which will become the final component of the NetworkMonitoringProvider resource's name. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.networkMonitoringProviders.delete()`
 
@@ -302,7 +302,7 @@ Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settin
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource of the VpcFlowLogsConfig to create, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global` - For organization-level resources: `organizations/{organization_id}/locations/global` |
 | `params.vpcFlowLogsConfigId` | `string` | No | Required. ID of the `VpcFlowLogsConfig`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vpcFlowLogsConfigs.patch()`
 
@@ -322,7 +322,7 @@ Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same 
 |---|---|---|---|
 | `params.name` | `string` | Yes | Identifier. Unique name of the configuration. The name can have one of the following forms: - For project-level configurations: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level configurations: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` |
 | `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. For example, to change the state of the configuration to ENABLED, specify `update_mask` = `"state"`, and the `vpc_flow_logs_config` would be: `vpc_flow_logs_config = { name = "projects/my-project/locations/global/vpcFlowLogsConfigs/my-config" state = "ENABLED" }` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.vpcFlowLogsConfigs.delete()`
 
@@ -331,6 +331,29 @@ Deletes a specific `VpcFlowLogsConfig`.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a project-level resource: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an organization-level resource: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` |
+
+#### `projects.locations.vpcFlowLogsConfigs.queryOrgVpcFlowLogsConfigs()`
+
+QueryOrgVpcFlowLogsConfigs returns a list of all organization-level VPC Flow Logs configurations applicable to the specified project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the VpcFlowLogsConfig, specified in the following format: `projects/{project_id}/locations/global` |
+| `params.pageSize` | `integer` | No | Optional. Number of `VpcFlowLogsConfigs` to return. |
+| `params.pageToken` | `string` | No | Optional. Page token from an earlier query, as returned in `next_page_token`. |
+| `params.filter` | `string` | No | Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A filter expression must use the supported [CEL logic operators] (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators). |
+
+#### `projects.locations.vpcFlowLogsConfigs.showEffectiveFlowLogsConfigs()`
+
+ShowEffectiveFlowLogsConfigs returns a list of all VPC Flow Logs configurations applicable to a specified resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the VpcFlowLogsConfig, specified in the following format: `projects/{project_id}/locations/global` |
+| `params.resource` | `string` | No | Required. The resource to get the effective VPC Flow Logs configuration for. The resource must belong to the same project as the parent. The resource must be a network, subnetwork, interconnect attachment, VPN tunnel, or a project. |
+| `params.pageSize` | `integer` | No | Optional. Number of `EffectiveVpcFlowLogsConfigs` to return. Default is 30. |
+| `params.pageToken` | `string` | No | Optional. Page token from an earlier query, as returned in `next_page_token`. |
+| `params.filter` | `string` | No | Optional. Lists the `EffectiveVpcFlowLogsConfigs` that match the filter expression. A filter expression must use the supported [CEL logic operators] (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators). |
 
 ### `organizations`
 
@@ -346,7 +369,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `organizations.locations.get()`
 
@@ -392,4 +415,74 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.locations.vpcFlowLogsConfigs`
+
+#### `organizations.locations.vpcFlowLogsConfigs.list()`
+
+Lists all `VpcFlowLogsConfigs` in a given organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the VpcFlowLogsConfig, in one of the following formats: - For project-level resourcs: `projects/{project_id}/locations/global` - For organization-level resources: `organizations/{organization_id}/locations/global` |
+| `params.pageSize` | `integer` | No | Optional. Number of `VpcFlowLogsConfigs` to return. |
+| `params.pageToken` | `string` | No | Optional. Page token from an earlier query, as returned in `next_page_token`. |
+| `params.filter` | `string` | No | Optional. Lists the `VpcFlowLogsConfigs` that match the filter expression. A filter expression must use the supported [CEL logic operators] (https://cloud.google.com/vpc/docs/about-flow-logs-records#supported_cel_logic_operators). |
+| `params.orderBy` | `string` | No | Optional. Field to use to sort the list. |
+
+#### `organizations.locations.vpcFlowLogsConfigs.get()`
+
+Gets the details of a specific `VpcFlowLogsConfig`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level resources: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` |
+
+#### `organizations.locations.vpcFlowLogsConfigs.create()`
+
+Creates a new `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Creating a configuration with `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - creating another configuration with the same fields but different values for the following fields will fail as well:
+
+* name
+
+* create_time
+
+* update_time
+
+* labels
+
+* description
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the VpcFlowLogsConfig to create, in one of the following formats: - For project-level resources: `projects/{project_id}/locations/global` - For organization-level resources: `organizations/{organization_id}/locations/global` |
+| `params.vpcFlowLogsConfigId` | `string` | No | Required. ID of the `VpcFlowLogsConfig`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.locations.vpcFlowLogsConfigs.patch()`
+
+Updates an existing `VpcFlowLogsConfig`. If a configuration with the exact same settings already exists (even if the ID is different), the creation fails. Notes: 1. Updating a configuration with `state=DISABLED` will fail 2. The following fields are not considered as settings for the purpose of the check mentioned above, therefore - updating another configuration with the same fields but different values for the following fields will fail as well:
+
+* name
+
+* create_time
+
+* update_time
+
+* labels
+
+* description
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Unique name of the configuration. The name can have one of the following forms: - For project-level configurations: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For organization-level configurations: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. For example, to change the state of the configuration to ENABLED, specify `update_mask` = `"state"`, and the `vpc_flow_logs_config` would be: `vpc_flow_logs_config = { name = "projects/my-project/locations/global/vpcFlowLogsConfigs/my-config" state = "ENABLED" }` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.locations.vpcFlowLogsConfigs.delete()`
+
+Deletes a specific `VpcFlowLogsConfig`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the VpcFlowLogsConfig, in one of the following formats: - For a project-level resource: `projects/{project_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` - For an organization-level resource: `organizations/{organization_id}/locations/global/vpcFlowLogsConfigs/{vpc_flow_logs_config_id}` |

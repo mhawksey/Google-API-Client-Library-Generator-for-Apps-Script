@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data pipelines API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:03 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:11:47 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:16:09 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:16:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:13 GMT
 
 
@@ -27,7 +27,7 @@ Creates a pipeline. For a batch pipeline, you can pass scheduler information. Da
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The location name. For example: `projects/PROJECT_ID/locations/LOCATION_ID`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.pipelines.patch()`
 
@@ -37,7 +37,7 @@ Updates a pipeline. If successful, the updated Pipeline is returned. Returns `NO
 |---|---|---|---|
 | `params.name` | `string` | Yes | The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. * `PROJECT_ID` can contain letters ([A-Za-z]), numbers ([0-9]), hyphens (-), colons (:), and periods (.). For more information, see [Identifying projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects). * `LOCATION_ID` is the canonical ID for the pipeline's location. The list of available locations can be obtained by calling `google.cloud.location.Locations.ListLocations`. Note that the Data Pipelines service is not available in all regions. It depends on Cloud Scheduler, an App Engine application, so it's only available in [App Engine regions](https://cloud.google.com/about/locations#region). * `PIPELINE_ID` is the ID of the pipeline. Must be unique for the selected project and location. |
 | `params.updateMask` | `string` | No | The list of fields to be updated. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.pipelines.delete()`
 
@@ -73,7 +73,7 @@ Freezes pipeline execution permanently. If there's a corresponding scheduler ent
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.pipelines.run()`
 
@@ -82,7 +82,7 @@ Creates a job for the specified pipeline directly. You can use this method when 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The pipeline name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/pipelines/PIPELINE_ID`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.pipelines.jobs`
 

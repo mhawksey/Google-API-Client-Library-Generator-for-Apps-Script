@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Profiler API (version: v2)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:25:15 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:02:43 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:13:17 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:13:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:13 GMT
 
 
@@ -25,7 +25,7 @@ CreateProfile creates a new profile resource in the online mode. _Direct use of 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Parent project to create the profile in. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.profiles.createOffline()`
 
@@ -34,7 +34,7 @@ CreateOfflineProfile creates a new profile resource in the offline mode. The cli
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Parent project to create the profile in. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.profiles.patch()`
 
@@ -44,7 +44,7 @@ UpdateProfile updates the profile bytes and labels on the profile resource creat
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. Opaque, server-assigned, unique ID for this profile. |
 | `params.updateMask` | `string` | No | Field mask used to specify the fields to be overwritten. Currently only profile_bytes and labels fields are supported by UpdateProfile, so only those fields can be specified in the mask. When no mask is provided, all fields are overwritten. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.profiles.list()`
 

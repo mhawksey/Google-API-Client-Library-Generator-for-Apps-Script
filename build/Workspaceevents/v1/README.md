@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Workspace Events API (versi
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Sep 2025 00:03:23 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:56:04 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:56:53 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:56:53 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:24 GMT
 
 
@@ -33,7 +33,7 @@ Creates a Google Workspace subscription. To learn how to use this method, see [C
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.validateOnly` | `boolean` | No | Optional. If set to `true`, validates and previews the request, but doesn't create the subscription. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.delete()`
 
@@ -73,7 +73,7 @@ Updates or renews a Google Workspace subscription. To learn how to use this meth
 | `params.name` | `string` | Yes | Identifier. Resource name of the subscription. Format: `subscriptions/{subscription}` |
 | `params.updateMask` | `string` | No | Optional. The field to update. If omitted, updates any fields included in the request. You can update one of the following fields in a subscription: * `expire_time`: The timestamp when the subscription expires. * `ttl`: The time-to-live (TTL) or duration of the subscription. * `event_types`: The list of event types to receive about the target resource. When using the `*` wildcard (equivalent to `PUT`), omitted fields are set to empty values and rejected if they're invalid. |
 | `params.validateOnly` | `boolean` | No | Optional. If set to `true`, validates and previews the request, but doesn't update the subscription. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `subscriptions.reactivate()`
 
@@ -82,4 +82,4 @@ Reactivates a suspended Google Workspace subscription. This method resets your s
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the subscription. Format: `subscriptions/{subscription}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |

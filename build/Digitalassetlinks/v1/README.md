@@ -4,8 +4,8 @@ Auto-generated client library for using the **Digital Asset Links API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:33:55 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:13:08 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:23:01 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:23:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:37 GMT
 
 
@@ -37,7 +37,7 @@ Send a bundle of statement checks in a single RPC to minimize latency and servic
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `statements`
 

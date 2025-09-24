@@ -4,8 +4,8 @@ Auto-generated client library for using the **Books API (version: v1)** in Googl
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:23:53 GMT
-- **Last Modified:** Mon, 04 Aug 2025 19:54:55 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:06:21 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:06:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:49 GMT
 
 
@@ -77,7 +77,7 @@ Updates a user-upload volume.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `dictionary`
 
@@ -274,7 +274,7 @@ Sets the settings for the user. If a sub-object is specified, it will overwrite 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `mylibrary`
 
@@ -299,7 +299,7 @@ Inserts a new annotation.
 | `params.country` | `string` | No | ISO-3166-1 code to override the IP-based location. |
 | `params.showOnlySummaryInResponse` | `boolean` | No | Requests that only the summary of the specified layer be provided in the response. |
 | `params.source` | `string` | No | String to identify the originator of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `mylibrary.annotations.list()`
 
@@ -336,7 +336,7 @@ Updates an existing annotation.
 |---|---|---|---|
 | `params.annotationId` | `string` | Yes | The ID for the annotation to update. |
 | `params.source` | `string` | No | String to identify the originator of this request. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `mylibrary.bookshelves`
 

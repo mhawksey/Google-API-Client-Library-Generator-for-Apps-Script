@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: promotions_
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:44:08 GMT
-- **Last Modified:** Sun, 31 Aug 2025 23:44:08 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:35:06 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:35:06 GMT
 - **Created:** Sun, 31 Aug 2025 23:44:08 GMT
 
 
@@ -25,7 +25,7 @@ Inserts a promotion for your Merchant Center account. If the promotion already e
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account where the promotion will be inserted. Format: accounts/{account} |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.promotions.get()`
 

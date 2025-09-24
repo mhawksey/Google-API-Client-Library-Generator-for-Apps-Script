@@ -4,8 +4,8 @@ Auto-generated client library for using the **Recommendations AI (Beta) (version
 
 ## Metadata
 
-- **Last Checked:** Sun, 31 Aug 2025 23:53:21 GMT
-- **Last Modified:** Mon, 04 Aug 2025 20:44:16 GMT
+- **Last Checked:** Sun, 21 Sep 2025 17:46:07 GMT
+- **Last Modified:** Sun, 21 Sep 2025 17:46:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:17 GMT
 
 
@@ -38,7 +38,7 @@ Updates the catalog configuration.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The fully qualified resource name of the catalog. |
 | `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided 'catalog' to update. If not set, will only update the catalog_item_level_config field. Currently only fields that can be updated are catalog_item_level_config. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.operations`
 
@@ -93,7 +93,7 @@ Register an API key for use with predict method.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource path. `projects/*/locations/global/catalogs/default_catalog/eventStores/default_event_store`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.eventStores.predictionApiKeyRegistrations.list()`
 
@@ -122,7 +122,7 @@ Makes a recommendation prediction. If using API Key based authentication, the AP
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes |  |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.eventStores.userEvents`
 
@@ -133,7 +133,7 @@ Writes a single user event.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent eventStore resource name, such as "projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store". |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.eventStores.userEvents.collect()`
 
@@ -164,7 +164,7 @@ Deletes permanently all user events specified by the filter provided. Depending 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the event_store under which the events are created. The format is `projects/${projectId}/locations/global/catalogs/${catalogId}/eventStores/${eventStoreId}` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.eventStores.userEvents.import()`
 
@@ -173,7 +173,7 @@ Bulk import of User events. Request processing might be synchronous. Events that
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. `projects/1234/locations/global/catalogs/default_catalog/eventStores/default_event_store` |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.eventStores.userEvents.rejoin()`
 
@@ -182,7 +182,7 @@ Triggers a user event rejoin operation with latest catalog data. Events will not
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Full resource name of user event, such as `projects/*/locations/*/catalogs/default_catalog/eventStores/default_event_store`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.catalogs.catalogItems`
 
@@ -193,7 +193,7 @@ Creates a catalog item.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent catalog resource name, such as `projects/*/locations/global/catalogs/default_catalog`. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.catalogItems.get()`
 
@@ -222,7 +222,7 @@ Updates a catalog item. Partial updating is supported. Non-existing items will b
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Full resource name of catalog item, such as `projects/*/locations/global/catalogs/default_catalog/catalogItems/some_catalog_item_id`. |
 | `params.updateMask` | `string` | No | Optional. Indicates which fields in the provided 'item' to update. If not set, will by default update all fields. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.catalogItems.delete()`
 
@@ -239,4 +239,4 @@ Bulk import of multiple catalog items. Request processing may be synchronous. No
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. `projects/1234/locations/global/catalogs/default_catalog` If no updateMask is specified, requires catalogItems.create permission. If updateMask is specified, requires catalogItems.update permission. |
-| `params.resource` | `object` | Yes | The request body. |
+| `params.requestBody` | `object` | Yes | The request body. |
