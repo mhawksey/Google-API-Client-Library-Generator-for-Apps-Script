@@ -4,6 +4,19 @@ A Google Apps Script project that dynamically generates modern, feature-rich cli
 
 This tool creates libraries with features including flexible authentication, and automatic exponential backoff.
 
+## ✨ Now with `async`/`await` and Code Portability for Node.js\! ✨
+
+A Google Apps Script project that dynamically generates modern, feature-rich client libraries for any public Google API directly from the [Google API Discovery Service](https://developers.google.com/discovery).
+
+## 🚀 Major Update: Write Portable, Modern Apps Script Code
+
+This generator has been completely revamped to align with the official **Google API Node.js Client Libraries**, enabling you to:
+
+* **Use `async`/`await`**: Write cleaner, more readable, and easier-to-maintain asynchronous code.
+* **Write Portable Code**: Share the exact same business logic between your Apps Script projects and Node.js environments like Google Cloud Run. This allows you to prototype rapidly in Apps Script and "eject" to a more scalable cloud environment when needed, without a rewrite.
+
+For a deep dive into this powerful new workflow, read the companion blog post: [**How to Write Portable Apps Script Code for the Cloud**](https://pulse.appsscript.info/p/2025/09/the-eject-button-how-to-write-portable-apps-script-code-for-the-google-cloud/).
+
 ## Pre-built Libraries Available
 
 **This repository includes a `build/` directory containing auto-generated client libraries for every discoverable Google API.**
