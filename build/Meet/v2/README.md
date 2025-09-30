@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Meet API (version: v2)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:34:03 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:44:03 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:34:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:19 GMT
 
