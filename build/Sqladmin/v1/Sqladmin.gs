@@ -1,7 +1,7 @@
 
 /**
  * Google Apps Script client library for the Cloud SQL Admin API
- * Documentation URL: https://developers.google.com/cloud-sql/
+ * Documentation URL: https://cloud.google.com/sql/docs
  * @class
  */
 class Sqladmin {
@@ -373,6 +373,18 @@ class Sqladmin {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.instances.releaseSsrsLease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/releaseSsrsLease', 'POST', apiParams, clientConfig);
+
+    /**
+     * Execute MVU Pre-checks
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.instance - (Required) Required. Cloud SQL instance ID. This does not include the project ID.
+     * @param {string} apiParams.project - (Required) Required. Project ID of the project that contains the instance.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.instances.preCheckMajorVersionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade', 'POST', apiParams, clientConfig);
 
     /**
      * Point in time restore for an instance managed by Google Cloud Backup and Disaster Recovery.
