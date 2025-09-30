@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud SQL Admin API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:54:01 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:54:01 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:55:26 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:55:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:06 GMT
 
 
@@ -309,6 +309,16 @@ Release a lease for the setup of SQL Server Reporting Services (SSRS).
 |---|---|---|---|
 | `params.project` | `string` | Yes | Required. The project ID that contains the instance. |
 | `params.instance` | `string` | Yes | Required. The Cloud SQL instance ID. This doesn't include the project ID. The instance ID contains lowercase letters, numbers, and hyphens, and it must start with a letter. This ID can have a maximum length of 98 characters. |
+
+#### `instances.preCheckMajorVersionUpgrade()`
+
+Execute MVU Pre-checks
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.project` | `string` | Yes | Required. Project ID of the project that contains the instance. |
+| `params.instance` | `string` | Yes | Required. Cloud SQL instance ID. This does not include the project ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `instances.pointInTimeRestore()`
 
