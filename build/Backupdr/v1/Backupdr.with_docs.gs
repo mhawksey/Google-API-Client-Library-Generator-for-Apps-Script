@@ -25,7 +25,7 @@ class Backupdr {
     /**
      * Gets the Trial state for a given project
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the trial to retrieve.
+     * @param {string} apiParams.name - (Required) Required. The project for which trial details need to be retrieved. Format: projects/{project}/locations/{location} Supported Locations are - us, eu and asia.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -201,7 +201,7 @@ class Backupdr {
     /**
      * Subscribes to a trial for a project
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource where this trial will be created.
+     * @param {string} apiParams.parent - (Required) Required. The project where this trial will be created. Format: projects/{project}/locations/{location} Supported Locations are - us, eu and asia.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
