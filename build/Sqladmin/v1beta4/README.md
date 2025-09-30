@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud SQL Admin API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:53:58 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:53:58 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:55:23 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:55:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:03 GMT
 
 
@@ -427,6 +427,16 @@ Release a lease for the setup of SQL Server Reporting Services (SSRS).
 | `params.project` | `string` | Yes | Required. The ID of the project that contains the instance (Example: project-id). |
 | `params.instance` | `string` | Yes | Required. The Cloud SQL instance ID. This doesn't include the project ID. It's composed of lowercase letters, numbers, and hyphens, and it must start with a letter. The total length must be 98 characters or less (Example: instance-id). |
 
+#### `instances.preCheckMajorVersionUpgrade()`
+
+Execute MVU Pre-checks
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.project` | `string` | Yes | Required. Project ID of the project that contains the instance. |
+| `params.instance` | `string` | Yes | Required. Cloud SQL instance ID. This does not include the project ID. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `instances.pointInTimeRestore()`
 
 Point in time restore for an instance managed by Google Cloud Backup and Disaster Recovery.
@@ -584,7 +594,7 @@ Lists all instance operations that have been performed on the given Cloud SQL in
 
 #### `operations.cancel()`
 
-Cancels an instance operation that has been performed on an instance.
+Cancels an instance operation that has been performed on an instance. Ordinarily, this method name should be `CancelSqlOperation`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
