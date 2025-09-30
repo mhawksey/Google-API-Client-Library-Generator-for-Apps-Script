@@ -1078,6 +1078,17 @@ class Integrations {
      */
     this.projects.locations.integrations.versions.unpublish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unpublish', 'POST', apiParams, clientConfig);
 
+    /**
+     * Execute the integration in draft state
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Output only. Auto-generated primary key.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.integrations.versions.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:test', 'POST', apiParams, clientConfig);
+
     this.projects.locations.integrations.versions.testCases = {};
 
     /**
