@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: issueresolu
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:34:40 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:44:28 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:34:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:39 GMT
 
