@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Play Developer Reporting AP
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:44:01 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:46:44 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:44:01 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:19 GMT
 
