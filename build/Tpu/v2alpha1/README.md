@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud TPU API (version: v2alpha1)*
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:54:49 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:54:49 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:55:59 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:55:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:56 GMT
 
 
@@ -237,6 +237,14 @@ Perform manual maintenance on specific nodes of a QueuedResource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the QueuedResource which holds the nodes to perform maintenance on. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.queuedResources.getMaintenanceInfo()`
+
+Gets the maintenance info for a queued resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The QueuedResource name. |
 
 ### `projects.locations.acceleratorTypes`
 
