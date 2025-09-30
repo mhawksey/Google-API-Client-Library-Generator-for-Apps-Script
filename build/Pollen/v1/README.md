@@ -4,7 +4,7 @@ Auto-generated client library for using the **Pollen API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:44:39 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:47:04 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:44:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:50 GMT
 
