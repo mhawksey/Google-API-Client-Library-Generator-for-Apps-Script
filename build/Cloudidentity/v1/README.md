@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Identity API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:13:03 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:13:03 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:25:10 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:25:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:01 GMT
 
 
@@ -109,7 +109,7 @@ Deletes the specified DeviceUser. This also revokes the user's access to device 
 
 #### `devices.deviceUsers.lookup()`
 
-Looks up resource names of the DeviceUsers associated with the caller's credentials, as well as the properties provided in the request. This method must be called with end-user credentials with the scope: https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an AND. Different platforms require different amounts of information from the caller to ensure that the DeviceUser is uniquely identified. - iOS: No properties need to be passed, the caller's credentials are sufficient to identify the corresponding DeviceUser. - Android: Specifying the 'android_id' field is required. - Desktop: Specifying the 'raw_resource_id' field is required.
+Looks up resource names of the DeviceUsers associated with the caller's credentials, as well as the properties provided in the request. This method must be called with end-user credentials with the scope: https://www.googleapis.com/auth/cloud-identity.devices.lookup If multiple properties are provided, only DeviceUsers having all of these properties are considered as matches - i.e. the query behaves like an AND. Different platforms require different amounts of information from the caller to ensure that the DeviceUser is uniquely identified. - iOS: Specifying the 'partner' and 'ios_device_id' fields is required. - Android: Specifying the 'android_id' field is required. - Desktop: Specifying the 'raw_resource_id' field is required.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -117,8 +117,10 @@ Looks up resource names of the DeviceUsers associated with the caller's credenti
 | `params.pageSize` | `integer` | No | The maximum number of DeviceUsers to return. If unspecified, at most 20 DeviceUsers will be returned. The maximum value is 20; values above 20 will be coerced to 20. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `LookupDeviceUsers` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `LookupDeviceUsers` must match the call that provided the page token. |
 | `params.androidId` | `string` | No | Android Id returned by [Settings.Secure#ANDROID_ID](https://developer.android.com/reference/android/provider/Settings.Secure.html#ANDROID_ID). |
-| `params.rawResourceId` | `string` | No | Raw Resource Id used by Google Endpoint Verification. If the user is enrolled into Google Endpoint Verification, this id will be saved as the 'device_resource_id' field in the following platform dependent files. * macOS: ~/.secureConnect/context_aware_config.json * Windows: %USERPROFILE%\AppData\Local\Google\Endpoint Verification\accounts.json * Linux: ~/.secureConnect/context_aware_config.json |
+| `params.rawResourceId` | `string` | No | Raw Resource Id used by Google Endpoint Verification. If the user is enrolled into Google Endpoint Verification, this id will be saved as the 'device_resource_id' field in the following platform dependent files. Mac: ~/.secureConnect/context_aware_config.json Windows: C:\Users\%USERPROFILE%\.secureConnect\context_aware_config.json Linux: ~/.secureConnect/context_aware_config.json |
 | `params.userId` | `string` | No | The user whose DeviceUser's resource name will be fetched. Must be set to 'me' to fetch the DeviceUser's resource name for the calling user. |
+| `params.partner` | `string` | No | Optional. The partner ID of the calling iOS app. This string must match the value of the partner key within the app configuration dictionary provided to Google Workspace apps. |
+| `params.iosDeviceId` | `string` | No | Optional. The partner-specified device identifier assigned to the iOS device that initiated the Lookup API call. This string must match the value of the iosDeviceId key in the app config dictionary provided to Google Workspace apps. |
 
 #### `devices.deviceUsers.approve()`
 
