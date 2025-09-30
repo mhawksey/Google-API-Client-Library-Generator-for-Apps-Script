@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: notificatio
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:34:49 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:44:33 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:34:49 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:48 GMT
 
