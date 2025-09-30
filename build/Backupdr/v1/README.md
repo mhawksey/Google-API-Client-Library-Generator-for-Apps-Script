@@ -4,8 +4,8 @@ Auto-generated client library for using the **Backup and DR Service API (version
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:05:24 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:05:24 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:23:15 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:23:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:40 GMT
 
 
@@ -24,7 +24,7 @@ Gets the Trial state for a given project
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the trial to retrieve. |
+| `params.name` | `string` | Yes | Required. The project for which trial details need to be retrieved. Format: projects/{project}/locations/{location} Supported Locations are - us, eu and asia. |
 
 #### `projects.locations.list()`
 
@@ -170,7 +170,7 @@ Subscribes to a trial for a project
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource where this trial will be created. |
+| `params.parent` | `string` | Yes | Required. The project where this trial will be created. Format: projects/{project}/locations/{location} Supported Locations are - us, eu and asia. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.backupVaults`
