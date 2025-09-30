@@ -21,16 +21,6 @@ class Serviceusage {
     this.operations = {};
 
     /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - The standard list filter.
@@ -43,7 +33,49 @@ class Serviceusage {
      */
     this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/operations', 'GET', apiParams, clientConfig);
 
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
     this.services = {};
+
+    /**
+     * Enables a service so that it can be used with a project. Operation response type: `google.protobuf.Empty`
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Name of the consumer and service to enable the service on. The `EnableService` and `DisableService` methods currently only support projects. Enabling a service requires that the service is public or is shared with the user enabling the service. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.services.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:enable', 'POST', apiParams, clientConfig);
+
+    /**
+     * Disables a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled. Operation response type: `google.protobuf.Empty`
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.services.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:disable', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns the service configuration and enabled state for a given service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists all services available to the specified project, and the current state of those services with respect to the project. The list includes all public services, all services for which the calling user has the `servicemanagement.services.bind` permission, and all services that have already been enabled on the project. The list can be filtered to only include services in a specific state, for example to only include services enabled on the project.
@@ -59,36 +91,15 @@ class Serviceusage {
     this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/services', 'GET', apiParams, clientConfig);
 
     /**
-     * Enables a service so that it can be used with a project. Operation response type: `google.protobuf.Empty`
+     * Enables multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. Operation response type: `google.protobuf.Empty`
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Name of the consumer and service to enable the service on. The `EnableService` and `DisableService` methods currently only support projects. Enabling a service requires that the service is public or is shared with the user enabling the service. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
+     * @param {string} apiParams.parent - (Required) Parent to enable services on. An example name would be: `projects/123` where `123` is the project number (not project ID). The `BatchEnableServices` method currently only supports projects.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.services.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:enable', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns the service configuration and enabled state for a given service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Name of the consumer and service to get the `ConsumerState` for. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Disables a service so that it can no longer be used with a project. This prevents unintended usage that may cause unexpected billing charges or security leaks. It is not valid to call the disable method on a service that is not currently enabled. Callers will receive a `FAILED_PRECONDITION` status if the target service is not currently enabled. Operation response type: `google.protobuf.Empty`
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Name of the consumer and service to disable the service on. The enable and disable methods currently only support projects. An example name would be: `projects/123/services/serviceusage.googleapis.com` where `123` is the project number (not project ID).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.services.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.services.batchEnable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/services:batchEnable', 'POST', apiParams, clientConfig);
 
     /**
      * Generates service identity for service.
@@ -100,29 +111,7 @@ class Serviceusage {
      */
     this.services.generateServiceIdentity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:generateServiceIdentity', 'POST', apiParams, clientConfig);
 
-    /**
-     * Enables multiple services on a project. The operation is atomic: if enabling any service fails, then the entire batch fails, and no state changes occur. Operation response type: `google.protobuf.Empty`
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Parent to enable services on. An example name would be: `projects/123` where `123` is the project number (not project ID). The `BatchEnableServices` method currently only supports projects.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.services.batchEnable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/services:batchEnable', 'POST', apiParams, clientConfig);
-
     this.services.consumerQuotaMetrics = {};
-
-    /**
-     * Creates or updates multiple admin overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The resource name of the consumer. An example name would be: `projects/123/services/compute.googleapis.com`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.services.consumerQuotaMetrics.importAdminOverrides = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importAdminOverrides', 'POST', apiParams, clientConfig);
 
     /**
      * Retrieves a summary of all quota information visible to the service consumer, organized by service metric. Each metric includes information about all of its defined limits. Each limit includes the limit configuration (quota unit, preciseness, default value), the current effective limit value, and all of the overrides applied to the limit.
@@ -149,6 +138,17 @@ class Serviceusage {
     this.services.consumerQuotaMetrics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
+     * Creates or updates multiple admin overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) The resource name of the consumer. An example name would be: `projects/123/services/compute.googleapis.com`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.services.consumerQuotaMetrics.importAdminOverrides = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importAdminOverrides', 'POST', apiParams, clientConfig);
+
+    /**
      * Creates or updates multiple consumer overrides atomically, all on the same consumer, but on many different metrics or limits. The name field in the quota override message should not be set.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) The resource name of the consumer. An example name would be: `projects/123/services/compute.googleapis.com`
@@ -172,10 +172,49 @@ class Serviceusage {
      */
     this.services.consumerQuotaMetrics.limits.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.services.consumerQuotaMetrics.limits.consumerOverrides = {};
+    this.services.consumerQuotaMetrics.limits.adminOverrides = {};
 
     /**
-     * Lists all consumer overrides on this limit.
+     * Creates an admin override. An admin override is applied by an administrator of a parent folder or parent organization of the consumer receiving the override. An admin override is intended to limit the amount of quota the consumer can use out of the total quota pool allocated to all children of the folder or organization.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - Whether to force the creation of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
+     * @param {string} apiParams.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
+     * @param {string} apiParams.parent - (Required) The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.services.consumerQuotaMetrics.limits.adminOverrides.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates an admin override.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - Whether to force the update of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
+     * @param {string} apiParams.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
+     * @param {string} apiParams.name - (Required) The resource name of the override to update. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
+     * @param {string} apiParams.updateMask - Update only the specified fields of the override. If unset, all fields will be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.services.consumerQuotaMetrics.limits.adminOverrides.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes an admin override.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.force - Whether to force the deletion of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
+     * @param {string} apiParams.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
+     * @param {string} apiParams.name - (Required) The resource name of the override to delete. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.services.consumerQuotaMetrics.limits.adminOverrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists all admin overrides on this limit.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Requested size of the next page of data.
      * @param {string} apiParams.pageToken - Token identifying which result to start with; returned by a previous list call.
@@ -184,7 +223,9 @@ class Serviceusage {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.services.consumerQuotaMetrics.limits.consumerOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'GET', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.adminOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'GET', apiParams, clientConfig);
+
+    this.services.consumerQuotaMetrics.limits.consumerOverrides = {};
 
     /**
      * Creates a consumer override. A consumer override is applied to the consumer on its own authority to limit its own quota usage. Consumer overrides cannot be used to grant more quota than would be allowed by admin overrides, producer overrides, or the default limit of the service.
@@ -225,49 +266,8 @@ class Serviceusage {
      */
     this.services.consumerQuotaMetrics.limits.consumerOverrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.services.consumerQuotaMetrics.limits.adminOverrides = {};
-
     /**
-     * Deletes an admin override.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - Whether to force the deletion of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
-     * @param {string} apiParams.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
-     * @param {string} apiParams.name - (Required) The resource name of the override to delete. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.services.consumerQuotaMetrics.limits.adminOverrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates an admin override. An admin override is applied by an administrator of a parent folder or parent organization of the consumer receiving the override. An admin override is intended to limit the amount of quota the consumer can use out of the total quota pool allocated to all children of the folder or organization.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - Whether to force the creation of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
-     * @param {string} apiParams.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
-     * @param {string} apiParams.parent - (Required) The resource name of the parent quota limit, returned by a ListConsumerQuotaMetrics or GetConsumerQuotaMetric call. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.services.consumerQuotaMetrics.limits.adminOverrides.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates an admin override.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.force - Whether to force the update of the quota override. Setting the force parameter to 'true' ignores all quota safety checks that would fail the request. QuotaSafetyCheck lists all such validations. If force is set to true, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
-     * @param {string} apiParams.forceOnly - The list of quota safety checks to ignore before the override mutation. Unlike 'force' field that ignores all the quota safety checks, the 'force_only' field ignores only the specified checks; other checks are still enforced. The 'force' and 'force_only' fields cannot both be set. If force_only is specified, it is recommended to include a case id in "X-Goog-Request-Reason" header when sending the request.
-     * @param {string} apiParams.name - (Required) The resource name of the override to update. An example name would be: `projects/123/services/compute.googleapis.com/consumerQuotaMetrics/compute.googleapis.com%2Fcpus/limits/%2Fproject%2Fregion/adminOverrides/4a3f2c1d`
-     * @param {string} apiParams.updateMask - Update only the specified fields of the override. If unset, all fields will be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.services.consumerQuotaMetrics.limits.adminOverrides.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Lists all admin overrides on this limit.
+     * Lists all consumer overrides on this limit.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Requested size of the next page of data.
      * @param {string} apiParams.pageToken - Token identifying which result to start with; returned by a previous list call.
@@ -276,7 +276,7 @@ class Serviceusage {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.services.consumerQuotaMetrics.limits.adminOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'GET', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.consumerOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'GET', apiParams, clientConfig);
   }
 
 /**
