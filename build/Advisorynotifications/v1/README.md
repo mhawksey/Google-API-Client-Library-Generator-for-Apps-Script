@@ -4,7 +4,7 @@ Auto-generated client library for using the **Advisory Notifications API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:03:04 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:21:21 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:03:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:19 GMT
 
