@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: inventories
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:34:31 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:44:23 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:34:31 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:30 GMT
 
