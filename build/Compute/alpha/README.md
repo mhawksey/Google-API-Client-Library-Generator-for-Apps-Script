@@ -4,9 +4,9 @@ Auto-generated client library for using the **Compute Engine API (version: alpha
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:14:25 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:14:25 GMT
-- **Created:** Sun, 21 Sep 2025 17:14:25 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:31:51 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:31:51 GMT
+- **Created:** Tue, 30 Sep 2025 23:31:51 GMT
 
 
 
@@ -1036,7 +1036,7 @@ Bulk create a set of disks.
 | `params.zone` | `string` | Yes | The name of the zone for this request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `disks.updateKmskey()`
+#### `disks.updateKmsKey()`
 
 Rotates the customer-managed encryption key to the latest version for the specified persistent disk.
 
@@ -6231,7 +6231,7 @@ Patches a rule of the specified priority.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.networkPolicy` | `string` | Yes | Name of the network policy resource to update. |
-| `params.priority` | `integer` | No | The priority of the rule to patch. |
+| `params.priority` | `integer` | No | The priority of the traffic classification rule to patch. Only rules with a priority value between 1 and 2147482647 (inclusive) can be patched. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.region` | `string` | Yes | Name of the region of this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
@@ -6274,7 +6274,7 @@ Removes an association for the specified network policy.
 
 #### `regionNetworkPolicies.aggregatedList()`
 
-Retrieves an aggregated list of network policies. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`.
+Retrieves an aggregated list of network policies. To prevent failure, it's recommended that you set the `returnPartialSuccess` parameter to `true`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
