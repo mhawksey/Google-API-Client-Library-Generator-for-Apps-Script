@@ -4,7 +4,7 @@ Auto-generated client library for using the **Batch API (version: v1)** in Googl
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:05:30 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:23:19 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:05:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:48 GMT
 
