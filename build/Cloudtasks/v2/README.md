@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Tasks API (version: v2)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:14:02 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:14:02 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:31:33 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:31:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:02 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -177,7 +177,7 @@ Lists the tasks in a queue. By default, only the BASIC view is retrieved due to 
 
 #### `projects.locations.queues.tasks.get()`
 
-Gets a task.
+Gets a task. After a task is successfully executed or has exhausted its retry attempts, the task is deleted. A `GetTask` request for a deleted task returns a `NOT_FOUND` error.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
