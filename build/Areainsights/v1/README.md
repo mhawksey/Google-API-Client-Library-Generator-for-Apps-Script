@@ -4,7 +4,7 @@ Auto-generated client library for using the **Places Aggregate API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:04:55 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:22:51 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:04:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:10 GMT
 
