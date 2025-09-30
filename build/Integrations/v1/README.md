@@ -4,8 +4,8 @@ Auto-generated client library for using the **Application Integration API (versi
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:27:32 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:27:32 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:42:59 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:42:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:31 GMT
 
 
@@ -900,6 +900,15 @@ Sets the status of the ACTIVE integration to SNAPSHOT with a new tag "PREVIOUSLY
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The version to deactivate. Format: projects/{project}/locations/{location}/integrations/{integration}/versions/{version} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.integrations.versions.test()`
+
+Execute the integration in draft state
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Auto-generated primary key. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.integrations.versions.testCases`
