@@ -18,6 +18,21 @@ class Oslogin {
     this._servicePath = '';
 
 
+    this.projects = {};
+
+    this.projects.locations = {};
+
+    /**
+     * Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent for the signing request. Format: projects/{project}/locations/{location}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.signSshPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:signSshPublicKey', 'POST', apiParams, clientConfig);
+
     this.users = {};
 
     /**
