@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Storage JSON API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:54:04 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:54:04 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:55:30 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:55:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:09 GMT
 
 
@@ -237,6 +237,7 @@ Retrieves a list of buckets for a given project.
 | `params.project` | `string` | Yes | A valid API project identifier. |
 | `params.projection` | `string` | No | Set of properties to return. Defaults to noAcl. |
 | `params.userProject` | `string` | No | The project to be billed for this request. |
+| `params.returnPartialSuccess` | `boolean` | No | If true, return a list of bucket resource names for buckets that are in unreachable locations. |
 
 #### `buckets.lockRetentionPolicy()`
 
