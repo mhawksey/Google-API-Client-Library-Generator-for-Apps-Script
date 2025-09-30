@@ -25,7 +25,7 @@ class Cloudtasks {
     /**
      * Lists information about the supported locations for this service.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.extraLocationTypes - Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations.
+     * @param {string} apiParams.extraLocationTypes - Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} apiParams.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -210,7 +210,7 @@ class Cloudtasks {
     this.projects.locations.queues.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta3/{+parent}/tasks', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets a task.
+     * Gets a task. After a task is successfully executed or has exhausted its retry attempts, the task is deleted. A `GetTask` request for a deleted task returns a `NOT_FOUND` error.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The task name. For example: `projects/PROJECT_ID/locations/LOCATION_ID/queues/QUEUE_ID/tasks/TASK_ID`
      * @param {string} apiParams.responseView - The response_view specifies which subset of the Task will be returned. By default response_view is BASIC; not all information is retrieved by default because some data, such as payloads, might be desirable to return only when needed because of its large size or because of the sensitivity of data that it contains. Authorization for FULL requires `cloudtasks.tasks.fullView` [Google IAM](https://cloud.google.com/iam/) permission on the Task resource.
