@@ -4,7 +4,7 @@ Auto-generated client library for using the **Solar API (version: v1)** in Googl
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:48:34 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:55:13 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:48:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:49 GMT
 
