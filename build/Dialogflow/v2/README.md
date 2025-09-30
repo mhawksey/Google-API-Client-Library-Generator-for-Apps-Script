@@ -4,8 +4,8 @@ Auto-generated client library for using the **Dialogflow API (version: v2)** in 
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:17:18 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:17:18 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:33:53 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:33:53 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:31 GMT
 
 
@@ -117,7 +117,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -797,6 +797,43 @@ Updates a generator.
 | `params.name` | `string` | Yes | Output only. Identifier. The resource name of the generator. Format: `projects//locations//generators/` |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.generators.evaluations`
+
+#### `projects.locations.generators.evaluations.create()`
+
+Creates evaluation of a generator.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The generator resource name. Format: `projects//locations//generators/` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.generators.evaluations.get()`
+
+Gets an evaluation of generator.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The generator evaluation resource name. Format: `projects//locations//generators//evaluations/` |
+
+#### `projects.locations.generators.evaluations.list()`
+
+Lists evaluations of generator.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The generator resource name. Format: `projects//locations//generators/` Wildcard value `-` is supported on generator_id to list evaluations across all generators under same project. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of evaluations to return in a single page. By default 100 and at most 1000. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous list request. |
+
+#### `projects.locations.generators.evaluations.delete()`
+
+Deletes an evaluation of generator.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The generator evaluation resource name. Format: `projects//locations//generators// evaluations/` |
 
 ### `projects.locations.answerRecords`
 
