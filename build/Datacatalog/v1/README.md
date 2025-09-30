@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Cloud Data Catalog API (ver
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:15:39 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:32:44 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:15:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:39 GMT
 
