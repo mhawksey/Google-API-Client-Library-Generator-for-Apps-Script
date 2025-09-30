@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud OS Login API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:37:51 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:37:51 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:46:28 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:46:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:54 GMT
 
 
@@ -13,6 +13,19 @@ Auto-generated client library for using the **Cloud OS Login API (version: v1)**
 ---
 
 ## API Reference
+
+### `projects`
+
+### `projects.locations`
+
+#### `projects.locations.signSshPublicKey()`
+
+Signs an SSH public key for a user to authenticate to a virtual machine on Google Compute Engine.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent for the signing request. Format: projects/{project}/locations/{location} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users`
 
