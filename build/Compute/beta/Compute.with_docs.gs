@@ -6414,6 +6414,190 @@ class Compute {
      */
     this.interconnectGroups.createMembers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/global/interconnectGroups/{interconnectGroup}/createMembers', 'POST', apiParams, clientConfig);
 
+    this.regionNetworkPolicies = {};
+
+    /**
+     * Lists all the policies that have been configured for the specified project in the given region.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
+     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {boolean} apiParams.returnPartialSuccess - Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns the specified network policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy resource to return.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new policy in the specified project using the data included in the request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy resource to delete.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Patches the specified policy with the data included in the request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy resource to update.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets a rule of the specified priority.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy to which the queried rule belongs.
+     * @param {integer} apiParams.priority - The priority of the rule to get from the network policy.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.getTrafficClassificationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}/getTrafficClassificationRule', 'GET', apiParams, clientConfig);
+
+    /**
+     * Inserts a rule into a network policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy resource to update.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.addTrafficClassificationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}/addTrafficClassificationRule', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a rule of the specified priority.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy resource to update.
+     * @param {integer} apiParams.priority - The priority of the rule to remove from the network policy.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.removeTrafficClassificationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}/removeTrafficClassificationRule', 'POST', apiParams, clientConfig);
+
+    /**
+     * Patches a rule of the specified priority.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy resource to update.
+     * @param {integer} apiParams.priority - The priority of the traffic classification rule to patch. Only rules with a priority value between 1 and 2147482647 (inclusive) can be patched.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.patchTrafficClassificationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}/patchTrafficClassificationRule', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets an association with the specified name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - The name of the association to get from the network policy.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy to which the queried association belongs.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.getAssociation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}/getAssociation', 'GET', apiParams, clientConfig);
+
+    /**
+     * Inserts an association for the specified network policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy resource to update.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.addAssociation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}/addAssociation', 'POST', apiParams, clientConfig);
+
+    /**
+     * Removes an association for the specified network policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - Name for the association that will be removed.
+     * @param {string} apiParams.networkPolicy - (Required) Name of the network policy resource to update.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region of this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.removeAssociation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/networkPolicies/{networkPolicy}/removeAssociation', 'POST', apiParams, clientConfig);
+
+    /**
+     * Retrieves an aggregated list of network policies. To prevent failure, it's recommended that you set the `returnPartialSuccess` parameter to `true`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
+     * @param {boolean} apiParams.includeAllScopes - Indicates whether every visible scope for each scope type (zone, region, global) should be included in the response. For new resource types added after this field, the flag has no effect as new resource types will always include every visible scope for each scope type in response. For resource types which predate this field, if this flag is omitted or false, only scopes of the scope types where the resource type is expected to be found will be included.
+     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {boolean} apiParams.returnPartialSuccess - Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code.
+     * @param {string} apiParams.serviceProjectNumber - The Shared VPC service project id or service project number for which aggregated list request is invoked for subnetworks list-usable api.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionNetworkPolicies.aggregatedList = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/aggregated/networkPolicies', 'GET', apiParams, clientConfig);
+
     this.externalVpnGateways = {};
 
     /**
@@ -7107,6 +7291,106 @@ class Compute {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.regionHealthChecks.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/healthChecks/{resource}/testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.regionHealthSources = {};
+
+    /**
+     * Retrieves the list of all HealthSource resources (all regional) available to the specified project. To prevent failure, Google recommends that you set the `returnPartialSuccess` parameter to `true`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
+     * @param {boolean} apiParams.includeAllScopes - Indicates whether every visible scope for each scope type (zone, region, global) should be included in the response. For new resource types added after this field, the flag has no effect as new resource types will always include every visible scope for each scope type in response. For resource types which predate this field, if this flag is omitted or false, only scopes of the scope types where the resource type is expected to be found will be included.
+     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
+     * @param {string} apiParams.project - (Required) Name of the project scoping this request.
+     * @param {boolean} apiParams.returnPartialSuccess - Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code.
+     * @param {string} apiParams.serviceProjectNumber - The Shared VPC service project id or service project number for which aggregated list request is invoked for subnetworks list-usable api.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionHealthSources.aggregatedList = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/aggregated/healthSources', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the HealthSources for a project in the given region.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
+     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region scoping this request.
+     * @param {boolean} apiParams.returnPartialSuccess - Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionHealthSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/healthSources', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns the specified HealthSource resource in the given region.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.healthSource - (Required) Name of the HealthSource resource to return.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region scoping this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionHealthSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/healthSources/{healthSource}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Create a HealthSource in the specified project in the given region using the parameters that are included in the request.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region scoping this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionHealthSources.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/healthSources', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified HealthSource in the given region
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.healthSource - (Required) Name of the HealthSource resource to delete.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region scoping this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionHealthSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/healthSources/{healthSource}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates the specified regional HealthSource resource with the data included in the request. This method supports PATCH semantics and uses the JSON merge patch format and processing rules.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.healthSource - (Required) Name of the HealthSource to update. The name must be 1-63 characters long, and comply with RFC1035.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) Name of the region scoping this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionHealthSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/healthSources/{healthSource}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns permissions that a caller has on the specified resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.region - (Required) The name of the region for this request.
+     * @param {string} apiParams.resource - (Required) Name or id of the resource for this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.regionHealthSources.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/regions/{region}/healthSources/{resource}/testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.httpHealthChecks = {};
 
@@ -10155,6 +10439,21 @@ class Compute {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.reservationSubBlocks.performMaintenance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/performMaintenance', 'POST', apiParams, clientConfig);
+
+    /**
+     * Allows customers to report a faulty subBlock.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parentName - (Required) The name of the parent reservation and parent block. In the format of reservations/{reservation_name}/reservationBlocks/{reservation_block_name}
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.requestId - An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.reservationSubBlock - (Required) The name of the reservation subBlock. Name should conform to RFC1035 or be a resource ID.
+     * @param {string} apiParams.zone - (Required) Name of the zone for this request. Zone name should conform to RFC1035.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.reservationSubBlocks.reportFaulty = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{project}/zones/{zone}/{parentName}/reservationSubBlocks/{reservationSubBlock}/reportFaulty', 'POST', apiParams, clientConfig);
 
     this.resourcePolicies = {};
 
