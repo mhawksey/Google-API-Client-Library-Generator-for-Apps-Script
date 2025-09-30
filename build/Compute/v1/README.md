@@ -4,9 +4,9 @@ Auto-generated client library for using the **Compute Engine API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:14:42 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:14:42 GMT
-- **Created:** Sun, 21 Sep 2025 17:14:42 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:32:05 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:32:05 GMT
+- **Created:** Tue, 30 Sep 2025 23:32:05 GMT
 
 
 
@@ -1992,6 +1992,169 @@ Sets the labels on a security policy. To learn more about labels, read the Label
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.resource` | `string` | Yes | Name or id of the resource for this request. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizationSecurityPolicies`
+
+#### `organizationSecurityPolicies.list()`
+
+List all the policies that have been configured for the specified project. Use of this API to read firewall policies is deprecated. Use firewallPolicies.list instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. |
+| `params.maxResults` | `integer` | No | The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) |
+| `params.orderBy` | `string` | No | Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. |
+| `params.pageToken` | `string` | No | Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. |
+| `params.parentId` | `string` | No | Parent ID for this request. |
+| `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
+
+#### `organizationSecurityPolicies.get()`
+
+List all of the ordered rules present in a single specified policy. Use of this API to read firewall policies is deprecated. Use firewallPolicies.get instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to get. |
+
+#### `organizationSecurityPolicies.insert()`
+
+Creates a new policy in the specified project using the data included in the request. Use of this API to insert firewall policies is deprecated. Use firewallPolicies.insert instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parentId` | `string` | No | Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizationSecurityPolicies.delete()`
+
+Deletes the specified policy. Use of this API to remove firewall policies is deprecated. Use firewallPolicies.delete instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to delete. |
+
+#### `organizationSecurityPolicies.patch()`
+
+Patches the specified policy with the data included in the request. Use of this API to modify firewall policies is deprecated. Use firewallPolicies.patch instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizationSecurityPolicies.getRule()`
+
+Gets a rule at the specified priority. Use of this API to read firewall policies is deprecated. Use firewallPolicies.getRule instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.priority` | `integer` | No | The priority of the rule to get from the security policy. |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to which the queried rule belongs. |
+
+#### `organizationSecurityPolicies.addRule()`
+
+Inserts a rule into a security policy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizationSecurityPolicies.removeRule()`
+
+Deletes a rule at the specified priority.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.priority` | `integer` | No | The priority of the rule to remove from the security policy. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
+
+#### `organizationSecurityPolicies.patchRule()`
+
+Patches a rule at the specified priority. Use of this API to modify firewall policies is deprecated. Use firewallPolicies.patchRule instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.priority` | `integer` | No | The priority of the rule to patch. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizationSecurityPolicies.listPreconfiguredExpressionSets()`
+
+Gets the current list of preconfigured Web Application Firewall (WAF) expressions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. |
+| `params.maxResults` | `integer` | No | The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) |
+| `params.orderBy` | `string` | No | Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. |
+| `params.pageToken` | `string` | No | Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. |
+| `params.parentId` | `string` | No | Parent ID for this request. |
+| `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
+
+#### `organizationSecurityPolicies.addAssociation()`
+
+Inserts an association for the specified security policy. This has billing implications. Projects in the hierarchy with effective hierarchical security policies will be automatically enrolled into Cloud Armor Enterprise if not already enrolled. Use of this API to modify firewall policies is deprecated. Use firewallPolicies.addAssociation instead if possible.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.replaceExistingAssociation` | `boolean` | No | Indicates whether or not to replace it if an association of the attachment already exists. This is false by default, in which case an error will be returned if an association already exists. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizationSecurityPolicies.removeAssociation()`
+
+Removes an association for the specified security policy. Use of this API to modify firewall policies is deprecated. Use firewallPolicies.removeAssociation instead if possible.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | No | Name for the attachment that will be removed. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
+
+#### `organizationSecurityPolicies.listAssociations()`
+
+Lists associations of a specified target, i.e., organization or folder. Use of this API to read firewall policies is deprecated. Use firewallPolicies.listAssociations instead if possible.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.targetResource` | `string` | No | The target resource to list associations. It is an organization, or a folder. |
+
+#### `organizationSecurityPolicies.getAssociation()`
+
+Gets an association with the specified name. Use of this API to read firewall policies is deprecated. Use firewallPolicies.getAssociation instead if possible.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | No | The name of the association to get from the security policy. |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to which the queried rule belongs. |
+
+#### `organizationSecurityPolicies.copyRules()`
+
+Copies rules to the specified security policy. Use of this API to modify firewall policies is deprecated. Use firewallPolicies.copyRules instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
+| `params.sourceSecurityPolicy` | `string` | No | The security policy from which to copy rules. |
+
+#### `organizationSecurityPolicies.move()`
+
+Moves the specified security policy. Use of this API to modify firewall policies is deprecated. Use firewallPolicies.move instead.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parentId` | `string` | No | The new parent of the security policy. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.securityPolicy` | `string` | Yes | Name of the security policy to update. |
 
 ### `instances`
 
@@ -4014,6 +4177,15 @@ Sets the edge security policy for the specified backend service.
 | `params.project` | `string` | Yes | Project ID for this request. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `backendServices.getEffectiveSecurityPolicies()`
+
+Returns effective security policies applied to this backend service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.backendService` | `string` | Yes | Name of the Backend Service for this request. |
+| `params.project` | `string` | Yes | Project ID for this request. |
 
 #### `backendServices.getHealth()`
 
@@ -7537,6 +7709,41 @@ Returns the specified network profile.
 | `params.networkProfile` | `string` | Yes | Name of the network profile to return. |
 | `params.project` | `string` | Yes | Project ID for this request. |
 
+### `previewFeatures`
+
+#### `previewFeatures.get()`
+
+Returns the details of the given PreviewFeature.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.previewFeature` | `string` | Yes | Name of the PreviewFeature for this request. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+
+#### `previewFeatures.list()`
+
+Returns the details of the given PreviewFeature.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions. |
+| `params.maxResults` | `integer` | No | The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`) |
+| `params.orderBy` | `string` | No | Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported. |
+| `params.pageToken` | `string` | No | Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.returnPartialSuccess` | `boolean` | No | Opt-in for partial success behavior which provides partial results in case of failure. The default value is false. For example, when partial success behavior is enabled, aggregatedList for a single zone scope either returns all resources in the zone or no resources, with an error code. |
+
+#### `previewFeatures.update()`
+
+Patches the given PreviewFeature. This method is used to enable or disable a PreviewFeature.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.previewFeature` | `string` | Yes | Name of the PreviewFeature for this request. |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `reservationBlocks`
 
 #### `reservationBlocks.get()`
@@ -7618,6 +7825,19 @@ Allows customers to perform maintenance on a reservation subBlock
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
 | `params.reservationSubBlock` | `string` | Yes | The name of the reservation subBlock. Name should conform to RFC1035 or be a resource ID. |
 | `params.zone` | `string` | Yes | Name of the zone for this request. Zone name should conform to RFC1035. |
+
+#### `reservationSubBlocks.reportFaulty()`
+
+Allows customers to report a faulty subBlock.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parentName` | `string` | Yes | The name of the parent reservation and parent block. In the format of reservations/{reservation_name}/reservationBlocks/{reservation_block_name} |
+| `params.project` | `string` | Yes | Project ID for this request. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000). |
+| `params.reservationSubBlock` | `string` | Yes | The name of the reservation subBlock. Name should conform to RFC1035 or be a resource ID. |
+| `params.zone` | `string` | Yes | Name of the zone for this request. Zone name should conform to RFC1035. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `resourcePolicies`
 
