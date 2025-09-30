@@ -276,6 +276,7 @@ class Storage {
      * @param {string} apiParams.prefix - Filter results to buckets whose names begin with this prefix.
      * @param {string} apiParams.project - (Required) A valid API project identifier.
      * @param {string} apiParams.projection - Set of properties to return. Defaults to noAcl.
+     * @param {boolean} apiParams.returnPartialSuccess - If true, return a list of bucket resource names for buckets that are in unreachable locations.
      * @param {boolean} apiParams.softDeleted - If true, only soft-deleted bucket versions will be returned. The default is false. For more information, see [Soft Delete](https://cloud.google.com/storage/docs/soft-delete).
      * @param {string} apiParams.userProject - The project to be billed for this request.
      * @param {object} [clientConfig] - Optional client-side configuration.
