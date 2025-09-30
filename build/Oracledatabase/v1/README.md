@@ -4,8 +4,8 @@ Auto-generated client library for using the **Oracle Database@Google Cloud API (
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:37:22 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:37:22 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:46:08 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:46:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:44:30 GMT
 
 
@@ -50,6 +50,7 @@ Lists operations that match the specified filter in the request. If the server d
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
 
@@ -266,6 +267,17 @@ Creates a new Autonomous Database in a given project and location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the parent in the following format: projects/{project}/locations/{location}. |
 | `params.autonomousDatabaseId` | `string` | No | Required. The ID of the Autonomous Database to create. This value is restricted to (^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$) and must be a maximum of 63 characters in length. The value must start with a letter and end with a letter or a number. |
+| `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.autonomousDatabases.patch()`
+
+Updates the parameters of a single Autonomous Database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The name of the Autonomous Database resource in the following format: projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database} |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Exadata resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional ID to identify the request. This value is used to identify duplicate requests. If you make a request with the same request ID and the original request is still in progress or completed, the server ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
