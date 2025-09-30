@@ -4,8 +4,8 @@ Auto-generated client library for using the **API Management API (version: v1alp
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:04:32 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:04:32 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:22:34 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:22:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:47 GMT
 
 
@@ -68,6 +68,7 @@ Lists operations that match the specified filter in the request. If the server d
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
 
