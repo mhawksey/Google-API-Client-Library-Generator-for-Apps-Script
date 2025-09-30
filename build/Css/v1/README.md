@@ -4,7 +4,7 @@ Auto-generated client library for using the **CSS API (version: v1)** in Google 
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:15:28 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:32:38 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:15:28 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:29 GMT
 
