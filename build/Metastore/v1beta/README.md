@@ -4,7 +4,7 @@ Auto-generated client library for using the **Dataproc Metastore API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:35:32 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:44:58 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:35:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:07 GMT
 
