@@ -4,7 +4,7 @@ Auto-generated client library for using the **BigQuery Data Policy API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:05:51 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:23:35 GMT
 - **Last Modified:** Sun, 21 Sep 2025 17:05:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:12 GMT
 
