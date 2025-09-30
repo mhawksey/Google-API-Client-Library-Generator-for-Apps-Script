@@ -4,8 +4,8 @@ Auto-generated client library for using the **SaaS Runtime API (version: v1beta1
 
 ## Metadata
 
-- **Last Checked:** Sun, 21 Sep 2025 17:46:51 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:46:51 GMT
+- **Last Checked:** Tue, 30 Sep 2025 23:54:07 GMT
+- **Last Modified:** Tue, 30 Sep 2025 23:54:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:07 GMT
 
 
@@ -491,5 +491,63 @@ Delete a single rollout kind.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
 | `params.etag` | `string` | No | The etag known to the client for the expected state of the rollout kind. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the rollout kind. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.replicationsInternal`
+
+#### `projects.locations.replicationsInternal.list()`
+
+Retrieve a collection of replication internals.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the replication internal. |
+| `params.pageSize` | `integer` | No | The maximum number of replication internals to send per page. |
+| `params.pageToken` | `string` | No | The page token: If the next_page_token from a previous response is provided, this request will send the subsequent page. |
+| `params.filter` | `string` | No | Filter the list as specified in https://google.aip.dev/160. |
+| `params.orderBy` | `string` | No | Order results as specified in https://google.aip.dev/132. |
+
+#### `projects.locations.replicationsInternal.get()`
+
+Retrieve a single replication internal.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+
+#### `projects.locations.replicationsInternal.create()`
+
+Create a new replication internal.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent of the replication internal. |
+| `params.replicationInternalId` | `string` | No | Required. The ID value for the new replication internal. |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.replicationsInternal.patch()`
+
+Update a single replication internal.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/replicationInternal/{replication_internal_id}" |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the replication internal. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the replication internal. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
+| `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
+| `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the ReplicationInternal resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields in the ReplicationInternal will be overwritten. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.replicationsInternal.delete()`
+
+Delete a single replication internal.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the resource within a service. |
+| `params.etag` | `string` | No | The etag known to the client for the expected state of the replication internal. This is used with state-changing methods to prevent accidental overwrites when multiple user agents might be acting in parallel on the same resource. An etag wildcard provide optimistic concurrency based on the expected existence of the replication internal. The Any wildcard (`*`) requires that the resource must already exists, and the Not Any wildcard (`!*`) requires that it must not. |
 | `params.validateOnly` | `boolean` | No | If "validate_only" is set to true, the service will try to validate that this request would succeed, but will not actually make changes. |
 | `params.requestId` | `string` | No | An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
