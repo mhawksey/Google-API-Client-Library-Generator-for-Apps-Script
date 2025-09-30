@@ -288,6 +288,16 @@ class Tpu {
      */
     this.projects.locations.queuedResources.performMaintenanceQueuedResource = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:performMaintenanceQueuedResource', 'POST', apiParams, clientConfig);
 
+    /**
+     * Gets the maintenance info for a queued resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The QueuedResource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.queuedResources.getMaintenanceInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2alpha1/{+name}:getMaintenanceInfo', 'GET', apiParams, clientConfig);
+
     this.projects.locations.acceleratorTypes = {};
 
     /**
