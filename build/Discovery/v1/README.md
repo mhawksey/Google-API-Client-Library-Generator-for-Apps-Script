@@ -4,8 +4,8 @@ Auto-generated client library for using the **API Discovery Service (version: v1
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:34:01 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:23:04 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:57:05 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:57:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:40 GMT
 
 
