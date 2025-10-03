@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Search API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:25:36 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:13:43 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:53:05 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:53:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:40 GMT
 
 
