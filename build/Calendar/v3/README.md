@@ -4,8 +4,8 @@ Auto-generated client library for using the **Calendar API (version: v3)** in Go
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:24:01 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:06:27 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:45:38 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:45:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:56 GMT
 
 
