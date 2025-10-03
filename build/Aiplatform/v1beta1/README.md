@@ -4,8 +4,8 @@ Auto-generated client library for using the **Vertex AI API (version: v1beta1)**
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:21:28 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:03:11 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:42:51 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:42:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:23 GMT
 
 
@@ -4473,7 +4473,7 @@ Lists MetadataStores for a Location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The Location whose MetadataStores should be listed. Format: `projects/{project}/locations/{location}` |
-| `params.pageSize` | `integer` | No | The maximum number of Metadata Stores to return. The service may return fewer. Must be in range 1-1000, inclusive. Defaults to 100. |
+| `params.pageSize` | `integer` | No | The maximum number of Metadata Stores to return. The service may return fewer. Must be in range 1-100, inclusive. Defaults to 100. |
 | `params.pageToken` | `string` | No | A page token, received from a previous MetadataService.ListMetadataStores call. Provide this to retrieve the subsequent page. When paginating, all other provided parameters must match the call that provided the page token. (Otherwise the request will fail with INVALID_ARGUMENT error.) |
 
 #### `projects.locations.metadataStores.delete()`
@@ -4558,7 +4558,7 @@ Lists Artifacts in the MetadataStore.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The MetadataStore whose Artifacts should be listed. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
-| `params.pageSize` | `integer` | No | The maximum number of Artifacts to return. The service may return fewer. Must be in range 1-1000, inclusive. Defaults to 100. |
+| `params.pageSize` | `integer` | No | The maximum number of Artifacts to return. The service may return fewer. Must be in range 1-100, inclusive. Defaults to 100. |
 | `params.pageToken` | `string` | No | A page token, received from a previous MetadataService.ListArtifacts call. Provide this to retrieve the subsequent page. When paginating, all other provided parameters must match the call that provided the page token. (Otherwise the request will fail with INVALID_ARGUMENT error.) |
 | `params.filter` | `string` | No | Filter specifying the boolean condition for the Artifacts to satisfy in order to be part of the result set. The syntax to define filter query is based on https://google.aip.dev/160. The supported set of filters include the following: * **Attribute filtering**: For example: `display_name = "test"`. Supported fields include: `name`, `display_name`, `uri`, `state`, `schema_title`, `create_time`, and `update_time`. Time fields, such as `create_time` and `update_time`, require values specified in RFC-3339 format. For example: `create_time = "2020-11-19T11:30:00-04:00"` * **Metadata field**: To filter on metadata fields use traversal operation as follows: `metadata..`. For example: `metadata.field_1.number_value = 10.0` In case the field name contains special characters (such as colon), one can embed it inside double quote. For example: `metadata."field:1".number_value = 10.0` * **Context based filtering**: To filter Artifacts based on the contexts to which they belong, use the function operator with the full resource name `in_context()`. For example: `in_context("projects//locations//metadataStores//contexts/")` Each of the above supported filter types can be combined together using logical operators (`AND` & `OR`). Maximum nested expression depth allowed is 5. For example: `display_name = "test" AND metadata.field1.bool_value = true`. |
 | `params.orderBy` | `string` | No | How the list of messages is ordered. Specify the values to order by and an ordering operation. The default sorting order is ascending. To specify descending order for a field, users append a " desc" suffix; for example: "foo desc, bar". Subfields are specified with a `.` character, such as foo.bar. see https://google.aip.dev/132#ordering for more details. |
@@ -4675,7 +4675,7 @@ Lists Contexts on the MetadataStore.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The MetadataStore whose Contexts should be listed. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
-| `params.pageSize` | `integer` | No | The maximum number of Contexts to return. The service may return fewer. Must be in range 1-1000, inclusive. Defaults to 100. |
+| `params.pageSize` | `integer` | No | The maximum number of Contexts to return. The service may return fewer. Must be in range 1-100, inclusive. Defaults to 100. |
 | `params.pageToken` | `string` | No | A page token, received from a previous MetadataService.ListContexts call. Provide this to retrieve the subsequent page. When paginating, all other provided parameters must match the call that provided the page token. (Otherwise the request will fail with INVALID_ARGUMENT error.) |
 | `params.filter` | `string` | No | Filter specifying the boolean condition for the Contexts to satisfy in order to be part of the result set. The syntax to define filter query is based on https://google.aip.dev/160. Following are the supported set of filters: * **Attribute filtering**: For example: `display_name = "test"`. Supported fields include: `name`, `display_name`, `schema_title`, `create_time`, and `update_time`. Time fields, such as `create_time` and `update_time`, require values specified in RFC-3339 format. For example: `create_time = "2020-11-19T11:30:00-04:00"`. * **Metadata field**: To filter on metadata fields use traversal operation as follows: `metadata..`. For example: `metadata.field_1.number_value = 10.0`. In case the field name contains special characters (such as colon), one can embed it inside double quote. For example: `metadata."field:1".number_value = 10.0` * **Parent Child filtering**: To filter Contexts based on parent-child relationship use the HAS operator as follows: ``` parent_contexts: "projects//locations//metadataStores//contexts/" child_contexts: "projects//locations//metadataStores//contexts/" ``` Each of the above supported filters can be combined together using logical operators (`AND` & `OR`). Maximum nested expression depth allowed is 5. For example: `display_name = "test" AND metadata.field1.bool_value = true`. |
 | `params.orderBy` | `string` | No | How the list of messages is ordered. Specify the values to order by and an ordering operation. The default sorting order is ascending. To specify descending order for a field, users append a " desc" suffix; for example: "foo desc, bar". Subfields are specified with a `.` character, such as foo.bar. see https://google.aip.dev/132#ordering for more details. |
@@ -4818,7 +4818,7 @@ Lists Executions in the MetadataStore.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The MetadataStore whose Executions should be listed. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
-| `params.pageSize` | `integer` | No | The maximum number of Executions to return. The service may return fewer. Must be in range 1-1000, inclusive. Defaults to 100. |
+| `params.pageSize` | `integer` | No | The maximum number of Executions to return. The service may return fewer. Must be in range 1-100, inclusive. Defaults to 100. |
 | `params.pageToken` | `string` | No | A page token, received from a previous MetadataService.ListExecutions call. Provide this to retrieve the subsequent page. When paginating, all other provided parameters must match the call that provided the page token. (Otherwise the request will fail with an INVALID_ARGUMENT error.) |
 | `params.filter` | `string` | No | Filter specifying the boolean condition for the Executions to satisfy in order to be part of the result set. The syntax to define filter query is based on https://google.aip.dev/160. Following are the supported set of filters: * **Attribute filtering**: For example: `display_name = "test"`. Supported fields include: `name`, `display_name`, `state`, `schema_title`, `create_time`, and `update_time`. Time fields, such as `create_time` and `update_time`, require values specified in RFC-3339 format. For example: `create_time = "2020-11-19T11:30:00-04:00"`. * **Metadata field**: To filter on metadata fields use traversal operation as follows: `metadata..` For example: `metadata.field_1.number_value = 10.0` In case the field name contains special characters (such as colon), one can embed it inside double quote. For example: `metadata."field:1".number_value = 10.0` * **Context based filtering**: To filter Executions based on the contexts to which they belong use the function operator with the full resource name: `in_context()`. For example: `in_context("projects//locations//metadataStores//contexts/")` Each of the above supported filters can be combined together using logical operators (`AND` & `OR`). Maximum nested expression depth allowed is 5. For example: `display_name = "test" AND metadata.field1.bool_value = true`. |
 | `params.orderBy` | `string` | No | How the list of messages is ordered. Specify the values to order by and an ordering operation. The default sorting order is ascending. To specify descending order for a field, users append a " desc" suffix; for example: "foo desc, bar". Subfields are specified with a `.` character, such as foo.bar. see https://google.aip.dev/132#ordering for more details. |
@@ -4942,7 +4942,7 @@ Lists MetadataSchemas.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The MetadataStore whose MetadataSchemas should be listed. Format: `projects/{project}/locations/{location}/metadataStores/{metadatastore}` |
-| `params.pageSize` | `integer` | No | The maximum number of MetadataSchemas to return. The service may return fewer. Must be in range 1-1000, inclusive. Defaults to 100. |
+| `params.pageSize` | `integer` | No | The maximum number of MetadataSchemas to return. The service may return fewer. Must be in range 1-100, inclusive. Defaults to 100. |
 | `params.pageToken` | `string` | No | A page token, received from a previous MetadataService.ListMetadataSchemas call. Provide this to retrieve the next page. When paginating, all other provided parameters must match the call that provided the page token. (Otherwise the request will fail with INVALID_ARGUMENT error.) |
 | `params.filter` | `string` | No | A query to filter available MetadataSchemas for matching results. |
 
