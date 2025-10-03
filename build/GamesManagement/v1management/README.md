@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Games Services Managem
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:36:07 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:26:04 GMT
+- **Last Checked:** Fri, 03 Oct 2025 09:05:03 GMT
+- **Last Modified:** Fri, 03 Oct 2025 09:05:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:12 GMT
 
 
