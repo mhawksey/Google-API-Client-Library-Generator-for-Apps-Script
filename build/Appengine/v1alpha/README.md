@@ -4,8 +4,8 @@ Auto-generated client library for using the **App Engine Admin API (version: v1a
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:22:36 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:04:35 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:44:06 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:44:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:50 GMT
 
 
@@ -28,6 +28,7 @@ Lists operations that match the specified filter in the request. If the server d
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections e.g. when parent is set to "projects/example/locations/-".This field is not by default supported and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `apps.operations.get()`
 
@@ -167,7 +168,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `apps.locations.get()`
 
@@ -192,7 +193,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -216,6 +217,7 @@ Lists operations that match the specified filter in the request. If the server d
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections e.g. when parent is set to "projects/example/locations/-".This field is not by default supported and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
 
@@ -330,3 +332,28 @@ Maps a domain to an application. A user must be authorized to administer a domai
 | `params.noManagedCertificate` | `boolean` | No | Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. |
 | `params.overrideStrategy` | `string` | No | Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.applications.domainMappings.patch()`
+
+Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com. |
+| `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+| `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+| `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+| `params.updateMask` | `string` | No | Required. Standard field mask for the set of fields to be updated. |
+| `params.noManagedCertificate` | `boolean` | No | Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.applications.domainMappings.delete()`
+
+Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectsId` | `string` | Yes | Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com. |
+| `params.locationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+| `params.applicationsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
+| `params.domainMappingsId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
