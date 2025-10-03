@@ -19,20 +19,6 @@ class Cloudasset {
 
 
     this.assets = {};
-
-    /**
-     * Lists assets with time and resource types and returns paged results in response.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.assetTypes - A list of asset types to take a snapshot for. For example: "compute.googleapis.com/Disk". Regular expression is also supported. For example: * "compute.googleapis.com.*" snapshots resources whose asset type starts with "compute.googleapis.com". * ".*Instance" snapshots resources whose asset type ends with "Instance". * ".*Instance.*" snapshots resources whose asset type contains "Instance". See [RE2](https://github.com/google/re2/wiki/Syntax) for all supported regular expression syntax. If the regular expression does not match any supported asset type, an INVALID_ARGUMENT error will be returned. If specified, only matching assets will be returned, otherwise, it will snapshot all asset types. See [Introduction to Cloud Asset Inventory](https://cloud.google.com/asset-inventory/docs/overview) for all supported asset types.
-     * @param {string} apiParams.contentType - Asset content type. If not specified, no content but the asset name will be returned.
-     * @param {integer} apiParams.pageSize - The maximum number of assets to be returned in a single response. Default is 100, minimum is 1, and maximum is 1000.
-     * @param {string} apiParams.pageToken - The `next_page_token` returned from the previous `ListAssetsResponse`, or unspecified for the first `ListAssetsRequest`. It is a continuation of a prior `ListAssets` call, and the API should return the next page of assets.
-     * @param {string} apiParams.parent - (Required) Required. Name of the organization or project the assets belong to. Format: "organizations/[organization-number]" (such as "organizations/123"), "projects/[project-id]" (such as "projects/my-project-id"), or "projects/[project-number]" (such as "projects/12345").
-     * @param {string} apiParams.readTime - Timestamp to take an asset snapshot. This can only be set to a timestamp between the current time and the current time minus 35 days (inclusive). If not specified, the current time will be used. Due to delays in resource data collection and indexing, there is a volatile window during which running the same query may get different results.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.assets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p5beta1/{+parent}/assets', 'GET', apiParams, clientConfig);
   }
 
