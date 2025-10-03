@@ -4,8 +4,8 @@ Auto-generated client library for using the **Admin SDK API (version: directory_
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:21:08 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:02:42 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:42:26 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:42:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:54 GMT
 
 
@@ -455,7 +455,7 @@ Retrieves all groups of a domain or of a user given a userKey (paginated).
 | `params.maxResults` | `integer` | No | Maximum number of results to return. Max allowed value is 200. |
 | `params.orderBy` | `string` | No | Column to use for sorting results |
 | `params.pageToken` | `string` | No | Token to specify next page in the list |
-| `params.query` | `string` | No | Query string search. Should be of the form "". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-groups |
+| `params.query` | `string` | No | Query string search. Contains one or more search clauses, each with a field, operator, and value. For complete documentation, go to [Search for groups](https://developers.google.com/workspace/admin/directory/v1/guides/search-groups). |
 | `params.sortOrder` | `string` | No | Whether to return results in ascending or descending order. Only of use when orderBy is also used |
 | `params.userKey` | `string` | No | Email or immutable ID of the user if only those groups are to be listed, the given user is a member of. If it's an ID, it should match with the ID of the user object. Cannot be used with the `customer` parameter. |
 
@@ -834,7 +834,7 @@ Retrieves a list of calendar resources for an account.
 | `params.maxResults` | `integer` | No | Maximum number of results to return. |
 | `params.orderBy` | `string` | No | Field(s) to sort results by in either ascending or descending order. Supported fields include `resourceId`, `resourceName`, `capacity`, `buildingId`, and `floorName`. If no order is specified, defaults to ascending. Should be of the form "field [asc|desc], field [asc|desc], ...". For example `buildingId, capacity desc` would return results sorted first by `buildingId` in ascending order then by `capacity` in descending order. |
 | `params.pageToken` | `string` | No | Token to specify the next page in the list. |
-| `params.query` | `string` | No | String query used to filter results. Should be of the form "field operator value" where field can be any of supported fields and operators can be any of supported operations. Operators include '=' for exact match, '!=' for mismatch and ':' for prefix match or HAS match where applicable. For prefix match, the value should always be followed by a *. Logical operators NOT and AND are supported (in this order of precedence). Supported fields include `generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`, `featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`. |
+| `params.query` | `string` | No | String query used to filter results. Contains one or more search clauses, each with a field, operator, and value. A field can be any of supported fields and operators can be any of supported operations. Operators include '=' for exact match, '!=' for mismatch and ':' for prefix match or HAS match where applicable. For prefix match, the value should always be followed by a *. Logical operators NOT and AND are supported (in this order of precedence). Supported fields include `generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`, `featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`. |
 
 #### `resources.calendars.update()`
 
@@ -1178,7 +1178,7 @@ Watches for changes in users list.
 | `params.orderBy` | `string` | No | Column to use for sorting results |
 | `params.pageToken` | `string` | No | Token to specify next page in the list |
 | `params.projection` | `string` | No | What subset of fields to fetch for this user. |
-| `params.query` | `string` | No | Query string search. Should be of the form "". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-users |
+| `params.query` | `string` | No | Query string search. Contains one or more search clauses, each with a field, operator, and value. For complete documentation, go to [Search for users](https://developers.google.com/workspace/admin/directory/v1/guides/search-users). |
 | `params.showDeleted` | `string` | No | If set to true, retrieves the list of deleted users. (Default: false) |
 | `params.sortOrder` | `string` | No | Whether to return results in ascending or descending order. |
 | `params.viewType` | `string` | No | Whether to fetch the administrator-only or domain-wide public view of the user. For more information, see [Retrieve a user as a non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin). |
