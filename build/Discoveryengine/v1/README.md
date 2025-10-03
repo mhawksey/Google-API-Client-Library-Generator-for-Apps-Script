@@ -4,8 +4,8 @@ Auto-generated client library for using the **Discovery Engine API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:34:19 GMT
-- **Last Modified:** Tue, 30 Sep 2025 23:34:19 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:57:23 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:57:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:49 GMT
 
 
