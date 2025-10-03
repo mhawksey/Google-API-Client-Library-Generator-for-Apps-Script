@@ -19,25 +19,7 @@ class Addressvalidation {
 
 
     this.v1 = {};
-
-    /**
-     * Validates an address.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.v1.validateAddress = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1:validateAddress', 'POST', apiParams, clientConfig);
-
-    /**
-     * Feedback about the outcome of the sequence of validation attempts. This should be the last call made after a sequence of validation calls for the same address, and should be called once the transaction is concluded. This should only be sent once for the sequence of `ValidateAddress` requests needed to validate an address fully.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.v1.provideValidationFeedback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1:provideValidationFeedback', 'POST', apiParams, clientConfig);
   }
 
