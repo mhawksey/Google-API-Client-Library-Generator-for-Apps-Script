@@ -21,16 +21,6 @@ class Fcm {
     this.projects = {};
 
     this.projects.messages = {};
-
-    /**
-     * Send a message to specified target (a registration token, topic or condition).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. It contains the Firebase project id (i.e. the unique identifier for your Firebase project), in the format of `projects/{project_id}`. The numeric project number with no padding is also supported in the format of `projects/{project_number}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.projects.messages.send = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/messages:send', 'POST', apiParams, clientConfig);
   }
 
