@@ -19,17 +19,6 @@ class Dfareporting {
 
 
     this.media = {};
-
-    /**
-     * Inserts a new creative asset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.advertiserId - (Required) Advertiser ID of this creative. This is a required field.
-     * @param {string} apiParams.profileId - (Required) User profile ID associated with this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/dfareporting/v3.5/userprofiles/{+profileId}/creativeAssets/{+advertiserId}/creativeAssets' : 'userprofiles/{+profileId}/creativeAssets/{+advertiserId}/creativeAssets';
