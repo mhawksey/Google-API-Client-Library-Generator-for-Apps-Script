@@ -4,8 +4,8 @@ Auto-generated client library for using the **App Hub API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:22:47 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:04:49 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:44:18 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:44:18 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:04 GMT
 
 
