@@ -4,8 +4,8 @@ Auto-generated client library for using the **API Gateway API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:22:16 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:04:15 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:43:48 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:43:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:29 GMT
 
 
