@@ -19,146 +19,21 @@ class Area120tables {
 
 
     this.tables = {};
-
-    /**
-     * Gets a table. Returns NOT_FOUND if the table does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the table to retrieve. Format: tables/{table}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists tables for the user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.orderBy - Optional. Sorting order for the list of tables on createTime/updateTime.
-     * @param {integer} apiParams.pageSize - The maximum number of tables to return. The service may return fewer than this value. If unspecified, at most 20 tables are returned. The maximum value is 100; values above 100 are coerced to 100.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListTables` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTables` must match the call that provided the page token.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/tables', 'GET', apiParams, clientConfig);
 
     this.tables.rows = {};
-
-    /**
-     * Gets a row. Returns NOT_FOUND if the row does not exist in the table.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the row to retrieve. Format: tables/{table}/rows/{row}
-     * @param {string} apiParams.view - Optional. Column key to use for values in the row. Defaults to user entered name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.rows.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists rows in a table. Returns NOT_FOUND if the table does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filter to only include resources matching the requirements. For more information, see [Filtering list results](https://support.google.com/area120-tables/answer/10503371).
-     * @param {string} apiParams.orderBy - Optional. Sorting order for the list of rows on createTime/updateTime.
-     * @param {integer} apiParams.pageSize - The maximum number of rows to return. The service may return fewer than this value. If unspecified, at most 50 rows are returned. The maximum value is 1,000; values above 1,000 are coerced to 1,000.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListRows` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRows` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent table. Format: tables/{table}
-     * @param {string} apiParams.view - Optional. Column key to use for values in the row. Defaults to user entered name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.rows.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a row.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent table where this row will be created. Format: tables/{table}
-     * @param {string} apiParams.view - Optional. Column key to use for values in the row. Defaults to user entered name.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.rows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates multiple rows.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent table where the rows will be created. Format: tables/{table}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.rows.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchCreate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a row.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is ignored when creating a row.
-     * @param {string} apiParams.updateMask - The list of fields to update.
-     * @param {string} apiParams.view - Optional. Column key to use for values in the row. Defaults to user entered name.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.rows.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Updates multiple rows.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent table shared by all rows being updated. Format: tables/{table}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.rows.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchUpdate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a row.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the row to delete. Format: tables/{table}/rows/{row}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.rows.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Deletes multiple rows.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent table shared by all rows being deleted. Format: tables/{table}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.tables.rows.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchDelete', 'POST', apiParams, clientConfig);
 
     this.workspaces = {};
-
-    /**
-     * Gets a workspace. Returns NOT_FOUND if the workspace does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the workspace to retrieve. Format: workspaces/{workspace}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.workspaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists workspaces for the user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of workspaces to return. The service may return fewer than this value. If unspecified, at most 10 workspaces are returned. The maximum value is 25; values above 25 are coerced to 25.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListWorkspaces` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkspaces` must match the call that provided the page token.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.workspaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/workspaces', 'GET', apiParams, clientConfig);
   }
 
