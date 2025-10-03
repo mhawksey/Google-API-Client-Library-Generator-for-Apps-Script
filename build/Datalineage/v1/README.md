@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Lineage API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:32:59 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:15:59 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:55:25 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:55:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:00 GMT
 
 
