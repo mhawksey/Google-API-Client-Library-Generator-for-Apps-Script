@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Document AI API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:34:41 GMT
-- **Last Modified:** Tue, 30 Sep 2025 23:34:41 GMT
+- **Last Checked:** Fri, 03 Oct 2025 09:03:10 GMT
+- **Last Modified:** Fri, 03 Oct 2025 09:03:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:14 GMT
 
 
