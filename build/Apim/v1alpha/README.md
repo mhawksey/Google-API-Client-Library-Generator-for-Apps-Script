@@ -4,8 +4,8 @@ Auto-generated client library for using the **API Management API (version: v1alp
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:22:34 GMT
-- **Last Modified:** Tue, 30 Sep 2025 23:22:34 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:44:03 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:44:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:47 GMT
 
 
