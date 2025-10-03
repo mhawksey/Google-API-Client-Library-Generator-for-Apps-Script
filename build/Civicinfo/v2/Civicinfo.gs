@@ -19,51 +19,11 @@ class Civicinfo {
 
 
     this.elections = {};
-
-    /**
-     * Looks up information relevant to a voter based on the voter's registered address.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.address - The registered address of the voter to look up.
-     * @param {string} apiParams.electionId - The unique ID of the election to look up. A list of election IDs can be obtained at https://www.googleapis.com/civicinfo/{version}/elections. If no election ID is specified in the query and there is more than one election with data for the given voter, the additional elections are provided in the otherElections response field.
-     * @param {boolean} apiParams.officialOnly - If set to true, only data from official state sources will be returned.
-     * @param {boolean} apiParams.productionDataOnly - Whether to include data that has not been vetted yet. Should only be made available to internal IPs or trusted partners. This is a non-discoverable parameter in the One Platform API config.
-     * @param {boolean} apiParams.returnAllAvailableData - If set to true, the query will return the success code and include any partial information when it is unable to determine a matching address or unable to determine the election for electionId=0 queries.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.elections.voterInfoQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/voterinfo', 'GET', apiParams, clientConfig);
-
-    /**
-     * List of available elections to query.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.productionDataOnly - Whether to include data that has not been allowlisted yet
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.elections.electionQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/elections', 'GET', apiParams, clientConfig);
 
     this.divisions = {};
-
-    /**
-     * Searches for political divisions by their natural name or OCD ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.query - The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words given in the query are treated as required patterns. In addition to that, most query operators of the Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.divisions.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/divisions', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lookup OCDIDs and names for divisions related to an address.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.address - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.divisions.queryDivisionByAddress = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/divisionsByAddress', 'GET', apiParams, clientConfig);
   }
 
