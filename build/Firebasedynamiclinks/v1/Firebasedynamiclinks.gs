@@ -19,61 +19,14 @@ class Firebasedynamiclinks {
 
 
     this.managedShortLinks = {};
-
-    /**
-     * Creates a managed short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. This differs from CreateShortDynamicLink in the following ways: - The request will also contain a name for the link (non unique name for the front end). - The response must be authenticated with an auth token (generated with the admin service account). - The link will appear in the FDL list of links in the console front end. The Dynamic Link domain in the request must be owned by requester's Firebase project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.managedShortLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/managedShortLinks:create', 'POST', apiParams, clientConfig);
 
     this.shortLinks = {};
-
-    /**
-     * Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.shortLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/shortLinks', 'POST', apiParams, clientConfig);
 
     this.v1 = {};
-
-    /**
-     * Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.durationDays - The span of time requested in days.
-     * @param {string} apiParams.dynamicLink - (Required) Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz
-     * @param {string} apiParams.sdkVersion - Google SDK version. Version takes the form "$major.$minor.$patch"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.v1.getLinkStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{dynamicLink}/linkStats', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get iOS strong/weak-match info for post-install attribution.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.v1.installAttribution = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/installAttribution', 'POST', apiParams, clientConfig);
-
-    /**
-     * Get iOS reopen attribution for app universal link open deeplinking.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.v1.reopenAttribution = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/reopenAttribution', 'POST', apiParams, clientConfig);
   }
 
