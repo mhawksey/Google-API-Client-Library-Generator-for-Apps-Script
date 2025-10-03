@@ -19,46 +19,10 @@ class Cloudtrace {
 
 
     this.projects = {};
-
-    /**
-     * Sends trace spans to Cloud Trace. Spans cannot be updated. If the trace ID and span ID already exist, an additional copy of the span will be stored.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Required. ID of the Cloud project where the trace data is stored.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.projects.patchTraces = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces', 'PATCH', apiParams, clientConfig);
 
     this.projects.traces = {};
-
-    /**
-     * Returns a list of traces that match the specified filter conditions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.endTime - End of the time interval (inclusive) during which the trace data was collected from the application.
-     * @param {string} apiParams.filter - Optional. A filter against properties of the trace. See [filter syntax documentation](https://cloud.google.com/trace/docs/trace-filters) for details.
-     * @param {string} apiParams.orderBy - Optional. Field used to sort the returned traces. Can be one of the following: * `trace_id` * `name` (`name` field of root span in the trace) * `duration` (difference between `end_time` and `start_time` fields of the root span) * `start` (`start_time` field of the root span) Descending order can be specified by appending `desc` to the sort field (for example, `name desc`). Only one sort field is permitted.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of traces to return. If not specified or <= 0, the implementation selects a reasonable value. The implementation may return fewer traces than the requested page size.
-     * @param {string} apiParams.pageToken - Token identifying the page of results to return. If provided, use the value of the `next_page_token` field from a previous request.
-     * @param {string} apiParams.projectId - (Required) Required. ID of the Cloud project where the trace data is stored.
-     * @param {string} apiParams.startTime - Start of the time interval (inclusive) during which the trace data was collected from the application.
-     * @param {string} apiParams.view - Optional. Type of data returned for traces in the list. Default is `MINIMAL`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.projects.traces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a single trace by its ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Required. ID of the Cloud project where the trace data is stored.
-     * @param {string} apiParams.traceId - (Required) Required. ID of the trace to return.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.projects.traces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces/{traceId}', 'GET', apiParams, clientConfig);
   }
 
