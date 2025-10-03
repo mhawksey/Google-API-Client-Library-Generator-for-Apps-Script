@@ -4,8 +4,8 @@ Auto-generated client library for using the **Contact Center AI Insights API (ve
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:32:19 GMT
-- **Last Modified:** Tue, 30 Sep 2025 23:32:19 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:54:26 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:54:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:58 GMT
 
 
