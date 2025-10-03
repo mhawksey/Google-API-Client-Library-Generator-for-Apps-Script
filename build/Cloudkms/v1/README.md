@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Key Management Service (KMS)
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:25:13 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:13:06 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:46:59 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:46:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:05 GMT
 
 
@@ -36,7 +36,7 @@ Returns the AutokeyConfig for a folder or project.
 
 #### `folders.getKajPolicyConfig()`
 
-Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -44,7 +44,7 @@ Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/pro
 
 #### `folders.updateKajPolicyConfig()`
 
-Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -82,7 +82,7 @@ Returns the effective Cloud KMS Autokey configuration for a given project.
 
 #### `projects.getKajPolicyConfig()`
 
-Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -90,7 +90,7 @@ Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/pro
 
 #### `projects.updateKajPolicyConfig()`
 
-Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -671,7 +671,7 @@ Returns permissions that a caller has on the specified resource. If the resource
 
 #### `organizations.getKajPolicyConfig()`
 
-Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -679,7 +679,7 @@ Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/pro
 
 #### `organizations.updateKajPolicyConfig()`
 
-Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
