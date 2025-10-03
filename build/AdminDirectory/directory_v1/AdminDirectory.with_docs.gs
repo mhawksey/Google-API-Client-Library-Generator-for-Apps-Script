@@ -534,7 +534,7 @@ class AdminDirectory {
      * @param {integer} apiParams.maxResults - Maximum number of results to return. Max allowed value is 200.
      * @param {string} apiParams.orderBy - Column to use for sorting results
      * @param {string} apiParams.pageToken - Token to specify next page in the list
-     * @param {string} apiParams.query - Query string search. Should be of the form "". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-groups
+     * @param {string} apiParams.query - Query string search. Contains one or more search clauses, each with a field, operator, and value. For complete documentation, go to [Search for groups](https://developers.google.com/workspace/admin/directory/v1/guides/search-groups).
      * @param {string} apiParams.sortOrder - Whether to return results in ascending or descending order. Only of use when orderBy is also used
      * @param {string} apiParams.userKey - Email or immutable ID of the user if only those groups are to be listed, the given user is a member of. If it's an ID, it should match with the ID of the user object. Cannot be used with the `customer` parameter.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -987,7 +987,7 @@ class AdminDirectory {
      * @param {integer} apiParams.maxResults - Maximum number of results to return.
      * @param {string} apiParams.orderBy - Field(s) to sort results by in either ascending or descending order. Supported fields include `resourceId`, `resourceName`, `capacity`, `buildingId`, and `floorName`. If no order is specified, defaults to ascending. Should be of the form "field [asc|desc], field [asc|desc], ...". For example `buildingId, capacity desc` would return results sorted first by `buildingId` in ascending order then by `capacity` in descending order.
      * @param {string} apiParams.pageToken - Token to specify the next page in the list.
-     * @param {string} apiParams.query - String query used to filter results. Should be of the form "field operator value" where field can be any of supported fields and operators can be any of supported operations. Operators include '=' for exact match, '!=' for mismatch and ':' for prefix match or HAS match where applicable. For prefix match, the value should always be followed by a *. Logical operators NOT and AND are supported (in this order of precedence). Supported fields include `generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`, `featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`.
+     * @param {string} apiParams.query - String query used to filter results. Contains one or more search clauses, each with a field, operator, and value. A field can be any of supported fields and operators can be any of supported operations. Operators include '=' for exact match, '!=' for mismatch and ':' for prefix match or HAS match where applicable. For prefix match, the value should always be followed by a *. Logical operators NOT and AND are supported (in this order of precedence). Supported fields include `generatedResourceName`, `name`, `buildingId`, `floor_name`, `capacity`, `featureInstances.feature.name`, `resourceEmail`, `resourceCategory`. For example `buildingId=US-NYC-9TH AND featureInstances.feature.name:Phone`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -1399,7 +1399,7 @@ class AdminDirectory {
      * @param {string} apiParams.orderBy - Column to use for sorting results
      * @param {string} apiParams.pageToken - Token to specify next page in the list
      * @param {string} apiParams.projection - What subset of fields to fetch for this user.
-     * @param {string} apiParams.query - Query string search. Should be of the form "". Complete documentation is at https://developers.google.com/workspace/admin/directory/v1/guides/search-users
+     * @param {string} apiParams.query - Query string search. Contains one or more search clauses, each with a field, operator, and value. For complete documentation, go to [Search for users](https://developers.google.com/workspace/admin/directory/v1/guides/search-users).
      * @param {string} apiParams.showDeleted - If set to true, retrieves the list of deleted users. (Default: false)
      * @param {string} apiParams.sortOrder - Whether to return results in ascending or descending order.
      * @param {string} apiParams.viewType - Whether to fetch the administrator-only or domain-wide public view of the user. For more information, see [Retrieve a user as a non-administrator](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users#retrieve_users_non_admin).
