@@ -4,8 +4,8 @@ Auto-generated client library for using the **Datastream API (version: v1)** in 
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:33:24 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:16:40 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:56:06 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:56:06 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:48 GMT
 
 
