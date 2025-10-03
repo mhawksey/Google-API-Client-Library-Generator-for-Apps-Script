@@ -43,7 +43,7 @@ class Cloudkms {
     this.folders.getAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+     * Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the KeyAccessJustificationsPolicyConfig to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -53,7 +53,7 @@ class Cloudkms {
     this.folders.getKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+     * Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig".
      * @param {string} apiParams.updateMask - Optional. The list of fields to update.
@@ -99,7 +99,7 @@ class Cloudkms {
     this.projects.showEffectiveAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:showEffectiveAutokeyConfig', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+     * Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the KeyAccessJustificationsPolicyConfig to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -109,7 +109,7 @@ class Cloudkms {
     this.projects.getKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+     * Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig".
      * @param {string} apiParams.updateMask - Optional. The list of fields to update.
@@ -810,7 +810,7 @@ class Cloudkms {
     this.organizations = {};
 
     /**
-     * Gets the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+     * Gets the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the KeyAccessJustificationsPolicyConfig to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -820,7 +820,7 @@ class Cloudkms {
     this.organizations.getKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates the KeyAccessJustificationsPolicyConfig for a given organization/folder/projects.
+     * Updates the KeyAccessJustificationsPolicyConfig for a given organization, folder, or project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Identifier. The resource name for this KeyAccessJustificationsPolicyConfig in the format of "{organizations|folders|projects}/*\/kajPolicyConfig".
      * @param {string} apiParams.updateMask - Optional. The list of fields to update.
