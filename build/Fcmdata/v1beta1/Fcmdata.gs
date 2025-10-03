@@ -23,17 +23,6 @@ class Fcmdata {
     this.projects.androidApps = {};
 
     this.projects.androidApps.deliveryData = {};
-
-    /**
-     * List aggregate delivery data for the given Android application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of entries to return. The service may return fewer than this value. If unspecified, at most 1,000 entries will be returned. The maximum value is 10,000; values above 10,000 will be capped to 10,000. This default may change over time.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAndroidDeliveryDataRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAndroidDeliveryDataRequest` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The application for which to list delivery data. Format: `projects/{project_id}/androidApps/{app_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.projects.androidApps.deliveryData.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/deliveryData', 'GET', apiParams, clientConfig);
   }
 
