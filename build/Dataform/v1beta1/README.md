@@ -4,8 +4,8 @@ Auto-generated client library for using the **Dataform API (version: v1beta1)** 
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:32:50 GMT
-- **Last Modified:** Tue, 30 Sep 2025 23:32:50 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:55:13 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:55:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:47 GMT
 
 
