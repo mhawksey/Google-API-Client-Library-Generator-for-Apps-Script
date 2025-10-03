@@ -19,56 +19,11 @@ class Gmailpostmastertools {
 
 
     this.domains = {};
-
-    /**
-     * Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the domain. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists the domains that have been registered by the client. The order of domains in the response is unspecified and non-deterministic. Newly created domains will not necessarily be added to the end of this list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer domains than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any. This is the value of ListDomainsResponse.next_page_token returned from the previous call to `ListDomains` method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/domains', 'GET', apiParams, clientConfig);
 
     this.domains.trafficStats = {};
-
-    /**
-     * Get traffic statistics for a domain on a specific date. Returns PERMISSION_DENIED if user does not have permission to access TrafficStats for the domain.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the traffic statistics to get. E.g., domains/mymail.mydomain.com/trafficStats/20160807.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.domains.trafficStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * List traffic statistics for all available days. Returns PERMISSION_DENIED if user does not have permission to access TrafficStats for the domain.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer TrafficStats than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - The next_page_token value returned from a previous List request, if any. This is the value of ListTrafficStatsResponse.next_page_token returned from the previous call to `ListTrafficStats` method.
-     * @param {string} apiParams.parent - (Required) The resource name of the domain whose traffic statistics we'd like to list. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name.
-     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.domains.trafficStats.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trafficStats', 'GET', apiParams, clientConfig);
   }
 
