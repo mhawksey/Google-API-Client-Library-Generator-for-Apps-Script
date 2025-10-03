@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Data Fusion API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:32:52 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:15:49 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:55:17 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:55:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:24:50 GMT
 
 
