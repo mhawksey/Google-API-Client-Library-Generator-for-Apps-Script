@@ -4,8 +4,8 @@ Auto-generated client library for using the **Area120 Tables API (version: v1alp
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:22:49 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:04:52 GMT
+- **Last Checked:** Fri, 03 Oct 2025 08:44:20 GMT
+- **Last Modified:** Fri, 03 Oct 2025 08:44:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:07 GMT
 
 
