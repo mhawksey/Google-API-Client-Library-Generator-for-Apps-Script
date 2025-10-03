@@ -19,56 +19,17 @@ class Airquality {
 
 
     this.currentConditions = {};
-
-    /**
-     * The Current Conditions endpoint provides hourly air quality information in more than 100 countries, up to a 500 x 500 meters resolution. Includes over 70 local indexes and global air quality index and categories.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.currentConditions.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/currentConditions:lookup', 'POST', apiParams, clientConfig);
 
     this.history = {};
-
-    /**
-     * Returns air quality history for a specific location for a given time range.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.history.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/history:lookup', 'POST', apiParams, clientConfig);
 
     this.forecast = {};
-
-    /**
-     * Returns air quality forecast for a specific location for a given time range.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.forecast.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forecast:lookup', 'POST', apiParams, clientConfig);
 
     this.mapTypes = {};
 
     this.mapTypes.heatmapTiles = {};
-
-    /**
-     * Returns a bytes array containing the data of the tile PNG image.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.mapType - (Required) Required. The type of the air quality heatmap. Defines the pollutant that the map will graphically represent. Allowed values: - UAQI_RED_GREEN (UAQI, red-green palette) - UAQI_INDIGO_PERSIAN (UAQI, indigo-persian palette) - PM25_INDIGO_PERSIAN - GBR_DEFRA - DEU_UBA - CAN_EC - FRA_ATMO - US_AQI
-     * @param {integer} apiParams.x - (Required) Required. Defines the east-west point in the requested tile.
-     * @param {integer} apiParams.y - (Required) Required. Defines the north-south point in the requested tile.
-     * @param {integer} apiParams.zoom - (Required) Required. The map's zoom level. Defines how large or small the contents of a map appear in a map view. Zoom level 0 is the entire world in a single tile. Zoom level 1 is the entire world in 4 tiles. Zoom level 2 is the entire world in 16 tiles. Zoom level 16 is the entire world in 65,536 tiles. Allowed values: 0-16
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.mapTypes.heatmapTiles.lookupHeatmapTile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}', 'GET', apiParams, clientConfig);
   }
 
