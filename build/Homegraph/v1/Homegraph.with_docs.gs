@@ -18,7 +18,40 @@ class Homegraph {
     this._servicePath = '';
 
 
+    this.agentUsers = {};
+
+    /**
+     * Unlinks the given third-party user from your smart home Action. All data related to this user will be deleted. For more details on how users link their accounts, see [fulfillment and authentication](https://developers.home.google.com/cloud-to-cloud/primer/fulfillment). The third-party user's identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest). This request must be authorized using service account credentials from your Actions console project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.agentUserId - (Required) Required. Third-party user ID.
+     * @param {string} apiParams.requestId - Request ID used for debugging.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.agentUsers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+agentUserId}', 'DELETE', apiParams, clientConfig);
+
     this.devices = {};
+
+    /**
+     * Gets all the devices associated with the given third-party user. The third-party user's identity is passed in via the `agent_user_id` (see SyncRequest). This request must be authorized using service account credentials from your Actions console project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.devices.sync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:sync', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the current states in Home Graph for the given set of the third-party user's devices. The third-party user's identity is passed in via the `agent_user_id` (see QueryRequest). This request must be authorized using service account credentials from your Actions console project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.devices.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:query', 'POST', apiParams, clientConfig);
 
     /**
      * Requests Google to send an `action.devices.SYNC` [intent](https://developers.home.google.com/cloud-to-cloud/intents/sync) to your smart home Action to update device metadata for the given user. The third-party user's identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest). This request must be authorized using service account credentials from your Actions console project.
@@ -39,39 +72,6 @@ class Homegraph {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.devices.reportStateAndNotification = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:reportStateAndNotification', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the current states in Home Graph for the given set of the third-party user's devices. The third-party user's identity is passed in via the `agent_user_id` (see QueryRequest). This request must be authorized using service account credentials from your Actions console project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.devices.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:query', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets all the devices associated with the given third-party user. The third-party user's identity is passed in via the `agent_user_id` (see SyncRequest). This request must be authorized using service account credentials from your Actions console project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.devices.sync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:sync', 'POST', apiParams, clientConfig);
-
-    this.agentUsers = {};
-
-    /**
-     * Unlinks the given third-party user from your smart home Action. All data related to this user will be deleted. For more details on how users link their accounts, see [fulfillment and authentication](https://developers.home.google.com/cloud-to-cloud/primer/fulfillment). The third-party user's identity is passed in via the `agent_user_id` (see DeleteAgentUserRequest). This request must be authorized using service account credentials from your Actions console project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.agentUserId - (Required) Required. Third-party user ID.
-     * @param {string} apiParams.requestId - Request ID used for debugging.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.agentUsers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+agentUserId}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
