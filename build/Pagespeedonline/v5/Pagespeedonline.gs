@@ -19,21 +19,6 @@ class Pagespeedonline {
 
 
     this.pagespeedapi = {};
-
-    /**
-     * Runs PageSpeed analysis on the page at the specified URL, and returns PageSpeed scores, a list of suggestions to make that page faster, and other information.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.captchaToken - The captcha token passed when filling out a captcha.
-     * @param {string} apiParams.category - A Lighthouse category to run; if none are given, only Performance category will be run
-     * @param {string} apiParams.locale - The locale used to localize formatted results
-     * @param {string} apiParams.strategy - The analysis strategy (desktop or mobile) to use, and desktop is the default
-     * @param {string} apiParams.url - (Required) Required. The URL to fetch and analyze
-     * @param {string} apiParams.utm_campaign - Campaign name for analytics.
-     * @param {string} apiParams.utm_source - Campaign source for analytics.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.pagespeedapi.runpagespeed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('pagespeedonline/v5/runPagespeed', 'GET', apiParams, clientConfig);
   }
 
