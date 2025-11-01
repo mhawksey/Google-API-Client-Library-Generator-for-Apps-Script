@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Build API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Fri, 03 Oct 2025 08:46:18 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:31:17 GMT
 - **Last Modified:** Fri, 03 Oct 2025 08:46:18 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:19 GMT
 
@@ -101,7 +101,7 @@ Creates a new build based on the specified build. This method creates a new buil
 
 #### `projects.builds.approve()`
 
-Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -330,7 +330,7 @@ Creates a new build based on the specified build. This method creates a new buil
 
 #### `projects.locations.builds.approve()`
 
-Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
