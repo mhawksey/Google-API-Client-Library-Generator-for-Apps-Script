@@ -23,28 +23,26 @@ class Paymentsresellersubscription {
     this.partners.subscriptions = {};
 
     /**
-     * Used by partners to create a subscription for their customers. The created subscription is associated with the end user inferred from the end user credentials. This API must be authorized by the end user using OAuth.
+     * Suspends a subscription. Contract terms may dictate if a prorated refund will be issued upon suspension. It should be called directly by the partner using service accounts.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which is the identifier of the partner. It will have the format of "partners/{partner_id}".
-     * @param {string} apiParams.subscriptionId - Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one.
+     * @param {string} apiParams.name - (Required) Required. The name of the subscription resource to be suspended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}"
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.partners.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:suspend', 'POST', apiParams, clientConfig);
 
     /**
-     * Used by partners to provision a subscription for their customers. This creates a subscription without associating it with the end user account. EntitleSubscription must be called separately using OAuth in order for the end user account to be associated with the subscription. It should be called directly by the partner using service accounts.
+     * [Opt-in only] Most partners should be on auto-extend by default. Extends a subscription service for their customers on an ongoing basis for the subscription to remain active and renewable. It should be called directly by the partner using service accounts.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which is the identifier of the partner. It will have the format of "partners/{partner_id}".
-     * @param {string} apiParams.subscriptionId - Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one.
+     * @param {string} apiParams.name - (Required) Required. The name of the subscription resource to be extended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}".
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.partners.subscriptions.provision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions:provision', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.extend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:extend', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a subscription by id. It should be called directly by the partner using service accounts.
@@ -57,26 +55,30 @@ class Paymentsresellersubscription {
     this.partners.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Entitles a previously provisioned subscription to the current end user. The end user identity is inferred from the authorized credential of the request. This API must be authorized by the end user using OAuth.
+     * Used by partners to provision a subscription for their customers. This creates a subscription without associating it with the end user account. EntitleSubscription must be called separately using OAuth in order for the end user account to be associated with the subscription. It should be called directly by the partner using service accounts.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the subscription resource that is entitled to the current end user. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}"
+     * @param {integer} apiParams.cycleOptions.initialCycleDuration.count - number of duration units to be included.
+     * @param {string} apiParams.cycleOptions.initialCycleDuration.unit - The unit used for the duration
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which is the identifier of the partner. It will have the format of "partners/{partner_id}".
+     * @param {string} apiParams.subscriptionId - Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.partners.subscriptions.entitle = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:entitle', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.provision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions:provision', 'POST', apiParams, clientConfig);
 
     /**
-     * [Opt-in only] Most partners should be on auto-extend by default. Extends a subscription service for their customers on an ongoing basis for the subscription to remain active and renewable. It should be called directly by the partner using service accounts.
+     * Used by partners to create a subscription for their customers. The created subscription is associated with the end user inferred from the end user credentials. This API must be authorized by the end user using OAuth.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the subscription resource to be extended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}".
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name, which is the identifier of the partner. It will have the format of "partners/{partner_id}".
+     * @param {string} apiParams.subscriptionId - Required. Identifies the subscription resource on the Partner side. The value is restricted to 63 ASCII characters at the maximum. If a subscription was previously created with the same subscription_id, we will directly return that one.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.partners.subscriptions.extend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:extend', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
 
     /**
      * Cancels a subscription service either immediately or by the end of the current billing cycle for their customers. It should be called directly by the partner using service accounts.
@@ -101,15 +103,15 @@ class Paymentsresellersubscription {
     this.partners.subscriptions.undoCancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undoCancel', 'POST', apiParams, clientConfig);
 
     /**
-     * Suspends a subscription. Contract terms may dictate if a prorated refund will be issued upon suspension. It should be called directly by the partner using service accounts.
+     * Entitles a previously provisioned subscription to the current end user. The end user identity is inferred from the authorized credential of the request. This API must be authorized by the end user using OAuth.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the subscription resource to be suspended. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}"
+     * @param {string} apiParams.name - (Required) Required. The name of the subscription resource that is entitled to the current end user. It will have the format of "partners/{partner_id}/subscriptions/{subscription_id}"
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.partners.subscriptions.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:suspend', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.entitle = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:entitle', 'POST', apiParams, clientConfig);
 
     /**
      * Resumes a suspended subscription. The new billing cycle will start at the time of the request. It should be called directly by the partner using service accounts.
@@ -121,6 +123,20 @@ class Paymentsresellersubscription {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.partners.subscriptions.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
+
+    this.partners.subscriptions.lineItems = {};
+
+    /**
+     * Updates a line item of a subscription. It should be autenticated with a service account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. Resource name of the line item. Format: partners/{partner}/subscriptions/{subscription}/lineItems/{lineItem}
+     * @param {string} apiParams.updateMask - Required. The list of fields to update. Only a limited set of fields can be updated. The allowed fields are the following: - `product_payload.googleHomePayload.googleStructureId`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.subscriptions.lineItems.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.partners.products = {};
 
