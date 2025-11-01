@@ -108,7 +108,7 @@ class Cloudbuild {
     this.projects.builds.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds/{id}:retry', 'POST', apiParams, clientConfig);
 
     /**
-     * Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+     * Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}"
      * @param {object} apiParams.requestBody - The request body.
@@ -369,7 +369,7 @@ class Cloudbuild {
     this.projects.locations.builds.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retry', 'POST', apiParams, clientConfig);
 
     /**
-     * Approves or rejects a pending build. If approved, the returned LRO will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
+     * Approves or rejects a pending build. If approved, the returned long-running operation (LRO) will be analogous to the LRO returned from a CreateBuild call. If rejected, the returned LRO will be immediately done.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Name of the target build. For example: "projects/{$project_id}/builds/{$build_id}"
      * @param {object} apiParams.requestBody - The request body.
