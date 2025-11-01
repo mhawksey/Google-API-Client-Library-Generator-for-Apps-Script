@@ -19,19 +19,6 @@ class Webfonts {
 
 
     this.webfonts = {};
-
-    /**
-     * Retrieves the list of fonts currently served by the Google Fonts Developer API.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.capability - Controls the font urls in `Webfont.files`, by default, static ttf fonts are sent.
-     * @param {string} apiParams.category - Filters by Webfont.category, if category is found in Webfont.categories. If not set, returns all families.
-     * @param {string} apiParams.family - Filters by Webfont.family, using literal match. If not set, returns all families
-     * @param {string} apiParams.sort - Enables sorting of the list.
-     * @param {string} apiParams.subset - Filters by Webfont.subset, if subset is found in Webfont.subsets. If not set, returns all families.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.webfonts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/webfonts', 'GET', apiParams, clientConfig);
   }
 
