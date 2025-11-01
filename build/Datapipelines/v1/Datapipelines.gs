@@ -23,13 +23,13 @@ class Datapipelines {
     this.projects.locations = {};
 
     this.projects.locations.pipelines = {};
-    this.projects.locations.pipelines.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pipelines', 'POST', apiParams, clientConfig);
+    this.projects.locations.pipelines.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:run', 'POST', apiParams, clientConfig);
     this.projects.locations.pipelines.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.pipelines.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.pipelines.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pipelines', 'GET', apiParams, clientConfig);
+    this.projects.locations.pipelines.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.pipelines.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.pipelines.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:stop', 'POST', apiParams, clientConfig);
-    this.projects.locations.pipelines.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:run', 'POST', apiParams, clientConfig);
+    this.projects.locations.pipelines.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pipelines', 'POST', apiParams, clientConfig);
 
     this.projects.locations.pipelines.jobs = {};
     this.projects.locations.pipelines.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'GET', apiParams, clientConfig);
