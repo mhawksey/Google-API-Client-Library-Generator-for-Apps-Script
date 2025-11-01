@@ -19,27 +19,27 @@ class Css {
 
 
     this.accounts = {};
-    this.accounts.listChildAccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:listChildAccounts', 'GET', apiParams, clientConfig);
     this.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.updateLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:updateLabels', 'POST', apiParams, clientConfig);
-
-    this.accounts.labels = {};
-    this.accounts.labels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/labels', 'GET', apiParams, clientConfig);
-    this.accounts.labels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/labels', 'POST', apiParams, clientConfig);
-    this.accounts.labels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.labels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.listChildAccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:listChildAccounts', 'GET', apiParams, clientConfig);
 
     this.accounts.cssProductInputs = {};
     this.accounts.cssProductInputs.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cssProductInputs:insert', 'POST', apiParams, clientConfig);
-    this.accounts.cssProductInputs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.cssProductInputs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.accounts.cssProducts = {};
-    this.accounts.cssProducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.cssProducts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cssProducts', 'GET', apiParams, clientConfig);
+    this.accounts.cssProductInputs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.accounts.quotas = {};
     this.accounts.quotas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/quotas', 'GET', apiParams, clientConfig);
+
+    this.accounts.cssProducts = {};
+    this.accounts.cssProducts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cssProducts', 'GET', apiParams, clientConfig);
+    this.accounts.cssProducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.accounts.labels = {};
+    this.accounts.labels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.labels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/labels', 'GET', apiParams, clientConfig);
+    this.accounts.labels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.labels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/labels', 'POST', apiParams, clientConfig);
   }
 
 /**
