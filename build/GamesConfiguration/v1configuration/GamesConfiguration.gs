@@ -26,11 +26,11 @@ class GamesConfiguration {
     this.achievementConfigurations.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/achievements/{achievementId}', 'PUT', apiParams, clientConfig);
 
     this.leaderboardConfigurations = {};
-    this.leaderboardConfigurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'DELETE', apiParams, clientConfig);
-    this.leaderboardConfigurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'GET', apiParams, clientConfig);
     this.leaderboardConfigurations.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/applications/{applicationId}/leaderboards', 'POST', apiParams, clientConfig);
+    this.leaderboardConfigurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'DELETE', apiParams, clientConfig);
     this.leaderboardConfigurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/applications/{applicationId}/leaderboards', 'GET', apiParams, clientConfig);
     this.leaderboardConfigurations.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'PUT', apiParams, clientConfig);
+    this.leaderboardConfigurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1configuration/leaderboards/{leaderboardId}', 'GET', apiParams, clientConfig);
   }
 
 /**
