@@ -21,17 +21,6 @@ class Merchantapi {
     this.accounts = {};
 
     this.accounts.quotas = {};
-
-    /**
-     * Lists the daily call quota and usage per group for your Merchant Center account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of quotas to return in the response, used for paging. Defaults to 500; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Optional. Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The merchant account who owns the collection of method quotas Format: accounts/{account}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.accounts.quotas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('quota/v1beta/{+parent}/quotas', 'GET', apiParams, clientConfig);
   }
 
