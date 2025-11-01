@@ -18,6 +18,107 @@ class Bigtableadmin {
     this._servicePath = '';
 
 
+    this.projects = {};
+
+    this.projects.instances = {};
+    this.projects.instances.partialUpdateInstance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/instances', 'POST', apiParams, clientConfig);
+    this.projects.instances.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/instances', 'GET', apiParams, clientConfig);
+    this.projects.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.instances.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PUT', apiParams, clientConfig);
+
+    this.projects.instances.logicalViews = {};
+    this.projects.instances.logicalViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.instances.logicalViews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/logicalViews', 'GET', apiParams, clientConfig);
+    this.projects.instances.logicalViews.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.instances.logicalViews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.instances.logicalViews.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.logicalViews.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/logicalViews', 'POST', apiParams, clientConfig);
+    this.projects.instances.logicalViews.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.instances.logicalViews.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.instances.materializedViews = {};
+    this.projects.instances.materializedViews.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.instances.materializedViews.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/materializedViews', 'POST', apiParams, clientConfig);
+    this.projects.instances.materializedViews.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.instances.materializedViews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/materializedViews', 'GET', apiParams, clientConfig);
+    this.projects.instances.materializedViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.instances.materializedViews.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.materializedViews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.instances.materializedViews.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.instances.clusters = {};
+    this.projects.instances.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.instances.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/clusters', 'POST', apiParams, clientConfig);
+    this.projects.instances.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.instances.clusters.partialUpdateCluster = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.instances.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/clusters', 'GET', apiParams, clientConfig);
+    this.projects.instances.clusters.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PUT', apiParams, clientConfig);
+
+    this.projects.instances.clusters.hotTablets = {};
+    this.projects.instances.clusters.hotTablets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/hotTablets', 'GET', apiParams, clientConfig);
+
+    this.projects.instances.clusters.backups = {};
+    this.projects.instances.clusters.backups.copy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/backups:copy', 'POST', apiParams, clientConfig);
+    this.projects.instances.clusters.backups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.instances.clusters.backups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.clusters.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.instances.clusters.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.instances.clusters.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/backups', 'GET', apiParams, clientConfig);
+    this.projects.instances.clusters.backups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.instances.clusters.backups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/backups', 'POST', apiParams, clientConfig);
+    this.projects.instances.clusters.backups.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.instances.appProfiles = {};
+    this.projects.instances.appProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.instances.appProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.instances.appProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.instances.appProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/appProfiles', 'POST', apiParams, clientConfig);
+    this.projects.instances.appProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/appProfiles', 'GET', apiParams, clientConfig);
+
+    this.projects.instances.tables = {};
+    this.projects.instances.tables.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tables', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.modifyColumnFamilies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:modifyColumnFamilies', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.generateConsistencyToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:generateConsistencyToken', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tables', 'GET', apiParams, clientConfig);
+    this.projects.instances.tables.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.instances.tables.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tables:restore', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.instances.tables.dropRowRange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:dropRowRange', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.checkConsistency = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:checkConsistency', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.instances.tables.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.instances.tables.authorizedViews = {};
+    this.projects.instances.tables.authorizedViews.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.authorizedViews.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.authorizedViews.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.instances.tables.authorizedViews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/authorizedViews', 'GET', apiParams, clientConfig);
+    this.projects.instances.tables.authorizedViews.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.authorizedViews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.instances.tables.authorizedViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.instances.tables.authorizedViews.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/authorizedViews', 'POST', apiParams, clientConfig);
+
+    this.projects.instances.tables.schemaBundles = {};
+    this.projects.instances.tables.schemaBundles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.instances.tables.schemaBundles.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.schemaBundles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.instances.tables.schemaBundles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/schemaBundles', 'GET', apiParams, clientConfig);
+    this.projects.instances.tables.schemaBundles.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.schemaBundles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/schemaBundles', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.schemaBundles.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.instances.tables.schemaBundles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations = {};
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/locations', 'GET', apiParams, clientConfig);
+
     this.operations = {};
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
@@ -25,107 +126,6 @@ class Bigtableadmin {
 
     this.operations.projects.operations = {};
     this.operations.projects.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
-
-    this.projects = {};
-
-    this.projects.instances = {};
-    this.projects.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/instances', 'POST', apiParams, clientConfig);
-    this.projects.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.projects.instances.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.instances.partialUpdateInstance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.instances.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.instances.clusters = {};
-    this.projects.instances.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/clusters', 'POST', apiParams, clientConfig);
-    this.projects.instances.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instances.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/clusters', 'GET', apiParams, clientConfig);
-    this.projects.instances.clusters.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.instances.clusters.partialUpdateCluster = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.instances.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.instances.clusters.hotTablets = {};
-    this.projects.instances.clusters.hotTablets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/hotTablets', 'GET', apiParams, clientConfig);
-
-    this.projects.instances.clusters.backups = {};
-    this.projects.instances.clusters.backups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/backups', 'POST', apiParams, clientConfig);
-    this.projects.instances.clusters.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instances.clusters.backups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.instances.clusters.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.instances.clusters.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/backups', 'GET', apiParams, clientConfig);
-    this.projects.instances.clusters.backups.copy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/backups:copy', 'POST', apiParams, clientConfig);
-    this.projects.instances.clusters.backups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.clusters.backups.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.clusters.backups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.instances.appProfiles = {};
-    this.projects.instances.appProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/appProfiles', 'POST', apiParams, clientConfig);
-    this.projects.instances.appProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instances.appProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/appProfiles', 'GET', apiParams, clientConfig);
-    this.projects.instances.appProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.instances.appProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.instances.materializedViews = {};
-    this.projects.instances.materializedViews.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.materializedViews.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.materializedViews.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.instances.materializedViews.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/materializedViews', 'POST', apiParams, clientConfig);
-    this.projects.instances.materializedViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instances.materializedViews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/materializedViews', 'GET', apiParams, clientConfig);
-    this.projects.instances.materializedViews.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.instances.materializedViews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.instances.logicalViews = {};
-    this.projects.instances.logicalViews.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.logicalViews.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.logicalViews.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.instances.logicalViews.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/logicalViews', 'POST', apiParams, clientConfig);
-    this.projects.instances.logicalViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instances.logicalViews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/logicalViews', 'GET', apiParams, clientConfig);
-    this.projects.instances.logicalViews.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.instances.logicalViews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.instances.tables = {};
-    this.projects.instances.tables.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tables', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tables', 'GET', apiParams, clientConfig);
-    this.projects.instances.tables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instances.tables.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.instances.tables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.instances.tables.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.modifyColumnFamilies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:modifyColumnFamilies', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.dropRowRange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:dropRowRange', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.generateConsistencyToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:generateConsistencyToken', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.checkConsistency = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:checkConsistency', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tables:restore', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.instances.tables.authorizedViews = {};
-    this.projects.instances.tables.authorizedViews.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/authorizedViews', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.authorizedViews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/authorizedViews', 'GET', apiParams, clientConfig);
-    this.projects.instances.tables.authorizedViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instances.tables.authorizedViews.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.instances.tables.authorizedViews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.instances.tables.authorizedViews.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.authorizedViews.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.authorizedViews.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.instances.tables.schemaBundles = {};
-    this.projects.instances.tables.schemaBundles.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.schemaBundles.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.schemaBundles.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.schemaBundles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/schemaBundles', 'POST', apiParams, clientConfig);
-    this.projects.instances.tables.schemaBundles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.instances.tables.schemaBundles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.instances.tables.schemaBundles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/schemaBundles', 'GET', apiParams, clientConfig);
-    this.projects.instances.tables.schemaBundles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/locations', 'GET', apiParams, clientConfig);
   }
 
 /**
