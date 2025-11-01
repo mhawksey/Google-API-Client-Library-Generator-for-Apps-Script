@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Spanner API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:55:16 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:48:39 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:17:34 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:17:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:53 GMT
 
 
@@ -406,7 +406,7 @@ Updates a Cloud Spanner database. The returned long-running operation can be use
 
 #### `projects.instances.databases.updateDdl()`
 
-Updates the schema of a Cloud Spanner database by creating/altering/dropping tables, columns, indexes, etc. The returned long-running operation will have a name of the format `/operations/` and can be used to track execution of the schema change(s). The metadata field type is UpdateDatabaseDdlMetadata. The operation has no response.
+Updates the schema of a Cloud Spanner database by creating/altering/dropping tables, columns, indexes, etc. The returned long-running operation will have a name of the format `/operations/` and can be used to track execution of the schema changes. The metadata field type is UpdateDatabaseDdlMetadata. The operation has no response.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -981,10 +981,10 @@ Starts creating a new Cloud Spanner Backup. The returned backup long-running ope
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the instance in which the backup will be created. This must be the same instance that contains the database the backup will be created from. The backup will be stored in the location(s) specified in the instance configuration of this instance. Values are of the form `projects//instances/`. |
+| `params.parent` | `string` | Yes | Required. The name of the instance in which the backup is created. This must be the same instance that contains the database the backup is created from. The backup will be stored in the locations specified in the instance configuration of this instance. Values are of the form `projects//instances/`. |
 | `params.backupId` | `string` | No | Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`. |
 | `params.encryptionConfig.encryptionType` | `string` | No | Required. The encryption type of the backup. |
-| `params.encryptionConfig.kmsKeyName` | `string` | No | Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`. |
+| `params.encryptionConfig.kmsKeyName` | `string` | No | Optional. This field is maintained for backwards compatibility. For new callers, we recommend using `kms_key_names` to specify the KMS key. Only use `kms_key_name` if the location of the KMS key matches the database instance's configuration (location) exactly. For example, if the KMS location is in `us-central1` or `nam3`, then the database instance must also be in `us-central1` or `nam3`. The Cloud KMS key that is used to encrypt and decrypt the restored database. Set this field only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`. |
 | `params.encryptionConfig.kmsKeyNames` | `string` | No | Optional. Specifies the KMS configuration for the one or more keys used to protect the backup. Values are of the form `projects//locations//keyRings//cryptoKeys/`. The keys referenced by `kms_key_names` must fully cover all regions of the backup's instance configuration. Some examples: * For regional (single-region) instance configurations, specify a regional location KMS key. * For multi-region instance configurations of type `GOOGLE_MANAGED`, either specify a multi-region location KMS key or multiple regional location KMS keys that cover all regions in the instance configuration. * For an instance configuration of type `USER_MANAGED`, specify only regional location KMS keys to cover each region in the instance configuration. Multi-region location KMS keys aren't supported for `USER_MANAGED` type instance configurations. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
@@ -1012,7 +1012,7 @@ Updates a pending or completed Backup.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only for the CreateBackup operation. Required for the UpdateBackup operation. A globally unique identifier for the backup which cannot be changed. Values are of the form `projects//instances//backups/a-z*[a-z0-9]` The final segment of the name must be between 2 and 60 characters in length. The backup is stored in the location(s) specified in the instance configuration of the instance containing the backup, identified by the prefix of the backup name of the form `projects//instances/`. |
-| `params.updateMask` | `string` | No | Required. A mask specifying which fields (e.g. `expire_time`) in the Backup resource should be updated. This mask is relative to the Backup resource, not to the request message. The field mask must always be specified; this prevents any future fields from being erased accidentally by clients that do not know about them. |
+| `params.updateMask` | `string` | No | Required. A mask specifying which fields (for example, `expire_time`) in the backup resource should be updated. This mask is relative to the backup resource, not to the request message. The field mask must always be specified; this prevents any future fields from being erased accidentally by clients that do not know about them. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.instances.backups.delete()`
