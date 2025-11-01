@@ -18,6 +18,17 @@ class Adexperiencereport {
     this._servicePath = '';
 
 
+    this.violatingSites = {};
+
+    /**
+     * Lists sites that are failing in the Ad Experience Report on at least one platform.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.violatingSites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/violatingSites', 'GET', apiParams, clientConfig);
+
     this.sites = {};
 
     /**
@@ -29,17 +40,6 @@ class Adexperiencereport {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.violatingSites = {};
-
-    /**
-     * Lists sites that are failing in the Ad Experience Report on at least one platform.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.violatingSites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/violatingSites', 'GET', apiParams, clientConfig);
   }
 
 /**
