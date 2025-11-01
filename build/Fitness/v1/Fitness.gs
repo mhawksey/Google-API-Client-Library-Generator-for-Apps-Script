@@ -20,28 +20,28 @@ class Fitness {
 
     this.users = {};
 
+    this.users.sessions = {};
+    this.users.sessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions', 'GET', apiParams, clientConfig);
+    this.users.sessions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions/{sessionId}', 'PUT', apiParams, clientConfig);
+    this.users.sessions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions/{sessionId}', 'DELETE', apiParams, clientConfig);
+
     this.users.dataSources = {};
+    this.users.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'GET', apiParams, clientConfig);
     this.users.dataSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources', 'POST', apiParams, clientConfig);
     this.users.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources', 'GET', apiParams, clientConfig);
-    this.users.dataSources.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'PUT', apiParams, clientConfig);
-    this.users.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'GET', apiParams, clientConfig);
     this.users.dataSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'DELETE', apiParams, clientConfig);
-
-    this.users.dataSources.datasets = {};
-    this.users.dataSources.datasets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'PATCH', apiParams, clientConfig);
-    this.users.dataSources.datasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'GET', apiParams, clientConfig);
-    this.users.dataSources.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'DELETE', apiParams, clientConfig);
+    this.users.dataSources.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'PUT', apiParams, clientConfig);
 
     this.users.dataSources.dataPointChanges = {};
     this.users.dataSources.dataPointChanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/dataPointChanges', 'GET', apiParams, clientConfig);
 
+    this.users.dataSources.datasets = {};
+    this.users.dataSources.datasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'GET', apiParams, clientConfig);
+    this.users.dataSources.datasets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'PATCH', apiParams, clientConfig);
+    this.users.dataSources.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'DELETE', apiParams, clientConfig);
+
     this.users.dataset = {};
     this.users.dataset.aggregate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataset:aggregate', 'POST', apiParams, clientConfig);
-
-    this.users.sessions = {};
-    this.users.sessions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions/{sessionId}', 'PUT', apiParams, clientConfig);
-    this.users.sessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions', 'GET', apiParams, clientConfig);
-    this.users.sessions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions/{sessionId}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
