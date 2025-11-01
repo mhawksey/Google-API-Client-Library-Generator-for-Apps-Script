@@ -19,8 +19,8 @@ class Chromeuxreport {
 
 
     this.records = {};
-    this.records.queryRecord = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/records:queryRecord', 'POST', apiParams, clientConfig);
     this.records.queryHistoryRecord = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/records:queryHistoryRecord', 'POST', apiParams, clientConfig);
+    this.records.queryRecord = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/records:queryRecord', 'POST', apiParams, clientConfig);
   }
 
 /**
