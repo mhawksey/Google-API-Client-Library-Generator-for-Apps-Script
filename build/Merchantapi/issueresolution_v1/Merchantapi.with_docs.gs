@@ -38,6 +38,18 @@ class Merchantapi {
     this.issueresolution = {};
 
     /**
+     * Start an action. The action can be requested by a business in third-party application. Before the business can request the action, the third-party application needs to show them action specific content and display a user input form. The action can be successfully started only once all `required` inputs are provided. If any `required` input is missing, or invalid value was provided, the service will return 400 error. Validation errors will contain Ids for all problematic field together with translated, human readable error messages that can be shown to the user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.languageCode - Optional. Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) used to localize the response. If not set, the result will be in default language `en-US`.
+     * @param {string} apiParams.name - (Required) Required. The business's account that is triggering the action. Format: `accounts/{account}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.issueresolution.triggeraction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1/{+name}:triggeraction', 'POST', apiParams, clientConfig);
+
+    /**
      * Provide a list of business's account issues with an issue resolution content and available actions. This content and actions are meant to be rendered and shown in third-party applications.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.languageCode - Optional. The [IETF BCP-47](https://tools.ietf.org/html/bcp47) language code used to localize issue resolution content. If not set, the result will be in default language `en-US`.
@@ -62,18 +74,6 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.issueresolution.renderproductissues = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1/{+name}:renderproductissues', 'POST', apiParams, clientConfig);
-
-    /**
-     * Start an action. The action can be requested by a business in third-party application. Before the business can request the action, the third-party application needs to show them action specific content and display a user input form. The action can be successfully started only once all `required` inputs are provided. If any `required` input is missing, or invalid value was provided, the service will return 400 error. Validation errors will contain Ids for all problematic field together with translated, human readable error messages that can be shown to the user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.languageCode - Optional. Language code [IETF BCP 47 syntax](https://tools.ietf.org/html/bcp47) used to localize the response. If not set, the result will be in default language `en-US`.
-     * @param {string} apiParams.name - (Required) Required. The business's account that is triggering the action. Format: `accounts/{account}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.issueresolution.triggeraction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1/{+name}:triggeraction', 'POST', apiParams, clientConfig);
   }
 
 /**
