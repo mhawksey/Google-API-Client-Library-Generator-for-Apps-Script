@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Verifications API (ver
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:45:25 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:36:18 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:04:43 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:04:43 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:43 GMT
 
 
@@ -15,14 +15,6 @@ Auto-generated client library for using the **My Business Verifications API (ver
 ## API Reference
 
 ### `locations`
-
-#### `locations.getVoiceOfMerchantState()`
-
-Gets the VoiceOfMerchant state.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the location. |
 
 #### `locations.fetchVerificationOptions()`
 
@@ -42,7 +34,25 @@ Starts the verification process for a location.
 | `params.name` | `string` | Yes | Required. Resource name of the location to verify. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `locations.getVoiceOfMerchantState()`
+
+Gets the VoiceOfMerchant state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the location. |
+
 ### `locations.verifications`
+
+#### `locations.verifications.list()`
+
+List verifications of a location, ordered by create time.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | How many verification to include per page. Minimum is 1, and the default and maximum page size is 100. |
+| `params.pageToken` | `string` | No | If specified, returns the next page of verifications. |
+| `params.parent` | `string` | Yes | Required. Resource name of the location that verification requests belong to. |
 
 #### `locations.verifications.complete()`
 
@@ -52,16 +62,6 @@ Completes a `PENDING` verification. It is only necessary for non `AUTO` verifica
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the verification to complete. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `locations.verifications.list()`
-
-List verifications of a location, ordered by create time.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the location that verification requests belong to. |
-| `params.pageSize` | `integer` | No | How many verification to include per page. Minimum is 1, and the default and maximum page size is 100. |
-| `params.pageToken` | `string` | No | If specified, returns the next page of verifications. |
 
 ### `verificationTokens`
 
