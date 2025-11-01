@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Monitoring API (version: v3)
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:45:13 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:35:56 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:04:10 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:04:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:23 GMT
 
 
@@ -254,6 +254,28 @@ Lists the monitored resources that are members of a group.
 | `params.filter` | `string` | No | An optional list filter (https://cloud.google.com/monitoring/api/learn_more#filtering) describing the members to be returned. The filter may reference the type, labels, and metadata of monitored resources that comprise the group. For example, to return only resources representing Compute Engine VM instances, use this filter: `resource.type = "gce_instance"`  |
 | `params.interval.endTime` | `string` | No | Required. The end of the time interval. |
 | `params.interval.startTime` | `string` | No | Optional. The beginning of the time interval. The default value for the start time is the end time. The start time must not be later than the end time. |
+
+### `projects.alerts`
+
+#### `projects.alerts.list()`
+
+Lists the existing alerts for the metrics scope of the project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the project to list alerts for. |
+| `params.filter` | `string` | No | Optional. An alert is returned if there is a match on any fields belonging to the alert or its subfields. |
+| `params.orderBy` | `string` | No | Optional. A comma-separated list of fields in Alert to use for sorting. The default sort direction is ascending. To specify descending order for a field, add a desc modifier. The following fields are supported: open_time close_timeFor example, close_time desc, open_time will return the alerts closed most recently, with ties broken in the order of older alerts listed first.If the field is not set, the results are sorted by open_time desc. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return in a single response. If not set to a positive number, at most 50 alerts will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. If non-empty, page_token must contain a value returned as the next_page_token in a previous response to request the next set of results. |
+
+#### `projects.alerts.get()`
+
+Gets a single alert.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the alert.The format is: projects/[PROJECT_ID_OR_NUMBER]/alerts/[ALERT_ID] The [ALERT_ID] is a system-assigned unique identifier for the alert. |
 
 ### `projects.notificationChannelDescriptors`
 
