@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase ML API (version: v1beta2)
 
 ## Metadata
 
-- **Last Checked:** Fri, 03 Oct 2025 09:04:32 GMT
-- **Last Modified:** Fri, 03 Oct 2025 09:04:32 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:46:02 GMT
+- **Last Modified:** Sat, 01 Nov 2025 00:46:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:40 GMT
 
 
@@ -18,6 +18,14 @@ Auto-generated client library for using the **Firebase ML API (version: v1beta2)
 
 ### `projects.models`
 
+#### `projects.models.delete()`
+
+Deletes a model
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}` |
+
 #### `projects.models.download()`
 
 Gets Download information for a model. This is meant for downloading model resources onto devices. It gives very limited information about the model.
@@ -25,15 +33,6 @@ Gets Download information for a model. This is meant for downloading model resou
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the model to download. The name must have the form `projects/{project}/models/{model}` |
-
-#### `projects.models.create()`
-
-Creates a model in Firebase ML. The longrunning operation will eventually return a Model
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent project resource where the model is to be created. The parent must have the form `projects/{project_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.models.patch()`
 
@@ -53,24 +52,25 @@ Gets a model resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the model to get. The name must have the form `projects/{project_id}/models/{model_id}` |
 
+#### `projects.models.create()`
+
+Creates a model in Firebase ML. The longrunning operation will eventually return a Model
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent project resource where the model is to be created. The parent must have the form `projects/{project_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.models.list()`
 
 Lists the models
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}' |
 | `params.filter` | `string` | No | A filter for the list e.g. 'tags: abc' to list models which are tagged with "abc" |
-| `params.pageSize` | `integer` | No | The maximum number of items to return |
 | `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
-
-#### `projects.models.delete()`
-
-Deletes a model
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the model to delete. The name must have the form `projects/{project_id}/models/{model_id}` |
+| `params.pageSize` | `integer` | No | The maximum number of items to return |
+| `params.parent` | `string` | Yes | Required. The name of the parent to list models for. The parent must have the form `projects/{project_id}' |
 
 ### `projects.operations`
 
