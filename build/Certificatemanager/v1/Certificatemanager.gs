@@ -24,53 +24,53 @@ class Certificatemanager {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.certificates = {};
     this.projects.locations.certificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'GET', apiParams, clientConfig);
-    this.projects.locations.certificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.certificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'POST', apiParams, clientConfig);
     this.projects.locations.certificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.certificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.certificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.certificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'POST', apiParams, clientConfig);
 
     this.projects.locations.certificateMaps = {};
     this.projects.locations.certificateMaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMaps', 'GET', apiParams, clientConfig);
     this.projects.locations.certificateMaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.certificateMaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMaps', 'POST', apiParams, clientConfig);
-    this.projects.locations.certificateMaps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.certificateMaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.certificateMaps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.certificateMaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMaps', 'POST', apiParams, clientConfig);
 
     this.projects.locations.certificateMaps.certificateMapEntries = {};
+    this.projects.locations.certificateMaps.certificateMapEntries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.certificateMaps.certificateMapEntries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMapEntries', 'POST', apiParams, clientConfig);
     this.projects.locations.certificateMaps.certificateMapEntries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMapEntries', 'GET', apiParams, clientConfig);
     this.projects.locations.certificateMaps.certificateMapEntries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.certificateMaps.certificateMapEntries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateMapEntries', 'POST', apiParams, clientConfig);
     this.projects.locations.certificateMaps.certificateMapEntries.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.certificateMaps.certificateMapEntries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.dnsAuthorizations = {};
-    this.projects.locations.dnsAuthorizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsAuthorizations', 'GET', apiParams, clientConfig);
-    this.projects.locations.dnsAuthorizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.dnsAuthorizations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsAuthorizations', 'POST', apiParams, clientConfig);
-    this.projects.locations.dnsAuthorizations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.dnsAuthorizations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.dnsAuthorizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dnsAuthorizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsAuthorizations', 'GET', apiParams, clientConfig);
+    this.projects.locations.dnsAuthorizations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.trustConfigs = {};
+    this.projects.locations.trustConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.trustConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trustConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.trustConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.trustConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.trustConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trustConfigs', 'GET', apiParams, clientConfig);
 
     this.projects.locations.certificateIssuanceConfigs = {};
     this.projects.locations.certificateIssuanceConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateIssuanceConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.certificateIssuanceConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.certificateIssuanceConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateIssuanceConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.certificateIssuanceConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.certificateIssuanceConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.trustConfigs = {};
-    this.projects.locations.trustConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trustConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.trustConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.trustConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/trustConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.trustConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.trustConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.certificateIssuanceConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.certificateIssuanceConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificateIssuanceConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.certificateIssuanceConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
