@@ -33,18 +33,6 @@ class Authorizedbuyersmarketplace {
     this.curators.dataSegments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * List the data segments owned by a curator.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. The server may return fewer results than requested. Max allowed page size is 500. If unspecified, the server will default to 500.
-     * @param {string} apiParams.pageToken - Optional. The page token as returned. ListDataSegmentsResponse.nextPageToken
-     * @param {string} apiParams.parent - (Required) Required. Name of the parent curator that can access the data segment. v1alpha format: `buyers/{accountId}` v1beta format: `curators/{accountId}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.curators.dataSegments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/dataSegments', 'GET', apiParams, clientConfig);
-
-    /**
      * Creates a data segment owned by the listed curator. The data segment will be created in the `ACTIVE` state, meaning it will be immediately available for buyers to use in preferred deals, private auction deals, and auction packages.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The parent resource where this data segment will be created. v1alpha format: `buyers/{accountId}` v1beta format: `curators/{accountId}`
@@ -54,6 +42,17 @@ class Authorizedbuyersmarketplace {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.curators.dataSegments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/dataSegments', 'POST', apiParams, clientConfig);
+
+    /**
+     * Activates a data segment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of data segment to activate. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.curators.dataSegments.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:activate', 'POST', apiParams, clientConfig);
 
     /**
      * Updates a data segment.
@@ -68,15 +67,16 @@ class Authorizedbuyersmarketplace {
     this.curators.dataSegments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Activates a data segment.
+     * List the data segments owned by a curator.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of data segment to activate. v1alpha format: `buyers/{accountId}/dataSegments/{curatorDataSegmentId}` v1beta format: `curators/{accountId}/dataSegments/{curatorDataSegmentId}`
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. The server may return fewer results than requested. Max allowed page size is 500. If unspecified, the server will default to 500.
+     * @param {string} apiParams.pageToken - Optional. The page token as returned. ListDataSegmentsResponse.nextPageToken
+     * @param {string} apiParams.parent - (Required) Required. Name of the parent curator that can access the data segment. v1alpha format: `buyers/{accountId}` v1beta format: `curators/{accountId}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.curators.dataSegments.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:activate', 'POST', apiParams, clientConfig);
+    this.curators.dataSegments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/dataSegments', 'GET', apiParams, clientConfig);
 
     /**
      * Deactivates a data segment.
