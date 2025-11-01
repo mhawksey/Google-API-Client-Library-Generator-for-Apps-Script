@@ -19,15 +19,6 @@ class Videointelligence {
 
 
     this.videos = {};
-
-    /**
-     * Performs asynchronous video annotation. Progress and results can be retrieved through the `google.longrunning.Operations` interface. `Operation.metadata` contains `AnnotateVideoProgress` (progress). `Operation.response` contains `AnnotateVideoResponse` (results).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.videos.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/videos:annotate', 'POST', apiParams, clientConfig);
   }
 
