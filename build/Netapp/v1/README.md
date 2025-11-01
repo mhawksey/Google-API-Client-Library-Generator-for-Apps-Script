@@ -4,8 +4,8 @@ Auto-generated client library for using the **NetApp API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:45:29 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:36:26 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:04:53 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:04:53 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:48 GMT
 
 
@@ -26,9 +26,9 @@ Lists information about the supported locations for this service.
 |---|---|---|---|
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 
 #### `projects.locations.get()`
 
@@ -38,18 +38,321 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-### `projects.locations.operations`
+### `projects.locations.activeDirectories`
 
-#### `projects.locations.operations.list()`
+#### `projects.locations.activeDirectories.delete()`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+Delete the active directory specified in the request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | Required. Name of the active directory. |
+
+#### `projects.locations.activeDirectories.create()`
+
+CreateActiveDirectory Creates the active directory specified in the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.activeDirectoryId` | `string` | No | Required. ID of the active directory to create. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter , the last a letter or a number, and a 63 character maximum. |
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.activeDirectories.patch()`
+
+Update the parameters of an active directories.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Active Directory resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the active directory. Format: `projects/{project_number}/locations/{location_id}/activeDirectories/{active_directory_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.activeDirectories.get()`
+
+Describes a specified active directory.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the active directory. |
+
+#### `projects.locations.activeDirectories.list()`
+
+Lists active directories.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.orderBy` | `string` | No | Hint for how to order the results |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
+| `params.parent` | `string` | Yes | Required. Parent value for ListActiveDirectoriesRequest |
+| `params.filter` | `string` | No | Filtering results |
+
+### `projects.locations.volumes`
+
+#### `projects.locations.volumes.patch()`
+
+Updates the parameters of a single Volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Name of the volume |
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Volume resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.create()`
+
+Creates a new Volume in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.volumeId` | `string` | No | Required. Id of the requesting volume. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.restore()`
+
+Restore files from a backup to a volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The volume resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.get()`
+
+Gets details of a single Volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the volume |
+
+#### `projects.locations.volumes.delete()`
+
+Deletes a single Volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the volume |
+| `params.force` | `boolean` | No | If this field is set as true, CCFE will not block the volume resource deletion even if it has any snapshots resource. (Otherwise, the request will only work if the volume has no snapshots.) |
+
+#### `projects.locations.volumes.revert()`
+
+Revert an existing volume to a specified snapshot. Warning! This operation will permanently revert all changes made after the snapshot was created.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the volume, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.list()`
+
+Lists Volumes in a given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | Hint for how to order the results |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
+| `params.parent` | `string` | Yes | Required. Parent value for ListVolumesRequest |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Filtering results |
+
+### `projects.locations.volumes.snapshots`
+
+#### `projects.locations.volumes.snapshots.get()`
+
+Describe a snapshot for a volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}` |
+
+#### `projects.locations.volumes.snapshots.delete()`
+
+Deletes a snapshot.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The snapshot resource name, in the format `projects/*/locations/*/volumes/*/snapshots/{snapshot_id}` |
+
+#### `projects.locations.volumes.snapshots.patch()`
+
+Updates the settings of a specific snapshot.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the snapshot. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}`. |
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.snapshots.create()`
+
+Create a new snapshot for a volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The NetApp volume to create the snapshots of, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}` |
+| `params.snapshotId` | `string` | No | Required. ID of the snapshot to create. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.snapshots.list()`
+
+Returns descriptions of all snapshots for a volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
+| `params.filter` | `string` | No | List filter. |
+| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
+| `params.parent` | `string` | Yes | Required. The volume for which to retrieve snapshot information, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}`. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+
+### `projects.locations.volumes.quotaRules`
+
+#### `projects.locations.volumes.quotaRules.list()`
+
+Returns list of all quota rules in a location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
+| `params.parent` | `string` | Yes | Required. Parent value for ListQuotaRulesRequest |
+| `params.filter` | `string` | No | Optional. Filtering results |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
+
+#### `projects.locations.volumes.quotaRules.delete()`
+
+Deletes a quota rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the quota rule. |
+
+#### `projects.locations.volumes.quotaRules.patch()`
+
+Updates a quota rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Quota Rule resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the quota rule. Format: `projects/{project_number}/locations/{location_id}/volumes/volumes/{volume_id}/quotaRules/{quota_rule_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.quotaRules.get()`
+
+Returns details of the specified quota rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the quota rule |
+
+#### `projects.locations.volumes.quotaRules.create()`
+
+Creates a new quota rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.quotaRuleId` | `string` | No | Required. ID of the quota rule to create. Must be unique within the parent resource. Must contain only letters, numbers, underscore and hyphen, with the first character a letter or underscore, the last a letter or underscore or a number, and a 63 character maximum. |
+| `params.parent` | `string` | Yes | Required. Parent value for CreateQuotaRuleRequest |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.volumes.replications`
+
+#### `projects.locations.volumes.replications.sync()`
+
+Syncs the replication. This will invoke one time volume data transfer from source to destination.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.replications.create()`
+
+Create a new replication for a volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The NetApp volume to create the replications of, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}` |
+| `params.replicationId` | `string` | No | Required. ID of the replication to create. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.replications.reverseDirection()`
+
+Reverses direction of replication. Source becomes destination and destination becomes source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.replications.resume()`
+
+Resume Cross Region Replication.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.replications.list()`
+
+Returns descriptions of all replications for a volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The volume for which to retrieve replication information, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}`. |
+| `params.filter` | `string` | No | List filter. |
+| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
+| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+
+#### `projects.locations.volumes.replications.get()`
+
+Describe a replication for a volume.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The replication resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}` |
+
+#### `projects.locations.volumes.replications.establishPeering()`
+
+Establish replication peering.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.replications.delete()`
+
+Deletes a replication.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The replication resource name, in the format `projects/*/locations/*/volumes/*/replications/{replication_id}` |
+
+#### `projects.locations.volumes.replications.patch()`
+
+Updates the settings of a specific replication.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the Replication. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.volumes.replications.stop()`
+
+Stop Cross Region Replication.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.operations`
 
 #### `projects.locations.operations.get()`
 
@@ -76,487 +379,19 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.storagePools`
+#### `projects.locations.operations.list()`
 
-#### `projects.locations.storagePools.list()`
-
-Returns descriptions of all storage pools owned by the caller.
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. |
-| `params.pageToken` | `string` | No | Optional. The next_page_token value to use if there are additional results to retrieve for this list request. |
-| `params.orderBy` | `string` | No | Optional. Sort results. Supported values are "name", "name desc" or "" (unsorted). |
-| `params.filter` | `string` | No | Optional. List filter. |
-
-#### `projects.locations.storagePools.create()`
-
-Creates a new storage pool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.storagePoolId` | `string` | No | Required. Id of the requesting storage pool. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.storagePools.get()`
-
-Returns the description of the specified storage pool by poolId.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the storage pool |
-
-#### `projects.locations.storagePools.patch()`
-
-Updates the storage pool properties with the full spec
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. Name of the storage pool |
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the StoragePool resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.storagePools.delete()`
-
-Warning! This operation will permanently delete the storage pool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the storage pool |
-
-#### `projects.locations.storagePools.validateDirectoryService()`
-
-ValidateDirectoryService does a connectivity check for a directory service policy attached to the storage pool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the storage pool |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.storagePools.switch()`
-
-This operation will switch the active/replica zone for a regional storagePool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the storage pool |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.volumes`
-
-#### `projects.locations.volumes.list()`
-
-Lists Volumes in a given project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for ListVolumesRequest |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Filtering results |
-| `params.orderBy` | `string` | No | Hint for how to order the results |
-
-#### `projects.locations.volumes.get()`
-
-Gets details of a single Volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the volume |
-
-#### `projects.locations.volumes.create()`
-
-Creates a new Volume in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.volumeId` | `string` | No | Required. Id of the requesting volume. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.patch()`
-
-Updates the parameters of a single Volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. Name of the volume |
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Volume resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.delete()`
-
-Deletes a single Volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the volume |
-| `params.force` | `boolean` | No | If this field is set as true, CCFE will not block the volume resource deletion even if it has any snapshots resource. (Otherwise, the request will only work if the volume has no snapshots.) |
-
-#### `projects.locations.volumes.revert()`
-
-Revert an existing volume to a specified snapshot. Warning! This operation will permanently revert all changes made after the snapshot was created.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the volume, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.restore()`
-
-Restore files from a backup to a volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The volume resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.volumes.snapshots`
-
-#### `projects.locations.volumes.snapshots.list()`
-
-Returns descriptions of all snapshots for a volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The volume for which to retrieve snapshot information, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}`. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
-| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
-| `params.filter` | `string` | No | List filter. |
-
-#### `projects.locations.volumes.snapshots.get()`
-
-Describe a snapshot for a volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The snapshot resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}` |
-
-#### `projects.locations.volumes.snapshots.create()`
-
-Create a new snapshot for a volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The NetApp volume to create the snapshots of, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}` |
-| `params.snapshotId` | `string` | No | Required. ID of the snapshot to create. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.snapshots.delete()`
-
-Deletes a snapshot.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The snapshot resource name, in the format `projects/*/locations/*/volumes/*/snapshots/{snapshot_id}` |
-
-#### `projects.locations.volumes.snapshots.patch()`
-
-Updates the settings of a specific snapshot.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the snapshot. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/snapshots/{snapshot_id}`. |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.volumes.replications`
-
-#### `projects.locations.volumes.replications.list()`
-
-Returns descriptions of all replications for a volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The volume for which to retrieve replication information, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}`. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
-| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
-| `params.filter` | `string` | No | List filter. |
-
-#### `projects.locations.volumes.replications.get()`
-
-Describe a replication for a volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The replication resource name, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}` |
-
-#### `projects.locations.volumes.replications.create()`
-
-Create a new replication for a volume.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The NetApp volume to create the replications of, in the format `projects/{project_id}/locations/{location}/volumes/{volume_id}` |
-| `params.replicationId` | `string` | No | Required. ID of the replication to create. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.replications.delete()`
-
-Deletes a replication.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The replication resource name, in the format `projects/*/locations/*/volumes/*/replications/{replication_id}` |
-
-#### `projects.locations.volumes.replications.patch()`
-
-Updates the settings of a specific replication.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the Replication. Format: `projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}`. |
-| `params.updateMask` | `string` | No | Required. Mask of fields to update. At least one path must be supplied in this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.replications.stop()`
-
-Stop Cross Region Replication.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.replications.resume()`
-
-Resume Cross Region Replication.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.replications.reverseDirection()`
-
-Reverses direction of replication. Source becomes destination and destination becomes source.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.replications.establishPeering()`
-
-Establish replication peering.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.replications.sync()`
-
-Syncs the replication. This will invoke one time volume data transfer from source to destination.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the replication, in the format of projects/{project_id}/locations/{location}/volumes/{volume_id}/replications/{replication_id}. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.volumes.quotaRules`
-
-#### `projects.locations.volumes.quotaRules.list()`
-
-Returns list of all quota rules in a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for ListQuotaRulesRequest |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Optional. Filtering results |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results |
-
-#### `projects.locations.volumes.quotaRules.get()`
-
-Returns details of the specified quota rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the quota rule |
-
-#### `projects.locations.volumes.quotaRules.create()`
-
-Creates a new quota rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for CreateQuotaRuleRequest |
-| `params.quotaRuleId` | `string` | No | Required. ID of the quota rule to create. Must be unique within the parent resource. Must contain only letters, numbers, underscore and hyphen, with the first character a letter or underscore, the last a letter or underscore or a number, and a 63 character maximum. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.quotaRules.patch()`
-
-Updates a quota rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the quota rule. Format: `projects/{project_number}/locations/{location_id}/volumes/volumes/{volume_id}/quotaRules/{quota_rule_id}`. |
-| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Quota Rule resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.volumes.quotaRules.delete()`
-
-Deletes a quota rule.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the quota rule. |
-
-### `projects.locations.activeDirectories`
-
-#### `projects.locations.activeDirectories.list()`
-
-Lists active directories.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for ListActiveDirectoriesRequest |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.filter` | `string` | No | Filtering results |
-| `params.orderBy` | `string` | No | Hint for how to order the results |
-
-#### `projects.locations.activeDirectories.get()`
-
-Describes a specified active directory.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the active directory. |
-
-#### `projects.locations.activeDirectories.create()`
-
-CreateActiveDirectory Creates the active directory specified in the request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.activeDirectoryId` | `string` | No | Required. ID of the active directory to create. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter , the last a letter or a number, and a 63 character maximum. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.activeDirectories.patch()`
-
-Update the parameters of an active directories.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the active directory. Format: `projects/{project_number}/locations/{location_id}/activeDirectories/{active_directory_id}`. |
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Active Directory resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.activeDirectories.delete()`
-
-Delete the active directory specified in the request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the active directory. |
-
-### `projects.locations.kmsConfigs`
-
-#### `projects.locations.kmsConfigs.list()`
-
-Returns descriptions of all KMS configs owned by the caller.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
-| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
-| `params.filter` | `string` | No | List filter. |
-
-#### `projects.locations.kmsConfigs.create()`
-
-Creates a new KMS config.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.kmsConfigId` | `string` | No | Required. Id of the requesting KmsConfig. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.kmsConfigs.get()`
-
-Returns the description of the specified KMS config by kms_config_id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the KmsConfig |
-
-#### `projects.locations.kmsConfigs.patch()`
-
-Updates the Kms config properties with the full spec
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. Name of the KmsConfig. |
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the KmsConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.kmsConfigs.encrypt()`
-
-Encrypt the existing volumes without CMEK encryption with the desired the KMS config for the whole region.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the KmsConfig. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.kmsConfigs.verify()`
-
-Verifies KMS config reachability.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the KMS Config to be verified. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.kmsConfigs.delete()`
-
-Warning! This operation will permanently delete the Kms config.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the KmsConfig. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
 
 ### `projects.locations.backupVaults`
-
-#### `projects.locations.backupVaults.create()`
-
-Creates new backup vault
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The location to create the backup vaults, in the format `projects/{project_id}/locations/{location}` |
-| `params.backupVaultId` | `string` | No | Required. The ID to use for the backupVault. The ID must be unique within the specified location. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.backupVaults.get()`
-
-Returns the description of the specified backup vault
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The backupVault resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}` |
-
-#### `projects.locations.backupVaults.list()`
-
-Returns list of all available backup vaults.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The location for which to retrieve backupVault information, in the format `projects/{project_id}/locations/{location}`. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
-| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
-| `params.filter` | `string` | No | List filter. |
 
 #### `projects.locations.backupVaults.patch()`
 
@@ -576,7 +411,45 @@ Warning! This operation will permanently delete the backup vault.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The backupVault resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}` |
 
+#### `projects.locations.backupVaults.list()`
+
+Returns list of all available backup vaults.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The location for which to retrieve backupVault information, in the format `projects/{project_id}/locations/{location}`. |
+| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
+| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+| `params.filter` | `string` | No | List filter. |
+
+#### `projects.locations.backupVaults.get()`
+
+Returns the description of the specified backup vault
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The backupVault resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}` |
+
+#### `projects.locations.backupVaults.create()`
+
+Creates new backup vault
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The location to create the backup vaults, in the format `projects/{project_id}/locations/{location}` |
+| `params.backupVaultId` | `string` | No | Required. The ID to use for the backupVault. The ID must be unique within the specified location. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.backupVaults.backups`
+
+#### `projects.locations.backupVaults.backups.get()`
+
+Returns the description of the specified backup
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}` |
 
 #### `projects.locations.backupVaults.backups.create()`
 
@@ -584,13 +457,13 @@ Creates a backup from the volume specified in the request The backup can be crea
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The NetApp backupVault to create the backups of, in the format `projects/*/locations/*/backupVaults/{backup_vault_id}` |
 | `params.backupId` | `string` | No | Required. The ID to use for the backup. The ID must be unique within the specified backupVault. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.parent` | `string` | Yes | Required. The NetApp backupVault to create the backups of, in the format `projects/*/locations/*/backupVaults/{backup_vault_id}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.backupVaults.backups.get()`
+#### `projects.locations.backupVaults.backups.delete()`
 
-Returns the description of the specified backup
+Warning! This operation will permanently delete the backup.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -602,19 +475,11 @@ Returns descriptions of all backups for a backupVault.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The backupVault for which to retrieve backup information, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`. To retrieve backup information for all locations, use "-" for the `{location}` value. To retrieve backup information for all backupVaults, use "-" for the `{backup_vault_id}` value. To retrieve backup information for a volume, use "-" for the `{backup_vault_id}` value and specify volume full name with the filter. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 | `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
 | `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.parent` | `string` | Yes | Required. The backupVault for which to retrieve backup information, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}`. To retrieve backup information for all locations, use "-" for the `{location}` value. To retrieve backup information for all backupVaults, use "-" for the `{backup_vault_id}` value. To retrieve backup information for a volume, use "-" for the `{backup_vault_id}` value and specify volume full name with the filter. |
 | `params.filter` | `string` | No | The standard list filter. If specified, backups will be returned based on the attribute name that matches the filter expression. If empty, then no backups are filtered out. See https://google.aip.dev/160 |
-
-#### `projects.locations.backupVaults.backups.delete()`
-
-Warning! This operation will permanently delete the backup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The backup resource name, in the format `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}` |
 
 #### `projects.locations.backupVaults.backups.patch()`
 
@@ -622,29 +487,79 @@ Update backup with full spec.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the backup. Format: `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}`. |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the Backup resource to be updated. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. The resource name of the backup. Format: `projects/{project_id}/locations/{location}/backupVaults/{backup_vault_id}/backups/{backup_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.kmsConfigs`
+
+#### `projects.locations.kmsConfigs.patch()`
+
+Updates the Kms config properties with the full spec
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the KmsConfig resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. Name of the KmsConfig. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.kmsConfigs.create()`
+
+Creates a new KMS config.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.kmsConfigId` | `string` | No | Required. Id of the requesting KmsConfig. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.kmsConfigs.get()`
+
+Returns the description of the specified KMS config by kms_config_id.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the KmsConfig |
+
+#### `projects.locations.kmsConfigs.delete()`
+
+Warning! This operation will permanently delete the Kms config.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the KmsConfig. |
+
+#### `projects.locations.kmsConfigs.list()`
+
+Returns descriptions of all KMS configs owned by the caller.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | List filter. |
+| `params.parent` | `string` | Yes | Required. Parent value |
+| `params.pageToken` | `string` | No | The next_page_token value to use if there are additional results to retrieve for this list request. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+| `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
+
+#### `projects.locations.kmsConfigs.encrypt()`
+
+Encrypt the existing volumes without CMEK encryption with the desired the KMS config for the whole region.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the KmsConfig. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.kmsConfigs.verify()`
+
+Verifies KMS config reachability.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the KMS Config to be verified. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.backupPolicies`
-
-#### `projects.locations.backupPolicies.create()`
-
-Creates new backup policy
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The location to create the backup policies of, in the format `projects/{project_id}/locations/{location}` |
-| `params.backupPolicyId` | `string` | No | Required. The ID to use for the backup policy. The ID must be unique within the specified location. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.backupPolicies.get()`
-
-Returns the description of the specified backup policy by backup_policy_id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The backupPolicy resource name, in the format `projects/{project_id}/locations/{location}/backupPolicies/{backup_policy_id}` |
 
 #### `projects.locations.backupPolicies.list()`
 
@@ -652,11 +567,11 @@ Returns list of all available backup policies.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for ListBackupPoliciesRequest |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
 | `params.filter` | `string` | No | Filtering results |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, the server will pick an appropriate default. |
 | `params.orderBy` | `string` | No | Hint for how to order the results |
+| `params.parent` | `string` | Yes | Required. Parent value for ListBackupPoliciesRequest |
 
 #### `projects.locations.backupPolicies.patch()`
 
@@ -675,3 +590,89 @@ Warning! This operation will permanently delete the backup policy.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The backup policy resource name, in the format `projects/{project_id}/locations/{location}/backupPolicies/{backup_policy_id}` |
+
+#### `projects.locations.backupPolicies.create()`
+
+Creates new backup policy
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.backupPolicyId` | `string` | No | Required. The ID to use for the backup policy. The ID must be unique within the specified location. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.parent` | `string` | Yes | Required. The location to create the backup policies of, in the format `projects/{project_id}/locations/{location}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.backupPolicies.get()`
+
+Returns the description of the specified backup policy by backup_policy_id.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The backupPolicy resource name, in the format `projects/{project_id}/locations/{location}/backupPolicies/{backup_policy_id}` |
+
+### `projects.locations.storagePools`
+
+#### `projects.locations.storagePools.get()`
+
+Returns the description of the specified storage pool by poolId.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the storage pool |
+
+#### `projects.locations.storagePools.switch()`
+
+This operation will switch the active/replica zone for a regional storagePool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the storage pool |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.storagePools.validateDirectoryService()`
+
+ValidateDirectoryService does a connectivity check for a directory service policy attached to the storage pool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the storage pool |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.storagePools.create()`
+
+Creates a new storage pool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.storagePoolId` | `string` | No | Required. Id of the requesting storage pool. Must be unique within the parent resource. Must contain only letters, numbers and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.storagePools.list()`
+
+Returns descriptions of all storage pools owned by the caller.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. List filter. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. |
+| `params.parent` | `string` | Yes | Required. Parent value |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value to use if there are additional results to retrieve for this list request. |
+| `params.orderBy` | `string` | No | Optional. Sort results. Supported values are "name", "name desc" or "" (unsorted). |
+
+#### `projects.locations.storagePools.delete()`
+
+Warning! This operation will permanently delete the storage pool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the storage pool |
+
+#### `projects.locations.storagePools.patch()`
+
+Updates the storage pool properties with the full spec
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the StoragePool resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.name` | `string` | Yes | Identifier. Name of the storage pool |
+| `params.requestBody` | `object` | Yes | The request body. |
