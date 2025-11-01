@@ -4,8 +4,8 @@ Auto-generated client library for using the **Local Services API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:43:43 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:33:34 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:55:09 GMT
+- **Last Modified:** Sat, 01 Nov 2025 00:55:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:41:54 GMT
 
 
