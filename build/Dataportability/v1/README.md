@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Portability API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Fri, 03 Oct 2025 08:55:45 GMT
-- **Last Modified:** Fri, 03 Oct 2025 08:55:45 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:35:42 GMT
+- **Last Modified:** Sat, 01 Nov 2025 00:35:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:26 GMT
 
 
@@ -14,25 +14,7 @@ Auto-generated client library for using the **Data Portability API (version: v1)
 
 ## API Reference
 
-### `portabilityArchive`
-
-#### `portabilityArchive.initiate()`
-
-Initiates a new Archive job for the Portability API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `archiveJobs`
-
-#### `archiveJobs.getPortabilityArchiveState()`
-
-Retrieves the state of an Archive job for the Portability API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The archive job ID that is returned when you request the state of the job. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the InitiatePortabilityArchiveResponse. |
 
 #### `archiveJobs.retry()`
 
@@ -52,6 +34,24 @@ Cancels a Portability Archive job.
 | `params.name` | `string` | Yes | Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `archiveJobs.getPortabilityArchiveState()`
+
+Retrieves the state of an Archive job for the Portability API.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The archive job ID that is returned when you request the state of the job. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the InitiatePortabilityArchiveResponse. |
+
+### `accessType`
+
+#### `accessType.check()`
+
+Gets the access type of the token.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `authorization`
 
 #### `authorization.reset()`
@@ -62,11 +62,11 @@ Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This m
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `accessType`
+### `portabilityArchive`
 
-#### `accessType.check()`
+#### `portabilityArchive.initiate()`
 
-Gets the access type of the token.
+Initiates a new Archive job for the Portability API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
