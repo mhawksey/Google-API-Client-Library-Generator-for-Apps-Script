@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: products_v1
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:44:42 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:35:03 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:02:59 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:02:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:50 GMT
 
 
@@ -24,8 +24,8 @@ Auto-generated client library for using the **Merchant API (version: products_v1
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The account where this product will be inserted. Format: `accounts/{account}` |
 | `params.dataSource` | `string` | No | Required. The primary or supplemental product data source name. If the product already exists and data source provided is different, then the product will be moved to a new data source. For more information, see [Create a primary data source](/merchant/api/guides/data-sources/api-sources#create-primary-data-source). Only API data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`. |
+| `params.parent` | `string` | Yes | Required. The account where this product will be inserted. Format: `accounts/{account}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.productInputs.patch()`
@@ -34,9 +34,9 @@ Updates the existing product input in your Merchant Center account. After insert
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The name of the product input. Format: `accounts/{account}/productInputs/{productinput}` where the last section `productinput` consists of: `content_language~feed_label~offer_id` example for product input name is `accounts/123/productInputs/en~US~sku123`. A legacy local product input name would be `accounts/123/productInputs/local~en~US~sku123`. Note: For calls to the v1beta version, the `productInput` section consists of: `channel~content_language~feed_label~offer_id`, for example: `accounts/123/productInputs/online~en~US~sku123`. |
-| `params.updateMask` | `string` | No | Optional. The list of product attributes to be updated. If the update mask is omitted, then it is treated as implied field mask equivalent to all fields that are populated (have a non-empty value). Attributes specified in the update mask without a value specified in the body will be deleted from the product. Update mask can only be specified for top level fields in attributes and custom attributes. To specify the update mask for custom attributes you need to add the `custom_attribute.` prefix. Providing special "*" value for full product replacement is not supported. |
 | `params.dataSource` | `string` | No | Required. The primary or supplemental product data source where `data_source` name identifies the product input to be updated. Only API data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`. |
+| `params.updateMask` | `string` | No | Optional. The list of product attributes to be updated. If the update mask is omitted, then it is treated as implied field mask equivalent to all fields that are populated (have a non-empty value). Attributes specified in the update mask without a value specified in the body will be deleted from the product. Update mask can only be specified for top level fields in attributes and custom attributes. To specify the update mask for custom attributes you need to add the `custom_attribute.` prefix. Providing special "*" value for full product replacement is not supported. |
+| `params.name` | `string` | Yes | Identifier. The name of the product input. Format: `accounts/{account}/productInputs/{productinput}` where the last section `productinput` consists of: `content_language~feed_label~offer_id` example for product input name is `accounts/123/productInputs/en~US~sku123`. A legacy local product input name would be `accounts/123/productInputs/local~en~US~sku123`. Note: For calls to the v1beta version, the `productInput` section consists of: `channel~content_language~feed_label~offer_id`, for example: `accounts/123/productInputs/online~en~US~sku123`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.productInputs.delete()`
@@ -64,6 +64,6 @@ Lists the processed products in your Merchant Center account. The response might
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The account to list processed products for. Format: `accounts/{account}` |
 | `params.pageSize` | `integer` | No | The maximum number of products to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the default page size of 25 products will be returned. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListProducts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListProducts` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The account to list processed products for. Format: `accounts/{account}` |
