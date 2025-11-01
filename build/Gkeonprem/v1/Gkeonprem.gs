@@ -24,23 +24,87 @@ class Gkeonprem {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.vmwareAdminClusters = {};
+    this.projects.locations.vmwareAdminClusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareAdminClusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareAdminClusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareAdminClusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.vmwareAdminClusters.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.vmwareAdminClusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareAdminClusters', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareAdminClusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareAdminClusters', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareAdminClusters.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareAdminClusters:enroll', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareAdminClusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.vmwareAdminClusters.operations = {};
+    this.projects.locations.vmwareAdminClusters.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareAdminClusters.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.vmwareClusters = {};
+    this.projects.locations.vmwareClusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareClusters:enroll', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareClusters', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.queryVersionConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareClusters:queryVersionConfig', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareClusters', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.vmwareClusters.operations = {};
+    this.projects.locations.vmwareClusters.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.vmwareClusters.vmwareNodePools = {};
+    this.projects.locations.vmwareClusters.vmwareNodePools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareNodePools', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareNodePools', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareNodePools:enroll', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.vmwareClusters.vmwareNodePools.operations = {};
+    this.projects.locations.vmwareClusters.vmwareNodePools.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareClusters.vmwareNodePools.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.bareMetalAdminClusters = {};
+    this.projects.locations.bareMetalAdminClusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalAdminClusters:enroll', 'POST', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalAdminClusters', 'POST', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalAdminClusters', 'GET', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.queryVersionConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalAdminClusters:queryVersionConfig', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.bareMetalAdminClusters.operations = {};
+    this.projects.locations.bareMetalAdminClusters.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.bareMetalAdminClusters.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.bareMetalClusters = {};
-    this.projects.locations.bareMetalClusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalClusters', 'POST', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalClusters:enroll', 'POST', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.bareMetalClusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalClusters', 'GET', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.queryVersionConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalClusters:queryVersionConfig', 'POST', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalClusters:enroll', 'POST', apiParams, clientConfig);
     this.projects.locations.bareMetalClusters.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
     this.projects.locations.bareMetalClusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.queryVersionConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalClusters:queryVersionConfig', 'POST', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalClusters', 'POST', apiParams, clientConfig);
     this.projects.locations.bareMetalClusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.bareMetalClusters.operations = {};
@@ -48,84 +112,20 @@ class Gkeonprem {
     this.projects.locations.bareMetalClusters.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.bareMetalClusters.bareMetalNodePools = {};
+    this.projects.locations.bareMetalClusters.bareMetalNodePools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.bareMetalNodePools.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.bareMetalNodePools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.bareMetalNodePools.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalNodePools:enroll', 'POST', apiParams, clientConfig);
     this.projects.locations.bareMetalClusters.bareMetalNodePools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalNodePools', 'POST', apiParams, clientConfig);
     this.projects.locations.bareMetalClusters.bareMetalNodePools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.bareMetalNodePools.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalNodePools:enroll', 'POST', apiParams, clientConfig);
     this.projects.locations.bareMetalClusters.bareMetalNodePools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.bareMetalNodePools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalNodePools', 'GET', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.bareMetalNodePools.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.bareMetalNodePools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.bareMetalNodePools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.bareMetalClusters.bareMetalNodePools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.bareMetalClusters.bareMetalNodePools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.bareMetalNodePools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.bareMetalClusters.bareMetalNodePools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalNodePools', 'GET', apiParams, clientConfig);
 
     this.projects.locations.bareMetalClusters.bareMetalNodePools.operations = {};
     this.projects.locations.bareMetalClusters.bareMetalNodePools.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.bareMetalClusters.bareMetalNodePools.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.vmwareClusters = {};
-    this.projects.locations.vmwareClusters.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareClusters:enroll', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareClusters', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareClusters', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.queryVersionConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareClusters:queryVersionConfig', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.vmwareClusters.operations = {};
-    this.projects.locations.vmwareClusters.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.vmwareClusters.vmwareNodePools = {};
-    this.projects.locations.vmwareClusters.vmwareNodePools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareNodePools', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareNodePools', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareNodePools:enroll', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.vmwareClusters.vmwareNodePools.operations = {};
-    this.projects.locations.vmwareClusters.vmwareNodePools.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareClusters.vmwareNodePools.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.vmwareAdminClusters = {};
-    this.projects.locations.vmwareAdminClusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareAdminClusters', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareAdminClusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareAdminClusters', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareAdminClusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareAdminClusters.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareAdminClusters:enroll', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareAdminClusters.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.vmwareAdminClusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.vmwareAdminClusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareAdminClusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareAdminClusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.vmwareAdminClusters.operations = {};
-    this.projects.locations.vmwareAdminClusters.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareAdminClusters.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.bareMetalAdminClusters = {};
-    this.projects.locations.bareMetalAdminClusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalAdminClusters', 'POST', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalAdminClusters', 'GET', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.enroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalAdminClusters:enroll', 'POST', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.unenroll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenroll', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.queryVersionConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bareMetalAdminClusters:queryVersionConfig', 'POST', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.bareMetalAdminClusters.operations = {};
-    this.projects.locations.bareMetalAdminClusters.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.bareMetalAdminClusters.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
