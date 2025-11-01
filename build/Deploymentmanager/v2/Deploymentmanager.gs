@@ -18,33 +18,33 @@ class Deploymentmanager {
     this._servicePath = '';
 
 
+    this.operations = {};
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/operations', 'GET', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/operations/{operation}', 'GET', apiParams, clientConfig);
+
     this.deployments = {};
-    this.deployments.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments', 'POST', apiParams, clientConfig);
-    this.deployments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}', 'PUT', apiParams, clientConfig);
-    this.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}', 'PATCH', apiParams, clientConfig);
-    this.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}', 'DELETE', apiParams, clientConfig);
     this.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}', 'GET', apiParams, clientConfig);
-    this.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments', 'GET', apiParams, clientConfig);
-    this.deployments.cancelPreview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/cancelPreview', 'POST', apiParams, clientConfig);
-    this.deployments.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/stop', 'POST', apiParams, clientConfig);
     this.deployments.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{resource}/getIamPolicy', 'GET', apiParams, clientConfig);
     this.deployments.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{resource}/setIamPolicy', 'POST', apiParams, clientConfig);
+    this.deployments.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/stop', 'POST', apiParams, clientConfig);
+    this.deployments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}', 'PUT', apiParams, clientConfig);
+    this.deployments.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments', 'POST', apiParams, clientConfig);
+    this.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}', 'PATCH', apiParams, clientConfig);
+    this.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments', 'GET', apiParams, clientConfig);
+    this.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}', 'DELETE', apiParams, clientConfig);
     this.deployments.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{resource}/testIamPermissions', 'POST', apiParams, clientConfig);
+    this.deployments.cancelPreview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/cancelPreview', 'POST', apiParams, clientConfig);
+
+    this.types = {};
+    this.types.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/types', 'GET', apiParams, clientConfig);
+
+    this.resources = {};
+    this.resources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources', 'GET', apiParams, clientConfig);
+    this.resources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources/{resource}', 'GET', apiParams, clientConfig);
 
     this.manifests = {};
     this.manifests.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests/{manifest}', 'GET', apiParams, clientConfig);
     this.manifests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/manifests', 'GET', apiParams, clientConfig);
-
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/operations/{operation}', 'GET', apiParams, clientConfig);
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/operations', 'GET', apiParams, clientConfig);
-
-    this.resources = {};
-    this.resources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources/{resource}', 'GET', apiParams, clientConfig);
-    this.resources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/deployments/{deployment}/resources', 'GET', apiParams, clientConfig);
-
-    this.types = {};
-    this.types.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2/projects/{project}/global/types', 'GET', apiParams, clientConfig);
   }
 
 /**
