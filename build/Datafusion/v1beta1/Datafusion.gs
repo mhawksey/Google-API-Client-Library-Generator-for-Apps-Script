@@ -22,40 +22,40 @@ class Datafusion {
 
     this.projects.locations = {};
     this.projects.locations.removeIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:removeIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.instances = {};
+    this.projects.locations.instances.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:upgrade', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/instances', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:restart', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/instances', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.instances.dnsPeerings = {};
+    this.projects.locations.instances.dnsPeerings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/dnsPeerings', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.dnsPeerings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/dnsPeerings', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.dnsPeerings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.instances.namespaces = {};
+    this.projects.locations.instances.namespaces.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.namespaces.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.namespaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/namespaces', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.namespaces.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
 
     this.projects.locations.versions = {};
     this.projects.locations.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.instances = {};
-    this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/instances', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.instances.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:restart', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:upgrade', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.instances.namespaces = {};
-    this.projects.locations.instances.namespaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/namespaces', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.namespaces.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.namespaces.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.namespaces.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.instances.dnsPeerings = {};
-    this.projects.locations.instances.dnsPeerings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/dnsPeerings', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.dnsPeerings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.instances.dnsPeerings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/dnsPeerings', 'GET', apiParams, clientConfig);
   }
 
 /**
