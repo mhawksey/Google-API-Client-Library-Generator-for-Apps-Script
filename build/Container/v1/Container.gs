@@ -24,92 +24,92 @@ class Container {
     this.projects.locations.getServerConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/serverConfig', 'GET', apiParams, clientConfig);
 
     this.projects.locations.clusters = {};
-    this.projects.locations.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clusters', 'GET', apiParams, clientConfig);
-    this.projects.locations.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clusters', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.clusters.setLogging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setLogging', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.setMonitoring = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setMonitoring', 'POST', apiParams, clientConfig);
     this.projects.locations.clusters.setAddons = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setAddons', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.setLocations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setLocations', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.updateMaster = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:updateMaster', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.setMasterAuth = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setMasterAuth', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.clusters.getJwks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jwks', 'GET', apiParams, clientConfig);
-    this.projects.locations.clusters.setResourceLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setResourceLabels', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.clusters.setMaintenancePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setMaintenancePolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.setLogging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setLogging', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clusters', 'POST', apiParams, clientConfig);
     this.projects.locations.clusters.setLegacyAbac = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setLegacyAbac', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.startIpRotation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:startIpRotation', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.checkAutopilotCompatibility = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:checkAutopilotCompatibility', 'GET', apiParams, clientConfig);
     this.projects.locations.clusters.completeIpRotation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:completeIpRotation', 'POST', apiParams, clientConfig);
     this.projects.locations.clusters.setNetworkPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setNetworkPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.setMaintenancePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setMaintenancePolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.checkAutopilotCompatibility = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:checkAutopilotCompatibility', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.startIpRotation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:startIpRotation', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.getJwks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jwks', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clusters', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.setResourceLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setResourceLabels', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.updateMaster = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:updateMaster', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.setMonitoring = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setMonitoring', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.setMasterAuth = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setMasterAuth', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.clusters.setLocations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setLocations', 'POST', apiParams, clientConfig);
     this.projects.locations.clusters.fetchClusterUpgradeInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchClusterUpgradeInfo', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.clusters.nodePools = {};
-    this.projects.locations.clusters.nodePools.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.setAutoscaling = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setAutoscaling', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodePools', 'GET', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodePools', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.completeUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:completeUpgrade', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollback', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.setManagement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setManagement', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.setSize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setSize', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.nodePools.fetchNodePoolUpgradeInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchNodePoolUpgradeInfo', 'GET', apiParams, clientConfig);
 
     this.projects.locations.clusters.well-known = {};
     this.projects.locations.clusters.well-known.getOpenid-configuration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/.well-known/openid-configuration', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.clusters.nodePools = {};
+    this.projects.locations.clusters.nodePools.setAutoscaling = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setAutoscaling', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.setSize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setSize', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollback', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodePools', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodePools', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.completeUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:completeUpgrade', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.setManagement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setManagement', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.nodePools.fetchNodePoolUpgradeInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchNodePoolUpgradeInfo', 'GET', apiParams, clientConfig);
+
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.zones = {};
-    this.projects.zones.getServerconfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/serverconfig', 'GET', apiParams, clientConfig);
-
-    this.projects.zones.clusters = {};
-    this.projects.zones.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters', 'GET', apiParams, clientConfig);
-    this.projects.zones.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', 'GET', apiParams, clientConfig);
-    this.projects.zones.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', 'PUT', apiParams, clientConfig);
-    this.projects.zones.clusters.logging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/logging', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.monitoring = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/monitoring', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.addons = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/addons', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.locations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.master = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/master', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.setMasterAuth = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', 'DELETE', apiParams, clientConfig);
-    this.projects.zones.clusters.resourceLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.legacyAbac = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.startIpRotation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.completeIpRotation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.setNetworkPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setNetworkPolicy', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.setMaintenancePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMaintenancePolicy', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.fetchClusterUpgradeInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchClusterUpgradeInfo', 'GET', apiParams, clientConfig);
-
-    this.projects.zones.clusters.nodePools = {};
-    this.projects.zones.clusters.nodePools.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/update', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.nodePools.autoscaling = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/autoscaling', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.nodePools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', 'GET', apiParams, clientConfig);
-    this.projects.zones.clusters.nodePools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', 'GET', apiParams, clientConfig);
-    this.projects.zones.clusters.nodePools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.nodePools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', 'DELETE', apiParams, clientConfig);
-    this.projects.zones.clusters.nodePools.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.nodePools.setManagement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.nodePools.setSize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize', 'POST', apiParams, clientConfig);
-    this.projects.zones.clusters.nodePools.fetchNodePoolUpgradeInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchNodePoolUpgradeInfo', 'GET', apiParams, clientConfig);
-
-    this.projects.zones.operations = {};
-    this.projects.zones.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/operations', 'GET', apiParams, clientConfig);
-    this.projects.zones.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/operations/{operationId}', 'GET', apiParams, clientConfig);
-    this.projects.zones.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel', 'POST', apiParams, clientConfig);
 
     this.projects.aggregated = {};
 
     this.projects.aggregated.usableSubnetworks = {};
     this.projects.aggregated.usableSubnetworks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/aggregated/usableSubnetworks', 'GET', apiParams, clientConfig);
+
+    this.projects.zones = {};
+    this.projects.zones.getServerconfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/serverconfig', 'GET', apiParams, clientConfig);
+
+    this.projects.zones.clusters = {};
+    this.projects.zones.clusters.resourceLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/resourceLabels', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.completeIpRotation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:completeIpRotation', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', 'DELETE', apiParams, clientConfig);
+    this.projects.zones.clusters.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', 'PUT', apiParams, clientConfig);
+    this.projects.zones.clusters.logging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/logging', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.setNetworkPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setNetworkPolicy', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.master = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/master', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.monitoring = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/monitoring', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.fetchClusterUpgradeInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchClusterUpgradeInfo', 'GET', apiParams, clientConfig);
+    this.projects.zones.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters', 'GET', apiParams, clientConfig);
+    this.projects.zones.clusters.setMaintenancePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMaintenancePolicy', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.startIpRotation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:startIpRotation', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.legacyAbac = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/legacyAbac', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.addons = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/addons', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}', 'GET', apiParams, clientConfig);
+    this.projects.zones.clusters.locations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/locations', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.setMasterAuth = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}:setMasterAuth', 'POST', apiParams, clientConfig);
+
+    this.projects.zones.clusters.nodePools = {};
+    this.projects.zones.clusters.nodePools.autoscaling = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/autoscaling', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.nodePools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', 'GET', apiParams, clientConfig);
+    this.projects.zones.clusters.nodePools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}', 'DELETE', apiParams, clientConfig);
+    this.projects.zones.clusters.nodePools.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}:rollback', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.nodePools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.nodePools.setManagement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setManagement', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.nodePools.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/update', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.nodePools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools', 'GET', apiParams, clientConfig);
+    this.projects.zones.clusters.nodePools.setSize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/clusters/{clusterId}/nodePools/{nodePoolId}/setSize', 'POST', apiParams, clientConfig);
+    this.projects.zones.clusters.nodePools.fetchNodePoolUpgradeInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchNodePoolUpgradeInfo', 'GET', apiParams, clientConfig);
+
+    this.projects.zones.operations = {};
+    this.projects.zones.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/operations', 'GET', apiParams, clientConfig);
+    this.projects.zones.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/operations/{operationId}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.zones.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/zones/{zone}/operations/{operationId}', 'GET', apiParams, clientConfig);
   }
 
 /**
