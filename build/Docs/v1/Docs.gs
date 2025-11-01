@@ -19,8 +19,8 @@ class Docs {
 
 
     this.documents = {};
-    this.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents/{documentId}', 'GET', apiParams, clientConfig);
     this.documents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents', 'POST', apiParams, clientConfig);
+    this.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents/{documentId}', 'GET', apiParams, clientConfig);
     this.documents.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/documents/{documentId}:batchUpdate', 'POST', apiParams, clientConfig);
   }
 
