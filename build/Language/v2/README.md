@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:43:17 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:33:06 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:54:40 GMT
+- **Last Modified:** Sat, 01 Nov 2025 00:54:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:54 GMT
 
 
@@ -16,9 +16,9 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ### `documents`
 
-#### `documents.analyzeSentiment()`
+#### `documents.annotateText()`
 
-Analyzes the sentiment of the provided text.
+A convenience method that provides all features in one call.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -32,9 +32,9 @@ Finds named entities (currently proper names and common nouns) in the text along
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.classifyText()`
+#### `documents.analyzeSentiment()`
 
-Classifies a document into categories.
+Analyzes the sentiment of the provided text.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -48,9 +48,9 @@ Moderates a document for harmful and sensitive categories.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.annotateText()`
+#### `documents.classifyText()`
 
-A convenience method that provides all features in one call.
+Classifies a document into categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
