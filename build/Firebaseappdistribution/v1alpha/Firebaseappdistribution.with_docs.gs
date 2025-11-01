@@ -41,6 +41,32 @@ class Firebaseappdistribution {
      */
     this.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}', 'GET', apiParams, clientConfig);
 
+    this.apps.release_by_hash = {};
+
+    /**
+     * GET Release by binary upload hash
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.mobilesdkAppId - (Required) Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
+     * @param {string} apiParams.uploadHash - (Required) Required. The hash for the upload
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.release_by_hash.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/release_by_hash/{uploadHash}', 'GET', apiParams, clientConfig);
+
+    this.apps.upload_status = {};
+
+    /**
+     * GET Binary upload status by token
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.mobilesdkAppId - (Required) Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
+     * @param {string} apiParams.uploadToken - (Required) Required. The token for the upload
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.upload_status.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/upload_status/{uploadToken}', 'GET', apiParams, clientConfig);
+
     this.apps.releases = {};
 
     /**
@@ -68,32 +94,6 @@ class Firebaseappdistribution {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.apps.releases.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/releases/{releaseId}/notes', 'POST', apiParams, clientConfig);
-
-    this.apps.release_by_hash = {};
-
-    /**
-     * GET Release by binary upload hash
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.mobilesdkAppId - (Required) Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
-     * @param {string} apiParams.uploadHash - (Required) Required. The hash for the upload
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.release_by_hash.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/release_by_hash/{uploadHash}', 'GET', apiParams, clientConfig);
-
-    this.apps.upload_status = {};
-
-    /**
-     * GET Binary upload status by token
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.mobilesdkAppId - (Required) Required. Unique id for a Firebase app of the format: {version}:{project_number}:{platform}:{hash(bundle_id)} Example: 1:581234567376:android:aa0a3c7b135e90289
-     * @param {string} apiParams.uploadToken - (Required) Required. The token for the upload
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.upload_status.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{mobilesdkAppId}/upload_status/{uploadToken}', 'GET', apiParams, clientConfig);
 
     this.apps.testers = {};
 
@@ -162,31 +162,6 @@ class Firebaseappdistribution {
     this.projects.apps.releases.tests = {};
 
     /**
-     * Run automated test(s) on release.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the release resource, which is the parent of the test Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}`
-     * @param {string} apiParams.releaseTestId - Optional. The ID to use for the test, which will become the final component of the test's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. If it is not provided one will be automatically generated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.apps.releases.tests.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/tests', 'POST', apiParams, clientConfig);
-
-    /**
-     * List results for automated tests run on release.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of tests to return. The service may return fewer than this value.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListReleaseTests` call. Provide this to retrieve the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. The name of the release resource, which is the parent of the tests Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}`
-     * @param {string} apiParams.view - Optional. The requested view on the returned ReleaseTests. Defaults to the basic view.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.apps.releases.tests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/tests', 'GET', apiParams, clientConfig);
-
-    /**
      * Get results for automated test run on release.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the release test resource. Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}/tests/{test_id}`
@@ -206,19 +181,54 @@ class Firebaseappdistribution {
      */
     this.projects.apps.releases.tests.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'GET', apiParams, clientConfig);
 
-    this.projects.apps.testCases = {};
+    /**
+     * List results for automated tests run on release.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of tests to return. The service may return fewer than this value.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListReleaseTests` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. The name of the release resource, which is the parent of the tests Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+     * @param {string} apiParams.view - Optional. The requested view on the returned ReleaseTests. Defaults to the basic view.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.apps.releases.tests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/tests', 'GET', apiParams, clientConfig);
 
     /**
-     * Create a new test case.
+     * Run automated test(s) on release.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource where this test case will be created. Format: `projects/{project_number}/apps/{app_id}`
-     * @param {string} apiParams.testCaseId - Optional. The ID to use for the test case, which will become the final component of the test case's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+     * @param {string} apiParams.parent - (Required) Required. The name of the release resource, which is the parent of the test Format: `projects/{project_number}/apps/{app_id}/releases/{release_id}`
+     * @param {string} apiParams.releaseTestId - Optional. The ID to use for the test, which will become the final component of the test's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. If it is not provided one will be automatically generated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.apps.testCases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases', 'POST', apiParams, clientConfig);
+    this.projects.apps.releases.tests.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/tests', 'POST', apiParams, clientConfig);
+
+    this.projects.apps.testCases = {};
+
+    /**
+     * Clears cached test runs for a specific test case and device(s).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.testCase - (Required) Required. The name of the test case resource for which to clear the cache. Format: `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.apps.testCases.clearTestCaseCache = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+testCase}:clearTestCaseCache', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes multiple test cases.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the test cases being deleted. Format: `projects/{project_number}/apps/{app_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.apps.testCases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases:batchDelete', 'POST', apiParams, clientConfig);
 
     /**
      * List test cases.
@@ -233,14 +243,37 @@ class Firebaseappdistribution {
     this.projects.apps.testCases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases', 'GET', apiParams, clientConfig);
 
     /**
-     * Get a test case.
+     * Create a new test case.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the test case resource to retrieve. Format: `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+     * @param {string} apiParams.parent - (Required) Required. The parent resource where this test case will be created. Format: `projects/{project_number}/apps/{app_id}`
+     * @param {string} apiParams.testCaseId - Optional. The ID to use for the test case, which will become the final component of the test case's resource name. This value should be 4-63 characters, and valid characters are /a-z-/.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.apps.testCases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.apps.testCases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases', 'POST', apiParams, clientConfig);
+
+    /**
+     * Delete a test case.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the test case resource to delete. Format: `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.apps.testCases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates multiple test cases.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the test cases being updated. Format: `projects/{project_number}/apps/{app_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.apps.testCases.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases:batchUpdate', 'POST', apiParams, clientConfig);
 
     /**
      * Update a test case.
@@ -255,25 +288,14 @@ class Firebaseappdistribution {
     this.projects.apps.testCases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Delete a test case.
+     * Get a test case.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the test case resource to delete. Format: `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
+     * @param {string} apiParams.name - (Required) Required. The name of the test case resource to retrieve. Format: `projects/{project_number}/apps/{app_id}/testCases/{test_case_id}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.apps.testCases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Delete test cases.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource where these test cases will be deleted. Format: `projects/{project_number}/apps/{app_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.apps.testCases.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/testCases:batchDelete', 'POST', apiParams, clientConfig);
+    this.projects.apps.testCases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
