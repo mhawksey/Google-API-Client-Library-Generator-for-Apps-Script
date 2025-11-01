@@ -18,60 +18,60 @@ class Firebase {
     this._servicePath = '';
 
 
+    this.availableProjects = {};
+    this.availableProjects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/availableProjects', 'GET', apiParams, clientConfig);
+
     this.operations = {};
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects = {};
-    this.projects.addGoogleAnalytics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:addGoogleAnalytics', 'POST', apiParams, clientConfig);
     this.projects.getAnalyticsDetails = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.removeAnalytics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:removeAnalytics', 'POST', apiParams, clientConfig);
     this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.removeAnalytics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:removeAnalytics', 'POST', apiParams, clientConfig);
+    this.projects.getAdminSdkConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects', 'GET', apiParams, clientConfig);
     this.projects.addFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+project}:addFirebase', 'POST', apiParams, clientConfig);
     this.projects.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.getAdminSdkConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.addGoogleAnalytics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:addGoogleAnalytics', 'POST', apiParams, clientConfig);
     this.projects.searchApps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:searchApps', 'GET', apiParams, clientConfig);
 
     this.projects.androidApps = {};
-    this.projects.androidApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.androidApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/androidApps', 'GET', apiParams, clientConfig);
-    this.projects.androidApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/androidApps', 'POST', apiParams, clientConfig);
-    this.projects.androidApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.androidApps.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:remove', 'POST', apiParams, clientConfig);
     this.projects.androidApps.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.androidApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.androidApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/androidApps', 'POST', apiParams, clientConfig);
+    this.projects.androidApps.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:remove', 'POST', apiParams, clientConfig);
+    this.projects.androidApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.androidApps.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.androidApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/androidApps', 'GET', apiParams, clientConfig);
 
     this.projects.androidApps.sha = {};
     this.projects.androidApps.sha.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sha', 'GET', apiParams, clientConfig);
     this.projects.androidApps.sha.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sha', 'POST', apiParams, clientConfig);
     this.projects.androidApps.sha.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.iosApps = {};
-    this.projects.iosApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.iosApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/iosApps', 'GET', apiParams, clientConfig);
-    this.projects.iosApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/iosApps', 'POST', apiParams, clientConfig);
-    this.projects.iosApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.iosApps.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:remove', 'POST', apiParams, clientConfig);
-    this.projects.iosApps.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.iosApps.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.availableLocations = {};
-    this.projects.availableLocations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/availableLocations', 'GET', apiParams, clientConfig);
+    this.projects.webApps = {};
+    this.projects.webApps.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.webApps.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.webApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.webApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/webApps', 'GET', apiParams, clientConfig);
+    this.projects.webApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/webApps', 'POST', apiParams, clientConfig);
+    this.projects.webApps.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:remove', 'POST', apiParams, clientConfig);
+    this.projects.webApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.defaultLocation = {};
     this.projects.defaultLocation.finalize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/defaultLocation:finalize', 'POST', apiParams, clientConfig);
 
-    this.projects.webApps = {};
-    this.projects.webApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.webApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/webApps', 'GET', apiParams, clientConfig);
-    this.projects.webApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/webApps', 'POST', apiParams, clientConfig);
-    this.projects.webApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.webApps.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:remove', 'POST', apiParams, clientConfig);
-    this.projects.webApps.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.webApps.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.availableLocations = {};
+    this.projects.availableLocations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/availableLocations', 'GET', apiParams, clientConfig);
 
-    this.availableProjects = {};
-    this.availableProjects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/availableProjects', 'GET', apiParams, clientConfig);
+    this.projects.iosApps = {};
+    this.projects.iosApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.iosApps.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.iosApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.iosApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/iosApps', 'POST', apiParams, clientConfig);
+    this.projects.iosApps.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:remove', 'POST', apiParams, clientConfig);
+    this.projects.iosApps.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.iosApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/iosApps', 'GET', apiParams, clientConfig);
   }
 
 /**
