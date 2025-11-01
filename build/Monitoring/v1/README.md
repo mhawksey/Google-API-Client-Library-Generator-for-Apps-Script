@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Monitoring API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:45:11 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:35:52 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:04:05 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:04:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:21 GMT
 
 
