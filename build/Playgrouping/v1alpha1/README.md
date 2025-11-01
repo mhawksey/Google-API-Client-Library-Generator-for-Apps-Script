@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Play Grouping API (version:
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:46:48 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:44:10 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:07:33 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:07:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:25 GMT
 
 
@@ -24,8 +24,8 @@ Verify an API token by asserting the app and persona it belongs to. The verifica
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appPackage` | `string` | Yes | Required. App the token belongs to. Format: apps/{package_name} |
 | `params.token` | `string` | Yes | Required. The token to be verified. Format: tokens/{token} |
+| `params.appPackage` | `string` | Yes | Required. App the token belongs to. Format: apps/{package_name} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `apps.tokens.tags`
@@ -36,6 +36,6 @@ Create or update tags for the user and app that are represented by the given tok
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.appPackage` | `string` | Yes | Required. App whose tags are being manipulated. Format: apps/{package_name} |
 | `params.token` | `string` | Yes | Required. Token for which the tags are being inserted or updated. Format: tokens/{token} |
+| `params.appPackage` | `string` | Yes | Required. App whose tags are being manipulated. Format: apps/{package_name} |
 | `params.requestBody` | `object` | Yes | The request body. |
