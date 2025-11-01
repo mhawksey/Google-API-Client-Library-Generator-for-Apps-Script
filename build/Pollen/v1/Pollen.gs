@@ -19,38 +19,11 @@ class Pollen {
 
 
     this.forecast = {};
-
-    /**
-     * Returns up to 5 days of daily pollen information in more than 65 countries, up to 1km resolution.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.days - Required. A number that indicates how many forecast days to request (minimum value 1, maximum value is 5).
-     * @param {string} apiParams.languageCode - Optional. Allows the client to choose the language for the response. If data cannot be provided for that language, the API uses the closest match. Allowed values rely on the IETF BCP-47 standard. The default value is "en".
-     * @param {number} apiParams.location.latitude - The latitude in degrees. It must be in the range [-90.0, +90.0].
-     * @param {number} apiParams.location.longitude - The longitude in degrees. It must be in the range [-180.0, +180.0].
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of daily info records to return per page. The default and max value is 5, indicating 5 days of data.
-     * @param {string} apiParams.pageToken - Optional. A page token received from a previous daily call. It is used to retrieve the subsequent page. Note that when providing a value for the page token, all other request parameters provided must match the previous call that provided the page token.
-     * @param {boolean} apiParams.plantsDescription - Optional. Contains general information about plants, including details on their seasonality, special shapes and colors, information about allergic cross-reactions, and plant photos. The default value is "true".
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.forecast.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forecast:lookup', 'GET', apiParams, clientConfig);
 
     this.mapTypes = {};
 
     this.mapTypes.heatmapTiles = {};
-
-    /**
-     * Returns a byte array containing the data of the tile PNG image.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.mapType - (Required) Required. The type of the pollen heatmap. Defines the combination of pollen type and index that the map will graphically represent.
-     * @param {integer} apiParams.x - (Required) Required. Defines the east-west point in the requested tile.
-     * @param {integer} apiParams.y - (Required) Required. Defines the north-south point in the requested tile.
-     * @param {integer} apiParams.zoom - (Required) Required. The map's zoom level. Defines how large or small the contents of a map appear in a map view. * Zoom level 0 is the entire world in a single tile. * Zoom level 1 is the entire world in 4 tiles. * Zoom level 2 is the entire world in 16 tiles. * Zoom level 16 is the entire world in 65,536 tiles. Allowed values: 0-16
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.mapTypes.heatmapTiles.lookupHeatmapTile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}', 'GET', apiParams, clientConfig);
   }
 
