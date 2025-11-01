@@ -18,70 +18,70 @@ class Games {
     this._servicePath = '';
 
 
-    this.achievementDefinitions = {};
-    this.achievementDefinitions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements', 'GET', apiParams, clientConfig);
+    this.snapshots = {};
+    this.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/snapshots', 'GET', apiParams, clientConfig);
+    this.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/snapshots/{snapshotId}', 'GET', apiParams, clientConfig);
 
     this.achievements = {};
-    this.achievements.increment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/increment', 'POST', apiParams, clientConfig);
-    this.achievements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/achievements', 'GET', apiParams, clientConfig);
     this.achievements.reveal = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/reveal', 'POST', apiParams, clientConfig);
     this.achievements.setStepsAtLeast = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/setStepsAtLeast', 'POST', apiParams, clientConfig);
+    this.achievements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/achievements', 'GET', apiParams, clientConfig);
     this.achievements.unlock = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/unlock', 'POST', apiParams, clientConfig);
     this.achievements.updateMultiple = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/updateMultiple', 'POST', apiParams, clientConfig);
-
-    this.applications = {};
-    this.applications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/{applicationId}', 'GET', apiParams, clientConfig);
-    this.applications.played = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/played', 'POST', apiParams, clientConfig);
-    this.applications.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/{applicationId}/verify', 'GET', apiParams, clientConfig);
-    this.applications.getEndPoint = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/getEndPoint', 'POST', apiParams, clientConfig);
-
-    this.events = {};
-    this.events.listByPlayer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/events', 'GET', apiParams, clientConfig);
-    this.events.listDefinitions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/eventDefinitions', 'GET', apiParams, clientConfig);
-    this.events.record = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/events', 'POST', apiParams, clientConfig);
+    this.achievements.increment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements/{achievementId}/increment', 'POST', apiParams, clientConfig);
 
     this.leaderboards = {};
     this.leaderboards.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}', 'GET', apiParams, clientConfig);
     this.leaderboards.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards', 'GET', apiParams, clientConfig);
 
-    this.metagame = {};
-    this.metagame.getMetagameConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/metagameConfig', 'GET', apiParams, clientConfig);
-    this.metagame.listCategoriesByPlayer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/categories/{collection}', 'GET', apiParams, clientConfig);
+    this.events = {};
+    this.events.record = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/events', 'POST', apiParams, clientConfig);
+    this.events.listByPlayer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/events', 'GET', apiParams, clientConfig);
+    this.events.listDefinitions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/eventDefinitions', 'GET', apiParams, clientConfig);
 
-    this.players = {};
-    this.players.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}', 'GET', apiParams, clientConfig);
-    this.players.getScopedPlayerIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/me/scopedIds', 'GET', apiParams, clientConfig);
-    this.players.getMultipleApplicationPlayerIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/me/multipleApplicationPlayerIds', 'GET', apiParams, clientConfig);
-    this.players.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/me/players/{collection}', 'GET', apiParams, clientConfig);
+    this.recall = {};
+    this.recall.resetPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:resetPersona', 'POST', apiParams, clientConfig);
+    this.recall.gamesPlayerTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/gamesPlayerTokens/{sessionId}', 'GET', apiParams, clientConfig);
+    this.recall.unlinkPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:unlinkPersona', 'POST', apiParams, clientConfig);
+    this.recall.linkPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:linkPersona', 'POST', apiParams, clientConfig);
+    this.recall.retrieveTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/tokens/{sessionId}', 'GET', apiParams, clientConfig);
+    this.recall.lastTokenFromAllDeveloperGames = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/developerGamesLastPlayerToken/{sessionId}', 'GET', apiParams, clientConfig);
+
+    this.achievementDefinitions = {};
+    this.achievementDefinitions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/achievements', 'GET', apiParams, clientConfig);
 
     this.revisions = {};
     this.revisions.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/revisions/check', 'GET', apiParams, clientConfig);
 
-    this.scores = {};
-    this.scores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}', 'GET', apiParams, clientConfig);
-    this.scores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}/scores/{collection}', 'GET', apiParams, clientConfig);
-    this.scores.listWindow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}/window/{collection}', 'GET', apiParams, clientConfig);
-    this.scores.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}/scores', 'POST', apiParams, clientConfig);
-    this.scores.submitMultiple = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/scores', 'POST', apiParams, clientConfig);
-
-    this.snapshots = {};
-    this.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/snapshots/{snapshotId}', 'GET', apiParams, clientConfig);
-    this.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/snapshots', 'GET', apiParams, clientConfig);
-
     this.stats = {};
     this.stats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/stats', 'GET', apiParams, clientConfig);
 
-    this.recall = {};
-    this.recall.linkPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:linkPersona', 'POST', apiParams, clientConfig);
-    this.recall.retrieveTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/tokens/{sessionId}', 'GET', apiParams, clientConfig);
-    this.recall.lastTokenFromAllDeveloperGames = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/developerGamesLastPlayerToken/{sessionId}', 'GET', apiParams, clientConfig);
-    this.recall.gamesPlayerTokens = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall/gamesPlayerTokens/{sessionId}', 'GET', apiParams, clientConfig);
-    this.recall.unlinkPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:unlinkPersona', 'POST', apiParams, clientConfig);
-    this.recall.resetPersona = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/recall:resetPersona', 'POST', apiParams, clientConfig);
-
     this.accesstokens = {};
-    this.accesstokens.generatePlayGroupingApiToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/accesstokens/generatePlayGroupingApiToken', 'POST', apiParams, clientConfig);
     this.accesstokens.generateRecallPlayGroupingApiToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/accesstokens/generateRecallPlayGroupingApiToken', 'POST', apiParams, clientConfig);
+    this.accesstokens.generatePlayGroupingApiToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/accesstokens/generatePlayGroupingApiToken', 'POST', apiParams, clientConfig);
+
+    this.metagame = {};
+    this.metagame.getMetagameConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/metagameConfig', 'GET', apiParams, clientConfig);
+    this.metagame.listCategoriesByPlayer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/categories/{collection}', 'GET', apiParams, clientConfig);
+
+    this.applications = {};
+    this.applications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/{applicationId}', 'GET', apiParams, clientConfig);
+    this.applications.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/{applicationId}/verify', 'GET', apiParams, clientConfig);
+    this.applications.getEndPoint = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/getEndPoint', 'POST', apiParams, clientConfig);
+    this.applications.played = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/applications/played', 'POST', apiParams, clientConfig);
+
+    this.scores = {};
+    this.scores.listWindow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}/window/{collection}', 'GET', apiParams, clientConfig);
+    this.scores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}/leaderboards/{leaderboardId}/scores/{timeSpan}', 'GET', apiParams, clientConfig);
+    this.scores.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}/scores', 'POST', apiParams, clientConfig);
+    this.scores.submitMultiple = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/scores', 'POST', apiParams, clientConfig);
+    this.scores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/leaderboards/{leaderboardId}/scores/{collection}', 'GET', apiParams, clientConfig);
+
+    this.players = {};
+    this.players.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/me/players/{collection}', 'GET', apiParams, clientConfig);
+    this.players.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/{playerId}', 'GET', apiParams, clientConfig);
+    this.players.getMultipleApplicationPlayerIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/me/multipleApplicationPlayerIds', 'GET', apiParams, clientConfig);
+    this.players.getScopedPlayerIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('games/v1/players/me/scopedIds', 'GET', apiParams, clientConfig);
   }
 
 /**
