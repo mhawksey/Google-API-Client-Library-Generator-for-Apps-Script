@@ -18,23 +18,6 @@ class Merchantapi {
     this._servicePath = '';
 
 
-    this.accounts = {};
-
-    this.accounts.aggregateProductStatuses = {};
-
-    /**
-     * Lists the `AggregateProductStatuses` resources for your merchant account. The response might contain fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be used to obtain additional results.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. A filter expression that filters the aggregate product statuses. Filtering is only supported by the `reporting_context` and `country` field. For example: `reporting_context = "SHOPPING_ADS" AND country = "US"`.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of aggregate product statuses to return. The service may return fewer than this value. If unspecified, at most 25 aggregate product statuses are returned. The maximum value is 250; values above 250 are coerced to 250.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListAggregateProductStatuses` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAggregateProductStatuses` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The account to list aggregate product statuses for. Format: `accounts/{account}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.aggregateProductStatuses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1beta/{+parent}/aggregateProductStatuses', 'GET', apiParams, clientConfig);
-
     this.issueresolution = {};
 
     /**
@@ -74,6 +57,23 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.issueresolution.triggeraction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1beta/{+name}:triggeraction', 'POST', apiParams, clientConfig);
+
+    this.accounts = {};
+
+    this.accounts.aggregateProductStatuses = {};
+
+    /**
+     * Lists the `AggregateProductStatuses` resources for your merchant account. The response might contain fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be used to obtain additional results.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. A filter expression that filters the aggregate product statuses. Filtering is only supported by the `reporting_context` and `country` field. For example: `reporting_context = "SHOPPING_ADS" AND country = "US"`.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of aggregate product statuses to return. The service may return fewer than this value. If unspecified, at most 25 aggregate product statuses are returned. The maximum value is 250; values above 250 are coerced to 250.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListAggregateProductStatuses` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAggregateProductStatuses` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The account to list aggregate product statuses for. Format: `accounts/{account}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.aggregateProductStatuses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('issueresolution/v1beta/{+parent}/aggregateProductStatuses', 'GET', apiParams, clientConfig);
   }
 
 /**
