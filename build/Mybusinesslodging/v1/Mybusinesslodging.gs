@@ -19,41 +19,10 @@ class Mybusinesslodging {
 
 
     this.locations = {};
-
-    /**
-     * Returns the Lodging of a specific location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Google identifier for this location in the form: `locations/{location_id}/lodging`
-     * @param {string} apiParams.readMask - Required. The specific fields to return. Use "*" to include all fields. Repeated field items cannot be individually specified.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
+    this.locations.updateLodging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.locations.getLodging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    /**
-     * Updates the Lodging of a specific location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Google identifier for this location in the form: `locations/{location_id}/lodging`
-     * @param {string} apiParams.updateMask - Required. The specific fields to update. Use "*" to update all fields, which may include unsetting empty fields in the request. Repeated field items cannot be individually updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.updateLodging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
     this.locations.lodging = {};
-
-    /**
-     * Returns the Google updated Lodging of a specific location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Google identifier for this location in the form: `locations/{location_id}/lodging`
-     * @param {string} apiParams.readMask - Required. The specific fields to return. Use "*" to include all fields. Repeated field items cannot be individually specified.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.locations.lodging.getGoogleUpdated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getGoogleUpdated', 'GET', apiParams, clientConfig);
   }
 
