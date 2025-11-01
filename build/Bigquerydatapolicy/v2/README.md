@@ -1,0 +1,113 @@
+# BigQuery Data Policy API - Apps Script Client Library
+
+Auto-generated client library for using the **BigQuery Data Policy API (version: v2)** in Google Apps Script.
+
+## Metadata
+
+- **Last Checked:** Sat, 01 Nov 2025 00:24:30 GMT
+- **Last Modified:** Sat, 01 Nov 2025 00:24:30 GMT
+- **Created:** Sat, 01 Nov 2025 00:24:30 GMT
+
+
+
+---
+
+## API Reference
+
+### `projects`
+
+### `projects.locations`
+
+### `projects.locations.dataPolicies`
+
+#### `projects.locations.dataPolicies.addGrantees()`
+
+Adds new grantees to a data policy. The new grantees will be added to the existing grantees. If the request contains a duplicate grantee, the grantee will be ignored. If the request contains a grantee that already exists, the grantee will be ignored.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dataPolicy` | `string` | Yes | Required. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataPolicies.list()`
+
+List all of the data policies in the specified parent project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Resource name of the project for which to list data policies. Format is `projects/{project_number}/locations/{location_id}`. |
+| `params.filter` | `string` | No | Optional. Filters the data policies by policy tags that they are associated with. Currently filter only supports "policy_tag" based filtering and OR based predicates. Sample filter can be "policy_tag: projects/1/locations/us/taxonomies/2/policyTags/3". You may also use wildcard such as "policy_tag: projects/1/locations/us/taxonomies/2*". Please note that OR predicates cannot be used with wildcard filters. |
+| `params.pageToken` | `string` | No | Optional. The `nextPageToken` value returned from a previous list request, if any. If not set, defaults to an empty string. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of data policies to return. Must be a value between 1 and 1000. If not set, defaults to 50. |
+
+#### `projects.locations.dataPolicies.getIamPolicy()`
+
+Gets the IAM policy for the specified data policy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataPolicies.removeGrantees()`
+
+Removes grantees from a data policy. The grantees will be removed from the existing grantees. If the request contains a grantee that does not exist, the grantee will be ignored.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dataPolicy` | `string` | Yes | Required. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataPolicies.setIamPolicy()`
+
+Sets the IAM policy for the specified data policy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataPolicies.patch()`
+
+Updates the metadata for an existing data policy. The target data policy can be specified by the resource name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`. |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the data policy is not found, a new data policy will be created. In this situation, update_mask is ignored. |
+| `params.updateMask` | `string` | No | Optional. The update mask applies to the resource. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update. Updates to the `name` and `dataPolicyId` fields are not allowed. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataPolicies.testIamPermissions()`
+
+Returns the caller's permission on the specified data policy resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataPolicies.get()`
+
+Gets the data policy specified by its resource name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the requested data policy. Format is `projects/{project_number}/locations/{location_id}/dataPolicies/{id}`. |
+
+#### `projects.locations.dataPolicies.delete()`
+
+Deletes the data policy specified by its resource name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the data policy to delete. Format is `projects/{project_number}/locations/{location_id}/dataPolicies/{id}`. |
+
+#### `projects.locations.dataPolicies.create()`
+
+Creates a new data policy under a project with the given `data_policy_id` (used as the display name), and data policy type.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Resource name of the project that the data policy will belong to. The format is `projects/{project_number}/locations/{location_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
