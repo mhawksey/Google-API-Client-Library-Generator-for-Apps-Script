@@ -22,75 +22,15 @@ class Merchantapi {
 
     this.accounts.products = {};
 
-    this.accounts.products.localInventories = {};
-
-    /**
-     * Lists the `LocalInventory` resources for the given product in your merchant account. The response might contain fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be used to obtain additional results. `LocalInventory` resources are listed per product for a given account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of `LocalInventory` resources for the given product to return. The service returns fewer than this value if the number of inventories for the given product is less that than the `pageSize`. The default value is 25000. The maximum value is 25000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListLocalInventories` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListLocalInventories` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request.
-     * @param {string} apiParams.parent - (Required) Required. The `name` of the parent product to list local inventories for. Format: `accounts/{account}/products/{product}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.products.localInventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/localInventories', 'GET', apiParams, clientConfig);
-
-    /**
-     * Inserts a `LocalInventory` resource to a product in your merchant account. Replaces the full `LocalInventory` resource if an entry with the same `storeCode` already exists for the product. It might take up to 30 minutes for the new or updated `LocalInventory` resource to appear in products.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The account and product where this inventory will be inserted. Format: `accounts/{account}/products/{product}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.products.localInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/localInventories:insert', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified `LocalInventory` from the given product in your merchant account. It might take a up to an hour for the `LocalInventory` to be deleted from the specific product. Once you have received a successful delete response, wait for that period before attempting a delete again.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the local inventory for the given product to delete. Format: `accounts/{account}/products/{product}/localInventories/{store_code}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.products.localInventories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.accounts.products.regionalInventories = {};
-
-    /**
-     * Lists the `RegionalInventory` resources for the given product in your merchant account. The response might contain fewer items than specified by `pageSize`. If `pageToken` was returned in previous request, it can be used to obtain additional results. `RegionalInventory` resources are listed per product for a given account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of `RegionalInventory` resources for the given product to return. The service returns fewer than this value if the number of inventories for the given product is less that than the `pageSize`. The default value is 25000. The maximum value is 100000; If a value higher than the maximum is specified, then the `pageSize` will default to the maximum.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListRegionalInventories` call. Provide the page token to retrieve the subsequent page. When paginating, all other parameters provided to `ListRegionalInventories` must match the call that provided the page token. The token returned as nextPageToken in the response to the previous request.
-     * @param {string} apiParams.parent - (Required) Required. The `name` of the parent product to list `RegionalInventory` resources for. Format: `accounts/{account}/products/{product}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
+    this.accounts.products.regionalInventories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.products.regionalInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/regionalInventories:insert', 'POST', apiParams, clientConfig);
     this.accounts.products.regionalInventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/regionalInventories', 'GET', apiParams, clientConfig);
 
-    /**
-     * Inserts a `RegionalInventory` to a given product in your merchant account. Replaces the full `RegionalInventory` resource if an entry with the same `region` already exists for the product. It might take up to 30 minutes for the new or updated `RegionalInventory` resource to appear in products.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The account and product where this inventory will be inserted. Format: `accounts/{account}/products/{product}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.products.regionalInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/regionalInventories:insert', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified `RegionalInventory` resource from the given product in your merchant account. It might take up to an hour for the `RegionalInventory` to be deleted from the specific product. Once you have received a successful delete response, wait for that period before attempting a delete again.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the `RegionalInventory` resource to delete. Format: `accounts/{account}/products/{product}/regionalInventories/{region}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.products.regionalInventories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.products.localInventories = {};
+    this.accounts.products.localInventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/localInventories', 'GET', apiParams, clientConfig);
+    this.accounts.products.localInventories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.products.localInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/localInventories:insert', 'POST', apiParams, clientConfig);
   }
 
 /**
