@@ -4,8 +4,8 @@ Auto-generated client library for using the **Policy Analyzer API (version: v1be
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:46:51 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:44:16 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:07:41 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:07:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:30 GMT
 
 
@@ -13,44 +13,6 @@ Auto-generated client library for using the **Policy Analyzer API (version: v1be
 ---
 
 ## API Reference
-
-### `projects`
-
-### `projects.locations`
-
-### `projects.locations.activityTypes`
-
-### `projects.locations.activityTypes.activities`
-
-#### `projects.locations.activityTypes.activities.query()`
-
-Queries policy activities on GCP resources.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ |
-| `params.filter` | `string` | No | Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=}  |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. |
-| `params.pageToken` | `string` | No | Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. |
-
-### `organizations`
-
-### `organizations.locations`
-
-### `organizations.locations.activityTypes`
-
-### `organizations.locations.activityTypes.activities`
-
-#### `organizations.locations.activityTypes.activities.query()`
-
-Queries policy activities on GCP resources.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ |
-| `params.filter` | `string` | No | Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=}  |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. |
-| `params.pageToken` | `string` | No | Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. |
 
 ### `folders`
 
@@ -66,7 +28,45 @@ Queries policy activities on GCP resources.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. |
+| `params.filter` | `string` | No | Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=}  |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. |
 | `params.parent` | `string` | Yes | Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ |
+
+### `organizations`
+
+### `organizations.locations`
+
+### `organizations.locations.activityTypes`
+
+### `organizations.locations.activityTypes.activities`
+
+#### `organizations.locations.activityTypes.activities.query()`
+
+Queries policy activities on GCP resources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. |
+| `params.parent` | `string` | Yes | Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. |
+| `params.filter` | `string` | No | Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=}  |
+
+### `projects`
+
+### `projects.locations`
+
+### `projects.locations.activityTypes`
+
+### `projects.locations.activityTypes.activities`
+
+#### `projects.locations.activityTypes.activities.query()`
+
+Queries policy activities on GCP resources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | `params.filter` | `string` | No | Optional. Optional filter expression to restrict the activities returned. Supported filters are: - service_account_last_authn.full_resource_name {=} - service_account_key_last_authn.full_resource_name {=}  |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of results to return from this request. Max limit is 1000. Non-positive values are ignored. The presence of `nextPageToken` in the response indicates that more results might be available. |
 | `params.pageToken` | `string` | No | Optional. If present, then retrieve the next batch of results from the preceding call to this method. `pageToken` must be the value of `nextPageToken` from the previous response. The values of other method parameters should be identical to those in the previous call. |
+| `params.parent` | `string` | Yes | Required. The container resource on which to execute the request. Acceptable formats: `projects/[PROJECT_ID|PROJECT_NUMBER]/locations/[LOCATION]/activityTypes/[ACTIVITY_TYPE]` LOCATION here refers to GCP Locations: https://cloud.google.com/about/locations/ |
