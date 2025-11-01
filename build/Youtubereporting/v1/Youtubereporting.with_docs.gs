@@ -18,46 +18,19 @@ class Youtubereporting {
     this._servicePath = '';
 
 
-    this.reportTypes = {};
+    this.media = {};
 
     /**
-     * Lists report types.
+     * Method for media download. Download is supported on the URI `/v1/media/{+name}?alt=media`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.includeSystemManaged - If set to true, also system-managed report types will be returned; otherwise only the report types that can be used to create new reporting jobs will be returned.
-     * @param {string} apiParams.onBehalfOfContentOwner - The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).
-     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListReportTypes` method.
+     * @param {string} apiParams.resourceName - (Required) Name of the media that is being downloaded.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.reportTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/reportTypes', 'GET', apiParams, clientConfig);
+    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/media/{+resourceName}', 'GET', apiParams, clientConfig);
 
     this.jobs = {};
-
-    /**
-     * Creates a job and returns it.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.onBehalfOfContentOwner - The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists jobs.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.includeSystemManaged - If set to true, also system-managed jobs will be returned; otherwise only user-created jobs will be returned. System-managed jobs can neither be modified nor deleted.
-     * @param {string} apiParams.onBehalfOfContentOwner - The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).
-     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer jobs than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs` method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs', 'GET', apiParams, clientConfig);
 
     /**
      * Gets a job.
@@ -80,6 +53,30 @@ class Youtubereporting {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs/{jobId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists jobs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.includeSystemManaged - If set to true, also system-managed jobs will be returned; otherwise only user-created jobs will be returned. System-managed jobs can neither be modified nor deleted.
+     * @param {string} apiParams.onBehalfOfContentOwner - The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).
+     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer jobs than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListJobs` method.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a job and returns it.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.onBehalfOfContentOwner - The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs', 'POST', apiParams, clientConfig);
 
     this.jobs.reports = {};
 
@@ -111,17 +108,20 @@ class Youtubereporting {
      */
     this.jobs.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs/{jobId}/reports/{reportId}', 'GET', apiParams, clientConfig);
 
-    this.media = {};
+    this.reportTypes = {};
 
     /**
-     * Method for media download. Download is supported on the URI `/v1/media/{+name}?alt=media`.
+     * Lists report types.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resourceName - (Required) Name of the media that is being downloaded.
+     * @param {boolean} apiParams.includeSystemManaged - If set to true, also system-managed report types will be returned; otherwise only the report types that can be used to create new reporting jobs will be returned.
+     * @param {string} apiParams.onBehalfOfContentOwner - The content owner's external ID on which behalf the user is acting on. If not set, the user is acting for himself (his own channel).
+     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer report types than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return. Typically, this is the value of ListReportTypesResponse.next_page_token returned in response to the previous call to the `ListReportTypes` method.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/media/{+resourceName}', 'GET', apiParams, clientConfig);
+    this.reportTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/reportTypes', 'GET', apiParams, clientConfig);
   }
 
 /**
