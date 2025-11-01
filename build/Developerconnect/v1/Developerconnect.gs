@@ -21,17 +21,37 @@ class Developerconnect {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.insightsConfigs = {};
+    this.projects.locations.insightsConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insightsConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.insightsConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.insightsConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insightsConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.insightsConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.insightsConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.accountConnectors = {};
+    this.projects.locations.accountConnectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accountConnectors', 'POST', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accountConnectors', 'GET', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.accountConnectors.users = {};
+    this.projects.locations.accountConnectors.users.fetchAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+accountConnector}/users:fetchAccessToken', 'POST', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.users.fetchSelf = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/users:fetchSelf', 'GET', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.users.deleteSelf = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/users:deleteSelf', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.accountConnectors.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/users', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connections = {};
-    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
@@ -39,40 +59,20 @@ class Developerconnect {
     this.projects.locations.connections.fetchLinkableGitRepositories = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+connection}:fetchLinkableGitRepositories', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.fetchGitHubInstallations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+connection}:fetchGitHubInstallations', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.processGitHubEnterpriseWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections:processGitHubEnterpriseWebhook', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connections.gitRepositoryLinks = {};
-    this.projects.locations.connections.gitRepositoryLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitRepositoryLinks', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.gitRepositoryLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.connections.gitRepositoryLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitRepositoryLinks', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.gitRepositoryLinks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.gitRepositoryLinks.fetchReadWriteToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchReadWriteToken', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.gitRepositoryLinks.fetchReadToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchReadToken', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.gitRepositoryLinks.fetchGitRefs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchGitRefs', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.gitRepositoryLinks.processGitLabEnterpriseWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processGitLabEnterpriseWebhook', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.gitRepositoryLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitRepositoryLinks', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.gitRepositoryLinks.fetchReadWriteToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchReadWriteToken', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.gitRepositoryLinks.processGitLabWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processGitLabWebhook', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.gitRepositoryLinks.processBitbucketDataCenterWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processBitbucketDataCenterWebhook', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.gitRepositoryLinks.fetchGitRefs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+gitRepositoryLink}:fetchGitRefs', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.gitRepositoryLinks.processBitbucketCloudWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processBitbucketCloudWebhook', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.accountConnectors = {};
-    this.projects.locations.accountConnectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accountConnectors', 'GET', apiParams, clientConfig);
-    this.projects.locations.accountConnectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.accountConnectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accountConnectors', 'POST', apiParams, clientConfig);
-    this.projects.locations.accountConnectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.accountConnectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.accountConnectors.users = {};
-    this.projects.locations.accountConnectors.users.fetchAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+accountConnector}/users:fetchAccessToken', 'POST', apiParams, clientConfig);
-    this.projects.locations.accountConnectors.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/users', 'GET', apiParams, clientConfig);
-    this.projects.locations.accountConnectors.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.accountConnectors.users.fetchSelf = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/users:fetchSelf', 'GET', apiParams, clientConfig);
-    this.projects.locations.accountConnectors.users.deleteSelf = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/users:deleteSelf', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.insightsConfigs = {};
-    this.projects.locations.insightsConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insightsConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.insightsConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/insightsConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.insightsConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.insightsConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.insightsConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connections.gitRepositoryLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connections.gitRepositoryLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitRepositoryLinks', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.gitRepositoryLinks.processGitLabEnterpriseWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:processGitLabEnterpriseWebhook', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.gitRepositoryLinks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
