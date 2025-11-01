@@ -18,10 +18,102 @@ class Blogger {
     this._servicePath = '';
 
 
+    this.blogs = {};
+
+    /**
+     * Gets a blog by id.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {integer} apiParams.maxPosts - 
+     * @param {string} apiParams.view - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.blogs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists blogs by user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.fetchUserInfo - 
+     * @param {string} apiParams.role - 
+     * @param {string} apiParams.status - Default value of status is LIVE.
+     * @param {string} apiParams.userId - (Required)
+     * @param {string} apiParams.view - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.blogs.listByUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a blog by url.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.url - (Required)
+     * @param {string} apiParams.view - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.blogs.getByUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/byurl', 'GET', apiParams, clientConfig);
+
+    this.postUserInfos = {};
+
+    /**
+     * Gets one post and user info pair, by post_id and user_id.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {integer} apiParams.maxComments - 
+     * @param {string} apiParams.postId - (Required)
+     * @param {string} apiParams.userId - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.postUserInfos.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts/{postId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists post and user info pairs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {string} apiParams.endDate - 
+     * @param {boolean} apiParams.fetchBodies - 
+     * @param {string} apiParams.labels - 
+     * @param {integer} apiParams.maxResults - 
+     * @param {string} apiParams.orderBy - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.startDate - 
+     * @param {string} apiParams.status - 
+     * @param {string} apiParams.userId - (Required)
+     * @param {string} apiParams.view - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.postUserInfos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts', 'GET', apiParams, clientConfig);
+
     this.comments = {};
 
     /**
-     * Marks a comment as not spam by blog id, post id and comment id.
+     * Lists comments.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {string} apiParams.endDate - 
+     * @param {boolean} apiParams.fetchBodies - 
+     * @param {integer} apiParams.maxResults - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.postId - (Required)
+     * @param {string} apiParams.startDate - 
+     * @param {string} apiParams.status - 
+     * @param {string} apiParams.view - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments', 'GET', apiParams, clientConfig);
+
+    /**
+     * Removes the content of a comment by blog id, post id and comment id.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
      * @param {string} apiParams.commentId - (Required)
@@ -30,7 +122,19 @@ class Blogger {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.comments.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve', 'POST', apiParams, clientConfig);
+    this.comments.removeContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent', 'POST', apiParams, clientConfig);
+
+    /**
+     * Marks a comment as spam by blog id, post id and comment id.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {string} apiParams.commentId - (Required)
+     * @param {string} apiParams.postId - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.comments.markAsSpam = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a comment by blog id, post id and comment id.
@@ -58,22 +162,16 @@ class Blogger {
     this.comments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists comments.
+     * Marks a comment as not spam by blog id, post id and comment id.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.endDate - 
-     * @param {boolean} apiParams.fetchBodies - 
-     * @param {integer} apiParams.maxResults - 
-     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.commentId - (Required)
      * @param {string} apiParams.postId - (Required)
-     * @param {string} apiParams.startDate - 
-     * @param {string} apiParams.status - 
-     * @param {string} apiParams.view - 
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments', 'GET', apiParams, clientConfig);
+    this.comments.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve', 'POST', apiParams, clientConfig);
 
     /**
      * Lists comments by blog.
@@ -91,134 +189,30 @@ class Blogger {
      */
     this.comments.listByBlog = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/comments', 'GET', apiParams, clientConfig);
 
+    this.users = {};
+
     /**
-     * Marks a comment as spam by blog id, post id and comment id.
+     * Gets one user by user_id.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.commentId - (Required)
-     * @param {string} apiParams.postId - (Required)
+     * @param {string} apiParams.userId - (Required)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.comments.markAsSpam = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam', 'POST', apiParams, clientConfig);
-
-    /**
-     * Removes the content of a comment by blog id, post id and comment id.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.commentId - (Required)
-     * @param {string} apiParams.postId - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.comments.removeContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent', 'POST', apiParams, clientConfig);
-
-    this.pages = {};
-
-    /**
-     * Deletes a page by blog id and page id.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.pageId - (Required)
-     * @param {boolean} apiParams.useTrash - Move to Trash if possible
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.pages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets a page by blog id and page id.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.pageId - (Required)
-     * @param {string} apiParams.view - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Inserts a page.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {boolean} apiParams.isDraft - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.pages.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists pages.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {boolean} apiParams.fetchBodies - 
-     * @param {integer} apiParams.maxResults - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.status - 
-     * @param {string} apiParams.view - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.pages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages', 'GET', apiParams, clientConfig);
-
-    /**
-     * Patches a page.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.pageId - (Required)
-     * @param {boolean} apiParams.publish - 
-     * @param {boolean} apiParams.revert - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.pages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Publishes a page.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.pageId - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.pages.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/publish', 'POST', apiParams, clientConfig);
-
-    /**
-     * Reverts a published or scheduled page to draft state.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.pageId - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.pages.revert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/revert', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a page by blog id and page id.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.pageId - (Required)
-     * @param {boolean} apiParams.publish - 
-     * @param {boolean} apiParams.revert - 
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.pages.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PUT', apiParams, clientConfig);
+    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}', 'GET', apiParams, clientConfig);
 
     this.posts = {};
+
+    /**
+     * Reverts a published or scheduled post to draft state.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {string} apiParams.postId - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.posts.revert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/revert', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a post by blog id and post id.
@@ -231,6 +225,19 @@ class Blogger {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.posts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets a post by path.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {integer} apiParams.maxComments - 
+     * @param {string} apiParams.path - (Required)
+     * @param {string} apiParams.view - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.posts.getByPath = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/bypath', 'GET', apiParams, clientConfig);
 
     /**
      * Gets a post by blog id and post id
@@ -248,31 +255,29 @@ class Blogger {
     this.posts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets a post by path.
+     * Searches for posts matching given query terms in the specified blog.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
-     * @param {integer} apiParams.maxComments - 
-     * @param {string} apiParams.path - (Required)
-     * @param {string} apiParams.view - 
+     * @param {boolean} apiParams.fetchBodies - 
+     * @param {string} apiParams.orderBy - 
+     * @param {string} apiParams.q - (Required)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.posts.getByPath = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/bypath', 'GET', apiParams, clientConfig);
+    this.posts.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/search', 'GET', apiParams, clientConfig);
 
     /**
-     * Inserts a post.
+     * Publishes a post.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
-     * @param {boolean} apiParams.fetchBody - 
-     * @param {boolean} apiParams.fetchImages - 
-     * @param {boolean} apiParams.isDraft - 
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.postId - (Required)
+     * @param {string} apiParams.publishDate - 
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.posts.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts', 'POST', apiParams, clientConfig);
+    this.posts.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/publish', 'POST', apiParams, clientConfig);
 
     /**
      * Lists posts.
@@ -313,42 +318,6 @@ class Blogger {
     this.posts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Publishes a post.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.postId - (Required)
-     * @param {string} apiParams.publishDate - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.posts.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/publish', 'POST', apiParams, clientConfig);
-
-    /**
-     * Reverts a published or scheduled post to draft state.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.postId - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.posts.revert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/revert', 'POST', apiParams, clientConfig);
-
-    /**
-     * Searches for posts matching given query terms in the specified blog.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.blogId - (Required)
-     * @param {boolean} apiParams.fetchBodies - 
-     * @param {string} apiParams.orderBy - 
-     * @param {string} apiParams.q - (Required)
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.posts.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/search', 'GET', apiParams, clientConfig);
-
-    /**
      * Updates a post by blog id and post id.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
@@ -365,44 +334,32 @@ class Blogger {
      */
     this.posts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'PUT', apiParams, clientConfig);
 
-    this.blogs = {};
-
     /**
-     * Gets a blog by id.
+     * Inserts a post.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
-     * @param {integer} apiParams.maxPosts - 
-     * @param {string} apiParams.view - 
+     * @param {boolean} apiParams.fetchBody - 
+     * @param {boolean} apiParams.fetchImages - 
+     * @param {boolean} apiParams.isDraft - 
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.blogs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}', 'GET', apiParams, clientConfig);
+    this.posts.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts', 'POST', apiParams, clientConfig);
+
+    this.pageViews = {};
 
     /**
-     * Gets a blog by url.
+     * Gets page views by blog id.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.url - (Required)
-     * @param {string} apiParams.view - 
+     * @param {string} apiParams.blogId - (Required)
+     * @param {string} apiParams.range - 
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.blogs.getByUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/byurl', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists blogs by user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.fetchUserInfo - 
-     * @param {string} apiParams.role - 
-     * @param {string} apiParams.status - Default value of status is LIVE.
-     * @param {string} apiParams.userId - (Required)
-     * @param {string} apiParams.view - 
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.blogs.listByUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs', 'GET', apiParams, clientConfig);
+    this.pageViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pageviews', 'GET', apiParams, clientConfig);
 
     this.blogUserInfos = {};
 
@@ -418,65 +375,108 @@ class Blogger {
      */
     this.blogUserInfos.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}', 'GET', apiParams, clientConfig);
 
-    this.pageViews = {};
+    this.pages = {};
 
     /**
-     * Gets page views by blog id.
+     * Publishes a page.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.range - 
+     * @param {string} apiParams.pageId - (Required)
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.pageViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pageviews', 'GET', apiParams, clientConfig);
-
-    this.postUserInfos = {};
+    this.pages.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/publish', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets one post and user info pair, by post_id and user_id.
+     * Inserts a page.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
-     * @param {integer} apiParams.maxComments - 
-     * @param {string} apiParams.postId - (Required)
-     * @param {string} apiParams.userId - (Required)
+     * @param {boolean} apiParams.isDraft - 
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.postUserInfos.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts/{postId}', 'GET', apiParams, clientConfig);
+    this.pages.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists post and user info pairs.
+     * Gets a page by blog id and page id.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.blogId - (Required)
-     * @param {string} apiParams.endDate - 
-     * @param {boolean} apiParams.fetchBodies - 
-     * @param {string} apiParams.labels - 
-     * @param {integer} apiParams.maxResults - 
-     * @param {string} apiParams.orderBy - 
-     * @param {string} apiParams.pageToken - 
-     * @param {string} apiParams.startDate - 
-     * @param {string} apiParams.status - 
-     * @param {string} apiParams.userId - (Required)
+     * @param {string} apiParams.pageId - (Required)
      * @param {string} apiParams.view - 
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.postUserInfos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts', 'GET', apiParams, clientConfig);
-
-    this.users = {};
+    this.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets one user by user_id.
+     * Patches a page.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required)
+     * @param {string} apiParams.blogId - (Required)
+     * @param {string} apiParams.pageId - (Required)
+     * @param {boolean} apiParams.publish - 
+     * @param {boolean} apiParams.revert - 
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}', 'GET', apiParams, clientConfig);
+    this.pages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Lists pages.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {boolean} apiParams.fetchBodies - 
+     * @param {integer} apiParams.maxResults - 
+     * @param {string} apiParams.pageToken - 
+     * @param {string} apiParams.status - 
+     * @param {string} apiParams.view - 
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.pages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a page by blog id and page id.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {string} apiParams.pageId - (Required)
+     * @param {boolean} apiParams.useTrash - Move to Trash if possible
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.pages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Reverts a published or scheduled page to draft state.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {string} apiParams.pageId - (Required)
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.pages.revert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/revert', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a page by blog id and page id.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.blogId - (Required)
+     * @param {string} apiParams.pageId - (Required)
+     * @param {boolean} apiParams.publish - 
+     * @param {boolean} apiParams.revert - 
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.pages.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PUT', apiParams, clientConfig);
   }
 
 /**
