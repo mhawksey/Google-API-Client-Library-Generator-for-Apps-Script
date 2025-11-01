@@ -19,43 +19,9 @@ class Localservices {
 
 
     this.accountReports = {};
-
-    /**
-     * Get account reports containing aggregate account data of all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {integer} apiParams.pageSize - The maximum number of accounts to return. If the page size is unset, page size will default to 1000. Maximum page_size is 10000. Optional.
-     * @param {string} apiParams.pageToken - The `next_page_token` value returned from a previous request to SearchAccountReports that indicates where listing should continue. Optional.
-     * @param {string} apiParams.query - A query string for searching for account reports. Caller must provide a customer id of their MCC account with an associated Gaia Mint that allows read permission on their linked accounts. Search expressions are case insensitive. Example query: | Query | Description | |-------------------------|-----------------------------------------------| | manager_customer_id:123 | Get Account Report for Manager with id 123. | Required.
-     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.accountReports.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accountReports:search', 'GET', apiParams, clientConfig);
 
     this.detailedLeadReports = {};
-
-    /**
-     * Get detailed lead reports containing leads that have been received by all linked GLS accounts. Caller needs to provide their manager customer id and the associated auth credential that allows them read permissions on their linked accounts.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {integer} apiParams.pageSize - The maximum number of accounts to return. If the page size is unset, page size will default to 1000. Maximum page_size is 10000. Optional.
-     * @param {string} apiParams.pageToken - The `next_page_token` value returned from a previous request to SearchDetailedLeadReports that indicates where listing should continue. Optional.
-     * @param {string} apiParams.query - A query string for searching for account reports. Caller must provide a customer id of their MCC account with an associated Gaia Mint that allows read permission on their linked accounts. Search expressions are case insensitive. Example query: | Query | Description | |-------------------------|-----------------------------------------------| | manager_customer_id:123 | Get Detailed Lead Report for Manager with id | | | 123. | Required.
-     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.detailedLeadReports.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/detailedLeadReports:search', 'GET', apiParams, clientConfig);
   }
 
