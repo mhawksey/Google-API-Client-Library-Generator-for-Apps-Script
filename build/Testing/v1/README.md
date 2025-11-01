@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Testing API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:55:50 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:54:33 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:23:37 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:23:37 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:39 GMT
 
 
@@ -14,59 +14,20 @@ Auto-generated client library for using the **Cloud Testing API (version: v1)** 
 
 ## API Reference
 
+### `applicationDetailService`
+
+#### `applicationDetailService.getApkDetails()`
+
+Gets the details of an Android application APK.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.bundleLocation.gcsPath` | `string` | No | A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding) |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects`
 
-### `projects.testMatrices`
-
-#### `projects.testMatrices.create()`
-
-Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. The returned matrix will not yet contain the executions that will be created for this matrix. Execution creation happens later on and will require a call to GetTestMatrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | The GCE project under which this job will run. |
-| `params.requestId` | `string` | No | A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.testMatrices.get()`
-
-Checks the status of a test matrix and the executions once they are created. The test matrix will contain the list of test executions to run if and only if the resultStorage.toolResultsExecution fields have been populated. Note: Flaky test executions may be added to the matrix at a later stage. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Cloud project that owns the test matrix. |
-| `params.testMatrixId` | `string` | Yes | Unique test matrix id which was assigned by the service. |
-
-#### `projects.testMatrices.cancel()`
-
-Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.projectId` | `string` | Yes | Cloud project that owns the test. |
-| `params.testMatrixId` | `string` | Yes | Test matrix that will be canceled. |
-
 ### `projects.deviceSessions`
-
-#### `projects.deviceSessions.create()`
-
-POST /v1/projects/{project_id}/deviceSessions
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Compute Engine project under which this device will be allocated. "projects/{project_id}" |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.deviceSessions.list()`
-
-GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent to request, e.g. "projects/{project_id}" |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of DeviceSessions to return. |
-| `params.pageToken` | `string` | No | Optional. A continuation token for paging. |
-| `params.filter` | `string` | No | Optional. If specified, responses will be filtered by the given filter. Allowed fields are: session_state. |
 
 #### `projects.deviceSessions.get()`
 
@@ -85,6 +46,26 @@ POST /v1/projects/{project_id}/deviceSessions/{device_session_id}:cancel Changes
 | `params.name` | `string` | Yes | Required. Name of the DeviceSession, e.g. "projects/{project_id}/deviceSessions/{session_id}" |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.deviceSessions.create()`
+
+POST /v1/projects/{project_id}/deviceSessions
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The Compute Engine project under which this device will be allocated. "projects/{project_id}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.deviceSessions.list()`
+
+GET /v1/projects/{project_id}/deviceSessions Lists device Sessions owned by the project user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. If specified, responses will be filtered by the given filter. Allowed fields are: session_state. |
+| `params.pageToken` | `string` | No | Optional. A continuation token for paging. |
+| `params.parent` | `string` | Yes | Required. The name of the parent to request, e.g. "projects/{project_id}" |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of DeviceSessions to return. |
+
 #### `projects.deviceSessions.patch()`
 
 PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSession Updates the current device session to the fields described by the update_mask.
@@ -95,16 +76,35 @@ PATCH /v1/projects/{projectId}/deviceSessions/deviceSessionId}:updateDeviceSessi
 | `params.updateMask` | `string` | No | Required. The list of fields to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `applicationDetailService`
+### `projects.testMatrices`
 
-#### `applicationDetailService.getApkDetails()`
+#### `projects.testMatrices.cancel()`
 
-Gets the details of an Android application APK.
+Cancels unfinished test executions in a test matrix. This call returns immediately and cancellation proceeds asynchronously. If the matrix is already final, this operation will have no effect. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.bundleLocation.gcsPath` | `string` | No | A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding) |
+| `params.projectId` | `string` | Yes | Cloud project that owns the test. |
+| `params.testMatrixId` | `string` | Yes | Test matrix that will be canceled. |
+
+#### `projects.testMatrices.create()`
+
+Creates and runs a matrix of tests according to the given specifications. Unsupported environments will be returned in the state UNSUPPORTED. A test matrix is limited to use at most 2000 devices in parallel. The returned matrix will not yet contain the executions that will be created for this matrix. Execution creation happens later on and will require a call to GetTestMatrix. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to write to project - INVALID_ARGUMENT - if the request is malformed or if the matrix tries to use too many simultaneous devices.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectId` | `string` | Yes | The GCE project under which this job will run. |
+| `params.requestId` | `string` | No | A string id used to detect duplicated requests. Ids are automatically scoped to a project, so users should ensure the ID is unique per-project. A UUID is recommended. Optional, but strongly recommended. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.testMatrices.get()`
+
+Checks the status of a test matrix and the executions once they are created. The test matrix will contain the list of test executions to run if and only if the resultStorage.toolResultsExecution fields have been populated. Note: Flaky test executions may be added to the matrix at a later stage. May return any of the following canonical error codes: - PERMISSION_DENIED - if the user is not authorized to read project - INVALID_ARGUMENT - if the request is malformed - NOT_FOUND - if the Test Matrix does not exist
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.testMatrixId` | `string` | Yes | Unique test matrix id which was assigned by the service. |
+| `params.projectId` | `string` | Yes | Cloud project that owns the test matrix. |
 
 ### `testEnvironmentCatalog`
 
@@ -114,6 +114,6 @@ Gets the catalog of supported test environments. May return any of the following
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.environmentType` | `string` | Yes | Required. The type of environment that should be listed. |
-| `params.projectId` | `string` | No | For authorization, the cloud project requesting the TestEnvironmentCatalog. |
 | `params.includeViewableModels` | `boolean` | No | Optional. Whether to include viewable only models in the response. This is only applicable for Android models. |
+| `params.projectId` | `string` | No | For authorization, the cloud project requesting the TestEnvironmentCatalog. |
+| `params.environmentType` | `string` | Yes | Required. The type of environment that should be listed. |
