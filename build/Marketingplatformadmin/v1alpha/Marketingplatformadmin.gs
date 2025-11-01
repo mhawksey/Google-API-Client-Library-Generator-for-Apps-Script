@@ -19,62 +19,16 @@ class Marketingplatformadmin {
 
 
     this.organizations = {};
-
-    /**
-     * Lookup for a single organization.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the Organization to retrieve. Format: organizations/{org_id}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
+    this.organizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/organizations', 'GET', apiParams, clientConfig);
+    this.organizations.reportPropertyUsage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:reportPropertyUsage', 'POST', apiParams, clientConfig);
     this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.findSalesPartnerManagedClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:findSalesPartnerManagedClients', 'POST', apiParams, clientConfig);
 
     this.organizations.analyticsAccountLinks = {};
-
-    /**
-     * Lists the Google Analytics accounts link to the specified Google Marketing Platform organization.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of Analytics account links to return in one call. The service may return fewer than this value. If unspecified, at most 50 Analytics account links will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous ListAnalyticsAccountLinks call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAnalyticsAccountLinks` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent organization, which owns this collection of Analytics account links. Format: organizations/{org_id}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.analyticsAccountLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates the link between the Analytics account and the Google Marketing Platform organization. User needs to be an org user, and admin on the Analytics account to create the link. If the account is already linked to an organization, user needs to unlink the account from the current organization, then try link again.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource where this Analytics account link will be created. Format: organizations/{org_id}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.organizations.analyticsAccountLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes the AnalyticsAccountLink, which detaches the Analytics account from the Google Marketing Platform organization. User needs to be an org user, and admin on the Analytics account in order to delete the link.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the Analytics account link to delete. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.organizations.analyticsAccountLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates the service level for an Analytics property.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.analyticsAccountLink - (Required) Required. The parent AnalyticsAccountLink scope where this property is in. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.organizations.analyticsAccountLinks.setPropertyServiceLevel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+analyticsAccountLink}:setPropertyServiceLevel', 'POST', apiParams, clientConfig);
+    this.organizations.analyticsAccountLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'GET', apiParams, clientConfig);
+    this.organizations.analyticsAccountLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'POST', apiParams, clientConfig);
   }
 
 /**
