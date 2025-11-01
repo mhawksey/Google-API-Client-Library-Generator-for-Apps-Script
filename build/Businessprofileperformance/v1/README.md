@@ -4,7 +4,7 @@ Auto-generated client library for using the **Business Profile Performance API (
 
 ## Metadata
 
-- **Last Checked:** Fri, 03 Oct 2025 08:45:35 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:25:07 GMT
 - **Last Modified:** Fri, 03 Oct 2025 08:45:35 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:53 GMT
 
@@ -22,19 +22,19 @@ Auto-generated client library for using the **Business Profile Performance API (
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. |
-| `params.dailyMetric` | `string` | No | Required. The metric to retrieve time series. |
-| `params.dailyRange.startDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
 | `params.dailyRange.startDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
-| `params.dailyRange.startDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
-| `params.dailyRange.endDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
 | `params.dailyRange.endDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
-| `params.dailyRange.endDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
-| `params.dailySubEntityType.dayOfWeek` | `string` | No | Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE. |
-| `params.dailySubEntityType.timeOfDay.hours` | `integer` | No | Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. |
-| `params.dailySubEntityType.timeOfDay.minutes` | `integer` | No | Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. |
+| `params.dailyMetric` | `string` | No | Required. The metric to retrieve time series. |
+| `params.name` | `string` | Yes | Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. |
+| `params.dailyRange.startDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
+| `params.dailyRange.endDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
 | `params.dailySubEntityType.timeOfDay.seconds` | `integer` | No | Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. |
+| `params.dailySubEntityType.timeOfDay.hours` | `integer` | No | Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. |
+| `params.dailyRange.startDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
+| `params.dailyRange.endDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
 | `params.dailySubEntityType.timeOfDay.nanos` | `integer` | No | Fractions of seconds, in nanoseconds. Must be greater than or equal to 0 and less than or equal to 999,999,999. |
+| `params.dailySubEntityType.dayOfWeek` | `string` | No | Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE. |
+| `params.dailySubEntityType.timeOfDay.minutes` | `integer` | No | Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. |
 
 #### `locations.fetchMultiDailyMetricsTimeSeries()`
 
@@ -42,14 +42,14 @@ Auto-generated client library for using the **Business Profile Performance API (
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.dailyRange.startDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
+| `params.dailyRange.startDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
 | `params.location` | `string` | Yes | Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. |
 | `params.dailyMetrics` | `string` | No | Required. The metrics to retrieve time series for. |
-| `params.dailyRange.startDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
-| `params.dailyRange.startDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
-| `params.dailyRange.startDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
-| `params.dailyRange.endDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
-| `params.dailyRange.endDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
 | `params.dailyRange.endDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
+| `params.dailyRange.endDate.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
+| `params.dailyRange.endDate.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
+| `params.dailyRange.startDate.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
 
 ### `locations.searchkeywords`
 
@@ -63,12 +63,12 @@ Returns the search keywords used to find a business in search or maps. Each sear
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The number of results requested. The default page size is 100. Page size can be set to a maximum of 100. |
 | `params.parent` | `string` | Yes | Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id. |
-| `params.monthlyRange.startMonth.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
-| `params.monthlyRange.startMonth.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
-| `params.monthlyRange.startMonth.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
-| `params.monthlyRange.endMonth.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
 | `params.monthlyRange.endMonth.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
 | `params.monthlyRange.endMonth.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
-| `params.pageSize` | `integer` | No | Optional. The number of results requested. The default page size is 100. Page size can be set to a maximum of 100. |
+| `params.monthlyRange.endMonth.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
+| `params.monthlyRange.startMonth.month` | `integer` | No | Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. |
 | `params.pageToken` | `string` | No | Optional. A token indicating the next paginated result to be returned. |
+| `params.monthlyRange.startMonth.day` | `integer` | No | Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. |
+| `params.monthlyRange.startMonth.year` | `integer` | No | Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. |
