@@ -21,16 +21,6 @@ class Playcustomapp {
     this.accounts = {};
 
     this.accounts.customApps = {};
-
-    /**
-     * Creates a new custom app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.account - (Required) Developer account ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.accounts.customApps.create = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/playcustomapp/v1/accounts/{account}/customApps' : 'playcustomapp/v1/accounts/{account}/customApps';
