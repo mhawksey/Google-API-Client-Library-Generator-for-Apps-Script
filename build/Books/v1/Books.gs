@@ -18,96 +18,28 @@ class Books {
     this._servicePath = '';
 
 
-    this.bookshelves = {};
-    this.bookshelves.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/users/{userId}/bookshelves/{shelf}', 'GET', apiParams, clientConfig);
-    this.bookshelves.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/users/{userId}/bookshelves', 'GET', apiParams, clientConfig);
-
-    this.bookshelves.volumes = {};
-    this.bookshelves.volumes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/users/{userId}/bookshelves/{shelf}/volumes', 'GET', apiParams, clientConfig);
-
-    this.cloudloading = {};
-    this.cloudloading.addBook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/cloudloading/addBook', 'POST', apiParams, clientConfig);
-    this.cloudloading.deleteBook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/cloudloading/deleteBook', 'POST', apiParams, clientConfig);
-    this.cloudloading.updateBook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/cloudloading/updateBook', 'POST', apiParams, clientConfig);
-
-    this.dictionary = {};
-    this.dictionary.listOfflineMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/dictionary/listOfflineMetadata', 'GET', apiParams, clientConfig);
-
-    this.familysharing = {};
-    this.familysharing.getFamilyInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/familysharing/getFamilyInfo', 'GET', apiParams, clientConfig);
-    this.familysharing.share = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/familysharing/share', 'POST', apiParams, clientConfig);
-    this.familysharing.unshare = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/familysharing/unshare', 'POST', apiParams, clientConfig);
-
-    this.layers = {};
-    this.layers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layersummary/{summaryId}', 'GET', apiParams, clientConfig);
-    this.layers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layersummary', 'GET', apiParams, clientConfig);
-
-    this.layers.annotationData = {};
-    this.layers.annotationData.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}', 'GET', apiParams, clientConfig);
-    this.layers.annotationData.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layers/{layerId}/data', 'GET', apiParams, clientConfig);
-
-    this.layers.volumeAnnotations = {};
-    this.layers.volumeAnnotations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}', 'GET', apiParams, clientConfig);
-    this.layers.volumeAnnotations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layers/{layerId}', 'GET', apiParams, clientConfig);
-
-    this.myconfig = {};
-    this.myconfig.getUserSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/getUserSettings', 'GET', apiParams, clientConfig);
-    this.myconfig.releaseDownloadAccess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/releaseDownloadAccess', 'POST', apiParams, clientConfig);
-    this.myconfig.requestAccess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/requestAccess', 'POST', apiParams, clientConfig);
-    this.myconfig.syncVolumeLicenses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/syncVolumeLicenses', 'POST', apiParams, clientConfig);
-    this.myconfig.updateUserSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/updateUserSettings', 'POST', apiParams, clientConfig);
-
-    this.mylibrary = {};
-
-    this.mylibrary.annotations = {};
-    this.mylibrary.annotations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations/{annotationId}', 'DELETE', apiParams, clientConfig);
-    this.mylibrary.annotations.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations', 'POST', apiParams, clientConfig);
-    this.mylibrary.annotations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations', 'GET', apiParams, clientConfig);
-    this.mylibrary.annotations.summary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations/summary', 'POST', apiParams, clientConfig);
-    this.mylibrary.annotations.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations/{annotationId}', 'PUT', apiParams, clientConfig);
-
-    this.mylibrary.bookshelves = {};
-    this.mylibrary.bookshelves.addVolume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/addVolume', 'POST', apiParams, clientConfig);
-    this.mylibrary.bookshelves.clearVolumes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/clearVolumes', 'POST', apiParams, clientConfig);
-    this.mylibrary.bookshelves.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}', 'GET', apiParams, clientConfig);
-    this.mylibrary.bookshelves.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves', 'GET', apiParams, clientConfig);
-    this.mylibrary.bookshelves.moveVolume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/moveVolume', 'POST', apiParams, clientConfig);
-    this.mylibrary.bookshelves.removeVolume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/removeVolume', 'POST', apiParams, clientConfig);
-
-    this.mylibrary.bookshelves.volumes = {};
-    this.mylibrary.bookshelves.volumes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/volumes', 'GET', apiParams, clientConfig);
-
-    this.mylibrary.readingpositions = {};
-    this.mylibrary.readingpositions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/readingpositions/{volumeId}', 'GET', apiParams, clientConfig);
-    this.mylibrary.readingpositions.setPosition = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/readingpositions/{volumeId}/setPosition', 'POST', apiParams, clientConfig);
-
-    this.notification = {};
-    this.notification.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/notification/get', 'GET', apiParams, clientConfig);
-
-    this.onboarding = {};
-    this.onboarding.listCategories = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/onboarding/listCategories', 'GET', apiParams, clientConfig);
-    this.onboarding.listCategoryVolumes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/onboarding/listCategoryVolumes', 'GET', apiParams, clientConfig);
-
-    this.personalizedstream = {};
-    this.personalizedstream.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/personalizedstream/get', 'GET', apiParams, clientConfig);
-
     this.promooffer = {};
     this.promooffer.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/promooffer/accept', 'POST', apiParams, clientConfig);
     this.promooffer.dismiss = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/promooffer/dismiss', 'POST', apiParams, clientConfig);
     this.promooffer.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/promooffer/get', 'GET', apiParams, clientConfig);
 
-    this.series = {};
-    this.series.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/series/get', 'GET', apiParams, clientConfig);
+    this.onboarding = {};
+    this.onboarding.listCategoryVolumes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/onboarding/listCategoryVolumes', 'GET', apiParams, clientConfig);
+    this.onboarding.listCategories = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/onboarding/listCategories', 'GET', apiParams, clientConfig);
 
-    this.series.membership = {};
-    this.series.membership.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/series/membership/get', 'GET', apiParams, clientConfig);
+    this.bookshelves = {};
+    this.bookshelves.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/users/{userId}/bookshelves', 'GET', apiParams, clientConfig);
+    this.bookshelves.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/users/{userId}/bookshelves/{shelf}', 'GET', apiParams, clientConfig);
+
+    this.bookshelves.volumes = {};
+    this.bookshelves.volumes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/users/{userId}/bookshelves/{shelf}/volumes', 'GET', apiParams, clientConfig);
+
+    this.dictionary = {};
+    this.dictionary.listOfflineMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/dictionary/listOfflineMetadata', 'GET', apiParams, clientConfig);
 
     this.volumes = {};
     this.volumes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}', 'GET', apiParams, clientConfig);
     this.volumes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes', 'GET', apiParams, clientConfig);
-
-    this.volumes.associated = {};
-    this.volumes.associated.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/associated', 'GET', apiParams, clientConfig);
 
     this.volumes.mybooks = {};
     this.volumes.mybooks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/mybooks', 'GET', apiParams, clientConfig);
@@ -118,6 +50,74 @@ class Books {
 
     this.volumes.useruploaded = {};
     this.volumes.useruploaded.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/useruploaded', 'GET', apiParams, clientConfig);
+
+    this.volumes.associated = {};
+    this.volumes.associated.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/associated', 'GET', apiParams, clientConfig);
+
+    this.personalizedstream = {};
+    this.personalizedstream.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/personalizedstream/get', 'GET', apiParams, clientConfig);
+
+    this.layers = {};
+    this.layers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layersummary', 'GET', apiParams, clientConfig);
+    this.layers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layersummary/{summaryId}', 'GET', apiParams, clientConfig);
+
+    this.layers.volumeAnnotations = {};
+    this.layers.volumeAnnotations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layers/{layerId}', 'GET', apiParams, clientConfig);
+    this.layers.volumeAnnotations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layers/{layerId}/annotations/{annotationId}', 'GET', apiParams, clientConfig);
+
+    this.layers.annotationData = {};
+    this.layers.annotationData.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layers/{layerId}/data/{annotationDataId}', 'GET', apiParams, clientConfig);
+    this.layers.annotationData.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/volumes/{volumeId}/layers/{layerId}/data', 'GET', apiParams, clientConfig);
+
+    this.familysharing = {};
+    this.familysharing.getFamilyInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/familysharing/getFamilyInfo', 'GET', apiParams, clientConfig);
+    this.familysharing.share = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/familysharing/share', 'POST', apiParams, clientConfig);
+    this.familysharing.unshare = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/familysharing/unshare', 'POST', apiParams, clientConfig);
+
+    this.notification = {};
+    this.notification.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/notification/get', 'GET', apiParams, clientConfig);
+
+    this.myconfig = {};
+    this.myconfig.updateUserSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/updateUserSettings', 'POST', apiParams, clientConfig);
+    this.myconfig.syncVolumeLicenses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/syncVolumeLicenses', 'POST', apiParams, clientConfig);
+    this.myconfig.requestAccess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/requestAccess', 'POST', apiParams, clientConfig);
+    this.myconfig.getUserSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/getUserSettings', 'GET', apiParams, clientConfig);
+    this.myconfig.releaseDownloadAccess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/myconfig/releaseDownloadAccess', 'POST', apiParams, clientConfig);
+
+    this.mylibrary = {};
+
+    this.mylibrary.bookshelves = {};
+    this.mylibrary.bookshelves.addVolume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/addVolume', 'POST', apiParams, clientConfig);
+    this.mylibrary.bookshelves.removeVolume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/removeVolume', 'POST', apiParams, clientConfig);
+    this.mylibrary.bookshelves.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves', 'GET', apiParams, clientConfig);
+    this.mylibrary.bookshelves.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}', 'GET', apiParams, clientConfig);
+    this.mylibrary.bookshelves.moveVolume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/moveVolume', 'POST', apiParams, clientConfig);
+    this.mylibrary.bookshelves.clearVolumes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/clearVolumes', 'POST', apiParams, clientConfig);
+
+    this.mylibrary.bookshelves.volumes = {};
+    this.mylibrary.bookshelves.volumes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/bookshelves/{shelf}/volumes', 'GET', apiParams, clientConfig);
+
+    this.mylibrary.annotations = {};
+    this.mylibrary.annotations.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations/{annotationId}', 'PUT', apiParams, clientConfig);
+    this.mylibrary.annotations.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations', 'POST', apiParams, clientConfig);
+    this.mylibrary.annotations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations/{annotationId}', 'DELETE', apiParams, clientConfig);
+    this.mylibrary.annotations.summary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations/summary', 'POST', apiParams, clientConfig);
+    this.mylibrary.annotations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/annotations', 'GET', apiParams, clientConfig);
+
+    this.mylibrary.readingpositions = {};
+    this.mylibrary.readingpositions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/readingpositions/{volumeId}', 'GET', apiParams, clientConfig);
+    this.mylibrary.readingpositions.setPosition = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/mylibrary/readingpositions/{volumeId}/setPosition', 'POST', apiParams, clientConfig);
+
+    this.series = {};
+    this.series.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/series/get', 'GET', apiParams, clientConfig);
+
+    this.series.membership = {};
+    this.series.membership.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/series/membership/get', 'GET', apiParams, clientConfig);
+
+    this.cloudloading = {};
+    this.cloudloading.deleteBook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/cloudloading/deleteBook', 'POST', apiParams, clientConfig);
+    this.cloudloading.addBook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/cloudloading/addBook', 'POST', apiParams, clientConfig);
+    this.cloudloading.updateBook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('books/v1/cloudloading/updateBook', 'POST', apiParams, clientConfig);
   }
 
 /**
