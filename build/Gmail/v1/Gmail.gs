@@ -20,40 +20,14 @@ class Gmail {
 
     this.users = {};
     this.users.getProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/profile', 'GET', apiParams, clientConfig);
-    this.users.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/watch', 'POST', apiParams, clientConfig);
     this.users.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/stop', 'POST', apiParams, clientConfig);
-
-    this.users.drafts = {};
-    this.users.drafts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts/{id}', 'DELETE', apiParams, clientConfig);
-    this.users.drafts.create = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts' : 'gmail/v1/users/{userId}/drafts';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-    this.users.drafts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts/{id}', 'GET', apiParams, clientConfig);
-    this.users.drafts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts', 'GET', apiParams, clientConfig);
-    this.users.drafts.send = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts/send' : 'gmail/v1/users/{userId}/drafts/send';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-    this.users.drafts.update = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts/{id}' : 'gmail/v1/users/{userId}/drafts/{id}';
-      return this._makeRequest(path, 'PUT', apiParams, clientConfig);
-    };
-
-    this.users.history = {};
-    this.users.history.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/history', 'GET', apiParams, clientConfig);
+    this.users.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/watch', 'POST', apiParams, clientConfig);
 
     this.users.messages = {};
-    this.users.messages.trash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/trash', 'POST', apiParams, clientConfig);
     this.users.messages.untrash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/untrash', 'POST', apiParams, clientConfig);
-    this.users.messages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}', 'DELETE', apiParams, clientConfig);
-    this.users.messages.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/batchDelete', 'POST', apiParams, clientConfig);
-    this.users.messages.import = async (apiParams = {}, clientConfig = {}) => {
+    this.users.messages.send = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/messages/import' : 'gmail/v1/users/{userId}/messages/import';
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/messages/send' : 'gmail/v1/users/{userId}/messages/send';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
     this.users.messages.insert = async (apiParams = {}, clientConfig = {}) => {
@@ -61,97 +35,123 @@ class Gmail {
       const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/messages' : 'gmail/v1/users/{userId}/messages';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
+    this.users.messages.modify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/modify', 'POST', apiParams, clientConfig);
     this.users.messages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}', 'GET', apiParams, clientConfig);
-    this.users.messages.send = async (apiParams = {}, clientConfig = {}) => {
+    this.users.messages.trash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/trash', 'POST', apiParams, clientConfig);
+    this.users.messages.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/batchDelete', 'POST', apiParams, clientConfig);
+    this.users.messages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages', 'GET', apiParams, clientConfig);
+    this.users.messages.batchModify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/batchModify', 'POST', apiParams, clientConfig);
+    this.users.messages.import = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/messages/send' : 'gmail/v1/users/{userId}/messages/send';
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/messages/import' : 'gmail/v1/users/{userId}/messages/import';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
-    this.users.messages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages', 'GET', apiParams, clientConfig);
-    this.users.messages.modify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}/modify', 'POST', apiParams, clientConfig);
-    this.users.messages.batchModify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/batchModify', 'POST', apiParams, clientConfig);
+    this.users.messages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{id}', 'DELETE', apiParams, clientConfig);
 
     this.users.messages.attachments = {};
     this.users.messages.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/messages/{messageId}/attachments/{id}', 'GET', apiParams, clientConfig);
 
-    this.users.labels = {};
-    this.users.labels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels', 'POST', apiParams, clientConfig);
-    this.users.labels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'DELETE', apiParams, clientConfig);
-    this.users.labels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'GET', apiParams, clientConfig);
-    this.users.labels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels', 'GET', apiParams, clientConfig);
-    this.users.labels.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'PUT', apiParams, clientConfig);
-    this.users.labels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'PATCH', apiParams, clientConfig);
+    this.users.drafts = {};
+    this.users.drafts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts/{id}', 'GET', apiParams, clientConfig);
+    this.users.drafts.create = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts' : 'gmail/v1/users/{userId}/drafts';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+    this.users.drafts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts', 'GET', apiParams, clientConfig);
+    this.users.drafts.update = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts/{id}' : 'gmail/v1/users/{userId}/drafts/{id}';
+      return this._makeRequest(path, 'PUT', apiParams, clientConfig);
+    };
+    this.users.drafts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/drafts/{id}', 'DELETE', apiParams, clientConfig);
+    this.users.drafts.send = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/gmail/v1/users/{userId}/drafts/send' : 'gmail/v1/users/{userId}/drafts/send';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
 
-    this.users.threads = {};
-    this.users.threads.trash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/trash', 'POST', apiParams, clientConfig);
-    this.users.threads.untrash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/untrash', 'POST', apiParams, clientConfig);
-    this.users.threads.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}', 'DELETE', apiParams, clientConfig);
-    this.users.threads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}', 'GET', apiParams, clientConfig);
-    this.users.threads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads', 'GET', apiParams, clientConfig);
-    this.users.threads.modify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/modify', 'POST', apiParams, clientConfig);
+    this.users.labels = {};
+    this.users.labels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'PATCH', apiParams, clientConfig);
+    this.users.labels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'DELETE', apiParams, clientConfig);
+    this.users.labels.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'PUT', apiParams, clientConfig);
+    this.users.labels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels/{id}', 'GET', apiParams, clientConfig);
+    this.users.labels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels', 'POST', apiParams, clientConfig);
+    this.users.labels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/labels', 'GET', apiParams, clientConfig);
 
     this.users.settings = {};
+    this.users.settings.updateAutoForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/autoForwarding', 'PUT', apiParams, clientConfig);
     this.users.settings.getImap = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/imap', 'GET', apiParams, clientConfig);
-    this.users.settings.updateImap = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/imap', 'PUT', apiParams, clientConfig);
     this.users.settings.getPop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/pop', 'GET', apiParams, clientConfig);
+    this.users.settings.getAutoForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/autoForwarding', 'GET', apiParams, clientConfig);
+    this.users.settings.updateImap = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/imap', 'PUT', apiParams, clientConfig);
+    this.users.settings.updateLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/language', 'PUT', apiParams, clientConfig);
     this.users.settings.updatePop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/pop', 'PUT', apiParams, clientConfig);
     this.users.settings.getVacation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/vacation', 'GET', apiParams, clientConfig);
-    this.users.settings.updateVacation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/vacation', 'PUT', apiParams, clientConfig);
     this.users.settings.getLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/language', 'GET', apiParams, clientConfig);
-    this.users.settings.updateLanguage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/language', 'PUT', apiParams, clientConfig);
-    this.users.settings.getAutoForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/autoForwarding', 'GET', apiParams, clientConfig);
-    this.users.settings.updateAutoForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/autoForwarding', 'PUT', apiParams, clientConfig);
-
-    this.users.settings.sendAs = {};
-    this.users.settings.sendAs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs', 'GET', apiParams, clientConfig);
-    this.users.settings.sendAs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'GET', apiParams, clientConfig);
-    this.users.settings.sendAs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs', 'POST', apiParams, clientConfig);
-    this.users.settings.sendAs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'PUT', apiParams, clientConfig);
-    this.users.settings.sendAs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'PATCH', apiParams, clientConfig);
-    this.users.settings.sendAs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'DELETE', apiParams, clientConfig);
-    this.users.settings.sendAs.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/verify', 'POST', apiParams, clientConfig);
-
-    this.users.settings.sendAs.smimeInfo = {};
-    this.users.settings.sendAs.smimeInfo.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', 'GET', apiParams, clientConfig);
-    this.users.settings.sendAs.smimeInfo.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', 'GET', apiParams, clientConfig);
-    this.users.settings.sendAs.smimeInfo.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', 'POST', apiParams, clientConfig);
-    this.users.settings.sendAs.smimeInfo.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', 'DELETE', apiParams, clientConfig);
-    this.users.settings.sendAs.smimeInfo.setDefault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault', 'POST', apiParams, clientConfig);
+    this.users.settings.updateVacation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/vacation', 'PUT', apiParams, clientConfig);
 
     this.users.settings.cse = {};
 
     this.users.settings.cse.identities = {};
-    this.users.settings.cse.identities.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities', 'POST', apiParams, clientConfig);
     this.users.settings.cse.identities.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities/{cseEmailAddress}', 'DELETE', apiParams, clientConfig);
+    this.users.settings.cse.identities.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities', 'POST', apiParams, clientConfig);
     this.users.settings.cse.identities.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities/{cseEmailAddress}', 'GET', apiParams, clientConfig);
-    this.users.settings.cse.identities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities', 'GET', apiParams, clientConfig);
     this.users.settings.cse.identities.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities/{emailAddress}', 'PATCH', apiParams, clientConfig);
+    this.users.settings.cse.identities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/identities', 'GET', apiParams, clientConfig);
 
     this.users.settings.cse.keypairs = {};
-    this.users.settings.cse.keypairs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs', 'POST', apiParams, clientConfig);
-    this.users.settings.cse.keypairs.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:disable', 'POST', apiParams, clientConfig);
-    this.users.settings.cse.keypairs.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:enable', 'POST', apiParams, clientConfig);
     this.users.settings.cse.keypairs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}', 'GET', apiParams, clientConfig);
+    this.users.settings.cse.keypairs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs', 'POST', apiParams, clientConfig);
     this.users.settings.cse.keypairs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs', 'GET', apiParams, clientConfig);
+    this.users.settings.cse.keypairs.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:enable', 'POST', apiParams, clientConfig);
     this.users.settings.cse.keypairs.obliterate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:obliterate', 'POST', apiParams, clientConfig);
+    this.users.settings.cse.keypairs.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/cse/keypairs/{keyPairId}:disable', 'POST', apiParams, clientConfig);
+
+    this.users.settings.sendAs = {};
+    this.users.settings.sendAs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs', 'POST', apiParams, clientConfig);
+    this.users.settings.sendAs.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/verify', 'POST', apiParams, clientConfig);
+    this.users.settings.sendAs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'GET', apiParams, clientConfig);
+    this.users.settings.sendAs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'PUT', apiParams, clientConfig);
+    this.users.settings.sendAs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs', 'GET', apiParams, clientConfig);
+    this.users.settings.sendAs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'DELETE', apiParams, clientConfig);
+    this.users.settings.sendAs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}', 'PATCH', apiParams, clientConfig);
+
+    this.users.settings.sendAs.smimeInfo = {};
+    this.users.settings.sendAs.smimeInfo.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', 'GET', apiParams, clientConfig);
+    this.users.settings.sendAs.smimeInfo.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', 'GET', apiParams, clientConfig);
+    this.users.settings.sendAs.smimeInfo.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}', 'DELETE', apiParams, clientConfig);
+    this.users.settings.sendAs.smimeInfo.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo', 'POST', apiParams, clientConfig);
+    this.users.settings.sendAs.smimeInfo.setDefault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/sendAs/{sendAsEmail}/smimeInfo/{id}/setDefault', 'POST', apiParams, clientConfig);
+
+    this.users.settings.delegates = {};
+    this.users.settings.delegates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates', 'POST', apiParams, clientConfig);
+    this.users.settings.delegates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates', 'GET', apiParams, clientConfig);
+    this.users.settings.delegates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates/{delegateEmail}', 'DELETE', apiParams, clientConfig);
+    this.users.settings.delegates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates/{delegateEmail}', 'GET', apiParams, clientConfig);
 
     this.users.settings.filters = {};
     this.users.settings.filters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters', 'GET', apiParams, clientConfig);
+    this.users.settings.filters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters/{id}', 'DELETE', apiParams, clientConfig);
     this.users.settings.filters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters/{id}', 'GET', apiParams, clientConfig);
     this.users.settings.filters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters', 'POST', apiParams, clientConfig);
-    this.users.settings.filters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/filters/{id}', 'DELETE', apiParams, clientConfig);
 
     this.users.settings.forwardingAddresses = {};
     this.users.settings.forwardingAddresses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses', 'GET', apiParams, clientConfig);
-    this.users.settings.forwardingAddresses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}', 'GET', apiParams, clientConfig);
-    this.users.settings.forwardingAddresses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses', 'POST', apiParams, clientConfig);
     this.users.settings.forwardingAddresses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}', 'DELETE', apiParams, clientConfig);
+    this.users.settings.forwardingAddresses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses', 'POST', apiParams, clientConfig);
+    this.users.settings.forwardingAddresses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/forwardingAddresses/{forwardingEmail}', 'GET', apiParams, clientConfig);
 
-    this.users.settings.delegates = {};
-    this.users.settings.delegates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates', 'GET', apiParams, clientConfig);
-    this.users.settings.delegates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates/{delegateEmail}', 'GET', apiParams, clientConfig);
-    this.users.settings.delegates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates', 'POST', apiParams, clientConfig);
-    this.users.settings.delegates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/settings/delegates/{delegateEmail}', 'DELETE', apiParams, clientConfig);
+    this.users.history = {};
+    this.users.history.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/history', 'GET', apiParams, clientConfig);
+
+    this.users.threads = {};
+    this.users.threads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads', 'GET', apiParams, clientConfig);
+    this.users.threads.untrash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/untrash', 'POST', apiParams, clientConfig);
+    this.users.threads.trash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/trash', 'POST', apiParams, clientConfig);
+    this.users.threads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}', 'GET', apiParams, clientConfig);
+    this.users.threads.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}', 'DELETE', apiParams, clientConfig);
+    this.users.threads.modify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('gmail/v1/users/{userId}/threads/{id}/modify', 'POST', apiParams, clientConfig);
   }
 
 /**
