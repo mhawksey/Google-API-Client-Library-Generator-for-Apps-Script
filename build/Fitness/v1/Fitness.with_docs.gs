@@ -20,7 +20,58 @@ class Fitness {
 
     this.users = {};
 
+    this.users.sessions = {};
+
+    /**
+     * Lists sessions previously created.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.activityType - If non-empty, only sessions with these activity types should be returned.
+     * @param {string} apiParams.endTime - An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned.
+     * @param {boolean} apiParams.includeDeleted - If true, and if both startTime and endTime are omitted, session deletions will be returned.
+     * @param {string} apiParams.pageToken - The continuation token, which is used for incremental syncing. To get the next batch of changes, set this parameter to the value of nextPageToken from the previous response. The page token is ignored if either start or end time is specified. If none of start time, end time, and the page token is specified, sessions modified in the last 30 days are returned.
+     * @param {string} apiParams.startTime - An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but endTime is specified, all sessions starting before endTime and ending after the start of time up to (endTime + 1 day) will be returned.
+     * @param {string} apiParams.userId - (Required) List sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.sessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates or insert a given session.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.sessionId - (Required) The ID of the session to be created.
+     * @param {string} apiParams.userId - (Required) Create sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.sessions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions/{sessionId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Deletes a session specified by the given session ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.sessionId - (Required) The ID of the session to be deleted.
+     * @param {string} apiParams.userId - (Required) Delete a session for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.sessions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions/{sessionId}', 'DELETE', apiParams, clientConfig);
+
     this.users.dataSources = {};
+
+    /**
+     * Returns the specified data source.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source to retrieve.
+     * @param {string} apiParams.userId - (Required) Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a new data source that is unique across all data sources belonging to this user. A data source is a unique source of sensor data. Data sources can expose raw data coming from hardware sensors on local or companion devices. They can also expose derived data, created by transforming or merging other data sources. Multiple data sources can exist for the same data type. Every data point in every dataset inserted into or read from the Fitness API has an associated data source. Each data source produces a unique stream of dataset updates, with a unique data source identifier. Not all changes to data source affect the data stream ID, so that data collected by updated versions of the same application/device can still be considered to belong to the same data source. Data sources are identified using a string generated by the server, based on the contents of the source being created. The dataStreamId field should not be set when invoking this method. It will be automatically generated by the server with the correct format. If a dataStreamId is set, it must match the format that the server would generate. This format is a combination of some fields from the data source, and has a specific order. If it doesn't match, the request will fail with an error. Specifying a DataType which is not a known type (beginning with "com.google.") will create a DataSource with a *custom data type*. Custom data types are only readable by the application that created them. Custom data types are *deprecated*; use standard data types instead. In addition to the data source fields included in the data source ID, the developer project number that is authenticated when creating the data source is included. This developer project number is obfuscated when read by any other developer reading public data types.
@@ -45,29 +96,6 @@ class Fitness {
     this.users.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be modified. Data sources are identified by their dataStreamId.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source to update.
-     * @param {string} apiParams.userId - (Required) Update the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.dataSources.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Returns the specified data source.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source to retrieve.
-     * @param {string} apiParams.userId - (Required) Retrieve a data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'GET', apiParams, clientConfig);
-
-    /**
      * Deletes the specified data source. The request will fail if the data source contains any data points.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source to delete.
@@ -78,46 +106,17 @@ class Fitness {
      */
     this.users.dataSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'DELETE', apiParams, clientConfig);
 
-    this.users.dataSources.datasets = {};
-
     /**
-     * Adds data points to a dataset. The dataset need not be previously created. All points within the given dataset will be returned with subsquent calls to retrieve this dataset. Data points can belong to more than one dataset. This method does not use patch semantics: the data points provided are merely inserted, with no existing data replaced.
+     * Updates the specified data source. The dataStreamId, dataType, type, dataStreamName, and device properties with the exception of version, cannot be modified. Data sources are identified by their dataStreamId.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source that created the dataset.
-     * @param {string} apiParams.datasetId - (Required) This field is not used, and can be safely omitted.
-     * @param {string} apiParams.userId - (Required) Patch a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
+     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source to update.
+     * @param {string} apiParams.userId - (Required) Update the data source for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.users.dataSources.datasets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Returns a dataset containing all data points whose start and end times overlap with the specified range of the dataset minimum start time and maximum end time. Specifically, any data point whose start time is less than or equal to the dataset end time and whose end time is greater than or equal to the dataset start time.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source that created the dataset.
-     * @param {string} apiParams.datasetId - (Required) Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers.
-     * @param {integer} apiParams.limit - If specified, no more than this many data points will be included in the dataset. If there are more data points in the dataset, nextPageToken will be set in the dataset response. The limit is applied from the end of the time range. That is, if pageToken is absent, the limit most recent data points will be returned.
-     * @param {string} apiParams.pageToken - The continuation token, which is used to page through large datasets. To get the next page of a dataset, set this parameter to the value of nextPageToken from the previous response. Each subsequent call will yield a partial dataset with data point end timestamps that are strictly smaller than those in the previous partial response.
-     * @param {string} apiParams.userId - (Required) Retrieve a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.dataSources.datasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Performs an inclusive delete of all data points whose start and end times have any overlap with the time range specified by the dataset ID. For most data types, the entire data point will be deleted. For data types where the time span represents a consistent value (such as com.google.activity.segment), and a data point straddles either end point of the dataset, only the overlapping portion of the data point will be deleted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source that created the dataset.
-     * @param {string} apiParams.datasetId - (Required) Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers.
-     * @param {string} apiParams.userId - (Required) Delete a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.dataSources.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'DELETE', apiParams, clientConfig);
+    this.users.dataSources.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}', 'PUT', apiParams, clientConfig);
 
     this.users.dataSources.dataPointChanges = {};
 
@@ -134,6 +133,47 @@ class Fitness {
      */
     this.users.dataSources.dataPointChanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/dataPointChanges', 'GET', apiParams, clientConfig);
 
+    this.users.dataSources.datasets = {};
+
+    /**
+     * Returns a dataset containing all data points whose start and end times overlap with the specified range of the dataset minimum start time and maximum end time. Specifically, any data point whose start time is less than or equal to the dataset end time and whose end time is greater than or equal to the dataset start time.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source that created the dataset.
+     * @param {string} apiParams.datasetId - (Required) Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers.
+     * @param {integer} apiParams.limit - If specified, no more than this many data points will be included in the dataset. If there are more data points in the dataset, nextPageToken will be set in the dataset response. The limit is applied from the end of the time range. That is, if pageToken is absent, the limit most recent data points will be returned.
+     * @param {string} apiParams.pageToken - The continuation token, which is used to page through large datasets. To get the next page of a dataset, set this parameter to the value of nextPageToken from the previous response. Each subsequent call will yield a partial dataset with data point end timestamps that are strictly smaller than those in the previous partial response.
+     * @param {string} apiParams.userId - (Required) Retrieve a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.dataSources.datasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Adds data points to a dataset. The dataset need not be previously created. All points within the given dataset will be returned with subsquent calls to retrieve this dataset. Data points can belong to more than one dataset. This method does not use patch semantics: the data points provided are merely inserted, with no existing data replaced.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source that created the dataset.
+     * @param {string} apiParams.datasetId - (Required) This field is not used, and can be safely omitted.
+     * @param {string} apiParams.userId - (Required) Patch a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.dataSources.datasets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Performs an inclusive delete of all data points whose start and end times have any overlap with the time range specified by the dataset ID. For most data types, the entire data point will be deleted. For data types where the time span represents a consistent value (such as com.google.activity.segment), and a data point straddles either end point of the dataset, only the overlapping portion of the data point will be deleted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataSourceId - (Required) The data stream ID of the data source that created the dataset.
+     * @param {string} apiParams.datasetId - (Required) Dataset identifier that is a composite of the minimum data point start time and maximum data point end time represented as nanoseconds from the epoch. The ID is formatted like: "startTime-endTime" where startTime and endTime are 64 bit integers.
+     * @param {string} apiParams.userId - (Required) Delete a dataset for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.users.dataSources.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataSources/{dataSourceId}/datasets/{datasetId}', 'DELETE', apiParams, clientConfig);
+
     this.users.dataset = {};
 
     /**
@@ -146,46 +186,6 @@ class Fitness {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.users.dataset.aggregate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/dataset:aggregate', 'POST', apiParams, clientConfig);
-
-    this.users.sessions = {};
-
-    /**
-     * Updates or insert a given session.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.sessionId - (Required) The ID of the session to be created.
-     * @param {string} apiParams.userId - (Required) Create sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.sessions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions/{sessionId}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Lists sessions previously created.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.activityType - If non-empty, only sessions with these activity types should be returned.
-     * @param {string} apiParams.endTime - An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but startTime is specified, all sessions ending after startTime to the end of time will be returned.
-     * @param {boolean} apiParams.includeDeleted - If true, and if both startTime and endTime are omitted, session deletions will be returned.
-     * @param {string} apiParams.pageToken - The continuation token, which is used for incremental syncing. To get the next batch of changes, set this parameter to the value of nextPageToken from the previous response. The page token is ignored if either start or end time is specified. If none of start time, end time, and the page token is specified, sessions modified in the last 30 days are returned.
-     * @param {string} apiParams.startTime - An RFC3339 timestamp. Only sessions starting before endTime and ending after startTime up to (endTime + 1 day) will be included in the response. If this time is omitted but endTime is specified, all sessions starting before endTime and ending after the start of time up to (endTime + 1 day) will be returned.
-     * @param {string} apiParams.userId - (Required) List sessions for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.sessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a session specified by the given session ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.sessionId - (Required) The ID of the session to be deleted.
-     * @param {string} apiParams.userId - (Required) Delete a session for the person identified. Use me to indicate the authenticated user. Only me is supported at this time.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.users.sessions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{userId}/sessions/{sessionId}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
