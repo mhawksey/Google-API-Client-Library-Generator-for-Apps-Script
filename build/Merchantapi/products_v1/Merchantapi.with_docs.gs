@@ -23,6 +23,17 @@ class Merchantapi {
     this.accounts.productInputs = {};
 
     /**
+     * Deletes a product input from your Merchant Center account. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataSource - Required. The primary or supplemental data source from which the product input should be deleted. Format: `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`.
+     * @param {string} apiParams.name - (Required) Required. The name of the product input resource to delete. Format: `accounts/{account}/productInputs/{product}` where the last section `product` consists of: `content_language~feed_label~offer_id` example for product name is `accounts/123/productInputs/en~US~sku123`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.productInputs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * [Uploads a product input to your Merchant Center account](/merchant/api/guides/products/add-manage#add_a_product). You must have a products [data source](/merchant/api/guides/data-sources/api-sources#create-primary-data-source) to be able to insert a product. The unique identifier of the data source is passed as a query parameter in the request URL. If a product input with the same contentLanguage, offerId, and dataSource already exists, then the product input inserted by this method replaces that entry. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.dataSource - Required. The primary or supplemental product data source name. If the product already exists and data source provided is different, then the product will be moved to a new data source. For more information, see [Create a primary data source](/merchant/api/guides/data-sources/api-sources#create-primary-data-source). Only API data sources are supported. Format: `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`.
@@ -47,28 +58,7 @@ class Merchantapi {
      */
     this.accounts.productInputs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1/{+name}', 'PATCH', apiParams, clientConfig);
 
-    /**
-     * Deletes a product input from your Merchant Center account. After inserting, updating, or deleting a product input, it may take several minutes before the processed product can be retrieved.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataSource - Required. The primary or supplemental data source from which the product input should be deleted. Format: `accounts/{account}/dataSources/{datasource}`. For example, `accounts/123456/dataSources/104628`.
-     * @param {string} apiParams.name - (Required) Required. The name of the product input resource to delete. Format: `accounts/{account}/productInputs/{product}` where the last section `product` consists of: `content_language~feed_label~offer_id` example for product name is `accounts/123/productInputs/en~US~sku123`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.productInputs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.accounts.products = {};
-
-    /**
-     * Retrieves the processed product from your Merchant Center account. After inserting, updating, or deleting a product input, it may take several minutes before the updated final product can be retrieved.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}` where the last section `product` consists of: `content_language~feed_label~offer_id` example for product name is `accounts/123/products/en~US~sku123`. A legacy local product name would be `accounts/123/products/local~en~US~sku123`. Note: For calls to the v1beta version, the `product` section consists of: `channel~content_language~feed_label~offer_id`, for example: `accounts/123/products/online~en~US~sku123`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists the processed products in your Merchant Center account. The response might contain fewer items than specified by `pageSize`. Rely on `pageToken` to determine if there are more items to be requested. After inserting, updating, or deleting a product input, it may take several minutes before the updated processed product can be retrieved.
@@ -81,6 +71,16 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1/{+parent}/products', 'GET', apiParams, clientConfig);
+
+    /**
+     * Retrieves the processed product from your Merchant Center account. After inserting, updating, or deleting a product input, it may take several minutes before the updated final product can be retrieved.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the product to retrieve. Format: `accounts/{account}/products/{product}` where the last section `product` consists of: `content_language~feed_label~offer_id` example for product name is `accounts/123/products/en~US~sku123`. A legacy local product name would be `accounts/123/products/local~en~US~sku123`. Note: For calls to the v1beta version, the `product` section consists of: `channel~content_language~feed_label~offer_id`, for example: `accounts/123/products/online~en~US~sku123`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
