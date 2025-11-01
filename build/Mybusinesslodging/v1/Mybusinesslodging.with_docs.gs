@@ -21,17 +21,6 @@ class Mybusinesslodging {
     this.locations = {};
 
     /**
-     * Returns the Lodging of a specific location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Google identifier for this location in the form: `locations/{location_id}/lodging`
-     * @param {string} apiParams.readMask - Required. The specific fields to return. Use "*" to include all fields. Repeated field items cannot be individually specified.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.getLodging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Updates the Lodging of a specific location.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Google identifier for this location in the form: `locations/{location_id}/lodging`
@@ -42,6 +31,17 @@ class Mybusinesslodging {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.locations.updateLodging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns the Lodging of a specific location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Google identifier for this location in the form: `locations/{location_id}/lodging`
+     * @param {string} apiParams.readMask - Required. The specific fields to return. Use "*" to include all fields. Repeated field items cannot be individually specified.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.getLodging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.locations.lodging = {};
 
