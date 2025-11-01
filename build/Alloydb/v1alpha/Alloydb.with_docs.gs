@@ -25,7 +25,7 @@ class Alloydb {
     /**
      * Lists information about the supported locations for this service.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.extraLocationTypes - Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.
+     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
      * @param {string} apiParams.name - (Required) The resource that owns the locations collection, if applicable.
      * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
@@ -49,6 +49,16 @@ class Alloydb {
     this.projects.locations.operations = {};
 
     /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - The standard list filter.
@@ -61,16 +71,6 @@ class Alloydb {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/operations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
@@ -96,45 +96,9 @@ class Alloydb {
     this.projects.locations.clusters = {};
 
     /**
-     * Restores an AlloyDB cluster from a CloudSQL resource.
+     * Creates a cluster of type SECONDARY in the given location using the primary cluster as the source.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The location of the new cluster. For the required format, see the comment on Cluster.name field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.clusters.restoreFromCloudSQL = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:restoreFromCloudSQL', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists Clusters in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. For the required format, see the comment on the Cluster.name field. Additionally, you can perform an aggregated list operation by specifying a value with the following format: * projects/{project}/locations/-
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single Cluster.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the Cluster.name field.
-     * @param {string} apiParams.view - Optional. The view of the cluster to return. Returns all default fields if not set.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new Cluster in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clusterId - Required. ID of the requesting object.
+     * @param {string} apiParams.clusterId - Required. ID of the requesting object (the secondary cluster).
      * @param {string} apiParams.parent - (Required) Required. The location of the new cluster. For the required format, see the comment on the Cluster.name field.
      * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {boolean} apiParams.validateOnly - Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request.
@@ -143,7 +107,7 @@ class Alloydb {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.createsecondary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:createsecondary', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the parameters of a single Cluster.
@@ -161,37 +125,29 @@ class Alloydb {
     this.projects.locations.clusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Exports data from the cluster. Imperative only.
+     * Creates a new Cluster in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the cluster.
+     * @param {string} apiParams.clusterId - Required. ID of the requesting object.
+     * @param {string} apiParams.parent - (Required) Required. The location of the new cluster. For the required format, see the comment on the Cluster.name field.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:export', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters', 'POST', apiParams, clientConfig);
 
     /**
-     * Imports data to the cluster. Imperative only.
+     * Promotes a SECONDARY cluster. This turns down replication from the PRIMARY cluster and promotes a secondary cluster into its own standalone cluster. Imperative only.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the cluster.
+     * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the Cluster.name field
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:import', 'POST', apiParams, clientConfig);
-
-    /**
-     * Upgrades a single Cluster. Imperative only.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the cluster.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.clusters.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:upgrade', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.clusters.promote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:promote', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a single Cluster.
@@ -208,15 +164,59 @@ class Alloydb {
     this.projects.locations.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Promotes a SECONDARY cluster. This turns down replication from the PRIMARY cluster and promotes a secondary cluster into its own standalone cluster. Imperative only.
+     * Creates a new Cluster in a given project and location, with a volume restored from the provided source, either a backup ID or a point-in-time and a source cluster.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the Cluster.name field
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. For the required format, see the comment on the Cluster.name field.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.promote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:promote', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:restore', 'POST', apiParams, clientConfig);
+
+    /**
+     * Restores an AlloyDB cluster from a CloudSQL resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The location of the new cluster. For the required format, see the comment on Cluster.name field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.clusters.restoreFromCloudSQL = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:restoreFromCloudSQL', 'POST', apiParams, clientConfig);
+
+    /**
+     * Exports data from the cluster. Imperative only.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the cluster.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.clusters.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:export', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single Cluster.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the Cluster.name field.
+     * @param {string} apiParams.view - Optional. The view of the cluster to return. Returns all default fields if not set.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Upgrades a single Cluster. Imperative only.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the cluster.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.clusters.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:upgrade', 'PATCH', apiParams, clientConfig);
 
     /**
      * Switches the roles of PRIMARY and SECONDARY clusters without any data loss. This promotes the SECONDARY cluster to PRIMARY and sets up the original PRIMARY cluster to replicate from this newly promoted cluster.
@@ -230,56 +230,55 @@ class Alloydb {
     this.projects.locations.clusters.switchover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:switchover', 'POST', apiParams, clientConfig);
 
     /**
-     * Creates a new Cluster in a given project and location, with a volume restored from the provided source, either a backup ID or a point-in-time and a source cluster.
+     * Imports data to the cluster. Imperative only.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. For the required format, see the comment on the Cluster.name field.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the cluster.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:restore', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:import', 'POST', apiParams, clientConfig);
 
     /**
-     * Creates a cluster of type SECONDARY in the given location using the primary cluster as the source.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clusterId - Required. ID of the requesting object (the secondary cluster).
-     * @param {string} apiParams.parent - (Required) Required. The location of the new cluster. For the required format, see the comment on the Cluster.name field.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.clusters.createsecondary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:createsecondary', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.clusters.instances = {};
-
-    /**
-     * Lists Instances in a given project and location.
+     * Lists Clusters in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - Optional. Filtering results
      * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
      * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
      * @param {string} apiParams.pageToken - A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. For the required format, see the comment on the Instance.name field. Additionally, you can perform an aggregated list operation by specifying a value with one of the following formats: * projects/{project}/locations/-/clusters/- * projects/{project}/locations/{region}/clusters/-
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. For the required format, see the comment on the Cluster.name field. Additionally, you can perform an aggregated list operation by specifying a value with the following format: * projects/{project}/locations/-
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instances', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.clusters.instances = {};
 
     /**
-     * Gets details of a single Instance.
+     * Deletes a single Instance.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The current etag of the Instance. If an etag is provided and does not match the current etag of the Instance, deletion will be blocked and an ABORTED error will be returned.
      * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the Instance.name field.
-     * @param {string} apiParams.view - The view of the instance to return.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Restart an Instance in a cluster. Imperative only.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the Instance.name field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.clusters.instances.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:restart', 'POST', apiParams, clientConfig);
 
     /**
      * Creates a new Instance in a given project and location.
@@ -294,20 +293,6 @@ class Alloydb {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.clusters.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instances', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates a new SECONDARY Instance in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.instanceId - Required. ID of the requesting object.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. For the required format, see the comment on the Instance.name field.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.clusters.instances.createsecondary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instances:createsecondary', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the parameters of a single Instance.
@@ -325,17 +310,15 @@ class Alloydb {
     this.projects.locations.clusters.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a single Instance.
+     * Injects fault in an instance. Imperative only.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The current etag of the Instance. If an etag is provided and does not match the current etag of the Instance, deletion will be blocked and an ABORTED error will be returned.
      * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the Instance.name field.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.injectFault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:injectFault', 'POST', apiParams, clientConfig);
 
     /**
      * Forces a Failover for a highly available instance. Failover promotes the HA standby instance as the new primary. Imperative only.
@@ -349,26 +332,43 @@ class Alloydb {
     this.projects.locations.clusters.instances.failover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:failover', 'POST', apiParams, clientConfig);
 
     /**
-     * Injects fault in an instance. Imperative only.
+     * Gets details of a single Instance.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the Instance.name field.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.view - The view of the instance to return.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.instances.injectFault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:injectFault', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Restart an Instance in a cluster. Imperative only.
+     * Creates a new SECONDARY Instance in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the Instance.name field.
+     * @param {string} apiParams.instanceId - Required. ID of the requesting object.
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. For the required format, see the comment on the Instance.name field.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, performs request validation, for example, permission checks and any other type of validation, but does not actually execute the create request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.clusters.instances.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:restart', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.createsecondary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instances:createsecondary', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists Instances in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filtering results
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return.
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. For the required format, see the comment on the Instance.name field. Additionally, you can perform an aggregated list operation by specifying a value with one of the following formats: * projects/{project}/locations/-/clusters/- * projects/{project}/locations/{region}/clusters/-
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.clusters.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instances', 'GET', apiParams, clientConfig);
 
     /**
      * Get instance metadata used for a connection.
@@ -382,44 +382,6 @@ class Alloydb {
     this.projects.locations.clusters.instances.getConnectionInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/connectionInfo', 'GET', apiParams, clientConfig);
 
     this.projects.locations.clusters.users = {};
-
-    /**
-     * Lists Users in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filtering results
-     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
-     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. Parent value for ListUsersRequest
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.clusters.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/users', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single User.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the User.name field.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.clusters.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new User in a given project, location, and cluster.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {string} apiParams.userId - Required. ID of the requesting object.
-     * @param {boolean} apiParams.validateOnly - Optional. If set, the backend validates the request, but doesn't actually execute it.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.clusters.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/users', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the parameters of a single User.
@@ -437,6 +399,16 @@ class Alloydb {
     this.projects.locations.clusters.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * Gets details of a single User.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the User.name field.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.clusters.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Deletes a single User.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the resource. For the required format, see the comment on the User.name field.
@@ -447,6 +419,49 @@ class Alloydb {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.clusters.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists Users in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filtering results
+     * @param {string} apiParams.orderBy - Optional. Hint for how to order the results
+     * @param {integer} apiParams.pageSize - Optional. Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - Optional. A token identifying a page of results the server should return.
+     * @param {string} apiParams.parent - (Required) Required. Parent value for ListUsersRequest
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.clusters.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/users', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new User in a given project, location, and cluster.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Value for parent.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.userId - Required. ID of the requesting object.
+     * @param {boolean} apiParams.validateOnly - Optional. If set, the backend validates the request, but doesn't actually execute it.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.clusters.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/users', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.supportedDatabaseFlags = {};
+
+    /**
+     * Lists SupportedDatabaseFlags for a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
+     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return.
+     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. The required format is: * projects/{project}/locations/{location} Regardless of the parent specified here, as long it is contains a valid project and location, the service will return a static list of supported flags resources. Note that we do not yet support region-specific flags.
+     * @param {string} apiParams.scope - Optional. The scope for which supported flags are requested. If not specified, default is DATABASE.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.supportedDatabaseFlags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/supportedDatabaseFlags', 'GET', apiParams, clientConfig);
 
     this.projects.locations.backups = {};
 
@@ -463,30 +478,6 @@ class Alloydb {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/backups', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single Backup.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new Backup in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.backupId - Required. ID of the requesting object.
-     * @param {string} apiParams.parent - (Required) Required. Value for parent.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {boolean} apiParams.validateOnly - Optional. If set, the backend validates the request, but doesn't actually execute it.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.backups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/backups', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the parameters of a single Backup.
@@ -516,20 +507,29 @@ class Alloydb {
      */
     this.projects.locations.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.supportedDatabaseFlags = {};
-
     /**
-     * Lists SupportedDatabaseFlags for a given project and location.
+     * Gets details of a single Backup.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default.
-     * @param {string} apiParams.pageToken - A token identifying a page of results the server should return.
-     * @param {string} apiParams.parent - (Required) Required. The name of the parent resource. The required format is: * projects/{project}/locations/{location} Regardless of the parent specified here, as long it is contains a valid project and location, the service will return a static list of supported flags resources. Note that we do not yet support region-specific flags.
-     * @param {string} apiParams.scope - Optional. The scope for which supported flags are requested. If not specified, default is DATABASE.
+     * @param {string} apiParams.name - (Required) Required. Name of the resource
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.supportedDatabaseFlags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/supportedDatabaseFlags', 'GET', apiParams, clientConfig);
+    this.projects.locations.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new Backup in a given project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.backupId - Required. ID of the requesting object.
+     * @param {string} apiParams.parent - (Required) Required. Value for parent.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server ignores the request if it has already been completed. The server guarantees that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, ignores the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {boolean} apiParams.validateOnly - Optional. If set, the backend validates the request, but doesn't actually execute it.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.backups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/backups', 'POST', apiParams, clientConfig);
   }
 
 /**
