@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Search Console API (version
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:54:18 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:47:11 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:15:57 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:15:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:30 GMT
 
 
@@ -37,28 +37,49 @@ Query your data with filters and parameters that you define. Returns zero or mor
 | `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `urlTestingTools`
+### `sites`
 
-### `urlTestingTools.mobileFriendlyTest`
+#### `sites.list()`
 
-#### `urlTestingTools.mobileFriendlyTest.run()`
-
-Runs Mobile-Friendly Test for a given URL.
+ Lists the user's Search Console sites.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `sites.delete()`
+
+ Removes a site from the set of the user's Search Console sites.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. |
+
+#### `sites.get()`
+
+ Retrieves information about specific site.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. |
+
+#### `sites.add()`
+
+ Adds a site to the set of the user's sites in Search Console.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The URL of the site to add. |
 
 ### `sitemaps`
 
-#### `sitemaps.delete()`
+#### `sitemaps.submit()`
 
-Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that were previously crawled in the deleted sitemap.
+Submits a sitemap for a site.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
 | `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
 
 #### `sitemaps.get()`
 
@@ -78,44 +99,23 @@ Retrieves information about a specific sitemap.
 | `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
 | `params.sitemapIndex` | `string` | No |  A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`. |
 
-#### `sitemaps.submit()`
+#### `sitemaps.delete()`
 
-Submits a sitemap for a site.
+Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that were previously crawled in the deleted sitemap.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
 | `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
 
-### `sites`
+### `urlTestingTools`
 
-#### `sites.delete()`
+### `urlTestingTools.mobileFriendlyTest`
 
- Removes a site from the set of the user's Search Console sites.
+#### `urlTestingTools.mobileFriendlyTest.run()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. |
-
-#### `sites.get()`
-
- Retrieves information about specific site.
+Runs Mobile-Friendly Test for a given URL.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The URI of the property as defined in Search Console. **Examples:** `http://www.example.com/` or `sc-domain:example.com`. |
-
-#### `sites.list()`
-
- Lists the user's Search Console sites.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-
-#### `sites.add()`
-
- Adds a site to the set of the user's sites in Search Console.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The URL of the site to add. |
+| `params.requestBody` | `object` | Yes | The request body. |
