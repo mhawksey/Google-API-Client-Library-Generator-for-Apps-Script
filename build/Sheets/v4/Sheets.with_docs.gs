@@ -21,6 +21,17 @@ class Sheets {
     this.spreadsheets = {};
 
     /**
+     * Applies one or more updates to the spreadsheet. Each request is validated before being applied. If any request is not valid then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. The replies will mirror the requests. For example, if you applied 4 updates and the 3rd one had a reply, then the response will have 2 empty replies, the actual reply, and another empty reply, in that order. Due to the collaborative nature of spreadsheets, it is not guaranteed that the spreadsheet will reflect exactly your changes after this completes, however it is guaranteed that the updates in the request will be applied together atomically. Your changes may be altered with respect to collaborator changes. If there are no collaborators, the spreadsheet should reflect your changes.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.spreadsheetId - (Required) The spreadsheet to apply the updates to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}:batchUpdate', 'POST', apiParams, clientConfig);
+
+    /**
      * Creates a spreadsheet, returning the newly created spreadsheet.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -54,146 +65,19 @@ class Sheets {
      */
     this.spreadsheets.getByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}:getByDataFilter', 'POST', apiParams, clientConfig);
 
+    this.spreadsheets.sheets = {};
+
     /**
-     * Applies one or more updates to the spreadsheet. Each request is validated before being applied. If any request is not valid then the entire request will fail and nothing will be applied. Some requests have replies to give you some information about how they are applied. The replies will mirror the requests. For example, if you applied 4 updates and the 3rd one had a reply, then the response will have 2 empty replies, the actual reply, and another empty reply, in that order. Due to the collaborative nature of spreadsheets, it is not guaranteed that the spreadsheet will reflect exactly your changes after this completes, however it is guaranteed that the updates in the request will be applied together atomically. Your changes may be altered with respect to collaborator changes. If there are no collaborators, the spreadsheet should reflect your changes.
+     * Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the newly created sheet.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.spreadsheetId - (Required) The spreadsheet to apply the updates to.
+     * @param {integer} apiParams.sheetId - (Required) The ID of the sheet to copy.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet containing the sheet to copy.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.spreadsheets.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}:batchUpdate', 'POST', apiParams, clientConfig);
-
-    this.spreadsheets.values = {};
-
-    /**
-     * Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dateTimeRenderOption - How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
-     * @param {string} apiParams.majorDimension - The major dimension that results should use. For example, if the spreadsheet data in Sheet1 is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=Sheet1!A1:B2?majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=Sheet1!A1:B2?majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
-     * @param {string} apiParams.range - (Required) The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to retrieve data from.
-     * @param {string} apiParams.valueRenderOption - How values should be represented in the output. The default render option is FORMATTED_VALUE.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and a valueInputOption.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.includeValuesInResponse - Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns).
-     * @param {string} apiParams.range - (Required) The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to update.
-     * @param {string} apiParams.responseDateTimeRenderOption - Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
-     * @param {string} apiParams.responseValueRenderOption - Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
-     * @param {string} apiParams.valueInputOption - How the input data should be interpreted.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Appends values to a spreadsheet. The input range is used to search for existing data and find a "table" within that range. Values will be appended to the next row of the table, starting with the first column of the table. See the [guide](https://developers.google.com/workspace/sheets/api/guides/values#appending_values) and [sample code](https://developers.google.com/workspace/sheets/api/samples/writing#append_values) for specific details of how tables are detected and data is appended. The caller must specify the spreadsheet ID, range, and a valueInputOption. The `valueInputOption` only controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.includeValuesInResponse - Determines if the update response should include the values of the cells that were appended. By default, responses do not include the updated values.
-     * @param {string} apiParams.insertDataOption - How the input data should be inserted.
-     * @param {string} apiParams.range - (Required) The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of a range to search for a logical table of data. Values are appended after the last row of the table.
-     * @param {string} apiParams.responseDateTimeRenderOption - Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
-     * @param {string} apiParams.responseValueRenderOption - Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
-     * @param {string} apiParams.valueInputOption - How the input data should be interpreted.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.append = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}:append', 'POST', apiParams, clientConfig);
-
-    /**
-     * Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.range - (Required) The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to clear.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}:clear', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dateTimeRenderOption - How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
-     * @param {string} apiParams.majorDimension - The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `ranges=["A1:B2"],majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `ranges=["A1:B2"],majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
-     * @param {string} apiParams.ranges - The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to retrieve data from.
-     * @param {string} apiParams.valueRenderOption - How values should be represented in the output. The default render option is ValueRenderOption.FORMATTED_VALUE.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchGet', 'GET', apiParams, clientConfig);
-
-    /**
-     * Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchUpdate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting and data validation) are kept.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.batchClear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchClear', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns one or more ranges of values that match the specified data filters. The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to retrieve data from.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.batchGetByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter', 'POST', apiParams, clientConfig);
-
-    /**
-     * Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.batchUpdateByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter', 'POST', apiParams, clientConfig);
-
-    /**
-     * Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more DataFilters. Ranges matching any of the specified data filters will be cleared. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.spreadsheets.values.batchClearByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter', 'POST', apiParams, clientConfig);
+    this.spreadsheets.sheets.copyTo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', 'POST', apiParams, clientConfig);
 
     this.spreadsheets.developerMetadata = {};
 
@@ -219,19 +103,135 @@ class Sheets {
      */
     this.spreadsheets.developerMetadata.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/developerMetadata:search', 'POST', apiParams, clientConfig);
 
-    this.spreadsheets.sheets = {};
+    this.spreadsheets.values = {};
 
     /**
-     * Copies a single sheet from a spreadsheet to another spreadsheet. Returns the properties of the newly created sheet.
+     * Returns one or more ranges of values that match the specified data filters. The caller must specify the spreadsheet ID and one or more DataFilters. Ranges that match any of the data filters in the request will be returned.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.sheetId - (Required) The ID of the sheet to copy.
-     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet containing the sheet to copy.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to retrieve data from.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.spreadsheets.sheets.copyTo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', 'POST', apiParams, clientConfig);
+    this.spreadsheets.values.batchGetByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter', 'POST', apiParams, clientConfig);
+
+    /**
+     * Appends values to a spreadsheet. The input range is used to search for existing data and find a "table" within that range. Values will be appended to the next row of the table, starting with the first column of the table. See the [guide](https://developers.google.com/workspace/sheets/api/guides/values#appending_values) and [sample code](https://developers.google.com/workspace/sheets/api/samples/writing#append_values) for specific details of how tables are detected and data is appended. The caller must specify the spreadsheet ID, range, and a valueInputOption. The `valueInputOption` only controls how the input data will be added to the sheet (column-wise or row-wise), it does not influence what cell the data starts being written to.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.includeValuesInResponse - Determines if the update response should include the values of the cells that were appended. By default, responses do not include the updated values.
+     * @param {string} apiParams.insertDataOption - How the input data should be inserted.
+     * @param {string} apiParams.range - (Required) The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of a range to search for a logical table of data. Values are appended after the last row of the table.
+     * @param {string} apiParams.responseDateTimeRenderOption - Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
+     * @param {string} apiParams.responseValueRenderOption - Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
+     * @param {string} apiParams.valueInputOption - How the input data should be interpreted.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.values.append = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}:append', 'POST', apiParams, clientConfig);
+
+    /**
+     * Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more DataFilters. Ranges matching any of the specified data filters will be cleared. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.values.batchClearByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter', 'POST', apiParams, clientConfig);
+
+    /**
+     * Sets values in a range of a spreadsheet. The caller must specify the spreadsheet ID, range, and a valueInputOption.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.includeValuesInResponse - Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns).
+     * @param {string} apiParams.range - (Required) The [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to update.
+     * @param {string} apiParams.responseDateTimeRenderOption - Determines how dates, times, and durations in the response should be rendered. This is ignored if response_value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
+     * @param {string} apiParams.responseValueRenderOption - Determines how values in the response should be rendered. The default render option is FORMATTED_VALUE.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
+     * @param {string} apiParams.valueInputOption - How the input data should be interpreted.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.values.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Clears one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges. Only values are cleared -- all other properties of the cell (such as formatting and data validation) are kept.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.values.batchClear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchClear', 'POST', apiParams, clientConfig);
+
+    /**
+     * Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more DataFilterValueRanges.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.values.batchUpdateByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns one or more ranges of values from a spreadsheet. The caller must specify the spreadsheet ID and one or more ranges.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dateTimeRenderOption - How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
+     * @param {string} apiParams.majorDimension - The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then requesting `ranges=["A1:B2"],majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `ranges=["A1:B2"],majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
+     * @param {string} apiParams.ranges - The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to retrieve data from.
+     * @param {string} apiParams.valueRenderOption - How values should be represented in the output. The default render option is ValueRenderOption.FORMATTED_VALUE.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.values.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchGet', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns a range of values from a spreadsheet. The caller must specify the spreadsheet ID and a range.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dateTimeRenderOption - How dates, times, and durations should be represented in the output. This is ignored if value_render_option is FORMATTED_VALUE. The default dateTime render option is SERIAL_NUMBER.
+     * @param {string} apiParams.majorDimension - The major dimension that results should use. For example, if the spreadsheet data in Sheet1 is: `A1=1,B1=2,A2=3,B2=4`, then requesting `range=Sheet1!A1:B2?majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas requesting `range=Sheet1!A1:B2?majorDimension=COLUMNS` returns `[[1,3],[2,4]]`.
+     * @param {string} apiParams.range - (Required) The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the range to retrieve values from.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to retrieve data from.
+     * @param {string} apiParams.valueRenderOption - How values should be represented in the output. The default render option is FORMATTED_VALUE.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.values.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Clears values from a spreadsheet. The caller must specify the spreadsheet ID and range. Only values are cleared -- all other properties of the cell (such as formatting, data validation, etc..) are kept.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.range - (Required) The [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell) of the values to clear.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.values.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}:clear', 'POST', apiParams, clientConfig);
+
+    /**
+     * Sets values in one or more ranges of a spreadsheet. The caller must specify the spreadsheet ID, a valueInputOption, and one or more ValueRanges.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.spreadsheetId - (Required) The ID of the spreadsheet to update.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.spreadsheets.values.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchUpdate', 'POST', apiParams, clientConfig);
   }
 
 /**
