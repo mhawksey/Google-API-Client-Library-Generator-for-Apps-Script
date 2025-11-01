@@ -24,77 +24,77 @@ class Baremetalsolution {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.instances = {};
-    this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.loadAuthInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:loadAuthInfo', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.instances.reimage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:reimage', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.enableHyperthreading = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:enableHyperthreading', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.disableHyperthreading = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:disableHyperthreading', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rename', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:reset', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:start', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:stop', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.enableInteractiveSerialConsole = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:enableInteractiveSerialConsole', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.disableInteractiveSerialConsole = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:disableInteractiveSerialConsole', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.detachLun = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+instance}:detachLun', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.sshKeys = {};
-    this.projects.locations.sshKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/sshKeys', 'GET', apiParams, clientConfig);
-    this.projects.locations.sshKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/sshKeys', 'POST', apiParams, clientConfig);
-    this.projects.locations.sshKeys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.volumes = {};
-    this.projects.locations.volumes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/volumes', 'GET', apiParams, clientConfig);
-    this.projects.locations.volumes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.volumes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.volumes.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rename', 'POST', apiParams, clientConfig);
-    this.projects.locations.volumes.evict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:evict', 'POST', apiParams, clientConfig);
-    this.projects.locations.volumes.resize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+volume}:resize', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.volumes.snapshots = {};
-    this.projects.locations.volumes.snapshots.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/snapshots', 'POST', apiParams, clientConfig);
-    this.projects.locations.volumes.snapshots.restoreVolumeSnapshot = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+volumeSnapshot}:restoreVolumeSnapshot', 'POST', apiParams, clientConfig);
-    this.projects.locations.volumes.snapshots.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.volumes.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.volumes.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/snapshots', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.volumes.luns = {};
-    this.projects.locations.volumes.luns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.volumes.luns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/luns', 'GET', apiParams, clientConfig);
-    this.projects.locations.volumes.luns.evict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:evict', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.networks = {};
-    this.projects.locations.networks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/networks', 'GET', apiParams, clientConfig);
-    this.projects.locations.networks.listNetworkUsage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+location}/networks:listNetworkUsage', 'GET', apiParams, clientConfig);
-    this.projects.locations.networks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.networks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.networks.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rename', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.nfsShares = {};
-    this.projects.locations.nfsShares.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.nfsShares.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/nfsShares', 'GET', apiParams, clientConfig);
-    this.projects.locations.nfsShares.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.nfsShares.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/nfsShares', 'POST', apiParams, clientConfig);
-    this.projects.locations.nfsShares.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rename', 'POST', apiParams, clientConfig);
-    this.projects.locations.nfsShares.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.provisioningQuotas = {};
-    this.projects.locations.provisioningQuotas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/provisioningQuotas', 'GET', apiParams, clientConfig);
-
     this.projects.locations.provisioningConfigs = {};
     this.projects.locations.provisioningConfigs.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/provisioningConfigs:submit', 'POST', apiParams, clientConfig);
+    this.projects.locations.provisioningConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.provisioningConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.provisioningConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/provisioningConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.provisioningConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.sshKeys = {};
+    this.projects.locations.sshKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/sshKeys', 'POST', apiParams, clientConfig);
+    this.projects.locations.sshKeys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.sshKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/sshKeys', 'GET', apiParams, clientConfig);
 
     this.projects.locations.osImages = {};
     this.projects.locations.osImages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/osImages', 'GET', apiParams, clientConfig);
     this.projects.locations.osImages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.networks = {};
+    this.projects.locations.networks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.networks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.networks.listNetworkUsage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+location}/networks:listNetworkUsage', 'GET', apiParams, clientConfig);
+    this.projects.locations.networks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/networks', 'GET', apiParams, clientConfig);
+    this.projects.locations.networks.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rename', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.provisioningQuotas = {};
+    this.projects.locations.provisioningQuotas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/provisioningQuotas', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.instances = {};
+    this.projects.locations.instances.disableInteractiveSerialConsole = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:disableInteractiveSerialConsole', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:reset', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:start', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.enableHyperthreading = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:enableHyperthreading', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.loadAuthInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:loadAuthInfo', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.reimage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:reimage', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.enableInteractiveSerialConsole = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:enableInteractiveSerialConsole', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rename', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:stop', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/instances', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.detachLun = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+instance}:detachLun', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.disableHyperthreading = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:disableHyperthreading', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.nfsShares = {};
+    this.projects.locations.nfsShares.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.nfsShares.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/nfsShares', 'GET', apiParams, clientConfig);
+    this.projects.locations.nfsShares.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.nfsShares.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/nfsShares', 'POST', apiParams, clientConfig);
+    this.projects.locations.nfsShares.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.nfsShares.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rename', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.volumes = {};
+    this.projects.locations.volumes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/volumes', 'GET', apiParams, clientConfig);
+    this.projects.locations.volumes.evict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:evict', 'POST', apiParams, clientConfig);
+    this.projects.locations.volumes.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rename', 'POST', apiParams, clientConfig);
+    this.projects.locations.volumes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.volumes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.volumes.resize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+volume}:resize', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.volumes.snapshots = {};
+    this.projects.locations.volumes.snapshots.restoreVolumeSnapshot = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+volumeSnapshot}:restoreVolumeSnapshot', 'POST', apiParams, clientConfig);
+    this.projects.locations.volumes.snapshots.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.volumes.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.volumes.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/snapshots', 'GET', apiParams, clientConfig);
+    this.projects.locations.volumes.snapshots.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/snapshots', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.volumes.luns = {};
+    this.projects.locations.volumes.luns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/luns', 'GET', apiParams, clientConfig);
+    this.projects.locations.volumes.luns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.volumes.luns.evict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:evict', 'POST', apiParams, clientConfig);
   }
 
 /**
