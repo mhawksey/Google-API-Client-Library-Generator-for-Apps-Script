@@ -1,7 +1,7 @@
 
 /**
  * Google Apps Script client library for the Cloud Trace API
- * Documentation URL: https://cloud.google.com/trace
+ * Documentation URL: https://cloud.google.com/trace/
  * @class
  */
 class Cloudtrace {
