@@ -4,8 +4,8 @@ Auto-generated client library for using the **VM Migration API (version: v1alpha
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:56:38 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:56:00 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:24:51 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:24:51 GMT
 - **Created:** Sun, 20 Jul 2025 17:02:41 GMT
 
 
@@ -24,11 +24,11 @@ Lists information about the supported locations for this service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 
 #### `projects.locations.get()`
 
@@ -38,57 +38,151 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-### `projects.locations.operations`
+### `projects.locations.groups`
 
-#### `projects.locations.operations.list()`
+#### `projects.locations.groups.patch()`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+Updates the parameters of a single Group.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Group resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Output only. The Group name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.sources`
+#### `projects.locations.groups.list()`
 
-#### `projects.locations.sources.list()`
-
-Lists Sources in a given project and location.
+Lists Groups in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of sources. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of sources to return. The service may return fewer than this value. If unspecified, at most 500 sources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSources` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of groups to return. The service may return fewer than this value. If unspecified, at most 500 groups will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGroups` must match the call that provided the page token. |
 | `params.filter` | `string` | No | Optional. The filter request. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of groups. |
 | `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
+
+#### `projects.locations.groups.create()`
+
+Creates a new Group in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The Group's parent. |
+| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.groupId` | `string` | No | Required. The group identifier. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.groups.delete()`
+
+Deletes a single Group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Group name. |
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.groups.removeGroupMigration()`
+
+Removes a MigratingVm from a Group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.group` | `string` | Yes | Required. The name of the Group. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.groups.addGroupMigration()`
+
+Adds a MigratingVm to a Group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.group` | `string` | Yes | Required. The full path name of the Group to add to. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.groups.get()`
+
+Gets details of a single Group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The group name. |
+
+### `projects.locations.imageImports`
+
+#### `projects.locations.imageImports.list()`
+
+Lists ImageImports in a given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListImageImports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImageImports` must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. The order by fields for the result (according to AIP-132). Currently ordering is only possible by "name" field. |
+| `params.filter` | `string` | No | Optional. The filter request (according to AIP-160). |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of targets. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+
+#### `projects.locations.imageImports.delete()`
+
+Deletes a single ImageImport.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The ImageImport name. |
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.imageImports.create()`
+
+Creates a new ImageImport in a given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.imageImportId` | `string` | No | Required. The image import identifier. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen. |
+| `params.parent` | `string` | Yes | Required. The ImageImport's parent. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.imageImports.get()`
+
+Gets details of a single ImageImport.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The ImageImport name. |
+
+### `projects.locations.imageImports.imageImportJobs`
+
+#### `projects.locations.imageImports.imageImportJobs.cancel()`
+
+Initiates the cancellation of a running ImageImportJob.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The image import job id. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.imageImports.imageImportJobs.list()`
+
+Lists ImageImportJobs in a given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. The filter request (according to AIP-160). |
+| `params.orderBy` | `string` | No | Optional. The order by fields for the result (according to AIP-132). Currently ordering is only possible by "name" field. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of targets. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListImageImportJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImageImportJobs` must match the call that provided the page token. |
+
+#### `projects.locations.imageImports.imageImportJobs.get()`
+
+Gets details of a single ImageImportJob.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The ImageImportJob name. |
+
+### `projects.locations.sources`
 
 #### `projects.locations.sources.get()`
 
@@ -97,6 +191,17 @@ Gets details of a single Source.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The Source name. |
+
+#### `projects.locations.sources.fetchInventory()`
+
+List remote source's inventory of VMs. The remote source is the onprem vCenter (remote in the sense it's not in Compute Engine). The inventory describes the list of existing VMs in that source. Note that this operation lists the VMs on the remote source, as opposed to listing the MigratingVms resources in the vmmigration service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of VMs to return. The service may return fewer than this value. For AWS source: If unspecified, at most 500 VMs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. For VMWare source: If unspecified, all VMs will be returned. There is no limit for maximum value. |
+| `params.source` | `string` | Yes | Required. The name of the Source. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `FetchInventory` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchInventory` must match the call that provided the page token. |
+| `params.forceRefresh` | `boolean` | No | If this flag is set to true, the source will be queried instead of using cached results. Using this flag will make the call slower. |
 
 #### `projects.locations.sources.create()`
 
@@ -109,6 +214,15 @@ Creates a new Source in a given project and location.
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.sources.delete()`
+
+Deletes a single Source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Required. The Source name. |
+
 #### `projects.locations.sources.patch()`
 
 Updates the parameters of a single Source.
@@ -120,83 +234,254 @@ Updates the parameters of a single Source.
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.sources.delete()`
-
-Deletes a single Source.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Source name. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-#### `projects.locations.sources.fetchInventory()`
-
-List remote source's inventory of VMs. The remote source is the onprem vCenter (remote in the sense it's not in Compute Engine). The inventory describes the list of existing VMs in that source. Note that this operation lists the VMs on the remote source, as opposed to listing the MigratingVms resources in the vmmigration service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.source` | `string` | Yes | Required. The name of the Source. |
-| `params.forceRefresh` | `boolean` | No | If this flag is set to true, the source will be queried instead of using cached results. Using this flag will make the call slower. |
-| `params.pageSize` | `integer` | No | The maximum number of VMs to return. The service may return fewer than this value. For AWS source: If unspecified, at most 500 VMs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. For VMWare source: If unspecified, all VMs will be returned. There is no limit for maximum value. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `FetchInventory` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchInventory` must match the call that provided the page token. |
-
 #### `projects.locations.sources.fetchStorageInventory()`
 
 List remote source's inventory of storage resources. The remote source is another cloud vendor (e.g. AWS, Azure). The inventory describes the list of existing storage resources in that source. Note that this operation lists the resources on the remote source, as opposed to listing the MigratingVms resources in the vmmigration service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.source` | `string` | Yes | Required. The name of the Source. |
 | `params.type` | `string` | No | Required. The type of the storage inventory to fetch. |
+| `params.source` | `string` | Yes | Required. The name of the Source. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `FetchStorageInventory` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchStorageInventory` must match the call that provided the page token. |
 | `params.forceRefresh` | `boolean` | No | Optional. If this flag is set to true, the source will be queried instead of using cached results. Using this flag will make the call slower. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of VMs to return. The service may return fewer than this value. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `FetchStorageInventory` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FetchStorageInventory` must match the call that provided the page token. |
 
-### `projects.locations.sources.utilizationReports`
+#### `projects.locations.sources.list()`
 
-#### `projects.locations.sources.utilizationReports.list()`
-
-Lists Utilization Reports of the given Source.
+Lists Sources in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Utilization Reports parent. |
-| `params.view` | `string` | No | Optional. The level of details of each report. Defaults to BASIC. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of reports to return. The service may return fewer than this value. If unspecified, at most 500 reports will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListUtilizationReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListUtilizationReports` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of sources. |
 | `params.filter` | `string` | No | Optional. The filter request. |
+| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSources` must match the call that provided the page token. |
 | `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of sources to return. The service may return fewer than this value. If unspecified, at most 500 sources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 
-#### `projects.locations.sources.utilizationReports.get()`
+### `projects.locations.sources.migratingVms`
 
-Gets a single Utilization Report.
+#### `projects.locations.sources.migratingVms.patch()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Utilization Report name. |
-| `params.view` | `string` | No | Optional. The level of details of the report. Defaults to FULL |
-
-#### `projects.locations.sources.utilizationReports.create()`
-
-Creates a new UtilizationReport.
+Updates the parameters of a single MigratingVm.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Utilization Report's parent. |
-| `params.utilizationReportId` | `string` | No | Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen. |
+| `params.name` | `string` | Yes | Output only. The identifier of the MigratingVm. |
+| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the MigratingVm resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.sources.utilizationReports.delete()`
+#### `projects.locations.sources.migratingVms.startMigration()`
 
-Deletes a single Utilization Report.
+Starts migration for a VM. Starts the process of uploading data and creating snapshots, in replication cycles scheduled by the policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Utilization Report name. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.migratingVms.finalizeMigration()`
+
+Marks a migration as completed, deleting migration resources that are no longer being used. Only applicable after cutover is done.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.migratingVms.get()`
+
+Gets details of a single MigratingVm.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the MigratingVm. |
+| `params.view` | `string` | No | Optional. The level of details of the migrating VM. |
+
+#### `projects.locations.sources.migratingVms.list()`
+
+Lists MigratingVms in a given Source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of migrating VMs to return. The service may return fewer than this value. If unspecified, at most 500 migrating VMs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListMigratingVms` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMigratingVms` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of MigratingVms. |
+| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
+| `params.view` | `string` | No | Optional. The level of details of each migrating VM. |
+| `params.filter` | `string` | No | Optional. The filter request. |
+
+#### `projects.locations.sources.migratingVms.create()`
+
+Creates a new MigratingVm in a given Source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.migratingVmId` | `string` | No | Required. The migratingVm identifier. |
+| `params.parent` | `string` | Yes | Required. The MigratingVm's parent. |
+| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.migratingVms.extendMigration()`
+
+Extend the migrating VM time to live.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.migratingVms.pauseMigration()`
+
+Pauses a migration for a VM. If cycle tasks are running they will be cancelled, preserving source task data. Further replication cycles will not be triggered while the VM is paused.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.migratingVms.delete()`
+
+Deletes a single MigratingVm.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the MigratingVm. |
+
+#### `projects.locations.sources.migratingVms.resumeMigration()`
+
+Resumes a migration for a VM. When called on a paused migration, will start the process of uploading data and creating snapshots; when called on a completed cut-over migration, will update the migration to active state and start the process of uploading data and creating snapshots.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.sources.migratingVms.replicationCycles`
+
+#### `projects.locations.sources.migratingVms.replicationCycles.get()`
+
+Gets details of a single ReplicationCycle.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the ReplicationCycle. |
+
+#### `projects.locations.sources.migratingVms.replicationCycles.list()`
+
+Lists ReplicationCycles in a given MigratingVM.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of ReplicationCycles. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of replication cycles to return. The service may return fewer than this value. If unspecified, at most 100 migrating VMs will be returned. The maximum value is 100; values above 100 will be coerced to 100. |
+| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListReplicationCycles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReplicationCycles` must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
+| `params.filter` | `string` | No | Optional. The filter request. |
+
+### `projects.locations.sources.migratingVms.cloneJobs`
+
+#### `projects.locations.sources.migratingVms.cloneJobs.get()`
+
+Gets details of a single CloneJob.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the CloneJob. |
+
+#### `projects.locations.sources.migratingVms.cloneJobs.cancel()`
+
+Initiates the cancellation of a running clone job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The clone job id |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.migratingVms.cloneJobs.list()`
+
+Lists the CloneJobs of a migrating VM. Only 25 most recent CloneJobs are listed.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of source VMs. |
+| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListCloneJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCloneJobs` must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of clone jobs to return. The service may return fewer than this value. If unspecified, at most 500 clone jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.filter` | `string` | No | Optional. The filter request. |
+
+#### `projects.locations.sources.migratingVms.cloneJobs.create()`
+
+Initiates a Clone of a specific migrating VM.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The Clone's parent. |
+| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.cloneJobId` | `string` | No | Required. The clone job identifier. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.sources.migratingVms.cutoverJobs`
+
+#### `projects.locations.sources.migratingVms.cutoverJobs.list()`
+
+Lists the CutoverJobs of a migrating VM. Only 25 most recent CutoverJobs are listed.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of cutover jobs to return. The service may return fewer than this value. If unspecified, at most 500 cutover jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of migrating VMs. |
+| `params.filter` | `string` | No | Optional. The filter request. |
+| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
+| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListCutoverJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCutoverJobs` must match the call that provided the page token. |
+
+#### `projects.locations.sources.migratingVms.cutoverJobs.create()`
+
+Initiates a Cutover of a specific migrating VM. The returned LRO is completed when the cutover job resource is created and the job is initiated.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.parent` | `string` | Yes | Required. The Cutover's parent. |
+| `params.cutoverJobId` | `string` | No | Required. The cutover job identifier. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.migratingVms.cutoverJobs.cancel()`
+
+Initiates the cancellation of a running cutover job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The cutover job id |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.migratingVms.cutoverJobs.get()`
+
+Gets details of a single CutoverJob.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the CutoverJob. |
 
 ### `projects.locations.sources.datacenterConnectors`
+
+#### `projects.locations.sources.datacenterConnectors.upgradeAppliance()`
+
+Upgrades the appliance relate to this DatacenterConnector to the in-place updateable version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.datacenterConnector` | `string` | Yes | Required. The DatacenterConnector name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.datacenterConnectors.delete()`
+
+Deletes a single DatacenterConnector.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The DatacenterConnector name. |
+| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
 #### `projects.locations.sources.datacenterConnectors.list()`
 
@@ -204,11 +489,11 @@ Lists DatacenterConnectors in a given Source.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of connectors. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of connectors to return. The service may return fewer than this value. If unspecified, at most 500 sources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListDatacenterConnectors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatacenterConnectors` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. The filter request. |
 | `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
+| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListDatacenterConnectors` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatacenterConnectors` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of connectors to return. The service may return fewer than this value. If unspecified, at most 500 sources will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of connectors. |
+| `params.filter` | `string` | No | Optional. The filter request. |
 
 #### `projects.locations.sources.datacenterConnectors.get()`
 
@@ -229,240 +514,68 @@ Creates a new DatacenterConnector in a given Source.
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.sources.datacenterConnectors.delete()`
+### `projects.locations.sources.utilizationReports`
 
-Deletes a single DatacenterConnector.
+#### `projects.locations.sources.utilizationReports.create()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The DatacenterConnector name. |
-| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-#### `projects.locations.sources.datacenterConnectors.upgradeAppliance()`
-
-Upgrades the appliance relate to this DatacenterConnector to the in-place updateable version.
+Creates a new UtilizationReport.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.datacenterConnector` | `string` | Yes | Required. The DatacenterConnector name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.sources.migratingVms`
-
-#### `projects.locations.sources.migratingVms.create()`
-
-Creates a new MigratingVm in a given Source.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The MigratingVm's parent. |
-| `params.migratingVmId` | `string` | No | Required. The migratingVm identifier. |
+| `params.parent` | `string` | Yes | Required. The Utilization Report's parent. |
+| `params.utilizationReportId` | `string` | No | Required. The ID to use for the report, which will become the final component of the reports's resource name. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen. |
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.sources.migratingVms.list()`
+#### `projects.locations.sources.utilizationReports.delete()`
 
-Lists MigratingVms in a given Source.
+Deletes a single Utilization Report.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of MigratingVms. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of migrating VMs to return. The service may return fewer than this value. If unspecified, at most 500 migrating VMs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListMigratingVms` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListMigratingVms` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. The filter request. |
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Required. The Utilization Report name. |
+
+#### `projects.locations.sources.utilizationReports.get()`
+
+Gets a single Utilization Report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Utilization Report name. |
+| `params.view` | `string` | No | Optional. The level of details of the report. Defaults to FULL |
+
+#### `projects.locations.sources.utilizationReports.list()`
+
+Lists Utilization Reports of the given Source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
-| `params.view` | `string` | No | Optional. The level of details of each migrating VM. |
-
-#### `projects.locations.sources.migratingVms.get()`
-
-Gets details of a single MigratingVm.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.view` | `string` | No | Optional. The level of details of the migrating VM. |
-
-#### `projects.locations.sources.migratingVms.patch()`
-
-Updates the parameters of a single MigratingVm.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The identifier of the MigratingVm. |
-| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the MigratingVm resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.migratingVms.delete()`
-
-Deletes a single MigratingVm.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the MigratingVm. |
-
-#### `projects.locations.sources.migratingVms.startMigration()`
-
-Starts migration for a VM. Starts the process of uploading data and creating snapshots, in replication cycles scheduled by the policy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.migratingVms.resumeMigration()`
-
-Resumes a migration for a VM. When called on a paused migration, will start the process of uploading data and creating snapshots; when called on a completed cut-over migration, will update the migration to active state and start the process of uploading data and creating snapshots.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.migratingVms.pauseMigration()`
-
-Pauses a migration for a VM. If cycle tasks are running they will be cancelled, preserving source task data. Further replication cycles will not be triggered while the VM is paused.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.migratingVms.finalizeMigration()`
-
-Marks a migration as completed, deleting migration resources that are no longer being used. Only applicable after cutover is done.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.migratingVms.extendMigration()`
-
-Extend the migrating VM time to live.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.migratingVm` | `string` | Yes | Required. The name of the MigratingVm. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.sources.migratingVms.cloneJobs`
-
-#### `projects.locations.sources.migratingVms.cloneJobs.create()`
-
-Initiates a Clone of a specific migrating VM.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Clone's parent. |
-| `params.cloneJobId` | `string` | No | Required. The clone job identifier. |
-| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.migratingVms.cloneJobs.cancel()`
-
-Initiates the cancellation of a running clone job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The clone job id |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.migratingVms.cloneJobs.list()`
-
-Lists the CloneJobs of a migrating VM. Only 25 most recent CloneJobs are listed.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of source VMs. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of clone jobs to return. The service may return fewer than this value. If unspecified, at most 500 clone jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListCloneJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCloneJobs` must match the call that provided the page token. |
+| `params.view` | `string` | No | Optional. The level of details of each report. Defaults to BASIC. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of reports to return. The service may return fewer than this value. If unspecified, at most 500 reports will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 | `params.filter` | `string` | No | Optional. The filter request. |
-| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
-
-#### `projects.locations.sources.migratingVms.cloneJobs.get()`
-
-Gets details of a single CloneJob.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the CloneJob. |
-
-### `projects.locations.sources.migratingVms.cutoverJobs`
-
-#### `projects.locations.sources.migratingVms.cutoverJobs.create()`
-
-Initiates a Cutover of a specific migrating VM. The returned LRO is completed when the cutover job resource is created and the job is initiated.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Cutover's parent. |
-| `params.cutoverJobId` | `string` | No | Required. The cutover job identifier. |
-| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.migratingVms.cutoverJobs.cancel()`
-
-Initiates the cancellation of a running cutover job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The cutover job id |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.migratingVms.cutoverJobs.list()`
-
-Lists the CutoverJobs of a migrating VM. Only 25 most recent CutoverJobs are listed.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of migrating VMs. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of cutover jobs to return. The service may return fewer than this value. If unspecified, at most 500 cutover jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListCutoverJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCutoverJobs` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. The filter request. |
-| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
-
-#### `projects.locations.sources.migratingVms.cutoverJobs.get()`
-
-Gets details of a single CutoverJob.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the CutoverJob. |
-
-### `projects.locations.sources.migratingVms.replicationCycles`
-
-#### `projects.locations.sources.migratingVms.replicationCycles.list()`
-
-Lists ReplicationCycles in a given MigratingVM.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of ReplicationCycles. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of replication cycles to return. The service may return fewer than this value. If unspecified, at most 100 migrating VMs will be returned. The maximum value is 100; values above 100 will be coerced to 100. |
-| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListReplicationCycles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListReplicationCycles` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. The filter request. |
-| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
-
-#### `projects.locations.sources.migratingVms.replicationCycles.get()`
-
-Gets details of a single ReplicationCycle.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the ReplicationCycle. |
+| `params.parent` | `string` | Yes | Required. The Utilization Reports parent. |
+| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListUtilizationReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListUtilizationReports` must match the call that provided the page token. |
 
 ### `projects.locations.sources.diskMigrationJobs`
 
-#### `projects.locations.sources.diskMigrationJobs.create()`
+#### `projects.locations.sources.diskMigrationJobs.cancel()`
 
-Creates a new disk migration job in a given Source.
+Cancels the disk migration job.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The DiskMigrationJob's parent. |
-| `params.diskMigrationJobId` | `string` | No | Required. The DiskMigrationJob identifier. The maximum length of this value is 63 characters. Valid characters are lower case Latin letters, digits and hyphen. It must start with a Latin letter and must not end with a hyphen. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | Required. The name of the DiskMigrationJob. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.diskMigrationJobs.run()`
+
+Runs the disk migration job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the DiskMigrationJob. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.diskMigrationJobs.list()`
@@ -471,11 +584,30 @@ Lists DiskMigrationJobs in a given Source.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of DiskMigrationJobs. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of disk migration jobs to return. The service may return fewer than this value. If unspecified, at most 500 disk migration jobs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDiskMigrationJobs` call. Provide this to retrieve the subsequent page. When paginating, all parameters provided to `ListDiskMigrationJobs` except `page_size` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. The filter request (according to AIP-160). |
 | `params.orderBy` | `string` | No | Optional. Ordering of the result list. |
+| `params.filter` | `string` | No | Optional. The filter request (according to AIP-160). |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of DiskMigrationJobs. |
+
+#### `projects.locations.sources.diskMigrationJobs.delete()`
+
+Deletes a single DiskMigrationJob.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the DiskMigrationJob. |
+
+#### `projects.locations.sources.diskMigrationJobs.create()`
+
+Creates a new disk migration job in a given Source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.parent` | `string` | Yes | Required. The DiskMigrationJob's parent. |
+| `params.diskMigrationJobId` | `string` | No | Required. The DiskMigrationJob identifier. The maximum length of this value is 63 characters. Valid characters are lower case Latin letters, digits and hyphen. It must start with a Latin letter and must not end with a hyphen. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.sources.diskMigrationJobs.get()`
 
@@ -491,129 +623,12 @@ Updates the parameters of a single DiskMigrationJob.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.name` | `string` | Yes | Output only. Identifier. The identifier of the DiskMigrationJob. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the DiskMigrationJob resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask, then a mask equivalent to all fields that are populated (have a non-empty value), will be implied. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request timed out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.diskMigrationJobs.delete()`
-
-Deletes a single DiskMigrationJob.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the DiskMigrationJob. |
-
-#### `projects.locations.sources.diskMigrationJobs.run()`
-
-Runs the disk migration job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the DiskMigrationJob. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.diskMigrationJobs.cancel()`
-
-Cancels the disk migration job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the DiskMigrationJob. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.groups`
-
-#### `projects.locations.groups.list()`
-
-Lists Groups in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of groups. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of groups to return. The service may return fewer than this value. If unspecified, at most 500 groups will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListGroups` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. The filter request. |
-| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
-
-#### `projects.locations.groups.get()`
-
-Gets details of a single Group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The group name. |
-
-#### `projects.locations.groups.create()`
-
-Creates a new Group in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Group's parent. |
-| `params.groupId` | `string` | No | Required. The group identifier. |
-| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.groups.patch()`
-
-Updates the parameters of a single Group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The Group name. |
-| `params.updateMask` | `string` | No | Field mask is used to specify the fields to be overwritten in the Group resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.groups.delete()`
-
-Deletes a single Group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Group name. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-#### `projects.locations.groups.addGroupMigration()`
-
-Adds a MigratingVm to a Group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.group` | `string` | Yes | Required. The full path name of the Group to add to. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.groups.removeGroupMigration()`
-
-Removes a MigratingVm from a Group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.group` | `string` | Yes | Required. The name of the Group. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.targetProjects`
-
-#### `projects.locations.targetProjects.list()`
-
-Lists TargetProjects in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of targets. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListTargets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTargets` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. The filter request. |
-| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
-
-#### `projects.locations.targetProjects.get()`
-
-Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The TargetProject name. |
 
 #### `projects.locations.targetProjects.create()`
 
@@ -626,6 +641,35 @@ Creates a new TargetProject in a given project. NOTE: TargetProject is a global 
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.targetProjects.list()`
+
+Lists TargetProjects in a given project. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Required. A page token, received from a previous `ListTargets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTargets` must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. the order by fields for the result. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.filter` | `string` | No | Optional. The filter request. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of targets. |
+
+#### `projects.locations.targetProjects.delete()`
+
+Deletes a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The TargetProject name. |
+| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.targetProjects.get()`
+
+Gets details of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The TargetProject name. |
+
 #### `projects.locations.targetProjects.patch()`
 
 Updates the parameters of a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
@@ -637,84 +681,41 @@ Updates the parameters of a single TargetProject. NOTE: TargetProject is a globa
 | `params.requestId` | `string` | No | A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.targetProjects.delete()`
+### `projects.locations.operations`
 
-Deletes a single TargetProject. NOTE: TargetProject is a global resource; hence the only supported value for location is `global`.
+#### `projects.locations.operations.list()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The TargetProject name. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-### `projects.locations.imageImports`
-
-#### `projects.locations.imageImports.list()`
-
-Lists ImageImports in a given project.
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of targets. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListImageImports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImageImports` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. The filter request (according to AIP-160). |
-| `params.orderBy` | `string` | No | Optional. The order by fields for the result (according to AIP-132). Currently ordering is only possible by "name" field. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
 
-#### `projects.locations.imageImports.get()`
+#### `projects.locations.operations.cancel()`
 
-Gets details of a single ImageImport.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The ImageImport name. |
-
-#### `projects.locations.imageImports.create()`
-
-Creates a new ImageImport in a given project.
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The ImageImport's parent. |
-| `params.imageImportId` | `string` | No | Required. The image import identifier. This value maximum length is 63 characters, and valid characters are /a-z-/. It must start with an english letter and must not end with a hyphen. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.imageImports.delete()`
+#### `projects.locations.operations.delete()`
 
-Deletes a single ImageImport.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The ImageImport name. |
-| `params.requestId` | `string` | No | Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-### `projects.locations.imageImports.imageImportJobs`
-
-#### `projects.locations.imageImports.imageImportJobs.list()`
-
-Lists ImageImportJobs in a given project.
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of targets. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of targets to return. The service may return fewer than this value. If unspecified, at most 500 targets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListImageImportJobs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImageImportJobs` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Optional. The filter request (according to AIP-160). |
-| `params.orderBy` | `string` | No | Optional. The order by fields for the result (according to AIP-132). Currently ordering is only possible by "name" field. |
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
 
-#### `projects.locations.imageImports.imageImportJobs.get()`
+#### `projects.locations.operations.get()`
 
-Gets details of a single ImageImportJob.
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The ImageImportJob name. |
-
-#### `projects.locations.imageImports.imageImportJobs.cancel()`
-
-Initiates the cancellation of a running ImageImportJob.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The image import job id. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | The name of the operation resource. |
