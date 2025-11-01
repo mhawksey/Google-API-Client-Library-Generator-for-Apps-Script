@@ -18,24 +18,71 @@ class Displayvideo {
     this._servicePath = '';
 
 
+    this.googleAudiences = {};
+    this.googleAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/googleAudiences', 'GET', apiParams, clientConfig);
+    this.googleAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/googleAudiences/{+googleAudienceId}', 'GET', apiParams, clientConfig);
+
+    this.combinedAudiences = {};
+    this.combinedAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/combinedAudiences', 'GET', apiParams, clientConfig);
+    this.combinedAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/combinedAudiences/{+combinedAudienceId}', 'GET', apiParams, clientConfig);
+
     this.advertisers = {};
-    this.advertisers.listAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:listAssignedTargetingOptions', 'GET', apiParams, clientConfig);
-    this.advertisers.editAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:editAssignedTargetingOptions', 'POST', apiParams, clientConfig);
-    this.advertisers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'GET', apiParams, clientConfig);
-    this.advertisers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers', 'GET', apiParams, clientConfig);
-    this.advertisers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers', 'POST', apiParams, clientConfig);
-    this.advertisers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'PATCH', apiParams, clientConfig);
     this.advertisers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.listAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:listAssignedTargetingOptions', 'GET', apiParams, clientConfig);
+    this.advertisers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'GET', apiParams, clientConfig);
+    this.advertisers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers', 'POST', apiParams, clientConfig);
+    this.advertisers.editAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:editAssignedTargetingOptions', 'POST', apiParams, clientConfig);
+    this.advertisers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers', 'GET', apiParams, clientConfig);
+    this.advertisers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}', 'PATCH', apiParams, clientConfig);
     this.advertisers.audit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}:audit', 'GET', apiParams, clientConfig);
 
-    this.advertisers.adGroupAds = {};
-    this.advertisers.adGroupAds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'GET', apiParams, clientConfig);
-    this.advertisers.adGroupAds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds', 'GET', apiParams, clientConfig);
+    this.advertisers.creatives = {};
+    this.advertisers.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives', 'GET', apiParams, clientConfig);
+    this.advertisers.creatives.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'PATCH', apiParams, clientConfig);
+    this.advertisers.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'GET', apiParams, clientConfig);
+    this.advertisers.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives', 'POST', apiParams, clientConfig);
+    this.advertisers.creatives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'DELETE', apiParams, clientConfig);
+
+    this.advertisers.locationLists = {};
+    this.advertisers.locationLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists', 'GET', apiParams, clientConfig);
+    this.advertisers.locationLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists/{+locationListId}', 'GET', apiParams, clientConfig);
+    this.advertisers.locationLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists', 'POST', apiParams, clientConfig);
+    this.advertisers.locationLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists/{locationListId}', 'PATCH', apiParams, clientConfig);
+
+    this.advertisers.locationLists.assignedLocations = {};
+    this.advertisers.locationLists.assignedLocations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.locationLists.assignedLocations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations', 'POST', apiParams, clientConfig);
+    this.advertisers.locationLists.assignedLocations.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit', 'POST', apiParams, clientConfig);
+    this.advertisers.locationLists.assignedLocations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations', 'GET', apiParams, clientConfig);
+
+    this.advertisers.insertionOrders = {};
+    this.advertisers.insertionOrders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.insertionOrders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders', 'GET', apiParams, clientConfig);
+    this.advertisers.insertionOrders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'PATCH', apiParams, clientConfig);
+    this.advertisers.insertionOrders.listAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}:listAssignedTargetingOptions', 'GET', apiParams, clientConfig);
+    this.advertisers.insertionOrders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'GET', apiParams, clientConfig);
+    this.advertisers.insertionOrders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders', 'POST', apiParams, clientConfig);
+
+    this.advertisers.insertionOrders.targetingTypes = {};
+
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions = {};
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
+    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+
+    this.advertisers.targetingTypes = {};
+
+    this.advertisers.targetingTypes.assignedTargetingOptions = {};
+    this.advertisers.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
+    this.advertisers.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+    this.advertisers.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
 
     this.advertisers.adGroups = {};
+    this.advertisers.adGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups', 'GET', apiParams, clientConfig);
     this.advertisers.adGroups.bulkListAdGroupAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups:bulkListAdGroupAssignedTargetingOptions', 'GET', apiParams, clientConfig);
     this.advertisers.adGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}', 'GET', apiParams, clientConfig);
-    this.advertisers.adGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups', 'GET', apiParams, clientConfig);
 
     this.advertisers.adGroups.targetingTypes = {};
 
@@ -43,33 +90,56 @@ class Displayvideo {
     this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
     this.advertisers.adGroups.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroups/{+adGroupId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
 
+    this.advertisers.adGroupAds = {};
+    this.advertisers.adGroupAds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds/{+adGroupAdId}', 'GET', apiParams, clientConfig);
+    this.advertisers.adGroupAds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/adGroupAds', 'GET', apiParams, clientConfig);
+
     this.advertisers.lineItems = {};
-    this.advertisers.lineItems.bulkListAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions', 'GET', apiParams, clientConfig);
-    this.advertisers.lineItems.bulkEditAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems:bulkEditAssignedTargetingOptions', 'POST', apiParams, clientConfig);
-    this.advertisers.lineItems.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'GET', apiParams, clientConfig);
-    this.advertisers.lineItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems', 'GET', apiParams, clientConfig);
-    this.advertisers.lineItems.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems', 'POST', apiParams, clientConfig);
-    this.advertisers.lineItems.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'PATCH', apiParams, clientConfig);
-    this.advertisers.lineItems.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'DELETE', apiParams, clientConfig);
     this.advertisers.lineItems.generateDefault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems:generateDefault', 'POST', apiParams, clientConfig);
+    this.advertisers.lineItems.bulkEditAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems:bulkEditAssignedTargetingOptions', 'POST', apiParams, clientConfig);
+    this.advertisers.lineItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems', 'GET', apiParams, clientConfig);
+    this.advertisers.lineItems.bulkListAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems:bulkListAssignedTargetingOptions', 'GET', apiParams, clientConfig);
     this.advertisers.lineItems.duplicate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}:duplicate', 'POST', apiParams, clientConfig);
+    this.advertisers.lineItems.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems', 'POST', apiParams, clientConfig);
+    this.advertisers.lineItems.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.lineItems.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'PATCH', apiParams, clientConfig);
     this.advertisers.lineItems.bulkUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems:bulkUpdate', 'POST', apiParams, clientConfig);
+    this.advertisers.lineItems.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}', 'GET', apiParams, clientConfig);
 
     this.advertisers.lineItems.targetingTypes = {};
 
     this.advertisers.lineItems.targetingTypes.assignedTargetingOptions = {};
-    this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
     this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
-    this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
+    this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
     this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.lineItems.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/lineItems/{+lineItemId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
 
-    this.advertisers.targetingTypes = {};
+    this.advertisers.channels = {};
+    this.advertisers.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels', 'POST', apiParams, clientConfig);
+    this.advertisers.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels', 'GET', apiParams, clientConfig);
+    this.advertisers.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{+channelId}', 'GET', apiParams, clientConfig);
+    this.advertisers.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{channelId}', 'PATCH', apiParams, clientConfig);
 
-    this.advertisers.targetingTypes.assignedTargetingOptions = {};
-    this.advertisers.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
-    this.advertisers.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
-    this.advertisers.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
-    this.advertisers.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.channels.sites = {};
+    this.advertisers.channels.sites.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit', 'POST', apiParams, clientConfig);
+    this.advertisers.channels.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{+channelId}/sites', 'GET', apiParams, clientConfig);
+    this.advertisers.channels.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.channels.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites', 'POST', apiParams, clientConfig);
+    this.advertisers.channels.sites.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites:replace', 'POST', apiParams, clientConfig);
+
+    this.advertisers.campaigns = {};
+    this.advertisers.campaigns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'GET', apiParams, clientConfig);
+    this.advertisers.campaigns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.campaigns.listAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}:listAssignedTargetingOptions', 'GET', apiParams, clientConfig);
+    this.advertisers.campaigns.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns', 'POST', apiParams, clientConfig);
+    this.advertisers.campaigns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns', 'GET', apiParams, clientConfig);
+    this.advertisers.campaigns.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'PATCH', apiParams, clientConfig);
+
+    this.advertisers.campaigns.targetingTypes = {};
+
+    this.advertisers.campaigns.targetingTypes.assignedTargetingOptions = {};
+    this.advertisers.campaigns.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+    this.advertisers.campaigns.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
 
     this.advertisers.assets = {};
     this.advertisers.assets.upload = async (apiParams = {}, clientConfig = {}) => {
@@ -78,204 +148,48 @@ class Displayvideo {
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
 
-    this.advertisers.campaigns = {};
-    this.advertisers.campaigns.listAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}:listAssignedTargetingOptions', 'GET', apiParams, clientConfig);
-    this.advertisers.campaigns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'GET', apiParams, clientConfig);
-    this.advertisers.campaigns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns', 'GET', apiParams, clientConfig);
-    this.advertisers.campaigns.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns', 'POST', apiParams, clientConfig);
-    this.advertisers.campaigns.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'PATCH', apiParams, clientConfig);
-    this.advertisers.campaigns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists = {};
+    this.advertisers.negativeKeywordLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists', 'POST', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists', 'GET', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}', 'PATCH', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}', 'GET', apiParams, clientConfig);
 
-    this.advertisers.campaigns.targetingTypes = {};
-
-    this.advertisers.campaigns.targetingTypes.assignedTargetingOptions = {};
-    this.advertisers.campaigns.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
-    this.advertisers.campaigns.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/campaigns/{+campaignId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
-
-    this.advertisers.channels = {};
-    this.advertisers.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{+channelId}', 'GET', apiParams, clientConfig);
-    this.advertisers.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels', 'GET', apiParams, clientConfig);
-    this.advertisers.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels', 'POST', apiParams, clientConfig);
-    this.advertisers.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{channelId}', 'PATCH', apiParams, clientConfig);
-
-    this.advertisers.channels.sites = {};
-    this.advertisers.channels.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/channels/{+channelId}/sites', 'GET', apiParams, clientConfig);
-    this.advertisers.channels.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites', 'POST', apiParams, clientConfig);
-    this.advertisers.channels.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites/{+urlOrAppId}', 'DELETE', apiParams, clientConfig);
-    this.advertisers.channels.sites.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites:bulkEdit', 'POST', apiParams, clientConfig);
-    this.advertisers.channels.sites.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/channels/{+channelId}/sites:replace', 'POST', apiParams, clientConfig);
-
-    this.advertisers.creatives = {};
-    this.advertisers.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'GET', apiParams, clientConfig);
-    this.advertisers.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives', 'GET', apiParams, clientConfig);
-    this.advertisers.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives', 'POST', apiParams, clientConfig);
-    this.advertisers.creatives.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'PATCH', apiParams, clientConfig);
-    this.advertisers.creatives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/creatives/{+creativeId}', 'DELETE', apiParams, clientConfig);
-
-    this.advertisers.insertionOrders = {};
-    this.advertisers.insertionOrders.listAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}:listAssignedTargetingOptions', 'GET', apiParams, clientConfig);
-    this.advertisers.insertionOrders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'GET', apiParams, clientConfig);
-    this.advertisers.insertionOrders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders', 'GET', apiParams, clientConfig);
-    this.advertisers.insertionOrders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders', 'POST', apiParams, clientConfig);
-    this.advertisers.insertionOrders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'PATCH', apiParams, clientConfig);
-    this.advertisers.insertionOrders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}', 'DELETE', apiParams, clientConfig);
-
-    this.advertisers.insertionOrders.targetingTypes = {};
-
-    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions = {};
-    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
-    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
-    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
-    this.advertisers.insertionOrders.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/insertionOrders/{+insertionOrderId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.negativeKeywords = {};
+    this.advertisers.negativeKeywordLists.negativeKeywords.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', 'GET', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.negativeKeywords.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:replace', 'POST', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.negativeKeywords.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}', 'DELETE', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.negativeKeywords.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit', 'POST', apiParams, clientConfig);
+    this.advertisers.negativeKeywordLists.negativeKeywords.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', 'POST', apiParams, clientConfig);
 
     this.advertisers.invoices = {};
     this.advertisers.invoices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/invoices', 'GET', apiParams, clientConfig);
     this.advertisers.invoices.lookupInvoiceCurrency = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/invoices:lookupInvoiceCurrency', 'GET', apiParams, clientConfig);
 
-    this.advertisers.locationLists = {};
-    this.advertisers.locationLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists/{+locationListId}', 'GET', apiParams, clientConfig);
-    this.advertisers.locationLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists', 'GET', apiParams, clientConfig);
-    this.advertisers.locationLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists', 'POST', apiParams, clientConfig);
-    this.advertisers.locationLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/locationLists/{locationListId}', 'PATCH', apiParams, clientConfig);
+    this.inventorySourceGroups = {};
+    this.inventorySourceGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}', 'GET', apiParams, clientConfig);
+    this.inventorySourceGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}', 'DELETE', apiParams, clientConfig);
+    this.inventorySourceGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups', 'POST', apiParams, clientConfig);
+    this.inventorySourceGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{inventorySourceGroupId}', 'PATCH', apiParams, clientConfig);
+    this.inventorySourceGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups', 'GET', apiParams, clientConfig);
 
-    this.advertisers.locationLists.assignedLocations = {};
-    this.advertisers.locationLists.assignedLocations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations', 'GET', apiParams, clientConfig);
-    this.advertisers.locationLists.assignedLocations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations', 'POST', apiParams, clientConfig);
-    this.advertisers.locationLists.assignedLocations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{locationListId}/assignedLocations/{+assignedLocationId}', 'DELETE', apiParams, clientConfig);
-    this.advertisers.locationLists.assignedLocations.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/locationLists/{+locationListId}/assignedLocations:bulkEdit', 'POST', apiParams, clientConfig);
+    this.inventorySourceGroups.assignedInventorySources = {};
+    this.inventorySourceGroups.assignedInventorySources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', 'POST', apiParams, clientConfig);
+    this.inventorySourceGroups.assignedInventorySources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', 'GET', apiParams, clientConfig);
+    this.inventorySourceGroups.assignedInventorySources.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit', 'POST', apiParams, clientConfig);
+    this.inventorySourceGroups.assignedInventorySources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}', 'DELETE', apiParams, clientConfig);
 
-    this.advertisers.negativeKeywordLists = {};
-    this.advertisers.negativeKeywordLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}', 'GET', apiParams, clientConfig);
-    this.advertisers.negativeKeywordLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists', 'GET', apiParams, clientConfig);
-    this.advertisers.negativeKeywordLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists', 'POST', apiParams, clientConfig);
-    this.advertisers.negativeKeywordLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{negativeKeywordListId}', 'PATCH', apiParams, clientConfig);
-    this.advertisers.negativeKeywordLists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}', 'DELETE', apiParams, clientConfig);
-
-    this.advertisers.negativeKeywordLists.negativeKeywords = {};
-    this.advertisers.negativeKeywordLists.negativeKeywords.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{+advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', 'GET', apiParams, clientConfig);
-    this.advertisers.negativeKeywordLists.negativeKeywords.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords', 'POST', apiParams, clientConfig);
-    this.advertisers.negativeKeywordLists.negativeKeywords.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords/{+keywordValue}', 'DELETE', apiParams, clientConfig);
-    this.advertisers.negativeKeywordLists.negativeKeywords.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:bulkEdit', 'POST', apiParams, clientConfig);
-    this.advertisers.negativeKeywordLists.negativeKeywords.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/advertisers/{advertiserId}/negativeKeywordLists/{+negativeKeywordListId}/negativeKeywords:replace', 'POST', apiParams, clientConfig);
-
-    this.combinedAudiences = {};
-    this.combinedAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/combinedAudiences/{+combinedAudienceId}', 'GET', apiParams, clientConfig);
-    this.combinedAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/combinedAudiences', 'GET', apiParams, clientConfig);
-
-    this.customBiddingAlgorithms = {};
-    this.customBiddingAlgorithms.uploadRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadRules', 'GET', apiParams, clientConfig);
-    this.customBiddingAlgorithms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}', 'GET', apiParams, clientConfig);
-    this.customBiddingAlgorithms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms', 'GET', apiParams, clientConfig);
-    this.customBiddingAlgorithms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms', 'POST', apiParams, clientConfig);
-    this.customBiddingAlgorithms.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}', 'PATCH', apiParams, clientConfig);
-    this.customBiddingAlgorithms.uploadScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadScript', 'GET', apiParams, clientConfig);
-
-    this.customBiddingAlgorithms.rules = {};
-    this.customBiddingAlgorithms.rules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules', 'POST', apiParams, clientConfig);
-    this.customBiddingAlgorithms.rules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules/{+customBiddingAlgorithmRulesId}', 'GET', apiParams, clientConfig);
-    this.customBiddingAlgorithms.rules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules', 'GET', apiParams, clientConfig);
-
-    this.customBiddingAlgorithms.scripts = {};
-    this.customBiddingAlgorithms.scripts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts', 'POST', apiParams, clientConfig);
-    this.customBiddingAlgorithms.scripts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}', 'GET', apiParams, clientConfig);
-    this.customBiddingAlgorithms.scripts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts', 'GET', apiParams, clientConfig);
+    this.users = {};
+    this.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'PATCH', apiParams, clientConfig);
+    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'GET', apiParams, clientConfig);
+    this.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users', 'GET', apiParams, clientConfig);
+    this.users.bulkEditAssignedUserRoles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}:bulkEditAssignedUserRoles', 'POST', apiParams, clientConfig);
+    this.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users', 'POST', apiParams, clientConfig);
+    this.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'DELETE', apiParams, clientConfig);
 
     this.customLists = {};
     this.customLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customLists/{+customListId}', 'GET', apiParams, clientConfig);
     this.customLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customLists', 'GET', apiParams, clientConfig);
-
-    this.firstAndThirdPartyAudiences = {};
-    this.firstAndThirdPartyAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}', 'GET', apiParams, clientConfig);
-    this.firstAndThirdPartyAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences', 'GET', apiParams, clientConfig);
-    this.firstAndThirdPartyAudiences.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences', 'POST', apiParams, clientConfig);
-    this.firstAndThirdPartyAudiences.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}', 'PATCH', apiParams, clientConfig);
-    this.firstAndThirdPartyAudiences.editCustomerMatchMembers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}:editCustomerMatchMembers', 'POST', apiParams, clientConfig);
-
-    this.floodlightGroups = {};
-    this.floodlightGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/floodlightGroups/{+floodlightGroupId}', 'GET', apiParams, clientConfig);
-    this.floodlightGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/floodlightGroups/{floodlightGroupId}', 'PATCH', apiParams, clientConfig);
-
-    this.floodlightGroups.floodlightActivities = {};
-    this.floodlightGroups.floodlightActivities.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/floodlightGroups/{+floodlightGroupId}/floodlightActivities/{+floodlightActivityId}', 'GET', apiParams, clientConfig);
-    this.floodlightGroups.floodlightActivities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/floodlightGroups/{+floodlightGroupId}/floodlightActivities', 'GET', apiParams, clientConfig);
-
-    this.googleAudiences = {};
-    this.googleAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/googleAudiences/{+googleAudienceId}', 'GET', apiParams, clientConfig);
-    this.googleAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/googleAudiences', 'GET', apiParams, clientConfig);
-
-    this.guaranteedOrders = {};
-    this.guaranteedOrders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders', 'POST', apiParams, clientConfig);
-    this.guaranteedOrders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}', 'GET', apiParams, clientConfig);
-    this.guaranteedOrders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders', 'GET', apiParams, clientConfig);
-    this.guaranteedOrders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}', 'PATCH', apiParams, clientConfig);
-    this.guaranteedOrders.editGuaranteedOrderReadAccessors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}:editGuaranteedOrderReadAccessors', 'POST', apiParams, clientConfig);
-
-    this.inventorySourceGroups = {};
-    this.inventorySourceGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}', 'GET', apiParams, clientConfig);
-    this.inventorySourceGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups', 'GET', apiParams, clientConfig);
-    this.inventorySourceGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups', 'POST', apiParams, clientConfig);
-    this.inventorySourceGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{inventorySourceGroupId}', 'PATCH', apiParams, clientConfig);
-    this.inventorySourceGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}', 'DELETE', apiParams, clientConfig);
-
-    this.inventorySourceGroups.assignedInventorySources = {};
-    this.inventorySourceGroups.assignedInventorySources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', 'GET', apiParams, clientConfig);
-    this.inventorySourceGroups.assignedInventorySources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources', 'POST', apiParams, clientConfig);
-    this.inventorySourceGroups.assignedInventorySources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources/{+assignedInventorySourceId}', 'DELETE', apiParams, clientConfig);
-    this.inventorySourceGroups.assignedInventorySources.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySourceGroups/{+inventorySourceGroupId}/assignedInventorySources:bulkEdit', 'POST', apiParams, clientConfig);
-
-    this.inventorySources = {};
-    this.inventorySources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources/{+inventorySourceId}', 'GET', apiParams, clientConfig);
-    this.inventorySources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources', 'GET', apiParams, clientConfig);
-    this.inventorySources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources', 'POST', apiParams, clientConfig);
-    this.inventorySources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources/{+inventorySourceId}', 'PATCH', apiParams, clientConfig);
-    this.inventorySources.editInventorySourceReadWriteAccessors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources/{+inventorySourceId}:editInventorySourceReadWriteAccessors', 'POST', apiParams, clientConfig);
-
-    this.partners = {};
-    this.partners.editAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}:editAssignedTargetingOptions', 'POST', apiParams, clientConfig);
-    this.partners.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}', 'GET', apiParams, clientConfig);
-    this.partners.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners', 'GET', apiParams, clientConfig);
-
-    this.partners.channels = {};
-    this.partners.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{+channelId}', 'GET', apiParams, clientConfig);
-    this.partners.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels', 'GET', apiParams, clientConfig);
-    this.partners.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels', 'POST', apiParams, clientConfig);
-    this.partners.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{channelId}', 'PATCH', apiParams, clientConfig);
-
-    this.partners.channels.sites = {};
-    this.partners.channels.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{+channelId}/sites', 'GET', apiParams, clientConfig);
-    this.partners.channels.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites', 'POST', apiParams, clientConfig);
-    this.partners.channels.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}', 'DELETE', apiParams, clientConfig);
-    this.partners.channels.sites.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit', 'POST', apiParams, clientConfig);
-    this.partners.channels.sites.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites:replace', 'POST', apiParams, clientConfig);
-
-    this.partners.targetingTypes = {};
-
-    this.partners.targetingTypes.assignedTargetingOptions = {};
-    this.partners.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
-    this.partners.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
-    this.partners.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
-    this.partners.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
-
-    this.sdfdownloadtasks = {};
-    this.sdfdownloadtasks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/sdfdownloadtasks', 'POST', apiParams, clientConfig);
-
-    this.sdfdownloadtasks.operations = {};
-    this.sdfdownloadtasks.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    this.targetingTypes = {};
-
-    this.targetingTypes.targetingOptions = {};
-    this.targetingTypes.targetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions/{+targetingOptionId}', 'GET', apiParams, clientConfig);
-    this.targetingTypes.targetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions', 'GET', apiParams, clientConfig);
-    this.targetingTypes.targetingOptions.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions:search', 'POST', apiParams, clientConfig);
-
-    this.users = {};
-    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'GET', apiParams, clientConfig);
-    this.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users', 'GET', apiParams, clientConfig);
-    this.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users', 'POST', apiParams, clientConfig);
-    this.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'PATCH', apiParams, clientConfig);
-    this.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}', 'DELETE', apiParams, clientConfig);
-    this.users.bulkEditAssignedUserRoles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{+userId}:bulkEditAssignedUserRoles', 'POST', apiParams, clientConfig);
 
     this.media = {};
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
@@ -284,6 +198,92 @@ class Displayvideo {
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
     this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('download/{+resourceName}', 'GET', apiParams, clientConfig);
+
+    this.targetingTypes = {};
+
+    this.targetingTypes.targetingOptions = {};
+    this.targetingTypes.targetingOptions.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions:search', 'POST', apiParams, clientConfig);
+    this.targetingTypes.targetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions', 'GET', apiParams, clientConfig);
+    this.targetingTypes.targetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/targetingTypes/{+targetingType}/targetingOptions/{+targetingOptionId}', 'GET', apiParams, clientConfig);
+
+    this.inventorySources = {};
+    this.inventorySources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources/{+inventorySourceId}', 'PATCH', apiParams, clientConfig);
+    this.inventorySources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources', 'GET', apiParams, clientConfig);
+    this.inventorySources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources/{+inventorySourceId}', 'GET', apiParams, clientConfig);
+    this.inventorySources.editInventorySourceReadWriteAccessors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources/{+inventorySourceId}:editInventorySourceReadWriteAccessors', 'POST', apiParams, clientConfig);
+    this.inventorySources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/inventorySources', 'POST', apiParams, clientConfig);
+
+    this.sdfdownloadtasks = {};
+    this.sdfdownloadtasks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/sdfdownloadtasks', 'POST', apiParams, clientConfig);
+
+    this.sdfdownloadtasks.operations = {};
+    this.sdfdownloadtasks.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.customBiddingAlgorithms = {};
+    this.customBiddingAlgorithms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}', 'GET', apiParams, clientConfig);
+    this.customBiddingAlgorithms.uploadScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadScript', 'GET', apiParams, clientConfig);
+    this.customBiddingAlgorithms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms', 'POST', apiParams, clientConfig);
+    this.customBiddingAlgorithms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms', 'GET', apiParams, clientConfig);
+    this.customBiddingAlgorithms.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}', 'PATCH', apiParams, clientConfig);
+    this.customBiddingAlgorithms.uploadRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}:uploadRules', 'GET', apiParams, clientConfig);
+
+    this.customBiddingAlgorithms.scripts = {};
+    this.customBiddingAlgorithms.scripts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts', 'POST', apiParams, clientConfig);
+    this.customBiddingAlgorithms.scripts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts', 'GET', apiParams, clientConfig);
+    this.customBiddingAlgorithms.scripts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/scripts/{+customBiddingScriptId}', 'GET', apiParams, clientConfig);
+
+    this.customBiddingAlgorithms.rules = {};
+    this.customBiddingAlgorithms.rules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules/{+customBiddingAlgorithmRulesId}', 'GET', apiParams, clientConfig);
+    this.customBiddingAlgorithms.rules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules', 'GET', apiParams, clientConfig);
+    this.customBiddingAlgorithms.rules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/customBiddingAlgorithms/{+customBiddingAlgorithmId}/rules', 'POST', apiParams, clientConfig);
+
+    this.guaranteedOrders = {};
+    this.guaranteedOrders.editGuaranteedOrderReadAccessors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}:editGuaranteedOrderReadAccessors', 'POST', apiParams, clientConfig);
+    this.guaranteedOrders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}', 'PATCH', apiParams, clientConfig);
+    this.guaranteedOrders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders', 'GET', apiParams, clientConfig);
+    this.guaranteedOrders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders/{+guaranteedOrderId}', 'GET', apiParams, clientConfig);
+    this.guaranteedOrders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/guaranteedOrders', 'POST', apiParams, clientConfig);
+
+    this.firstAndThirdPartyAudiences = {};
+    this.firstAndThirdPartyAudiences.editCustomerMatchMembers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}:editCustomerMatchMembers', 'POST', apiParams, clientConfig);
+    this.firstAndThirdPartyAudiences.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}', 'PATCH', apiParams, clientConfig);
+    this.firstAndThirdPartyAudiences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences/{+firstAndThirdPartyAudienceId}', 'GET', apiParams, clientConfig);
+    this.firstAndThirdPartyAudiences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences', 'GET', apiParams, clientConfig);
+    this.firstAndThirdPartyAudiences.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/firstAndThirdPartyAudiences', 'POST', apiParams, clientConfig);
+
+    this.partners = {};
+    this.partners.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners', 'GET', apiParams, clientConfig);
+    this.partners.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}', 'GET', apiParams, clientConfig);
+    this.partners.editAssignedTargetingOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}:editAssignedTargetingOptions', 'POST', apiParams, clientConfig);
+
+    this.partners.targetingTypes = {};
+
+    this.partners.targetingTypes.assignedTargetingOptions = {};
+    this.partners.targetingTypes.assignedTargetingOptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'DELETE', apiParams, clientConfig);
+    this.partners.targetingTypes.assignedTargetingOptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'GET', apiParams, clientConfig);
+    this.partners.targetingTypes.assignedTargetingOptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions/{+assignedTargetingOptionId}', 'GET', apiParams, clientConfig);
+    this.partners.targetingTypes.assignedTargetingOptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/targetingTypes/{+targetingType}/assignedTargetingOptions', 'POST', apiParams, clientConfig);
+
+    this.partners.channels = {};
+    this.partners.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels', 'GET', apiParams, clientConfig);
+    this.partners.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{channelId}', 'PATCH', apiParams, clientConfig);
+    this.partners.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels', 'POST', apiParams, clientConfig);
+    this.partners.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{+channelId}', 'GET', apiParams, clientConfig);
+
+    this.partners.channels.sites = {};
+    this.partners.channels.sites.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites:replace', 'POST', apiParams, clientConfig);
+    this.partners.channels.sites.bulkEdit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites:bulkEdit', 'POST', apiParams, clientConfig);
+    this.partners.channels.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites', 'POST', apiParams, clientConfig);
+    this.partners.channels.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{partnerId}/channels/{+channelId}/sites/{+urlOrAppId}', 'DELETE', apiParams, clientConfig);
+    this.partners.channels.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/partners/{+partnerId}/channels/{+channelId}/sites', 'GET', apiParams, clientConfig);
+
+    this.floodlightGroups = {};
+    this.floodlightGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/floodlightGroups/{+floodlightGroupId}', 'GET', apiParams, clientConfig);
+    this.floodlightGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/floodlightGroups/{floodlightGroupId}', 'PATCH', apiParams, clientConfig);
+
+    this.floodlightGroups.floodlightActivities = {};
+    this.floodlightGroups.floodlightActivities.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/floodlightGroups/{+floodlightGroupId}/floodlightActivities/{+floodlightActivityId}', 'GET', apiParams, clientConfig);
+    this.floodlightGroups.floodlightActivities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/floodlightGroups/{+floodlightGroupId}/floodlightActivities', 'GET', apiParams, clientConfig);
   }
 
 /**
