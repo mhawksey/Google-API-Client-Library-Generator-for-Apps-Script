@@ -21,16 +21,6 @@ class Gmailpostmastertools {
     this.domains = {};
 
     /**
-     * Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The resource name of the domain. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists the domains that have been registered by the client. The order of domains in the response is unspecified and non-deterministic. Newly created domains will not necessarily be added to the end of this list.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Requested page size. Server may return fewer domains than requested. If unspecified, server will pick an appropriate default.
@@ -40,6 +30,16 @@ class Gmailpostmastertools {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/domains', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a specific domain registered by the client. Returns NOT_FOUND if the domain does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The resource name of the domain. It should have the form `domains/{domain_name}`, where domain_name is the fully qualified domain name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.domains.trafficStats = {};
 
