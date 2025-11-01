@@ -27,41 +27,36 @@ class Bigquerydatatransfer {
     this.projects.dataSources.checkValidCreds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:checkValidCreds', 'POST', apiParams, clientConfig);
 
     this.projects.transferConfigs = {};
-    this.projects.transferConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transferConfigs', 'POST', apiParams, clientConfig);
-    this.projects.transferConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.transferConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.transferConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.transferConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transferConfigs', 'GET', apiParams, clientConfig);
-    this.projects.transferConfigs.scheduleRuns = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:scheduleRuns', 'POST', apiParams, clientConfig);
+    this.projects.transferConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.transferConfigs.startManualRuns = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:startManualRuns', 'POST', apiParams, clientConfig);
+    this.projects.transferConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.transferConfigs.scheduleRuns = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:scheduleRuns', 'POST', apiParams, clientConfig);
+    this.projects.transferConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transferConfigs', 'GET', apiParams, clientConfig);
+    this.projects.transferConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transferConfigs', 'POST', apiParams, clientConfig);
 
     this.projects.transferConfigs.runs = {};
-    this.projects.transferConfigs.runs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.transferConfigs.runs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.transferConfigs.runs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runs', 'GET', apiParams, clientConfig);
+    this.projects.transferConfigs.runs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.transferConfigs.runs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.transferConfigs.runs.transferLogs = {};
     this.projects.transferConfigs.runs.transferLogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transferLogs', 'GET', apiParams, clientConfig);
 
     this.projects.locations = {};
-    this.projects.locations.enrollDataSources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enrollDataSources', 'POST', apiParams, clientConfig);
-    this.projects.locations.unenrollDataSources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenrollDataSources', 'POST', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.dataSources = {};
-    this.projects.locations.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataSources', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataSources.checkValidCreds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:checkValidCreds', 'POST', apiParams, clientConfig);
+    this.projects.locations.enrollDataSources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enrollDataSources', 'POST', apiParams, clientConfig);
+    this.projects.locations.unenrollDataSources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unenrollDataSources', 'POST', apiParams, clientConfig);
 
     this.projects.locations.transferConfigs = {};
-    this.projects.locations.transferConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transferConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.transferConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.transferConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.transferConfigs.startManualRuns = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:startManualRuns', 'POST', apiParams, clientConfig);
     this.projects.locations.transferConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.transferConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.transferConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.transferConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transferConfigs', 'GET', apiParams, clientConfig);
     this.projects.locations.transferConfigs.scheduleRuns = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:scheduleRuns', 'POST', apiParams, clientConfig);
-    this.projects.locations.transferConfigs.startManualRuns = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:startManualRuns', 'POST', apiParams, clientConfig);
+    this.projects.locations.transferConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transferConfigs', 'POST', apiParams, clientConfig);
 
     this.projects.locations.transferConfigs.runs = {};
     this.projects.locations.transferConfigs.runs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -70,6 +65,11 @@ class Bigquerydatatransfer {
 
     this.projects.locations.transferConfigs.runs.transferLogs = {};
     this.projects.locations.transferConfigs.runs.transferLogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/transferLogs', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.dataSources = {};
+    this.projects.locations.dataSources.checkValidCreds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:checkValidCreds', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataSources', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
