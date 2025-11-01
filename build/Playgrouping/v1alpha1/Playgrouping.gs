@@ -21,31 +21,9 @@ class Playgrouping {
     this.apps = {};
 
     this.apps.tokens = {};
-
-    /**
-     * Verify an API token by asserting the app and persona it belongs to. The verification is a protection against client-side attacks and will fail if the contents of the token don't match the provided values. A token must be verified before it can be used to manipulate user tags.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appPackage - (Required) Required. App the token belongs to. Format: apps/{package_name}
-     * @param {string} apiParams.token - (Required) Required. The token to be verified. Format: tokens/{token}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.apps.tokens.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+appPackage}/{+token}:verify', 'POST', apiParams, clientConfig);
 
     this.apps.tokens.tags = {};
-
-    /**
-     * Create or update tags for the user and app that are represented by the given token.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appPackage - (Required) Required. App whose tags are being manipulated. Format: apps/{package_name}
-     * @param {string} apiParams.token - (Required) Required. Token for which the tags are being inserted or updated. Format: tokens/{token}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.apps.tokens.tags.createOrUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+appPackage}/{+token}/tags:createOrUpdate', 'POST', apiParams, clientConfig);
   }
 
