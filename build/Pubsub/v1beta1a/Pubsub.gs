@@ -18,163 +18,24 @@ class Pubsub {
     this._servicePath = '';
 
 
-    this.topics = {};
-
-    /**
-     * Creates the given topic with the given name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics', 'POST', apiParams, clientConfig);
-
-    /**
-     * Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.topics.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/publish', 'POST', apiParams, clientConfig);
-
-    /**
-     * Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.topics.publishBatch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/publishBatch', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the configuration of a topic. Since the topic only has the name attribute, this method is only useful to check the existence of a topic. If other attributes are added in the future, they will be returned here.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.topic - (Required) The name of the topic to get.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/{+topic}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists matching topics.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.maxResults - Maximum number of topics to return.
-     * @param {string} apiParams.pageToken - The value obtained in the last ListTopicsResponse for continuation.
-     * @param {string} apiParams.query - A valid label query expression.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes the topic with the given name. Returns NOT_FOUND if the topic does not exist. After a topic is deleted, a new topic may be created with the same name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.topic - (Required) Name of the topic to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/{+topic}', 'DELETE', apiParams, clientConfig);
-
     this.subscriptions = {};
-
-    /**
-     * Creates a subscription on a given topic for a given subscriber. If the subscription already exists, returns ALREADY_EXISTS. If the corresponding topic doesn't exist, returns NOT_FOUND. If the name is not provided in the request, the server will assign a random name for this subscription on the same project as the topic.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the configuration details of a subscription.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.subscription - (Required) The name of the subscription to get.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/{+subscription}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists matching subscriptions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.maxResults - Maximum number of subscriptions to return.
-     * @param {string} apiParams.pageToken - The value obtained in the last ListSubscriptionsResponse for continuation.
-     * @param {string} apiParams.query - A valid label query expression.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.subscription - (Required) The subscription to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/{+subscription}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.modifyPushConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/modifyPushConfig', 'POST', apiParams, clientConfig);
-
-    /**
-     * Pulls a single message from the server. If return_immediately is true, and no messages are available in the subscription, this method returns FAILED_PRECONDITION. The system is free to return an UNAVAILABLE error if no messages are available in a reasonable amount of time (to reduce system load).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.subscriptions.pull = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/pull', 'POST', apiParams, clientConfig);
-
-    /**
-     * Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.pullBatch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/pullBatch', 'POST', apiParams, clientConfig);
-
-    /**
-     * Modifies the Ack deadline for a message received from a pull request.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
+    this.subscriptions.modifyPushConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/modifyPushConfig', 'POST', apiParams, clientConfig);
     this.subscriptions.modifyAckDeadline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/modifyAckDeadline', 'POST', apiParams, clientConfig);
-
-    /**
-     * Acknowledges a particular received message: the Pub/Sub system can remove the given message from the subscription. Acknowledging a message whose Ack deadline has expired may succeed, but the message could have been already redelivered. Acknowledging a message more than once will not result in an error. This is only used for messages received via pull.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
+    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/{+subscription}', 'DELETE', apiParams, clientConfig);
+    this.subscriptions.pullBatch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/pullBatch', 'POST', apiParams, clientConfig);
+    this.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions', 'POST', apiParams, clientConfig);
+    this.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/{+subscription}', 'GET', apiParams, clientConfig);
+    this.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions', 'GET', apiParams, clientConfig);
     this.subscriptions.acknowledge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/subscriptions/acknowledge', 'POST', apiParams, clientConfig);
+
+    this.topics = {};
+    this.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics', 'GET', apiParams, clientConfig);
+    this.topics.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/publish', 'POST', apiParams, clientConfig);
+    this.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics', 'POST', apiParams, clientConfig);
+    this.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/{+topic}', 'GET', apiParams, clientConfig);
+    this.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/{+topic}', 'DELETE', apiParams, clientConfig);
+    this.topics.publishBatch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1a/topics/publishBatch', 'POST', apiParams, clientConfig);
   }
 
 /**
