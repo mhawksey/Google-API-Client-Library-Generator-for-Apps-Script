@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Q&A API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:45:24 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:36:15 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:04:39 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:04:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:40 GMT
 
 
@@ -18,19 +18,6 @@ Auto-generated client library for using the **My Business Q&A API (version: v1)*
 
 ### `locations.questions`
 
-#### `locations.questions.list()`
-
-Returns the paginated list of questions and some of its answers for a specified location. This operation is only valid if the specified location is verified.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the location to fetch questions for. |
-| `params.pageSize` | `integer` | No | Optional. How many questions to fetch per page. The default and maximum `page_size` values are 10. |
-| `params.pageToken` | `string` | No | Optional. If specified, the next page of questions is retrieved. |
-| `params.answersPerQuestion` | `integer` | No | Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10. |
-| `params.filter` | `string` | No | Optional. A filter constraining the questions to return. The only filter currently supported is "ignore_answered=true" |
-| `params.orderBy` | `string` | No | Optional. The order to return the questions. Valid options include 'update_time desc' and 'upvote_count desc', which will return the questions sorted descendingly by the requested field. The default sort order is 'update_time desc'. |
-
 #### `locations.questions.create()`
 
 Adds a question for the specified location.
@@ -39,6 +26,27 @@ Adds a question for the specified location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The name of the location to write a question for. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `locations.questions.list()`
+
+Returns the paginated list of questions and some of its answers for a specified location. This operation is only valid if the specified location is verified.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the location to fetch questions for. |
+| `params.answersPerQuestion` | `integer` | No | Optional. How many answers to fetch per question. The default and maximum `answers_per_question` values are 10. |
+| `params.filter` | `string` | No | Optional. A filter constraining the questions to return. The only filter currently supported is "ignore_answered=true" |
+| `params.pageSize` | `integer` | No | Optional. How many questions to fetch per page. The default and maximum `page_size` values are 10. |
+| `params.pageToken` | `string` | No | Optional. If specified, the next page of questions is retrieved. |
+| `params.orderBy` | `string` | No | Optional. The order to return the questions. Valid options include 'update_time desc' and 'upvote_count desc', which will return the questions sorted descendingly by the requested field. The default sort order is 'update_time desc'. |
+
+#### `locations.questions.delete()`
+
+Deletes a specific question written by the current user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the question to delete. |
 
 #### `locations.questions.patch()`
 
@@ -50,26 +58,7 @@ Updates a specific question written by the current user.
 | `params.updateMask` | `string` | No | Required. The specific fields to update. Only question text can be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `locations.questions.delete()`
-
-Deletes a specific question written by the current user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the question to delete. |
-
 ### `locations.questions.answers`
-
-#### `locations.questions.answers.list()`
-
-Returns the paginated list of answers for a specified question.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the question to fetch answers for. |
-| `params.pageSize` | `integer` | No | Optional. How many answers to fetch per page. The default and maximum `page_size` values are 10. |
-| `params.pageToken` | `string` | No | Optional. If specified, the next page of answers is retrieved. |
-| `params.orderBy` | `string` | No | Optional. The order to return the answers. Valid options include 'update_time desc' and 'upvote_count desc', which will return the answers sorted descendingly by the requested field. The default sort order is 'update_time desc'. |
 
 #### `locations.questions.answers.upsert()`
 
@@ -87,3 +76,14 @@ Deletes the answer written by the current user to a question.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the question to delete an answer for. |
+
+#### `locations.questions.answers.list()`
+
+Returns the paginated list of answers for a specified question.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. How many answers to fetch per page. The default and maximum `page_size` values are 10. |
+| `params.pageToken` | `string` | No | Optional. If specified, the next page of answers is retrieved. |
+| `params.parent` | `string` | Yes | Required. The name of the question to fetch answers for. |
+| `params.orderBy` | `string` | No | Optional. The order to return the answers. Valid options include 'update_time desc' and 'upvote_count desc', which will return the answers sorted descendingly by the requested field. The default sort order is 'update_time desc'. |
