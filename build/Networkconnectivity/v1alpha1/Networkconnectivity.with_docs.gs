@@ -23,6 +23,16 @@ class Networkconnectivity {
     this.projects.locations = {};
 
     /**
+     * Gets information about a location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Resource name for the location.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists information about the supported locations for this service.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.
@@ -36,65 +46,31 @@ class Networkconnectivity {
      */
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/locations', 'GET', apiParams, clientConfig);
 
-    /**
-     * Gets information about a location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Resource name for the location.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - The standard list filter.
-     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
-     * @param {integer} apiParams.pageSize - The standard list page size.
-     * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.global = {};
 
     this.projects.locations.global.hubs = {};
+
+    /**
+     * Deletes a Network Connectivity Center hub.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the Hub to delete.
+     * @param {string} apiParams.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.global.hubs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.global.hubs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
     /**
      * Lists the Network Connectivity Center hubs associated with a given project.
@@ -111,27 +87,15 @@ class Networkconnectivity {
     this.projects.locations.global.hubs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/hubs', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets details about a Network Connectivity Center hub.
+     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the Hub resource to get.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.global.hubs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new Network Connectivity Center hub in the specified project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.hubId - Optional. Unique id for the Hub to create.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource's name of the Hub.
-     * @param {string} apiParams.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.global.hubs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/hubs', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.hubs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the description and/or labels of a Network Connectivity Center hub.
@@ -147,37 +111,17 @@ class Networkconnectivity {
     this.projects.locations.global.hubs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a Network Connectivity Center hub.
+     * Creates a new Network Connectivity Center hub in the specified project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the Hub to delete.
+     * @param {string} apiParams.hubId - Optional. Unique id for the Hub to create.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource's name of the Hub.
      * @param {string} apiParams.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.global.hubs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.global.hubs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.global.hubs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.hubs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/hubs', 'POST', apiParams, clientConfig);
 
     /**
      * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
@@ -190,90 +134,28 @@ class Networkconnectivity {
      */
     this.projects.locations.global.hubs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.spokes = {};
-
     /**
-     * Lists the Network Connectivity Center spokes in a specified project and location.
+     * Gets details about a Network Connectivity Center hub.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - A filter expression that filters the results listed in the response.
-     * @param {string} apiParams.orderBy - Sort the results by a certain order.
-     * @param {integer} apiParams.pageSize - The maximum number of results per page that should be returned.
-     * @param {string} apiParams.pageToken - The page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent's resource name.
+     * @param {string} apiParams.name - (Required) Required. Name of the Hub resource to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.spokes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/spokes', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.hubs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.internalRanges = {};
 
     /**
-     * Gets details about a Network Connectivity Center spoke.
+     * Deletes a single internal range.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of Spoke resource.
+     * @param {string} apiParams.name - (Required) Required. The name of the InternalRange to delete.
+     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.spokes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a Network Connectivity Center spoke.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent's resource name of the Spoke.
-     * @param {string} apiParams.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {string} apiParams.spokeId - Optional. Unique id for the Spoke to create.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.spokes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/spokes', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates the parameters of a Network Connectivity Center spoke.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Immutable. The name of a Spoke resource.
-     * @param {string} apiParams.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the Spoke resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.spokes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a Network Connectivity Center spoke.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the Spoke to delete.
-     * @param {string} apiParams.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.spokes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.spokes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.spokes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.internalRanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
@@ -284,9 +166,18 @@ class Networkconnectivity {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.spokes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.internalRanges.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.internalRanges = {};
+    /**
+     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.internalRanges.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
      * Lists internal ranges in a given project and location.
@@ -303,14 +194,15 @@ class Networkconnectivity {
     this.projects.locations.internalRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/internalRanges', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets details of a single internal range.
+     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the InternalRange to get.
+     * @param {integer} apiParams.options.requestedPolicyVersion - Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.internalRanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.internalRanges.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a new internal range in a given project and location.
@@ -339,26 +231,40 @@ class Networkconnectivity {
     this.projects.locations.internalRanges.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a single internal range.
+     * Gets details of a single internal range.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the InternalRange to delete.
-     * @param {string} apiParams.requestId - Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if the original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.name - (Required) Required. Name of the InternalRange to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.internalRanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.internalRanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.spokes = {};
 
     /**
-     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+     * Updates the parameters of a Network Connectivity Center spoke.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {string} apiParams.name - (Required) Immutable. The name of a Spoke resource.
+     * @param {string} apiParams.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.updateMask - Optional. Field mask is used to specify the fields to be overwritten in the Spoke resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.internalRanges.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.spokes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a Network Connectivity Center spoke.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the Spoke to delete.
+     * @param {string} apiParams.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.spokes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -369,7 +275,42 @@ class Networkconnectivity {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.internalRanges.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.spokes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the Network Connectivity Center spokes in a specified project and location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - A filter expression that filters the results listed in the response.
+     * @param {string} apiParams.orderBy - Sort the results by a certain order.
+     * @param {integer} apiParams.pageSize - The maximum number of results per page that should be returned.
+     * @param {string} apiParams.pageToken - The page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent's resource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.spokes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/spokes', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets details about a Network Connectivity Center spoke.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of Spoke resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.spokes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.spokes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
      * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
@@ -380,7 +321,67 @@ class Networkconnectivity {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.internalRanges.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.spokes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a Network Connectivity Center spoke.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent's resource name of the Spoke.
+     * @param {string} apiParams.requestId - Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server guarantees that a request doesn't result in creation of duplicate commitments for at least 60 minutes. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
+     * @param {string} apiParams.spokeId - Optional. Unique id for the Spoke to create.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.spokes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/spokes', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+
+    /**
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - The standard list filter.
+     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
+     * @param {integer} apiParams.pageSize - The standard list page size.
+     * @param {string} apiParams.pageToken - The standard list page token.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
   }
 
 /**
