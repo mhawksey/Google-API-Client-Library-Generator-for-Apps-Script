@@ -21,16 +21,6 @@ class Area120tables {
     this.tables = {};
 
     /**
-     * Gets a table. Returns NOT_FOUND if the table does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the table to retrieve. Format: tables/{table}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists tables for the user.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.orderBy - Optional. Sorting order for the list of tables on createTime/updateTime.
@@ -42,7 +32,40 @@ class Area120tables {
      */
     this.tables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/tables', 'GET', apiParams, clientConfig);
 
+    /**
+     * Gets a table. Returns NOT_FOUND if the table does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the table to retrieve. Format: tables/{table}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
     this.tables.rows = {};
+
+    /**
+     * Updates multiple rows.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent table shared by all rows being updated. Format: tables/{table}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.rows.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchUpdate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a row.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent table where this row will be created. Format: tables/{table}
+     * @param {string} apiParams.view - Optional. Column key to use for values in the row. Defaults to user entered name.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.rows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a row. Returns NOT_FOUND if the row does not exist in the table.
@@ -54,6 +77,17 @@ class Area120tables {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.tables.rows.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates multiple rows.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent table where the rows will be created. Format: tables/{table}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.rows.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchCreate', 'POST', apiParams, clientConfig);
 
     /**
      * Lists rows in a table. Returns NOT_FOUND if the table does not exist.
@@ -71,29 +105,6 @@ class Area120tables {
     this.tables.rows.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a row.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent table where this row will be created. Format: tables/{table}
-     * @param {string} apiParams.view - Optional. Column key to use for values in the row. Defaults to user entered name.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.rows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates multiple rows.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent table where the rows will be created. Format: tables/{table}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.rows.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchCreate', 'POST', apiParams, clientConfig);
-
-    /**
      * Updates a row.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The resource name of the row. Row names have the form `tables/{table}/rows/{row}`. The name is ignored when creating a row.
@@ -107,15 +118,15 @@ class Area120tables {
     this.tables.rows.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Updates multiple rows.
+     * Deletes multiple rows.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent table shared by all rows being updated. Format: tables/{table}
+     * @param {string} apiParams.parent - (Required) Required. The parent table shared by all rows being deleted. Format: tables/{table}
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.tables.rows.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchUpdate', 'POST', apiParams, clientConfig);
+    this.tables.rows.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchDelete', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a row.
@@ -126,17 +137,6 @@ class Area120tables {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.tables.rows.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Deletes multiple rows.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent table shared by all rows being deleted. Format: tables/{table}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.rows.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchDelete', 'POST', apiParams, clientConfig);
 
     this.workspaces = {};
 
