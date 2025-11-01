@@ -18,29 +18,18 @@ class Dataportability {
     this._servicePath = '';
 
 
-    this.portabilityArchive = {};
+    this.archiveJobs = {};
 
     /**
-     * Initiates a new Archive job for the Portability API.
+     * Cancels a Portability Archive job.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.portabilityArchive.initiate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/portabilityArchive:initiate', 'POST', apiParams, clientConfig);
-
-    this.archiveJobs = {};
-
-    /**
-     * Retrieves the state of an Archive job for the Portability API.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The archive job ID that is returned when you request the state of the job. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the InitiatePortabilityArchiveResponse.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.archiveJobs.getPortabilityArchiveState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.archiveJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     /**
      * Retries a failed Portability Archive job.
@@ -54,15 +43,14 @@ class Dataportability {
     this.archiveJobs.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:retry', 'POST', apiParams, clientConfig);
 
     /**
-     * Cancels a Portability Archive job.
+     * Retrieves the state of an Archive job for the Portability API.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The archive job ID that is returned when you request the state of the job. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the InitiatePortabilityArchiveResponse.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.archiveJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.archiveJobs.getPortabilityArchiveState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.authorization = {};
 
@@ -75,6 +63,18 @@ class Dataportability {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.authorization.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/authorization:reset', 'POST', apiParams, clientConfig);
+
+    this.portabilityArchive = {};
+
+    /**
+     * Initiates a new Archive job for the Portability API.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.portabilityArchive.initiate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/portabilityArchive:initiate', 'POST', apiParams, clientConfig);
 
     this.accessType = {};
 
