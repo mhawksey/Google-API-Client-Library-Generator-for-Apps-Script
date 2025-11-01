@@ -41,19 +41,6 @@ class Admob {
      */
     this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/accounts', 'GET', apiParams, clientConfig);
 
-    this.accounts.networkReport = {};
-
-    /**
-     * Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.networkReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/networkReport:generate', 'POST', apiParams, clientConfig);
-
     this.accounts.mediationReport = {};
 
     /**
@@ -66,6 +53,19 @@ class Admob {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.mediationReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/mediationReport:generate', 'POST', apiParams, clientConfig);
+
+    this.accounts.adUnitMappings = {};
+
+    /**
+     * Batch create the ad unit mappings under the specific AdMob account. The maximum allowed batch size is 100. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The AdMob account which owns this collection of ad unit mappings. Format: accounts/{publisher_id} See https://support.google.com/admob/answer/2784578 for instructions on how to find your AdMob publisher ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.adUnitMappings.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnitMappings:batchCreate', 'POST', apiParams, clientConfig);
 
     this.accounts.campaignReport = {};
 
@@ -80,30 +80,33 @@ class Admob {
      */
     this.accounts.campaignReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/campaignReport:generate', 'POST', apiParams, clientConfig);
 
-    this.accounts.apps = {};
+    this.accounts.adSources = {};
 
     /**
-     * Creates an app under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access.
+     * List the ad sources.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Resource name of the account for which the app is being created. Example: accounts/pub-9876543210987654
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.pageSize - The maximum number of ad sources to return. If unspecified or 0, at most 10,000 ad sources will be returned. The maximum value is 20,000; values above 10,000 will be coerced to 20,000.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAdSources` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. The parent which owns this collection of ad sources. Format: accounts/{publisher_id}
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.apps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps', 'POST', apiParams, clientConfig);
+    this.accounts.adSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adSources', 'GET', apiParams, clientConfig);
+
+    this.accounts.adSources.adapters = {};
 
     /**
-     * List the apps under the specified AdMob account.
+     * List the adapters of the ad source.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of apps to return. If unspecified or 0, at most 10,000 apps will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
-     * @param {string} apiParams.pageToken - The value returned by the last `ListAppsResponse`; indicates that this is a continuation of a prior `ListApps` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654
+     * @param {integer} apiParams.pageSize - The maximum number of adapters to return. If unspecified or 0, at most 10,000 adapters will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAdapters` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. The parent which owns this collection of adapters. Format: accounts/{publisher_id}/adSources/{ad_source_id}
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps', 'GET', apiParams, clientConfig);
+    this.accounts.adSources.adapters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adapters', 'GET', apiParams, clientConfig);
 
     this.accounts.adUnits = {};
 
@@ -159,19 +162,6 @@ class Admob {
     this.accounts.mediationGroups = {};
 
     /**
-     * List mediation groups under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - The filter string that uses [EBNF grammar syntax](https://google.aip.dev/assets/misc/ebnf-filtering.txt). Possible fields to filter by are: - "AD_SOURCE_IDS" - "AD_UNIT_IDS" - "APP_IDS" - "DISPLAY_NAME" - "FORMAT" - "MEDIATION_GROUP_ID" - "PLATFORM" - "STATE" - "TARGETED_REGION_CODES" Possible filter functions are: - `IN`: Used to filter fields that represent a singleton including "MEDIATION_GROUP_ID", "DISPLAY_NAME", "STATE", "PLATFORM", and "FORMAT". - `CONTAINS_ANY`: Used to filter fields that represent a collection including "AD_SOURCE_IDS", "AD_UNIT_IDS", "APP_IDS", and "TARGETED_REGION_CODES". The filter functions can be added together using `AND`. `OR` functionality is not supported. Example: filter: IN(DISPLAY_NAME, "Test Group 1", "Test Group 2") AND IN(PLATFORM, "ANDROID") AND CONTAINS_ANY(AD_SOURCE_IDS, "5450213213286189855")
-     * @param {integer} apiParams.pageSize - The maximum number of mediation groups to return. If unspecified or 0, at most 10,000 mediation groups will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
-     * @param {string} apiParams.pageToken - The value returned by the last `ListMediationGroupsResponse`; indicates that this is a continuation of a prior `ListMediationGroups` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. Resource name of the account to list mediation groups for. Example: accounts/pub-9876543210987654
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.mediationGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/mediationGroups', 'GET', apiParams, clientConfig);
-
-    /**
      * Create a mediation group under the specific AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The parent which owns the mediation group. Format: accounts/{publisher_id}
@@ -193,6 +183,19 @@ class Admob {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.mediationGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * List mediation groups under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - The filter string that uses [EBNF grammar syntax](https://google.aip.dev/assets/misc/ebnf-filtering.txt). Possible fields to filter by are: - "AD_SOURCE_IDS" - "AD_UNIT_IDS" - "APP_IDS" - "DISPLAY_NAME" - "FORMAT" - "MEDIATION_GROUP_ID" - "PLATFORM" - "STATE" - "TARGETED_REGION_CODES" Possible filter functions are: - `IN`: Used to filter fields that represent a singleton including "MEDIATION_GROUP_ID", "DISPLAY_NAME", "STATE", "PLATFORM", and "FORMAT". - `CONTAINS_ANY`: Used to filter fields that represent a collection including "AD_SOURCE_IDS", "AD_UNIT_IDS", "APP_IDS", and "TARGETED_REGION_CODES". The filter functions can be added together using `AND`. `OR` functionality is not supported. Example: filter: IN(DISPLAY_NAME, "Test Group 1", "Test Group 2") AND IN(PLATFORM, "ANDROID") AND CONTAINS_ANY(AD_SOURCE_IDS, "5450213213286189855")
+     * @param {integer} apiParams.pageSize - The maximum number of mediation groups to return. If unspecified or 0, at most 10,000 mediation groups will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
+     * @param {string} apiParams.pageToken - The value returned by the last `ListMediationGroupsResponse`; indicates that this is a continuation of a prior `ListMediationGroups` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. Resource name of the account to list mediation groups for. Example: accounts/pub-9876543210987654
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.mediationGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/mediationGroups', 'GET', apiParams, clientConfig);
 
     this.accounts.mediationGroups.mediationAbExperiments = {};
 
@@ -218,46 +221,43 @@ class Admob {
      */
     this.accounts.mediationGroups.mediationAbExperiments.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:stop', 'POST', apiParams, clientConfig);
 
-    this.accounts.adUnitMappings = {};
+    this.accounts.apps = {};
 
     /**
-     * Batch create the ad unit mappings under the specific AdMob account. The maximum allowed batch size is 100. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access.
+     * List the apps under the specified AdMob account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The AdMob account which owns this collection of ad unit mappings. Format: accounts/{publisher_id} See https://support.google.com/admob/answer/2784578 for instructions on how to find your AdMob publisher ID.
+     * @param {integer} apiParams.pageSize - The maximum number of apps to return. If unspecified or 0, at most 10,000 apps will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
+     * @param {string} apiParams.pageToken - The value returned by the last `ListAppsResponse`; indicates that this is a continuation of a prior `ListApps` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates an app under the specified AdMob account. This method has limited access. If you see a 403 permission denied error, please reach out to your account manager for access.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. Resource name of the account for which the app is being created. Example: accounts/pub-9876543210987654
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.adUnitMappings.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnitMappings:batchCreate', 'POST', apiParams, clientConfig);
+    this.accounts.apps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps', 'POST', apiParams, clientConfig);
 
-    this.accounts.adSources = {};
+    this.accounts.networkReport = {};
 
     /**
-     * List the ad sources.
+     * Generates an AdMob Network report based on the provided report specification. Returns result of a server-side streaming RPC. The result is returned in a sequence of responses.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of ad sources to return. If unspecified or 0, at most 10,000 ad sources will be returned. The maximum value is 20,000; values above 10,000 will be coerced to 20,000.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAdSources` call. Provide this to retrieve the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. The parent which owns this collection of ad sources. Format: accounts/{publisher_id}
+     * @param {string} apiParams.parent - (Required) Resource name of the account to generate the report for. Example: accounts/pub-9876543210987654
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.adSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adSources', 'GET', apiParams, clientConfig);
-
-    this.accounts.adSources.adapters = {};
-
-    /**
-     * List the adapters of the ad source.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of adapters to return. If unspecified or 0, at most 10,000 adapters will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAdapters` call. Provide this to retrieve the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. The parent which owns this collection of adapters. Format: accounts/{publisher_id}/adSources/{ad_source_id}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.adSources.adapters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adapters', 'GET', apiParams, clientConfig);
+    this.accounts.networkReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/networkReport:generate', 'POST', apiParams, clientConfig);
   }
 
 /**
