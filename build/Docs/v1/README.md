@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Docs API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Fri, 03 Oct 2025 09:03:08 GMT
-- **Last Modified:** Fri, 03 Oct 2025 09:03:08 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:43:41 GMT
+- **Last Modified:** Sat, 01 Nov 2025 00:43:41 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:11 GMT
 
 
@@ -16,16 +16,6 @@ Auto-generated client library for using the **Google Docs API (version: v1)** in
 
 ### `documents`
 
-#### `documents.get()`
-
-Gets the latest version of the specified document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.documentId` | `string` | Yes | The ID of the document to retrieve. |
-| `params.suggestionsViewMode` | `string` | No | The suggestions view mode to apply to the document. This allows viewing the document with all suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used. |
-| `params.includeTabsContent` | `boolean` | No | Whether to populate the Document.tabs field instead of the text content fields like `body` and `documentStyle` on Document. - When `True`: Document content populates in the Document.tabs field instead of the text content fields in Document. - When `False`: The content of the document's first tab populates the content fields in Document excluding Document.tabs. If a document has only one tab, then that tab is used to populate the document content. Document.tabs will be empty. |
-
 #### `documents.create()`
 
 Creates a blank document using the title given in the request. Other fields in the request, including any provided content, are ignored. Returns the created document.
@@ -33,6 +23,16 @@ Creates a blank document using the title given in the request. Other fields in t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `documents.get()`
+
+Gets the latest version of the specified document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.includeTabsContent` | `boolean` | No | Whether to populate the Document.tabs field instead of the text content fields like `body` and `documentStyle` on Document. - When `True`: Document content populates in the Document.tabs field instead of the text content fields in Document. - When `False`: The content of the document's first tab populates the content fields in Document excluding Document.tabs. If a document has only one tab, then that tab is used to populate the document content. Document.tabs will be empty. |
+| `params.documentId` | `string` | Yes | The ID of the document to retrieve. |
+| `params.suggestionsViewMode` | `string` | No | The suggestions view mode to apply to the document. This allows viewing the document with all suggestions inline, accepted or rejected. If one is not specified, DEFAULT_FOR_CURRENT_ACCESS is used. |
 
 #### `documents.batchUpdate()`
 
