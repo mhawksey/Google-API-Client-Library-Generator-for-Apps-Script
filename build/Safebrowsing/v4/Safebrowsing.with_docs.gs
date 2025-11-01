@@ -30,17 +30,17 @@ class Safebrowsing {
      */
     this.threatMatches.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatMatches:find', 'POST', apiParams, clientConfig);
 
-    this.threatListUpdates = {};
+    this.fullHashes = {};
 
     /**
-     * Fetches the most recent threat list updates. A client can request updates for multiple lists at once.
+     * Finds the full hashes that match the requested hash prefixes.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.threatListUpdates.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatListUpdates:fetch', 'POST', apiParams, clientConfig);
+    this.fullHashes.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/fullHashes:find', 'POST', apiParams, clientConfig);
 
     this.encodedUpdates = {};
 
@@ -55,17 +55,17 @@ class Safebrowsing {
      */
     this.encodedUpdates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/encodedUpdates/{encodedRequest}', 'GET', apiParams, clientConfig);
 
-    this.fullHashes = {};
+    this.threatHits = {};
 
     /**
-     * Finds the full hashes that match the requested hash prefixes.
+     * Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility can use this method.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.fullHashes.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/fullHashes:find', 'POST', apiParams, clientConfig);
+    this.threatHits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatHits', 'POST', apiParams, clientConfig);
 
     this.encodedFullHashes = {};
 
@@ -80,17 +80,17 @@ class Safebrowsing {
      */
     this.encodedFullHashes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/encodedFullHashes/{encodedRequest}', 'GET', apiParams, clientConfig);
 
-    this.threatHits = {};
+    this.threatListUpdates = {};
 
     /**
-     * Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility can use this method.
+     * Fetches the most recent threat list updates. A client can request updates for multiple lists at once.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.threatHits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatHits', 'POST', apiParams, clientConfig);
+    this.threatListUpdates.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatListUpdates:fetch', 'POST', apiParams, clientConfig);
 
     this.threatLists = {};
 
