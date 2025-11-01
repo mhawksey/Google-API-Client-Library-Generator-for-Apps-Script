@@ -21,113 +21,24 @@ class Identitytoolkit {
     this.relyingparty = {};
 
     /**
-     * Creates the URI used by the IdP to authenticate the user.
+     * Signup new user.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.relyingparty.createAuthUri = async (apiParams = {}, clientConfig = {}) => this._makeRequest('createAuthUri', 'POST', apiParams, clientConfig);
+    this.relyingparty.signupNewUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('signupNewUser', 'POST', apiParams, clientConfig);
 
     /**
-     * Delete user account.
+     * Verifies the assertion returned by the IdP.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.relyingparty.deleteAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deleteAccount', 'POST', apiParams, clientConfig);
-
-    /**
-     * Batch download user accounts.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.downloadAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('downloadAccount', 'POST', apiParams, clientConfig);
-
-    /**
-     * Reset password for a user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.emailLinkSignin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('emailLinkSignin', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns the account info.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.getAccountInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getAccountInfo', 'POST', apiParams, clientConfig);
-
-    /**
-     * Get a code for user action confirmation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.getOobConfirmationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getOobConfirmationCode', 'POST', apiParams, clientConfig);
-
-    /**
-     * Get project configuration.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.delegatedProjectNumber - Delegated GCP project number of the request.
-     * @param {string} apiParams.projectNumber - GCP project number of the request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.getProjectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getProjectConfig', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get token signing public key.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.getPublicKeys = async (apiParams = {}, clientConfig = {}) => this._makeRequest('publicKeys', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get recaptcha secure param.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.getRecaptchaParam = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getRecaptchaParam', 'GET', apiParams, clientConfig);
-
-    /**
-     * Reset password for a user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.resetPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('resetPassword', 'POST', apiParams, clientConfig);
-
-    /**
-     * Send SMS verification code.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.sendVerificationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('sendVerificationCode', 'POST', apiParams, clientConfig);
+    this.relyingparty.verifyAssertion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyAssertion', 'POST', apiParams, clientConfig);
 
     /**
      * Set account info for a user.
@@ -150,26 +61,6 @@ class Identitytoolkit {
     this.relyingparty.setProjectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('setProjectConfig', 'POST', apiParams, clientConfig);
 
     /**
-     * Sign out user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.signOutUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('signOutUser', 'POST', apiParams, clientConfig);
-
-    /**
-     * Signup new user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.relyingparty.signupNewUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('signupNewUser', 'POST', apiParams, clientConfig);
-
-    /**
      * Batch upload existing user accounts.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -180,14 +71,13 @@ class Identitytoolkit {
     this.relyingparty.uploadAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('uploadAccount', 'POST', apiParams, clientConfig);
 
     /**
-     * Verifies the assertion returned by the IdP.
+     * Get token signing public key.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.relyingparty.verifyAssertion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyAssertion', 'POST', apiParams, clientConfig);
+    this.relyingparty.getPublicKeys = async (apiParams = {}, clientConfig = {}) => this._makeRequest('publicKeys', 'GET', apiParams, clientConfig);
 
     /**
      * Verifies the developer asserted ID token.
@@ -200,6 +90,86 @@ class Identitytoolkit {
     this.relyingparty.verifyCustomToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyCustomToken', 'POST', apiParams, clientConfig);
 
     /**
+     * Verifies ownership of a phone number and creates/updates the user account accordingly.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.verifyPhoneNumber = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyPhoneNumber', 'POST', apiParams, clientConfig);
+
+    /**
+     * Get project configuration.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.delegatedProjectNumber - Delegated GCP project number of the request.
+     * @param {string} apiParams.projectNumber - GCP project number of the request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.getProjectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getProjectConfig', 'GET', apiParams, clientConfig);
+
+    /**
+     * Send SMS verification code.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.sendVerificationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('sendVerificationCode', 'POST', apiParams, clientConfig);
+
+    /**
+     * Delete user account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.deleteAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deleteAccount', 'POST', apiParams, clientConfig);
+
+    /**
+     * Sign out user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.signOutUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('signOutUser', 'POST', apiParams, clientConfig);
+
+    /**
+     * Reset password for a user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.emailLinkSignin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('emailLinkSignin', 'POST', apiParams, clientConfig);
+
+    /**
+     * Get recaptcha secure param.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.getRecaptchaParam = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getRecaptchaParam', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a code for user action confirmation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.getOobConfirmationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getOobConfirmationCode', 'POST', apiParams, clientConfig);
+
+    /**
      * Verifies the user entered password.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -210,14 +180,44 @@ class Identitytoolkit {
     this.relyingparty.verifyPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyPassword', 'POST', apiParams, clientConfig);
 
     /**
-     * Verifies ownership of a phone number and creates/updates the user account accordingly.
+     * Returns the account info.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.relyingparty.verifyPhoneNumber = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyPhoneNumber', 'POST', apiParams, clientConfig);
+    this.relyingparty.getAccountInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getAccountInfo', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates the URI used by the IdP to authenticate the user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.createAuthUri = async (apiParams = {}, clientConfig = {}) => this._makeRequest('createAuthUri', 'POST', apiParams, clientConfig);
+
+    /**
+     * Reset password for a user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.resetPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('resetPassword', 'POST', apiParams, clientConfig);
+
+    /**
+     * Batch download user accounts.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.relyingparty.downloadAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('downloadAccount', 'POST', apiParams, clientConfig);
   }
 
 /**
