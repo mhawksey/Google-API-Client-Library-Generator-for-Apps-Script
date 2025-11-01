@@ -4,7 +4,7 @@ Auto-generated client library for using the **Firebase Rules API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Fri, 03 Oct 2025 09:04:39 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:46:13 GMT
 - **Last Modified:** Fri, 03 Oct 2025 09:04:39 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:48 GMT
 
