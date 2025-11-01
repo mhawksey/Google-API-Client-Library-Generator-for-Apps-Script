@@ -18,58 +18,58 @@ class Calendar {
     this._servicePath = 'calendar/v3/';
 
 
-    this.acl = {};
-    this.acl.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'DELETE', apiParams, clientConfig);
-    this.acl.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'GET', apiParams, clientConfig);
-    this.acl.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl', 'POST', apiParams, clientConfig);
-    this.acl.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl', 'GET', apiParams, clientConfig);
-    this.acl.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'PATCH', apiParams, clientConfig);
-    this.acl.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'PUT', apiParams, clientConfig);
-    this.acl.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/watch', 'POST', apiParams, clientConfig);
+    this.colors = {};
+    this.colors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('colors', 'GET', apiParams, clientConfig);
 
     this.calendarList = {};
-    this.calendarList.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'DELETE', apiParams, clientConfig);
     this.calendarList.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'GET', apiParams, clientConfig);
-    this.calendarList.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList', 'POST', apiParams, clientConfig);
     this.calendarList.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList', 'GET', apiParams, clientConfig);
-    this.calendarList.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'PATCH', apiParams, clientConfig);
     this.calendarList.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'PUT', apiParams, clientConfig);
+    this.calendarList.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList', 'POST', apiParams, clientConfig);
+    this.calendarList.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'DELETE', apiParams, clientConfig);
+    this.calendarList.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/{calendarId}', 'PATCH', apiParams, clientConfig);
     this.calendarList.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/calendarList/watch', 'POST', apiParams, clientConfig);
 
-    this.calendars = {};
-    this.calendars.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/clear', 'POST', apiParams, clientConfig);
-    this.calendars.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'DELETE', apiParams, clientConfig);
-    this.calendars.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'GET', apiParams, clientConfig);
-    this.calendars.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars', 'POST', apiParams, clientConfig);
-    this.calendars.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'PATCH', apiParams, clientConfig);
-    this.calendars.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'PUT', apiParams, clientConfig);
+    this.acl = {};
+    this.acl.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'PATCH', apiParams, clientConfig);
+    this.acl.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/watch', 'POST', apiParams, clientConfig);
+    this.acl.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'GET', apiParams, clientConfig);
+    this.acl.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl', 'GET', apiParams, clientConfig);
+    this.acl.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'PUT', apiParams, clientConfig);
+    this.acl.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl', 'POST', apiParams, clientConfig);
+    this.acl.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/acl/{ruleId}', 'DELETE', apiParams, clientConfig);
+
+    this.settings = {};
+    this.settings.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/settings/watch', 'POST', apiParams, clientConfig);
+    this.settings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/settings', 'GET', apiParams, clientConfig);
+    this.settings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/settings/{setting}', 'GET', apiParams, clientConfig);
 
     this.channels = {};
     this.channels.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('channels/stop', 'POST', apiParams, clientConfig);
 
-    this.colors = {};
-    this.colors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('colors', 'GET', apiParams, clientConfig);
-
     this.events = {};
-    this.events.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'DELETE', apiParams, clientConfig);
     this.events.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'GET', apiParams, clientConfig);
+    this.events.quickAdd = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/quickAdd', 'POST', apiParams, clientConfig);
+    this.events.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'PATCH', apiParams, clientConfig);
+    this.events.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/watch', 'POST', apiParams, clientConfig);
+    this.events.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}/move', 'POST', apiParams, clientConfig);
+    this.events.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'PUT', apiParams, clientConfig);
+    this.events.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'DELETE', apiParams, clientConfig);
     this.events.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/import', 'POST', apiParams, clientConfig);
     this.events.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events', 'POST', apiParams, clientConfig);
-    this.events.instances = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}/instances', 'GET', apiParams, clientConfig);
     this.events.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events', 'GET', apiParams, clientConfig);
-    this.events.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}/move', 'POST', apiParams, clientConfig);
-    this.events.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'PATCH', apiParams, clientConfig);
-    this.events.quickAdd = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/quickAdd', 'POST', apiParams, clientConfig);
-    this.events.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}', 'PUT', apiParams, clientConfig);
-    this.events.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/watch', 'POST', apiParams, clientConfig);
+    this.events.instances = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/events/{eventId}/instances', 'GET', apiParams, clientConfig);
+
+    this.calendars = {};
+    this.calendars.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'GET', apiParams, clientConfig);
+    this.calendars.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'PUT', apiParams, clientConfig);
+    this.calendars.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'DELETE', apiParams, clientConfig);
+    this.calendars.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}/clear', 'POST', apiParams, clientConfig);
+    this.calendars.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars', 'POST', apiParams, clientConfig);
+    this.calendars.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('calendars/{calendarId}', 'PATCH', apiParams, clientConfig);
 
     this.freebusy = {};
     this.freebusy.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('freeBusy', 'POST', apiParams, clientConfig);
-
-    this.settings = {};
-    this.settings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/settings/{setting}', 'GET', apiParams, clientConfig);
-    this.settings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/settings', 'GET', apiParams, clientConfig);
-    this.settings.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('users/me/settings/watch', 'POST', apiParams, clientConfig);
   }
 
 /**
