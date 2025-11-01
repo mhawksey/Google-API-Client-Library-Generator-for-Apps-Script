@@ -18,38 +18,6 @@ class Kmsinventory {
     this._servicePath = '';
 
 
-    this.projects = {};
-
-    this.projects.cryptoKeys = {};
-
-    /**
-     * Returns cryptographic keys managed by Cloud KMS in a given Cloud project. Note that this data is sourced from snapshots, meaning it may not completely reflect the actual state of key metadata at call time.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of keys to return. The service may return fewer than this value. If unspecified, at most 1000 keys will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Optional. Pass this into a subsequent request in order to receive the next page of results.
-     * @param {string} apiParams.parent - (Required) Required. The Google Cloud project for which to retrieve key metadata, in the format `projects/*`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.cryptoKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeys', 'GET', apiParams, clientConfig);
-
-    this.projects.locations = {};
-
-    this.projects.locations.keyRings = {};
-
-    this.projects.locations.keyRings.cryptoKeys = {};
-
-    /**
-     * Returns aggregate information about the resources protected by the given Cloud KMS CryptoKey. Only resources within the same Cloud organization as the key will be returned. The project that holds the key must be part of an organization in order for this call to succeed.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the CryptoKey.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.keyRings.cryptoKeys.getProtectedResourcesSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/protectedResourcesSummary', 'GET', apiParams, clientConfig);
-
     this.organizations = {};
 
     this.organizations.protectedResources = {};
@@ -67,6 +35,38 @@ class Kmsinventory {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.organizations.protectedResources.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}/protectedResources:search', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+
+    this.projects.locations = {};
+
+    this.projects.locations.keyRings = {};
+
+    this.projects.locations.keyRings.cryptoKeys = {};
+
+    /**
+     * Returns aggregate information about the resources protected by the given Cloud KMS CryptoKey. Only resources within the same Cloud organization as the key will be returned. The project that holds the key must be part of an organization in order for this call to succeed.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the CryptoKey.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.keyRings.cryptoKeys.getProtectedResourcesSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/protectedResourcesSummary', 'GET', apiParams, clientConfig);
+
+    this.projects.cryptoKeys = {};
+
+    /**
+     * Returns cryptographic keys managed by Cloud KMS in a given Cloud project. Note that this data is sourced from snapshots, meaning it may not completely reflect the actual state of key metadata at call time.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of keys to return. The service may return fewer than this value. If unspecified, at most 1000 keys will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. Pass this into a subsequent request in order to receive the next page of results.
+     * @param {string} apiParams.parent - (Required) Required. The Google Cloud project for which to retrieve key metadata, in the format `projects/*`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.cryptoKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeys', 'GET', apiParams, clientConfig);
   }
 
 /**
