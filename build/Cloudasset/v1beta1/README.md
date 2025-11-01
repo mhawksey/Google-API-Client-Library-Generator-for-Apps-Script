@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Asset API (version: v1beta1)
 
 ## Metadata
 
-- **Last Checked:** Fri, 03 Oct 2025 08:46:08 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:31:01 GMT
 - **Last Modified:** Fri, 03 Oct 2025 08:46:08 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:04 GMT
 
