@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: datasources
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:44:19 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:34:25 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:56:15 GMT
+- **Last Modified:** Sat, 01 Nov 2025 00:56:15 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:24 GMT
 
 
@@ -18,23 +18,14 @@ Auto-generated client library for using the **Merchant API (version: datasources
 
 ### `accounts.dataSources`
 
-#### `accounts.dataSources.get()`
+#### `accounts.dataSources.fetch()`
 
-Retrieves the data source configuration for the given account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}` |
-
-#### `accounts.dataSources.list()`
-
-Lists the configurations for data sources for the given account.
+Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The account to list data sources for. Format: `accounts/{account}` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of data sources to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of data sources will be returned. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDataSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataSources` must match the call that provided the page token. |
+| `params.name` | `string` | Yes | Required. The name of the data source resource to fetch. Format: `accounts/{account}/dataSources/{datasource}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.dataSources.create()`
 
@@ -44,6 +35,16 @@ Creates the new data source configuration for the given account. This method alw
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The account where this data source will be created. Format: `accounts/{account}` |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.dataSources.list()`
+
+Lists the configurations for data sources for the given account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDataSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataSources` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The account to list data sources for. Format: `accounts/{account}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of data sources to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of data sources will be returned. |
 
 #### `accounts.dataSources.patch()`
 
@@ -63,14 +64,13 @@ Deletes a data source from your Merchant Center account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}` |
 
-#### `accounts.dataSources.fetch()`
+#### `accounts.dataSources.get()`
 
-Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set.
+Retrieves the data source configuration for the given account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the data source resource to fetch. Format: `accounts/{account}/dataSources/{datasource}` |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The name of the data source to retrieve. Format: `accounts/{account}/dataSources/{datasource}` |
 
 ### `accounts.dataSources.fileUploads`
 
