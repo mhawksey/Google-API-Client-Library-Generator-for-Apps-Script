@@ -19,25 +19,7 @@ class Indexing {
 
 
     this.urlNotifications = {};
-
-    /**
-     * Notifies that a URL has been updated or deleted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.urlNotifications.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/urlNotifications:publish', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets metadata about a Web Document. This method can _only_ be used to query URLs that were previously seen in successful Indexing API notifications. Includes the latest `UrlNotification` received via this API.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.url - URL that is being queried.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.urlNotifications.getMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/urlNotifications/metadata', 'GET', apiParams, clientConfig);
   }
 
