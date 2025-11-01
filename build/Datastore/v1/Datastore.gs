@@ -19,28 +19,28 @@ class Datastore {
 
 
     this.projects = {};
-    this.projects.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:export', 'POST', apiParams, clientConfig);
+    this.projects.reserveIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:reserveIds', 'POST', apiParams, clientConfig);
     this.projects.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:import', 'POST', apiParams, clientConfig);
     this.projects.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:lookup', 'POST', apiParams, clientConfig);
     this.projects.runQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:runQuery', 'POST', apiParams, clientConfig);
+    this.projects.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:commit', 'POST', apiParams, clientConfig);
+    this.projects.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:export', 'POST', apiParams, clientConfig);
+    this.projects.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:rollback', 'POST', apiParams, clientConfig);
     this.projects.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:runAggregationQuery', 'POST', apiParams, clientConfig);
     this.projects.beginTransaction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:beginTransaction', 'POST', apiParams, clientConfig);
-    this.projects.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:commit', 'POST', apiParams, clientConfig);
-    this.projects.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:rollback', 'POST', apiParams, clientConfig);
     this.projects.allocateIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:allocateIds', 'POST', apiParams, clientConfig);
-    this.projects.reserveIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:reserveIds', 'POST', apiParams, clientConfig);
 
     this.projects.operations = {};
-    this.projects.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.indexes = {};
-    this.projects.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/indexes', 'POST', apiParams, clientConfig);
-    this.projects.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/indexes/{indexId}', 'DELETE', apiParams, clientConfig);
-    this.projects.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/indexes/{indexId}', 'GET', apiParams, clientConfig);
     this.projects.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/indexes', 'GET', apiParams, clientConfig);
+    this.projects.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/indexes/{indexId}', 'GET', apiParams, clientConfig);
+    this.projects.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/indexes/{indexId}', 'DELETE', apiParams, clientConfig);
+    this.projects.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/indexes', 'POST', apiParams, clientConfig);
   }
 
 /**
