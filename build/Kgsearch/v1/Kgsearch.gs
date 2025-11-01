@@ -19,21 +19,6 @@ class Kgsearch {
 
 
     this.entities = {};
-
-    /**
-     * Searches Knowledge Graph for entities that match the constraints. A list of matched entities will be returned in response, which will be in JSON-LD format and compatible with http://schema.org
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.ids - The list of entity id to be used for search instead of query string. To specify multiple ids in the HTTP request, repeat the parameter in the URL as in ...?ids=A&ids=B
-     * @param {boolean} apiParams.indent - Enables indenting of json results.
-     * @param {string} apiParams.languages - The list of language codes (defined in ISO 693) to run the query with, e.g. 'en'.
-     * @param {integer} apiParams.limit - Limits the number of entities to be returned.
-     * @param {boolean} apiParams.prefix - Enables prefix match against names and aliases of entities
-     * @param {string} apiParams.query - The literal query string for search.
-     * @param {string} apiParams.types - Restricts returned entities with these types, e.g. Person (as defined in http://schema.org/Person). If multiple types are specified, returned entities will contain one or more of these types.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
     this.entities.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/entities:search', 'GET', apiParams, clientConfig);
   }
 
