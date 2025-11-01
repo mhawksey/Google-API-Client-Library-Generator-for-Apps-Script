@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Slides API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:55:10 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:48:26 GMT
+- **Last Checked:** Sat, 01 Nov 2025 01:17:23 GMT
+- **Last Modified:** Sat, 01 Nov 2025 01:17:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:43 GMT
 
 
@@ -15,14 +15,6 @@ Auto-generated client library for using the **Google Slides API (version: v1)** 
 ## API Reference
 
 ### `presentations`
-
-#### `presentations.get()`
-
-Gets the latest version of the specified presentation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
 
 #### `presentations.create()`
 
@@ -41,6 +33,14 @@ Applies one or more updates to the presentation. Each request is validated befor
 | `params.presentationId` | `string` | Yes | The presentation to apply the updates to. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `presentations.get()`
+
+Gets the latest version of the specified presentation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
+
 ### `presentations.pages`
 
 #### `presentations.pages.get()`
@@ -58,7 +58,7 @@ Generates a thumbnail of the latest version of the specified page in the present
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
 | `params.pageObjectId` | `string` | Yes | The object ID of the page whose thumbnail to retrieve. |
-| `params.thumbnailProperties.mimeType` | `string` | No | The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG. |
 | `params.thumbnailProperties.thumbnailSize` | `string` | No | The optional thumbnail image size. If you don't specify the size, the server chooses a default size of the image. |
+| `params.thumbnailProperties.mimeType` | `string` | No | The optional mime type of the thumbnail image. If you don't specify the mime type, the mime type defaults to PNG. |
+| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
