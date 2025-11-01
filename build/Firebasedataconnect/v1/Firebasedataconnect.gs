@@ -24,39 +24,39 @@ class Firebasedataconnect {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.services = {};
-    this.projects.locations.services.executeGraphql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeGraphql', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.executeGraphqlRead = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeGraphqlRead', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.introspectGraphql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:introspectGraphql', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'POST', apiParams, clientConfig);
     this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.executeGraphql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeGraphql', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.introspectGraphql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:introspectGraphql', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.executeGraphqlRead = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeGraphqlRead', 'POST', apiParams, clientConfig);
     this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.services.connectors = {};
-    this.projects.locations.services.connectors.executeQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeQuery', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.connectors.executeMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeMutation', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.connectors.impersonateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:impersonateQuery', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.connectors.impersonateMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:impersonateMutation', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectors', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.connectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectors', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.connectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.services.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.services.schemas = {};
-    this.projects.locations.services.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.schemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.schemas.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.services.schemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.schemas.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.services.schemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.services.connectors = {};
+    this.projects.locations.services.connectors.impersonateQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:impersonateQuery', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.connectors.impersonateMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:impersonateMutation', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.connectors.executeMutation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeMutation', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectors', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.connectors.executeQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeQuery', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.connectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.services.connectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectors', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
