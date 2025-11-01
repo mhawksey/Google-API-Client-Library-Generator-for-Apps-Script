@@ -303,6 +303,32 @@ class Monitoring {
      */
     this.projects.groups.members.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/members', 'GET', apiParams, clientConfig);
 
+    this.projects.alerts = {};
+
+    /**
+     * Lists the existing alerts for the metrics scope of the project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. An alert is returned if there is a match on any fields belonging to the alert or its subfields.
+     * @param {string} apiParams.orderBy - Optional. A comma-separated list of fields in Alert to use for sorting. The default sort direction is ascending. To specify descending order for a field, add a desc modifier. The following fields are supported: open_time close_timeFor example, close_time desc, open_time will return the alerts closed most recently, with ties broken in the order of older alerts listed first.If the field is not set, the results are sorted by open_time desc.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return in a single response. If not set to a positive number, at most 50 alerts will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. If non-empty, page_token must contain a value returned as the next_page_token in a previous response to request the next set of results.
+     * @param {string} apiParams.parent - (Required) Required. The name of the project to list alerts for.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.alerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/alerts', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a single alert.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the alert.The format is: projects/[PROJECT_ID_OR_NUMBER]/alerts/[ALERT_ID] The [ALERT_ID] is a system-assigned unique identifier for the alert.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.alerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.notificationChannelDescriptors = {};
 
     /**
