@@ -26,10 +26,13 @@ class Dataform {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
     this.projects.locations.repositories = {};
-    this.projects.locations.repositories.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/repositories', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/repositories', 'POST', apiParams, clientConfig);
@@ -41,11 +44,11 @@ class Dataform {
     this.projects.locations.repositories.fetchHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:fetchHistory', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.computeAccessTokenStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:computeAccessTokenStatus', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.fetchRemoteBranches = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:fetchRemoteBranches', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.repositories.workspaces = {};
-    this.projects.locations.repositories.workspaces.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.workspaces.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.workspaces.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.workspaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/workspaces', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.workspaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.workspaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/workspaces', 'POST', apiParams, clientConfig);
@@ -67,6 +70,9 @@ class Dataform {
     this.projects.locations.repositories.workspaces.removeFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+workspace}:removeFile', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.workspaces.moveFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+workspace}:moveFile', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.workspaces.writeFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+workspace}:writeFile', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.workspaces.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.workspaces.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.workspaces.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.repositories.releaseConfigs = {};
     this.projects.locations.repositories.releaseConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releaseConfigs', 'GET', apiParams, clientConfig);
@@ -97,20 +103,14 @@ class Dataform {
     this.projects.locations.repositories.workflowInvocations.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'GET', apiParams, clientConfig);
 
     this.projects.locations.folders = {};
-    this.projects.locations.folders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.folders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.folders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.folders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.teamFolders = {};
-    this.projects.locations.teamFolders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.teamFolders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.teamFolders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.teamFolders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
   }
 
 /**
