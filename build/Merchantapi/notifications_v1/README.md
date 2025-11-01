@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: notificatio
 
 ## Metadata
 
-- **Last Checked:** Tue, 30 Sep 2025 23:44:33 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:34:49 GMT
+- **Last Checked:** Sat, 01 Nov 2025 00:56:47 GMT
+- **Last Modified:** Sat, 01 Nov 2025 00:56:47 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:48 GMT
 
 
@@ -18,23 +18,6 @@ Auto-generated client library for using the **Merchant API (version: notificatio
 
 ### `accounts.notificationsubscriptions`
 
-#### `accounts.notificationsubscriptions.get()`
-
-Gets notification subscriptions for an account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The `name` of the notification subscription. |
-
-#### `accounts.notificationsubscriptions.create()`
-
-Creates a notification subscription for a business. For standalone or subaccounts accounts, the business can create a subscription for self. For MCAs, the business can create a subscription for all managed accounts or for a specific subaccount. We will allow the following types of notification subscriptions to exist together (per business as a subscriber per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for managed accounts + subscription for self. we will not allow (per business as a subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for the same target account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The merchant account that owns the new notification subscription. Format: `accounts/{account}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `accounts.notificationsubscriptions.patch()`
 
 Updates an existing notification subscription for a merchant.
@@ -45,13 +28,22 @@ Updates an existing notification subscription for a merchant.
 | `params.updateMask` | `string` | No | List of fields being updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `accounts.notificationsubscriptions.delete()`
+#### `accounts.notificationsubscriptions.create()`
 
-Deletes a notification subscription for a merchant.
+Creates a notification subscription for a business. For standalone or subaccounts accounts, the business can create a subscription for self. For MCAs, the business can create a subscription for all managed accounts or for a specific subaccount. We will allow the following types of notification subscriptions to exist together (per business as a subscriber per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for managed accounts + subscription for self. we will not allow (per business as a subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for the same target account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the notification subscription to be deleted. |
+| `params.parent` | `string` | Yes | Required. The merchant account that owns the new notification subscription. Format: `accounts/{account}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.notificationsubscriptions.get()`
+
+Gets notification subscriptions for an account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The `name` of the notification subscription. |
 
 #### `accounts.notificationsubscriptions.list()`
 
@@ -62,3 +54,11 @@ Gets all the notification subscriptions for a merchant.
 | `params.parent` | `string` | Yes | Required. The merchant account who owns the notification subscriptions. Format: `accounts/{account}` |
 | `params.pageSize` | `integer` | No | The maximum number of notification subscriptions to return in a page. The default value for `page_size` is 100. The maximum value is `200`. Values above `200` will be coerced to `200`. |
 | `params.pageToken` | `string` | No | Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. |
+
+#### `accounts.notificationsubscriptions.delete()`
+
+Deletes a notification subscription for a merchant.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the notification subscription to be deleted. |
