@@ -19,9 +19,9 @@ class Travelimpactmodel {
 
 
     this.flights = {};
-    this.flights.computeScope3FlightEmissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/flights:computeScope3FlightEmissions', 'POST', apiParams, clientConfig);
-    this.flights.computeTypicalFlightEmissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/flights:computeTypicalFlightEmissions', 'POST', apiParams, clientConfig);
     this.flights.computeFlightEmissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/flights:computeFlightEmissions', 'POST', apiParams, clientConfig);
+    this.flights.computeTypicalFlightEmissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/flights:computeTypicalFlightEmissions', 'POST', apiParams, clientConfig);
+    this.flights.computeScope3FlightEmissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/flights:computeScope3FlightEmissions', 'POST', apiParams, clientConfig);
   }
 
 /**
