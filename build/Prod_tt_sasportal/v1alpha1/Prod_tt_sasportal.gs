@@ -18,127 +18,127 @@ class Prod_tt_sasportal {
     this._servicePath = '';
 
 
-    this.nodes = {};
-    this.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.nodes.nodes = {};
-    this.nodes.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.nodes.nodes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.nodes.nodes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.nodes.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
-    this.nodes.nodes.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
-    this.nodes.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
-
-    this.nodes.nodes.devices = {};
-    this.nodes.nodes.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
-    this.nodes.nodes.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
-    this.nodes.nodes.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
-
-    this.nodes.nodes.deployments = {};
-    this.nodes.nodes.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'POST', apiParams, clientConfig);
-    this.nodes.nodes.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'GET', apiParams, clientConfig);
-
-    this.nodes.nodes.nodes = {};
-    this.nodes.nodes.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
-    this.nodes.nodes.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
-
-    this.nodes.deployments = {};
-    this.nodes.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.nodes.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.nodes.deployments.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
-    this.nodes.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'GET', apiParams, clientConfig);
-    this.nodes.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.nodes.deployments.devices = {};
-    this.nodes.deployments.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
-    this.nodes.deployments.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
-    this.nodes.deployments.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
-
-    this.nodes.devices = {};
-    this.nodes.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
-    this.nodes.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.nodes.devices.updateSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:updateSigned', 'PATCH', apiParams, clientConfig);
-    this.nodes.devices.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
-    this.nodes.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
-    this.nodes.devices.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.nodes.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.nodes.devices.signDevice = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:signDevice', 'POST', apiParams, clientConfig);
-    this.nodes.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
-
-    this.installer = {};
-    this.installer.generateSecret = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/installer:generateSecret', 'POST', apiParams, clientConfig);
-    this.installer.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/installer:validate', 'POST', apiParams, clientConfig);
-
-    this.policies = {};
-    this.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/policies:get', 'POST', apiParams, clientConfig);
-    this.policies.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/policies:test', 'POST', apiParams, clientConfig);
-    this.policies.set = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/policies:set', 'POST', apiParams, clientConfig);
-
-    this.deployments = {};
-    this.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.deployments.devices = {};
-    this.deployments.devices.updateSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:updateSigned', 'PATCH', apiParams, clientConfig);
-    this.deployments.devices.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
-    this.deployments.devices.signDevice = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:signDevice', 'POST', apiParams, clientConfig);
-    this.deployments.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.deployments.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.deployments.devices.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-
     this.customers = {};
-    this.customers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.customers.setupSasAnalytics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers:setupSasAnalytics', 'POST', apiParams, clientConfig);
-    this.customers.listGcpProjectDeployments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers:listGcpProjectDeployments', 'GET', apiParams, clientConfig);
-    this.customers.migrateOrganization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers:migrateOrganization', 'POST', apiParams, clientConfig);
-    this.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers', 'GET', apiParams, clientConfig);
-    this.customers.provisionDeployment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers:provisionDeployment', 'POST', apiParams, clientConfig);
     this.customers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers', 'GET', apiParams, clientConfig);
+    this.customers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.customers.listGcpProjectDeployments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers:listGcpProjectDeployments', 'GET', apiParams, clientConfig);
+    this.customers.provisionDeployment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers:provisionDeployment', 'POST', apiParams, clientConfig);
     this.customers.listLegacyOrganizations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers:listLegacyOrganizations', 'GET', apiParams, clientConfig);
+    this.customers.migrateOrganization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers:migrateOrganization', 'POST', apiParams, clientConfig);
+    this.customers.setupSasAnalytics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/customers:setupSasAnalytics', 'POST', apiParams, clientConfig);
+
+    this.customers.devices = {};
+    this.customers.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
+    this.customers.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
+    this.customers.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.customers.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
+    this.customers.devices.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.customers.devices.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.customers.devices.updateSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:updateSigned', 'PATCH', apiParams, clientConfig);
+    this.customers.devices.signDevice = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:signDevice', 'POST', apiParams, clientConfig);
+
+    this.customers.nodes = {};
+    this.customers.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
+    this.customers.nodes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.customers.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
+    this.customers.nodes.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.customers.nodes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.customers.nodes.devices = {};
+    this.customers.nodes.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
+    this.customers.nodes.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
+    this.customers.nodes.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
+
+    this.customers.nodes.nodes = {};
+    this.customers.nodes.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
+    this.customers.nodes.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
+
+    this.customers.nodes.deployments = {};
+    this.customers.nodes.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'POST', apiParams, clientConfig);
+    this.customers.nodes.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'GET', apiParams, clientConfig);
 
     this.customers.deployments = {};
-    this.customers.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.customers.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'GET', apiParams, clientConfig);
-    this.customers.deployments.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
-    this.customers.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
     this.customers.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'POST', apiParams, clientConfig);
+    this.customers.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
     this.customers.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+    this.customers.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.customers.deployments.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
 
     this.customers.deployments.devices = {};
     this.customers.deployments.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
     this.customers.deployments.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
     this.customers.deployments.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
 
-    this.customers.devices = {};
-    this.customers.devices.updateSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:updateSigned', 'PATCH', apiParams, clientConfig);
-    this.customers.devices.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
-    this.customers.devices.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.customers.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
-    this.customers.devices.signDevice = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:signDevice', 'POST', apiParams, clientConfig);
-    this.customers.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
-    this.customers.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
-    this.customers.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.customers.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.nodes = {};
+    this.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.customers.nodes = {};
-    this.customers.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.customers.nodes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.customers.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
-    this.customers.nodes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.customers.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
-    this.customers.nodes.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.nodes.devices = {};
+    this.nodes.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
+    this.nodes.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
+    this.nodes.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.nodes.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.nodes.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
+    this.nodes.devices.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.nodes.devices.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.nodes.devices.updateSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:updateSigned', 'PATCH', apiParams, clientConfig);
+    this.nodes.devices.signDevice = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:signDevice', 'POST', apiParams, clientConfig);
 
-    this.customers.nodes.nodes = {};
-    this.customers.nodes.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
-    this.customers.nodes.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
+    this.nodes.nodes = {};
+    this.nodes.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
+    this.nodes.nodes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.nodes.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.nodes.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
+    this.nodes.nodes.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.nodes.nodes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.customers.nodes.devices = {};
-    this.customers.nodes.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
-    this.customers.nodes.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
-    this.customers.nodes.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
+    this.nodes.nodes.devices = {};
+    this.nodes.nodes.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
+    this.nodes.nodes.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
+    this.nodes.nodes.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
 
-    this.customers.nodes.deployments = {};
-    this.customers.nodes.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'GET', apiParams, clientConfig);
-    this.customers.nodes.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'POST', apiParams, clientConfig);
+    this.nodes.nodes.nodes = {};
+    this.nodes.nodes.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
+    this.nodes.nodes.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
+
+    this.nodes.nodes.deployments = {};
+    this.nodes.nodes.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'POST', apiParams, clientConfig);
+    this.nodes.nodes.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+
+    this.nodes.deployments = {};
+    this.nodes.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.nodes.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.nodes.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+    this.nodes.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.nodes.deployments.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
+
+    this.nodes.deployments.devices = {};
+    this.nodes.deployments.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'POST', apiParams, clientConfig);
+    this.nodes.deployments.devices.createSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices:createSigned', 'POST', apiParams, clientConfig);
+    this.nodes.deployments.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/devices', 'GET', apiParams, clientConfig);
+
+    this.installer = {};
+    this.installer.generateSecret = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/installer:generateSecret', 'POST', apiParams, clientConfig);
+    this.installer.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/installer:validate', 'POST', apiParams, clientConfig);
+
+    this.deployments = {};
+    this.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.deployments.devices = {};
+    this.deployments.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.deployments.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.deployments.devices.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.deployments.devices.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.deployments.devices.updateSigned = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:updateSigned', 'PATCH', apiParams, clientConfig);
+    this.deployments.devices.signDevice = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:signDevice', 'POST', apiParams, clientConfig);
+
+    this.policies = {};
+    this.policies.set = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/policies:set', 'POST', apiParams, clientConfig);
+    this.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/policies:get', 'POST', apiParams, clientConfig);
+    this.policies.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/policies:test', 'POST', apiParams, clientConfig);
   }
 
 /**
