@@ -21,6 +21,16 @@ class SiteVerification {
     this.webResource = {};
 
     /**
+     * Relinquish ownership of a website or domain.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The id of a verified site or domain.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.webResource.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'DELETE', apiParams, clientConfig);
+
+    /**
      * Get the most current data for a website or domain.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.id - (Required) The id of a verified site or domain.
@@ -41,25 +51,6 @@ class SiteVerification {
     this.webResource.getToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('token', 'POST', apiParams, clientConfig);
 
     /**
-     * Get the list of your verified websites and domains.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.webResource.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource', 'GET', apiParams, clientConfig);
-
-    /**
-     * Relinquish ownership of a website or domain.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The id of a verified site or domain.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.webResource.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Attempt verification of a website or domain.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.verificationMethod - (Required) The method to use for verifying a site or domain.
@@ -71,15 +62,13 @@ class SiteVerification {
     this.webResource.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource', 'POST', apiParams, clientConfig);
 
     /**
-     * Modify the list of owners for your website or domain.
+     * Get the list of your verified websites and domains.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) The id of a verified site or domain.
-     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.webResource.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'PUT', apiParams, clientConfig);
+    this.webResource.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource', 'GET', apiParams, clientConfig);
 
     /**
      * Modify the list of owners for your website or domain. This method supports patch semantics.
@@ -91,6 +80,17 @@ class SiteVerification {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.webResource.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Modify the list of owners for your website or domain.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) The id of a verified site or domain.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.webResource.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'PUT', apiParams, clientConfig);
   }
 
 /**
