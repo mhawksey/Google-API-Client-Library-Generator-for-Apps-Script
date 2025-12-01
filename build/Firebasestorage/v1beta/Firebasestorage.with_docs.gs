@@ -21,16 +21,6 @@ class Firebasestorage {
     this.projects = {};
 
     /**
-     * Unlinks and deletes the default bucket.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the default bucket to delete, `projects/{project_id_or_number}/defaultBucket`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.deleteDefaultBucket = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Gets the default bucket.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the default bucket to retrieve, `projects/{project_id_or_number}/defaultBucket`.
@@ -40,18 +30,15 @@ class Firebasestorage {
      */
     this.projects.getDefaultBucket = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.defaultBucket = {};
-
     /**
-     * Creates a Spark tier-eligible Cloud Storage bucket and links it to your Firebase project. If the default bucket already exists, this method will re-link it to your Firebase project. See https://firebase.google.com/pricing for pricing details.
+     * Unlinks and deletes the default bucket.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource where the default bucket will be created, `projects/{project_id_or_number}`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The name of the default bucket to delete, `projects/{project_id_or_number}/defaultBucket`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.defaultBucket.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/defaultBucket', 'POST', apiParams, clientConfig);
+    this.projects.deleteDefaultBucket = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.buckets = {};
 
@@ -64,17 +51,6 @@ class Firebasestorage {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.buckets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Unlinks a linked Google Cloud Storage bucket from a Firebase project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.bucket - (Required) Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.buckets.removeFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:removeFirebase', 'POST', apiParams, clientConfig);
 
     /**
      * Lists the linked storage buckets for a project.
@@ -98,6 +74,30 @@ class Firebasestorage {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.buckets.addFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:addFirebase', 'POST', apiParams, clientConfig);
+
+    /**
+     * Unlinks a linked Google Cloud Storage bucket from a Firebase project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.bucket - (Required) Required. Resource name of the bucket, mirrors the ID of the underlying Google Cloud Storage bucket, `projects/{project_id_or_number}/buckets/{bucket_id}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.buckets.removeFirebase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+bucket}:removeFirebase', 'POST', apiParams, clientConfig);
+
+    this.projects.defaultBucket = {};
+
+    /**
+     * Creates a Spark tier-eligible Cloud Storage bucket and links it to your Firebase project. If the default bucket already exists, this method will re-link it to your Firebase project. See https://firebase.google.com/pricing for pricing details.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource where the default bucket will be created, `projects/{project_id_or_number}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.defaultBucket.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/defaultBucket', 'POST', apiParams, clientConfig);
   }
 
 /**
