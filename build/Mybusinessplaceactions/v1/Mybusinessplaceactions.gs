@@ -18,17 +18,17 @@ class Mybusinessplaceactions {
     this._servicePath = '';
 
 
-    this.placeActionTypeMetadata = {};
-    this.placeActionTypeMetadata.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/placeActionTypeMetadata', 'GET', apiParams, clientConfig);
-
     this.locations = {};
 
     this.locations.placeActionLinks = {};
-    this.locations.placeActionLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.locations.placeActionLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/placeActionLinks', 'POST', apiParams, clientConfig);
-    this.locations.placeActionLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/placeActionLinks', 'GET', apiParams, clientConfig);
     this.locations.placeActionLinks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.locations.placeActionLinks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.locations.placeActionLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/placeActionLinks', 'GET', apiParams, clientConfig);
+    this.locations.placeActionLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.placeActionTypeMetadata = {};
+    this.placeActionTypeMetadata.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/placeActionTypeMetadata', 'GET', apiParams, clientConfig);
   }
 
 /**
