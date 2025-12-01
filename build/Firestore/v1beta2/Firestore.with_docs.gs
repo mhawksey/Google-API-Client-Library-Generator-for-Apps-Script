@@ -46,6 +46,52 @@ class Firestore {
 
     this.projects.databases.collectionGroups = {};
 
+    this.projects.databases.collectionGroups.indexes = {};
+
+    /**
+     * Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.collectionGroups.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists composite indexes.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - The filter to apply to list results.
+     * @param {integer} apiParams.pageSize - The number of results to return.
+     * @param {string} apiParams.pageToken - A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may be used to get the next page of results.
+     * @param {string} apiParams.parent - (Required) A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.collectionGroups.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a composite index.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.collectionGroups.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a composite index.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.collectionGroups.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.projects.databases.collectionGroups.fields = {};
 
     /**
@@ -82,52 +128,6 @@ class Firestore {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.databases.collectionGroups.fields.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/fields', 'GET', apiParams, clientConfig);
-
-    this.projects.databases.collectionGroups.indexes = {};
-
-    /**
-     * Gets a composite index.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.collectionGroups.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists composite indexes.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - The filter to apply to list results.
-     * @param {integer} apiParams.pageSize - The number of results to return.
-     * @param {string} apiParams.pageToken - A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may be used to get the next page of results.
-     * @param {string} apiParams.parent - (Required) A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.collectionGroups.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) A parent name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.collectionGroups.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a composite index.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) A name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/indexes/{index_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.collectionGroups.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
