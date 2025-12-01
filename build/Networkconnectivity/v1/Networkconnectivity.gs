@@ -21,137 +21,137 @@ class Networkconnectivity {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.checkConsumerConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:checkConsumerConfig', 'POST', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.spokes = {};
-    this.projects.locations.spokes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.spokes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.spokes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spokes', 'POST', apiParams, clientConfig);
-    this.projects.locations.spokes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.spokes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.spokes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.spokes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.spokes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spokes', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionMaps = {};
+    this.projects.locations.serviceConnectionMaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionMaps', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionMaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionMaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionMaps', 'POST', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionMaps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionMaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionMaps.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionMaps.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionMaps.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.serviceConnectionPolicies = {};
     this.projects.locations.serviceConnectionPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.serviceConnectionPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionPolicies', 'POST', apiParams, clientConfig);
     this.projects.locations.serviceConnectionPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.serviceClasses = {};
+    this.projects.locations.serviceClasses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceClasses', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceClasses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceClasses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.serviceClasses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.serviceClasses.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.serviceClasses.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceClasses.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.serviceConnectionTokens = {};
-    this.projects.locations.serviceConnectionTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionTokens', 'GET', apiParams, clientConfig);
     this.projects.locations.serviceConnectionTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceConnectionTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionTokens', 'GET', apiParams, clientConfig);
     this.projects.locations.serviceConnectionTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionTokens', 'POST', apiParams, clientConfig);
     this.projects.locations.serviceConnectionTokens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.internalRanges = {};
-    this.projects.locations.internalRanges.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.internalRanges.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.internalRanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.internalRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/internalRanges', 'GET', apiParams, clientConfig);
-    this.projects.locations.internalRanges.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.internalRanges.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/internalRanges', 'POST', apiParams, clientConfig);
-    this.projects.locations.internalRanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.internalRanges.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferConfigs = {};
+    this.projects.locations.multicloudDataTransferConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicloudDataTransferConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicloudDataTransferConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.multicloudDataTransferConfigs.destinations = {};
+    this.projects.locations.multicloudDataTransferConfigs.destinations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/destinations', 'GET', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferConfigs.destinations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferConfigs.destinations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/destinations', 'POST', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferConfigs.destinations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferConfigs.destinations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.multicloudDataTransferSupportedServices = {};
+    this.projects.locations.multicloudDataTransferSupportedServices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.multicloudDataTransferSupportedServices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicloudDataTransferSupportedServices', 'GET', apiParams, clientConfig);
 
     this.projects.locations.global = {};
 
     this.projects.locations.global.hubs = {};
-    this.projects.locations.global.hubs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.global.hubs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.hubs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.hubs.acceptSpokeUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:acceptSpokeUpdate', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.hubs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.global.hubs.acceptSpoke = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:acceptSpoke', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.hubs.queryStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:queryStatus', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.hubs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hubs', 'POST', apiParams, clientConfig);
     this.projects.locations.global.hubs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hubs', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.hubs.listSpokes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listSpokes', 'GET', apiParams, clientConfig);
     this.projects.locations.global.hubs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.hubs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hubs', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.hubs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.global.hubs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.global.hubs.listSpokes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listSpokes', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.hubs.queryStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:queryStatus', 'GET', apiParams, clientConfig);
     this.projects.locations.global.hubs.rejectSpoke = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rejectSpoke', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.hubs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.hubs.acceptSpoke = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:acceptSpoke', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.hubs.acceptSpokeUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:acceptSpokeUpdate', 'POST', apiParams, clientConfig);
     this.projects.locations.global.hubs.rejectSpokeUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rejectSpokeUpdate', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.hubs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.hubs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.hubs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.global.hubs.routeTables = {};
-    this.projects.locations.global.hubs.routeTables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/routeTables', 'GET', apiParams, clientConfig);
     this.projects.locations.global.hubs.routeTables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.hubs.routeTables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/routeTables', 'GET', apiParams, clientConfig);
 
     this.projects.locations.global.hubs.routeTables.routes = {};
     this.projects.locations.global.hubs.routeTables.routes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.global.hubs.routeTables.routes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/routes', 'GET', apiParams, clientConfig);
 
     this.projects.locations.global.hubs.groups = {};
-    this.projects.locations.global.hubs.groups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.hubs.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'GET', apiParams, clientConfig);
     this.projects.locations.global.hubs.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.hubs.groups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.hubs.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'GET', apiParams, clientConfig);
     this.projects.locations.global.hubs.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.global.hubs.groups.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.hubs.groups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.hubs.groups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.global.policyBasedRoutes = {};
-    this.projects.locations.global.policyBasedRoutes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.policyBasedRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.global.policyBasedRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policyBasedRoutes', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.policyBasedRoutes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.policyBasedRoutes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.policyBasedRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.global.policyBasedRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policyBasedRoutes', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.policyBasedRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.policyBasedRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policyBasedRoutes', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.policyBasedRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.global.policyBasedRoutes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.policyBasedRoutes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.policyBasedRoutes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.multicloudDataTransferSupportedServices = {};
-    this.projects.locations.multicloudDataTransferSupportedServices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicloudDataTransferSupportedServices', 'GET', apiParams, clientConfig);
-    this.projects.locations.multicloudDataTransferSupportedServices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.spokes = {};
+    this.projects.locations.spokes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spokes', 'GET', apiParams, clientConfig);
+    this.projects.locations.spokes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.spokes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spokes', 'POST', apiParams, clientConfig);
+    this.projects.locations.spokes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.spokes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.spokes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.spokes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.spokes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.serviceConnectionMaps = {};
-    this.projects.locations.serviceConnectionMaps.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionMaps', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceConnectionMaps', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.serviceConnectionMaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.serviceClasses = {};
-    this.projects.locations.serviceClasses.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceClasses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceClasses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.serviceClasses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.serviceClasses.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceClasses.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceClasses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serviceClasses', 'GET', apiParams, clientConfig);
+    this.projects.locations.internalRanges = {};
+    this.projects.locations.internalRanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/internalRanges', 'GET', apiParams, clientConfig);
+    this.projects.locations.internalRanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.internalRanges.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/internalRanges', 'POST', apiParams, clientConfig);
+    this.projects.locations.internalRanges.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.internalRanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.internalRanges.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.internalRanges.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.internalRanges.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.regionalEndpoints = {};
-    this.projects.locations.regionalEndpoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.regionalEndpoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/regionalEndpoints', 'GET', apiParams, clientConfig);
-    this.projects.locations.regionalEndpoints.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.regionalEndpoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.regionalEndpoints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/regionalEndpoints', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.multicloudDataTransferConfigs = {};
-    this.projects.locations.multicloudDataTransferConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.multicloudDataTransferConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.multicloudDataTransferConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicloudDataTransferConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.multicloudDataTransferConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.multicloudDataTransferConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/multicloudDataTransferConfigs', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.multicloudDataTransferConfigs.destinations = {};
-    this.projects.locations.multicloudDataTransferConfigs.destinations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.multicloudDataTransferConfigs.destinations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/destinations', 'GET', apiParams, clientConfig);
-    this.projects.locations.multicloudDataTransferConfigs.destinations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/destinations', 'POST', apiParams, clientConfig);
-    this.projects.locations.multicloudDataTransferConfigs.destinations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.multicloudDataTransferConfigs.destinations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.regionalEndpoints.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
