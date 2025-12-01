@@ -18,93 +18,7 @@ class Tasks {
     this._servicePath = '';
 
 
-    this.tasklists = {};
-
-    /**
-     * Creates a new task list and adds it to the authenticated user's task lists. A user can have up to 2000 lists at a time.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tasklists.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns all the authenticated user's task lists. A user can have up to 2000 lists at a time.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.maxResults - Maximum number of task lists returned on one page. Optional. The default is 1000 (max allowed: 1000).
-     * @param {string} apiParams.pageToken - Token specifying the result page to return. Optional.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tasklists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns the authenticated user's specified task list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.tasklist - (Required) Task list identifier.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tasklists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the authenticated user's specified task list.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.tasklist - (Required) Task list identifier.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tasklists.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Deletes the authenticated user's specified task list. If the list contains assigned tasks, both the assigned tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.tasklist - (Required) Task list identifier.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tasklists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates the authenticated user's specified task list. This method supports patch semantics.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.tasklist - (Required) Task list identifier.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tasklists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'PATCH', apiParams, clientConfig);
-
     this.tasks = {};
-
-    /**
-     * Returns all tasks in the specified task list. Doesn't return assigned tasks by default (from Docs, Chat Spaces). A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.completedMax - Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by completion date.
-     * @param {string} apiParams.completedMin - Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by completion date.
-     * @param {string} apiParams.dueMax - Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by due date.
-     * @param {string} apiParams.dueMin - Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by due date.
-     * @param {integer} apiParams.maxResults - Maximum number of tasks returned on one page. Optional. The default is 20 (max allowed: 100).
-     * @param {string} apiParams.pageToken - Token specifying the result page to return. Optional.
-     * @param {boolean} apiParams.showAssigned - Optional. Flag indicating whether tasks assigned to the current user are returned in the result. Optional. The default is False.
-     * @param {boolean} apiParams.showCompleted - Flag indicating whether completed tasks are returned in the result. Note that showHidden must also be True to show tasks completed in first party clients, such as the web UI and Google's mobile apps. Optional. The default is True.
-     * @param {boolean} apiParams.showDeleted - Flag indicating whether deleted tasks are returned in the result. Optional. The default is False.
-     * @param {boolean} apiParams.showHidden - Flag indicating whether hidden tasks are returned in the result. Optional. The default is False.
-     * @param {string} apiParams.tasklist - (Required) Task list identifier.
-     * @param {string} apiParams.updatedMin - Lower bound for a task's last modification time (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by last modification time.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks', 'GET', apiParams, clientConfig);
 
     /**
      * Returns the specified task.
@@ -132,19 +46,6 @@ class Tasks {
     this.tasks.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}/move', 'POST', apiParams, clientConfig);
 
     /**
-     * Creates a new task on the specified task list. Tasks assigned from Docs or Chat Spaces cannot be inserted from Tasks Public API; they can only be created by assigning them from Docs or Chat Spaces. A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - Parent task identifier. If the task is created at the top level, this parameter is omitted. An assigned task cannot be a parent task, nor can it have a parent. Setting the parent to an assigned task results in failure of the request. Optional.
-     * @param {string} apiParams.previous - Previous sibling task identifier. If the task is created at the first position among its siblings, this parameter is omitted. Optional.
-     * @param {string} apiParams.tasklist - (Required) Task list identifier.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tasks.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks', 'POST', apiParams, clientConfig);
-
-    /**
      * Updates the specified task.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.task - (Required) Task identifier.
@@ -155,18 +56,6 @@ class Tasks {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.tasks.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Updates the specified task. This method supports patch semantics.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.task - (Required) Task identifier.
-     * @param {string} apiParams.tasklist - (Required) Task list identifier.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tasks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Deletes the specified task from the task list. If the task is assigned, both the assigned task and the original task (in Docs, Chat Spaces) are deleted. To delete the assigned task only, navigate to the assignment surface and unassign the task from there.
@@ -188,6 +77,117 @@ class Tasks {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.tasks.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/clear', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a new task on the specified task list. Tasks assigned from Docs or Chat Spaces cannot be inserted from Tasks Public API; they can only be created by assigning them from Docs or Chat Spaces. A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - Parent task identifier. If the task is created at the top level, this parameter is omitted. An assigned task cannot be a parent task, nor can it have a parent. Setting the parent to an assigned task results in failure of the request. Optional.
+     * @param {string} apiParams.previous - Previous sibling task identifier. If the task is created at the first position among its siblings, this parameter is omitted. Optional.
+     * @param {string} apiParams.tasklist - (Required) Task list identifier.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tasks.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the specified task. This method supports patch semantics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.task - (Required) Task identifier.
+     * @param {string} apiParams.tasklist - (Required) Task list identifier.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tasks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns all tasks in the specified task list. Doesn't return assigned tasks by default (from Docs, Chat Spaces). A user can have up to 20,000 non-hidden tasks per list and up to 100,000 tasks in total at a time.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.completedMax - Upper bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by completion date.
+     * @param {string} apiParams.completedMin - Lower bound for a task's completion date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by completion date.
+     * @param {string} apiParams.dueMax - Upper bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by due date.
+     * @param {string} apiParams.dueMin - Lower bound for a task's due date (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by due date.
+     * @param {integer} apiParams.maxResults - Maximum number of tasks returned on one page. Optional. The default is 20 (max allowed: 100).
+     * @param {string} apiParams.pageToken - Token specifying the result page to return. Optional.
+     * @param {boolean} apiParams.showAssigned - Optional. Flag indicating whether tasks assigned to the current user are returned in the result. Optional. The default is False.
+     * @param {boolean} apiParams.showCompleted - Flag indicating whether completed tasks are returned in the result. Note that showHidden must also be True to show tasks completed in first party clients, such as the web UI and Google's mobile apps. Optional. The default is True.
+     * @param {boolean} apiParams.showDeleted - Flag indicating whether deleted tasks are returned in the result. Optional. The default is False.
+     * @param {boolean} apiParams.showHidden - Flag indicating whether hidden tasks are returned in the result. Optional. The default is False.
+     * @param {string} apiParams.tasklist - (Required) Task list identifier.
+     * @param {string} apiParams.updatedMin - Lower bound for a task's last modification time (as a RFC 3339 timestamp) to filter by. Optional. The default is not to filter by last modification time.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks', 'GET', apiParams, clientConfig);
+
+    this.tasklists = {};
+
+    /**
+     * Deletes the authenticated user's specified task list. If the list contains assigned tasks, both the assigned tasks and the original tasks in the assignment surface (Docs, Chat Spaces) are deleted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.tasklist - (Required) Task list identifier.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tasklists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns the authenticated user's specified task list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.tasklist - (Required) Task list identifier.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tasklists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates the authenticated user's specified task list. This method supports patch semantics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.tasklist - (Required) Task list identifier.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tasklists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Updates the authenticated user's specified task list.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.tasklist - (Required) Task list identifier.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tasklists.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Creates a new task list and adds it to the authenticated user's task lists. A user can have up to 2000 lists at a time.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tasklists.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns all the authenticated user's task lists. A user can have up to 2000 lists at a time.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.maxResults - Maximum number of task lists returned on one page. Optional. The default is 1000 (max allowed: 1000).
+     * @param {string} apiParams.pageToken - Token specifying the result page to return. Optional.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tasklists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists', 'GET', apiParams, clientConfig);
   }
 
 /**
