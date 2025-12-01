@@ -18,17 +18,17 @@ class Airquality {
     this._servicePath = '';
 
 
-    this.history = {};
+    this.forecast = {};
 
     /**
-     * Returns air quality history for a specific location for a given time range.
+     * Returns air quality forecast for a specific location for a given time range.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.history.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/history:lookup', 'POST', apiParams, clientConfig);
+    this.forecast.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forecast:lookup', 'POST', apiParams, clientConfig);
 
     this.mapTypes = {};
 
@@ -47,18 +47,6 @@ class Airquality {
      */
     this.mapTypes.heatmapTiles.lookupHeatmapTile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}', 'GET', apiParams, clientConfig);
 
-    this.forecast = {};
-
-    /**
-     * Returns air quality forecast for a specific location for a given time range.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.forecast.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forecast:lookup', 'POST', apiParams, clientConfig);
-
     this.currentConditions = {};
 
     /**
@@ -70,6 +58,18 @@ class Airquality {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.currentConditions.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/currentConditions:lookup', 'POST', apiParams, clientConfig);
+
+    this.history = {};
+
+    /**
+     * Returns air quality history for a specific location for a given time range.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.history.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/history:lookup', 'POST', apiParams, clientConfig);
   }
 
 /**
