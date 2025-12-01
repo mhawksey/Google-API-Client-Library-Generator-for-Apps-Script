@@ -18,6 +18,23 @@ class Searchconsole {
     this._servicePath = '';
 
 
+    this.urlTestingTools = {};
+
+    this.urlTestingTools.mobileFriendlyTest = {};
+    this.urlTestingTools.mobileFriendlyTest.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/urlTestingTools/mobileFriendlyTest:run', 'POST', apiParams, clientConfig);
+
+    this.sitemaps = {};
+    this.sitemaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'GET', apiParams, clientConfig);
+    this.sitemaps.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'PUT', apiParams, clientConfig);
+    this.sitemaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps', 'GET', apiParams, clientConfig);
+    this.sitemaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'DELETE', apiParams, clientConfig);
+
+    this.sites = {};
+    this.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}', 'DELETE', apiParams, clientConfig);
+    this.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}', 'GET', apiParams, clientConfig);
+    this.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites', 'GET', apiParams, clientConfig);
+    this.sites.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}', 'PUT', apiParams, clientConfig);
+
     this.urlInspection = {};
 
     this.urlInspection.index = {};
@@ -25,23 +42,6 @@ class Searchconsole {
 
     this.searchanalytics = {};
     this.searchanalytics.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/searchAnalytics/query', 'POST', apiParams, clientConfig);
-
-    this.sites = {};
-    this.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites', 'GET', apiParams, clientConfig);
-    this.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}', 'DELETE', apiParams, clientConfig);
-    this.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}', 'GET', apiParams, clientConfig);
-    this.sites.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}', 'PUT', apiParams, clientConfig);
-
-    this.sitemaps = {};
-    this.sitemaps.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'PUT', apiParams, clientConfig);
-    this.sitemaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'GET', apiParams, clientConfig);
-    this.sitemaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps', 'GET', apiParams, clientConfig);
-    this.sitemaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webmasters/v3/sites/{siteUrl}/sitemaps/{feedpath}', 'DELETE', apiParams, clientConfig);
-
-    this.urlTestingTools = {};
-
-    this.urlTestingTools.mobileFriendlyTest = {};
-    this.urlTestingTools.mobileFriendlyTest.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/urlTestingTools/mobileFriendlyTest:run', 'POST', apiParams, clientConfig);
   }
 
 /**
