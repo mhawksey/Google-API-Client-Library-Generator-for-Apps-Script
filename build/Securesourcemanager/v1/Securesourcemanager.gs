@@ -21,85 +21,85 @@ class Securesourcemanager {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.instances = {};
+    this.projects.locations.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.projects.locations.repositories = {};
-    this.projects.locations.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.repositories.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repositories', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.fetchTree = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+repository}:fetchTree', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repositories', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.fetchBlob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+repository}:fetchBlob', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repositories', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.fetchTree = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+repository}:fetchTree', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.fetchBlob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+repository}:fetchBlob', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.repositories.hooks = {};
+    this.projects.locations.repositories.hooks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hooks', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.hooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.hooks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hooks', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.hooks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.hooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.repositories.branchRules = {};
+    this.projects.locations.repositories.branchRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/branchRules', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.branchRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/branchRules', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.branchRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.branchRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.branchRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.repositories.pullRequests = {};
+    this.projects.locations.repositories.pullRequests.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequests', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.pullRequests.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.pullRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequests', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.pullRequests.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.pullRequests.merge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:merge', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.pullRequests.open = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:open', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.pullRequests.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.pullRequests.listFileDiffs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listFileDiffs', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.pullRequests.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequests', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.pullRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequests', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.pullRequests.merge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:merge', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.pullRequests.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.repositories.pullRequests.pullRequestComments = {};
-    this.projects.locations.repositories.pullRequests.pullRequestComments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequestComments', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.pullRequests.pullRequestComments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.pullRequests.pullRequestComments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequestComments', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.pullRequests.pullRequestComments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequestComments', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.pullRequests.pullRequestComments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.repositories.pullRequests.pullRequestComments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.pullRequests.pullRequestComments.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequestComments:batchCreate', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.pullRequests.pullRequestComments.unresolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequestComments:unresolve', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.pullRequests.pullRequestComments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.repositories.pullRequests.pullRequestComments.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequestComments:resolve', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.pullRequests.pullRequestComments.unresolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pullRequestComments:unresolve', 'POST', apiParams, clientConfig);
 
     this.projects.locations.repositories.issues = {};
-    this.projects.locations.repositories.issues.open = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:open', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.issues.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/issues', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.issues.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.issues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/issues', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.issues.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.issues.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/issues', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.issues.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.issues.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.issues.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.repositories.issues.open = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:open', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.issues.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
 
     this.projects.locations.repositories.issues.issueComments = {};
+    this.projects.locations.repositories.issues.issueComments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/issueComments', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.issues.issueComments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.issues.issueComments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/issueComments', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.issues.issueComments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.issues.issueComments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.repositories.issues.issueComments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/issueComments', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.repositories.hooks = {};
-    this.projects.locations.repositories.hooks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.hooks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hooks', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.hooks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hooks', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.hooks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.hooks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.repositories.branchRules = {};
-    this.projects.locations.repositories.branchRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/branchRules', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.branchRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/branchRules', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.branchRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.repositories.branchRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.branchRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.instances = {};
-    this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.issues.issueComments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
