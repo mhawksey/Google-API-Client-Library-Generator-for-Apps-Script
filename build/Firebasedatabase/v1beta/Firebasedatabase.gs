@@ -23,12 +23,12 @@ class Firebasedatabase {
     this.projects.locations = {};
 
     this.projects.locations.instances = {};
-    this.projects.locations.instances.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.reenable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:reenable', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:undelete', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/instances', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.reenable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:reenable', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/instances', 'GET', apiParams, clientConfig);
   }
 
