@@ -21,6 +21,16 @@ class Slides {
     this.presentations = {};
 
     /**
+     * Gets the latest version of the specified presentation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.presentationId - (Required) The ID of the presentation to retrieve.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.presentations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{+presentationId}', 'GET', apiParams, clientConfig);
+
+    /**
      * Creates a blank presentation using the title given in the request. If a `presentationId` is provided, it is used as the ID of the new presentation. Otherwise, a new ID is generated. Other fields in the request, including any provided content, are ignored. Returns the created presentation.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -40,16 +50,6 @@ class Slides {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.presentations.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{presentationId}:batchUpdate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the latest version of the specified presentation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.presentationId - (Required) The ID of the presentation to retrieve.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.presentations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/presentations/{+presentationId}', 'GET', apiParams, clientConfig);
 
     this.presentations.pages = {};
 
