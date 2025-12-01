@@ -492,7 +492,7 @@ class Appengine {
      * Lists information about the supported locations for this service.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.appsId - (Required) Part of `name`. The resource that owns the locations collection, if applicable.
-     * @param {string} apiParams.extraLocationTypes - Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage.
+     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
      * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
      * @param {string} apiParams.pageToken - A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page.
@@ -685,6 +685,20 @@ class Appengine {
     this.projects.locations.applications.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.applications.domainMappings = {};
+
+    /**
+     * Lists the domain mappings on an application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
+     * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.domainMappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', 'GET', apiParams, clientConfig);
 
     /**
      * Gets the specified domain mapping.
