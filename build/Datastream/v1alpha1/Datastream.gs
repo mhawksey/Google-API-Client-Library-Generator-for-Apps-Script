@@ -22,48 +22,48 @@ class Datastream {
 
     this.projects.locations = {};
     this.projects.locations.fetchStaticIps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:fetchStaticIps', 'GET', apiParams, clientConfig);
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.connectionProfiles = {};
+    this.projects.locations.connectionProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/connectionProfiles', 'GET', apiParams, clientConfig);
+    this.projects.locations.connectionProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.connectionProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/connectionProfiles', 'POST', apiParams, clientConfig);
+    this.projects.locations.connectionProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.connectionProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connectionProfiles.discover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/connectionProfiles:discover', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.streams = {};
+    this.projects.locations.streams.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/streams', 'GET', apiParams, clientConfig);
+    this.projects.locations.streams.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.streams.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/streams', 'POST', apiParams, clientConfig);
+    this.projects.locations.streams.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.streams.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.streams.fetchErrors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+stream}:fetchErrors', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.streams.objects = {};
+    this.projects.locations.streams.objects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.streams.objects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/objects', 'GET', apiParams, clientConfig);
+    this.projects.locations.streams.objects.startBackfillJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+object}:startBackfillJob', 'POST', apiParams, clientConfig);
+    this.projects.locations.streams.objects.stopBackfillJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+object}:stopBackfillJob', 'POST', apiParams, clientConfig);
 
     this.projects.locations.privateConnections = {};
     this.projects.locations.privateConnections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/privateConnections', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateConnections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.privateConnections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/privateConnections', 'GET', apiParams, clientConfig);
     this.projects.locations.privateConnections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateConnections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/privateConnections', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateConnections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.privateConnections.routes = {};
     this.projects.locations.privateConnections.routes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/routes', 'POST', apiParams, clientConfig);
     this.projects.locations.privateConnections.routes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.privateConnections.routes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/routes', 'GET', apiParams, clientConfig);
     this.projects.locations.privateConnections.routes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.connectionProfiles = {};
-    this.projects.locations.connectionProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.connectionProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/connectionProfiles', 'GET', apiParams, clientConfig);
-    this.projects.locations.connectionProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.connectionProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.connectionProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/connectionProfiles', 'POST', apiParams, clientConfig);
-    this.projects.locations.connectionProfiles.discover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/connectionProfiles:discover', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.streams = {};
-    this.projects.locations.streams.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/streams', 'POST', apiParams, clientConfig);
-    this.projects.locations.streams.fetchErrors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+stream}:fetchErrors', 'POST', apiParams, clientConfig);
-    this.projects.locations.streams.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/streams', 'GET', apiParams, clientConfig);
-    this.projects.locations.streams.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.streams.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.streams.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.streams.objects = {};
-    this.projects.locations.streams.objects.stopBackfillJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+object}:stopBackfillJob', 'POST', apiParams, clientConfig);
-    this.projects.locations.streams.objects.startBackfillJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+object}:startBackfillJob', 'POST', apiParams, clientConfig);
-    this.projects.locations.streams.objects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/objects', 'GET', apiParams, clientConfig);
-    this.projects.locations.streams.objects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
