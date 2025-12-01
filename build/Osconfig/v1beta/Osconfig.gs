@@ -20,35 +20,35 @@ class Osconfig {
 
     this.projects = {};
 
-    this.projects.zones = {};
-
-    this.projects.zones.instances = {};
-    this.projects.zones.instances.lookupEffectiveGuestPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+instance}:lookupEffectiveGuestPolicy', 'POST', apiParams, clientConfig);
-
     this.projects.patchJobs = {};
-    this.projects.patchJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchJobs', 'GET', apiParams, clientConfig);
-    this.projects.patchJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.patchJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.patchJobs.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchJobs:execute', 'POST', apiParams, clientConfig);
+    this.projects.patchJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.patchJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.patchJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchJobs', 'GET', apiParams, clientConfig);
 
     this.projects.patchJobs.instanceDetails = {};
     this.projects.patchJobs.instanceDetails.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/instanceDetails', 'GET', apiParams, clientConfig);
 
     this.projects.patchDeployments = {};
-    this.projects.patchDeployments.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:resume', 'POST', apiParams, clientConfig);
-    this.projects.patchDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.patchDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.patchDeployments.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:pause', 'POST', apiParams, clientConfig);
     this.projects.patchDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchDeployments', 'POST', apiParams, clientConfig);
     this.projects.patchDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.patchDeployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/patchDeployments', 'GET', apiParams, clientConfig);
+    this.projects.patchDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.patchDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.patchDeployments.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:pause', 'POST', apiParams, clientConfig);
+    this.projects.patchDeployments.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:resume', 'POST', apiParams, clientConfig);
 
     this.projects.guestPolicies = {};
-    this.projects.guestPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.guestPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/guestPolicies', 'POST', apiParams, clientConfig);
-    this.projects.guestPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.guestPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.guestPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/guestPolicies', 'GET', apiParams, clientConfig);
+    this.projects.guestPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.guestPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.zones = {};
+
+    this.projects.zones.instances = {};
+    this.projects.zones.instances.lookupEffectiveGuestPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+instance}:lookupEffectiveGuestPolicy', 'POST', apiParams, clientConfig);
   }
 
 /**
