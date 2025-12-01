@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:54:32 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:54:32 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:54:54 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:54:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:49 GMT
 
 
@@ -16,17 +16,17 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ### `documents`
 
-#### `documents.analyzeSyntax()`
+#### `documents.analyzeSentiment()`
 
-Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.
+Analyzes the sentiment of the provided text.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.moderateText()`
+#### `documents.analyzeEntities()`
 
-Moderates a document for harmful and sensitive categories.
+Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -40,9 +40,9 @@ Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment as
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeSentiment()`
+#### `documents.analyzeSyntax()`
 
-Analyzes the sentiment of the provided text.
+Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -56,9 +56,9 @@ Classifies a document into categories.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeEntities()`
+#### `documents.moderateText()`
 
-Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.
+Moderates a document for harmful and sensitive categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
