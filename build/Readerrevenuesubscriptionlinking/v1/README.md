@@ -4,8 +4,8 @@ Auto-generated client library for using the **Reader Revenue Subscription Linkin
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:14:30 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:14:30 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:07:02 GMT
+- **Last Modified:** Mon, 01 Dec 2025 01:07:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:07 GMT
 
 
@@ -18,22 +18,14 @@ Auto-generated client library for using the **Reader Revenue Subscription Linkin
 
 ### `publications.readers`
 
-#### `publications.readers.get()`
-
-Gets a reader of a publication. Returns NOT_FOUND if the reader does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
-
 #### `publications.readers.delete()`
 
 Removes a publication reader, effectively severing the association with a Google user. If `force` is set to true, any entitlements for this reader will also be deleted. (Otherwise, the request will only work if the reader has no entitlements.) - If the reader does not exist, return NOT_FOUND. - Return FAILED_PRECONDITION if the force field is false (or unset) and entitlements are present.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
 | `params.force` | `boolean` | No | If set to true, any entitlements under the reader will also be purged. |
+| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
 
 #### `publications.readers.updateEntitlements()`
 
@@ -44,6 +36,14 @@ Updates the reader entitlements for a publication reader. The entire reader enti
 | `params.name` | `string` | Yes | Output only. The resource name of the singleton. |
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Defaults to all fields. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `publications.readers.get()`
+
+Gets a reader of a publication. Returns NOT_FOUND if the reader does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
 
 #### `publications.readers.getEntitlements()`
 
