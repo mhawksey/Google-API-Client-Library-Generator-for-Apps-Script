@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: reports_v1)
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:03:19 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:57:17 GMT
 - **Last Modified:** Sat, 01 Nov 2025 01:03:19 GMT
 - **Created:** Sun, 31 Aug 2025 23:44:19 GMT
 
