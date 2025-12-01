@@ -19,21 +19,21 @@ class Doubleclicksearch {
 
 
     this.conversion = {};
-    this.conversion.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'POST', apiParams, clientConfig);
-    this.conversion.updateAvailability = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion/updateAvailability', 'POST', apiParams, clientConfig);
-    this.conversion.getByCustomerId = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/customer/{customerId}/conversion', 'GET', apiParams, clientConfig);
     this.conversion.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/engine/{engineAccountId}/conversion', 'GET', apiParams, clientConfig);
+    this.conversion.getByCustomerId = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/customer/{customerId}/conversion', 'GET', apiParams, clientConfig);
+    this.conversion.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'POST', apiParams, clientConfig);
     this.conversion.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion', 'PUT', apiParams, clientConfig);
+    this.conversion.updateAvailability = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/conversion/updateAvailability', 'POST', apiParams, clientConfig);
+
+    this.reports = {};
+    this.reports.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/generate', 'POST', apiParams, clientConfig);
+    this.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/{reportId}', 'GET', apiParams, clientConfig);
+    this.reports.getFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}', 'GET', apiParams, clientConfig);
+    this.reports.getIdMappingFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping', 'GET', apiParams, clientConfig);
+    this.reports.request = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports', 'POST', apiParams, clientConfig);
 
     this.savedColumns = {};
     this.savedColumns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/savedcolumns', 'GET', apiParams, clientConfig);
-
-    this.reports = {};
-    this.reports.request = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports', 'POST', apiParams, clientConfig);
-    this.reports.getFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/{reportId}/files/{reportFragment}', 'GET', apiParams, clientConfig);
-    this.reports.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/generate', 'POST', apiParams, clientConfig);
-    this.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/reports/{reportId}', 'GET', apiParams, clientConfig);
-    this.reports.getIdMappingFile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('doubleclicksearch/v2/agency/{agencyId}/advertiser/{advertiserId}/idmapping', 'GET', apiParams, clientConfig);
   }
 
 /**
