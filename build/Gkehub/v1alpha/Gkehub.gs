@@ -103,6 +103,17 @@ class Gkehub {
     this.projects.locations.fleets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.fleets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/fleets', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.rollouts = {};
+    this.projects.locations.rollouts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.rollouts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/rollouts', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.rolloutSequences = {};
+    this.projects.locations.rolloutSequences.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/rolloutSequences', 'POST', apiParams, clientConfig);
+    this.projects.locations.rolloutSequences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.rolloutSequences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/rolloutSequences', 'GET', apiParams, clientConfig);
+    this.projects.locations.rolloutSequences.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.rolloutSequences.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.organizations = {};
 
     this.organizations.locations = {};
