@@ -21,74 +21,74 @@ class Metastore {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.federations = {};
+    this.projects.locations.federations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/federations', 'GET', apiParams, clientConfig);
+    this.projects.locations.federations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.federations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/federations', 'POST', apiParams, clientConfig);
+    this.projects.locations.federations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.federations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.federations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.federations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.federations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.services = {};
-    this.projects.locations.services.exportMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:exportMetadata', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.alterLocation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:alterLocation', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.startMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:startMigration', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.alterTableProperties = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:alterTableProperties', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.exportMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:exportMetadata', 'POST', apiParams, clientConfig);
     this.projects.locations.services.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:restore', 'POST', apiParams, clientConfig);
     this.projects.locations.services.removeIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:removeIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.cancelMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:cancelMigration', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.completeMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:completeMigration', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.moveTableToDatabase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:moveTableToDatabase', 'POST', apiParams, clientConfig);
     this.projects.locations.services.queryMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:queryMetadata', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.services.databases = {};
-    this.projects.locations.services.databases.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.databases.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.databases.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.services.databases.tables = {};
-    this.projects.locations.services.databases.tables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.databases.tables.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.databases.tables.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.moveTableToDatabase = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:moveTableToDatabase', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.alterLocation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:alterLocation', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.alterTableProperties = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:alterTableProperties', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.startMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:startMigration', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.completeMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:completeMigration', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.cancelMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+service}:cancelMigration', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.services.metadataImports = {};
     this.projects.locations.services.metadataImports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/metadataImports', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.metadataImports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/metadataImports', 'POST', apiParams, clientConfig);
     this.projects.locations.services.metadataImports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.metadataImports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/metadataImports', 'POST', apiParams, clientConfig);
     this.projects.locations.services.metadataImports.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.services.backups = {};
+    this.projects.locations.services.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/backups', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.backups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/backups', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.backups.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.backups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.backups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.services.migrationExecutions = {};
     this.projects.locations.services.migrationExecutions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.services.migrationExecutions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/migrationExecutions', 'GET', apiParams, clientConfig);
     this.projects.locations.services.migrationExecutions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.services.backups = {};
-    this.projects.locations.services.backups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.backups.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/backups', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.backups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.services.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.backups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/backups', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.databases = {};
+    this.projects.locations.services.databases.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.databases.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.databases.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.federations = {};
-    this.projects.locations.federations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.federations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/federations', 'GET', apiParams, clientConfig);
-    this.projects.locations.federations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.federations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.federations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.federations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.federations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/federations', 'POST', apiParams, clientConfig);
-    this.projects.locations.federations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.databases.tables = {};
+    this.projects.locations.services.databases.tables.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.databases.tables.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.databases.tables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
   }
 
 /**
