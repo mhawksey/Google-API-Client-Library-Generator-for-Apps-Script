@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Manager API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:35:17 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:35:17 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:36:23 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:36:23 GMT
 - **Created:** Sat, 01 Nov 2025 00:35:17 GMT
 
 
@@ -14,17 +14,15 @@ Auto-generated client library for using the **Data Manager API (version: v1)** i
 
 ## API Reference
 
-### `events`
+### `audienceMembers`
 
-#### `events.ingest()`
+#### `audienceMembers.ingest()`
 
-Uploads a list of Event resources from the provided Destination.
+Uploads a list of AudienceMember resources to the provided Destination.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `audienceMembers`
 
 #### `audienceMembers.remove()`
 
@@ -34,9 +32,11 @@ Removes a list of AudienceMember resources from the provided Destination.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `audienceMembers.ingest()`
+### `events`
 
-Uploads a list of AudienceMember resources to the provided Destination.
+#### `events.ingest()`
+
+Uploads a list of Event resources from the provided Destination.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
