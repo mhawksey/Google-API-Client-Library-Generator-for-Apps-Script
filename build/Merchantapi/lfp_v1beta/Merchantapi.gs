@@ -26,14 +26,14 @@ class Merchantapi {
     this.accounts.lfpMerchantStates = {};
     this.accounts.lfpMerchantStates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+name}', 'GET', apiParams, clientConfig);
 
-    this.accounts.lfpStores = {};
-    this.accounts.lfpStores.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.lfpStores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.lfpStores.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpStores:insert', 'POST', apiParams, clientConfig);
-    this.accounts.lfpStores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpStores', 'GET', apiParams, clientConfig);
-
     this.accounts.lfpSales = {};
     this.accounts.lfpSales.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpSales:insert', 'POST', apiParams, clientConfig);
+
+    this.accounts.lfpStores = {};
+    this.accounts.lfpStores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.lfpStores.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpStores:insert', 'POST', apiParams, clientConfig);
+    this.accounts.lfpStores.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.lfpStores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1beta/{+parent}/lfpStores', 'GET', apiParams, clientConfig);
   }
 
 /**
