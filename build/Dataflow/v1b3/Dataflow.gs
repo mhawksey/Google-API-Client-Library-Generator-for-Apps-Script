@@ -22,77 +22,77 @@ class Dataflow {
     this.projects.deleteSnapshots = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/snapshots', 'DELETE', apiParams, clientConfig);
     this.projects.workerMessages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/WorkerMessages', 'POST', apiParams, clientConfig);
 
+    this.projects.snapshots = {};
+    this.projects.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/snapshots/{snapshotId}', 'GET', apiParams, clientConfig);
+    this.projects.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/snapshots', 'GET', apiParams, clientConfig);
+
     this.projects.jobs = {};
-    this.projects.jobs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}', 'PUT', apiParams, clientConfig);
-    this.projects.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}', 'GET', apiParams, clientConfig);
-    this.projects.jobs.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/metrics', 'GET', apiParams, clientConfig);
-    this.projects.jobs.snapshot = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}:snapshot', 'POST', apiParams, clientConfig);
     this.projects.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs', 'POST', apiParams, clientConfig);
+    this.projects.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}', 'GET', apiParams, clientConfig);
+    this.projects.jobs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}', 'PUT', apiParams, clientConfig);
     this.projects.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs', 'GET', apiParams, clientConfig);
     this.projects.jobs.aggregated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs:aggregated', 'GET', apiParams, clientConfig);
+    this.projects.jobs.snapshot = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}:snapshot', 'POST', apiParams, clientConfig);
+    this.projects.jobs.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/metrics', 'GET', apiParams, clientConfig);
+
+    this.projects.jobs.debug = {};
+    this.projects.jobs.debug.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig', 'POST', apiParams, clientConfig);
+    this.projects.jobs.debug.sendCapture = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture', 'POST', apiParams, clientConfig);
+
+    this.projects.jobs.messages = {};
+    this.projects.jobs.messages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/messages', 'GET', apiParams, clientConfig);
 
     this.projects.jobs.workItems = {};
     this.projects.jobs.workItems.reportStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/workItems:reportStatus', 'POST', apiParams, clientConfig);
     this.projects.jobs.workItems.lease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/workItems:lease', 'POST', apiParams, clientConfig);
 
-    this.projects.jobs.messages = {};
-    this.projects.jobs.messages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/messages', 'GET', apiParams, clientConfig);
-
-    this.projects.jobs.debug = {};
-    this.projects.jobs.debug.sendCapture = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/debug/sendCapture', 'POST', apiParams, clientConfig);
-    this.projects.jobs.debug.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/jobs/{jobId}/debug/getConfig', 'POST', apiParams, clientConfig);
+    this.projects.templates = {};
+    this.projects.templates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/templates', 'POST', apiParams, clientConfig);
+    this.projects.templates.launch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/templates:launch', 'POST', apiParams, clientConfig);
+    this.projects.templates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/templates:get', 'GET', apiParams, clientConfig);
 
     this.projects.locations = {};
     this.projects.locations.workerMessages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/WorkerMessages', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.flexTemplates = {};
-    this.projects.locations.flexTemplates.launch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/flexTemplates:launch', 'POST', apiParams, clientConfig);
-
     this.projects.locations.snapshots = {};
+    this.projects.locations.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}', 'GET', apiParams, clientConfig);
     this.projects.locations.snapshots.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/snapshots', 'GET', apiParams, clientConfig);
-    this.projects.locations.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/snapshots/{snapshotId}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.templates = {};
-    this.projects.locations.templates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/templates:get', 'GET', apiParams, clientConfig);
-    this.projects.locations.templates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/templates', 'POST', apiParams, clientConfig);
-    this.projects.locations.templates.launch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/templates:launch', 'POST', apiParams, clientConfig);
 
     this.projects.locations.jobs = {};
-    this.projects.locations.jobs.snapshot = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs', 'GET', apiParams, clientConfig);
     this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.snapshot = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}:snapshot', 'POST', apiParams, clientConfig);
     this.projects.locations.jobs.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/metrics', 'GET', apiParams, clientConfig);
     this.projects.locations.jobs.getExecutionDetails = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/executionDetails', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}', 'PUT', apiParams, clientConfig);
 
-    this.projects.locations.jobs.messages = {};
-    this.projects.locations.jobs.messages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/messages', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.jobs.workItems = {};
-    this.projects.locations.jobs.workItems.lease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:lease', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.workItems.reportStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.debug = {};
+    this.projects.locations.jobs.debug.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.debug.sendCapture = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/sendCapture', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.debug.getWorkerStacktraces = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getWorkerStacktraces', 'POST', apiParams, clientConfig);
 
     this.projects.locations.jobs.snapshots = {};
     this.projects.locations.jobs.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/snapshots', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.jobs.messages = {};
+    this.projects.locations.jobs.messages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/messages', 'GET', apiParams, clientConfig);
+
     this.projects.locations.jobs.stages = {};
     this.projects.locations.jobs.stages.getExecutionDetails = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/stages/{stageId}/executionDetails', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.jobs.debug = {};
-    this.projects.locations.jobs.debug.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getConfig', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.debug.getWorkerStacktraces = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/getWorkerStacktraces', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.debug.sendCapture = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/debug/sendCapture', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.workItems = {};
+    this.projects.locations.jobs.workItems.reportStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:reportStatus', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.workItems.lease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/jobs/{jobId}/workItems:lease', 'POST', apiParams, clientConfig);
 
-    this.projects.snapshots = {};
-    this.projects.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/snapshots/{snapshotId}', 'GET', apiParams, clientConfig);
-    this.projects.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/snapshots', 'GET', apiParams, clientConfig);
+    this.projects.locations.templates = {};
+    this.projects.locations.templates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/templates', 'POST', apiParams, clientConfig);
+    this.projects.locations.templates.launch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/templates:launch', 'POST', apiParams, clientConfig);
+    this.projects.locations.templates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/templates:get', 'GET', apiParams, clientConfig);
 
-    this.projects.templates = {};
-    this.projects.templates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/templates:get', 'GET', apiParams, clientConfig);
-    this.projects.templates.launch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/templates:launch', 'POST', apiParams, clientConfig);
-    this.projects.templates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/templates', 'POST', apiParams, clientConfig);
+    this.projects.locations.flexTemplates = {};
+    this.projects.locations.flexTemplates.launch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1b3/projects/{projectId}/locations/{location}/flexTemplates:launch', 'POST', apiParams, clientConfig);
   }
 
 /**
