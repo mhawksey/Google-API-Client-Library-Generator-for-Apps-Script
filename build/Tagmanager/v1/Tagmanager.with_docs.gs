@@ -21,6 +21,15 @@ class Tagmanager {
     this.accounts = {};
 
     /**
+     * Lists all GTM Accounts that a user has access to.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts', 'GET', apiParams, clientConfig);
+
+    /**
      * Gets a GTM Account.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) The GTM Account ID.
@@ -42,16 +51,39 @@ class Tagmanager {
      */
     this.accounts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}', 'PUT', apiParams, clientConfig);
 
+    this.accounts.permissions = {};
+
     /**
-     * Lists all GTM Accounts that a user has access to.
+     * Creates a user's Account & Container Permissions.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts', 'GET', apiParams, clientConfig);
+    this.accounts.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions', 'POST', apiParams, clientConfig);
 
-    this.accounts.permissions = {};
+    /**
+     * List all users that have access to the account along with Account and Container Permissions granted to each of them.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a user's Account & Container Permissions.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.permissionId - (Required) The GTM User ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.permissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', 'GET', apiParams, clientConfig);
 
     /**
      * Updates a user's Account & Container Permissions.
@@ -66,38 +98,6 @@ class Tagmanager {
     this.accounts.permissions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Creates a user's Account & Container Permissions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets a user's Account & Container Permissions.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.permissionId - (Required) The GTM User ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.permissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * List all users that have access to the account along with Account and Container Permissions granted to each of them.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions', 'GET', apiParams, clientConfig);
-
-    /**
      * Removes a user from the account, revoking access to it and all of its containers.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) The GTM Account ID.
@@ -109,41 +109,6 @@ class Tagmanager {
     this.accounts.permissions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.containers = {};
-
-    /**
-     * Gets a Container.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a Container.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates a Container.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the container in storage.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'PUT', apiParams, clientConfig);
 
     /**
      * Creates a Container.
@@ -166,60 +131,32 @@ class Tagmanager {
      */
     this.accounts.containers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers', 'GET', apiParams, clientConfig);
 
-    this.accounts.containers.triggers = {};
-
     /**
-     * Updates a GTM Trigger.
+     * Gets a Container.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) The GTM Account ID.
      * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the trigger in storage.
-     * @param {string} apiParams.triggerId - (Required) The GTM Trigger ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a Container.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the container in storage.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.containers.triggers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'PUT', apiParams, clientConfig);
+    this.accounts.containers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Gets a GTM Trigger.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.triggerId - (Required) The GTM Trigger ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.triggers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a GTM Trigger.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.triggerId - (Required) The GTM Trigger ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.triggers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a GTM Trigger.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.triggers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists all GTM Triggers of a Container.
+     * Deletes a Container.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) The GTM Account ID.
      * @param {string} apiParams.containerId - (Required) The GTM Container ID.
@@ -227,105 +164,21 @@ class Tagmanager {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.containers.triggers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', 'GET', apiParams, clientConfig);
-
-    this.accounts.containers.reauthorize_environments = {};
-
-    /**
-     * Re-generates the authorization code for a GTM Environment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.environmentId - (Required) The GTM Environment ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.reauthorize_environments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}', 'PUT', apiParams, clientConfig);
-
-    this.accounts.containers.move_folders = {};
-
-    /**
-     * Moves entities to a GTM Folder.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.folderId - (Required) The GTM Folder ID.
-     * @param {string} apiParams.tagId - The tags to be moved to the folder.
-     * @param {string} apiParams.triggerId - The triggers to be moved to the folder.
-     * @param {string} apiParams.variableId - The variables to be moved to the folder.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.move_folders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/move_folders/{folderId}', 'PUT', apiParams, clientConfig);
-
-    this.accounts.containers.environments = {};
-
-    /**
-     * Updates a GTM Environment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.environmentId - (Required) The GTM Environment ID.
-     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the environment in storage.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.environments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Deletes a GTM Environment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.environmentId - (Required) The GTM Environment ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.environments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets a GTM Environment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.environmentId - (Required) The GTM Environment ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all GTM Environments of a GTM Container.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a GTM Environment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', 'POST', apiParams, clientConfig);
+    this.accounts.containers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.containers.versions = {};
+
+    /**
+     * Creates a Container Version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a Container Version.
@@ -338,6 +191,32 @@ class Tagmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.containers.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a Container Version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.containerVersionId - (Required) The GTM Container Version ID.
+     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the container version in storage.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.versions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Deletes a Container Version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.containerVersionId - (Required) The GTM Container Version ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Undeletes a Container Version.
@@ -377,44 +256,6 @@ class Tagmanager {
     this.accounts.containers.versions.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes a Container Version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.containerVersionId - (Required) The GTM Container Version ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a Container Version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a Container Version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.containerVersionId - (Required) The GTM Container Version ID.
-     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the container version in storage.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.versions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'PUT', apiParams, clientConfig);
-
-    /**
      * Lists all Container Versions of a GTM Container.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) The GTM Account ID.
@@ -427,70 +268,19 @@ class Tagmanager {
      */
     this.accounts.containers.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions', 'GET', apiParams, clientConfig);
 
-    this.accounts.containers.tags = {};
-
-    /**
-     * Lists all GTM Tags of a Container.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a GTM Tag.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the tag in storage.
-     * @param {string} apiParams.tagId - (Required) The GTM Tag ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.tags.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Gets a GTM Tag.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.tagId - (Required) The GTM Tag ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.tags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a GTM Tag.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.tagId - (Required) The GTM Tag ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a GTM Tag.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', 'POST', apiParams, clientConfig);
-
     this.accounts.containers.variables = {};
+
+    /**
+     * Creates a GTM Variable.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.variables.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables', 'POST', apiParams, clientConfig);
 
     /**
      * Lists all GTM Variables of a Container.
@@ -504,7 +294,7 @@ class Tagmanager {
     this.accounts.containers.variables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes a GTM Variable.
+     * Gets a GTM Variable.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) The GTM Account ID.
      * @param {string} apiParams.containerId - (Required) The GTM Container ID.
@@ -513,7 +303,7 @@ class Tagmanager {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.containers.variables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'DELETE', apiParams, clientConfig);
+    this.accounts.containers.variables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'GET', apiParams, clientConfig);
 
     /**
      * Updates a GTM Variable.
@@ -530,19 +320,7 @@ class Tagmanager {
     this.accounts.containers.variables.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Creates a GTM Variable.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.variables.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets a GTM Variable.
+     * Deletes a GTM Variable.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) The GTM Account ID.
      * @param {string} apiParams.containerId - (Required) The GTM Container ID.
@@ -551,9 +329,147 @@ class Tagmanager {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.containers.variables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'GET', apiParams, clientConfig);
+    this.accounts.containers.variables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'DELETE', apiParams, clientConfig);
+
+    this.accounts.containers.triggers = {};
+
+    /**
+     * Creates a GTM Trigger.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.triggers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all GTM Triggers of a Container.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.triggers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a GTM Trigger.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.triggerId - (Required) The GTM Trigger ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.triggers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a GTM Trigger.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the trigger in storage.
+     * @param {string} apiParams.triggerId - (Required) The GTM Trigger ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.triggers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Deletes a GTM Trigger.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.triggerId - (Required) The GTM Trigger ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.triggers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'DELETE', apiParams, clientConfig);
+
+    this.accounts.containers.tags = {};
+
+    /**
+     * Creates a GTM Tag.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all GTM Tags of a Container.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a GTM Tag.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.tagId - (Required) The GTM Tag ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.tags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a GTM Tag.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the tag in storage.
+     * @param {string} apiParams.tagId - (Required) The GTM Tag ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.tags.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Deletes a GTM Tag.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.tagId - (Required) The GTM Tag ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.containers.folders = {};
+
+    /**
+     * Creates a GTM Folder.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.folders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders', 'POST', apiParams, clientConfig);
 
     /**
      * Lists all GTM Folders of a Container.
@@ -579,30 +495,6 @@ class Tagmanager {
     this.accounts.containers.folders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a GTM Folder.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.folders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a GTM Folder.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
-     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
-     * @param {string} apiParams.folderId - (Required) The GTM Folder ID.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.containers.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Updates a GTM Folder.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - (Required) The GTM Account ID.
@@ -615,6 +507,18 @@ class Tagmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.containers.folders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Deletes a GTM Folder.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.folderId - (Required) The GTM Folder ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.containers.folders.entities = {};
 
@@ -629,6 +533,102 @@ class Tagmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.containers.folders.entities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}/entities', 'GET', apiParams, clientConfig);
+
+    this.accounts.containers.move_folders = {};
+
+    /**
+     * Moves entities to a GTM Folder.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.folderId - (Required) The GTM Folder ID.
+     * @param {string} apiParams.tagId - The tags to be moved to the folder.
+     * @param {string} apiParams.triggerId - The triggers to be moved to the folder.
+     * @param {string} apiParams.variableId - The variables to be moved to the folder.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.move_folders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/move_folders/{folderId}', 'PUT', apiParams, clientConfig);
+
+    this.accounts.containers.environments = {};
+
+    /**
+     * Creates a GTM Environment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all GTM Environments of a GTM Container.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a GTM Environment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.environmentId - (Required) The GTM Environment ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a GTM Environment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.environmentId - (Required) The GTM Environment ID.
+     * @param {string} apiParams.fingerprint - When provided, this fingerprint must match the fingerprint of the environment in storage.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.environments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Deletes a GTM Environment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.environmentId - (Required) The GTM Environment ID.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.environments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'DELETE', apiParams, clientConfig);
+
+    this.accounts.containers.reauthorize_environments = {};
+
+    /**
+     * Re-generates the authorization code for a GTM Environment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.accountId - (Required) The GTM Account ID.
+     * @param {string} apiParams.containerId - (Required) The GTM Container ID.
+     * @param {string} apiParams.environmentId - (Required) The GTM Environment ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.containers.reauthorize_environments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}', 'PUT', apiParams, clientConfig);
   }
 
 /**
