@@ -21,7 +21,7 @@ class Datastore {
     this.projects = {};
 
     /**
-     * Commits a transaction, optionally creating, deleting or modifying some entities.
+     * Looks up entities by key.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
      * @param {object} apiParams.requestBody - The request body.
@@ -29,51 +29,7 @@ class Datastore {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:commit', 'POST', apiParams, clientConfig);
-
-    /**
-     * Runs an aggregation query.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:runAggregationQuery', 'POST', apiParams, clientConfig);
-
-    /**
-     * Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.allocateIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:allocateIds', 'POST', apiParams, clientConfig);
-
-    /**
-     * Rolls back a transaction.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:rollback', 'POST', apiParams, clientConfig);
-
-    /**
-     * Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.reserveIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:reserveIds', 'POST', apiParams, clientConfig);
+    this.projects.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:lookup', 'POST', apiParams, clientConfig);
 
     /**
      * Queries for entities.
@@ -87,7 +43,7 @@ class Datastore {
     this.projects.runQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:runQuery', 'POST', apiParams, clientConfig);
 
     /**
-     * Looks up entities by key.
+     * Runs an aggregation query.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
      * @param {object} apiParams.requestBody - The request body.
@@ -95,7 +51,7 @@ class Datastore {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:lookup', 'POST', apiParams, clientConfig);
+    this.projects.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:runAggregationQuery', 'POST', apiParams, clientConfig);
 
     /**
      * Begins a new transaction.
@@ -107,6 +63,50 @@ class Datastore {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.beginTransaction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:beginTransaction', 'POST', apiParams, clientConfig);
+
+    /**
+     * Commits a transaction, optionally creating, deleting or modifying some entities.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:commit', 'POST', apiParams, clientConfig);
+
+    /**
+     * Rolls back a transaction.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:rollback', 'POST', apiParams, clientConfig);
+
+    /**
+     * Allocates IDs for the given keys, which is useful for referencing an entity before it is inserted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.allocateIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:allocateIds', 'POST', apiParams, clientConfig);
+
+    /**
+     * Prevents the supplied keys' IDs from being auto-allocated by Cloud Datastore.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.projectId - (Required) Required. The ID of the project against which to make the request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.reserveIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:reserveIds', 'POST', apiParams, clientConfig);
   }
 
 /**
