@@ -20,6 +20,31 @@ class Merchantapi {
 
     this.accounts = {};
 
+    this.accounts.limits = {};
+
+    /**
+     * Retrieves an account limit.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the limit to retrieve. Format: `accounts/{account}/limits/{limit}` For example: `accounts/123/limits/products~ADS_NON_EEA`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.limits.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('quota/v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the limits of an account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Required. A filter on the limit `type` is required, for example, `type = "products"`.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of limits to return. The service may return fewer than this value. If unspecified, at most 100 limits will be returned. The maximum value is 100; values above 100 will be coerced to 100.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListAccountLimits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAccountLimits` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent account. Format: `accounts/{account}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.limits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('quota/v1/{+parent}/limits', 'GET', apiParams, clientConfig);
+
     this.accounts.quotas = {};
 
     /**
