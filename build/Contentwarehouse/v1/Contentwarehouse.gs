@@ -23,54 +23,54 @@ class Contentwarehouse {
     this.projects.setAcl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setAcl', 'POST', apiParams, clientConfig);
 
     this.projects.locations = {};
-    this.projects.locations.initialize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:initialize', 'POST', apiParams, clientConfig);
-    this.projects.locations.getStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:getStatus', 'GET', apiParams, clientConfig);
     this.projects.locations.runPipeline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:runPipeline', 'POST', apiParams, clientConfig);
+    this.projects.locations.getStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:getStatus', 'GET', apiParams, clientConfig);
+    this.projects.locations.initialize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:initialize', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.ruleSets = {};
+    this.projects.locations.ruleSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.ruleSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ruleSets', 'POST', apiParams, clientConfig);
+    this.projects.locations.ruleSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.ruleSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ruleSets', 'GET', apiParams, clientConfig);
+    this.projects.locations.ruleSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.documentSchemas = {};
+    this.projects.locations.documentSchemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.documentSchemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.documentSchemas.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.documentSchemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/documentSchemas', 'POST', apiParams, clientConfig);
+    this.projects.locations.documentSchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/documentSchemas', 'GET', apiParams, clientConfig);
 
     this.projects.locations.synonymSets = {};
     this.projects.locations.synonymSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.synonymSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.synonymSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/synonymSets', 'POST', apiParams, clientConfig);
     this.projects.locations.synonymSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/synonymSets', 'GET', apiParams, clientConfig);
     this.projects.locations.synonymSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.synonymSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/synonymSets', 'POST', apiParams, clientConfig);
-    this.projects.locations.synonymSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.documentSchemas = {};
-    this.projects.locations.documentSchemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.documentSchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/documentSchemas', 'GET', apiParams, clientConfig);
-    this.projects.locations.documentSchemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/documentSchemas', 'POST', apiParams, clientConfig);
-    this.projects.locations.documentSchemas.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.documentSchemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.documents = {};
-    this.projects.locations.documents.lock = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:lock', 'POST', apiParams, clientConfig);
+    this.projects.locations.documents.setAcl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setAcl', 'POST', apiParams, clientConfig);
     this.projects.locations.documents.fetchAcl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:fetchAcl', 'POST', apiParams, clientConfig);
+    this.projects.locations.documents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/documents', 'POST', apiParams, clientConfig);
+    this.projects.locations.documents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:delete', 'POST', apiParams, clientConfig);
+    this.projects.locations.documents.linkedTargets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/linkedTargets', 'POST', apiParams, clientConfig);
     this.projects.locations.documents.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/documents:search', 'POST', apiParams, clientConfig);
     this.projects.locations.documents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:get', 'POST', apiParams, clientConfig);
-    this.projects.locations.documents.setAcl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setAcl', 'POST', apiParams, clientConfig);
-    this.projects.locations.documents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/documents', 'POST', apiParams, clientConfig);
-    this.projects.locations.documents.linkedTargets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/linkedTargets', 'POST', apiParams, clientConfig);
-    this.projects.locations.documents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:delete', 'POST', apiParams, clientConfig);
     this.projects.locations.documents.linkedSources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/linkedSources', 'POST', apiParams, clientConfig);
+    this.projects.locations.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:get', 'POST', apiParams, clientConfig);
+    this.projects.locations.documents.lock = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:lock', 'POST', apiParams, clientConfig);
 
     this.projects.locations.documents.documentLinks = {};
     this.projects.locations.documents.documentLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/documentLinks', 'POST', apiParams, clientConfig);
     this.projects.locations.documents.documentLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:delete', 'POST', apiParams, clientConfig);
 
     this.projects.locations.documents.referenceId = {};
-    this.projects.locations.documents.referenceId.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:get', 'POST', apiParams, clientConfig);
-    this.projects.locations.documents.referenceId.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:delete', 'POST', apiParams, clientConfig);
     this.projects.locations.documents.referenceId.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.ruleSets = {};
-    this.projects.locations.ruleSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ruleSets', 'GET', apiParams, clientConfig);
-    this.projects.locations.ruleSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.ruleSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ruleSets', 'POST', apiParams, clientConfig);
-    this.projects.locations.ruleSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.ruleSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.documents.referenceId.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:delete', 'POST', apiParams, clientConfig);
+    this.projects.locations.documents.referenceId.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:get', 'POST', apiParams, clientConfig);
   }
 
 /**
