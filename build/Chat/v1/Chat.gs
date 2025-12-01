@@ -18,11 +18,57 @@ class Chat {
     this._servicePath = '';
 
 
+    this.media = {};
+    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/media/{+resourceName}', 'GET', apiParams, clientConfig);
+    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1/{+parent}/attachments:upload' : 'v1/{+parent}/attachments:upload';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
+    this.spaces = {};
+    this.spaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces', 'GET', apiParams, clientConfig);
+    this.spaces.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces:search', 'GET', apiParams, clientConfig);
+    this.spaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.spaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces', 'POST', apiParams, clientConfig);
+    this.spaces.setup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces:setup', 'POST', apiParams, clientConfig);
+    this.spaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.spaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.spaces.completeImport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:completeImport', 'POST', apiParams, clientConfig);
+    this.spaces.findDirectMessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces:findDirectMessage', 'GET', apiParams, clientConfig);
+
+    this.spaces.messages = {};
+    this.spaces.messages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/messages', 'POST', apiParams, clientConfig);
+    this.spaces.messages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/messages', 'GET', apiParams, clientConfig);
+    this.spaces.messages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.spaces.messages.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.spaces.messages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.spaces.messages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.spaces.messages.attachments = {};
+    this.spaces.messages.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.spaces.messages.reactions = {};
+    this.spaces.messages.reactions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reactions', 'POST', apiParams, clientConfig);
+    this.spaces.messages.reactions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reactions', 'GET', apiParams, clientConfig);
+    this.spaces.messages.reactions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.spaces.members = {};
+    this.spaces.members.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/members', 'GET', apiParams, clientConfig);
+    this.spaces.members.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.spaces.members.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/members', 'POST', apiParams, clientConfig);
+    this.spaces.members.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.spaces.members.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.spaces.spaceEvents = {};
+    this.spaces.spaceEvents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.spaces.spaceEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spaceEvents', 'GET', apiParams, clientConfig);
+
     this.customEmojis = {};
-    this.customEmojis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/customEmojis', 'GET', apiParams, clientConfig);
     this.customEmojis.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/customEmojis', 'POST', apiParams, clientConfig);
-    this.customEmojis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.customEmojis.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customEmojis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/customEmojis', 'GET', apiParams, clientConfig);
+    this.customEmojis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.users = {};
 
@@ -30,58 +76,12 @@ class Chat {
     this.users.spaces.getSpaceReadState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.users.spaces.updateSpaceReadState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.users.spaces.spaceNotificationSetting = {};
-    this.users.spaces.spaceNotificationSetting.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.users.spaces.spaceNotificationSetting.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
     this.users.spaces.threads = {};
     this.users.spaces.threads.getThreadReadState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.media = {};
-    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1/{+parent}/attachments:upload' : 'v1/{+parent}/attachments:upload';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/media/{+resourceName}', 'GET', apiParams, clientConfig);
-
-    this.spaces = {};
-    this.spaces.completeImport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:completeImport', 'POST', apiParams, clientConfig);
-    this.spaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces', 'GET', apiParams, clientConfig);
-    this.spaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces', 'POST', apiParams, clientConfig);
-    this.spaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.spaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.spaces.setup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces:setup', 'POST', apiParams, clientConfig);
-    this.spaces.findDirectMessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces:findDirectMessage', 'GET', apiParams, clientConfig);
-    this.spaces.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/spaces:search', 'GET', apiParams, clientConfig);
-    this.spaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.spaces.messages = {};
-    this.spaces.messages.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.spaces.messages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.spaces.messages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.spaces.messages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/messages', 'POST', apiParams, clientConfig);
-    this.spaces.messages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.spaces.messages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/messages', 'GET', apiParams, clientConfig);
-
-    this.spaces.messages.reactions = {};
-    this.spaces.messages.reactions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reactions', 'POST', apiParams, clientConfig);
-    this.spaces.messages.reactions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reactions', 'GET', apiParams, clientConfig);
-    this.spaces.messages.reactions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.spaces.messages.attachments = {};
-    this.spaces.messages.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.spaces.members = {};
-    this.spaces.members.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/members', 'POST', apiParams, clientConfig);
-    this.spaces.members.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.spaces.members.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.spaces.members.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/members', 'GET', apiParams, clientConfig);
-    this.spaces.members.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.spaces.spaceEvents = {};
-    this.spaces.spaceEvents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.spaces.spaceEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spaceEvents', 'GET', apiParams, clientConfig);
+    this.users.spaces.spaceNotificationSetting = {};
+    this.users.spaces.spaceNotificationSetting.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.users.spaces.spaceNotificationSetting.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
