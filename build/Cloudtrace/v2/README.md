@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Trace API (version: v2)** in
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:33:13 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:34:26 GMT
 - **Last Modified:** Sat, 01 Nov 2025 00:33:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:13 GMT
 
