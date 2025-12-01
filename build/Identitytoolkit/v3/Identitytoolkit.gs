@@ -19,26 +19,26 @@ class Identitytoolkit {
 
 
     this.relyingparty = {};
-    this.relyingparty.signupNewUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('signupNewUser', 'POST', apiParams, clientConfig);
-    this.relyingparty.verifyAssertion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyAssertion', 'POST', apiParams, clientConfig);
+    this.relyingparty.createAuthUri = async (apiParams = {}, clientConfig = {}) => this._makeRequest('createAuthUri', 'POST', apiParams, clientConfig);
+    this.relyingparty.deleteAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deleteAccount', 'POST', apiParams, clientConfig);
+    this.relyingparty.downloadAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('downloadAccount', 'POST', apiParams, clientConfig);
+    this.relyingparty.emailLinkSignin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('emailLinkSignin', 'POST', apiParams, clientConfig);
+    this.relyingparty.getAccountInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getAccountInfo', 'POST', apiParams, clientConfig);
+    this.relyingparty.getOobConfirmationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getOobConfirmationCode', 'POST', apiParams, clientConfig);
+    this.relyingparty.getProjectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getProjectConfig', 'GET', apiParams, clientConfig);
+    this.relyingparty.getPublicKeys = async (apiParams = {}, clientConfig = {}) => this._makeRequest('publicKeys', 'GET', apiParams, clientConfig);
+    this.relyingparty.getRecaptchaParam = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getRecaptchaParam', 'GET', apiParams, clientConfig);
+    this.relyingparty.resetPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('resetPassword', 'POST', apiParams, clientConfig);
+    this.relyingparty.sendVerificationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('sendVerificationCode', 'POST', apiParams, clientConfig);
     this.relyingparty.setAccountInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('setAccountInfo', 'POST', apiParams, clientConfig);
     this.relyingparty.setProjectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('setProjectConfig', 'POST', apiParams, clientConfig);
-    this.relyingparty.uploadAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('uploadAccount', 'POST', apiParams, clientConfig);
-    this.relyingparty.getPublicKeys = async (apiParams = {}, clientConfig = {}) => this._makeRequest('publicKeys', 'GET', apiParams, clientConfig);
-    this.relyingparty.verifyCustomToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyCustomToken', 'POST', apiParams, clientConfig);
-    this.relyingparty.verifyPhoneNumber = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyPhoneNumber', 'POST', apiParams, clientConfig);
-    this.relyingparty.getProjectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getProjectConfig', 'GET', apiParams, clientConfig);
-    this.relyingparty.sendVerificationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('sendVerificationCode', 'POST', apiParams, clientConfig);
-    this.relyingparty.deleteAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deleteAccount', 'POST', apiParams, clientConfig);
     this.relyingparty.signOutUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('signOutUser', 'POST', apiParams, clientConfig);
-    this.relyingparty.emailLinkSignin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('emailLinkSignin', 'POST', apiParams, clientConfig);
-    this.relyingparty.getRecaptchaParam = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getRecaptchaParam', 'GET', apiParams, clientConfig);
-    this.relyingparty.getOobConfirmationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getOobConfirmationCode', 'POST', apiParams, clientConfig);
+    this.relyingparty.signupNewUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('signupNewUser', 'POST', apiParams, clientConfig);
+    this.relyingparty.uploadAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('uploadAccount', 'POST', apiParams, clientConfig);
+    this.relyingparty.verifyAssertion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyAssertion', 'POST', apiParams, clientConfig);
+    this.relyingparty.verifyCustomToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyCustomToken', 'POST', apiParams, clientConfig);
     this.relyingparty.verifyPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyPassword', 'POST', apiParams, clientConfig);
-    this.relyingparty.getAccountInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('getAccountInfo', 'POST', apiParams, clientConfig);
-    this.relyingparty.createAuthUri = async (apiParams = {}, clientConfig = {}) => this._makeRequest('createAuthUri', 'POST', apiParams, clientConfig);
-    this.relyingparty.resetPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('resetPassword', 'POST', apiParams, clientConfig);
-    this.relyingparty.downloadAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('downloadAccount', 'POST', apiParams, clientConfig);
+    this.relyingparty.verifyPhoneNumber = async (apiParams = {}, clientConfig = {}) => this._makeRequest('verifyPhoneNumber', 'POST', apiParams, clientConfig);
   }
 
 /**
