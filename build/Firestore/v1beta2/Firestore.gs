@@ -26,16 +26,16 @@ class Firestore {
 
     this.projects.databases.collectionGroups = {};
 
+    this.projects.databases.collectionGroups.indexes = {};
+    this.projects.databases.collectionGroups.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'POST', apiParams, clientConfig);
+    this.projects.databases.collectionGroups.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'GET', apiParams, clientConfig);
+    this.projects.databases.collectionGroups.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.databases.collectionGroups.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.projects.databases.collectionGroups.fields = {};
     this.projects.databases.collectionGroups.fields.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.databases.collectionGroups.fields.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.databases.collectionGroups.fields.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/fields', 'GET', apiParams, clientConfig);
-
-    this.projects.databases.collectionGroups.indexes = {};
-    this.projects.databases.collectionGroups.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.databases.collectionGroups.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'GET', apiParams, clientConfig);
-    this.projects.databases.collectionGroups.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/indexes', 'POST', apiParams, clientConfig);
-    this.projects.databases.collectionGroups.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
