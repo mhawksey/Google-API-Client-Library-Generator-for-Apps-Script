@@ -20,40 +20,6 @@ class Smartdevicemanagement {
 
     this.enterprises = {};
 
-    this.enterprises.devices = {};
-
-    /**
-     * Gets a device managed by the enterprise.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the device requested. For example: "enterprises/XYZ/devices/123"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists devices managed by the enterprise.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional filter to list devices. Filters can be done on: Device custom name (substring match): 'customName=wing'
-     * @param {string} apiParams.parent - (Required) The parent enterprise to list devices under. E.g. "enterprises/XYZ".
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices', 'GET', apiParams, clientConfig);
-
-    /**
-     * Executes a command to device managed by the enterprise.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the device requested. For example: "enterprises/XYZ/devices/123"
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.devices.executeCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeCommand', 'POST', apiParams, clientConfig);
-
     this.enterprises.structures = {};
 
     /**
@@ -98,6 +64,40 @@ class Smartdevicemanagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.enterprises.structures.rooms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rooms', 'GET', apiParams, clientConfig);
+
+    this.enterprises.devices = {};
+
+    /**
+     * Gets a device managed by the enterprise.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the device requested. For example: "enterprises/XYZ/devices/123"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Executes a command to device managed by the enterprise.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the device requested. For example: "enterprises/XYZ/devices/123"
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.devices.executeCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeCommand', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists devices managed by the enterprise.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional filter to list devices. Filters can be done on: Device custom name (substring match): 'customName=wing'
+     * @param {string} apiParams.parent - (Required) The parent enterprise to list devices under. E.g. "enterprises/XYZ".
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices', 'GET', apiParams, clientConfig);
   }
 
 /**
