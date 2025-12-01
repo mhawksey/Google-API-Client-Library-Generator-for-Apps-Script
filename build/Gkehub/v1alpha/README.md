@@ -4,8 +4,8 @@ Auto-generated client library for using the **GKE Hub API (version: v1alpha)** i
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:52:31 GMT
-- **Last Modified:** Fri, 03 Oct 2025 09:05:10 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:53:14 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:53:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:18 GMT
 
 
@@ -641,6 +641,76 @@ Returns all fleets within an organization or a project that the caller has acces
 | `params.parent` | `string` | Yes | Required. The organization or project to list for Fleets under, in the format `organizations/*/locations/*` or `projects/*/locations/*`. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListFleets` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListFleets` must match the call that provided the page token. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of fleets to return. The service may return fewer than this value. If unspecified, at most 200 fleets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+
+### `projects.locations.rollouts`
+
+#### `projects.locations.rollouts.get()`
+
+Retrieve a single rollout.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the rollout to retrieve. projects/{project}/locations/{location}/rollouts/{rollout} |
+
+#### `projects.locations.rollouts.list()`
+
+Retrieve the list of all rollouts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of rollout. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | The maximum number of rollout to return. The service may return fewer than this value. If unspecified, at most 50 rollouts will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListRollouts` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRollouts` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. Lists Rollouts that match the filter expression, following the syntax outlined in https://google.aip.dev/160. |
+
+### `projects.locations.rolloutSequences`
+
+#### `projects.locations.rolloutSequences.create()`
+
+Create a new rollout sequence resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource where this rollout sequence will be created. projects/{project}/locations/{location} |
+| `params.rolloutSequenceId` | `string` | No | Required. User provided identifier that is used as part of the resource name; must conform to RFC-1034 and additionally restrict to lower-cased letters. This comes out roughly to: /^a-z+[a-z0-9]$/ |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.rolloutSequences.get()`
+
+Retrieve a single rollout sequence.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the rollout sequence to retrieve. projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} |
+
+#### `projects.locations.rolloutSequences.list()`
+
+Retrieve the list of all rollout sequences.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of rollout sequences. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of rollout sequences to return. The service may return fewer than this value. If unspecified, at most 50 rollout sequences will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListRolloutSequences` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRolloutSequences` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. Lists Rollout Sequences that match the filter expression, following the syntax outlined in https://google.aip.dev/160. |
+
+#### `projects.locations.rolloutSequences.patch()`
+
+Update a rollout sequence.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Name of the rollout sequence in the format of: projects/{PROJECT_ID}/locations/global/rolloutSequences/{NAME} |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.rolloutSequences.delete()`
+
+Remove a RolloutSequence.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the rollout sequence to delete. projects/{project}/locations/{location}/rolloutSequences/{rollout_sequence} |
 
 ### `organizations`
 
