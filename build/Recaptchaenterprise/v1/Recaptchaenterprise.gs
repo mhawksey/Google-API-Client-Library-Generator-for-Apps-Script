@@ -20,13 +20,30 @@ class Recaptchaenterprise {
 
     this.projects = {};
 
+    this.projects.assessments = {};
+    this.projects.assessments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/assessments', 'POST', apiParams, clientConfig);
+    this.projects.assessments.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:annotate', 'POST', apiParams, clientConfig);
+
+    this.projects.keys = {};
+    this.projects.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'POST', apiParams, clientConfig);
+    this.projects.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'GET', apiParams, clientConfig);
+    this.projects.keys.retrieveLegacySecretKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+key}:retrieveLegacySecretKey', 'GET', apiParams, clientConfig);
+    this.projects.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.keys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.keys.migrate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:migrate', 'POST', apiParams, clientConfig);
+    this.projects.keys.addIpOverride = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:addIpOverride', 'POST', apiParams, clientConfig);
+    this.projects.keys.removeIpOverride = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removeIpOverride', 'POST', apiParams, clientConfig);
+    this.projects.keys.listIpOverrides = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:listIpOverrides', 'GET', apiParams, clientConfig);
+    this.projects.keys.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.firewallpolicies = {};
-    this.projects.firewallpolicies.reorder = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallpolicies:reorder', 'POST', apiParams, clientConfig);
-    this.projects.firewallpolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.firewallpolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.firewallpolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.firewallpolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallpolicies', 'GET', apiParams, clientConfig);
     this.projects.firewallpolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallpolicies', 'POST', apiParams, clientConfig);
+    this.projects.firewallpolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallpolicies', 'GET', apiParams, clientConfig);
+    this.projects.firewallpolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.firewallpolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.firewallpolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.firewallpolicies.reorder = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallpolicies:reorder', 'POST', apiParams, clientConfig);
 
     this.projects.relatedaccountgroups = {};
     this.projects.relatedaccountgroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/relatedaccountgroups', 'GET', apiParams, clientConfig);
@@ -36,23 +53,6 @@ class Recaptchaenterprise {
 
     this.projects.relatedaccountgroupmemberships = {};
     this.projects.relatedaccountgroupmemberships.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/relatedaccountgroupmemberships:search', 'POST', apiParams, clientConfig);
-
-    this.projects.assessments = {};
-    this.projects.assessments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/assessments', 'POST', apiParams, clientConfig);
-    this.projects.assessments.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:annotate', 'POST', apiParams, clientConfig);
-
-    this.projects.keys = {};
-    this.projects.keys.migrate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:migrate', 'POST', apiParams, clientConfig);
-    this.projects.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.keys.retrieveLegacySecretKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+key}:retrieveLegacySecretKey', 'GET', apiParams, clientConfig);
-    this.projects.keys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'POST', apiParams, clientConfig);
-    this.projects.keys.addIpOverride = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:addIpOverride', 'POST', apiParams, clientConfig);
-    this.projects.keys.removeIpOverride = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removeIpOverride', 'POST', apiParams, clientConfig);
-    this.projects.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'GET', apiParams, clientConfig);
-    this.projects.keys.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.keys.listIpOverrides = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:listIpOverrides', 'GET', apiParams, clientConfig);
   }
 
 /**
