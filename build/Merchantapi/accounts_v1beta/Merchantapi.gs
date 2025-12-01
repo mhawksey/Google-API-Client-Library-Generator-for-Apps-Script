@@ -19,120 +19,123 @@ class Merchantapi {
 
 
     this.accounts = {};
-    this.accounts.listSubaccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+provider}:listSubaccounts', 'GET', apiParams, clientConfig);
-    this.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/accounts', 'GET', apiParams, clientConfig);
     this.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.createAndConfigure = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/accounts:createAndConfigure', 'POST', apiParams, clientConfig);
+    this.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/accounts', 'GET', apiParams, clientConfig);
+    this.accounts.listSubaccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+provider}:listSubaccounts', 'GET', apiParams, clientConfig);
 
     this.accounts.issues = {};
     this.accounts.issues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/issues', 'GET', apiParams, clientConfig);
 
-    this.accounts.gbpAccounts = {};
-    this.accounts.gbpAccounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/gbpAccounts', 'GET', apiParams, clientConfig);
-    this.accounts.gbpAccounts.linkGbpAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/gbpAccounts:linkGbpAccount', 'POST', apiParams, clientConfig);
-
-    this.accounts.termsOfServiceAgreementStates = {};
-    this.accounts.termsOfServiceAgreementStates.retrieveForApplication = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/termsOfServiceAgreementStates:retrieveForApplication', 'GET', apiParams, clientConfig);
-    this.accounts.termsOfServiceAgreementStates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.accounts.shippingSettings = {};
-    this.accounts.shippingSettings.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/shippingSettings:insert', 'POST', apiParams, clientConfig);
-    this.accounts.shippingSettings.getShippingSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.accounts.onlineReturnPolicies = {};
-    this.accounts.onlineReturnPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.onlineReturnPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/onlineReturnPolicies', 'POST', apiParams, clientConfig);
-    this.accounts.onlineReturnPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.onlineReturnPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/onlineReturnPolicies', 'GET', apiParams, clientConfig);
-    this.accounts.onlineReturnPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.services = {};
+    this.accounts.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.accounts.services.propose = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/services:propose', 'POST', apiParams, clientConfig);
+    this.accounts.services.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:approve', 'POST', apiParams, clientConfig);
+    this.accounts.services.reject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:reject', 'POST', apiParams, clientConfig);
 
     this.accounts.relationships = {};
-    this.accounts.relationships.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.relationships.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.relationships.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.relationships.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/relationships', 'GET', apiParams, clientConfig);
 
-    this.accounts.programs = {};
-    this.accounts.programs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.programs.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:enable', 'POST', apiParams, clientConfig);
-    this.accounts.programs.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:disable', 'POST', apiParams, clientConfig);
-    this.accounts.programs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/programs', 'GET', apiParams, clientConfig);
+    this.accounts.users = {};
+    this.accounts.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/users', 'POST', apiParams, clientConfig);
+    this.accounts.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/users', 'GET', apiParams, clientConfig);
 
-    this.accounts.programs.checkoutSettings = {};
-    this.accounts.programs.checkoutSettings.updateCheckoutSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.programs.checkoutSettings.deleteCheckoutSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.programs.checkoutSettings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/checkoutSettings', 'POST', apiParams, clientConfig);
-    this.accounts.programs.checkoutSettings.getCheckoutSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.users.me = {};
+    this.accounts.users.me.verifySelf = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+account}/users/me:verifySelf', 'PATCH', apiParams, clientConfig);
+
+    this.accounts.autofeedSettings = {};
+    this.accounts.autofeedSettings.getAutofeedSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.autofeedSettings.updateAutofeedSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.accounts.automaticImprovements = {};
     this.accounts.automaticImprovements.getAutomaticImprovements = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.automaticImprovements.updateAutomaticImprovements = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
+    this.accounts.businessIdentity = {};
+    this.accounts.businessIdentity.getBusinessIdentity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.businessIdentity.updateBusinessIdentity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
     this.accounts.businessInfo = {};
     this.accounts.businessInfo.getBusinessInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.businessInfo.updateBusinessInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.accounts.autofeedSettings = {};
-    this.accounts.autofeedSettings.updateAutofeedSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.autofeedSettings.getAutofeedSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.developerRegistration = {};
+    this.accounts.developerRegistration.registerGcp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:registerGcp', 'POST', apiParams, clientConfig);
+    this.accounts.developerRegistration.getDeveloperRegistration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.developerRegistration.unregisterGcp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:unregisterGcp', 'POST', apiParams, clientConfig);
+    this.accounts.developerRegistration.getAccountForGcpRegistration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/accounts:getAccountForGcpRegistration', 'GET', apiParams, clientConfig);
 
-    this.accounts.regions = {};
-    this.accounts.regions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/regions', 'POST', apiParams, clientConfig);
-    this.accounts.regions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.regions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.regions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.regions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/regions', 'GET', apiParams, clientConfig);
+    this.accounts.emailPreferences = {};
+    this.accounts.emailPreferences.getEmailPreferences = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.emailPreferences.updateEmailPreferences = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.accounts.gbpAccounts = {};
+    this.accounts.gbpAccounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/gbpAccounts', 'GET', apiParams, clientConfig);
+    this.accounts.gbpAccounts.linkGbpAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/gbpAccounts:linkGbpAccount', 'POST', apiParams, clientConfig);
 
     this.accounts.homepage = {};
-    this.accounts.homepage.unclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:unclaim', 'POST', apiParams, clientConfig);
     this.accounts.homepage.getHomepage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.homepage.updateHomepage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.homepage.claim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:claim', 'POST', apiParams, clientConfig);
-
-    this.accounts.users = {};
-    this.accounts.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/users', 'GET', apiParams, clientConfig);
-    this.accounts.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/users', 'POST', apiParams, clientConfig);
+    this.accounts.homepage.unclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:unclaim', 'POST', apiParams, clientConfig);
 
     this.accounts.omnichannelSettings = {};
     this.accounts.omnichannelSettings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.omnichannelSettings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/omnichannelSettings', 'GET', apiParams, clientConfig);
-    this.accounts.omnichannelSettings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.omnichannelSettings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/omnichannelSettings', 'POST', apiParams, clientConfig);
+    this.accounts.omnichannelSettings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.omnichannelSettings.requestInventoryVerification = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:requestInventoryVerification', 'POST', apiParams, clientConfig);
 
     this.accounts.omnichannelSettings.lfpProviders = {};
     this.accounts.omnichannelSettings.lfpProviders.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/lfpProviders:find', 'GET', apiParams, clientConfig);
     this.accounts.omnichannelSettings.lfpProviders.linkLfpProvider = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:linkLfpProvider', 'POST', apiParams, clientConfig);
 
-    this.accounts.businessIdentity = {};
-    this.accounts.businessIdentity.updateBusinessIdentity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.businessIdentity.getBusinessIdentity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.onlineReturnPolicies = {};
+    this.accounts.onlineReturnPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.onlineReturnPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/onlineReturnPolicies', 'GET', apiParams, clientConfig);
+    this.accounts.onlineReturnPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/onlineReturnPolicies', 'POST', apiParams, clientConfig);
+    this.accounts.onlineReturnPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.onlineReturnPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.accounts.developerRegistration = {};
-    this.accounts.developerRegistration.registerGcp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:registerGcp', 'POST', apiParams, clientConfig);
-    this.accounts.developerRegistration.getAccountForGcpRegistration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/accounts:getAccountForGcpRegistration', 'GET', apiParams, clientConfig);
-    this.accounts.developerRegistration.getDeveloperRegistration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.developerRegistration.unregisterGcp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:unregisterGcp', 'POST', apiParams, clientConfig);
+    this.accounts.programs = {};
+    this.accounts.programs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.programs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/programs', 'GET', apiParams, clientConfig);
+    this.accounts.programs.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.accounts.programs.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:disable', 'POST', apiParams, clientConfig);
 
-    this.accounts.emailPreferences = {};
-    this.accounts.emailPreferences.updateEmailPreferences = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.emailPreferences.getEmailPreferences = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.programs.checkoutSettings = {};
+    this.accounts.programs.checkoutSettings.getCheckoutSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.programs.checkoutSettings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/checkoutSettings', 'POST', apiParams, clientConfig);
+    this.accounts.programs.checkoutSettings.updateCheckoutSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.programs.checkoutSettings.deleteCheckoutSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.accounts.services = {};
-    this.accounts.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.services.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:approve', 'POST', apiParams, clientConfig);
-    this.accounts.services.propose = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/services:propose', 'POST', apiParams, clientConfig);
-    this.accounts.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.accounts.services.reject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:reject', 'POST', apiParams, clientConfig);
+    this.accounts.regions = {};
+    this.accounts.regions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.regions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/regions', 'POST', apiParams, clientConfig);
+    this.accounts.regions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.regions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.regions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/regions', 'GET', apiParams, clientConfig);
+
+    this.accounts.shippingSettings = {};
+    this.accounts.shippingSettings.getShippingSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.shippingSettings.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/shippingSettings:insert', 'POST', apiParams, clientConfig);
+
+    this.accounts.termsOfServiceAgreementStates = {};
+    this.accounts.termsOfServiceAgreementStates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.termsOfServiceAgreementStates.retrieveForApplication = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+parent}/termsOfServiceAgreementStates:retrieveForApplication', 'GET', apiParams, clientConfig);
 
     this.termsOfService = {};
     this.termsOfService.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.termsOfService.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:accept', 'POST', apiParams, clientConfig);
     this.termsOfService.retrieveLatest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/termsOfService:retrieveLatest', 'GET', apiParams, clientConfig);
+    this.termsOfService.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('accounts/v1beta/{+name}:accept', 'POST', apiParams, clientConfig);
   }
 
 /**
