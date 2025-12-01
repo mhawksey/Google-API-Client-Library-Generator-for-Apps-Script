@@ -18,22 +18,6 @@ class Solar {
     this._servicePath = '';
 
 
-    this.buildingInsights = {};
-
-    /**
-     * Locates the building whose centroid is closest to a query point. Returns an error with code `NOT_FOUND` if there are no buildings within approximately 50m of the query point.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.exactQualityRequired - Optional. Whether to require exact quality of the imagery. If set to false, the `required_quality` field is interpreted as the minimum required quality, such that HIGH quality imagery may be returned when `required_quality` is set to MEDIUM. If set to true, `required_quality` is interpreted as the exact required quality and only `MEDIUM` quality imagery is returned if `required_quality` is set to `MEDIUM`.
-     * @param {string} apiParams.experiments - Optional. Specifies the pre-GA features to enable.
-     * @param {number} apiParams.location.latitude - The latitude in degrees. It must be in the range [-90.0, +90.0].
-     * @param {number} apiParams.location.longitude - The longitude in degrees. It must be in the range [-180.0, +180.0].
-     * @param {string} apiParams.requiredQuality - Optional. The minimum quality level allowed in the results. No result with lower quality than this will be returned. Not specifying this is equivalent to restricting to HIGH quality only.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.buildingInsights.findClosest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/buildingInsights:findClosest', 'GET', apiParams, clientConfig);
-
     this.geoTiff = {};
 
     /**
@@ -64,6 +48,22 @@ class Solar {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.dataLayers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/dataLayers:get', 'GET', apiParams, clientConfig);
+
+    this.buildingInsights = {};
+
+    /**
+     * Locates the building whose centroid is closest to a query point. Returns an error with code `NOT_FOUND` if there are no buildings within approximately 50m of the query point.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.exactQualityRequired - Optional. Whether to require exact quality of the imagery. If set to false, the `required_quality` field is interpreted as the minimum required quality, such that HIGH quality imagery may be returned when `required_quality` is set to MEDIUM. If set to true, `required_quality` is interpreted as the exact required quality and only `MEDIUM` quality imagery is returned if `required_quality` is set to `MEDIUM`.
+     * @param {string} apiParams.experiments - Optional. Specifies the pre-GA features to enable.
+     * @param {number} apiParams.location.latitude - The latitude in degrees. It must be in the range [-90.0, +90.0].
+     * @param {number} apiParams.location.longitude - The longitude in degrees. It must be in the range [-180.0, +180.0].
+     * @param {string} apiParams.requiredQuality - Optional. The minimum quality level allowed in the results. No result with lower quality than this will be returned. Not specifying this is equivalent to restricting to HIGH quality only.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.buildingInsights.findClosest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/buildingInsights:findClosest', 'GET', apiParams, clientConfig);
   }
 
 /**
