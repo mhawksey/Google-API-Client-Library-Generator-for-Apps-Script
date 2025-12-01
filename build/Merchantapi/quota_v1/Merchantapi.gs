@@ -20,6 +20,10 @@ class Merchantapi {
 
     this.accounts = {};
 
+    this.accounts.limits = {};
+    this.accounts.limits.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('quota/v1/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.limits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('quota/v1/{+parent}/limits', 'GET', apiParams, clientConfig);
+
     this.accounts.quotas = {};
     this.accounts.quotas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('quota/v1/{+parent}/quotas', 'GET', apiParams, clientConfig);
   }
