@@ -21,11 +21,11 @@ class Billingbudgets {
     this.billingAccounts = {};
 
     this.billingAccounts.budgets = {};
-    this.billingAccounts.budgets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.billingAccounts.budgets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/budgets', 'GET', apiParams, clientConfig);
     this.billingAccounts.budgets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/budgets', 'POST', apiParams, clientConfig);
-    this.billingAccounts.budgets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.billingAccounts.budgets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.billingAccounts.budgets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.billingAccounts.budgets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/budgets', 'GET', apiParams, clientConfig);
+    this.billingAccounts.budgets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
