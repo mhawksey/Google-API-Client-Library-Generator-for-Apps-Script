@@ -18,17 +18,17 @@ class Mybusinessverifications {
     this._servicePath = '';
 
 
+    this.verificationTokens = {};
+    this.verificationTokens.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/verificationTokens:generate', 'POST', apiParams, clientConfig);
+
     this.locations = {};
-    this.locations.fetchVerificationOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:fetchVerificationOptions', 'POST', apiParams, clientConfig);
     this.locations.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:verify', 'POST', apiParams, clientConfig);
+    this.locations.fetchVerificationOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:fetchVerificationOptions', 'POST', apiParams, clientConfig);
     this.locations.getVoiceOfMerchantState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/VoiceOfMerchantState', 'GET', apiParams, clientConfig);
 
     this.locations.verifications = {};
     this.locations.verifications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/verifications', 'GET', apiParams, clientConfig);
     this.locations.verifications.complete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:complete', 'POST', apiParams, clientConfig);
-
-    this.verificationTokens = {};
-    this.verificationTokens.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/verificationTokens:generate', 'POST', apiParams, clientConfig);
   }
 
 /**
