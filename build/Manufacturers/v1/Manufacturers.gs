@@ -21,18 +21,18 @@ class Manufacturers {
     this.accounts = {};
 
     this.accounts.products = {};
-    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.products.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products/{+name}', 'DELETE', apiParams, clientConfig);
     this.accounts.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products', 'GET', apiParams, clientConfig);
+    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.products.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products/{+name}', 'PUT', apiParams, clientConfig);
+    this.accounts.products.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.languages = {};
 
     this.accounts.languages.productCertifications = {};
+    this.accounts.languages.productCertifications.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.languages.productCertifications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/productCertifications', 'GET', apiParams, clientConfig);
     this.accounts.languages.productCertifications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.languages.productCertifications.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.languages.productCertifications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/productCertifications', 'GET', apiParams, clientConfig);
-    this.accounts.languages.productCertifications.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
