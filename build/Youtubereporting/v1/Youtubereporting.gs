@@ -21,6 +21,9 @@ class Youtubereporting {
     this.media = {};
     this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/media/{+resourceName}', 'GET', apiParams, clientConfig);
 
+    this.reportTypes = {};
+    this.reportTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/reportTypes', 'GET', apiParams, clientConfig);
+
     this.jobs = {};
     this.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs/{jobId}', 'GET', apiParams, clientConfig);
     this.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs/{jobId}', 'DELETE', apiParams, clientConfig);
@@ -28,11 +31,8 @@ class Youtubereporting {
     this.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs', 'POST', apiParams, clientConfig);
 
     this.jobs.reports = {};
-    this.jobs.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs/{jobId}/reports', 'GET', apiParams, clientConfig);
     this.jobs.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs/{jobId}/reports/{reportId}', 'GET', apiParams, clientConfig);
-
-    this.reportTypes = {};
-    this.reportTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/reportTypes', 'GET', apiParams, clientConfig);
+    this.jobs.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/jobs/{jobId}/reports', 'GET', apiParams, clientConfig);
   }
 
 /**
