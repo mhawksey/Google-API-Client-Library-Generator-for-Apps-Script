@@ -19,29 +19,29 @@ class Sheets {
 
 
     this.spreadsheets = {};
-    this.spreadsheets.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}:batchUpdate', 'POST', apiParams, clientConfig);
     this.spreadsheets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets', 'POST', apiParams, clientConfig);
     this.spreadsheets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}', 'GET', apiParams, clientConfig);
     this.spreadsheets.getByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}:getByDataFilter', 'POST', apiParams, clientConfig);
+    this.spreadsheets.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}:batchUpdate', 'POST', apiParams, clientConfig);
 
-    this.spreadsheets.sheets = {};
-    this.spreadsheets.sheets.copyTo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', 'POST', apiParams, clientConfig);
+    this.spreadsheets.values = {};
+    this.spreadsheets.values.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}', 'GET', apiParams, clientConfig);
+    this.spreadsheets.values.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}', 'PUT', apiParams, clientConfig);
+    this.spreadsheets.values.append = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}:append', 'POST', apiParams, clientConfig);
+    this.spreadsheets.values.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}:clear', 'POST', apiParams, clientConfig);
+    this.spreadsheets.values.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchGet', 'GET', apiParams, clientConfig);
+    this.spreadsheets.values.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchUpdate', 'POST', apiParams, clientConfig);
+    this.spreadsheets.values.batchClear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchClear', 'POST', apiParams, clientConfig);
+    this.spreadsheets.values.batchGetByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter', 'POST', apiParams, clientConfig);
+    this.spreadsheets.values.batchUpdateByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter', 'POST', apiParams, clientConfig);
+    this.spreadsheets.values.batchClearByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter', 'POST', apiParams, clientConfig);
 
     this.spreadsheets.developerMetadata = {};
     this.spreadsheets.developerMetadata.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/developerMetadata/{metadataId}', 'GET', apiParams, clientConfig);
     this.spreadsheets.developerMetadata.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/developerMetadata:search', 'POST', apiParams, clientConfig);
 
-    this.spreadsheets.values = {};
-    this.spreadsheets.values.batchGetByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchGetByDataFilter', 'POST', apiParams, clientConfig);
-    this.spreadsheets.values.append = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}:append', 'POST', apiParams, clientConfig);
-    this.spreadsheets.values.batchClearByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchClearByDataFilter', 'POST', apiParams, clientConfig);
-    this.spreadsheets.values.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}', 'PUT', apiParams, clientConfig);
-    this.spreadsheets.values.batchClear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchClear', 'POST', apiParams, clientConfig);
-    this.spreadsheets.values.batchUpdateByDataFilter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchUpdateByDataFilter', 'POST', apiParams, clientConfig);
-    this.spreadsheets.values.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchGet', 'GET', apiParams, clientConfig);
-    this.spreadsheets.values.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}', 'GET', apiParams, clientConfig);
-    this.spreadsheets.values.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values/{range}:clear', 'POST', apiParams, clientConfig);
-    this.spreadsheets.values.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/values:batchUpdate', 'POST', apiParams, clientConfig);
+    this.spreadsheets.sheets = {};
+    this.spreadsheets.sheets.copyTo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/spreadsheets/{spreadsheetId}/sheets/{sheetId}:copyTo', 'POST', apiParams, clientConfig);
   }
 
 /**
