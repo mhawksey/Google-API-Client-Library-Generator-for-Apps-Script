@@ -4,7 +4,7 @@ Auto-generated client library for using the **Firebase Cloud Messaging Data API 
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:44:51 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:45:48 GMT
 - **Last Modified:** Fri, 03 Oct 2025 09:03:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:57 GMT
 
