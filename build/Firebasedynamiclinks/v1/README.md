@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Dynamic Links API (versio
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:45:47 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:45:47 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:46:37 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:46:37 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:32 GMT
 
 
@@ -13,16 +13,6 @@ Auto-generated client library for using the **Firebase Dynamic Links API (versio
 ---
 
 ## API Reference
-
-### `shortLinks`
-
-#### `shortLinks.create()`
-
-Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `managedShortLinks`
 
@@ -34,15 +24,17 @@ Creates a managed short Dynamic Link given either a valid long Dynamic Link or d
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `v1`
+### `shortLinks`
 
-#### `v1.reopenAttribution()`
+#### `shortLinks.create()`
 
-Get iOS reopen attribution for app universal link open deeplinking.
+Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `v1`
 
 #### `v1.getLinkStats()`
 
@@ -51,12 +43,20 @@ Fetches analytics stats of a short Dynamic Link for a given duration. Metrics in
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.dynamicLink` | `string` | Yes | Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz |
-| `params.sdkVersion` | `string` | No | Google SDK version. Version takes the form "$major.$minor.$patch" |
 | `params.durationDays` | `string` | No | The span of time requested in days. |
+| `params.sdkVersion` | `string` | No | Google SDK version. Version takes the form "$major.$minor.$patch" |
 
 #### `v1.installAttribution()`
 
 Get iOS strong/weak-match info for post-install attribution.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `v1.reopenAttribution()`
+
+Get iOS reopen attribution for app universal link open deeplinking.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
