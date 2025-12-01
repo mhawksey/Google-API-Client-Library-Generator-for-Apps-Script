@@ -19,8 +19,8 @@ class Mybusinessnotifications {
 
 
     this.accounts = {};
-    this.accounts.getNotificationSetting = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.updateNotificationSetting = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.getNotificationSetting = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
