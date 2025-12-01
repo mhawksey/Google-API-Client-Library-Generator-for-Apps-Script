@@ -21,8 +21,8 @@ class Merchantapi {
     this.accounts = {};
 
     this.accounts.promotions = {};
-    this.accounts.promotions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('promotions/v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.promotions.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('promotions/v1beta/{+parent}/promotions:insert', 'POST', apiParams, clientConfig);
+    this.accounts.promotions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('promotions/v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.promotions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('promotions/v1beta/{+parent}/promotions', 'GET', apiParams, clientConfig);
   }
 
