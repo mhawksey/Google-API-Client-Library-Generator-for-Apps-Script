@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Site Verification API (vers
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:17:19 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:17:19 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:15:58 GMT
+- **Last Modified:** Mon, 01 Dec 2025 01:15:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:40 GMT
 
 
@@ -15,6 +15,14 @@ Auto-generated client library for using the **Google Site Verification API (vers
 ## API Reference
 
 ### `webResource`
+
+#### `webResource.delete()`
+
+Relinquish ownership of a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The id of a verified site or domain. |
 
 #### `webResource.get()`
 
@@ -32,19 +40,6 @@ Get a verification token for placing on a website or domain.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `webResource.list()`
-
-Get the list of your verified websites and domains.
-
-
-#### `webResource.delete()`
-
-Relinquish ownership of a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The id of a verified site or domain. |
-
 #### `webResource.insert()`
 
 Attempt verification of a website or domain.
@@ -54,18 +49,23 @@ Attempt verification of a website or domain.
 | `params.verificationMethod` | `string` | Yes | The method to use for verifying a site or domain. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `webResource.update()`
+#### `webResource.list()`
 
-Modify the list of owners for your website or domain.
+Get the list of your verified websites and domains.
+
+
+#### `webResource.patch()`
+
+Modify the list of owners for your website or domain. This method supports patch semantics.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.id` | `string` | Yes | The id of a verified site or domain. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `webResource.patch()`
+#### `webResource.update()`
 
-Modify the list of owners for your website or domain. This method supports patch semantics.
+Modify the list of owners for your website or domain.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
