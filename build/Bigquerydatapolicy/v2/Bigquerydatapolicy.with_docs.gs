@@ -25,41 +25,6 @@ class Bigquerydatapolicy {
     this.projects.locations.dataPolicies = {};
 
     /**
-     * Adds new grantees to a data policy. The new grantees will be added to the existing grantees. If the request contains a duplicate grantee, the grantee will be ignored. If the request contains a grantee that already exists, the grantee will be ignored.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataPolicy - (Required) Required. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dataPolicies.addGrantees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+dataPolicy}:addGrantees', 'POST', apiParams, clientConfig);
-
-    /**
-     * List all of the data policies in the specified parent project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Optional. Filters the data policies by policy tags that they are associated with. Currently filter only supports "policy_tag" based filtering and OR based predicates. Sample filter can be "policy_tag: projects/1/locations/us/taxonomies/2/policyTags/3". You may also use wildcard such as "policy_tag: projects/1/locations/us/taxonomies/2*". Please note that OR predicates cannot be used with wildcard filters.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of data policies to return. Must be a value between 1 and 1000. If not set, defaults to 50.
-     * @param {string} apiParams.pageToken - Optional. The `nextPageToken` value returned from a previous list request, if any. If not set, defaults to an empty string.
-     * @param {string} apiParams.parent - (Required) Required. Resource name of the project for which to list data policies. Format is `projects/{project_number}/locations/{location_id}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dataPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/dataPolicies', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the IAM policy for the specified data policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dataPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
      * Removes grantees from a data policy. The grantees will be removed from the existing grantees. If the request contains a grantee that does not exist, the grantee will be ignored.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.dataPolicy - (Required) Required. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
@@ -69,17 +34,6 @@ class Bigquerydatapolicy {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.dataPolicies.removeGrantees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+dataPolicy}:removeGrantees', 'POST', apiParams, clientConfig);
-
-    /**
-     * Sets the IAM policy for the specified data policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.dataPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
      * Updates the metadata for an existing data policy. The target data policy can be specified by the resource name.
@@ -95,25 +49,28 @@ class Bigquerydatapolicy {
     this.projects.locations.dataPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Returns the caller's permission on the specified data policy resource.
+     * Gets the IAM policy for the specified data policy.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.dataPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets the data policy specified by its resource name.
+     * List all of the data policies in the specified parent project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name of the requested data policy. Format is `projects/{project_number}/locations/{location_id}/dataPolicies/{id}`.
+     * @param {string} apiParams.filter - Optional. Filters the data policies by policy tags that they are associated with. Currently filter only supports "policy_tag" based filtering and OR based predicates. Sample filter can be "policy_tag: projects/1/locations/us/taxonomies/2/policyTags/3". You may also use wildcard such as "policy_tag: projects/1/locations/us/taxonomies/2*". Please note that OR predicates cannot be used with wildcard filters.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of data policies to return. Must be a value between 1 and 1000. If not set, defaults to 50.
+     * @param {string} apiParams.pageToken - Optional. The `nextPageToken` value returned from a previous list request, if any. If not set, defaults to an empty string.
+     * @param {string} apiParams.parent - (Required) Required. Resource name of the project for which to list data policies. Format is `projects/{project_number}/locations/{location_id}`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.dataPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/dataPolicies', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes the data policy specified by its resource name.
@@ -126,6 +83,28 @@ class Bigquerydatapolicy {
     this.projects.locations.dataPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
+     * Returns the caller's permission on the specified data policy resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Adds new grantees to a data policy. The new grantees will be added to the existing grantees. If the request contains a duplicate grantee, the grantee will be ignored. If the request contains a grantee that already exists, the grantee will be ignored.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataPolicy - (Required) Required. Resource name of this data policy, in the format of `projects/{project_number}/locations/{location_id}/dataPolicies/{data_policy_id}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataPolicies.addGrantees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+dataPolicy}:addGrantees', 'POST', apiParams, clientConfig);
+
+    /**
      * Creates a new data policy under a project with the given `data_policy_id` (used as the display name), and data policy type.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. Resource name of the project that the data policy will belong to. The format is `projects/{project_number}/locations/{location_id}`.
@@ -135,6 +114,27 @@ class Bigquerydatapolicy {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.dataPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/dataPolicies', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the data policy specified by its resource name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the requested data policy. Format is `projects/{project_number}/locations/{location_id}/dataPolicies/{id}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Sets the IAM policy for the specified data policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
   }
 
 /**
