@@ -4,8 +4,8 @@ Auto-generated client library for using the **Safe Browsing API (version: v4)** 
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:15:40 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:15:40 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:07:58 GMT
+- **Last Modified:** Mon, 01 Dec 2025 01:07:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:11 GMT
 
 
@@ -24,11 +24,11 @@ Finds the threat entries that match the Safe Browsing lists.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `fullHashes`
+### `threatListUpdates`
 
-#### `fullHashes.find()`
+#### `threatListUpdates.fetch()`
 
-Finds the full hashes that match the requested hash prefixes.
+Fetches the most recent threat list updates. A client can request updates for multiple lists at once.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -39,15 +39,15 @@ Finds the full hashes that match the requested hash prefixes.
 #### `encodedUpdates.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.clientVersion` | `string` | No | The version of the client implementation. |
-| `params.clientId` | `string` | No | A client ID that uniquely identifies the client implementation of the Safe Browsing API. |
 | `params.encodedRequest` | `string` | Yes | A serialized FetchThreatListUpdatesRequest proto. |
+| `params.clientId` | `string` | No | A client ID that uniquely identifies the client implementation of the Safe Browsing API. |
+| `params.clientVersion` | `string` | No | The version of the client implementation. |
 
-### `threatHits`
+### `fullHashes`
 
-#### `threatHits.create()`
+#### `fullHashes.find()`
 
-Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility can use this method.
+Finds the full hashes that match the requested hash prefixes.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -58,15 +58,15 @@ Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_RE
 #### `encodedFullHashes.get()`
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.encodedRequest` | `string` | Yes | A serialized FindFullHashesRequest proto. |
 | `params.clientId` | `string` | No | A client ID that (hopefully) uniquely identifies the client implementation of the Safe Browsing API. |
 | `params.clientVersion` | `string` | No | The version of the client implementation. |
-| `params.encodedRequest` | `string` | Yes | A serialized FindFullHashesRequest proto. |
 
-### `threatListUpdates`
+### `threatHits`
 
-#### `threatListUpdates.fetch()`
+#### `threatHits.create()`
 
-Fetches the most recent threat list updates. A client can request updates for multiple lists at once.
+Reports a Safe Browsing threat list hit to Google. Only projects with TRUSTED_REPORTER visibility can use this method.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
