@@ -21,72 +21,72 @@ class Documentai {
     this.projects = {};
 
     this.projects.locations = {};
+    this.projects.locations.fetchProcessorTypes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}:fetchProcessorTypes', 'GET', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.fetchProcessorTypes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}:fetchProcessorTypes', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.schemas = {};
-    this.projects.locations.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemas', 'GET', apiParams, clientConfig);
-    this.projects.locations.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.schemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.schemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemas', 'POST', apiParams, clientConfig);
-    this.projects.locations.schemas.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.schemas.schemaVersions = {};
-    this.projects.locations.schemas.schemaVersions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.schemas.schemaVersions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemaVersions', 'POST', apiParams, clientConfig);
-    this.projects.locations.schemas.schemaVersions.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemaVersions:generate', 'POST', apiParams, clientConfig);
-    this.projects.locations.schemas.schemaVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemaVersions', 'GET', apiParams, clientConfig);
-    this.projects.locations.schemas.schemaVersions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.schemas.schemaVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.projects.locations.processors = {};
+    this.projects.locations.processors.process = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:process', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.batchProcess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:batchProcess', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processors', 'GET', apiParams, clientConfig);
     this.projects.locations.processors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.processors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processors', 'POST', apiParams, clientConfig);
     this.projects.locations.processors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.processors.updateDataset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.processors.setDefaultProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+processor}:setDefaultProcessorVersion', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.process = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:process', 'POST', apiParams, clientConfig);
     this.projects.locations.processors.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:enable', 'POST', apiParams, clientConfig);
     this.projects.locations.processors.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:disable', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.batchProcess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:batchProcess', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processors', 'GET', apiParams, clientConfig);
+    this.projects.locations.processors.setDefaultProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+processor}:setDefaultProcessorVersion', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.updateDataset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.locations.processors.dataset = {};
-    this.projects.locations.processors.dataset.batchDeleteDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:batchDeleteDocuments', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.dataset.importDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:importDocuments', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.dataset.getDatasetSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.processors.dataset.updateDatasetSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.processors.dataset.getDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:getDocument', 'GET', apiParams, clientConfig);
-    this.projects.locations.processors.dataset.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:listDocuments', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions = {};
+    this.projects.locations.processors.processorVersions.process = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:process', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.batchProcess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:batchProcess', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.train = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions:train', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions', 'GET', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.deploy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:deploy', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.undeploy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:undeploy', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.evaluateProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+processorVersion}:evaluateProcessorVersion', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.importProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions:importProcessorVersion', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.processors.processorVersions.evaluations = {};
+    this.projects.locations.processors.processorVersions.evaluations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.processors.processorVersions.evaluations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/evaluations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.processors.humanReviewConfig = {};
     this.projects.locations.processors.humanReviewConfig.reviewDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+humanReviewConfig}:reviewDocument', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.processors.processorVersions = {};
-    this.projects.locations.processors.processorVersions.process = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:process', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.undeploy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:undeploy', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.deploy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:deploy', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.evaluateProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+processorVersion}:evaluateProcessorVersion', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.train = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions:train', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.importProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions:importProcessorVersion', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.batchProcess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:batchProcess', 'POST', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.processors.processorVersions.evaluations = {};
-    this.projects.locations.processors.processorVersions.evaluations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/evaluations', 'GET', apiParams, clientConfig);
-    this.projects.locations.processors.processorVersions.evaluations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.dataset = {};
+    this.projects.locations.processors.dataset.importDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:importDocuments', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.dataset.getDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:getDocument', 'GET', apiParams, clientConfig);
+    this.projects.locations.processors.dataset.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:listDocuments', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.dataset.batchDeleteDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:batchDeleteDocuments', 'POST', apiParams, clientConfig);
+    this.projects.locations.processors.dataset.getDatasetSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.processors.dataset.updateDatasetSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.processorTypes = {};
-    this.projects.locations.processorTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.processorTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorTypes', 'GET', apiParams, clientConfig);
+    this.projects.locations.processorTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.schemas = {};
+    this.projects.locations.schemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemas', 'POST', apiParams, clientConfig);
+    this.projects.locations.schemas.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.schemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemas', 'GET', apiParams, clientConfig);
+    this.projects.locations.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.schemas.schemaVersions = {};
+    this.projects.locations.schemas.schemaVersions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemaVersions', 'POST', apiParams, clientConfig);
+    this.projects.locations.schemas.schemaVersions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.schemas.schemaVersions.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemaVersions:generate', 'POST', apiParams, clientConfig);
+    this.projects.locations.schemas.schemaVersions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.schemas.schemaVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemaVersions', 'GET', apiParams, clientConfig);
+    this.projects.locations.schemas.schemaVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
