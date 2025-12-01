@@ -19,57 +19,57 @@ class Identitytoolkit {
 
 
     this.accounts = {};
-    this.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:delete', 'POST', apiParams, clientConfig);
-    this.accounts.sendOobCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:sendOobCode', 'POST', apiParams, clientConfig);
-    this.accounts.verifyIosClient = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:verifyIosClient', 'POST', apiParams, clientConfig);
-    this.accounts.signInWithPhoneNumber = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithPhoneNumber', 'POST', apiParams, clientConfig);
     this.accounts.createAuthUri = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:createAuthUri', 'POST', apiParams, clientConfig);
-    this.accounts.signInWithIdp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithIdp', 'POST', apiParams, clientConfig);
     this.accounts.sendVerificationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:sendVerificationCode', 'POST', apiParams, clientConfig);
+    this.accounts.signInWithCustomToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithCustomToken', 'POST', apiParams, clientConfig);
+    this.accounts.signInWithGameCenter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithGameCenter', 'POST', apiParams, clientConfig);
+    this.accounts.signInWithPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithPassword', 'POST', apiParams, clientConfig);
+    this.accounts.signInWithEmailLink = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithEmailLink', 'POST', apiParams, clientConfig);
+    this.accounts.signInWithIdp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithIdp', 'POST', apiParams, clientConfig);
+    this.accounts.signInWithPhoneNumber = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithPhoneNumber', 'POST', apiParams, clientConfig);
+    this.accounts.verifyIosClient = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:verifyIosClient', 'POST', apiParams, clientConfig);
+    this.accounts.signUp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signUp', 'POST', apiParams, clientConfig);
+    this.accounts.issueSamlResponse = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:issueSamlResponse', 'POST', apiParams, clientConfig);
+    this.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:delete', 'POST', apiParams, clientConfig);
+    this.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:lookup', 'POST', apiParams, clientConfig);
+    this.accounts.sendOobCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:sendOobCode', 'POST', apiParams, clientConfig);
     this.accounts.resetPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:resetPassword', 'POST', apiParams, clientConfig);
     this.accounts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:update', 'POST', apiParams, clientConfig);
-    this.accounts.signInWithGameCenter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithGameCenter', 'POST', apiParams, clientConfig);
-    this.accounts.signUp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signUp', 'POST', apiParams, clientConfig);
-    this.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:lookup', 'POST', apiParams, clientConfig);
-    this.accounts.signInWithEmailLink = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithEmailLink', 'POST', apiParams, clientConfig);
-    this.accounts.signInWithPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithPassword', 'POST', apiParams, clientConfig);
-    this.accounts.issueSamlResponse = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:issueSamlResponse', 'POST', apiParams, clientConfig);
-    this.accounts.signInWithCustomToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts:signInWithCustomToken', 'POST', apiParams, clientConfig);
 
     this.v1 = {};
     this.v1.getPublicKeys = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/publicKeys', 'GET', apiParams, clientConfig);
     this.v1.getRecaptchaParams = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/recaptchaParams', 'GET', apiParams, clientConfig);
-    this.v1.getSessionCookiePublicKeys = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/sessionCookiePublicKeys', 'GET', apiParams, clientConfig);
     this.v1.getProjects = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects', 'GET', apiParams, clientConfig);
+    this.v1.getSessionCookiePublicKeys = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/sessionCookiePublicKeys', 'GET', apiParams, clientConfig);
 
     this.projects = {};
+    this.projects.accounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts', 'POST', apiParams, clientConfig);
     this.projects.queryAccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}:queryAccounts', 'POST', apiParams, clientConfig);
     this.projects.createSessionCookie = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}:createSessionCookie', 'POST', apiParams, clientConfig);
-    this.projects.accounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts', 'POST', apiParams, clientConfig);
-
-    this.projects.accounts = {};
-    this.projects.accounts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:update', 'POST', apiParams, clientConfig);
-    this.projects.accounts.sendOobCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:sendOobCode', 'POST', apiParams, clientConfig);
-    this.projects.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:lookup', 'POST', apiParams, clientConfig);
-    this.projects.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:delete', 'POST', apiParams, clientConfig);
-    this.projects.accounts.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:batchDelete', 'POST', apiParams, clientConfig);
-    this.projects.accounts.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:query', 'POST', apiParams, clientConfig);
-    this.projects.accounts.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:batchCreate', 'POST', apiParams, clientConfig);
-    this.projects.accounts.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:batchGet', 'GET', apiParams, clientConfig);
 
     this.projects.tenants = {};
-    this.projects.tenants.createSessionCookie = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}:createSessionCookie', 'POST', apiParams, clientConfig);
     this.projects.tenants.accounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts', 'POST', apiParams, clientConfig);
+    this.projects.tenants.createSessionCookie = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}:createSessionCookie', 'POST', apiParams, clientConfig);
 
     this.projects.tenants.accounts = {};
     this.projects.tenants.accounts.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:batchDelete', 'POST', apiParams, clientConfig);
-    this.projects.tenants.accounts.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:query', 'POST', apiParams, clientConfig);
-    this.projects.tenants.accounts.sendOobCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:sendOobCode', 'POST', apiParams, clientConfig);
-    this.projects.tenants.accounts.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:batchCreate', 'POST', apiParams, clientConfig);
+    this.projects.tenants.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:delete', 'POST', apiParams, clientConfig);
     this.projects.tenants.accounts.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:batchGet', 'GET', apiParams, clientConfig);
     this.projects.tenants.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:lookup', 'POST', apiParams, clientConfig);
-    this.projects.tenants.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:delete', 'POST', apiParams, clientConfig);
+    this.projects.tenants.accounts.sendOobCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:sendOobCode', 'POST', apiParams, clientConfig);
+    this.projects.tenants.accounts.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:query', 'POST', apiParams, clientConfig);
     this.projects.tenants.accounts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:update', 'POST', apiParams, clientConfig);
+    this.projects.tenants.accounts.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/tenants/{+tenantId}/accounts:batchCreate', 'POST', apiParams, clientConfig);
+
+    this.projects.accounts = {};
+    this.projects.accounts.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:batchDelete', 'POST', apiParams, clientConfig);
+    this.projects.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:delete', 'POST', apiParams, clientConfig);
+    this.projects.accounts.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:batchGet', 'GET', apiParams, clientConfig);
+    this.projects.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:lookup', 'POST', apiParams, clientConfig);
+    this.projects.accounts.sendOobCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:sendOobCode', 'POST', apiParams, clientConfig);
+    this.projects.accounts.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:query', 'POST', apiParams, clientConfig);
+    this.projects.accounts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:update', 'POST', apiParams, clientConfig);
+    this.projects.accounts.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+targetProjectId}/accounts:batchCreate', 'POST', apiParams, clientConfig);
   }
 
 /**
