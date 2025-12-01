@@ -18,19 +18,184 @@ class Classroom {
     this._servicePath = '';
 
 
-    this.courses = {};
+    this.invitations = {};
 
     /**
-     * Updates grading period settings of a course. Individual grading periods can be added, removed, or modified using this method. The requesting user and course owner must be eligible to modify Grading Periods. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/grading-periods/manage-grading-periods#licensing_requirements). This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the grading period settings in a course or for access errors: * UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
+     * Accepts an invitation, removing it and adding the invited user to the teachers or students (as appropriate) of the specified course. Only the invited user may accept an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to accept the requested invitation or for access errors. * `FAILED_PRECONDITION` for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * `NOT_FOUND` if no invitation exists with the requested ID.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course.
-     * @param {string} apiParams.updateMask - Mask that identifies which fields in the GradingPeriodSettings to update. The GradingPeriodSettings `grading_periods` list will be fully replaced by the grading periods specified in the update request. For example: * Grading periods included in the list without an ID are considered additions, and a new ID will be assigned when the request is made. * Grading periods that currently exist, but are missing from the request will be considered deletions. * Grading periods with an existing ID and modified data are considered edits. Unmodified data will be left as is. * Grading periods included with an unknown ID will result in an error. The following fields may be specified: * `grading_periods` * `apply_to_existing_coursework`
+     * @param {string} apiParams.id - (Required) Identifier of the invitation to accept.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.invitations.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}:accept', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested invitation or for access errors. * `NOT_FOUND` if no invitation exists with the requested ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) Identifier of the invitation to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.invitations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns a list of invitations that the requesting user is permitted to view, restricted to those that match the list request. *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields can be supplied. This method returns the following error codes: * `PERMISSION_DENIED` for access errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - Restricts returned invitations to those for a course with the specified identifier.
+     * @param {integer} apiParams.pageSize - Maximum number of items to return. The default is 500 if unspecified or `0`. The server may return fewer than the specified number of results.
+     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
+     * @param {string} apiParams.userId - Restricts returned invitations to those for a specific user. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.invitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates an invitation. Only one invitation for a user and course may exist at a time. Delete and re-create an invitation to make changes. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for access errors. * `NOT_FOUND` if the course or the user does not exist. * `FAILED_PRECONDITION`: * if the requested user's account is disabled. * if the user already has this role or a role with greater permissions. * for the following request errors: * IneligibleOwner * `ALREADY_EXISTS` if an invitation for the specified user and course already exists.
+     * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.updateGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'PATCH', apiParams, clientConfig);
+    this.invitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view the requested invitation or for access errors. * `NOT_FOUND` if no invitation exists with the requested ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) Identifier of the invitation to return.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.invitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}', 'GET', apiParams, clientConfig);
+
+    this.registrations = {};
+
+    /**
+     * Deletes a `Registration`, causing Classroom to stop sending notifications for that `Registration`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.registrationId - (Required) The `registration_id` of the `Registration` to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.registrations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/registrations/{registrationId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates a `Registration`, causing Classroom to start sending notifications from the provided `feed` to the destination provided in `cloudPubSubTopic`. Returns the created `Registration`. Currently, this will be the same as the argument, but with server-assigned fields such as `expiry_time` and `id` filled in. Note that any value specified for the `expiry_time` or `id` fields will be ignored. While Classroom may validate the `cloudPubSubTopic` and return errors on a best effort basis, it is the caller's responsibility to ensure that it exists and that Classroom has permission to publish to it. This method may return the following error codes: * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive notifications from the requested field; or * the current user has not granted access to the current Cloud project with the appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does not have permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be located, or Classroom has not been granted permission to publish to it.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.registrations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/registrations', 'POST', apiParams, clientConfig);
+
+    this.userProfiles = {};
+
+    /**
+     * Returns a user profile. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access this user profile, if no profile exists with the requested ID, or for access errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.userId - (Required) Identifier of the profile to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.userProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{userId}', 'GET', apiParams, clientConfig);
+
+    this.userProfiles.guardianInvitations = {};
+
+    /**
+     * Modifies a guardian invitation. Currently, the only valid modification is to change the `state` from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if guardians are not enabled for the domain in question or for other access errors. * `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies fields other than `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student, or if the `id` field does not refer to a guardian invitation known to Classroom.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.invitationId - (Required) The `id` field of the `GuardianInvitation` to be modified.
+     * @param {string} apiParams.studentId - (Required) The ID of the student whose guardian invitation is to be modified.
+     * @param {string} apiParams.updateMask - Mask that identifies which fields on the course to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields are valid: * `state` When set in a query parameter, this field should be specified as `updateMask=,,...`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.userProfiles.guardianInvitations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns a list of guardian invitations that the requesting user is permitted to view, filtered by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian invitations for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.invitedEmailAddress - If specified, only results with the specified `invited_email_address` are returned.
+     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
+     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
+     * @param {string} apiParams.states - If specified, only results with the specified `state` values are returned. Otherwise, results with a `state` of `PENDING` are returned.
+     * @param {string} apiParams.studentId - (Required) The ID of the student whose guardian invitations are to be returned. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user is permitted to view guardian invitations.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.userProfiles.guardianInvitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a guardian invitation, and sends an email to the guardian asking them to confirm that they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be created to represent the active guardian. The request object must have the `student_id` and `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the request, will result in an error. This method returns the following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if the guardian in question has already rejected too many requests for that student, if guardians are not enabled for the domain in question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it is too long), or if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API). This error will also be returned if read-only fields are set, or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student. * `ALREADY_EXISTS` if there is already a pending guardian invitation for the student and `invited_email_address` provided, or if the provided `invited_email_address` matches the Google account of an existing `Guardian` for this user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.studentId - (Required) ID of the student (in standard format)
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.userProfiles.guardianInvitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns a specific guardian invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). * `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be returned if the student exists, but the requesting user does not have access to see that student.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.invitationId - (Required) The `id` field of the `GuardianInvitation` being requested.
+     * @param {string} apiParams.studentId - (Required) The ID of the student whose guardian invitation is being requested.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.userProfiles.guardianInvitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', 'GET', apiParams, clientConfig);
+
+    this.userProfiles.guardians = {};
+
+    /**
+     * Returns a specific guardian. This method returns the following error codes: * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to view guardian information for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). * `NOT_FOUND` if the requesting user is permitted to view guardians for the requested `student_id`, but no `Guardian` record exists for that student that matches the provided `guardian_id`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.guardianId - (Required) The `id` field from a `Guardian`.
+     * @param {string} apiParams.studentId - (Required) The student whose guardian is being requested. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.userProfiles.guardians.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians/{guardianId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian will no longer be accessible via the API. This method returns the following error codes: * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to manage guardians for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API). * `NOT_FOUND` if the requesting user is permitted to modify guardians for the requested `student_id`, but no `Guardian` record exists for that student with the provided `guardian_id`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.guardianId - (Required) The `id` field from a `Guardian`.
+     * @param {string} apiParams.studentId - (Required) The student whose guardian is to be deleted. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.userProfiles.guardians.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians/{guardianId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns a list of guardians that the requesting user is permitted to view, restricted to those that match the request. To list guardians for any student that the requesting user may view guardians for, use the literal character `-` for the student ID. This method returns the following error codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, if the `invited_email_address` filter is set by a user who is not a domain administrator, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.invitedEmailAddress - Filter results by the email address that the original invitation was sent to, resulting in this guardian link. This filter can only be used by domain administrators.
+     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
+     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
+     * @param {string} apiParams.studentId - (Required) Filter results by the student who the guardian is linked to. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user has access to view.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.userProfiles.guardians.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians', 'GET', apiParams, clientConfig);
+
+    this.courses = {};
 
     /**
      * Updates a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable * CourseTitleCannotContainUrl
@@ -44,14 +209,14 @@ class Classroom {
     this.courses.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Returns a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID.
+     * Returns the grading period settings in a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't permitted to access the grading period settings in the requested course or for access errors. * `NOT_FOUND` if the requested course does not exist.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) Identifier of the course to return. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'GET', apiParams, clientConfig);
+    this.courses.getGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'GET', apiParams, clientConfig);
 
     /**
      * Updates one or more fields in a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID. * `INVALID_ARGUMENT` if invalid fields are specified in the update mask or if no update mask is supplied. * `FAILED_PRECONDITION` for the following request errors: * CourseNotModifiable * InactiveCourseOwner * IneligibleOwner * CourseTitleCannotContainUrl
@@ -66,6 +231,16 @@ class Classroom {
     this.courses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'PATCH', apiParams, clientConfig);
 
     /**
+     * Returns a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.id - (Required) Identifier of the course to return. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'GET', apiParams, clientConfig);
+
+    /**
      * Deletes a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested course or for access errors. * `NOT_FOUND` if no course exists with the requested ID.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.id - (Required) Identifier of the course to delete. This identifier can be either the Classroom-assigned identifier or an alias.
@@ -74,6 +249,28 @@ class Classroom {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.courses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates grading period settings of a course. Individual grading periods can be added, removed, or modified using this method. The requesting user and course owner must be eligible to modify Grading Periods. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/grading-periods/manage-grading-periods#licensing_requirements). This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the grading period settings in a course or for access errors: * UserIneligibleToUpdateGradingPeriodSettings * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course.
+     * @param {string} apiParams.updateMask - Mask that identifies which fields in the GradingPeriodSettings to update. The GradingPeriodSettings `grading_periods` list will be fully replaced by the grading periods specified in the update request. For example: * Grading periods included in the list without an ID are considered additions, and a new ID will be assigned when the request is made. * Grading periods that currently exist, but are missing from the request will be considered deletions. * Grading periods with an existing ID and modified data are considered edits. Unmodified data will be left as is. * Grading periods included with an unknown ID will result in an error. The following fields may be specified: * `grading_periods` * `apply_to_existing_coursework`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.updateGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates a course. The user specified in `ownerId` is the owner of the created course and added as a teacher. A non-admin requesting user can only create a course with themselves as the owner. Domain admins can create courses owned by any user within their domain. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create courses or for access errors. * `NOT_FOUND` if the primary teacher is not a valid user. * `FAILED_PRECONDITION` if the course owner's account is disabled or for the following request errors: * UserCannotOwnCourse * UserGroupsMembershipLimitReached * CourseTitleCannotContainUrl * `ALREADY_EXISTS` if an alias was specified in the `id` and already exists.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses', 'POST', apiParams, clientConfig);
 
     /**
      * Returns a list of courses that the requesting user is permitted to view, restricted to those that match the request. Returned courses are ordered by creation time, with the most recently created coming first. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the query argument is malformed. * `NOT_FOUND` if any users specified in the query arguments do not exist.
@@ -89,63 +286,403 @@ class Classroom {
      */
     this.courses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses', 'GET', apiParams, clientConfig);
 
+    this.courses.posts = {};
+
     /**
-     * Creates a course. The user specified in `ownerId` is the owner of the created course and added as a teacher. A non-admin requesting user can only create a course with themselves as the owner. Domain admins can create courses owned by any user within their domain. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create courses or for access errors. * `NOT_FOUND` if the primary teacher is not a valid user. * `FAILED_PRECONDITION` if the course owner's account is disabled or for the following request errors: * UserCannotOwnCourse * UserGroupsMembershipLimitReached * CourseTitleCannotContainUrl * `ALREADY_EXISTS` if an alias was specified in the `id` and already exists.
+     * Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post.
+     * @param {string} apiParams.attachmentId - Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.posts.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnContext', 'GET', apiParams, clientConfig);
+
+    this.courses.posts.addOnAttachments = {};
+
+    /**
+     * Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.posts.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses', 'POST', apiParams, clientConfig);
+    this.courses.posts.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments', 'POST', apiParams, clientConfig);
 
     /**
-     * Returns the grading period settings in a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user isn't permitted to access the grading period settings in the requested course or for access errors. * `NOT_FOUND` if the requested course does not exist.
+     * Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.getGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'GET', apiParams, clientConfig);
-
-    this.courses.aliases = {};
-
-    /**
-     * Creates an alias for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors. * `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if the alias already exists. * `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to access a domain-scoped alias).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course to alias. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - Identifier of the post under which the attachment is attached.
+     * @param {string} apiParams.postId - (Required) Required. Identifier of the post under which the attachment is attached.
+     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.aliases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases', 'POST', apiParams, clientConfig);
+    this.courses.posts.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Returns a list of aliases for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors. * `NOT_FOUND` if the course does not exist.
+     * Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) The identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {integer} apiParams.pageSize - The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token.
+     * @param {string} apiParams.postId - (Required) Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.posts.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.posts.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
+
+    this.courses.posts.addOnAttachments.studentSubmissions = {};
+
+    /**
+     * Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
+     * @param {string} apiParams.submissionId - (Required) Required. Identifier of the student's submission.
+     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.posts.addOnAttachments.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns a student submission for an add-on attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
+     * @param {string} apiParams.submissionId - (Required) Required. Identifier of the student’s submission.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.posts.addOnAttachments.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'GET', apiParams, clientConfig);
+
+    this.courses.topics = {};
+
+    /**
+     * Deletes a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not allowed to delete the requested topic or for access errors. * `FAILED_PRECONDITION` if the requested topic has already been deleted. * `NOT_FOUND` if no course or topic exists with the requested ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the topic to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or topic, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or topic does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course.
+     * @param {string} apiParams.id - (Required) Identifier of the topic.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates one or more fields of a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if there exists a topic in the course with the same name. * `NOT_FOUND` if the requested course or topic does not exist
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the topic.
+     * @param {string} apiParams.updateMask - Mask that identifies which fields on the topic to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Topic object. If a field that does not support empty values is included in the update mask and not set in the Topic object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified: * `name`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.topics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a topic in the requested course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if there exists a topic in the course with the same name. * `FAILED_PRECONDITION` for the following request error: * CourseTopicLimitReached * `NOT_FOUND` if the requested course does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns the list of topics that the requester is permitted to view. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
      * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
      * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.aliases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases', 'GET', apiParams, clientConfig);
+    this.courses.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics', 'GET', apiParams, clientConfig);
+
+    this.courses.announcements = {};
 
     /**
-     * Deletes an alias of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors. * `NOT_FOUND` if the alias does not exist. * `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to delete a domain-scoped alias).
+     * Returns a list of announcements that the requester is permitted to view. Course students may only view `PUBLISHED` announcements. Course teachers and domain administrators may view all announcements. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.alias - (Required) Alias to delete. This may not be the Classroom-assigned identifier.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course whose alias should be deleted. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.announcementStates - Restriction on the `state` of announcements returned. If this argument is left unspecified, the default value is `PUBLISHED`.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.orderBy - Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime`
+     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
+     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.aliases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases/{alias}', 'DELETE', apiParams, clientConfig);
+    this.courses.announcements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements', 'GET', apiParams, clientConfig);
+
+    /**
+     * Modifies assignee mode and options of an announcement. Only a teacher of the course that contains the announcement may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the announcement.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.modifyAssignees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}:modifyAssignees', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an announcement. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if no course exists with the requested ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the announcement to delete. This identifier is a Classroom-assigned identifier.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post.
+     * @param {string} apiParams.attachmentId - Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create announcements in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or announcement, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or announcement does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the announcement.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates one or more fields of an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if the requested course or announcement does not exist
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the announcement.
+     * @param {string} apiParams.updateMask - Mask that identifies which fields on the announcement to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Announcement object. If a field that does not support empty values is included in the update mask and not set in the Announcement object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `text` * `state` * `scheduled_time`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'PATCH', apiParams, clientConfig);
+
+    this.courses.announcements.addOnAttachments = {};
+
+    /**
+     * Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the post under which the attachment is attached.
+     * @param {string} apiParams.postId - Required. Identifier of the post under which the attachment is attached.
+     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {integer} apiParams.pageSize - The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token.
+     * @param {string} apiParams.postId - Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.announcements.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
+
+    this.courses.teachers = {};
+
+    /**
+     * Creates a teacher of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as teachers to courses within their domain. Non-admin users should send an Invitation instead. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a teacher or student in the course.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.teachers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Removes the specified teacher from the specified course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist. * `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course. * `FAILED_PRECONDITION` if the requested ID belongs to the owner of the course Drive folder. * `FAILED_PRECONDITION` if the course no longer has an active owner.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.userId - (Required) Identifier of the teacher to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.teachers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers/{userId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns a list of teachers of this course that the requester is permitted to view. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {integer} apiParams.pageSize - Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results.
+     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.teachers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns a teacher of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view teachers of this course or for access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.userId - (Required) Identifier of the teacher to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.teachers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers/{userId}', 'GET', apiParams, clientConfig);
 
     this.courses.courseWorkMaterials = {};
+
+    /**
+     * Returns a course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work material, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work material does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the course work material.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWorkMaterials.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{id}', 'GET', apiParams, clientConfig);
 
     /**
      * Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
@@ -160,17 +697,6 @@ class Classroom {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.courses.courseWorkMaterials.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns a course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work material, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work material does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the course work material.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWorkMaterials.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{id}', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a course work material. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create course work material in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed or if more than 20 * materials are provided. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible
@@ -226,18 +752,19 @@ class Classroom {
     this.courses.courseWorkMaterials.addOnAttachments = {};
 
     /**
-     * Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
      * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {integer} apiParams.pageSize - The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token.
-     * @param {string} apiParams.postId - Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead.
+     * @param {string} apiParams.itemId - (Required) Identifier of the post under which the attachment is attached.
+     * @param {string} apiParams.postId - Required. Identifier of the post under which the attachment is attached.
+     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points`
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.courseWorkMaterials.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
@@ -267,19 +794,18 @@ class Classroom {
     this.courses.courseWorkMaterials.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
      * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the post under which the attachment is attached.
-     * @param {string} apiParams.postId - Required. Identifier of the post under which the attachment is attached.
-     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points`
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {integer} apiParams.pageSize - The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token.
+     * @param {string} apiParams.postId - Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.courseWorkMaterials.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
@@ -294,149 +820,43 @@ class Classroom {
      */
     this.courses.courseWorkMaterials.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
 
-    this.courses.students = {};
+    this.courses.aliases = {};
 
     /**
-     * Returns a list of students of this course that the requester is permitted to view. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors.
+     * Deletes an alias of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors. * `NOT_FOUND` if the alias does not exist. * `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to delete a domain-scoped alias).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {integer} apiParams.pageSize - Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results.
+     * @param {string} apiParams.alias - (Required) Alias to delete. This may not be the Classroom-assigned identifier.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course whose alias should be deleted. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.aliases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases/{alias}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns a list of aliases for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors. * `NOT_FOUND` if the course does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) The identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
      * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.students.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students', 'GET', apiParams, clientConfig);
+    this.courses.aliases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases', 'GET', apiParams, clientConfig);
 
     /**
-     * Adds a user as a student of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as students to courses within their domain. Students are permitted to add themselves to a course using an enrollment code. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a student or teacher in the course.
+     * Creates an alias for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors. * `NOT_FOUND` if the course does not exist. * `ALREADY_EXISTS` if the alias already exists. * `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to access a domain-scoped alias).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course to create the student in. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.enrollmentCode - Enrollment code of the course to create the student in. This code is required if userId corresponds to the requesting user; it may be omitted if the requesting user has administrative permissions to create students for any user.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course to alias. This identifier can be either the Classroom-assigned identifier or an alias.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.students.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a student of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.userId - (Required) Identifier of the student to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.students.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students/{userId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Returns a student of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view students of this course or for access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.userId - (Required) Identifier of the student to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.students.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students/{userId}', 'GET', apiParams, clientConfig);
-
-    this.courses.teachers = {};
-
-    /**
-     * Returns a teacher of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view teachers of this course or for access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.userId - (Required) Identifier of the teacher to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.teachers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers/{userId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a teacher of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as teachers to courses within their domain. Non-admin users should send an Invitation instead. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create teachers in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a teacher or student in the course.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.teachers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns a list of teachers of this course that the requester is permitted to view. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {integer} apiParams.pageSize - Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results.
-     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.teachers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers', 'GET', apiParams, clientConfig);
-
-    /**
-     * Removes the specified teacher from the specified course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for access errors. * `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist. * `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course. * `FAILED_PRECONDITION` if the requested ID belongs to the owner of the course Drive folder. * `FAILED_PRECONDITION` if the course no longer has an active owner.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.userId - (Required) Identifier of the teacher to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.teachers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers/{userId}', 'DELETE', apiParams, clientConfig);
+    this.courses.aliases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases', 'POST', apiParams, clientConfig);
 
     this.courses.courseWork = {};
-
-    /**
-     * Updates one or more fields of a course work. See google.classroom.v1.CourseWork for details of which fields may be updated and who may change them. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the user is not permitted to make the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if the requested course or course work does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the course work.
-     * @param {string} apiParams.updateMask - Mask that identifies which fields on the course work to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `CourseWork` object. If a field that does not support empty values is included in the update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` * `submission_modification_mode` * `topic_id` * `grading_period_id`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Modifies assignee mode and options of a coursework. Only a teacher of the course that contains the coursework may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the coursework.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.modifyAssignees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}:modifyAssignees', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns course work. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the course work.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates course work. The resulting course work (and corresponding student submissions) are associated with the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to make the request. Classroom API requests to modify course work and student submissions must be made with an OAuth client ID from the associated Developer Console project. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create course work in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork', 'POST', apiParams, clientConfig);
 
     /**
      * Returns a list of course work that the requester is permitted to view. Course students may only view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
@@ -453,15 +873,17 @@ class Classroom {
     this.courses.courseWork.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes a course work. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if no course exists with the requested ID.
+     * Updates one or more fields of a course work. See google.classroom.v1.CourseWork for details of which fields may be updated and who may change them. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the user is not permitted to make the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if the requested course or course work does not exist.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the course work to delete. This identifier is a Classroom-assigned identifier.
+     * @param {string} apiParams.id - (Required) Identifier of the course work.
+     * @param {string} apiParams.updateMask - Mask that identifies which fields on the course work to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `CourseWork` object. If a field that does not support empty values is included in the update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` * `submission_modification_mode` * `topic_id` * `grading_period_id`
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.courseWork.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'DELETE', apiParams, clientConfig);
+    this.courses.courseWork.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
@@ -476,6 +898,51 @@ class Classroom {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.courses.courseWork.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates course work. The resulting course work (and corresponding student submissions) are associated with the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to make the request. Classroom API requests to modify course work and student submissions must be made with an OAuth client ID from the associated Developer Console project. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create course work in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns course work. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the course work.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Modifies assignee mode and options of a coursework. Only a teacher of the course that contains the coursework may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the coursework.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.modifyAssignees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}:modifyAssignees', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a course work. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested course work has already been deleted. * `NOT_FOUND` if no course exists with the requested ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.id - (Required) Identifier of the course work to delete. This identifier is a Classroom-assigned identifier.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding course work, if the user isn't permitted to make the requested modification to the rubric, or for access errors. This error code is also returned if grading has already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work. * `INTERNAL` if grading has already started on the rubric.
@@ -494,6 +961,57 @@ class Classroom {
     this.courses.courseWork.studentSubmissions = {};
 
     /**
+     * Returns a student submission. Returning a student submission transfers ownership of attached Drive files to the student and may also update the submission state. Unlike the Classroom application, returning a student submission does not set assignedGrade to the draftGrade value. Only a teacher of the course that contains the requested student submission may call this method. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, return the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.courseWorkId - (Required) Identifier of the course work.
+     * @param {string} apiParams.id - (Required) Identifier of the student submission.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.studentSubmissions.return = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return', 'POST', apiParams, clientConfig);
+
+    /**
+     * Reclaims a student submission on behalf of the student that owns it. Reclaiming a student submission transfers ownership of attached Drive files to the student and updates the submission state. Only the student that owns the requested student submission may call this method, and only for a student submission that has been turned in. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, unsubmit the requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.courseWorkId - (Required) Identifier of the course work.
+     * @param {string} apiParams.id - (Required) Identifier of the student submission.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.studentSubmissions.reclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns a student submission. * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, course work, or student submission or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.courseWorkId - (Required) Identifier of the course work.
+     * @param {string} apiParams.id - (Required) Identifier of the student submission.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Turns in a student submission. Turning in a student submission transfers ownership of attached Drive files to the teacher and may also update the submission state. This may only be called by the student that owns the specified student submission. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.courseWorkId - (Required) Identifier of the course work.
+     * @param {string} apiParams.id - (Required) Identifier of the student submission.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.studentSubmissions.turnIn = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn', 'POST', apiParams, clientConfig);
+
+    /**
      * Returns a list of student submissions that the requester is permitted to view, factoring in the OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student submissions for multiple course work items. Course students may only view their own work. Course teachers and domain administrators may view all student submissions. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
@@ -510,18 +1028,6 @@ class Classroom {
     this.courses.courseWork.studentSubmissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions', 'GET', apiParams, clientConfig);
 
     /**
-     * Returns a student submission. * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, course work, or student submission or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.courseWorkId - (Required) Identifier of the course work.
-     * @param {string} apiParams.id - (Required) Identifier of the student submission.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', 'GET', apiParams, clientConfig);
-
-    /**
      * Modifies attachments of student submission. Attachments may only be added to student submissions belonging to course work objects with a `workType` of `ASSIGNMENT`. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, if the user is not permitted to modify attachments on the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
@@ -533,45 +1039,6 @@ class Classroom {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.courses.courseWork.studentSubmissions.modifyAttachments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns a student submission. Returning a student submission transfers ownership of attached Drive files to the student and may also update the submission state. Unlike the Classroom application, returning a student submission does not set assignedGrade to the draftGrade value. Only a teacher of the course that contains the requested student submission may call this method. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, return the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.courseWorkId - (Required) Identifier of the course work.
-     * @param {string} apiParams.id - (Required) Identifier of the student submission.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.studentSubmissions.return = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return', 'POST', apiParams, clientConfig);
-
-    /**
-     * Turns in a student submission. Turning in a student submission transfers ownership of attached Drive files to the teacher and may also update the submission state. This may only be called by the student that owns the specified student submission. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, turn in the requested student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.courseWorkId - (Required) Identifier of the course work.
-     * @param {string} apiParams.id - (Required) Identifier of the student submission.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.studentSubmissions.turnIn = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn', 'POST', apiParams, clientConfig);
-
-    /**
-     * Reclaims a student submission on behalf of the student that owns it. Reclaiming a student submission transfers ownership of attached Drive files to the student and updates the submission state. Only the student that owns the requested student submission may call this method, and only for a student submission that has been turned in. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, unsubmit the requested student submission, or for access errors. * `FAILED_PRECONDITION` if the student submission has not been turned in. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.courseWorkId - (Required) Identifier of the course work.
-     * @param {string} apiParams.id - (Required) Identifier of the student submission.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.studentSubmissions.reclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim', 'POST', apiParams, clientConfig);
 
     /**
      * Updates one or more fields of a student submission. See google.classroom.v1.StudentSubmission for details of which fields may be updated and who may change them. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding course work, if the user is not permitted to make the requested modification to the student submission, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or student submission does not exist.
@@ -587,10 +1054,113 @@ class Classroom {
      */
     this.courses.courseWork.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', 'PATCH', apiParams, clientConfig);
 
+    this.courses.courseWork.addOnAttachments = {};
+
+    /**
+     * Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the post under which the attachment is attached.
+     * @param {string} apiParams.postId - Required. Identifier of the post under which the attachment is attached.
+     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {integer} apiParams.pageSize - The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token.
+     * @param {string} apiParams.postId - Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
+
+    this.courses.courseWork.addOnAttachments.studentSubmissions = {};
+
+    /**
+     * Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
+     * @param {string} apiParams.submissionId - (Required) Required. Identifier of the student's submission.
+     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.addOnAttachments.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns a student submission for an add-on attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
+     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
+     * @param {string} apiParams.submissionId - (Required) Required. Identifier of the student’s submission.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.addOnAttachments.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'GET', apiParams, clientConfig);
+
     this.courses.courseWork.rubrics = {};
 
     /**
-     * Returns a rubric. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work.
+     * Deletes a rubric. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding rubric, or if the requesting user isn't permitted to delete the requested rubric. * `NOT_FOUND` if no rubric exists with the requested ID or the user does not have access to the course, course work, or rubric. * `INVALID_ARGUMENT` if grading has already started on the rubric.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
      * @param {string} apiParams.courseWorkId - (Required) Required. Identifier of the course work.
@@ -599,7 +1169,7 @@ class Classroom {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.courseWork.rubrics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', 'GET', apiParams, clientConfig);
+    this.courses.courseWork.rubrics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Updates a rubric. See google.classroom.v1.Rubric for details of which fields can be updated. Rubric update capabilities are [limited](/classroom/rubrics/limitations) once grading has started. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the parent course work item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding course work, if the user isn't permitted to make the requested modification to the rubric, or for access errors. This error code is also returned if grading has already started on the rubric. * `INVALID_ARGUMENT` if the request is malformed and for the following request error: * `RubricCriteriaInvalidFormat` * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work. * `INTERNAL` if grading has already started on the rubric.
@@ -628,6 +1198,18 @@ class Classroom {
     this.courses.courseWork.rubrics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics', 'POST', apiParams, clientConfig);
 
     /**
+     * Returns a rubric. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.courseWorkId - (Required) Required. Identifier of the course work.
+     * @param {string} apiParams.id - (Required) Required. Identifier of the rubric.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.courseWork.rubrics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', 'GET', apiParams, clientConfig);
+
+    /**
      * Returns a list of rubrics that the requester is permitted to view. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work doesn't exist or if the user doesn't have access to the corresponding course work.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
@@ -640,635 +1222,53 @@ class Classroom {
      */
     this.courses.courseWork.rubrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics', 'GET', apiParams, clientConfig);
 
-    /**
-     * Deletes a rubric. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding rubric, or if the requesting user isn't permitted to delete the requested rubric. * `NOT_FOUND` if no rubric exists with the requested ID or the user does not have access to the course, course work, or rubric. * `INVALID_ARGUMENT` if grading has already started on the rubric.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.courseWorkId - (Required) Required. Identifier of the course work.
-     * @param {string} apiParams.id - (Required) Required. Identifier of the rubric.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.rubrics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', 'DELETE', apiParams, clientConfig);
-
-    this.courses.courseWork.addOnAttachments = {};
+    this.courses.students = {};
 
     /**
-     * Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
+     * Deletes a student of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the post under which the attachment is attached.
-     * @param {string} apiParams.postId - Required. Identifier of the post under which the attachment is attached.
-     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {integer} apiParams.pageSize - The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token.
-     * @param {string} apiParams.postId - Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
-
-    this.courses.courseWork.addOnAttachments.studentSubmissions = {};
-
-    /**
-     * Returns a student submission for an add-on attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
-     * @param {string} apiParams.submissionId - (Required) Required. Identifier of the student’s submission.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.addOnAttachments.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
-     * @param {string} apiParams.submissionId - (Required) Required. Identifier of the student's submission.
-     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.courseWork.addOnAttachments.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'PATCH', apiParams, clientConfig);
-
-    this.courses.announcements = {};
-
-    /**
-     * Returns a list of announcements that the requester is permitted to view. Course students may only view `PUBLISHED` announcements. Course teachers and domain administrators may view all announcements. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.announcementStates - Restriction on the `state` of announcements returned. If this argument is left unspecified, the default value is `PUBLISHED`.
      * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.orderBy - Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime`
-     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
+     * @param {string} apiParams.userId - (Required) Identifier of the student to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.students.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students/{userId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Adds a user as a student of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as students to courses within their domain. Students are permitted to add themselves to a course using an enrollment code. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for access errors. * `NOT_FOUND` if the requested course ID does not exist. * `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * UserGroupsMembershipLimitReached * InactiveCourseOwner * `ALREADY_EXISTS` if the user is already a student or teacher in the course.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course to create the student in. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.enrollmentCode - Enrollment code of the course to create the student in. This code is required if userId corresponds to the requesting user; it may be omitted if the requesting user has administrative permissions to create students for any user.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.students.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns a student of a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view students of this course or for access errors. * `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {string} apiParams.userId - (Required) Identifier of the student to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.students.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students/{userId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns a list of students of this course that the requester is permitted to view. This method returns the following error codes: * `NOT_FOUND` if the course does not exist. * `PERMISSION_DENIED` for access errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
+     * @param {integer} apiParams.pageSize - Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results.
      * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.courses.announcements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post.
-     * @param {string} apiParams.attachmentId - Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or announcement, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or announcement does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the announcement.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Modifies assignee mode and options of an announcement. Only a teacher of the course that contains the announcement may call this method. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or course work does not exist. * `FAILED_PRECONDITION` for the following request error: * EmptyAssignees
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the announcement.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.modifyAssignees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}:modifyAssignees', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates one or more fields of an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if the requested course or announcement does not exist
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the announcement.
-     * @param {string} apiParams.updateMask - Mask that identifies which fields on the announcement to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Announcement object. If a field that does not support empty values is included in the update mask and not set in the Announcement object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `text` * `state` * `scheduled_time`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates an announcement. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create announcements in the requested course, share a Drive attachment, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist. * `FAILED_PRECONDITION` for the following request error: * AttachmentNotVisible
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes an announcement. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement, if the requesting user is not permitted to delete the requested course or for access errors. * `FAILED_PRECONDITION` if the requested announcement has already been deleted. * `NOT_FOUND` if no course exists with the requested ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the announcement to delete. This identifier is a Classroom-assigned identifier.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'DELETE', apiParams, clientConfig);
-
-    this.courses.announcements.addOnAttachments = {};
-
-    /**
-     * Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the post under which the attachment is attached.
-     * @param {string} apiParams.postId - Required. Identifier of the post under which the attachment is attached.
-     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {integer} apiParams.pageSize - The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token.
-     * @param {string} apiParams.postId - Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - (Required) Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - Optional. Deprecated, use `item_id` instead.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.announcements.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
-
-    this.courses.topics = {};
-
-    /**
-     * Returns the list of topics that the requester is permitted to view. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
-     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates one or more fields of a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `FAILED_PRECONDITION` if there exists a topic in the course with the same name. * `NOT_FOUND` if the requested course or topic does not exist
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the topic.
-     * @param {string} apiParams.updateMask - Mask that identifies which fields on the topic to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Topic object. If a field that does not support empty values is included in the update mask and not set in the Topic object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified: * `name`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.topics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Returns a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or topic, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course or topic does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course.
-     * @param {string} apiParams.id - (Required) Identifier of the topic.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not allowed to delete the requested topic or for access errors. * `FAILED_PRECONDITION` if the requested topic has already been deleted. * `NOT_FOUND` if no course or topic exists with the requested ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {string} apiParams.id - (Required) Identifier of the topic to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a topic. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a topic in the requested course, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `ALREADY_EXISTS` if there exists a topic in the course with the same name. * `FAILED_PRECONDITION` for the following request error: * CourseTopicLimitReached * `NOT_FOUND` if the requested course does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics', 'POST', apiParams, clientConfig);
-
-    this.courses.posts = {};
-
-    /**
-     * Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post.
-     * @param {string} apiParams.attachmentId - Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe).
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.posts.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnContext', 'GET', apiParams, clientConfig);
-
-    this.courses.posts.addOnAttachments = {};
-
-    /**
-     * Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.posts.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - Identifier of the post under which the attachment is attached.
-     * @param {string} apiParams.postId - (Required) Required. Identifier of the post under which the attachment is attached.
-     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.posts.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.addOnToken - Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.posts.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.posts.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {integer} apiParams.pageSize - The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token.
-     * @param {string} apiParams.postId - (Required) Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.posts.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments', 'GET', apiParams, clientConfig);
-
-    this.courses.posts.addOnAttachments.studentSubmissions = {};
-
-    /**
-     * Returns a student submission for an add-on attachment. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
-     * @param {string} apiParams.submissionId - (Required) Required. Identifier of the student’s submission.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.posts.addOnAttachments.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes: * `PERMISSION_DENIED` for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if one of the identified resources does not exist.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.attachmentId - (Required) Required. Identifier of the attachment.
-     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
-     * @param {string} apiParams.itemId - Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id.
-     * @param {string} apiParams.postId - (Required) Optional. Deprecated, use `item_id` instead.
-     * @param {string} apiParams.submissionId - (Required) Required. Identifier of the student's submission.
-     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.courses.posts.addOnAttachments.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'PATCH', apiParams, clientConfig);
-
-    this.userProfiles = {};
-
-    /**
-     * Returns a user profile. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access this user profile, if no profile exists with the requested ID, or for access errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.userId - (Required) Identifier of the profile to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.userProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{userId}', 'GET', apiParams, clientConfig);
-
-    this.userProfiles.guardians = {};
-
-    /**
-     * Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian will no longer be accessible via the API. This method returns the following error codes: * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to manage guardians for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API). * `NOT_FOUND` if the requesting user is permitted to modify guardians for the requested `student_id`, but no `Guardian` record exists for that student with the provided `guardian_id`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.guardianId - (Required) The `id` field from a `Guardian`.
-     * @param {string} apiParams.studentId - (Required) The student whose guardian is to be deleted. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.userProfiles.guardians.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians/{guardianId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Returns a specific guardian. This method returns the following error codes: * `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to view guardian information for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). * `NOT_FOUND` if the requesting user is permitted to view guardians for the requested `student_id`, but no `Guardian` record exists for that student that matches the provided `guardian_id`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.guardianId - (Required) The `id` field from a `Guardian`.
-     * @param {string} apiParams.studentId - (Required) The student whose guardian is being requested. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.userProfiles.guardians.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians/{guardianId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns a list of guardians that the requesting user is permitted to view, restricted to those that match the request. To list guardians for any student that the requesting user may view guardians for, use the literal character `-` for the student ID. This method returns the following error codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, if the `invited_email_address` filter is set by a user who is not a domain administrator, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.invitedEmailAddress - Filter results by the email address that the original invitation was sent to, resulting in this guardian link. This filter can only be used by domain administrators.
-     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
-     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
-     * @param {string} apiParams.studentId - (Required) Filter results by the student who the guardian is linked to. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user has access to view.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.userProfiles.guardians.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians', 'GET', apiParams, clientConfig);
-
-    this.userProfiles.guardianInvitations = {};
-
-    /**
-     * Modifies a guardian invitation. Currently, the only valid modification is to change the `state` from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if guardians are not enabled for the domain in question or for other access errors. * `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state. * `INVALID_ARGUMENT` if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies fields other than `state`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student, or if the `id` field does not refer to a guardian invitation known to Classroom.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.invitationId - (Required) The `id` field of the `GuardianInvitation` to be modified.
-     * @param {string} apiParams.studentId - (Required) The ID of the student whose guardian invitation is to be modified.
-     * @param {string} apiParams.updateMask - Mask that identifies which fields on the course to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields are valid: * `state` When set in a query parameter, this field should be specified as `updateMask=,,...`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.userProfiles.guardianInvitations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Returns a specific guardian invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). * `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be returned if the student exists, but the requesting user does not have access to see that student.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.invitationId - (Required) The `id` field of the `GuardianInvitation` being requested.
-     * @param {string} apiParams.studentId - (Required) The ID of the student whose guardian invitation is being requested.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.userProfiles.guardianInvitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns a list of guardian invitations that the requesting user is permitted to view, filtered by the parameters provided. This method returns the following error codes: * `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian invitations for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, or for other access errors. * `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` or `state` is provided. * `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.invitedEmailAddress - If specified, only results with the specified `invited_email_address` are returned.
-     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
-     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
-     * @param {string} apiParams.states - If specified, only results with the specified `state` values are returned. Otherwise, results with a `state` of `PENDING` are returned.
-     * @param {string} apiParams.studentId - (Required) The ID of the student whose guardian invitations are to be returned. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user is permitted to view guardian invitations.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.userProfiles.guardianInvitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a guardian invitation, and sends an email to the guardian asking them to confirm that they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be created to represent the active guardian. The request object must have the `student_id` and `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the request, will result in an error. This method returns the following error codes: * `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if the guardian in question has already rejected too many requests for that student, if guardians are not enabled for the domain in question, or for other access errors. * `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the guardian link limit. * `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it is too long), or if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API). This error will also be returned if read-only fields are set, or if the `state` field is set to to a value other than `PENDING`. * `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student. * `ALREADY_EXISTS` if there is already a pending guardian invitation for the student and `invited_email_address` provided, or if the provided `invited_email_address` matches the Google account of an existing `Guardian` for this user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.studentId - (Required) ID of the student (in standard format)
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.userProfiles.guardianInvitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations', 'POST', apiParams, clientConfig);
-
-    this.registrations = {};
-
-    /**
-     * Creates a `Registration`, causing Classroom to start sending notifications from the provided `feed` to the destination provided in `cloudPubSubTopic`. Returns the created `Registration`. Currently, this will be the same as the argument, but with server-assigned fields such as `expiry_time` and `id` filled in. Note that any value specified for the `expiry_time` or `id` fields will be ignored. While Classroom may validate the `cloudPubSubTopic` and return errors on a best effort basis, it is the caller's responsibility to ensure that it exists and that Classroom has permission to publish to it. This method may return the following error codes: * `PERMISSION_DENIED` if: * the authenticated user does not have permission to receive notifications from the requested field; or * the current user has not granted access to the current Cloud project with the appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors is returned. * another access error is encountered. * `INVALID_ARGUMENT` if: * no `cloudPubsubTopic` is specified, or the specified `cloudPubsubTopic` is not valid; or * no `feed` is specified, or the specified `feed` is not valid. * `NOT_FOUND` if: * the specified `feed` cannot be located, or the requesting user does not have permission to determine whether or not it exists; or * the specified `cloudPubsubTopic` cannot be located, or Classroom has not been granted permission to publish to it.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.registrations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/registrations', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a `Registration`, causing Classroom to stop sending notifications for that `Registration`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.registrationId - (Required) The `registration_id` of the `Registration` to be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.registrations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/registrations/{registrationId}', 'DELETE', apiParams, clientConfig);
-
-    this.invitations = {};
-
-    /**
-     * Returns a list of invitations that the requesting user is permitted to view, restricted to those that match the list request. *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields can be supplied. This method returns the following error codes: * `PERMISSION_DENIED` for access errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.courseId - Restricts returned invitations to those for a course with the specified identifier.
-     * @param {integer} apiParams.pageSize - Maximum number of items to return. The default is 500 if unspecified or `0`. The server may return fewer than the specified number of results.
-     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
-     * @param {string} apiParams.userId - Restricts returned invitations to those for a specific user. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.invitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to view the requested invitation or for access errors. * `NOT_FOUND` if no invitation exists with the requested ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) Identifier of the invitation to return.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.invitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested invitation or for access errors. * `NOT_FOUND` if no invitation exists with the requested ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) Identifier of the invitation to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.invitations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Accepts an invitation, removing it and adding the invited user to the teachers or students (as appropriate) of the specified course. Only the invited user may accept an invitation. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to accept the requested invitation or for access errors. * `FAILED_PRECONDITION` for the following request errors: * CourseMemberLimitReached * CourseNotModifiable * CourseTeacherLimitReached * UserGroupsMembershipLimitReached * `NOT_FOUND` if no invitation exists with the requested ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.id - (Required) Identifier of the invitation to accept.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.invitations.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}:accept', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates an invitation. Only one invitation for a user and course may exist at a time. Delete and re-create an invitation to make changes. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for access errors. * `NOT_FOUND` if the course or the user does not exist. * `FAILED_PRECONDITION`: * if the requested user's account is disabled. * if the user already has this role or a role with greater permissions. * for the following request errors: * IneligibleOwner * `ALREADY_EXISTS` if an invitation for the specified user and course already exists.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.invitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations', 'POST', apiParams, clientConfig);
+    this.courses.students.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students', 'GET', apiParams, clientConfig);
   }
 
 /**
