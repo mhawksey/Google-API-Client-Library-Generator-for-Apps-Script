@@ -18,18 +18,6 @@ class Cloudasset {
     this._servicePath = '';
 
 
-    this.operations = {};
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p7beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.v1p7beta1 = {};
 
     /**
@@ -42,6 +30,18 @@ class Cloudasset {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.v1p7beta1.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p7beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
+
+    this.operations = {};
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p7beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
