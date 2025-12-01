@@ -4,8 +4,8 @@ Auto-generated client library for using the **App Engine Admin API (version: v1b
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:23:18 GMT
-- **Last Modified:** Fri, 03 Oct 2025 08:44:09 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:23:34 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:23:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:53 GMT
 
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -210,6 +210,18 @@ Deletes the specified SSL certificate.
 | `params.authorizedCertificatesId` | `string` | Yes | Part of `name`. See documentation of `projectsId`. |
 
 ### `projects.locations.applications.domainMappings`
+
+#### `projects.locations.applications.domainMappings.list()`
+
+Lists the domain mappings on an application.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.projectsId` | `string` | Yes | Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp. |
+| `params.locationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
+| `params.applicationsId` | `string` | Yes | Part of `parent`. See documentation of `projectsId`. |
+| `params.pageSize` | `integer` | No | Maximum results to return per page. |
+| `params.pageToken` | `string` | No | Continuation token for fetching the next page of results. |
 
 #### `projects.locations.applications.domainMappings.get()`
 
@@ -666,7 +678,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `apps.locations.get()`
 
