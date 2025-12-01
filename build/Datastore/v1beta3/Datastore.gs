@@ -19,14 +19,14 @@ class Datastore {
 
 
     this.projects = {};
-    this.projects.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:commit', 'POST', apiParams, clientConfig);
-    this.projects.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:runAggregationQuery', 'POST', apiParams, clientConfig);
-    this.projects.allocateIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:allocateIds', 'POST', apiParams, clientConfig);
-    this.projects.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:rollback', 'POST', apiParams, clientConfig);
-    this.projects.reserveIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:reserveIds', 'POST', apiParams, clientConfig);
-    this.projects.runQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:runQuery', 'POST', apiParams, clientConfig);
     this.projects.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:lookup', 'POST', apiParams, clientConfig);
+    this.projects.runQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:runQuery', 'POST', apiParams, clientConfig);
+    this.projects.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:runAggregationQuery', 'POST', apiParams, clientConfig);
     this.projects.beginTransaction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:beginTransaction', 'POST', apiParams, clientConfig);
+    this.projects.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:commit', 'POST', apiParams, clientConfig);
+    this.projects.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:rollback', 'POST', apiParams, clientConfig);
+    this.projects.allocateIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:allocateIds', 'POST', apiParams, clientConfig);
+    this.projects.reserveIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/projects/{projectId}:reserveIds', 'POST', apiParams, clientConfig);
   }
 
 /**
