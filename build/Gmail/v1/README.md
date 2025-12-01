@@ -4,8 +4,8 @@ Auto-generated client library for using the **Gmail API (version: v1)** in Googl
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:52:59 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:52:59 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:53:36 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:53:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:40 GMT
 
 
@@ -16,17 +16,17 @@ Auto-generated client library for using the **Gmail API (version: v1)** in Googl
 
 ### `users`
 
-#### `users.getProfile()`
+#### `users.stop()`
 
-Gets the current user's Gmail profile.
+Stop receiving push notifications for the given user mailbox.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 
-#### `users.stop()`
+#### `users.getProfile()`
 
-Stop receiving push notifications for the given user mailbox.
+Gets the current user's Gmail profile.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -41,143 +41,79 @@ Set up or update a push notification watch on the given user mailbox.
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `users.messages`
+### `users.threads`
 
-#### `users.messages.untrash()`
+#### `users.threads.untrash()`
 
-Removes the specified message from the trash.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The ID of the message to remove from Trash. |
-
-#### `users.messages.send()`
-
-Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage, see [Sending email](https://developers.google.com/workspace/gmail/api/guides/sending).
+Removes the specified thread from the trash. Any messages that belong to the thread are also removed from the trash.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.id` | `string` | Yes | The ID of the thread to remove from Trash. |
 
-#### `users.messages.insert()`
+#### `users.threads.trash()`
 
-Directly inserts a message into only this user's mailbox similar to `IMAP APPEND`, bypassing most scanning and classification. Does not send a message.
+Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the trash.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.internalDateSource` | `string` | No | Source for Gmail's internal date of the message. |
+| `params.id` | `string` | Yes | The ID of the thread to Trash. |
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.deleted` | `boolean` | No | Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `users.messages.modify()`
+#### `users.threads.get()`
 
-Modifies the labels on the specified message.
+Gets the specified thread.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.format` | `string` | No | The format to return the messages in. |
+| `params.id` | `string` | Yes | The ID of the thread to retrieve. |
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The ID of the message to modify. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.metadataHeaders` | `string` | No | When given and format is METADATA, only include headers specified. |
 
-#### `users.messages.get()`
+#### `users.threads.list()`
 
-Gets the specified message.
+Lists the threads in the user's mailbox.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.format` | `string` | No | The format to return the message in. |
+| `params.maxResults` | `integer` | No | Maximum number of threads to return. This field defaults to 100. The maximum allowed value for this field is 500. |
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The ID of the message to retrieve. This ID is usually retrieved using `messages.list`. The ID is also contained in the result when a message is inserted (`messages.insert`) or imported (`messages.import`). |
-| `params.metadataHeaders` | `string` | No | When given and format is `METADATA`, only include headers specified. |
-
-#### `users.messages.trash()`
-
-Moves the specified message to the trash.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The ID of the message to Trash. |
-
-#### `users.messages.batchDelete()`
-
-Deletes many messages by message ID. Provides no guarantees that messages were not already deleted or even existed at all.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.messages.list()`
-
-Lists the messages in the user's mailbox. For example usage, see [List Gmail messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.maxResults` | `integer` | No | Maximum number of messages to return. This field defaults to 100. The maximum allowed value for this field is 500. |
 | `params.pageToken` | `string` | No | Page token to retrieve a specific page of results in the list. |
-| `params.includeSpamTrash` | `boolean` | No | Include messages from `SPAM` and `TRASH` in the results. |
-| `params.q` | `string` | No | Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api using the gmail.metadata scope. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.labelIds` | `string` | No | Only return messages with labels that match all of the specified label IDs. Messages in a thread might have labels that other messages in the same thread don't have. To learn more, see [Manage labels on messages and threads](https://developers.google.com/workspace/gmail/api/guides/labels#manage_labels_on_messages_threads). |
+| `params.labelIds` | `string` | No | Only return threads with labels that match all of the specified label IDs. |
+| `params.q` | `string` | No | Only return threads matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api using the gmail.metadata scope. |
+| `params.includeSpamTrash` | `boolean` | No | Include threads from `SPAM` and `TRASH` in the results. |
 
-#### `users.messages.batchModify()`
+#### `users.threads.delete()`
 
-Modifies the labels on the specified messages.
+Immediately and permanently deletes the specified thread. Any messages that belong to the thread are also deleted. This operation cannot be undone. Prefer `threads.trash` instead.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.id` | `string` | Yes | ID of the Thread to delete. |
+
+#### `users.threads.modify()`
+
+Modifies the labels applied to the thread. This applies to all messages in the thread.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.id` | `string` | Yes | The ID of the thread to modify. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.messages.import()`
-
-Imports a message into only this user's mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. This method doesn't perform SPF checks, so it might not work for some spam messages, such as those attempting to perform domain spoofing. This method does not send a message.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.neverMarkSpam` | `boolean` | No | Ignore the Gmail spam classifier decision and never mark this email as SPAM in the mailbox. |
-| `params.internalDateSource` | `string` | No | Source for Gmail's internal date of the message. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.deleted` | `boolean` | No | Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts. |
-| `params.processForCalendar` | `boolean` | No | Process calendar invites in the email and add any extracted meetings to the Google Calendar for this user. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.messages.delete()`
-
-Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer `messages.trash` instead.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The ID of the message to delete. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-
-### `users.messages.attachments`
-
-#### `users.messages.attachments.get()`
-
-Gets the specified message attachment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The ID of the attachment. |
-| `params.messageId` | `string` | Yes | The ID of the message containing the attachment. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 
 ### `users.drafts`
 
-#### `users.drafts.get()`
+#### `users.drafts.send()`
 
-Gets the specified draft.
+Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.id` | `string` | Yes | The ID of the draft to retrieve. |
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.format` | `string` | No | The format to return the draft in. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.drafts.create()`
 
@@ -194,10 +130,29 @@ Lists the drafts in the user's mailbox.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.q` | `string` | No | Only return draft messages matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. |
-| `params.pageToken` | `string` | No | Page token to retrieve a specific page of results in the list. |
-| `params.maxResults` | `integer` | No | Maximum number of drafts to return. This field defaults to 100. The maximum allowed value for this field is 500. |
 | `params.includeSpamTrash` | `boolean` | No | Include drafts from `SPAM` and `TRASH` in the results. |
+| `params.pageToken` | `string` | No | Page token to retrieve a specific page of results in the list. |
+| `params.q` | `string` | No | Only return draft messages matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.maxResults` | `integer` | No | Maximum number of drafts to return. This field defaults to 100. The maximum allowed value for this field is 500. |
+
+#### `users.drafts.delete()`
+
+Immediately and permanently deletes the specified draft. Does not simply trash it.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The ID of the draft to delete. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+
+#### `users.drafts.get()`
+
+Gets the specified draft.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The ID of the draft to retrieve. |
+| `params.format` | `string` | No | The format to return the draft in. |
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 
 #### `users.drafts.update()`
@@ -210,111 +165,28 @@ Replaces a draft's content.
 | `params.id` | `string` | Yes | The ID of the draft to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `users.drafts.delete()`
-
-Immediately and permanently deletes the specified draft. Does not simply trash it.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The ID of the draft to delete. |
-
-#### `users.drafts.send()`
-
-Sends the specified, existing draft to the recipients in the `To`, `Cc`, and `Bcc` headers.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `users.labels`
-
-#### `users.labels.patch()`
-
-Patch the specified label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The ID of the label to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.labels.delete()`
-
-Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The ID of the label to delete. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-
-#### `users.labels.update()`
-
-Updates the specified label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The ID of the label to update. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.labels.get()`
-
-Gets the specified label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The ID of the label to retrieve. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-
-#### `users.labels.create()`
-
-Creates a new label.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.labels.list()`
-
-Lists all labels in the user's mailbox.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-
 ### `users.settings`
 
-#### `users.settings.updateAutoForwarding()`
+#### `users.settings.updateLanguage()`
 
-Updates the auto-forwarding setting for the specified account. A verified forwarding address must be specified when auto-forwarding is enabled. This method is only available to service account clients that have been delegated domain-wide authority.
+Updates language settings. If successful, the return object contains the `displayLanguage` that was saved for the user, which may differ from the value passed into the request. This is because the requested `displayLanguage` may not be directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.settings.getImap()`
-
-Gets IMAP settings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-
-#### `users.settings.getPop()`
-
-Gets POP settings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 
 #### `users.settings.getAutoForwarding()`
 
 Gets the auto-forwarding setting for the specified account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+
+#### `users.settings.getLanguage()`
+
+Gets language settings.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -329,9 +201,25 @@ Updates IMAP settings.
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `users.settings.updateLanguage()`
+#### `users.settings.getImap()`
 
-Updates language settings. If successful, the return object contains the `displayLanguage` that was saved for the user, which may differ from the value passed into the request. This is because the requested `displayLanguage` may not be directly supported by Gmail but have a close variant that is, and so the variant may be chosen and saved instead.
+Gets IMAP settings.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+
+#### `users.settings.getVacation()`
+
+Gets vacation responder settings.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+
+#### `users.settings.updateVacation()`
+
+Updates vacation responder settings.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -347,150 +235,32 @@ Updates POP settings.
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `users.settings.getVacation()`
+#### `users.settings.getPop()`
 
-Gets vacation responder settings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-
-#### `users.settings.getLanguage()`
-
-Gets language settings.
+Gets POP settings.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 
-#### `users.settings.updateVacation()`
+#### `users.settings.updateAutoForwarding()`
 
-Updates vacation responder settings.
+Updates the auto-forwarding setting for the specified account. A verified forwarding address must be specified when auto-forwarding is enabled. This method is only available to service account clients that have been delegated domain-wide authority.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `users.settings.cse`
-
-### `users.settings.cse.identities`
-
-#### `users.settings.cse.identities.delete()`
-
-Deletes a client-side encryption identity. The authenticated user can no longer use the identity to send encrypted messages. You cannot restore the identity after you delete it. Instead, use the CreateCseIdentity method to create another identity with the same configuration. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.cseEmailAddress` | `string` | Yes | The primary email address associated with the client-side encryption identity configuration that's removed. |
-
-#### `users.settings.cse.identities.create()`
-
-Creates and configures a client-side encryption identity that's authorized to send mail from the user account. Google publishes the S/MIME certificate to a shared domain-wide directory so that people within a Google Workspace organization can encrypt and send mail to the identity. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.settings.cse.identities.get()`
-
-Retrieves a client-side encryption identity configuration. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.cseEmailAddress` | `string` | Yes | The primary email address associated with the client-side encryption identity configuration that's retrieved. |
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-
-#### `users.settings.cse.identities.patch()`
-
-Associates a different key pair with an existing client-side encryption identity. The updated key pair must validate against Google's [S/MIME certificate profiles](https://support.google.com/a/answer/7300887). For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.emailAddress` | `string` | Yes | The email address of the client-side encryption identity to update. |
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.settings.cse.identities.list()`
-
-Lists the client-side encrypted identities for an authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Pagination token indicating which page of identities to return. If the token is not supplied, then the API will return the first page of results. |
-| `params.pageSize` | `integer` | No | The number of identities to return. If not provided, the page size will default to 20 entries. |
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-
-### `users.settings.cse.keypairs`
-
-#### `users.settings.cse.keypairs.get()`
-
-Retrieves an existing client-side encryption key pair. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.keyPairId` | `string` | Yes | The identifier of the key pair to retrieve. |
-
-#### `users.settings.cse.keypairs.create()`
-
-Creates and uploads a client-side encryption S/MIME public key certificate chain and private key metadata for the authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.settings.cse.keypairs.list()`
-
-Lists client-side encryption key pairs for an authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.pageToken` | `string` | No | Pagination token indicating which page of key pairs to return. If the token is not supplied, then the API will return the first page of results. |
-| `params.pageSize` | `integer` | No | The number of key pairs to return. If not provided, the page size will default to 20 entries. |
-
-#### `users.settings.cse.keypairs.enable()`
-
-Turns on a client-side encryption key pair that was turned off. The key pair becomes active again for any associated client-side encryption identities. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.keyPairId` | `string` | Yes | The identifier of the key pair to turn on. |
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.settings.cse.keypairs.obliterate()`
-
-Deletes a client-side encryption key pair permanently and immediately. You can only permanently delete key pairs that have been turned off for more than 30 days. To turn off a key pair, use the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by an obliterated key. Authenticated users and Google Workspace administrators lose access to reading the encrypted messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.keyPairId` | `string` | Yes | The identifier of the key pair to obliterate. |
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.settings.cse.keypairs.disable()`
-
-Turns off a client-side encryption key pair. The authenticated user can no longer use the key pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair by using the ObliterateCseKeyPair method. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
-| `params.keyPairId` | `string` | Yes | The identifier of the key pair to turn off. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.settings.sendAs`
 
-#### `users.settings.sendAs.create()`
+#### `users.settings.sendAs.update()`
 
-Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to connect to the SMTP service to validate the configuration before creating the alias. If ownership verification is required for the alias, a message will be sent to the email address and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. This method is only available to service account clients that have been delegated domain-wide authority.
+Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. Addresses other than the primary address for the account can only be updated by service account clients that have been delegated domain-wide authority.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.sendAsEmail` | `string` | Yes | The send-as alias to be updated. |
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
@@ -512,15 +282,14 @@ Gets the specified send-as alias. Fails with an HTTP 404 error if the specified 
 | `params.sendAsEmail` | `string` | Yes | The send-as alias to be retrieved. |
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 
-#### `users.settings.sendAs.update()`
+#### `users.settings.sendAs.delete()`
 
-Updates a send-as alias. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. Addresses other than the primary address for the account can only be updated by service account clients that have been delegated domain-wide authority.
+Deletes the specified send-as alias. Revokes any verification that may have been required for using it. This method is only available to service account clients that have been delegated domain-wide authority.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.sendAsEmail` | `string` | Yes | The send-as alias to be updated. |
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.sendAsEmail` | `string` | Yes | The send-as alias to be deleted. |
 
 #### `users.settings.sendAs.list()`
 
@@ -528,15 +297,6 @@ Lists the send-as aliases for the specified account. The result includes the pri
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-
-#### `users.settings.sendAs.delete()`
-
-Deletes the specified send-as alias. Revokes any verification that may have been required for using it. This method is only available to service account clients that have been delegated domain-wide authority.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.sendAsEmail` | `string` | Yes | The send-as alias to be deleted. |
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 
 #### `users.settings.sendAs.patch()`
@@ -549,17 +309,26 @@ Patch the specified send-as alias.
 | `params.sendAsEmail` | `string` | Yes | The send-as alias to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `users.settings.sendAs.create()`
+
+Creates a custom "from" send-as alias. If an SMTP MSA is specified, Gmail will attempt to connect to the SMTP service to validate the configuration before creating the alias. If ownership verification is required for the alias, a message will be sent to the email address and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. If a signature is provided, Gmail will sanitize the HTML before saving it with the alias. This method is only available to service account clients that have been delegated domain-wide authority.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `users.settings.sendAs.smimeInfo`
 
-#### `users.settings.sendAs.smimeInfo.get()`
+#### `users.settings.sendAs.smimeInfo.insert()`
 
-Gets the specified S/MIME config for the specified send-as alias.
+Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format is required for the key.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The immutable ID for the SmimeInfo. |
 | `params.sendAsEmail` | `string` | Yes | The email address that appears in the "From:" header for mail sent using this alias. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `users.settings.sendAs.smimeInfo.list()`
 
@@ -576,19 +345,19 @@ Deletes the specified S/MIME config for the specified send-as alias.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.id` | `string` | Yes | The immutable ID for the SmimeInfo. |
 | `params.sendAsEmail` | `string` | Yes | The email address that appears in the "From:" header for mail sent using this alias. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 
-#### `users.settings.sendAs.smimeInfo.insert()`
+#### `users.settings.sendAs.smimeInfo.get()`
 
-Insert (upload) the given S/MIME config for the specified send-as alias. Note that pkcs12 format is required for the key.
+Gets the specified S/MIME config for the specified send-as alias.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.sendAsEmail` | `string` | Yes | The email address that appears in the "From:" header for mail sent using this alias. |
+| `params.id` | `string` | Yes | The immutable ID for the SmimeInfo. |
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.sendAsEmail` | `string` | Yes | The email address that appears in the "From:" header for mail sent using this alias. |
 
 #### `users.settings.sendAs.smimeInfo.setDefault()`
 
@@ -599,6 +368,191 @@ Sets the default S/MIME config for the specified send-as alias.
 | `params.sendAsEmail` | `string` | Yes | The email address that appears in the "From:" header for mail sent using this alias. |
 | `params.id` | `string` | Yes | The immutable ID for the SmimeInfo. |
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+
+### `users.settings.cse`
+
+### `users.settings.cse.keypairs`
+
+#### `users.settings.cse.keypairs.get()`
+
+Retrieves an existing client-side encryption key pair. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.keyPairId` | `string` | Yes | The identifier of the key pair to retrieve. |
+
+#### `users.settings.cse.keypairs.disable()`
+
+Turns off a client-side encryption key pair. The authenticated user can no longer use the key pair to decrypt incoming CSE message texts or sign outgoing CSE mail. To regain access, use the EnableCseKeyPair to turn on the key pair. After 30 days, you can permanently delete the key pair by using the ObliterateCseKeyPair method. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.keyPairId` | `string` | Yes | The identifier of the key pair to turn off. |
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.settings.cse.keypairs.create()`
+
+Creates and uploads a client-side encryption S/MIME public key certificate chain and private key metadata for the authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.settings.cse.keypairs.list()`
+
+Lists client-side encryption key pairs for an authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.pageSize` | `integer` | No | The number of key pairs to return. If not provided, the page size will default to 20 entries. |
+| `params.pageToken` | `string` | No | Pagination token indicating which page of key pairs to return. If the token is not supplied, then the API will return the first page of results. |
+
+#### `users.settings.cse.keypairs.obliterate()`
+
+Deletes a client-side encryption key pair permanently and immediately. You can only permanently delete key pairs that have been turned off for more than 30 days. To turn off a key pair, use the DisableCseKeyPair method. Gmail can't restore or decrypt any messages that were encrypted by an obliterated key. Authenticated users and Google Workspace administrators lose access to reading the encrypted messages. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.keyPairId` | `string` | Yes | The identifier of the key pair to obliterate. |
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.settings.cse.keypairs.enable()`
+
+Turns on a client-side encryption key pair that was turned off. The key pair becomes active again for any associated client-side encryption identities. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.keyPairId` | `string` | Yes | The identifier of the key pair to turn on. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `users.settings.cse.identities`
+
+#### `users.settings.cse.identities.delete()`
+
+Deletes a client-side encryption identity. The authenticated user can no longer use the identity to send encrypted messages. You cannot restore the identity after you delete it. Instead, use the CreateCseIdentity method to create another identity with the same configuration. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.cseEmailAddress` | `string` | Yes | The primary email address associated with the client-side encryption identity configuration that's removed. |
+
+#### `users.settings.cse.identities.create()`
+
+Creates and configures a client-side encryption identity that's authorized to send mail from the user account. Google publishes the S/MIME certificate to a shared domain-wide directory so that people within a Google Workspace organization can encrypt and send mail to the identity. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.settings.cse.identities.patch()`
+
+Associates a different key pair with an existing client-side encryption identity. The updated key pair must validate against Google's [S/MIME certificate profiles](https://support.google.com/a/answer/7300887). For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.emailAddress` | `string` | Yes | The email address of the client-side encryption identity to update. |
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.settings.cse.identities.get()`
+
+Retrieves a client-side encryption identity configuration. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.cseEmailAddress` | `string` | Yes | The primary email address associated with the client-side encryption identity configuration that's retrieved. |
+
+#### `users.settings.cse.identities.list()`
+
+Lists the client-side encrypted identities for an authenticated user. For administrators managing identities and keypairs for users in their organization, requests require authorization with a [service account](https://developers.google.com/identity/protocols/OAuth2ServiceAccount) that has [domain-wide delegation authority](https://developers.google.com/identity/protocols/OAuth2ServiceAccount#delegatingauthority) to impersonate users with the `https://www.googleapis.com/auth/gmail.settings.basic` scope. For users managing their own identities and keypairs, requests require [hardware key encryption](https://support.google.com/a/answer/14153163) turned on and configured.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Pagination token indicating which page of identities to return. If the token is not supplied, then the API will return the first page of results. |
+| `params.userId` | `string` | Yes | The requester's primary email address. To indicate the authenticated user, you can use the special value `me`. |
+| `params.pageSize` | `integer` | No | The number of identities to return. If not provided, the page size will default to 20 entries. |
+
+### `users.settings.filters`
+
+#### `users.settings.filters.get()`
+
+Gets a filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+| `params.id` | `string` | Yes | The ID of the filter to be fetched. |
+
+#### `users.settings.filters.list()`
+
+Lists the message filters of a Gmail user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+
+#### `users.settings.filters.delete()`
+
+Immediately and permanently deletes the specified filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The ID of the filter to be deleted. |
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+
+#### `users.settings.filters.create()`
+
+Creates a filter. Note: you can only create a maximum of 1,000 filters.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `users.settings.forwardingAddresses`
+
+#### `users.settings.forwardingAddresses.create()`
+
+Creates a forwarding address. If ownership verification is required, a message will be sent to the recipient and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. This method is only available to service account clients that have been delegated domain-wide authority.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.settings.forwardingAddresses.list()`
+
+Lists the forwarding addresses for the specified account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+
+#### `users.settings.forwardingAddresses.get()`
+
+Gets the specified forwarding address.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.forwardingEmail` | `string` | Yes | The forwarding address to be retrieved. |
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+
+#### `users.settings.forwardingAddresses.delete()`
+
+Deletes the specified forwarding address and revokes any verification that may have been required. This method is only available to service account clients that have been delegated domain-wide authority.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+| `params.forwardingEmail` | `string` | Yes | The forwarding address to be deleted. |
 
 ### `users.settings.delegates`
 
@@ -619,97 +573,206 @@ Lists the delegates for the specified account. This method is only available to 
 |---|---|---|---|
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 
-#### `users.settings.delegates.delete()`
-
-Removes the specified delegate (which can be of any verification status), and revokes any verification that may have been required for using it. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.delegateEmail` | `string` | Yes | The email address of the user to be removed as a delegate. |
-
 #### `users.settings.delegates.get()`
 
 Gets the specified delegate. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 | `params.delegateEmail` | `string` | Yes | The email address of the user whose delegate relationship is to be retrieved. |
+| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 
-### `users.settings.filters`
+#### `users.settings.delegates.delete()`
 
-#### `users.settings.filters.list()`
-
-Lists the message filters of a Gmail user.
+Removes the specified delegate (which can be of any verification status), and revokes any verification that may have been required for using it. Note that a delegate user must be referred to by their primary email address, and not an email alias. This method is only available to service account clients that have been delegated domain-wide authority.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.delegateEmail` | `string` | Yes | The email address of the user to be removed as a delegate. |
 | `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
 
-#### `users.settings.filters.delete()`
+### `users.messages`
 
-Immediately and permanently deletes the specified filter.
+#### `users.messages.trash()`
+
+Moves the specified message to the trash.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.id` | `string` | Yes | The ID of the filter to be deleted. |
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+| `params.id` | `string` | Yes | The ID of the message to Trash. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 
-#### `users.settings.filters.get()`
+#### `users.messages.delete()`
 
-Gets a filter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The ID of the filter to be fetched. |
-
-#### `users.settings.filters.create()`
-
-Creates a filter. Note: you can only create a maximum of 1,000 filters.
+Immediately and permanently deletes the specified message. This operation cannot be undone. Prefer `messages.trash` instead.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.id` | `string` | Yes | The ID of the message to delete. |
+
+#### `users.messages.batchModify()`
+
+Modifies the labels on the specified messages.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `users.settings.forwardingAddresses`
+#### `users.messages.get()`
 
-#### `users.settings.forwardingAddresses.list()`
-
-Lists the forwarding addresses for the specified account.
+Gets the specified message.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+| `params.id` | `string` | Yes | The ID of the message to retrieve. This ID is usually retrieved using `messages.list`. The ID is also contained in the result when a message is inserted (`messages.insert`) or imported (`messages.import`). |
+| `params.format` | `string` | No | The format to return the message in. |
+| `params.metadataHeaders` | `string` | No | When given and format is `METADATA`, only include headers specified. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 
-#### `users.settings.forwardingAddresses.delete()`
+#### `users.messages.batchDelete()`
 
-Deletes the specified forwarding address and revokes any verification that may have been required. This method is only available to service account clients that have been delegated domain-wide authority.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.forwardingEmail` | `string` | Yes | The forwarding address to be deleted. |
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-
-#### `users.settings.forwardingAddresses.create()`
-
-Creates a forwarding address. If ownership verification is required, a message will be sent to the recipient and the resource's verification status will be set to `pending`; otherwise, the resource will be created with verification status set to `accepted`. This method is only available to service account clients that have been delegated domain-wide authority.
+Deletes many messages by message ID. Provides no guarantees that messages were not already deleted or even existed at all.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `users.settings.forwardingAddresses.get()`
+#### `users.messages.insert()`
 
-Gets the specified forwarding address.
+Directly inserts a message into only this user's mailbox similar to `IMAP APPEND`, bypassing most scanning and classification. Does not send a message.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.userId` | `string` | Yes | User's email address. The special value "me" can be used to indicate the authenticated user. |
-| `params.forwardingEmail` | `string` | Yes | The forwarding address to be retrieved. |
+| `params.deleted` | `boolean` | No | Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts. |
+| `params.internalDateSource` | `string` | No | Source for Gmail's internal date of the message. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.messages.list()`
+
+Lists the messages in the user's mailbox. For example usage, see [List Gmail messages](https://developers.google.com/workspace/gmail/api/guides/list-messages).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.labelIds` | `string` | No | Only return messages with labels that match all of the specified label IDs. Messages in a thread might have labels that other messages in the same thread don't have. To learn more, see [Manage labels on messages and threads](https://developers.google.com/workspace/gmail/api/guides/labels#manage_labels_on_messages_threads). |
+| `params.q` | `string` | No | Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api using the gmail.metadata scope. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.pageToken` | `string` | No | Page token to retrieve a specific page of results in the list. |
+| `params.includeSpamTrash` | `boolean` | No | Include messages from `SPAM` and `TRASH` in the results. |
+| `params.maxResults` | `integer` | No | Maximum number of messages to return. This field defaults to 100. The maximum allowed value for this field is 500. |
+
+#### `users.messages.untrash()`
+
+Removes the specified message from the trash.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The ID of the message to remove from Trash. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+
+#### `users.messages.import()`
+
+Imports a message into only this user's mailbox, with standard email delivery scanning and classification similar to receiving via SMTP. This method doesn't perform SPF checks, so it might not work for some spam messages, such as those attempting to perform domain spoofing. This method does not send a message.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.internalDateSource` | `string` | No | Source for Gmail's internal date of the message. |
+| `params.neverMarkSpam` | `boolean` | No | Ignore the Gmail spam classifier decision and never mark this email as SPAM in the mailbox. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.processForCalendar` | `boolean` | No | Process calendar invites in the email and add any extracted meetings to the Google Calendar for this user. |
+| `params.deleted` | `boolean` | No | Mark the email as permanently deleted (not TRASH) and only visible in Google Vault to a Vault administrator. Only used for Google Workspace accounts. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.messages.send()`
+
+Sends the specified message to the recipients in the `To`, `Cc`, and `Bcc` headers. For example usage, see [Sending email](https://developers.google.com/workspace/gmail/api/guides/sending).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.messages.modify()`
+
+Modifies the labels on the specified message.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.id` | `string` | Yes | The ID of the message to modify. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `users.messages.attachments`
+
+#### `users.messages.attachments.get()`
+
+Gets the specified message attachment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.messageId` | `string` | Yes | The ID of the message containing the attachment. |
+| `params.id` | `string` | Yes | The ID of the attachment. |
+
+### `users.labels`
+
+#### `users.labels.delete()`
+
+Immediately and permanently deletes the specified label and removes it from any messages and threads that it is applied to.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The ID of the label to delete. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+
+#### `users.labels.create()`
+
+Creates a new label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.labels.list()`
+
+Lists all labels in the user's mailbox.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+
+#### `users.labels.get()`
+
+Gets the specified label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.id` | `string` | Yes | The ID of the label to retrieve. |
+
+#### `users.labels.update()`
+
+Updates the specified label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The ID of the label to update. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.labels.patch()`
+
+Patch the specified label.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The ID of the label to update. |
+| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `users.history`
 
@@ -719,72 +782,9 @@ Lists the history of all changes to the given mailbox. History results are retur
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Page token to retrieve a specific page of results in the list. |
-| `params.historyTypes` | `string` | No | History types to be returned by the function |
 | `params.labelId` | `string` | No | Only return messages with a label matching the ID. |
 | `params.maxResults` | `integer` | No | Maximum number of history records to return. This field defaults to 100. The maximum allowed value for this field is 500. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.startHistoryId` | `string` | No | Required. Returns history records after the specified `startHistoryId`. The supplied `startHistoryId` should be obtained from the `historyId` of a message, thread, or previous `list` response. History IDs increase chronologically but are not contiguous with random gaps in between valid IDs. Supplying an invalid or out of date `startHistoryId` typically returns an `HTTP 404` error code. A `historyId` is typically valid for at least a week, but in some rare circumstances may be valid for only a few hours. If you receive an `HTTP 404` error response, your application should perform a full sync. If you receive no `nextPageToken` in the response, there are no updates to retrieve and you can store the returned `historyId` for a future request. |
-
-### `users.threads`
-
-#### `users.threads.list()`
-
-Lists the threads in the user's mailbox.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.includeSpamTrash` | `boolean` | No | Include threads from `SPAM` and `TRASH` in the results. |
-| `params.labelIds` | `string` | No | Only return threads with labels that match all of the specified label IDs. |
-| `params.maxResults` | `integer` | No | Maximum number of threads to return. This field defaults to 100. The maximum allowed value for this field is 500. |
-| `params.q` | `string` | No | Only return threads matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. Parameter cannot be used when accessing the api using the gmail.metadata scope. |
 | `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
 | `params.pageToken` | `string` | No | Page token to retrieve a specific page of results in the list. |
-
-#### `users.threads.untrash()`
-
-Removes the specified thread from the trash. Any messages that belong to the thread are also removed from the trash.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The ID of the thread to remove from Trash. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-
-#### `users.threads.trash()`
-
-Moves the specified thread to the trash. Any messages that belong to the thread are also moved to the trash.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The ID of the thread to Trash. |
-
-#### `users.threads.get()`
-
-Gets the specified thread.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.metadataHeaders` | `string` | No | When given and format is METADATA, only include headers specified. |
-| `params.format` | `string` | No | The format to return the messages in. |
-| `params.id` | `string` | Yes | The ID of the thread to retrieve. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-
-#### `users.threads.delete()`
-
-Immediately and permanently deletes the specified thread. Any messages that belong to the thread are also deleted. This operation cannot be undone. Prefer `threads.trash` instead.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | ID of the Thread to delete. |
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-
-#### `users.threads.modify()`
-
-Modifies the labels applied to the thread. This applies to all messages in the thread.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | The user's email address. The special value `me` can be used to indicate the authenticated user. |
-| `params.id` | `string` | Yes | The ID of the thread to modify. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.historyTypes` | `string` | No | History types to be returned by the function |
