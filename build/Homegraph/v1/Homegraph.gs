@@ -18,14 +18,14 @@ class Homegraph {
     this._servicePath = '';
 
 
+    this.devices = {};
+    this.devices.reportStateAndNotification = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:reportStateAndNotification', 'POST', apiParams, clientConfig);
+    this.devices.requestSync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:requestSync', 'POST', apiParams, clientConfig);
+    this.devices.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:query', 'POST', apiParams, clientConfig);
+    this.devices.sync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:sync', 'POST', apiParams, clientConfig);
+
     this.agentUsers = {};
     this.agentUsers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+agentUserId}', 'DELETE', apiParams, clientConfig);
-
-    this.devices = {};
-    this.devices.sync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:sync', 'POST', apiParams, clientConfig);
-    this.devices.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:query', 'POST', apiParams, clientConfig);
-    this.devices.requestSync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:requestSync', 'POST', apiParams, clientConfig);
-    this.devices.reportStateAndNotification = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices:reportStateAndNotification', 'POST', apiParams, clientConfig);
   }
 
 /**
