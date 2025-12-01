@@ -18,20 +18,21 @@ class Cloudshell {
     this._servicePath = '';
 
 
+    this.operations = {};
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
     this.users = {};
 
     this.users.environments = {};
+    this.users.environments.generateAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+environment}:generateAccessToken', 'GET', apiParams, clientConfig);
+    this.users.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.users.environments.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:start', 'POST', apiParams, clientConfig);
     this.users.environments.authorize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:authorize', 'POST', apiParams, clientConfig);
     this.users.environments.addPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+environment}:addPublicKey', 'POST', apiParams, clientConfig);
     this.users.environments.removePublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+environment}:removePublicKey', 'POST', apiParams, clientConfig);
-    this.users.environments.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:start', 'POST', apiParams, clientConfig);
-    this.users.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
   }
 
 /**
