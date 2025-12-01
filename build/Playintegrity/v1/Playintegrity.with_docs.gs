@@ -18,6 +18,19 @@ class Playintegrity {
     this._servicePath = '';
 
 
+    this.deviceRecall = {};
+
+    /**
+     * Writes recall bits for the device where Play Integrity API token is obtained. The endpoint is available to select Play partners in an early access program (EAP).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.packageName - (Required) Required. Package name of the app the attached integrity token belongs to.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.deviceRecall.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+packageName}/deviceRecall:write', 'POST', apiParams, clientConfig);
+
     this.v1 = {};
 
     /**
@@ -41,19 +54,6 @@ class Playintegrity {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.v1.decodePcIntegrityToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+packageName}:decodePcIntegrityToken', 'POST', apiParams, clientConfig);
-
-    this.deviceRecall = {};
-
-    /**
-     * Writes recall bits for the device where Play Integrity API token is obtained. The endpoint is available to select Play partners in an early access program (EAP).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.packageName - (Required) Required. Package name of the app the attached integrity token belongs to.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deviceRecall.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+packageName}/deviceRecall:write', 'POST', apiParams, clientConfig);
   }
 
 /**
