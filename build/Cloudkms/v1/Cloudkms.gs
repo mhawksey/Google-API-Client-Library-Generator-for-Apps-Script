@@ -18,99 +18,97 @@ class Cloudkms {
     this._servicePath = '';
 
 
-    this.folders = {};
-    this.folders.updateAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.getAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.getKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.updateKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations = {};
+    this.organizations.updateKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.getKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects = {};
-    this.projects.updateAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.getAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.showEffectiveAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:showEffectiveAutokeyConfig', 'GET', apiParams, clientConfig);
-    this.projects.getKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.updateKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.showEffectiveKeyAccessJustificationsPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}:showEffectiveKeyAccessJustificationsPolicyConfig', 'GET', apiParams, clientConfig);
+    this.projects.updateKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.getKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.showEffectiveKeyAccessJustificationsEnrollmentConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}:showEffectiveKeyAccessJustificationsEnrollmentConfig', 'GET', apiParams, clientConfig);
+    this.projects.showEffectiveAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:showEffectiveAutokeyConfig', 'GET', apiParams, clientConfig);
 
     this.projects.locations = {};
-    this.projects.locations.getEkmConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.updateEkmConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.generateRandomBytes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:generateRandomBytes', 'POST', apiParams, clientConfig);
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.updateEkmConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.getEkmConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.generateRandomBytes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:generateRandomBytes', 'POST', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.keyHandles = {};
     this.projects.locations.keyHandles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keyHandles', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyHandles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.keyHandles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keyHandles', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyHandles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.ekmConnections = {};
+    this.projects.locations.ekmConnections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.ekmConnections.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.locations.ekmConnections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ekmConnections', 'GET', apiParams, clientConfig);
     this.projects.locations.ekmConnections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.ekmConnections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ekmConnections', 'POST', apiParams, clientConfig);
-    this.projects.locations.ekmConnections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.ekmConnections.verifyConnectivity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:verifyConnectivity', 'GET', apiParams, clientConfig);
-    this.projects.locations.ekmConnections.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.ekmConnections.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.ekmConnections.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.keyRings = {};
-    this.projects.locations.keyRings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keyRings', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keyRings', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.keyRings.cryptoKeys = {};
-    this.projects.locations.keyRings.cryptoKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeys', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeys', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.updatePrimaryVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:updatePrimaryVersion', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.encrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:encrypt', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.decrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:decrypt', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions = {};
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeyVersions', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.getPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/publicKey', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeyVersions', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeyVersions:import', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.destroy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:destroy', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:restore', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.rawEncrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rawEncrypt', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.rawDecrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rawDecrypt', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.asymmetricSign = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:asymmetricSign', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.asymmetricDecrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:asymmetricDecrypt', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.macSign = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:macSign', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.macVerify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:macVerify', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.decapsulate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:decapsulate', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.keyRings.importJobs = {};
-    this.projects.locations.keyRings.importJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/importJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.importJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.importJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/importJobs', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.importJobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.keyRings.importJobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.keyRings.importJobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.ekmConnections.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.ekmConnections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/ekmConnections', 'POST', apiParams, clientConfig);
+    this.projects.locations.ekmConnections.verifyConnectivity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:verifyConnectivity', 'GET', apiParams, clientConfig);
 
     this.projects.locations.ekmConfig = {};
     this.projects.locations.ekmConfig.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.ekmConfig.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.ekmConfig.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
-    this.organizations = {};
-    this.organizations.getKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.updateKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.keyRings = {};
+    this.projects.locations.keyRings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keyRings', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keyRings', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.keyRings.cryptoKeys = {};
+    this.projects.locations.keyRings.cryptoKeys.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.encrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:encrypt', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeys', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.updatePrimaryVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:updatePrimaryVersion', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.decrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:decrypt', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeys', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions = {};
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeyVersions', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeyVersions', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.macSign = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:macSign', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:restore', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.rawDecrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rawDecrypt', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.decapsulate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:decapsulate', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.getPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/publicKey', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.asymmetricDecrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:asymmetricDecrypt', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cryptoKeyVersions:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.rawEncrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rawEncrypt', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.destroy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:destroy', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.asymmetricSign = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:asymmetricSign', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.cryptoKeys.cryptoKeyVersions.macVerify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:macVerify', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.keyRings.importJobs = {};
+    this.projects.locations.keyRings.importJobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.importJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/importJobs', 'POST', apiParams, clientConfig);
+    this.projects.locations.keyRings.importJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/importJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.importJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.importJobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.keyRings.importJobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.folders = {};
+    this.folders.updateAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.updateKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.getAutokeyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.getKajPolicyConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
