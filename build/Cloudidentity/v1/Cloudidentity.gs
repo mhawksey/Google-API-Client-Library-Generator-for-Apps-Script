@@ -18,92 +18,92 @@ class Cloudidentity {
     this._servicePath = '';
 
 
-    this.inboundOidcSsoProfiles = {};
-    this.inboundOidcSsoProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.inboundOidcSsoProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundOidcSsoProfiles', 'GET', apiParams, clientConfig);
-    this.inboundOidcSsoProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.inboundOidcSsoProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundOidcSsoProfiles', 'POST', apiParams, clientConfig);
-    this.inboundOidcSsoProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.customers = {};
-
-    this.customers.userinvitations = {};
-    this.customers.userinvitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userinvitations', 'GET', apiParams, clientConfig);
-    this.customers.userinvitations.send = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:send', 'POST', apiParams, clientConfig);
-    this.customers.userinvitations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.customers.userinvitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.customers.userinvitations.isInvitableUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:isInvitableUser', 'GET', apiParams, clientConfig);
-
     this.inboundSamlSsoProfiles = {};
+    this.inboundSamlSsoProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.inboundSamlSsoProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.inboundSamlSsoProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundSamlSsoProfiles', 'POST', apiParams, clientConfig);
     this.inboundSamlSsoProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundSamlSsoProfiles', 'GET', apiParams, clientConfig);
     this.inboundSamlSsoProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.inboundSamlSsoProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundSamlSsoProfiles', 'POST', apiParams, clientConfig);
-    this.inboundSamlSsoProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.inboundSamlSsoProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.inboundSamlSsoProfiles.idpCredentials = {};
     this.inboundSamlSsoProfiles.idpCredentials.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.inboundSamlSsoProfiles.idpCredentials.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/idpCredentials', 'GET', apiParams, clientConfig);
     this.inboundSamlSsoProfiles.idpCredentials.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/idpCredentials:add', 'POST', apiParams, clientConfig);
+    this.inboundSamlSsoProfiles.idpCredentials.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/idpCredentials', 'GET', apiParams, clientConfig);
     this.inboundSamlSsoProfiles.idpCredentials.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.groups = {};
-    this.groups.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/groups:lookup', 'GET', apiParams, clientConfig);
-    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.groups.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/groups:search', 'GET', apiParams, clientConfig);
-    this.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/groups', 'GET', apiParams, clientConfig);
-    this.groups.updateSecuritySettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.groups.getSecuritySettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.groups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/groups', 'POST', apiParams, clientConfig);
-    this.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.groups.memberships = {};
-    this.groups.memberships.searchTransitiveGroups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:searchTransitiveGroups', 'GET', apiParams, clientConfig);
-    this.groups.memberships.modifyMembershipRoles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyMembershipRoles', 'POST', apiParams, clientConfig);
-    this.groups.memberships.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:lookup', 'GET', apiParams, clientConfig);
-    this.groups.memberships.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.groups.memberships.getMembershipGraph = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:getMembershipGraph', 'GET', apiParams, clientConfig);
-    this.groups.memberships.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships', 'GET', apiParams, clientConfig);
-    this.groups.memberships.searchTransitiveMemberships = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:searchTransitiveMemberships', 'GET', apiParams, clientConfig);
-    this.groups.memberships.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.groups.memberships.searchDirectGroups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:searchDirectGroups', 'GET', apiParams, clientConfig);
-    this.groups.memberships.checkTransitiveMembership = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:checkTransitiveMembership', 'GET', apiParams, clientConfig);
-    this.groups.memberships.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships', 'POST', apiParams, clientConfig);
 
     this.policies = {};
     this.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/policies', 'GET', apiParams, clientConfig);
 
-    this.inboundSsoAssignments = {};
-    this.inboundSsoAssignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.inboundSsoAssignments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundSsoAssignments', 'GET', apiParams, clientConfig);
-    this.inboundSsoAssignments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundSsoAssignments', 'POST', apiParams, clientConfig);
-    this.inboundSsoAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.inboundSsoAssignments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.groups = {};
+    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.groups.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/groups:lookup', 'GET', apiParams, clientConfig);
+    this.groups.updateSecuritySettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.groups.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/groups:search', 'GET', apiParams, clientConfig);
+    this.groups.getSecuritySettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.groups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/groups', 'POST', apiParams, clientConfig);
+    this.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/groups', 'GET', apiParams, clientConfig);
+
+    this.groups.memberships = {};
+    this.groups.memberships.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.groups.memberships.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships', 'POST', apiParams, clientConfig);
+    this.groups.memberships.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships', 'GET', apiParams, clientConfig);
+    this.groups.memberships.getMembershipGraph = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:getMembershipGraph', 'GET', apiParams, clientConfig);
+    this.groups.memberships.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.groups.memberships.modifyMembershipRoles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyMembershipRoles', 'POST', apiParams, clientConfig);
+    this.groups.memberships.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:lookup', 'GET', apiParams, clientConfig);
+    this.groups.memberships.searchDirectGroups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:searchDirectGroups', 'GET', apiParams, clientConfig);
+    this.groups.memberships.checkTransitiveMembership = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:checkTransitiveMembership', 'GET', apiParams, clientConfig);
+    this.groups.memberships.searchTransitiveMemberships = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:searchTransitiveMemberships', 'GET', apiParams, clientConfig);
+    this.groups.memberships.searchTransitiveGroups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/memberships:searchTransitiveGroups', 'GET', apiParams, clientConfig);
+
+    this.customers = {};
+
+    this.customers.userinvitations = {};
+    this.customers.userinvitations.isInvitableUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:isInvitableUser', 'GET', apiParams, clientConfig);
+    this.customers.userinvitations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.customers.userinvitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.userinvitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userinvitations', 'GET', apiParams, clientConfig);
+    this.customers.userinvitations.send = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:send', 'POST', apiParams, clientConfig);
 
     this.devices = {};
+    this.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.devices.cancelWipe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancelWipe', 'POST', apiParams, clientConfig);
     this.devices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices', 'POST', apiParams, clientConfig);
     this.devices.wipe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:wipe', 'POST', apiParams, clientConfig);
-    this.devices.cancelWipe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancelWipe', 'POST', apiParams, clientConfig);
     this.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/devices', 'GET', apiParams, clientConfig);
-    this.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.devices.deviceUsers = {};
-    this.devices.deviceUsers.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:lookup', 'GET', apiParams, clientConfig);
-    this.devices.deviceUsers.block = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:block', 'POST', apiParams, clientConfig);
+    this.devices.deviceUsers.cancelWipe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancelWipe', 'POST', apiParams, clientConfig);
+    this.devices.deviceUsers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deviceUsers', 'GET', apiParams, clientConfig);
     this.devices.deviceUsers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.devices.deviceUsers.wipe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:wipe', 'POST', apiParams, clientConfig);
-    this.devices.deviceUsers.cancelWipe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancelWipe', 'POST', apiParams, clientConfig);
-    this.devices.deviceUsers.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
     this.devices.deviceUsers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.devices.deviceUsers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deviceUsers', 'GET', apiParams, clientConfig);
+    this.devices.deviceUsers.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
+    this.devices.deviceUsers.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:lookup', 'GET', apiParams, clientConfig);
+    this.devices.deviceUsers.block = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:block', 'POST', apiParams, clientConfig);
 
     this.devices.deviceUsers.clientStates = {};
-    this.devices.deviceUsers.clientStates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.devices.deviceUsers.clientStates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.devices.deviceUsers.clientStates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clientStates', 'GET', apiParams, clientConfig);
+    this.devices.deviceUsers.clientStates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.devices.deviceUsers.clientStates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.inboundSsoAssignments = {};
+    this.inboundSsoAssignments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundSsoAssignments', 'POST', apiParams, clientConfig);
+    this.inboundSsoAssignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.inboundSsoAssignments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.inboundSsoAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.inboundSsoAssignments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundSsoAssignments', 'GET', apiParams, clientConfig);
+
+    this.inboundOidcSsoProfiles = {};
+    this.inboundOidcSsoProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundOidcSsoProfiles', 'POST', apiParams, clientConfig);
+    this.inboundOidcSsoProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.inboundOidcSsoProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/inboundOidcSsoProfiles', 'GET', apiParams, clientConfig);
+    this.inboundOidcSsoProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.inboundOidcSsoProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
