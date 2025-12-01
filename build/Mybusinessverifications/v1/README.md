@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Verifications API (ver
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:04:43 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:04:43 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:03:46 GMT
+- **Last Modified:** Mon, 01 Dec 2025 01:03:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:43 GMT
 
 
@@ -14,16 +14,17 @@ Auto-generated client library for using the **My Business Verifications API (ver
 
 ## API Reference
 
-### `locations`
+### `verificationTokens`
 
-#### `locations.fetchVerificationOptions()`
+#### `verificationTokens.generate()`
 
-Reports all eligible verification options for a location in a specific language.
+Generate a token for the provided location data to verify the location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.location` | `string` | Yes | Required. The location to verify. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `locations`
 
 #### `locations.verify()`
 
@@ -32,6 +33,15 @@ Starts the verification process for a location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the location to verify. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `locations.fetchVerificationOptions()`
+
+Reports all eligible verification options for a location in a specific language.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The location to verify. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.getVoiceOfMerchantState()`
@@ -61,14 +71,4 @@ Completes a `PENDING` verification. It is only necessary for non `AUTO` verifica
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the verification to complete. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `verificationTokens`
-
-#### `verificationTokens.generate()`
-
-Generate a token for the provided location data to verify the location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
