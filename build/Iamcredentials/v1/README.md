@@ -4,8 +4,8 @@ Auto-generated client library for using the **IAM Service Account Credentials AP
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:53:42 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:53:42 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:54:13 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:54:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:09 GMT
 
 
@@ -48,6 +48,14 @@ Generates an OpenID Connect ID token for a service account.
 | `params.name` | `string` | Yes | Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.serviceAccounts.getAllowedLocations()`
+
+Returns the trust boundary info for a given service account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of service account. |
+
 #### `projects.serviceAccounts.generateAccessToken()`
 
 Generates an OAuth 2.0 access token for a service account.
@@ -56,14 +64,6 @@ Generates an OAuth 2.0 access token for a service account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.serviceAccounts.getAllowedLocations()`
-
-Returns the trust boundary info for a given service account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of service account. |
 
 #### `projects.serviceAccounts.signBlob()`
 
