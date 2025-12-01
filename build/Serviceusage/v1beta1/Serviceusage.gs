@@ -19,11 +19,11 @@ class Serviceusage {
 
 
     this.services = {};
-    this.services.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:disable', 'POST', apiParams, clientConfig);
-    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.services.batchEnable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/services:batchEnable', 'POST', apiParams, clientConfig);
     this.services.generateServiceIdentity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:generateServiceIdentity', 'POST', apiParams, clientConfig);
     this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.services.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.services.batchEnable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/services:batchEnable', 'POST', apiParams, clientConfig);
     this.services.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:enable', 'POST', apiParams, clientConfig);
 
     this.services.consumerQuotaMetrics = {};
@@ -35,17 +35,17 @@ class Serviceusage {
     this.services.consumerQuotaMetrics.limits = {};
     this.services.consumerQuotaMetrics.limits.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.services.consumerQuotaMetrics.limits.adminOverrides = {};
-    this.services.consumerQuotaMetrics.limits.adminOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'GET', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.limits.adminOverrides.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.limits.adminOverrides.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'POST', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.limits.adminOverrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.services.consumerQuotaMetrics.limits.consumerOverrides = {};
-    this.services.consumerQuotaMetrics.limits.consumerOverrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.limits.consumerOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'GET', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.limits.consumerOverrides.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.services.consumerQuotaMetrics.limits.consumerOverrides.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'POST', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.consumerOverrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.consumerOverrides.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.consumerOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerOverrides', 'GET', apiParams, clientConfig);
+
+    this.services.consumerQuotaMetrics.limits.adminOverrides = {};
+    this.services.consumerQuotaMetrics.limits.adminOverrides.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'POST', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.adminOverrides.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.adminOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/adminOverrides', 'GET', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.adminOverrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.operations = {};
     this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/operations', 'GET', apiParams, clientConfig);
