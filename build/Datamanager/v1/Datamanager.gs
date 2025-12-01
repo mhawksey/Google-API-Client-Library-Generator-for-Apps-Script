@@ -18,12 +18,12 @@ class Datamanager {
     this._servicePath = '';
 
 
+    this.audienceMembers = {};
+    this.audienceMembers.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:ingest', 'POST', apiParams, clientConfig);
+    this.audienceMembers.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:remove', 'POST', apiParams, clientConfig);
+
     this.events = {};
     this.events.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/events:ingest', 'POST', apiParams, clientConfig);
-
-    this.audienceMembers = {};
-    this.audienceMembers.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:remove', 'POST', apiParams, clientConfig);
-    this.audienceMembers.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:ingest', 'POST', apiParams, clientConfig);
 
     this.requestStatus = {};
     this.requestStatus.retrieve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/requestStatus:retrieve', 'GET', apiParams, clientConfig);
