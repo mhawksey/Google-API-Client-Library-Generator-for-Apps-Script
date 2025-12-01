@@ -20,166 +20,166 @@ class Dataproc {
 
     this.projects = {};
 
-    this.projects.locations = {};
-
-    this.projects.locations.autoscalingPolicies = {};
-    this.projects.locations.autoscalingPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.autoscalingPolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.autoscalingPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoscalingPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.autoscalingPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.autoscalingPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.autoscalingPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoscalingPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.autoscalingPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.autoscalingPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.batches = {};
-    this.projects.locations.batches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/batches', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.analyze = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:analyze', 'POST', apiParams, clientConfig);
-    this.projects.locations.batches.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.batches.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/batches', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.batches.sparkApplications = {};
-    this.projects.locations.batches.sparkApplications.accessSqlQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessSqlQuery', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.accessEnvironmentInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessEnvironmentInfo', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.accessSqlPlan = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessSqlPlan', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.summarizeStages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeStages', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.accessStageRddGraph = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessStageRddGraph', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.summarizeStageAttemptTasks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeStageAttemptTasks', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.searchStages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStages', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.searchExecutors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchExecutors', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.searchSqlQueries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchSqlQueries', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.accessJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessJob', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.accessStageAttempt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessStageAttempt', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.summarizeExecutors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeExecutors', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sparkApplications:search', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:write', 'POST', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.searchStageAttempts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStageAttempts', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.searchExecutorStageSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchExecutorStageSummary', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.searchStageAttemptTasks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStageAttemptTasks', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:access', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.searchJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.batches.sparkApplications.summarizeJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeJobs', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.sessions = {};
-    this.projects.locations.sessions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sessions', 'POST', apiParams, clientConfig);
-    this.projects.locations.sessions.terminate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:terminate', 'POST', apiParams, clientConfig);
-    this.projects.locations.sessions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.sessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sessions', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.sessions.sparkApplications = {};
-    this.projects.locations.sessions.sparkApplications.searchSqlQueries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchSqlQueries', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:access', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sparkApplications:search', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.searchExecutorStageSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchExecutorStageSummary', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.summarizeExecutors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeExecutors', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.summarizeStages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeStages', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.searchStages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStages', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.accessStageAttempt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessStageAttempt', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.accessSqlQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessSqlQuery', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.summarizeJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.searchStageAttempts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStageAttempts', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.accessSqlPlan = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessSqlPlan', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.searchStageAttemptTasks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStageAttemptTasks', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.searchJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:write', 'POST', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.accessJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessJob', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.searchExecutors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchExecutors', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.accessStageRddGraph = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessStageRddGraph', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.summarizeStageAttemptTasks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeStageAttemptTasks', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessions.sparkApplications.accessEnvironmentInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessEnvironmentInfo', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.workflowTemplates = {};
-    this.projects.locations.workflowTemplates.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.workflowTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates', 'GET', apiParams, clientConfig);
-    this.projects.locations.workflowTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates', 'POST', apiParams, clientConfig);
-    this.projects.locations.workflowTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.workflowTemplates.instantiate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:instantiate', 'POST', apiParams, clientConfig);
-    this.projects.locations.workflowTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.workflowTemplates.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.workflowTemplates.instantiateInline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates:instantiateInline', 'POST', apiParams, clientConfig);
-    this.projects.locations.workflowTemplates.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.workflowTemplates.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-
-    this.projects.locations.sessionTemplates = {};
-    this.projects.locations.sessionTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.sessionTemplates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.sessionTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sessionTemplates', 'POST', apiParams, clientConfig);
-    this.projects.locations.sessionTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sessionTemplates', 'GET', apiParams, clientConfig);
-    this.projects.locations.sessionTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.regions = {};
 
-    this.projects.regions.clusters = {};
-    this.projects.regions.clusters.diagnose = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:stop', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', 'PATCH', apiParams, clientConfig);
-    this.projects.regions.clusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', 'DELETE', apiParams, clientConfig);
-    this.projects.regions.clusters.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:start', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.injectCredentials = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/{+region}/{+cluster}:injectCredentials', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters', 'GET', apiParams, clientConfig);
-    this.projects.regions.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', 'GET', apiParams, clientConfig);
-    this.projects.regions.clusters.repair = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:repair', 'POST', apiParams, clientConfig);
-
-    this.projects.regions.clusters.nodeGroups = {};
-    this.projects.regions.clusters.nodeGroups.repair = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:repair', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.nodeGroups.resize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resize', 'POST', apiParams, clientConfig);
-    this.projects.regions.clusters.nodeGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.regions.clusters.nodeGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodeGroups', 'POST', apiParams, clientConfig);
-
     this.projects.regions.workflowTemplates = {};
-    this.projects.regions.workflowTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.regions.workflowTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates', 'POST', apiParams, clientConfig);
-    this.projects.regions.workflowTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.regions.workflowTemplates.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.regions.workflowTemplates.instantiateInline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates:instantiateInline', 'POST', apiParams, clientConfig);
+    this.projects.regions.workflowTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.regions.workflowTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates', 'POST', apiParams, clientConfig);
+    this.projects.regions.workflowTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.regions.workflowTemplates.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.regions.workflowTemplates.instantiate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:instantiate', 'POST', apiParams, clientConfig);
+    this.projects.regions.workflowTemplates.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
     this.projects.regions.workflowTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates', 'GET', apiParams, clientConfig);
     this.projects.regions.workflowTemplates.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.regions.workflowTemplates.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-
-    this.projects.regions.operations = {};
-    this.projects.regions.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.regions.operations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.regions.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.regions.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.regions.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.regions.operations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.regions.operations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.regions.workflowTemplates.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
 
     this.projects.regions.autoscalingPolicies = {};
-    this.projects.regions.autoscalingPolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.regions.autoscalingPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.regions.autoscalingPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoscalingPolicies', 'POST', apiParams, clientConfig);
     this.projects.regions.autoscalingPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.regions.autoscalingPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoscalingPolicies', 'GET', apiParams, clientConfig);
+    this.projects.regions.autoscalingPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.regions.autoscalingPolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
     this.projects.regions.autoscalingPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.regions.autoscalingPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.regions.autoscalingPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoscalingPolicies', 'POST', apiParams, clientConfig);
     this.projects.regions.autoscalingPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.regions.jobs = {};
     this.projects.regions.jobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/jobs/{jobId}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.regions.jobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.regions.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/jobs/{jobId}', 'PATCH', apiParams, clientConfig);
+    this.projects.regions.jobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.regions.jobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.regions.jobs.submitAsOperation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/jobs:submitAsOperation', 'POST', apiParams, clientConfig);
-    this.projects.regions.jobs.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/jobs:submit', 'POST', apiParams, clientConfig);
-    this.projects.regions.jobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.regions.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/jobs/{jobId}', 'DELETE', apiParams, clientConfig);
     this.projects.regions.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/jobs', 'GET', apiParams, clientConfig);
     this.projects.regions.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/jobs/{jobId}', 'GET', apiParams, clientConfig);
-    this.projects.regions.jobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.regions.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/jobs/{jobId}', 'DELETE', apiParams, clientConfig);
+    this.projects.regions.jobs.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/jobs:submit', 'POST', apiParams, clientConfig);
+    this.projects.regions.jobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.regions.operations = {};
+    this.projects.regions.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.regions.operations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.regions.operations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.regions.operations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.regions.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.regions.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.regions.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.regions.clusters = {};
+    this.projects.regions.clusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', 'PATCH', apiParams, clientConfig);
+    this.projects.regions.clusters.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:stop', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.diagnose = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:diagnose', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', 'DELETE', apiParams, clientConfig);
+    this.projects.regions.clusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.repair = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:repair', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.injectCredentials = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/{+region}/{+cluster}:injectCredentials', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters', 'GET', apiParams, clientConfig);
+    this.projects.regions.clusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}:start', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/regions/{region}/clusters/{clusterName}', 'GET', apiParams, clientConfig);
+
+    this.projects.regions.clusters.nodeGroups = {};
+    this.projects.regions.clusters.nodeGroups.repair = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:repair', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.nodeGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodeGroups', 'POST', apiParams, clientConfig);
+    this.projects.regions.clusters.nodeGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.regions.clusters.nodeGroups.resize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resize', 'POST', apiParams, clientConfig);
+
+    this.projects.locations = {};
+
+    this.projects.locations.autoscalingPolicies = {};
+    this.projects.locations.autoscalingPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoscalingPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.autoscalingPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.autoscalingPolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.autoscalingPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoscalingPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.autoscalingPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.autoscalingPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.autoscalingPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.autoscalingPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.sessionTemplates = {};
+    this.projects.locations.sessionTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessionTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.sessionTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sessionTemplates', 'POST', apiParams, clientConfig);
+    this.projects.locations.sessionTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sessionTemplates', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessionTemplates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.workflowTemplates = {};
+    this.projects.locations.workflowTemplates.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.workflowTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.workflowTemplates.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.workflowTemplates.instantiate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:instantiate', 'POST', apiParams, clientConfig);
+    this.projects.locations.workflowTemplates.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.workflowTemplates.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.workflowTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates', 'GET', apiParams, clientConfig);
+    this.projects.locations.workflowTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates', 'POST', apiParams, clientConfig);
+    this.projects.locations.workflowTemplates.instantiateInline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workflowTemplates:instantiateInline', 'POST', apiParams, clientConfig);
+    this.projects.locations.workflowTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.batches = {};
+    this.projects.locations.batches.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.batches.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/batches', 'POST', apiParams, clientConfig);
+    this.projects.locations.batches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/batches', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.analyze = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:analyze', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.batches.sparkApplications = {};
+    this.projects.locations.batches.sparkApplications.accessStageRddGraph = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessStageRddGraph', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.summarizeStageAttemptTasks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeStageAttemptTasks', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.searchExecutors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchExecutors', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.summarizeStages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeStages', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.accessSqlPlan = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessSqlPlan', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.accessEnvironmentInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessEnvironmentInfo', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.searchJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.searchStageAttempts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStageAttempts', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.summarizeJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.searchExecutorStageSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchExecutorStageSummary', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:write', 'POST', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:access', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.searchStages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStages', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.searchSqlQueries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchSqlQueries', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.accessStageAttempt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessStageAttempt', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.accessSqlQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessSqlQuery', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.summarizeExecutors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeExecutors', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.searchStageAttemptTasks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStageAttemptTasks', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.accessJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessJob', 'GET', apiParams, clientConfig);
+    this.projects.locations.batches.sparkApplications.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sparkApplications:search', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.sessions = {};
+    this.projects.locations.sessions.terminate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:terminate', 'POST', apiParams, clientConfig);
+    this.projects.locations.sessions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sessions', 'POST', apiParams, clientConfig);
+    this.projects.locations.sessions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.sessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sessions', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.sessions.sparkApplications = {};
+    this.projects.locations.sessions.sparkApplications.accessSqlQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessSqlQuery', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.summarizeJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.searchJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.summarizeExecutors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeExecutors', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.searchStageAttempts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStageAttempts', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.accessJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessJob', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.accessStageRddGraph = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessStageRddGraph', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sparkApplications:search', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.summarizeStageAttemptTasks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeStageAttemptTasks', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.summarizeStages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:summarizeStages', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.searchStages = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStages', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.searchExecutorStageSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchExecutorStageSummary', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.accessEnvironmentInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessEnvironmentInfo', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:access', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.accessStageAttempt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessStageAttempt', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.searchSqlQueries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchSqlQueries', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.searchExecutors = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchExecutors', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.accessSqlPlan = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accessSqlPlan', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.searchStageAttemptTasks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:searchStageAttemptTasks', 'GET', apiParams, clientConfig);
+    this.projects.locations.sessions.sparkApplications.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:write', 'POST', apiParams, clientConfig);
   }
 
 /**
