@@ -4,7 +4,7 @@ Auto-generated client library for using the **Connectors API (version: v1)** in 
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:33:54 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:35:11 GMT
 - **Last Modified:** Fri, 03 Oct 2025 08:54:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:46 GMT
 
