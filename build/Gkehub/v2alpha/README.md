@@ -4,7 +4,7 @@ Auto-generated client library for using the **GKE Hub API (version: v2alpha)** i
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:52:35 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:53:16 GMT
 - **Last Modified:** Fri, 03 Oct 2025 09:05:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:21 GMT
 
