@@ -4,7 +4,7 @@ Auto-generated client library for using the **Campaign Manager 360 API (version:
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:41:51 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:43:00 GMT
 - **Last Modified:** Fri, 03 Oct 2025 08:56:22 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:18 GMT
 
@@ -22,6 +22,6 @@ Inserts a new creative asset.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.advertiserId` | `string` | Yes | Advertiser ID of this creative. This is a required field. |
 | `params.profileId` | `string` | Yes | User profile ID associated with this request. |
+| `params.advertiserId` | `string` | Yes | Advertiser ID of this creative. This is a required field. |
 | `params.requestBody` | `object` | Yes | The request body. |
