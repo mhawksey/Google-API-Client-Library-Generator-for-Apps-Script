@@ -18,95 +18,95 @@ class Cloudresourcemanager {
     this._servicePath = '';
 
 
-    this.liens = {};
-    this.liens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/liens', 'GET', apiParams, clientConfig);
-    this.liens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.liens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/liens', 'POST', apiParams, clientConfig);
-    this.liens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
     this.folders = {};
-    this.folders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/folders', 'GET', apiParams, clientConfig);
-    this.folders.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/folders:search', 'GET', apiParams, clientConfig);
-    this.folders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/folders', 'POST', apiParams, clientConfig);
-    this.folders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
     this.folders.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:move', 'POST', apiParams, clientConfig);
+    this.folders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.folders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.folders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/folders:search', 'GET', apiParams, clientConfig);
+    this.folders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/folders', 'GET', apiParams, clientConfig);
+    this.folders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/folders', 'POST', apiParams, clientConfig);
     this.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
     this.folders.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:undelete', 'POST', apiParams, clientConfig);
     this.folders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.folders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.folders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.folders.capabilities = {};
-    this.folders.capabilities.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
     this.folders.capabilities.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.capabilities.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
-    this.organizations = {};
-    this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/organizations:search', 'GET', apiParams, clientConfig);
-    this.organizations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.organizations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.organizations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.tagBindings = {};
+    this.tagBindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagBindings', 'POST', apiParams, clientConfig);
+    this.tagBindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagBindings', 'GET', apiParams, clientConfig);
+    this.tagBindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects = {};
-    this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/projects', 'GET', apiParams, clientConfig);
-    this.projects.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/projects:search', 'GET', apiParams, clientConfig);
-    this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/projects', 'POST', apiParams, clientConfig);
-    this.projects.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:move', 'POST', apiParams, clientConfig);
-    this.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.liens = {};
+    this.liens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.liens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.liens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/liens', 'GET', apiParams, clientConfig);
+    this.liens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/liens', 'POST', apiParams, clientConfig);
 
     this.locations = {};
-
-    this.locations.tagBindingCollections = {};
-    this.locations.tagBindingCollections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.locations.tagBindingCollections.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PUT', apiParams, clientConfig);
 
     this.locations.effectiveTagBindingCollections = {};
     this.locations.effectiveTagBindingCollections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
-    this.tagBindings = {};
-    this.tagBindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagBindings', 'GET', apiParams, clientConfig);
-    this.tagBindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagBindings', 'POST', apiParams, clientConfig);
-    this.tagBindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.locations.tagBindingCollections = {};
+    this.locations.tagBindingCollections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.locations.tagBindingCollections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.organizations = {};
+    this.organizations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/organizations:search', 'GET', apiParams, clientConfig);
+    this.organizations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+    this.projects.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/projects:search', 'GET', apiParams, clientConfig);
+    this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/projects', 'GET', apiParams, clientConfig);
+    this.projects.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/projects', 'POST', apiParams, clientConfig);
+    this.projects.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:move', 'POST', apiParams, clientConfig);
+    this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
 
     this.effectiveTags = {};
     this.effectiveTags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/effectiveTags', 'GET', apiParams, clientConfig);
 
-    this.tagKeys = {};
-    this.tagKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagKeys', 'GET', apiParams, clientConfig);
-    this.tagKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.tagKeys.getNamespaced = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagKeys/namespaced', 'GET', apiParams, clientConfig);
-    this.tagKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagKeys', 'POST', apiParams, clientConfig);
-    this.tagKeys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.tagKeys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.tagKeys.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.tagKeys.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.tagKeys.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
     this.tagValues = {};
+    this.tagValues.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.tagValues.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
     this.tagValues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagValues', 'GET', apiParams, clientConfig);
     this.tagValues.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.tagValues.getNamespaced = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagValues/namespaced', 'GET', apiParams, clientConfig);
-    this.tagValues.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagValues', 'POST', apiParams, clientConfig);
-    this.tagValues.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.tagValues.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
     this.tagValues.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.tagValues.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.tagValues.getNamespaced = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagValues/namespaced', 'GET', apiParams, clientConfig);
+    this.tagValues.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
     this.tagValues.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.tagValues.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagValues', 'POST', apiParams, clientConfig);
 
     this.tagValues.tagHolds = {};
     this.tagValues.tagHolds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/tagHolds', 'POST', apiParams, clientConfig);
     this.tagValues.tagHolds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
     this.tagValues.tagHolds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/tagHolds', 'GET', apiParams, clientConfig);
+
+    this.operations = {};
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.tagKeys = {};
+    this.tagKeys.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.tagKeys.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.tagKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.tagKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagKeys', 'POST', apiParams, clientConfig);
+    this.tagKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagKeys', 'GET', apiParams, clientConfig);
+    this.tagKeys.getNamespaced = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/tagKeys/namespaced', 'GET', apiParams, clientConfig);
+    this.tagKeys.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.tagKeys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.tagKeys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
