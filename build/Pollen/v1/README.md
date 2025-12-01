@@ -4,7 +4,7 @@ Auto-generated client library for using the **Pollen API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:13:09 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:06:07 GMT
 - **Last Modified:** Sat, 01 Nov 2025 01:13:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:45:50 GMT
 
@@ -22,13 +22,13 @@ Returns up to 5 days of daily pollen information in more than 65 countries, up t
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.days` | `integer` | No | Required. A number that indicates how many forecast days to request (minimum value 1, maximum value is 5). |
+| `params.location.latitude` | `number` | No | The latitude in degrees. It must be in the range [-90.0, +90.0]. |
+| `params.plantsDescription` | `boolean` | No | Optional. Contains general information about plants, including details on their seasonality, special shapes and colors, information about allergic cross-reactions, and plant photos. The default value is "true". |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of daily info records to return per page. The default and max value is 5, indicating 5 days of data. |
 | `params.pageToken` | `string` | No | Optional. A page token received from a previous daily call. It is used to retrieve the subsequent page. Note that when providing a value for the page token, all other request parameters provided must match the previous call that provided the page token. |
-| `params.plantsDescription` | `boolean` | No | Optional. Contains general information about plants, including details on their seasonality, special shapes and colors, information about allergic cross-reactions, and plant photos. The default value is "true". |
-| `params.location.latitude` | `number` | No | The latitude in degrees. It must be in the range [-90.0, +90.0]. |
-| `params.days` | `integer` | No | Required. A number that indicates how many forecast days to request (minimum value 1, maximum value is 5). |
-| `params.languageCode` | `string` | No | Optional. Allows the client to choose the language for the response. If data cannot be provided for that language, the API uses the closest match. Allowed values rely on the IETF BCP-47 standard. The default value is "en". |
 | `params.location.longitude` | `number` | No | The longitude in degrees. It must be in the range [-180.0, +180.0]. |
+| `params.languageCode` | `string` | No | Optional. Allows the client to choose the language for the response. If data cannot be provided for that language, the API uses the closest match. Allowed values rely on the IETF BCP-47 standard. The default value is "en". |
 
 ### `mapTypes`
 
