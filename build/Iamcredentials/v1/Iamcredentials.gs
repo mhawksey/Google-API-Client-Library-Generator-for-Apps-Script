@@ -28,8 +28,8 @@ class Iamcredentials {
     this.projects.serviceAccounts = {};
     this.projects.serviceAccounts.signJwt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:signJwt', 'POST', apiParams, clientConfig);
     this.projects.serviceAccounts.generateIdToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateIdToken', 'POST', apiParams, clientConfig);
-    this.projects.serviceAccounts.generateAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateAccessToken', 'POST', apiParams, clientConfig);
     this.projects.serviceAccounts.getAllowedLocations = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/allowedLocations', 'GET', apiParams, clientConfig);
+    this.projects.serviceAccounts.generateAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateAccessToken', 'POST', apiParams, clientConfig);
     this.projects.serviceAccounts.signBlob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:signBlob', 'POST', apiParams, clientConfig);
 
     this.projects.locations = {};
