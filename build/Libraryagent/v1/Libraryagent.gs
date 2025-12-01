@@ -23,10 +23,10 @@ class Libraryagent {
     this.shelves.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/shelves', 'GET', apiParams, clientConfig);
 
     this.shelves.books = {};
-    this.shelves.books.borrow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:borrow', 'POST', apiParams, clientConfig);
-    this.shelves.books.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/books', 'GET', apiParams, clientConfig);
-    this.shelves.books.return = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:return', 'POST', apiParams, clientConfig);
     this.shelves.books.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.shelves.books.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/books', 'GET', apiParams, clientConfig);
+    this.shelves.books.borrow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:borrow', 'POST', apiParams, clientConfig);
+    this.shelves.books.return = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:return', 'POST', apiParams, clientConfig);
   }
 
 /**
