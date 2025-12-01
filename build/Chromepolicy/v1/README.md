@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Policy API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:25:30 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:25:30 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:31:59 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:31:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:14 GMT
 
 
@@ -16,27 +16,6 @@ Auto-generated client library for using the **Chrome Policy API (version: v1)** 
 
 ### `customers`
 
-### `customers.policySchemas`
-
-#### `customers.policySchemas.list()`
-
-Gets a list of policy schemas that match a specified filter value for a given customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The customer for which the listing request will apply. |
-| `params.pageSize` | `integer` | No | The maximum number of policy schemas to return, defaults to 100 and has a maximum of 1000. |
-| `params.filter` | `string` | No | The schema filter used to find a particular schema based on fields like its resource name, description and `additionalTargetKeyNames`. |
-| `params.pageToken` | `string` | No | The page token used to retrieve a specific page of the listing request. |
-
-#### `customers.policySchemas.get()`
-
-Get a specific policy schema for a customer by its resource name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The policy schema resource name to query. |
-
 ### `customers.policies`
 
 #### `customers.policies.resolve()`
@@ -46,6 +25,64 @@ Gets the resolved policy values for a list of policies that match a search query
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `customers.policies.orgunits`
+
+#### `customers.policies.orgunits.batchInherit()`
+
+Modify multiple policy values that are applied to a specific org unit so that they now inherit the value from a parent (if applicable). All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.policies.orgunits.batchModify()`
+
+Modify multiple policy values that are applied to a specific org unit. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `customers.policies.groups`
+
+#### `customers.policies.groups.batchModify()`
+
+Modify multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.policies.groups.listGroupPriorityOrdering()`
+
+Retrieve a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.policies.groups.updateGroupPriorityOrdering()`
+
+Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.policies.groups.batchDelete()`
+
+Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `customers.policies.networks`
@@ -68,15 +105,6 @@ Remove an existing certificate by guid.
 | `params.customer` | `string` | Yes | Required. The customer whose certificate will be removed. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.policies.networks.defineCertificate()`
-
-Creates a certificate at a specified OU for a customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | Required. The customer for which the certificate will apply. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `customers.policies.networks.removeNetwork()`
 
 Remove an existing network by guid.
@@ -86,63 +114,35 @@ Remove an existing network by guid.
 | `params.customer` | `string` | Yes | Required. The customer whose network will be removed. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `customers.policies.groups`
+#### `customers.policies.networks.defineCertificate()`
 
-#### `customers.policies.groups.listGroupPriorityOrdering()`
-
-Retrieve a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
+Creates a certificate at a specified OU for a customer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
+| `params.customer` | `string` | Yes | Required. The customer for which the certificate will apply. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.policies.groups.batchDelete()`
+### `customers.policySchemas`
 
-Delete multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+#### `customers.policySchemas.get()`
+
+Get a specific policy schema for a customer by its resource name.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The policy schema resource name to query. |
 
-#### `customers.policies.groups.updateGroupPriorityOrdering()`
+#### `customers.policySchemas.list()`
 
-Update a group priority ordering for an app. The target app must be supplied in `additionalTargetKeyNames` in the PolicyTargetKey. On failure the request will return the error details as part of the google.rpc.Status.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | Required. ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.policies.groups.batchModify()`
-
-Modify multiple policy values that are applied to a specific group. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
+Gets a list of policy schemas that match a specified filter value for a given customer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.customer` | `string` | Yes | ID of the Google Workspace account or literal "my_customer" for the customer associated to the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `customers.policies.orgunits`
-
-#### `customers.policies.orgunits.batchInherit()`
-
-Modify multiple policy values that are applied to a specific org unit so that they now inherit the value from a parent (if applicable). All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.policies.orgunits.batchModify()`
-
-Modify multiple policy values that are applied to a specific org unit. All targets must have the same target format. That is to say that they must point to the same target resource and must have the same keys specified in `additionalTargetKeyNames`, though the values for those keys may be different. On failure the request will return the error details as part of the google.rpc.Status.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customer` | `string` | Yes | ID of the G Suite account or literal "my_customer" for the customer associated to the request. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageSize` | `integer` | No | The maximum number of policy schemas to return, defaults to 100 and has a maximum of 1000. |
+| `params.pageToken` | `string` | No | The page token used to retrieve a specific page of the listing request. |
+| `params.parent` | `string` | Yes | Required. The customer for which the listing request will apply. |
+| `params.filter` | `string` | No | The schema filter used to find a particular schema based on fields like its resource name, description and `additionalTargetKeyNames`. |
 
 ### `media`
 
