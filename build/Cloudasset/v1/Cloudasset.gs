@@ -21,38 +21,38 @@ class Cloudasset {
     this.operations = {};
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.v1 = {};
-    this.v1.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
-    this.v1.batchGetAssetsHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:batchGetAssetsHistory', 'GET', apiParams, clientConfig);
-    this.v1.searchAllResources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:searchAllResources', 'GET', apiParams, clientConfig);
-    this.v1.searchAllIamPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:searchAllIamPolicies', 'GET', apiParams, clientConfig);
-    this.v1.analyzeIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeIamPolicy', 'GET', apiParams, clientConfig);
-    this.v1.analyzeIamPolicyLongrunning = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeIamPolicyLongrunning', 'POST', apiParams, clientConfig);
-    this.v1.analyzeMove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:analyzeMove', 'GET', apiParams, clientConfig);
-    this.v1.queryAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:queryAssets', 'POST', apiParams, clientConfig);
-    this.v1.analyzeOrgPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeOrgPolicies', 'GET', apiParams, clientConfig);
-    this.v1.analyzeOrgPolicyGovernedContainers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeOrgPolicyGovernedContainers', 'GET', apiParams, clientConfig);
-    this.v1.analyzeOrgPolicyGovernedAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeOrgPolicyGovernedAssets', 'GET', apiParams, clientConfig);
+    this.savedQueries = {};
+    this.savedQueries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.savedQueries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.savedQueries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/savedQueries', 'POST', apiParams, clientConfig);
+    this.savedQueries.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.savedQueries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/savedQueries', 'GET', apiParams, clientConfig);
+
+    this.feeds = {};
+    this.feeds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.feeds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.feeds.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.feeds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/feeds', 'GET', apiParams, clientConfig);
+    this.feeds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/feeds', 'POST', apiParams, clientConfig);
 
     this.assets = {};
     this.assets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/assets', 'GET', apiParams, clientConfig);
 
-    this.feeds = {};
-    this.feeds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/feeds', 'POST', apiParams, clientConfig);
-    this.feeds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.feeds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/feeds', 'GET', apiParams, clientConfig);
-    this.feeds.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.feeds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.savedQueries = {};
-    this.savedQueries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/savedQueries', 'POST', apiParams, clientConfig);
-    this.savedQueries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.savedQueries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/savedQueries', 'GET', apiParams, clientConfig);
-    this.savedQueries.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.savedQueries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.effectiveIamPolicies = {};
     this.effectiveIamPolicies.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}/effectiveIamPolicies:batchGet', 'GET', apiParams, clientConfig);
+
+    this.v1 = {};
+    this.v1.analyzeIamPolicyLongrunning = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeIamPolicyLongrunning', 'POST', apiParams, clientConfig);
+    this.v1.analyzeIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeIamPolicy', 'GET', apiParams, clientConfig);
+    this.v1.analyzeOrgPolicyGovernedAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeOrgPolicyGovernedAssets', 'GET', apiParams, clientConfig);
+    this.v1.batchGetAssetsHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:batchGetAssetsHistory', 'GET', apiParams, clientConfig);
+    this.v1.queryAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:queryAssets', 'POST', apiParams, clientConfig);
+    this.v1.searchAllIamPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:searchAllIamPolicies', 'GET', apiParams, clientConfig);
+    this.v1.analyzeOrgPolicyGovernedContainers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeOrgPolicyGovernedContainers', 'GET', apiParams, clientConfig);
+    this.v1.analyzeMove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:analyzeMove', 'GET', apiParams, clientConfig);
+    this.v1.searchAllResources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:searchAllResources', 'GET', apiParams, clientConfig);
+    this.v1.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
+    this.v1.analyzeOrgPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+scope}:analyzeOrgPolicies', 'GET', apiParams, clientConfig);
   }
 
 /**
