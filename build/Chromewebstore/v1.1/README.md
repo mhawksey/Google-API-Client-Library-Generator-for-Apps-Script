@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Web Store API (version: v1.
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:25:37 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:25:37 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:32:05 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:32:05 GMT
 - **Created:** Sat, 01 Nov 2025 00:25:37 GMT
 
 
@@ -15,6 +15,23 @@ Auto-generated client library for using the **Chrome Web Store API (version: v1.
 ## API Reference
 
 ### `items`
+
+#### `items.get()`
+
+Gets your own Chrome Web Store item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.itemId` | `string` | Yes | Unique identifier representing the Chrome App, Chrome Extension, or the Chrome Theme. |
+| `params.projection` | `string` | No | Determines which subset of the item information to return. |
+
+#### `items.insert()`
+
+Inserts a new item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.publisherEmail` | `string` | No | The email of the publisher who owns the items. Defaults to the caller's email address. |
 
 #### `items.publish()`
 
@@ -27,23 +44,6 @@ Publishes an item.
 | `params.publishTarget` | `string` | No | Provide defined publishTarget in URL (case sensitive): publishTarget="trustedTesters" or publishTarget="default". Defaults to publishTarget="default". |
 | `params.reviewExemption` | `boolean` | No | Optional. The caller request to exempt the review and directly publish because the update is within the list that we can automatically validate. The API will check if the exemption can be granted using real time data. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `items.insert()`
-
-Inserts a new item.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.publisherEmail` | `string` | No | The email of the publisher who owns the items. Defaults to the caller's email address. |
-
-#### `items.get()`
-
-Gets your own Chrome Web Store item.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.itemId` | `string` | Yes | Unique identifier representing the Chrome App, Chrome Extension, or the Chrome Theme. |
-| `params.projection` | `string` | No | Determines which subset of the item information to return. |
 
 #### `items.update()`
 
