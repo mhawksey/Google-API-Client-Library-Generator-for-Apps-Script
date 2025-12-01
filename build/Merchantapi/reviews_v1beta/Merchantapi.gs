@@ -20,17 +20,17 @@ class Merchantapi {
 
     this.accounts = {};
 
+    this.accounts.merchantReviews = {};
+    this.accounts.merchantReviews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.merchantReviews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/merchantReviews', 'GET', apiParams, clientConfig);
+    this.accounts.merchantReviews.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/merchantReviews:insert', 'POST', apiParams, clientConfig);
+    this.accounts.merchantReviews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.accounts.productReviews = {};
     this.accounts.productReviews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.productReviews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/productReviews', 'GET', apiParams, clientConfig);
     this.accounts.productReviews.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/productReviews:insert', 'POST', apiParams, clientConfig);
     this.accounts.productReviews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.accounts.merchantReviews = {};
-    this.accounts.merchantReviews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.merchantReviews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/merchantReviews', 'GET', apiParams, clientConfig);
-    this.accounts.merchantReviews.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/merchantReviews:insert', 'POST', apiParams, clientConfig);
-    this.accounts.merchantReviews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
