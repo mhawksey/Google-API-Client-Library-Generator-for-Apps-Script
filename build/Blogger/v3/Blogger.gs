@@ -18,38 +18,39 @@ class Blogger {
     this._servicePath = '';
 
 
-    this.blogs = {};
-    this.blogs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}', 'GET', apiParams, clientConfig);
-    this.blogs.listByUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs', 'GET', apiParams, clientConfig);
-    this.blogs.getByUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/byurl', 'GET', apiParams, clientConfig);
-
-    this.postUserInfos = {};
-    this.postUserInfos.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts/{postId}', 'GET', apiParams, clientConfig);
-    this.postUserInfos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts', 'GET', apiParams, clientConfig);
-
     this.comments = {};
     this.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments', 'GET', apiParams, clientConfig);
+    this.comments.listByBlog = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/comments', 'GET', apiParams, clientConfig);
+    this.comments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}', 'DELETE', apiParams, clientConfig);
     this.comments.removeContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/removecontent', 'POST', apiParams, clientConfig);
     this.comments.markAsSpam = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/spam', 'POST', apiParams, clientConfig);
-    this.comments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}', 'DELETE', apiParams, clientConfig);
-    this.comments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}', 'GET', apiParams, clientConfig);
     this.comments.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}/approve', 'POST', apiParams, clientConfig);
-    this.comments.listByBlog = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/comments', 'GET', apiParams, clientConfig);
+    this.comments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/comments/{commentId}', 'GET', apiParams, clientConfig);
 
-    this.users = {};
-    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}', 'GET', apiParams, clientConfig);
+    this.pages = {};
+    this.pages.revert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/revert', 'POST', apiParams, clientConfig);
+    this.pages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'DELETE', apiParams, clientConfig);
+    this.pages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PATCH', apiParams, clientConfig);
+    this.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'GET', apiParams, clientConfig);
+    this.pages.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PUT', apiParams, clientConfig);
+    this.pages.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages', 'POST', apiParams, clientConfig);
+    this.pages.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/publish', 'POST', apiParams, clientConfig);
+    this.pages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages', 'GET', apiParams, clientConfig);
 
     this.posts = {};
-    this.posts.revert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/revert', 'POST', apiParams, clientConfig);
-    this.posts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'DELETE', apiParams, clientConfig);
-    this.posts.getByPath = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/bypath', 'GET', apiParams, clientConfig);
-    this.posts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'GET', apiParams, clientConfig);
-    this.posts.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/search', 'GET', apiParams, clientConfig);
-    this.posts.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/publish', 'POST', apiParams, clientConfig);
     this.posts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts', 'GET', apiParams, clientConfig);
     this.posts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'PATCH', apiParams, clientConfig);
     this.posts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'PUT', apiParams, clientConfig);
+    this.posts.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/publish', 'POST', apiParams, clientConfig);
+    this.posts.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/search', 'GET', apiParams, clientConfig);
+    this.posts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'DELETE', apiParams, clientConfig);
+    this.posts.getByPath = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/bypath', 'GET', apiParams, clientConfig);
+    this.posts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}', 'GET', apiParams, clientConfig);
+    this.posts.revert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts/{postId}/revert', 'POST', apiParams, clientConfig);
     this.posts.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/posts', 'POST', apiParams, clientConfig);
+
+    this.users = {};
+    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}', 'GET', apiParams, clientConfig);
 
     this.pageViews = {};
     this.pageViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pageviews', 'GET', apiParams, clientConfig);
@@ -57,15 +58,14 @@ class Blogger {
     this.blogUserInfos = {};
     this.blogUserInfos.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}', 'GET', apiParams, clientConfig);
 
-    this.pages = {};
-    this.pages.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/publish', 'POST', apiParams, clientConfig);
-    this.pages.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages', 'POST', apiParams, clientConfig);
-    this.pages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'GET', apiParams, clientConfig);
-    this.pages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PATCH', apiParams, clientConfig);
-    this.pages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages', 'GET', apiParams, clientConfig);
-    this.pages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'DELETE', apiParams, clientConfig);
-    this.pages.revert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}/revert', 'POST', apiParams, clientConfig);
-    this.pages.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}/pages/{pageId}', 'PUT', apiParams, clientConfig);
+    this.blogs = {};
+    this.blogs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/{blogId}', 'GET', apiParams, clientConfig);
+    this.blogs.listByUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs', 'GET', apiParams, clientConfig);
+    this.blogs.getByUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/blogs/byurl', 'GET', apiParams, clientConfig);
+
+    this.postUserInfos = {};
+    this.postUserInfos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts', 'GET', apiParams, clientConfig);
+    this.postUserInfos.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/users/{userId}/blogs/{blogId}/posts/{postId}', 'GET', apiParams, clientConfig);
   }
 
 /**
