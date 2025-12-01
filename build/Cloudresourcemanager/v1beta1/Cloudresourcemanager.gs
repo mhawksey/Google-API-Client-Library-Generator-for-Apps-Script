@@ -19,24 +19,24 @@ class Cloudresourcemanager {
 
 
     this.projects = {};
-    this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects', 'POST', apiParams, clientConfig);
-    this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects', 'GET', apiParams, clientConfig);
-    this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}', 'GET', apiParams, clientConfig);
-    this.projects.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}', 'PUT', apiParams, clientConfig);
-    this.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}', 'DELETE', apiParams, clientConfig);
     this.projects.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.getAncestry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}:getAncestry', 'POST', apiParams, clientConfig);
+    this.projects.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}', 'PUT', apiParams, clientConfig);
     this.projects.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}', 'DELETE', apiParams, clientConfig);
+    this.projects.getAncestry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}:getAncestry', 'POST', apiParams, clientConfig);
+    this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}', 'GET', apiParams, clientConfig);
     this.projects.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects', 'GET', apiParams, clientConfig);
     this.projects.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects', 'POST', apiParams, clientConfig);
 
     this.organizations = {};
-    this.organizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/organizations', 'GET', apiParams, clientConfig);
-    this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
-    this.organizations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
     this.organizations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.organizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/organizations', 'GET', apiParams, clientConfig);
+    this.organizations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
   }
 
 /**
