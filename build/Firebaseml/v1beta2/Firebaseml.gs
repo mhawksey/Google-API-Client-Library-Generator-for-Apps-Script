@@ -21,12 +21,12 @@ class Firebaseml {
     this.projects = {};
 
     this.projects.models = {};
-    this.projects.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.models.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:download', 'GET', apiParams, clientConfig);
+    this.projects.models.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/models', 'POST', apiParams, clientConfig);
     this.projects.models.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.models.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/models', 'POST', apiParams, clientConfig);
     this.projects.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/models', 'GET', apiParams, clientConfig);
+    this.projects.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.operations = {};
     this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
