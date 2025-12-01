@@ -18,50 +18,50 @@ class Cloudresourcemanager {
     this._servicePath = '';
 
 
-    this.liens = {};
-    this.liens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/liens', 'GET', apiParams, clientConfig);
-    this.liens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.liens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/liens', 'POST', apiParams, clientConfig);
-    this.liens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects = {};
-    this.projects.listAvailableOrgPolicyConstraints = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listAvailableOrgPolicyConstraints', 'POST', apiParams, clientConfig);
-    this.projects.listOrgPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listOrgPolicies', 'POST', apiParams, clientConfig);
-    this.projects.getOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getOrgPolicy', 'POST', apiParams, clientConfig);
+    this.projects.getAncestry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:getAncestry', 'POST', apiParams, clientConfig);
+    this.projects.clearOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:clearOrgPolicy', 'POST', apiParams, clientConfig);
+    this.projects.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects', 'POST', apiParams, clientConfig);
+    this.projects.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}', 'PUT', apiParams, clientConfig);
     this.projects.getEffectiveOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getEffectiveOrgPolicy', 'POST', apiParams, clientConfig);
     this.projects.setOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setOrgPolicy', 'POST', apiParams, clientConfig);
-    this.projects.clearOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:clearOrgPolicy', 'POST', apiParams, clientConfig);
+    this.projects.listOrgPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listOrgPolicies', 'POST', apiParams, clientConfig);
     this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}', 'GET', apiParams, clientConfig);
+    this.projects.listAvailableOrgPolicyConstraints = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listAvailableOrgPolicyConstraints', 'POST', apiParams, clientConfig);
     this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects', 'GET', apiParams, clientConfig);
-    this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects', 'POST', apiParams, clientConfig);
-    this.projects.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}', 'PUT', apiParams, clientConfig);
-    this.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}', 'DELETE', apiParams, clientConfig);
-    this.projects.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.getAncestry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:getAncestry', 'POST', apiParams, clientConfig);
     this.projects.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.folders = {};
-    this.folders.listAvailableOrgPolicyConstraints = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listAvailableOrgPolicyConstraints', 'POST', apiParams, clientConfig);
-    this.folders.listOrgPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listOrgPolicies', 'POST', apiParams, clientConfig);
-    this.folders.getOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getOrgPolicy', 'POST', apiParams, clientConfig);
-    this.folders.getEffectiveOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getEffectiveOrgPolicy', 'POST', apiParams, clientConfig);
-    this.folders.setOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setOrgPolicy', 'POST', apiParams, clientConfig);
-    this.folders.clearOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:clearOrgPolicy', 'POST', apiParams, clientConfig);
+    this.projects.getOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getOrgPolicy', 'POST', apiParams, clientConfig);
+    this.projects.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}', 'DELETE', apiParams, clientConfig);
 
     this.organizations = {};
     this.organizations.listAvailableOrgPolicyConstraints = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listAvailableOrgPolicyConstraints', 'POST', apiParams, clientConfig);
     this.organizations.listOrgPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listOrgPolicies', 'POST', apiParams, clientConfig);
-    this.organizations.getOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getOrgPolicy', 'POST', apiParams, clientConfig);
-    this.organizations.getEffectiveOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getEffectiveOrgPolicy', 'POST', apiParams, clientConfig);
-    this.organizations.setOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setOrgPolicy', 'POST', apiParams, clientConfig);
-    this.organizations.clearOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:clearOrgPolicy', 'POST', apiParams, clientConfig);
-    this.organizations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/organizations:search', 'POST', apiParams, clientConfig);
-    this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.organizations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.getOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getOrgPolicy', 'POST', apiParams, clientConfig);
     this.organizations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.organizations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/organizations:search', 'POST', apiParams, clientConfig);
+    this.organizations.getEffectiveOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getEffectiveOrgPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.clearOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:clearOrgPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.setOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setOrgPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.liens = {};
+    this.liens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.liens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/liens', 'POST', apiParams, clientConfig);
+    this.liens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.liens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/liens', 'GET', apiParams, clientConfig);
+
+    this.folders = {};
+    this.folders.listOrgPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listOrgPolicies', 'POST', apiParams, clientConfig);
+    this.folders.getEffectiveOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getEffectiveOrgPolicy', 'POST', apiParams, clientConfig);
+    this.folders.clearOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:clearOrgPolicy', 'POST', apiParams, clientConfig);
+    this.folders.listAvailableOrgPolicyConstraints = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listAvailableOrgPolicyConstraints', 'POST', apiParams, clientConfig);
+    this.folders.getOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getOrgPolicy', 'POST', apiParams, clientConfig);
+    this.folders.setOrgPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setOrgPolicy', 'POST', apiParams, clientConfig);
 
     this.operations = {};
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
