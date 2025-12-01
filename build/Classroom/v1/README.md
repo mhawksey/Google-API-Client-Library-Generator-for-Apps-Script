@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Classroom API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:25:47 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:25:47 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:32:14 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:32:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:20:50 GMT
 
 
@@ -14,25 +14,264 @@ Auto-generated client library for using the **Google Classroom API (version: v1)
 
 ## API Reference
 
-### `courses`
+### `invitations`
 
-#### `courses.updateGradingPeriodSettings()`
+#### `invitations.accept()`
 
-Updates grading period settings of a course. Individual grading periods can be added, removed, or modified using this method. The requesting user and course owner must be eligible to modify Grading Periods. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/grading-periods/manage-grading-periods#licensing_requirements). This method returns the following error codes:
+Accepts an invitation, removing it and adding the invited user to the teachers or students (as appropriate) of the specified course. Only the invited user may accept an invitation. This method returns the following error codes:
 
-* `PERMISSION_DENIED` if the requesting user is not permitted to modify the grading period settings in a course or for access errors:
+* `PERMISSION_DENIED` if the requesting user is not permitted to accept the requested invitation or for access errors.
 
-* UserIneligibleToUpdateGradingPeriodSettings
+* `FAILED_PRECONDITION` for the following request errors:
 
-* `INVALID_ARGUMENT` if the request is malformed.
+* CourseMemberLimitReached
 
-* `NOT_FOUND` if the requested course does not exist.
+* CourseNotModifiable
+
+* CourseTeacherLimitReached
+
+* UserGroupsMembershipLimitReached
+
+* `NOT_FOUND` if no invitation exists with the requested ID.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Mask that identifies which fields in the GradingPeriodSettings to update. The GradingPeriodSettings `grading_periods` list will be fully replaced by the grading periods specified in the update request. For example: * Grading periods included in the list without an ID are considered additions, and a new ID will be assigned when the request is made. * Grading periods that currently exist, but are missing from the request will be considered deletions. * Grading periods with an existing ID and modified data are considered edits. Unmodified data will be left as is. * Grading periods included with an unknown ID will result in an error. The following fields may be specified: * `grading_periods` * `apply_to_existing_coursework` |
-| `params.courseId` | `string` | Yes | Required. The identifier of the course. |
+| `params.id` | `string` | Yes | Identifier of the invitation to accept. |
+
+#### `invitations.delete()`
+
+Deletes an invitation. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested invitation or for access errors.
+
+* `NOT_FOUND` if no invitation exists with the requested ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | Identifier of the invitation to delete. |
+
+#### `invitations.list()`
+
+Returns a list of invitations that the requesting user is permitted to view, restricted to those that match the list request. *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields can be supplied. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | No | Restricts returned invitations to those for a course with the specified identifier. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. The default is 500 if unspecified or `0`. The server may return fewer than the specified number of results. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+| `params.userId` | `string` | No | Restricts returned invitations to those for a specific user. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+
+#### `invitations.create()`
+
+Creates an invitation. Only one invitation for a user and course may exist at a time. Delete and re-create an invitation to make changes. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for access errors.
+
+* `NOT_FOUND` if the course or the user does not exist.
+
+* `FAILED_PRECONDITION`:
+
+* if the requested user's account is disabled.
+
+* if the user already has this role or a role with greater permissions.
+
+* for the following request errors:
+
+* IneligibleOwner
+
+* `ALREADY_EXISTS` if an invitation for the specified user and course already exists.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `invitations.get()`
+
+Returns an invitation. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to view the requested invitation or for access errors.
+
+* `NOT_FOUND` if no invitation exists with the requested ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | Identifier of the invitation to return. |
+
+### `registrations`
+
+#### `registrations.delete()`
+
+Deletes a `Registration`, causing Classroom to stop sending notifications for that `Registration`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.registrationId` | `string` | Yes | The `registration_id` of the `Registration` to be deleted. |
+
+#### `registrations.create()`
+
+Creates a `Registration`, causing Classroom to start sending notifications from the provided `feed` to the destination provided in `cloudPubSubTopic`. Returns the created `Registration`. Currently, this will be the same as the argument, but with server-assigned fields such as `expiry_time` and `id` filled in. Note that any value specified for the `expiry_time` or `id` fields will be ignored. While Classroom may validate the `cloudPubSubTopic` and return errors on a best effort basis, it is the caller's responsibility to ensure that it exists and that Classroom has permission to publish to it. This method may return the following error codes:
+
+* `PERMISSION_DENIED` if:
+
+* the authenticated user does not have permission to receive notifications from the requested field; or
+
+* the current user has not granted access to the current Cloud project with the appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors is returned.
+
+* another access error is encountered.
+
+* `INVALID_ARGUMENT` if:
+
+* no `cloudPubsubTopic` is specified, or the specified `cloudPubsubTopic` is not valid; or
+
+* no `feed` is specified, or the specified `feed` is not valid.
+
+* `NOT_FOUND` if:
+
+* the specified `feed` cannot be located, or the requesting user does not have permission to determine whether or not it exists; or
+
+* the specified `cloudPubsubTopic` cannot be located, or Classroom has not been granted permission to publish to it.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `userProfiles`
+
+#### `userProfiles.get()`
+
+Returns a user profile. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access this user profile, if no profile exists with the requested ID, or for access errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.userId` | `string` | Yes | Identifier of the profile to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+
+### `userProfiles.guardianInvitations`
+
+#### `userProfiles.guardianInvitations.patch()`
+
+Modifies a guardian invitation. Currently, the only valid modification is to change the `state` from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if guardians are not enabled for the domain in question or for other access errors.
+
+* `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state.
+
+* `INVALID_ARGUMENT` if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies fields other than `state`.
+
+* `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student, or if the `id` field does not refer to a guardian invitation known to Classroom.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.studentId` | `string` | Yes | The ID of the student whose guardian invitation is to be modified. |
+| `params.invitationId` | `string` | Yes | The `id` field of the `GuardianInvitation` to be modified. |
+| `params.updateMask` | `string` | No | Mask that identifies which fields on the course to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields are valid: * `state` When set in a query parameter, this field should be specified as `updateMask=,,...` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `userProfiles.guardianInvitations.list()`
+
+Returns a list of guardian invitations that the requesting user is permitted to view, filtered by the parameters provided. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian invitations for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, or for other access errors.
+
+* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` or `state` is provided.
+
+* `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.studentId` | `string` | Yes | The ID of the student whose guardian invitations are to be returned. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user is permitted to view guardian invitations. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+| `params.states` | `string` | No | If specified, only results with the specified `state` values are returned. Otherwise, results with a `state` of `PENDING` are returned. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.invitedEmailAddress` | `string` | No | If specified, only results with the specified `invited_email_address` are returned. |
+
+#### `userProfiles.guardianInvitations.create()`
+
+Creates a guardian invitation, and sends an email to the guardian asking them to confirm that they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be created to represent the active guardian. The request object must have the `student_id` and `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the request, will result in an error. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if the guardian in question has already rejected too many requests for that student, if guardians are not enabled for the domain in question, or for other access errors.
+
+* `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the guardian link limit.
+
+* `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it is too long), or if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API). This error will also be returned if read-only fields are set, or if the `state` field is set to to a value other than `PENDING`.
+
+* `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student.
+
+* `ALREADY_EXISTS` if there is already a pending guardian invitation for the student and `invited_email_address` provided, or if the provided `invited_email_address` matches the Google account of an existing `Guardian` for this user.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.studentId` | `string` | Yes | ID of the student (in standard format) |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `userProfiles.guardianInvitations.get()`
+
+Returns a specific guardian invitation. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors.
+
+* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`).
+
+* `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be returned if the student exists, but the requesting user does not have access to see that student.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.invitationId` | `string` | Yes | The `id` field of the `GuardianInvitation` being requested. |
+| `params.studentId` | `string` | Yes | The ID of the student whose guardian invitation is being requested. |
+
+### `userProfiles.guardians`
+
+#### `userProfiles.guardians.get()`
+
+Returns a specific guardian. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to view guardian information for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors.
+
+* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`).
+
+* `NOT_FOUND` if the requesting user is permitted to view guardians for the requested `student_id`, but no `Guardian` record exists for that student that matches the provided `guardian_id`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.guardianId` | `string` | Yes | The `id` field from a `Guardian`. |
+| `params.studentId` | `string` | Yes | The student whose guardian is being requested. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+
+#### `userProfiles.guardians.delete()`
+
+Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian will no longer be accessible via the API. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to manage guardians for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors.
+
+* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API).
+
+* `NOT_FOUND` if the requesting user is permitted to modify guardians for the requested `student_id`, but no `Guardian` record exists for that student with the provided `guardian_id`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.studentId` | `string` | Yes | The student whose guardian is to be deleted. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+| `params.guardianId` | `string` | Yes | The `id` field from a `Guardian`. |
+
+#### `userProfiles.guardians.list()`
+
+Returns a list of guardians that the requesting user is permitted to view, restricted to those that match the request. To list guardians for any student that the requesting user may view guardians for, use the literal character `-` for the student ID. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, if the `invited_email_address` filter is set by a user who is not a domain administrator, or for other access errors.
+
+* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` is provided.
+
+* `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+| `params.invitedEmailAddress` | `string` | No | Filter results by the email address that the original invitation was sent to, resulting in this guardian link. This filter can only be used by domain administrators. |
+| `params.studentId` | `string` | Yes | Filter results by the student who the guardian is linked to. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user has access to view. |
+
+### `courses`
 
 #### `courses.update()`
 
@@ -53,17 +292,17 @@ Updates a course. This method returns the following error codes:
 | `params.id` | `string` | Yes | Identifier of the course to update. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `courses.get()`
+#### `courses.getGradingPeriodSettings()`
 
-Returns a course. This method returns the following error codes:
+Returns the grading period settings in a course. This method returns the following error codes:
 
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors.
+* `PERMISSION_DENIED` if the requesting user isn't permitted to access the grading period settings in the requested course or for access errors.
 
-* `NOT_FOUND` if no course exists with the requested ID.
+* `NOT_FOUND` if the requested course does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the course to return. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.courseId` | `string` | Yes | Required. The identifier of the course. |
 
 #### `courses.patch()`
 
@@ -91,6 +330,18 @@ Updates one or more fields in a course. This method returns the following error 
 | `params.id` | `string` | Yes | Identifier of the course to update. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `courses.get()`
+
+Returns a course. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors.
+
+* `NOT_FOUND` if no course exists with the requested ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | Identifier of the course to return. This identifier can be either the Classroom-assigned identifier or an alias. |
+
 #### `courses.delete()`
 
 Deletes a course. This method returns the following error codes:
@@ -103,23 +354,23 @@ Deletes a course. This method returns the following error codes:
 |---|---|---|---|
 | `params.id` | `string` | Yes | Identifier of the course to delete. This identifier can be either the Classroom-assigned identifier or an alias. |
 
-#### `courses.list()`
+#### `courses.updateGradingPeriodSettings()`
 
-Returns a list of courses that the requesting user is permitted to view, restricted to those that match the request. Returned courses are ordered by creation time, with the most recently created coming first. This method returns the following error codes:
+Updates grading period settings of a course. Individual grading periods can be added, removed, or modified using this method. The requesting user and course owner must be eligible to modify Grading Periods. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/grading-periods/manage-grading-periods#licensing_requirements). This method returns the following error codes:
 
-* `PERMISSION_DENIED` for access errors.
+* `PERMISSION_DENIED` if the requesting user is not permitted to modify the grading period settings in a course or for access errors:
 
-* `INVALID_ARGUMENT` if the query argument is malformed.
+* UserIneligibleToUpdateGradingPeriodSettings
 
-* `NOT_FOUND` if any users specified in the query arguments do not exist.
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.courseStates` | `string` | No | Restricts returned courses to those in one of the specified states The default value is ACTIVE, ARCHIVED, PROVISIONED, DECLINED. |
-| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.studentId` | `string` | No | Restricts returned courses to those having a student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
-| `params.teacherId` | `string` | No | Restricts returned courses to those having a teacher with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+| `params.courseId` | `string` | Yes | Required. The identifier of the course. |
+| `params.updateMask` | `string` | No | Mask that identifies which fields in the GradingPeriodSettings to update. The GradingPeriodSettings `grading_periods` list will be fully replaced by the grading periods specified in the update request. For example: * Grading periods included in the list without an ID are considered additions, and a new ID will be assigned when the request is made. * Grading periods that currently exist, but are missing from the request will be considered deletions. * Grading periods with an existing ID and modified data are considered edits. Unmodified data will be left as is. * Grading periods included with an unknown ID will result in an error. The following fields may be specified: * `grading_periods` * `apply_to_existing_coursework` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.create()`
 
@@ -143,69 +394,27 @@ Creates a course. The user specified in `ownerId` is the owner of the created co
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `courses.getGradingPeriodSettings()`
+#### `courses.list()`
 
-Returns the grading period settings in a course. This method returns the following error codes:
+Returns a list of courses that the requesting user is permitted to view, restricted to those that match the request. Returned courses are ordered by creation time, with the most recently created coming first. This method returns the following error codes:
 
-* `PERMISSION_DENIED` if the requesting user isn't permitted to access the grading period settings in the requested course or for access errors.
+* `PERMISSION_DENIED` for access errors.
 
-* `NOT_FOUND` if the requested course does not exist.
+* `INVALID_ARGUMENT` if the query argument is malformed.
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Required. The identifier of the course. |
-
-### `courses.aliases`
-
-#### `courses.aliases.create()`
-
-Creates an alias for a course. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors.
-
-* `NOT_FOUND` if the course does not exist.
-
-* `ALREADY_EXISTS` if the alias already exists.
-
-* `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to access a domain-scoped alias).
+* `NOT_FOUND` if any users specified in the query arguments do not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course to alias. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.aliases.list()`
-
-Returns a list of aliases for a course. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors.
-
-* `NOT_FOUND` if the course does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | The identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
 | `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+| `params.teacherId` | `string` | No | Restricts returned courses to those having a teacher with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+| `params.courseStates` | `string` | No | Restricts returned courses to those in one of the specified states The default value is ACTIVE, ARCHIVED, PROVISIONED, DECLINED. |
+| `params.studentId` | `string` | No | Restricts returned courses to those having a student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
 
-#### `courses.aliases.delete()`
+### `courses.posts`
 
-Deletes an alias of a course. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors.
-
-* `NOT_FOUND` if the alias does not exist.
-
-* `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to delete a domain-scoped alias).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course whose alias should be deleted. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.alias` | `string` | Yes | Alias to delete. This may not be the Classroom-assigned identifier. |
-
-### `courses.courseWorkMaterials`
-
-#### `courses.courseWorkMaterials.getAddOnContext()`
+#### `courses.posts.getAddOnContext()`
 
 Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes:
 
@@ -217,11 +426,524 @@ Gets metadata for Classroom add-ons in the context of a specific post. To mainta
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
 | `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post. |
+| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
+| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
 | `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.attachmentId` | `string` | No | Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). |
+
+### `courses.posts.addOnAttachments`
+
+#### `courses.posts.addOnAttachments.delete()`
+
+Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+
+#### `courses.posts.addOnAttachments.create()`
+
+Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
+| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.posts.addOnAttachments.patch()`
+
+Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.itemId` | `string` | No | Identifier of the post under which the attachment is attached. |
+| `params.postId` | `string` | Yes | Required. Identifier of the post under which the attachment is attached. |
+| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.posts.addOnAttachments.list()`
+
+Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token. |
+| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.postId` | `string` | Yes | Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. |
+
+#### `courses.posts.addOnAttachments.get()`
+
+Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
+
+### `courses.posts.addOnAttachments.studentSubmissions`
+
+#### `courses.posts.addOnAttachments.studentSubmissions.patch()`
+
+Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned` |
+| `params.submissionId` | `string` | Yes | Required. Identifier of the student's submission. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.posts.addOnAttachments.studentSubmissions.get()`
+
+Returns a student submission for an add-on attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.submissionId` | `string` | Yes | Required. Identifier of the student’s submission. |
+| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+
+### `courses.topics`
+
+#### `courses.topics.delete()`
+
+Deletes a topic. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not allowed to delete the requested topic or for access errors.
+
+* `FAILED_PRECONDITION` if the requested topic has already been deleted.
+
+* `NOT_FOUND` if no course or topic exists with the requested ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | Identifier of the topic to delete. |
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+
+#### `courses.topics.get()`
+
+Returns a topic. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or topic, or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course or topic does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. |
+| `params.id` | `string` | Yes | Identifier of the topic. |
+
+#### `courses.topics.patch()`
+
+Updates one or more fields of a topic. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `FAILED_PRECONDITION` if there exists a topic in the course with the same name.
+
+* `NOT_FOUND` if the requested course or topic does not exist
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | Identifier of the topic. |
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.updateMask` | `string` | No | Mask that identifies which fields on the topic to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Topic object. If a field that does not support empty values is included in the update mask and not set in the Topic object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified: * `name` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.topics.create()`
+
+Creates a topic. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a topic in the requested course, or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `ALREADY_EXISTS` if there exists a topic in the course with the same name.
+
+* `FAILED_PRECONDITION` for the following request error:
+
+* CourseTopicLimitReached
+
+* `NOT_FOUND` if the requested course does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.topics.list()`
+
+Returns the list of topics that the requester is permitted to view. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+
+### `courses.announcements`
+
+#### `courses.announcements.list()`
+
+Returns a list of announcements that the requester is permitted to view. Course students may only view `PUBLISHED` announcements. Course teachers and domain administrators may view all announcements. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+| `params.orderBy` | `string` | No | Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime` |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.announcementStates` | `string` | No | Restriction on the `state` of announcements returned. If this argument is left unspecified, the default value is `PUBLISHED`. |
+
+#### `courses.announcements.modifyAssignees()`
+
+Modifies assignee mode and options of an announcement. Only a teacher of the course that contains the announcement may call this method. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course or course work does not exist.
+
+* `FAILED_PRECONDITION` for the following request error:
+
+* EmptyAssignees
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.id` | `string` | Yes | Identifier of the announcement. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.announcements.delete()`
+
+Deletes an announcement. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement, if the requesting user is not permitted to delete the requested course or for access errors.
+
+* `FAILED_PRECONDITION` if the requested announcement has already been deleted.
+
+* `NOT_FOUND` if no course exists with the requested ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.id` | `string` | Yes | Identifier of the announcement to delete. This identifier is a Classroom-assigned identifier. |
+
+#### `courses.announcements.getAddOnContext()`
+
+Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.attachmentId` | `string` | No | Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). |
+| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+
+#### `courses.announcements.create()`
+
+Creates an announcement. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create announcements in the requested course, share a Drive attachment, or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course does not exist.
+
+* `FAILED_PRECONDITION` for the following request error:
+
+* AttachmentNotVisible
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.announcements.get()`
+
+Returns an announcement. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or announcement, or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course or announcement does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | Identifier of the announcement. |
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+
+#### `courses.announcements.patch()`
+
+Updates one or more fields of an announcement. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `FAILED_PRECONDITION` if the requested announcement has already been deleted.
+
+* `NOT_FOUND` if the requested course or announcement does not exist
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | Identifier of the announcement. |
+| `params.updateMask` | `string` | No | Mask that identifies which fields on the announcement to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Announcement object. If a field that does not support empty values is included in the update mask and not set in the Announcement object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `text` * `state` * `scheduled_time` |
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `courses.announcements.addOnAttachments`
+
+#### `courses.announcements.addOnAttachments.patch()`
+
+Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
+| `params.itemId` | `string` | Yes | Identifier of the post under which the attachment is attached. |
+| `params.postId` | `string` | No | Required. Identifier of the post under which the attachment is attached. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.announcements.addOnAttachments.get()`
+
+Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+
+#### `courses.announcements.addOnAttachments.delete()`
+
+Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+
+#### `courses.announcements.addOnAttachments.list()`
+
+Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.postId` | `string` | No | Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. |
+| `params.pageSize` | `integer` | No | The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. |
+
+#### `courses.announcements.addOnAttachments.create()`
+
+Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `courses.teachers`
+
+#### `courses.teachers.create()`
+
+Creates a teacher of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as teachers to courses within their domain. Non-admin users should send an Invitation instead. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to create teachers in this course or for access errors.
+
+* `NOT_FOUND` if the requested course ID does not exist.
+
+* `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors:
+
+* CourseMemberLimitReached
+
+* CourseNotModifiable
+
+* CourseTeacherLimitReached
+
+* UserGroupsMembershipLimitReached
+
+* InactiveCourseOwner
+
+* `ALREADY_EXISTS` if the user is already a teacher or student in the course.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.teachers.delete()`
+
+Removes the specified teacher from the specified course. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for access errors.
+
+* `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist.
+
+* `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course.
+
+* `FAILED_PRECONDITION` if the requested ID belongs to the owner of the course Drive folder.
+
+* `FAILED_PRECONDITION` if the course no longer has an active owner.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.userId` | `string` | Yes | Identifier of the teacher to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+
+#### `courses.teachers.list()`
+
+Returns a list of teachers of this course that the requester is permitted to view. This method returns the following error codes:
+
+* `NOT_FOUND` if the course does not exist.
+
+* `PERMISSION_DENIED` for access errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results. |
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+
+#### `courses.teachers.get()`
+
+Returns a teacher of a course. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to view teachers of this course or for access errors.
+
+* `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.userId` | `string` | Yes | Identifier of the teacher to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+
+### `courses.courseWorkMaterials`
 
 #### `courses.courseWorkMaterials.get()`
 
@@ -235,8 +957,26 @@ Returns a course work material. This method returns the following error codes:
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the course work material. |
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+
+#### `courses.courseWorkMaterials.getAddOnContext()`
+
+Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.attachmentId` | `string` | No | Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). |
+| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post. |
 
 #### `courses.courseWorkMaterials.create()`
 
@@ -273,9 +1013,9 @@ Updates one or more fields of a course work material. This method returns the fo
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the course work material to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the course work material object. If a field that does not support empty values is included in the update mask and not set in the course work material object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `scheduled_time` * `topic_id` |
 | `params.id` | `string` | Yes | Identifier of the course work material. |
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWorkMaterials.list()`
@@ -290,13 +1030,13 @@ Returns a list of course work material that the requester is permitted to view. 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.courseWorkMaterialStates` | `string` | No | Restriction on the work status to return. Only course work material that matches is returned. If unspecified, items with a work status of `PUBLISHED` is returned. |
-| `params.materialDriveId` | `string` | No | Optional filtering for course work material with at least one Drive material whose ID matches the provided string. If `material_link` is also specified, course work material must have materials matching both filters. |
 | `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.materialDriveId` | `string` | No | Optional filtering for course work material with at least one Drive material whose ID matches the provided string. If `material_link` is also specified, course work material must have materials matching both filters. |
 | `params.materialLink` | `string` | No | Optional filtering for course work material with at least one link material whose URL partially matches the provided string. |
-| `params.orderBy` | `string` | No | Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime` |
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.orderBy` | `string` | No | Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime` |
+| `params.courseWorkMaterialStates` | `string` | No | Restriction on the work status to return. Only course work material that matches is returned. If unspecified, items with a work status of `PUBLISHED` is returned. |
 
 #### `courses.courseWorkMaterials.delete()`
 
@@ -310,14 +1050,14 @@ Deletes a course work material. This request must be made by the Developer Conso
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the course work material to delete. This identifier is a Classroom-assigned identifier. |
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.id` | `string` | Yes | Identifier of the course work material to delete. This identifier is a Classroom-assigned identifier. |
 
 ### `courses.courseWorkMaterials.addOnAttachments`
 
-#### `courses.courseWorkMaterials.addOnAttachments.list()`
+#### `courses.courseWorkMaterials.addOnAttachments.patch()`
 
-Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes:
+Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
 
 * `PERMISSION_DENIED` for access errors.
 
@@ -327,11 +1067,12 @@ Returns all attachments created by an add-on under the post. Requires the add-on
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token. |
-| `params.postId` | `string` | No | Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
 | `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.postId` | `string` | No | Required. Identifier of the post under which the attachment is attached. |
+| `params.itemId` | `string` | Yes | Identifier of the post under which the attachment is attached. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWorkMaterials.addOnAttachments.get()`
 
@@ -345,10 +1086,10 @@ Returns an add-on attachment. Requires the add-on requesting the attachment to b
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
 | `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
 
 #### `courses.courseWorkMaterials.addOnAttachments.create()`
 
@@ -364,13 +1105,13 @@ Creates an add-on attachment under a post. Requires the add-on to have permissio
 |---|---|---|---|
 | `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
 | `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `courses.courseWorkMaterials.addOnAttachments.patch()`
+#### `courses.courseWorkMaterials.addOnAttachments.list()`
 
-Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
+Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes:
 
 * `PERMISSION_DENIED` for access errors.
 
@@ -380,12 +1121,11 @@ Updates an add-on attachment. Requires the add-on to have been the original crea
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.postId` | `string` | No | Required. Identifier of the post under which the attachment is attached. |
-| `params.itemId` | `string` | Yes | Identifier of the post under which the attachment is attached. |
-| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. |
 | `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageSize` | `integer` | No | The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. |
+| `params.postId` | `string` | No | Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. |
 
 #### `courses.courseWorkMaterials.addOnAttachments.delete()`
 
@@ -400,154 +1140,77 @@ Deletes an add-on attachment. Requires the add-on to have been the original crea
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
 | `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 
-### `courses.students`
+### `courses.aliases`
 
-#### `courses.students.list()`
+#### `courses.aliases.delete()`
 
-Returns a list of students of this course that the requester is permitted to view. This method returns the following error codes:
+Deletes an alias of a course. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to remove the alias or for access errors.
+
+* `NOT_FOUND` if the alias does not exist.
+
+* `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to delete a domain-scoped alias).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course whose alias should be deleted. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.alias` | `string` | Yes | Alias to delete. This may not be the Classroom-assigned identifier. |
+
+#### `courses.aliases.list()`
+
+Returns a list of aliases for a course. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the course or for access errors.
 
 * `NOT_FOUND` if the course does not exist.
 
-* `PERMISSION_DENIED` for access errors.
-
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results. |
 | `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.courseId` | `string` | Yes | The identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
 
-#### `courses.students.create()`
+#### `courses.aliases.create()`
 
-Adds a user as a student of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as students to courses within their domain. Students are permitted to add themselves to a course using an enrollment code. This method returns the following error codes:
+Creates an alias for a course. This method returns the following error codes:
 
-* `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for access errors.
-
-* `NOT_FOUND` if the requested course ID does not exist.
-
-* `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors:
-
-* CourseMemberLimitReached
-
-* CourseNotModifiable
-
-* UserGroupsMembershipLimitReached
-
-* InactiveCourseOwner
-
-* `ALREADY_EXISTS` if the user is already a student or teacher in the course.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.enrollmentCode` | `string` | No | Enrollment code of the course to create the student in. This code is required if userId corresponds to the requesting user; it may be omitted if the requesting user has administrative permissions to create students for any user. |
-| `params.courseId` | `string` | Yes | Identifier of the course to create the student in. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.students.delete()`
-
-Deletes a student of a course. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for access errors.
-
-* `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | Identifier of the student to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-
-#### `courses.students.get()`
-
-Returns a student of a course. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to view students of this course or for access errors.
-
-* `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | Identifier of the student to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-
-### `courses.teachers`
-
-#### `courses.teachers.get()`
-
-Returns a teacher of a course. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to view teachers of this course or for access errors.
-
-* `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | Identifier of the teacher to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-
-#### `courses.teachers.create()`
-
-Creates a teacher of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as teachers to courses within their domain. Non-admin users should send an Invitation instead. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to create teachers in this course or for access errors.
-
-* `NOT_FOUND` if the requested course ID does not exist.
-
-* `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors:
-
-* CourseMemberLimitReached
-
-* CourseNotModifiable
-
-* CourseTeacherLimitReached
-
-* UserGroupsMembershipLimitReached
-
-* InactiveCourseOwner
-
-* `ALREADY_EXISTS` if the user is already a teacher or student in the course.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.teachers.list()`
-
-Returns a list of teachers of this course that the requester is permitted to view. This method returns the following error codes:
+* `PERMISSION_DENIED` if the requesting user is not permitted to create the alias or for access errors.
 
 * `NOT_FOUND` if the course does not exist.
 
-* `PERMISSION_DENIED` for access errors.
+* `ALREADY_EXISTS` if the alias already exists.
+
+* `FAILED_PRECONDITION` if the alias requested does not make sense for the requesting user or course (for example, if a user not in a domain attempts to access a domain-scoped alias).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-
-#### `courses.teachers.delete()`
-
-Removes the specified teacher from the specified course. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to delete teachers of this course or for access errors.
-
-* `NOT_FOUND` if no teacher of this course has the requested ID or if the course does not exist.
-
-* `FAILED_PRECONDITION` if the requested ID belongs to the primary teacher of this course.
-
-* `FAILED_PRECONDITION` if the requested ID belongs to the owner of the course Drive folder.
-
-* `FAILED_PRECONDITION` if the course no longer has an active owner.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.userId` | `string` | Yes | Identifier of the teacher to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+| `params.courseId` | `string` | Yes | Identifier of the course to alias. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `courses.courseWork`
+
+#### `courses.courseWork.list()`
+
+Returns a list of course work that the requester is permitted to view. Course students may only view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+| `params.courseWorkStates` | `string` | No | Restriction on the work status to return. Only courseWork that matches is returned. If unspecified, items with a work status of `PUBLISHED` is returned. |
+| `params.orderBy` | `string` | No | Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported fields are `updateTime` and `dueDate`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `dueDate asc,updateTime desc`, `updateTime,dueDate desc` |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 
 #### `courses.courseWork.patch()`
 
@@ -563,45 +1226,28 @@ Updates one or more fields of a course work. See google.classroom.v1.CourseWork 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the course work. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the course work to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `CourseWork` object. If a field that does not support empty values is included in the update mask and not set in the `CourseWork` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `description` * `state` * `due_date` * `due_time` * `max_points` * `scheduled_time` * `submission_modification_mode` * `topic_id` * `grading_period_id` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.courseWork.modifyAssignees()`
-
-Modifies assignee mode and options of a coursework. Only a teacher of the course that contains the coursework may call this method. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course or course work does not exist.
-
-* `FAILED_PRECONDITION` for the following request error:
-
-* EmptyAssignees
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the coursework. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.courseWork.get()`
-
-Returns course work. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course or course work does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the course work. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.courseWork.getAddOnContext()`
+
+Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.attachmentId` | `string` | No | Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). |
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post. |
 
 #### `courses.courseWork.create()`
 
@@ -622,23 +1268,40 @@ Creates course work. The resulting course work (and corresponding student submis
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `courses.courseWork.list()`
+#### `courses.courseWork.get()`
 
-Returns a list of course work that the requester is permitted to view. Course students may only view `PUBLISHED` course work. Course teachers and domain administrators may view all course work. This method returns the following error codes:
+Returns course work. This method returns the following error codes:
 
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors.
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors.
 
 * `INVALID_ARGUMENT` if the request is malformed.
 
-* `NOT_FOUND` if the requested course does not exist.
+* `NOT_FOUND` if the requested course or course work does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.orderBy` | `string` | No | Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported fields are `updateTime` and `dueDate`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `dueDate asc,updateTime desc`, `updateTime,dueDate desc` |
-| `params.courseWorkStates` | `string` | No | Restriction on the work status to return. Only courseWork that matches is returned. If unspecified, items with a work status of `PUBLISHED` is returned. |
-| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.id` | `string` | Yes | Identifier of the course work. |
+
+#### `courses.courseWork.modifyAssignees()`
+
+Modifies assignee mode and options of a coursework. Only a teacher of the course that contains the coursework may call this method. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course or course work does not exist.
+
+* `FAILED_PRECONDITION` for the following request error:
+
+* EmptyAssignees
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.id` | `string` | Yes | Identifier of the coursework. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.delete()`
 
@@ -654,24 +1317,6 @@ Deletes a course work. This request must be made by the Developer Console projec
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the course work to delete. This identifier is a Classroom-assigned identifier. |
-
-#### `courses.courseWork.getAddOnContext()`
-
-Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.attachmentId` | `string` | No | Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). |
-| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
 
 #### `courses.courseWork.updateRubric()`
 
@@ -689,89 +1334,19 @@ Updates a rubric. See google.classroom.v1.Rubric for details of which fields can
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
 | `params.id` | `string` | No | Optional. Identifier of the rubric. |
 | `params.updateMask` | `string` | No | Optional. Mask that identifies which fields on the rubric to update. This field is required to do an update. The update fails if invalid fields are specified. There are multiple options to define the criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list. Only one of these can be used at a time to define a rubric. The rubric `criteria` list is fully replaced by the rubric criteria specified in the update request. For example, if a criterion or level is missing from the request, it is deleted. New criteria and levels are added and an ID is assigned. Existing criteria and levels retain the previously assigned ID if the ID is specified in the request. The following fields can be specified by teachers: * `criteria` * `source_spreadsheet_id` |
 | `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `courses.courseWork.studentSubmissions`
-
-#### `courses.courseWork.studentSubmissions.list()`
-
-Returns a list of student submissions that the requester is permitted to view, factoring in the OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student submissions for multiple course work items. Course students may only view their own work. Course teachers and domain administrators may view all student submissions. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
-| `params.courseWorkId` | `string` | Yes | Identifier of the student work to request. This may be set to the string literal `"-"` to request student work for all course work in the specified course. |
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.late` | `string` | No | Requested lateness value. If specified, returned student submissions are restricted by the requested value. If unspecified, submissions are returned regardless of `late` value. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.states` | `string` | No | Requested submission states. If specified, returned student submissions match one of the specified submission states. |
-| `params.userId` | `string` | No | Optional argument to restrict returned student work to those owned by the student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
-
-#### `courses.courseWork.studentSubmissions.get()`
-
-Returns a student submission.
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, course work, or student submission or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course, course work, or student submission does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the student submission. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
-
-#### `courses.courseWork.studentSubmissions.modifyAttachments()`
-
-Modifies attachments of student submission. Attachments may only be added to student submissions belonging to course work objects with a `workType` of `ASSIGNMENT`. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, if the user is not permitted to modify attachments on the requested student submission, or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course, course work, or student submission does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.id` | `string` | Yes | Identifier of the student submission. |
-| `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.studentSubmissions.return()`
 
 Returns a student submission. Returning a student submission transfers ownership of attached Drive files to the student and may also update the submission state. Unlike the Classroom application, returning a student submission does not set assignedGrade to the draftGrade value. Only a teacher of the course that contains the requested student submission may call this method. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes:
 
 * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, return the requested student submission, or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course, course work, or student submission does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the student submission. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.courseWork.studentSubmissions.turnIn()`
-
-Turns in a student submission. Turning in a student submission transfers ownership of attached Drive files to the teacher and may also update the submission state. This may only be called by the student that owns the specified student submission. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, turn in the requested student submission, or for access errors.
 
 * `INVALID_ARGUMENT` if the request is malformed.
 
@@ -803,6 +1378,76 @@ Reclaims a student submission on behalf of the student that owns it. Reclaiming 
 | `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `courses.courseWork.studentSubmissions.get()`
+
+Returns a student submission.
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, course work, or student submission or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course, course work, or student submission does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.id` | `string` | Yes | Identifier of the student submission. |
+| `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
+
+#### `courses.courseWork.studentSubmissions.turnIn()`
+
+Turns in a student submission. Turning in a student submission transfers ownership of attached Drive files to the teacher and may also update the submission state. This may only be called by the student that owns the specified student submission. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, turn in the requested student submission, or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course, course work, or student submission does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
+| `params.id` | `string` | Yes | Identifier of the student submission. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.courseWork.studentSubmissions.list()`
+
+Returns a list of student submissions that the requester is permitted to view, factoring in the OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student submissions for multiple course work items. Course students may only view their own work. Course teachers and domain administrators may view all student submissions. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.late` | `string` | No | Requested lateness value. If specified, returned student submissions are restricted by the requested value. If unspecified, submissions are returned regardless of `late` value. |
+| `params.states` | `string` | No | Requested submission states. If specified, returned student submissions match one of the specified submission states. |
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.userId` | `string` | No | Optional argument to restrict returned student work to those owned by the student with the specified identifier. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.courseWorkId` | `string` | Yes | Identifier of the student work to request. This may be set to the string literal `"-"` to request student work for all course work in the specified course. |
+
+#### `courses.courseWork.studentSubmissions.modifyAttachments()`
+
+Modifies attachments of student submission. Attachments may only be added to student submissions belonging to course work objects with a `workType` of `ASSIGNMENT`. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, if the user is not permitted to modify attachments on the requested student submission, or for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course, course work, or student submission does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.id` | `string` | Yes | Identifier of the student submission. |
+| `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `courses.courseWork.studentSubmissions.patch()`
 
 Updates one or more fields of a student submission. See google.classroom.v1.StudentSubmission for details of which fields may be updated and who may change them. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding course work item. This method returns the following error codes:
@@ -815,29 +1460,160 @@ Updates one or more fields of a student submission. See google.classroom.v1.Stud
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
 | `params.id` | `string` | Yes | Identifier of the student submission. |
+| `params.courseWorkId` | `string` | Yes | Identifier of the course work. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields on the student submission to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields may be specified by teachers: * `draft_grade` * `assigned_grade` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `courses.courseWork.rubrics`
+### `courses.courseWork.addOnAttachments`
 
-#### `courses.courseWork.rubrics.get()`
+#### `courses.courseWork.addOnAttachments.delete()`
 
-Returns a rubric. This method returns the following error codes:
+Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
 
 * `PERMISSION_DENIED` for access errors.
 
 * `INVALID_ARGUMENT` if the request is malformed.
 
-* `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work.
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+
+#### `courses.courseWork.addOnAttachments.create()`
+
+Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.courseWork.addOnAttachments.patch()`
+
+Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.postId` | `string` | No | Required. Identifier of the post under which the attachment is attached. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.itemId` | `string` | Yes | Identifier of the post under which the attachment is attached. |
+| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.courseWork.addOnAttachments.get()`
+
+Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+
+#### `courses.courseWork.addOnAttachments.list()`
+
+Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.postId` | `string` | No | Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. |
+
+### `courses.courseWork.addOnAttachments.studentSubmissions`
+
+#### `courses.courseWork.addOnAttachments.studentSubmissions.patch()`
+
+Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.submissionId` | `string` | Yes | Required. Identifier of the student's submission. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned` |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.courseWork.addOnAttachments.studentSubmissions.get()`
+
+Returns a student submission for an add-on attachment. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if one of the identified resources does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.submissionId` | `string` | Yes | Required. Identifier of the student’s submission. |
+| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
+| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
+| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
+
+### `courses.courseWork.rubrics`
+
+#### `courses.courseWork.rubrics.delete()`
+
+Deletes a rubric. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding rubric, or if the requesting user isn't permitted to delete the requested rubric.
+
+* `NOT_FOUND` if no rubric exists with the requested ID or the user does not have access to the course, course work, or rubric.
+
+* `INVALID_ARGUMENT` if grading has already started on the rubric.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.id` | `string` | Yes | Required. Identifier of the rubric. |
+| `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
 
 #### `courses.courseWork.rubrics.patch()`
 
@@ -855,10 +1631,10 @@ Updates a rubric. See google.classroom.v1.Rubric for details of which fields can
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.id` | `string` | Yes | Optional. Identifier of the rubric. |
 | `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.updateMask` | `string` | No | Optional. Mask that identifies which fields on the rubric to update. This field is required to do an update. The update fails if invalid fields are specified. There are multiple options to define the criteria of a rubric: the `source_spreadsheet_id` and the `criteria` list. Only one of these can be used at a time to define a rubric. The rubric `criteria` list is fully replaced by the rubric criteria specified in the update request. For example, if a criterion or level is missing from the request, it is deleted. New criteria and levels are added and an ID is assigned. Existing criteria and levels retain the previously assigned ID if the ID is specified in the request. The following fields can be specified by teachers: * `criteria` * `source_spreadsheet_id` |
 | `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
-| `params.id` | `string` | Yes | Optional. Identifier of the rubric. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `courses.courseWork.rubrics.create()`
@@ -881,9 +1657,25 @@ Creates a rubric. The requesting user and course owner must have rubrics creatio
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.courseWork.rubrics.get()`
+
+Returns a rubric. This method returns the following error codes:
+
+* `PERMISSION_DENIED` for access errors.
+
+* `INVALID_ARGUMENT` if the request is malformed.
+
+* `NOT_FOUND` if the requested course, course work, or rubric doesn't exist or if the user doesn't have access to the corresponding course work.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
+| `params.id` | `string` | Yes | Required. Identifier of the rubric. |
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 
 #### `courses.courseWork.rubrics.list()`
 
@@ -897,867 +1689,75 @@ Returns a list of rubrics that the requester is permitted to view. This method r
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
 | `params.courseId` | `string` | Yes | Required. Identifier of the course. |
 | `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
 | `params.pageSize` | `integer` | No | The maximum number of rubrics to return. If unspecified, at most 1 rubric is returned. The maximum value is 1; values above 1 are coerced to 1. |
-| `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
 
-#### `courses.courseWork.rubrics.delete()`
+### `courses.students`
 
-Deletes a rubric. The requesting user and course owner must have rubrics creation capabilities. For details, see [licensing requirements](https://developers.google.com/workspace/classroom/rubrics/limitations#license-requirements). This request must be made by the Google Cloud console of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding rubric. This method returns the following error codes:
+#### `courses.students.delete()`
 
-* `PERMISSION_DENIED` if the requesting developer project didn't create the corresponding rubric, or if the requesting user isn't permitted to delete the requested rubric.
+Deletes a student of a course. This method returns the following error codes:
 
-* `NOT_FOUND` if no rubric exists with the requested ID or the user does not have access to the course, course work, or rubric.
+* `PERMISSION_DENIED` if the requesting user is not permitted to delete students of this course or for access errors.
 
-* `INVALID_ARGUMENT` if grading has already started on the rubric.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseWorkId` | `string` | Yes | Required. Identifier of the course work. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.id` | `string` | Yes | Required. Identifier of the rubric. |
-
-### `courses.courseWork.addOnAttachments`
-
-#### `courses.courseWork.addOnAttachments.delete()`
-
-Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-
-#### `courses.courseWork.addOnAttachments.get()`
-
-Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
-
-#### `courses.courseWork.addOnAttachments.patch()`
-
-Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.postId` | `string` | No | Required. Identifier of the post under which the attachment is attached. |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.itemId` | `string` | Yes | Identifier of the post under which the attachment is attached. |
-| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.courseWork.addOnAttachments.create()`
-
-Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.courseWork.addOnAttachments.list()`
-
-Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.pageSize` | `integer` | No | The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. |
-| `params.postId` | `string` | No | Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. |
-
-### `courses.courseWork.addOnAttachments.studentSubmissions`
-
-#### `courses.courseWork.addOnAttachments.studentSubmissions.get()`
-
-Returns a student submission for an add-on attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.submissionId` | `string` | Yes | Required. Identifier of the student’s submission. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-
-#### `courses.courseWork.addOnAttachments.studentSubmissions.patch()`
-
-Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.submissionId` | `string` | Yes | Required. Identifier of the student's submission. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `courses.announcements`
-
-#### `courses.announcements.list()`
-
-Returns a list of announcements that the requester is permitted to view. Course students may only view `PUBLISHED` announcements. Course teachers and domain administrators may view all announcements. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.orderBy` | `string` | No | Optional sort ordering for results. A comma-separated list of fields with an optional sort direction keyword. Supported field is `updateTime`. Supported direction keywords are `asc` and `desc`. If not specified, `updateTime desc` is the default behavior. Examples: `updateTime asc`, `updateTime` |
-| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.announcementStates` | `string` | No | Restriction on the `state` of announcements returned. If this argument is left unspecified, the default value is `PUBLISHED`. |
-
-#### `courses.announcements.getAddOnContext()`
-
-Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.attachmentId` | `string` | No | Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). |
-| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post. |
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
-
-#### `courses.announcements.get()`
-
-Returns an announcement. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or announcement, or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course or announcement does not exist.
+* `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.id` | `string` | Yes | Identifier of the announcement. |
+| `params.userId` | `string` | Yes | Identifier of the student to delete. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
 
-#### `courses.announcements.modifyAssignees()`
+#### `courses.students.create()`
 
-Modifies assignee mode and options of an announcement. Only a teacher of the course that contains the announcement may call this method. This method returns the following error codes:
+Adds a user as a student of a course. Domain administrators are permitted to [directly add](https://developers.google.com/workspace/classroom/guides/manage-users) users within their domain as students to courses within their domain. Students are permitted to add themselves to a course using an enrollment code. This method returns the following error codes:
 
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work or for access errors.
+* `PERMISSION_DENIED` if the requesting user is not permitted to create students in this course or for access errors.
 
-* `INVALID_ARGUMENT` if the request is malformed.
+* `NOT_FOUND` if the requested course ID does not exist.
 
-* `NOT_FOUND` if the requested course or course work does not exist.
-
-* `FAILED_PRECONDITION` for the following request error:
-
-* EmptyAssignees
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.id` | `string` | Yes | Identifier of the announcement. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.announcements.patch()`
-
-Updates one or more fields of an announcement. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `FAILED_PRECONDITION` if the requested announcement has already been deleted.
-
-* `NOT_FOUND` if the requested course or announcement does not exist
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Mask that identifies which fields on the announcement to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Announcement object. If a field that does not support empty values is included in the update mask and not set in the Announcement object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `text` * `state` * `scheduled_time` |
-| `params.id` | `string` | Yes | Identifier of the announcement. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.announcements.create()`
-
-Creates an announcement. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create announcements in the requested course, share a Drive attachment, or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course does not exist.
-
-* `FAILED_PRECONDITION` for the following request error:
-
-* AttachmentNotVisible
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.announcements.delete()`
-
-Deletes an announcement. This request must be made by the Developer Console project of the [OAuth client ID](https://support.google.com/cloud/answer/6158849) used to create the corresponding announcement item. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting developer project did not create the corresponding announcement, if the requesting user is not permitted to delete the requested course or for access errors.
-
-* `FAILED_PRECONDITION` if the requested announcement has already been deleted.
-
-* `NOT_FOUND` if no course exists with the requested ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the announcement to delete. This identifier is a Classroom-assigned identifier. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-
-### `courses.announcements.addOnAttachments`
-
-#### `courses.announcements.addOnAttachments.patch()`
-
-Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.postId` | `string` | No | Required. Identifier of the post under which the attachment is attached. |
-| `params.itemId` | `string` | Yes | Identifier of the post under which the attachment is attached. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.announcements.addOnAttachments.delete()`
-
-Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-
-#### `courses.announcements.addOnAttachments.get()`
-
-Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-
-#### `courses.announcements.addOnAttachments.list()`
-
-Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.postId` | `string` | No | Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. |
-| `params.pageSize` | `integer` | No | The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. |
-
-#### `courses.announcements.addOnAttachments.create()`
-
-Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.itemId` | `string` | Yes | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.postId` | `string` | No | Optional. Deprecated, use `item_id` instead. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `courses.topics`
-
-#### `courses.topics.list()`
-
-Returns the list of topics that the requester is permitted to view. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-
-#### `courses.topics.patch()`
-
-Updates one or more fields of a topic. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting developer project did not create the corresponding topic or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `FAILED_PRECONDITION` if there exists a topic in the course with the same name.
-
-* `NOT_FOUND` if the requested course or topic does not exist
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Mask that identifies which fields on the topic to update. This field is required to do an update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the Topic object. If a field that does not support empty values is included in the update mask and not set in the Topic object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified: * `name` |
-| `params.id` | `string` | Yes | Identifier of the topic. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.topics.get()`
-
-Returns a topic. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or topic, or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if the requested course or topic does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the topic. |
-| `params.courseId` | `string` | Yes | Identifier of the course. |
-
-#### `courses.topics.delete()`
-
-Deletes a topic. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not allowed to delete the requested topic or for access errors.
-
-* `FAILED_PRECONDITION` if the requested topic has already been deleted.
-
-* `NOT_FOUND` if no course or topic exists with the requested ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the topic to delete. |
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-
-#### `courses.topics.create()`
-
-Creates a topic. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course, create a topic in the requested course, or for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `ALREADY_EXISTS` if there exists a topic in the course with the same name.
-
-* `FAILED_PRECONDITION` for the following request error:
-
-* CourseTopicLimitReached
-
-* `NOT_FOUND` if the requested course does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `courses.posts`
-
-#### `courses.posts.getAddOnContext()`
-
-Gets metadata for Classroom add-ons in the context of a specific post. To maintain the integrity of its own data and permissions model, an add-on should call this to validate query parameters and the requesting user's role whenever the add-on is opened in an [iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/iframes-overview). This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.attachmentId` | `string` | No | Optional. The identifier of the attachment. This field is required for all requests except when the user is in the [Attachment Discovery iframe](https://developers.google.com/workspace/classroom/add-ons/get-started/iframes/attachment-discovery-iframe). |
-| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
-| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. The authorization token is required when neither of the following is true: * The add-on has attachments on the post. * The developer project issuing the request is the same project that created the post. |
-
-### `courses.posts.addOnAttachments`
-
-#### `courses.posts.addOnAttachments.get()`
-
-Returns an add-on attachment. Requires the add-on requesting the attachment to be the original creator of the attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-
-#### `courses.posts.addOnAttachments.patch()`
-
-Updates an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.postId` | `string` | Yes | Required. Identifier of the post under which the attachment is attached. |
-| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachment` object. If a field that does not support empty values is included in the update mask and not set in the `AddOnAttachment` object, an `INVALID_ARGUMENT` error is returned. The following fields may be specified by teachers: * `title` * `teacher_view_uri` * `student_view_uri` * `student_work_review_uri` * `due_date` * `due_time` * `max_points` |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.itemId` | `string` | No | Identifier of the post under which the attachment is attached. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.posts.addOnAttachments.create()`
-
-Creates an add-on attachment under a post. Requires the add-on to have permission to create new attachments on the post. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.addOnToken` | `string` | No | Optional. Token that authorizes the request. The token is passed as a query parameter when the user is redirected from Classroom to the add-on's URL. This authorization token is required for in-Classroom attachment creation but optional for partner-first attachment creation. Returns an error if not provided for partner-first attachment creation and the developer projects that created the attachment and its parent stream item do not match. |
-| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
-| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which to create the attachment. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `courses.posts.addOnAttachments.delete()`
-
-Deletes an add-on attachment. Requires the add-on to have been the original creator of the attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-
-#### `courses.posts.addOnAttachments.list()`
-
-Returns all attachments created by an add-on under the post. Requires the add-on to have active attachments on the post or have permission to create new attachments on the post. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.postId` | `string` | Yes | Optional. Identifier of the post under the course whose attachments to enumerate. Deprecated, use `item_id` instead. |
-| `params.pageSize` | `integer` | No | The maximum number of attachments to return. The service may return fewer than this value. If unspecified, at most 20 attachments will be returned. The maximum value is 20; values above 20 will be coerced to 20. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListAddOnAttachments` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAddOnAttachments` must match the call that provided the page token. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` whose attachments should be enumerated. This field is required, but is not marked as such while we are migrating from post_id. |
-
-### `courses.posts.addOnAttachments.studentSubmissions`
-
-#### `courses.posts.addOnAttachments.studentSubmissions.get()`
-
-Returns a student submission for an add-on attachment. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.submissionId` | `string` | Yes | Required. Identifier of the student’s submission. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
-| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-
-#### `courses.posts.addOnAttachments.studentSubmissions.patch()`
-
-Updates data associated with an add-on attachment submission. Requires the add-on to have been the original creator of the attachment and the attachment to have a positive `max_points` value set. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-* `INVALID_ARGUMENT` if the request is malformed.
-
-* `NOT_FOUND` if one of the identified resources does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.postId` | `string` | Yes | Optional. Deprecated, use `item_id` instead. |
-| `params.itemId` | `string` | No | Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. This field is required, but is not marked as such while we are migrating from post_id. |
-| `params.submissionId` | `string` | Yes | Required. Identifier of the student's submission. |
-| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
-| `params.attachmentId` | `string` | Yes | Required. Identifier of the attachment. |
-| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the attachment to update. The update fails if invalid fields are specified. If a field supports empty values, it can be cleared by specifying it in the update mask and not in the `AddOnAttachmentStudentSubmission` object. The following fields may be specified by teachers: * `points_earned` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `userProfiles`
-
-#### `userProfiles.get()`
-
-Returns a user profile. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to access this user profile, if no profile exists with the requested ID, or for access errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.userId` | `string` | Yes | Identifier of the profile to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
-
-### `userProfiles.guardians`
-
-#### `userProfiles.guardians.delete()`
-
-Deletes a guardian. The guardian will no longer receive guardian notifications and the guardian will no longer be accessible via the API. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to manage guardians for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors.
-
-* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API).
-
-* `NOT_FOUND` if the requesting user is permitted to modify guardians for the requested `student_id`, but no `Guardian` record exists for that student with the provided `guardian_id`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.guardianId` | `string` | Yes | The `id` field from a `Guardian`. |
-| `params.studentId` | `string` | Yes | The student whose guardian is to be deleted. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
-
-#### `userProfiles.guardians.get()`
-
-Returns a specific guardian. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if no user that matches the provided `student_id` is visible to the requesting user, if the requesting user is not permitted to view guardian information for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors.
-
-* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`).
-
-* `NOT_FOUND` if the requesting user is permitted to view guardians for the requested `student_id`, but no `Guardian` record exists for that student that matches the provided `guardian_id`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.guardianId` | `string` | Yes | The `id` field from a `Guardian`. |
-| `params.studentId` | `string` | Yes | The student whose guardian is being requested. One of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
-
-#### `userProfiles.guardians.list()`
-
-Returns a list of guardians that the requesting user is permitted to view, restricted to those that match the request. To list guardians for any student that the requesting user may view guardians for, use the literal character `-` for the student ID. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian information for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, if the `invited_email_address` filter is set by a user who is not a domain administrator, or for other access errors.
-
-* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` is provided.
-
-* `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.studentId` | `string` | Yes | Filter results by the student who the guardian is linked to. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user has access to view. |
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
-| `params.invitedEmailAddress` | `string` | No | Filter results by the email address that the original invitation was sent to, resulting in this guardian link. This filter can only be used by domain administrators. |
-
-### `userProfiles.guardianInvitations`
-
-#### `userProfiles.guardianInvitations.patch()`
-
-Modifies a guardian invitation. Currently, the only valid modification is to change the `state` from `PENDING` to `COMPLETE`. This has the effect of withdrawing the invitation. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if guardians are not enabled for the domain in question or for other access errors.
-
-* `FAILED_PRECONDITION` if the guardian link is not in the `PENDING` state.
-
-* `INVALID_ARGUMENT` if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API), or if the passed `GuardianInvitation` has a `state` other than `COMPLETE`, or if it modifies fields other than `state`.
-
-* `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student, or if the `id` field does not refer to a guardian invitation known to Classroom.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.invitationId` | `string` | Yes | The `id` field of the `GuardianInvitation` to be modified. |
-| `params.studentId` | `string` | Yes | The ID of the student whose guardian invitation is to be modified. |
-| `params.updateMask` | `string` | No | Mask that identifies which fields on the course to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields are valid: * `state` When set in a query parameter, this field should be specified as `updateMask=,,...` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `userProfiles.guardianInvitations.get()`
-
-Returns a specific guardian invitation. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to view guardian invitations for the student identified by the `student_id`, if guardians are not enabled for the domain in question, or for other access errors.
-
-* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`).
-
-* `NOT_FOUND` if Classroom cannot find any record of the given student or `invitation_id`. May also be returned if the student exists, but the requesting user does not have access to see that student.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.studentId` | `string` | Yes | The ID of the student whose guardian invitation is being requested. |
-| `params.invitationId` | `string` | Yes | The `id` field of the `GuardianInvitation` being requested. |
-
-#### `userProfiles.guardianInvitations.list()`
-
-Returns a list of guardian invitations that the requesting user is permitted to view, filtered by the parameters provided. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if a `student_id` is specified, and the requesting user is not permitted to view guardian invitations for that student, if `"-"` is specified as the `student_id` and the user is not a domain administrator, if guardians are not enabled for the domain in question, or for other access errors.
-
-* `INVALID_ARGUMENT` if a `student_id` is specified, but its format cannot be recognized (it is not an email address, nor a `student_id` from the API, nor the literal string `me`). May also be returned if an invalid `page_token` or `state` is provided.
-
-* `NOT_FOUND` if a `student_id` is specified, and its format can be recognized, but Classroom has no record of that student.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.states` | `string` | No | If specified, only results with the specified `state` values are returned. Otherwise, results with a `state` of `PENDING` are returned. |
-| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
-| `params.invitedEmailAddress` | `string` | No | If specified, only results with the specified `invited_email_address` are returned. |
-| `params.studentId` | `string` | Yes | The ID of the student whose guardian invitations are to be returned. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user * the string literal `"-"`, indicating that results should be returned for all students that the requesting user is permitted to view guardian invitations. |
-
-#### `userProfiles.guardianInvitations.create()`
-
-Creates a guardian invitation, and sends an email to the guardian asking them to confirm that they are the student's guardian. Once the guardian accepts the invitation, their `state` will change to `COMPLETED` and they will start receiving guardian notifications. A `Guardian` resource will also be created to represent the active guardian. The request object must have the `student_id` and `invited_email_address` fields set. Failing to set these fields, or setting any other fields in the request, will result in an error. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the current user does not have permission to manage guardians, if the guardian in question has already rejected too many requests for that student, if guardians are not enabled for the domain in question, or for other access errors.
-
-* `RESOURCE_EXHAUSTED` if the student or guardian has exceeded the guardian link limit.
-
-* `INVALID_ARGUMENT` if the guardian email address is not valid (for example, if it is too long), or if the format of the student ID provided cannot be recognized (it is not an email address, nor a `user_id` from this API). This error will also be returned if read-only fields are set, or if the `state` field is set to to a value other than `PENDING`.
-
-* `NOT_FOUND` if the student ID provided is a valid student ID, but Classroom has no record of that student.
-
-* `ALREADY_EXISTS` if there is already a pending guardian invitation for the student and `invited_email_address` provided, or if the provided `invited_email_address` matches the Google account of an existing `Guardian` for this user.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.studentId` | `string` | Yes | ID of the student (in standard format) |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `registrations`
-
-#### `registrations.create()`
-
-Creates a `Registration`, causing Classroom to start sending notifications from the provided `feed` to the destination provided in `cloudPubSubTopic`. Returns the created `Registration`. Currently, this will be the same as the argument, but with server-assigned fields such as `expiry_time` and `id` filled in. Note that any value specified for the `expiry_time` or `id` fields will be ignored. While Classroom may validate the `cloudPubSubTopic` and return errors on a best effort basis, it is the caller's responsibility to ensure that it exists and that Classroom has permission to publish to it. This method may return the following error codes:
-
-* `PERMISSION_DENIED` if:
-
-* the authenticated user does not have permission to receive notifications from the requested field; or
-
-* the current user has not granted access to the current Cloud project with the appropriate scope for the requested feed. Note that domain-wide delegation of authority is not currently supported for this purpose. If the request has the appropriate scope, but no grant exists, a Request Errors is returned.
-
-* another access error is encountered.
-
-* `INVALID_ARGUMENT` if:
-
-* no `cloudPubsubTopic` is specified, or the specified `cloudPubsubTopic` is not valid; or
-
-* no `feed` is specified, or the specified `feed` is not valid.
-
-* `NOT_FOUND` if:
-
-* the specified `feed` cannot be located, or the requesting user does not have permission to determine whether or not it exists; or
-
-* the specified `cloudPubsubTopic` cannot be located, or Classroom has not been granted permission to publish to it.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `registrations.delete()`
-
-Deletes a `Registration`, causing Classroom to stop sending notifications for that `Registration`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.registrationId` | `string` | Yes | The `registration_id` of the `Registration` to be deleted. |
-
-### `invitations`
-
-#### `invitations.list()`
-
-Returns a list of invitations that the requesting user is permitted to view, restricted to those that match the list request. *Note:* At least one of `user_id` or `course_id` must be supplied. Both fields can be supplied. This method returns the following error codes:
-
-* `PERMISSION_DENIED` for access errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
-| `params.courseId` | `string` | No | Restricts returned invitations to those for a course with the specified identifier. |
-| `params.pageSize` | `integer` | No | Maximum number of items to return. The default is 500 if unspecified or `0`. The server may return fewer than the specified number of results. |
-| `params.userId` | `string` | No | Restricts returned invitations to those for a specific user. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
-
-#### `invitations.get()`
-
-Returns an invitation. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to view the requested invitation or for access errors.
-
-* `NOT_FOUND` if no invitation exists with the requested ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the invitation to return. |
-
-#### `invitations.delete()`
-
-Deletes an invitation. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested invitation or for access errors.
-
-* `NOT_FOUND` if no invitation exists with the requested ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the invitation to delete. |
-
-#### `invitations.accept()`
-
-Accepts an invitation, removing it and adding the invited user to the teachers or students (as appropriate) of the specified course. Only the invited user may accept an invitation. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to accept the requested invitation or for access errors.
-
-* `FAILED_PRECONDITION` for the following request errors:
+* `FAILED_PRECONDITION` if the requested user's account is disabled, for the following request errors:
 
 * CourseMemberLimitReached
 
 * CourseNotModifiable
 
-* CourseTeacherLimitReached
-
 * UserGroupsMembershipLimitReached
 
-* `NOT_FOUND` if no invitation exists with the requested ID.
+* InactiveCourseOwner
+
+* `ALREADY_EXISTS` if the user is already a student or teacher in the course.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.id` | `string` | Yes | Identifier of the invitation to accept. |
-
-#### `invitations.create()`
-
-Creates an invitation. Only one invitation for a user and course may exist at a time. Delete and re-create an invitation to make changes. This method returns the following error codes:
-
-* `PERMISSION_DENIED` if the requesting user is not permitted to create invitations for this course or for access errors.
-
-* `NOT_FOUND` if the course or the user does not exist.
-
-* `FAILED_PRECONDITION`:
-
-* if the requested user's account is disabled.
-
-* if the user already has this role or a role with greater permissions.
-
-* for the following request errors:
-
-* IneligibleOwner
-
-* `ALREADY_EXISTS` if an invitation for the specified user and course already exists.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course to create the student in. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.enrollmentCode` | `string` | No | Enrollment code of the course to create the student in. This code is required if userId corresponds to the requesting user; it may be omitted if the requesting user has administrative permissions to create students for any user. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.students.get()`
+
+Returns a student of a course. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to view students of this course or for access errors.
+
+* `NOT_FOUND` if no student of this course has the requested ID or if the course does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.userId` | `string` | Yes | Identifier of the student to return. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user |
+
+#### `courses.students.list()`
+
+Returns a list of students of this course that the requester is permitted to view. This method returns the following error codes:
+
+* `NOT_FOUND` if the course does not exist.
+
+* `PERMISSION_DENIED` for access errors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. The default is 30 if unspecified or `0`. The server may return fewer than the specified number of results. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
