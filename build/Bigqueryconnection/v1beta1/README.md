@@ -4,8 +4,8 @@ Auto-generated client library for using the **BigQuery Connection API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:24:21 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:24:21 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:24:50 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:24:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:05 GMT
 
 
@@ -20,13 +20,14 @@ Auto-generated client library for using the **BigQuery Connection API (version: 
 
 ### `projects.locations.connections`
 
-#### `projects.locations.connections.get()`
+#### `projects.locations.connections.setIamPolicy()`
 
-Returns specified connection.
+Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the requested connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.patch()`
 
@@ -38,24 +39,23 @@ Updates the specified connection. For security reasons, also resets credential i
 | `params.updateMask` | `string` | No | Required. Update mask for the connection fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.testIamPermissions()`
+#### `projects.locations.connections.getIamPolicy()`
 
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.list()`
+#### `projects.locations.connections.updateCredential()`
 
-Returns a list of connections in the given project.
+Sets the credential for the specified connection.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource name. Must be in the form: `projects/{project_id}/locations/{location_id}` |
-| `params.pageToken` | `string` | No | Page token. |
-| `params.maxResults` | `integer` | No | Required. Maximum number of results per page. |
+| `params.name` | `string` | Yes | Required. Name of the connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}/credential` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.create()`
 
@@ -67,24 +67,6 @@ Creates a new connection.
 | `params.connectionId` | `string` | No | Optional. Connection id that should be assigned to the created connection. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.setIamPolicy()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.connections.getIamPolicy()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.connections.delete()`
 
 Deletes connection and associated credential.
@@ -93,11 +75,29 @@ Deletes connection and associated credential.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the deleted connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` |
 
-#### `projects.locations.connections.updateCredential()`
+#### `projects.locations.connections.list()`
 
-Sets the credential for the specified connection.
+Returns a list of connections in the given project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}/credential` |
+| `params.parent` | `string` | Yes | Required. Parent resource name. Must be in the form: `projects/{project_id}/locations/{location_id}` |
+| `params.maxResults` | `integer` | No | Required. Maximum number of results per page. |
+| `params.pageToken` | `string` | No | Page token. |
+
+#### `projects.locations.connections.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.connections.get()`
+
+Returns specified connection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the requested connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` |
