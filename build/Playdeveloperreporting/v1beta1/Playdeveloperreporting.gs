@@ -20,52 +20,52 @@ class Playdeveloperreporting {
 
     this.vitals = {};
 
-    this.vitals.anrrate = {};
-    this.vitals.anrrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.vitals.anrrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
-
     this.vitals.crashrate = {};
-    this.vitals.crashrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.vitals.crashrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
+    this.vitals.crashrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.vitals.excessivewakeuprate = {};
-    this.vitals.excessivewakeuprate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
-    this.vitals.excessivewakeuprate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.errors = {};
 
-    this.vitals.slowstartrate = {};
-    this.vitals.slowstartrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
-    this.vitals.slowstartrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.errors.counts = {};
+    this.vitals.errors.counts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.errors.counts.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
 
-    this.vitals.stuckbackgroundwakelockrate = {};
-    this.vitals.stuckbackgroundwakelockrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.vitals.stuckbackgroundwakelockrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
+    this.vitals.errors.issues = {};
+    this.vitals.errors.issues.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/errorIssues:search', 'GET', apiParams, clientConfig);
 
-    this.vitals.slowrenderingrate = {};
-    this.vitals.slowrenderingrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
-    this.vitals.slowrenderingrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.errors.reports = {};
+    this.vitals.errors.reports.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/errorReports:search', 'GET', apiParams, clientConfig);
 
     this.vitals.lmkrate = {};
     this.vitals.lmkrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.vitals.lmkrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
 
-    this.vitals.errors = {};
+    this.vitals.slowrenderingrate = {};
+    this.vitals.slowrenderingrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.slowrenderingrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
 
-    this.vitals.errors.counts = {};
-    this.vitals.errors.counts.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
-    this.vitals.errors.counts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.slowstartrate = {};
+    this.vitals.slowstartrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.slowstartrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
 
-    this.vitals.errors.reports = {};
-    this.vitals.errors.reports.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/errorReports:search', 'GET', apiParams, clientConfig);
+    this.vitals.stuckbackgroundwakelockrate = {};
+    this.vitals.stuckbackgroundwakelockrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.stuckbackgroundwakelockrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
 
-    this.vitals.errors.issues = {};
-    this.vitals.errors.issues.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/errorIssues:search', 'GET', apiParams, clientConfig);
+    this.vitals.anrrate = {};
+    this.vitals.anrrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
+    this.vitals.anrrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.vitals.excessivewakeuprate = {};
+    this.vitals.excessivewakeuprate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.excessivewakeuprate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:query', 'POST', apiParams, clientConfig);
+
+    this.apps = {};
+    this.apps.fetchReleaseFilterOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:fetchReleaseFilterOptions', 'GET', apiParams, clientConfig);
+    this.apps.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/apps:search', 'GET', apiParams, clientConfig);
 
     this.anomalies = {};
     this.anomalies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/anomalies', 'GET', apiParams, clientConfig);
-
-    this.apps = {};
-    this.apps.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/apps:search', 'GET', apiParams, clientConfig);
-    this.apps.fetchReleaseFilterOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:fetchReleaseFilterOptions', 'GET', apiParams, clientConfig);
   }
 
 /**
