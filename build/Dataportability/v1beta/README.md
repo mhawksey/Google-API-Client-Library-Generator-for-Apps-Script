@@ -4,8 +4,8 @@ Auto-generated client library for using the **Data Portability API (version: v1b
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:35:39 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:35:39 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:36:42 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:36:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:22 GMT
 
 
@@ -14,49 +14,21 @@ Auto-generated client library for using the **Data Portability API (version: v1b
 
 ## API Reference
 
-### `archiveJobs`
+### `portabilityArchive`
 
-#### `archiveJobs.cancel()`
+#### `portabilityArchive.initiate()`
 
-Cancels a Portability Archive job.
+Initiates a new Archive job for the Portability API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `archiveJobs.retry()`
-
-Retries a failed Portability Archive job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The Archive job ID you're retrying. This is returned by the InitiatePortabilityArchiveResponse. Retrying is only executed if the initial job failed. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `archiveJobs.getPortabilityArchiveState()`
-
-Retrieves the state of an Archive job for the Portability API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The archive job ID that is returned when you request the state of the job. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the InitiatePortabilityArchiveResponse. |
 
 ### `authorization`
 
 #### `authorization.reset()`
 
 Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate a request after a new consent is granted. This method also indicates that previous archives can be garbage collected. You should call this method when all jobs are complete and all archives are downloaded. Do not call it only when you start a new job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `portabilityArchive`
-
-#### `portabilityArchive.initiate()`
-
-Initiates a new Archive job for the Portability API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -70,4 +42,32 @@ Gets the access type of the token.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `archiveJobs`
+
+#### `archiveJobs.getPortabilityArchiveState()`
+
+Retrieves the state of an Archive job for the Portability API.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The archive job ID that is returned when you request the state of the job. The format is: archiveJobs/{archive_job}/portabilityArchiveState. archive_job is the job ID returned by the InitiatePortabilityArchiveResponse. |
+
+#### `archiveJobs.retry()`
+
+Retries a failed Portability Archive job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Archive job ID you're retrying. This is returned by the InitiatePortabilityArchiveResponse. Retrying is only executed if the initial job failed. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `archiveJobs.cancel()`
+
+Cancels a Portability Archive job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The Archive job ID you're canceling. This is returned by the InitiatePortabilityArchive response. The format is: archiveJobs/{archive_job}. Canceling is only executed if the job is in progress. |
 | `params.requestBody` | `object` | Yes | The request body. |
