@@ -19,11 +19,11 @@ class Iap {
 
 
     this.v1 = {};
+    this.v1.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.v1.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.v1.updateIapSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:iapSettings', 'PATCH', apiParams, clientConfig);
     this.v1.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.v1.getIapSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:iapSettings', 'GET', apiParams, clientConfig);
-    this.v1.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.v1.updateIapSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:iapSettings', 'PATCH', apiParams, clientConfig);
     this.v1.validateAttributeExpression = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:validateAttributeExpression', 'POST', apiParams, clientConfig);
 
     this.projects = {};
@@ -33,23 +33,23 @@ class Iap {
     this.projects.iap_tunnel.locations = {};
 
     this.projects.iap_tunnel.locations.destGroups = {};
-    this.projects.iap_tunnel.locations.destGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.iap_tunnel.locations.destGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.iap_tunnel.locations.destGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/destGroups', 'GET', apiParams, clientConfig);
     this.projects.iap_tunnel.locations.destGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/destGroups', 'POST', apiParams, clientConfig);
     this.projects.iap_tunnel.locations.destGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.iap_tunnel.locations.destGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.iap_tunnel.locations.destGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.brands = {};
-    this.projects.brands.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/brands', 'POST', apiParams, clientConfig);
     this.projects.brands.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/brands', 'GET', apiParams, clientConfig);
+    this.projects.brands.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/brands', 'POST', apiParams, clientConfig);
     this.projects.brands.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.brands.identityAwareProxyClients = {};
-    this.projects.brands.identityAwareProxyClients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.brands.identityAwareProxyClients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/identityAwareProxyClients', 'GET', apiParams, clientConfig);
     this.projects.brands.identityAwareProxyClients.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/identityAwareProxyClients', 'POST', apiParams, clientConfig);
-    this.projects.brands.identityAwareProxyClients.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.brands.identityAwareProxyClients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/identityAwareProxyClients', 'GET', apiParams, clientConfig);
+    this.projects.brands.identityAwareProxyClients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.brands.identityAwareProxyClients.resetSecret = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resetSecret', 'POST', apiParams, clientConfig);
+    this.projects.brands.identityAwareProxyClients.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
