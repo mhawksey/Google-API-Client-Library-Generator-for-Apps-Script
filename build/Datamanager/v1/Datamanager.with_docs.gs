@@ -18,19 +18,17 @@ class Datamanager {
     this._servicePath = '';
 
 
-    this.events = {};
+    this.audienceMembers = {};
 
     /**
-     * Uploads a list of Event resources from the provided Destination.
+     * Uploads a list of AudienceMember resources to the provided Destination.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.events.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/events:ingest', 'POST', apiParams, clientConfig);
-
-    this.audienceMembers = {};
+    this.audienceMembers.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:ingest', 'POST', apiParams, clientConfig);
 
     /**
      * Removes a list of AudienceMember resources from the provided Destination.
@@ -42,15 +40,17 @@ class Datamanager {
      */
     this.audienceMembers.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:remove', 'POST', apiParams, clientConfig);
 
+    this.events = {};
+
     /**
-     * Uploads a list of AudienceMember resources to the provided Destination.
+     * Uploads a list of Event resources from the provided Destination.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.audienceMembers.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/audienceMembers:ingest', 'POST', apiParams, clientConfig);
+    this.events.ingest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/events:ingest', 'POST', apiParams, clientConfig);
 
     this.requestStatus = {};
 
