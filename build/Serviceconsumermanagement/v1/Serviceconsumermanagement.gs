@@ -22,20 +22,20 @@ class Serviceconsumermanagement {
     this.services.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:search', 'GET', apiParams, clientConfig);
 
     this.services.tenancyUnits = {};
-    this.services.tenancyUnits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tenancyUnits', 'POST', apiParams, clientConfig);
-    this.services.tenancyUnits.deleteProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteProject', 'POST', apiParams, clientConfig);
-    this.services.tenancyUnits.applyProjectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:applyProjectConfig', 'POST', apiParams, clientConfig);
-    this.services.tenancyUnits.removeProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removeProject', 'POST', apiParams, clientConfig);
-    this.services.tenancyUnits.undeleteProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undeleteProject', 'POST', apiParams, clientConfig);
-    this.services.tenancyUnits.addProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:addProject', 'POST', apiParams, clientConfig);
     this.services.tenancyUnits.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.services.tenancyUnits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tenancyUnits', 'GET', apiParams, clientConfig);
+    this.services.tenancyUnits.deleteProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteProject', 'POST', apiParams, clientConfig);
+    this.services.tenancyUnits.removeProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removeProject', 'POST', apiParams, clientConfig);
+    this.services.tenancyUnits.addProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:addProject', 'POST', apiParams, clientConfig);
     this.services.tenancyUnits.attachProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:attachProject', 'POST', apiParams, clientConfig);
+    this.services.tenancyUnits.applyProjectConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:applyProjectConfig', 'POST', apiParams, clientConfig);
+    this.services.tenancyUnits.undeleteProject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undeleteProject', 'POST', apiParams, clientConfig);
+    this.services.tenancyUnits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tenancyUnits', 'POST', apiParams, clientConfig);
+    this.services.tenancyUnits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tenancyUnits', 'GET', apiParams, clientConfig);
 
     this.operations = {};
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
