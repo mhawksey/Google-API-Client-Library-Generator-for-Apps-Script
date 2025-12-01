@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Pub/Sub API (version: v1beta
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:14:11 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:14:11 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:06:45 GMT
+- **Last Modified:** Mon, 01 Dec 2025 01:06:45 GMT
 - **Created:** Sun, 20 Jul 2025 16:46:48 GMT
 
 
@@ -16,17 +16,9 @@ Auto-generated client library for using the **Cloud Pub/Sub API (version: v1beta
 
 ### `subscriptions`
 
-#### `subscriptions.pull()`
+#### `subscriptions.pullBatch()`
 
-Pulls a single message from the server. If return_immediately is true, and no messages are available in the subscription, this method returns FAILED_PRECONDITION. The system is free to return an UNAVAILABLE error if no messages are available in a reasonable amount of time (to reduce system load).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `subscriptions.modifyPushConfig()`
-
-Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified.
+Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -40,17 +32,17 @@ Modifies the Ack deadline for a message received from a pull request.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `subscriptions.delete()`
+#### `subscriptions.acknowledge()`
 
-Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND.
+Acknowledges a particular received message: the Pub/Sub system can remove the given message from the subscription. Acknowledging a message whose Ack deadline has expired may succeed, but the message could have been already redelivered. Acknowledging a message more than once will not result in an error. This is only used for messages received via pull.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.subscription` | `string` | Yes | The subscription to delete. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
-#### `subscriptions.pullBatch()`
+#### `subscriptions.modifyPushConfig()`
 
-Pulls messages from the server. Returns an empty list if there are no messages available in the backlog. The system is free to return UNAVAILABLE if there are too many pull requests outstanding for the given subscription.
+Modifies the PushConfig for a specified subscription. This method can be used to suspend the flow of messages to an endpoint by clearing the PushConfig field in the request. Messages will be accumulated for delivery even if no push configuration is defined or while the configuration is modified.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -64,6 +56,14 @@ Creates a subscription on a given topic for a given subscriber. If the subscript
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `subscriptions.delete()`
+
+Deletes an existing subscription. All pending messages in the subscription are immediately dropped. Calls to Pull after deletion will return NOT_FOUND.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.subscription` | `string` | Yes | The subscription to delete. |
+
 #### `subscriptions.get()`
 
 Gets the configuration details of a subscription.
@@ -72,51 +72,25 @@ Gets the configuration details of a subscription.
 |---|---|---|---|
 | `params.subscription` | `string` | Yes | The name of the subscription to get. |
 
+#### `subscriptions.pull()`
+
+Pulls a single message from the server. If return_immediately is true, and no messages are available in the subscription, this method returns FAILED_PRECONDITION. The system is free to return an UNAVAILABLE error if no messages are available in a reasonable amount of time (to reduce system load).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `subscriptions.list()`
 
 Lists matching subscriptions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.maxResults` | `integer` | No | Maximum number of subscriptions to return. |
 | `params.query` | `string` | No | A valid label query expression. |
 | `params.pageToken` | `string` | No | The value obtained in the last ListSubscriptionsResponse for continuation. |
-| `params.maxResults` | `integer` | No | Maximum number of subscriptions to return. |
-
-#### `subscriptions.acknowledge()`
-
-Acknowledges a particular received message: the Pub/Sub system can remove the given message from the subscription. Acknowledging a message whose Ack deadline has expired may succeed, but the message could have been already redelivered. Acknowledging a message more than once will not result in an error. This is only used for messages received via pull.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `topics`
-
-#### `topics.list()`
-
-Lists matching topics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | The value obtained in the last ListTopicsResponse for continuation. |
-| `params.query` | `string` | No | A valid label query expression. |
-| `params.maxResults` | `integer` | No | Maximum number of topics to return. |
-
-#### `topics.publish()`
-
-Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `topics.create()`
-
-Creates the given topic with the given name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `topics.get()`
 
@@ -134,6 +108,22 @@ Deletes the topic with the given name. Returns NOT_FOUND if the topic does not e
 |---|---|---|---|
 | `params.topic` | `string` | Yes | Name of the topic to delete. |
 
+#### `topics.create()`
+
+Creates the given topic with the given name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `topics.publish()`
+
+Adds a message to the topic. Returns NOT_FOUND if the topic does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `topics.publishBatch()`
 
 Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not exist.
@@ -141,3 +131,13 @@ Adds one or more messages to the topic. Returns NOT_FOUND if the topic does not 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `topics.list()`
+
+Lists matching topics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The value obtained in the last ListTopicsResponse for continuation. |
+| `params.maxResults` | `integer` | No | Maximum number of topics to return. |
+| `params.query` | `string` | No | A valid label query expression. |
