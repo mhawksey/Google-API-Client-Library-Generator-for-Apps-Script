@@ -18,23 +18,23 @@ class Tasks {
     this._servicePath = '';
 
 
-    this.tasklists = {};
-    this.tasklists.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists', 'POST', apiParams, clientConfig);
-    this.tasklists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists', 'GET', apiParams, clientConfig);
-    this.tasklists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'GET', apiParams, clientConfig);
-    this.tasklists.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'PUT', apiParams, clientConfig);
-    this.tasklists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'DELETE', apiParams, clientConfig);
-    this.tasklists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'PATCH', apiParams, clientConfig);
-
     this.tasks = {};
-    this.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks', 'GET', apiParams, clientConfig);
     this.tasks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}', 'GET', apiParams, clientConfig);
     this.tasks.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}/move', 'POST', apiParams, clientConfig);
-    this.tasks.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks', 'POST', apiParams, clientConfig);
     this.tasks.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}', 'PUT', apiParams, clientConfig);
-    this.tasks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}', 'PATCH', apiParams, clientConfig);
     this.tasks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}', 'DELETE', apiParams, clientConfig);
     this.tasks.clear = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/clear', 'POST', apiParams, clientConfig);
+    this.tasks.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks', 'POST', apiParams, clientConfig);
+    this.tasks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks/{task}', 'PATCH', apiParams, clientConfig);
+    this.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/lists/{tasklist}/tasks', 'GET', apiParams, clientConfig);
+
+    this.tasklists = {};
+    this.tasklists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'DELETE', apiParams, clientConfig);
+    this.tasklists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'GET', apiParams, clientConfig);
+    this.tasklists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'PATCH', apiParams, clientConfig);
+    this.tasklists.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists/{tasklist}', 'PUT', apiParams, clientConfig);
+    this.tasklists.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists', 'POST', apiParams, clientConfig);
+    this.tasklists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tasks/v1/users/@me/lists', 'GET', apiParams, clientConfig);
   }
 
 /**
