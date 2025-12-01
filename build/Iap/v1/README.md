@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Identity-Aware Proxy API (ve
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:53:49 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:53:49 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:54:19 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:54:19 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:15 GMT
 
 
@@ -16,6 +16,15 @@ Auto-generated client library for using the **Cloud Identity-Aware Proxy API (ve
 
 ### `v1`
 
+#### `v1.setIamPolicy()`
+
+Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `v1.getIamPolicy()`
 
 Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
@@ -23,16 +32,6 @@ Gets the access control policy for an Identity-Aware Proxy protected resource. M
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `v1.updateIapSettings()`
-
-Updates the IAP settings on a particular IAP protected resource. It replaces all fields unless the `update_mask` is set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the IAP protected resource. |
-| `params.updateMask` | `string` | No | The field mask specifying which IAP settings should be updated. If omitted, then all of the settings are updated. See https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. Note: All IAP reauth settings must always be set together, using the field mask: `iapSettings.accessSettings.reauthSettings`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.testIamPermissions()`
@@ -52,13 +51,14 @@ Gets the IAP settings on a particular IAP protected resource.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name for which to retrieve the settings. Authorization: Requires the `getSettings` permission for the associated resource. |
 
-#### `v1.setIamPolicy()`
+#### `v1.updateIapSettings()`
 
-Sets the access control policy for an Identity-Aware Proxy protected resource. Replaces any existing policy. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+Updates the IAP settings on a particular IAP protected resource. It replaces all fields unless the `update_mask` is set.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.name` | `string` | Yes | Required. The resource name of the IAP protected resource. |
+| `params.updateMask` | `string` | No | The field mask specifying which IAP settings should be updated. If omitted, then all of the settings are updated. See https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask. Note: All IAP reauth settings must always be set together, using the field mask: `iapSettings.accessSettings.reauthSettings`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `v1.validateAttributeExpression()`
@@ -78,33 +78,15 @@ Validates that a given CEL expression conforms to IAP restrictions.
 
 ### `projects.iap_tunnel.locations.destGroups`
 
-#### `projects.iap_tunnel.locations.destGroups.patch()`
-
-Updates a TunnelDestGroup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-). |
-| `params.updateMask` | `string` | No | A field mask that specifies which IAP settings to update. If omitted, then all of the settings are updated. See https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.iap_tunnel.locations.destGroups.delete()`
-
-Deletes a TunnelDestGroup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the TunnelDestGroup to delete. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`. |
-
 #### `projects.iap_tunnel.locations.destGroups.list()`
 
 Lists the existing TunnelDestGroups. To group across all locations, use a `-` as the location ID. For example: `/v1/projects/123/iap_tunnel/locations/-/destGroups`
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListTunnelDestGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTunnelDestGroups` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | The maximum number of groups to return. The service might return fewer than this value. If unspecified, at most 100 groups are returned. The maximum value is 1000; values above 1000 are coerced to 1000. |
 | `params.parent` | `string` | Yes | Required. Google Cloud Project ID and location. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}`. A `-` can be used for the location to group across all locations. |
+| `params.pageSize` | `integer` | No | The maximum number of groups to return. The service might return fewer than this value. If unspecified, at most 100 groups are returned. The maximum value is 1000; values above 1000 are coerced to 1000. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListTunnelDestGroups` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTunnelDestGroups` must match the call that provided the page token. |
 
 #### `projects.iap_tunnel.locations.destGroups.create()`
 
@@ -124,7 +106,33 @@ Retrieves an existing TunnelDestGroup.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the TunnelDestGroup to be fetched. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`. |
 
+#### `projects.iap_tunnel.locations.destGroups.delete()`
+
+Deletes a TunnelDestGroup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the TunnelDestGroup to delete. In the following format: `projects/{project_number/id}/iap_tunnel/locations/{location}/destGroups/{dest_group}`. |
+
+#### `projects.iap_tunnel.locations.destGroups.patch()`
+
+Updates a TunnelDestGroup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-). |
+| `params.updateMask` | `string` | No | A field mask that specifies which IAP settings to update. If omitted, then all of the settings are updated. See https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.brands`
+
+#### `projects.brands.list()`
+
+Lists the existing brands for the project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. GCP Project number/id. In the following format: projects/{project_number/id}. |
 
 #### `projects.brands.create()`
 
@@ -134,14 +142,6 @@ Constructs a new OAuth brand for the project if one does not exist. The created 
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. GCP Project number/id under which the brand is to be created. In the following format: projects/{project_number/id}. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.brands.list()`
-
-Lists the existing brands for the project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. GCP Project number/id. In the following format: projects/{project_number/id}. |
 
 #### `projects.brands.get()`
 
@@ -153,24 +153,6 @@ Retrieves the OAuth brand of the project.
 
 ### `projects.brands.identityAwareProxyClients`
 
-#### `projects.brands.identityAwareProxyClients.get()`
-
-Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the Identity Aware Proxy client to be fetched. In the following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}. |
-
-#### `projects.brands.identityAwareProxyClients.list()`
-
-Lists the existing clients for the brand.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Full brand path. In the following format: projects/{project_number/id}/brands/{brand}. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListIdentityAwareProxyClients` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListIdentityAwareProxyClients` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | The maximum number of clients to return. The service may return fewer than this value. If unspecified, at most 100 clients will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-
 #### `projects.brands.identityAwareProxyClients.create()`
 
 Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. Requires that the brand for the project exists and that it is set for internal-only use.
@@ -180,13 +162,23 @@ Creates an Identity Aware Proxy (IAP) OAuth client. The client is owned by IAP. 
 | `params.parent` | `string` | Yes | Required. Path to create the client in. In the following format: projects/{project_number/id}/brands/{brand}. The project must belong to a G Suite account. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.brands.identityAwareProxyClients.delete()`
+#### `projects.brands.identityAwareProxyClients.list()`
 
-Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing obsolete clients, managing the number of clients in a given project, and cleaning up after tests. Requires that the client is owned by IAP.
+Lists the existing clients for the brand.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the Identity Aware Proxy client to be deleted. In the following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}. |
+| `params.parent` | `string` | Yes | Required. Full brand path. In the following format: projects/{project_number/id}/brands/{brand}. |
+| `params.pageSize` | `integer` | No | The maximum number of clients to return. The service may return fewer than this value. If unspecified, at most 100 clients will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListIdentityAwareProxyClients` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListIdentityAwareProxyClients` must match the call that provided the page token. |
+
+#### `projects.brands.identityAwareProxyClients.get()`
+
+Retrieves an Identity Aware Proxy (IAP) OAuth client. Requires that the client is owned by IAP.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the Identity Aware Proxy client to be fetched. In the following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}. |
 
 #### `projects.brands.identityAwareProxyClients.resetSecret()`
 
@@ -196,3 +188,11 @@ Resets an Identity Aware Proxy (IAP) OAuth client secret. Useful if the secret w
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the Identity Aware Proxy client to that will have its secret reset. In the following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.brands.identityAwareProxyClients.delete()`
+
+Deletes an Identity Aware Proxy (IAP) OAuth client. Useful for removing obsolete clients, managing the number of clients in a given project, and cleaning up after tests. Requires that the client is owned by IAP.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the Identity Aware Proxy client to be deleted. In the following format: projects/{project_number/id}/brands/{brand}/identityAwareProxyClients/{client_id}. |
