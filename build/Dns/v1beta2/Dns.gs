@@ -19,62 +19,62 @@ class Dns {
 
 
     this.resourceRecordSets = {};
-    this.resourceRecordSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', 'PATCH', apiParams, clientConfig);
-    this.resourceRecordSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', 'DELETE', apiParams, clientConfig);
+    this.resourceRecordSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets', 'GET', apiParams, clientConfig);
     this.resourceRecordSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets', 'POST', apiParams, clientConfig);
     this.resourceRecordSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', 'GET', apiParams, clientConfig);
-    this.resourceRecordSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets', 'GET', apiParams, clientConfig);
+    this.resourceRecordSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', 'DELETE', apiParams, clientConfig);
+    this.resourceRecordSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', 'PATCH', apiParams, clientConfig);
 
     this.changes = {};
-    this.changes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/changes', 'GET', apiParams, clientConfig);
     this.changes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/changes', 'POST', apiParams, clientConfig);
     this.changes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/changes/{changeId}', 'GET', apiParams, clientConfig);
-
-    this.policies = {};
-    this.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies', 'GET', apiParams, clientConfig);
-    this.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'GET', apiParams, clientConfig);
-    this.policies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'PUT', apiParams, clientConfig);
-    this.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies', 'POST', apiParams, clientConfig);
-    this.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'DELETE', apiParams, clientConfig);
-    this.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'PATCH', apiParams, clientConfig);
-
-    this.projects = {};
-    this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}', 'GET', apiParams, clientConfig);
+    this.changes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/changes', 'GET', apiParams, clientConfig);
 
     this.dnsKeys = {};
     this.dnsKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/dnsKeys/{dnsKeyId}', 'GET', apiParams, clientConfig);
     this.dnsKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/dnsKeys', 'GET', apiParams, clientConfig);
 
-    this.responsePolicyRules = {};
-    this.responsePolicyRules.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'PUT', apiParams, clientConfig);
-    this.responsePolicyRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'DELETE', apiParams, clientConfig);
-    this.responsePolicyRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'PATCH', apiParams, clientConfig);
-    this.responsePolicyRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules', 'GET', apiParams, clientConfig);
-    this.responsePolicyRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'GET', apiParams, clientConfig);
-    this.responsePolicyRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules', 'POST', apiParams, clientConfig);
-
-    this.managedZones = {};
-    this.managedZones.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.managedZones.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'DELETE', apiParams, clientConfig);
-    this.managedZones.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.managedZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'GET', apiParams, clientConfig);
-    this.managedZones.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'PATCH', apiParams, clientConfig);
-    this.managedZones.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.managedZones.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'PUT', apiParams, clientConfig);
-    this.managedZones.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones', 'POST', apiParams, clientConfig);
-    this.managedZones.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones', 'GET', apiParams, clientConfig);
+    this.projects = {};
+    this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}', 'GET', apiParams, clientConfig);
 
     this.managedZoneOperations = {};
     this.managedZoneOperations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/operations/{operation}', 'GET', apiParams, clientConfig);
     this.managedZoneOperations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/operations', 'GET', apiParams, clientConfig);
 
+    this.managedZones = {};
+    this.managedZones.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones', 'POST', apiParams, clientConfig);
+    this.managedZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'GET', apiParams, clientConfig);
+    this.managedZones.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones', 'GET', apiParams, clientConfig);
+    this.managedZones.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'DELETE', apiParams, clientConfig);
+    this.managedZones.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'PATCH', apiParams, clientConfig);
+    this.managedZones.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'PUT', apiParams, clientConfig);
+    this.managedZones.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.managedZones.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.managedZones.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.policies = {};
+    this.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies', 'POST', apiParams, clientConfig);
+    this.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'GET', apiParams, clientConfig);
+    this.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies', 'GET', apiParams, clientConfig);
+    this.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'DELETE', apiParams, clientConfig);
+    this.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'PATCH', apiParams, clientConfig);
+    this.policies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'PUT', apiParams, clientConfig);
+
     this.responsePolicies = {};
-    this.responsePolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies', 'GET', apiParams, clientConfig);
-    this.responsePolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'PUT', apiParams, clientConfig);
-    this.responsePolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'PATCH', apiParams, clientConfig);
-    this.responsePolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'DELETE', apiParams, clientConfig);
-    this.responsePolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'GET', apiParams, clientConfig);
     this.responsePolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies', 'POST', apiParams, clientConfig);
+    this.responsePolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'GET', apiParams, clientConfig);
+    this.responsePolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies', 'GET', apiParams, clientConfig);
+    this.responsePolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'DELETE', apiParams, clientConfig);
+    this.responsePolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'PATCH', apiParams, clientConfig);
+    this.responsePolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'PUT', apiParams, clientConfig);
+
+    this.responsePolicyRules = {};
+    this.responsePolicyRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules', 'POST', apiParams, clientConfig);
+    this.responsePolicyRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'GET', apiParams, clientConfig);
+    this.responsePolicyRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'DELETE', apiParams, clientConfig);
+    this.responsePolicyRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules', 'GET', apiParams, clientConfig);
+    this.responsePolicyRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'PATCH', apiParams, clientConfig);
+    this.responsePolicyRules.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'PUT', apiParams, clientConfig);
   }
 
 /**
