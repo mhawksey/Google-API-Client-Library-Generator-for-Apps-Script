@@ -18,31 +18,31 @@ class Speech {
     this._servicePath = '';
 
 
-    this.speech = {};
-    this.speech.longrunningrecognize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/speech:longrunningrecognize', 'POST', apiParams, clientConfig);
-    this.speech.recognize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/speech:recognize', 'POST', apiParams, clientConfig);
-
     this.projects = {};
 
     this.projects.locations = {};
 
+    this.projects.locations.phraseSets = {};
+    this.projects.locations.phraseSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/phraseSets', 'POST', apiParams, clientConfig);
+    this.projects.locations.phraseSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.phraseSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/phraseSets', 'GET', apiParams, clientConfig);
+    this.projects.locations.phraseSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.phraseSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.projects.locations.customClasses = {};
-    this.projects.locations.customClasses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.customClasses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.customClasses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customClasses', 'POST', apiParams, clientConfig);
+    this.projects.locations.customClasses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.customClasses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customClasses', 'GET', apiParams, clientConfig);
     this.projects.locations.customClasses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.phraseSets = {};
-    this.projects.locations.phraseSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.phraseSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/phraseSets', 'POST', apiParams, clientConfig);
-    this.projects.locations.phraseSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.phraseSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/phraseSets', 'GET', apiParams, clientConfig);
-    this.projects.locations.phraseSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.customClasses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations/{+name}', 'GET', apiParams, clientConfig);
     this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations', 'GET', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations/{+name}', 'GET', apiParams, clientConfig);
+
+    this.speech = {};
+    this.speech.recognize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/speech:recognize', 'POST', apiParams, clientConfig);
+    this.speech.longrunningrecognize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/speech:longrunningrecognize', 'POST', apiParams, clientConfig);
   }
 
 /**
