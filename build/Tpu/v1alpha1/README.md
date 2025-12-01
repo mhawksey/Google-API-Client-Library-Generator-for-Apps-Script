@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud TPU API (version: v1alpha1)*
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:23:48 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:23:48 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:17:34 GMT
+- **Last Modified:** Mon, 01 Dec 2025 01:17:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:53 GMT
 
 
@@ -18,6 +18,18 @@ Auto-generated client library for using the **Cloud TPU API (version: v1alpha1)*
 
 ### `projects.locations`
 
+#### `projects.locations.list()`
+
+Lists information about the supported locations for this service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
+
 #### `projects.locations.get()`
 
 Gets information about a location.
@@ -26,39 +38,43 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-#### `projects.locations.list()`
+### `projects.locations.operations`
 
-Lists information about the supported locations for this service.
+#### `projects.locations.operations.list()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-
-### `projects.locations.acceleratorTypes`
-
-#### `projects.locations.acceleratorTypes.list()`
-
-Lists accelerator types supported by this API.
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.orderBy` | `string` | No | Sort results. |
-| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
-| `params.filter` | `string` | No | List filter. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
-#### `projects.locations.acceleratorTypes.get()`
+#### `projects.locations.operations.get()`
 
-Gets AcceleratorType.
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name. |
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `projects.locations.operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 
 ### `projects.locations.nodes`
 
@@ -68,27 +84,9 @@ Lists nodes.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
 | `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
-
-#### `projects.locations.nodes.stop()`
-
-Stops a node. This operation is only available with single TPU nodes.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.nodes.delete()`
-
-Deletes a node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name. |
-| `params.requestId` | `string` | No | Idempotent request UUID. |
 
 #### `projects.locations.nodes.get()`
 
@@ -104,9 +102,36 @@ Creates a node.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Idempotent request UUID. |
-| `params.nodeId` | `string` | No | The unqualified resource name. |
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
+| `params.nodeId` | `string` | No | The unqualified resource name. |
+| `params.requestId` | `string` | No | Idempotent request UUID. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.nodes.delete()`
+
+Deletes a node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name. |
+| `params.requestId` | `string` | No | Idempotent request UUID. |
+
+#### `projects.locations.nodes.reimage()`
+
+Reimages a node's OS.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.nodes.stop()`
+
+Stops a node. This operation is only available with single TPU nodes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.nodes.start()`
@@ -118,16 +143,19 @@ Starts a node.
 | `params.name` | `string` | Yes | The resource name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.nodes.reimage()`
+### `projects.locations.tensorflowVersions`
 
-Reimages a node's OS.
+#### `projects.locations.tensorflowVersions.list()`
+
+Lists TensorFlow versions supported by this API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.tensorflowVersions`
+| `params.parent` | `string` | Yes | Required. The parent resource name. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
+| `params.filter` | `string` | No | List filter. |
+| `params.orderBy` | `string` | No | Sort results. |
 
 #### `projects.locations.tensorflowVersions.get()`
 
@@ -137,52 +165,24 @@ Gets TensorFlow Version.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name. |
 
-#### `projects.locations.tensorflowVersions.list()`
+### `projects.locations.acceleratorTypes`
 
-Lists TensorFlow versions supported by this API.
+#### `projects.locations.acceleratorTypes.list()`
+
+Lists accelerator types supported by this API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.orderBy` | `string` | No | Sort results. |
-| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.filter` | `string` | No | List filter. |
 | `params.parent` | `string` | Yes | Required. The parent resource name. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+| `params.pageToken` | `string` | No | The next_page_token value returned from a previous List request, if any. |
+| `params.filter` | `string` | No | List filter. |
+| `params.orderBy` | `string` | No | Sort results. |
 
-### `projects.locations.operations`
+#### `projects.locations.acceleratorTypes.get()`
 
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-
-#### `projects.locations.operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+Gets AcceleratorType.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.filter` | `string` | No | The standard list filter. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
+| `params.name` | `string` | Yes | Required. The resource name. |
