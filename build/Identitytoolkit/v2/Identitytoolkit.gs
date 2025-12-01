@@ -19,63 +19,63 @@ class Identitytoolkit {
 
 
     this.projects = {};
-    this.projects.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.identityPlatform = {};
+    this.projects.identityPlatform.initializeAuth = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+project}/identityPlatform:initializeAuth', 'POST', apiParams, clientConfig);
+
+    this.projects.defaultSupportedIdpConfigs = {};
+    this.projects.defaultSupportedIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'POST', apiParams, clientConfig);
+    this.projects.defaultSupportedIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.defaultSupportedIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.defaultSupportedIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'GET', apiParams, clientConfig);
+    this.projects.defaultSupportedIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.oauthIdpConfigs = {};
+    this.projects.oauthIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'POST', apiParams, clientConfig);
+    this.projects.oauthIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.oauthIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.oauthIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'GET', apiParams, clientConfig);
+    this.projects.oauthIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.inboundSamlConfigs = {};
-    this.projects.inboundSamlConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.inboundSamlConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.inboundSamlConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'GET', apiParams, clientConfig);
     this.projects.inboundSamlConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'POST', apiParams, clientConfig);
     this.projects.inboundSamlConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.inboundSamlConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.inboundSamlConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'GET', apiParams, clientConfig);
+    this.projects.inboundSamlConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.tenants = {};
-    this.projects.tenants.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.tenants.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.tenants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tenants', 'GET', apiParams, clientConfig);
-    this.projects.tenants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.tenants.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tenants', 'POST', apiParams, clientConfig);
     this.projects.tenants.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.tenants.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.tenants.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.tenants.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tenants', 'POST', apiParams, clientConfig);
+    this.projects.tenants.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.tenants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.tenants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tenants', 'GET', apiParams, clientConfig);
     this.projects.tenants.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.tenants.inboundSamlConfigs = {};
-    this.projects.tenants.inboundSamlConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.tenants.inboundSamlConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.tenants.inboundSamlConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'POST', apiParams, clientConfig);
-    this.projects.tenants.inboundSamlConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.tenants.inboundSamlConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'GET', apiParams, clientConfig);
 
     this.projects.tenants.defaultSupportedIdpConfigs = {};
     this.projects.tenants.defaultSupportedIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'POST', apiParams, clientConfig);
     this.projects.tenants.defaultSupportedIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.tenants.defaultSupportedIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'GET', apiParams, clientConfig);
     this.projects.tenants.defaultSupportedIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.tenants.defaultSupportedIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'GET', apiParams, clientConfig);
     this.projects.tenants.defaultSupportedIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.tenants.oauthIdpConfigs = {};
     this.projects.tenants.oauthIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'POST', apiParams, clientConfig);
-    this.projects.tenants.oauthIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.tenants.oauthIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.tenants.oauthIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'GET', apiParams, clientConfig);
     this.projects.tenants.oauthIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.tenants.oauthIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'GET', apiParams, clientConfig);
+    this.projects.tenants.oauthIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.oauthIdpConfigs = {};
-    this.projects.oauthIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'GET', apiParams, clientConfig);
-    this.projects.oauthIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.oauthIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.oauthIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.oauthIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/oauthIdpConfigs', 'POST', apiParams, clientConfig);
-
-    this.projects.defaultSupportedIdpConfigs = {};
-    this.projects.defaultSupportedIdpConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'GET', apiParams, clientConfig);
-    this.projects.defaultSupportedIdpConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.defaultSupportedIdpConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/defaultSupportedIdpConfigs', 'POST', apiParams, clientConfig);
-    this.projects.defaultSupportedIdpConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.defaultSupportedIdpConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.identityPlatform = {};
-    this.projects.identityPlatform.initializeAuth = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+project}/identityPlatform:initializeAuth', 'POST', apiParams, clientConfig);
+    this.projects.tenants.inboundSamlConfigs = {};
+    this.projects.tenants.inboundSamlConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'POST', apiParams, clientConfig);
+    this.projects.tenants.inboundSamlConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.tenants.inboundSamlConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.tenants.inboundSamlConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/inboundSamlConfigs', 'GET', apiParams, clientConfig);
+    this.projects.tenants.inboundSamlConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.defaultSupportedIdps = {};
     this.defaultSupportedIdps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/defaultSupportedIdps', 'GET', apiParams, clientConfig);
@@ -88,9 +88,9 @@ class Identitytoolkit {
     this.accounts.revokeToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts:revokeToken', 'POST', apiParams, clientConfig);
 
     this.accounts.mfaEnrollment = {};
-    this.accounts.mfaEnrollment.withdraw = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaEnrollment:withdraw', 'POST', apiParams, clientConfig);
-    this.accounts.mfaEnrollment.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaEnrollment:start', 'POST', apiParams, clientConfig);
     this.accounts.mfaEnrollment.finalize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaEnrollment:finalize', 'POST', apiParams, clientConfig);
+    this.accounts.mfaEnrollment.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaEnrollment:start', 'POST', apiParams, clientConfig);
+    this.accounts.mfaEnrollment.withdraw = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaEnrollment:withdraw', 'POST', apiParams, clientConfig);
 
     this.accounts.mfaSignIn = {};
     this.accounts.mfaSignIn.finalize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts/mfaSignIn:finalize', 'POST', apiParams, clientConfig);
