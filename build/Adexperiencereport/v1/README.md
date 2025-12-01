@@ -4,8 +4,8 @@ Auto-generated client library for using the **Ad Experience Report API (version:
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:21:06 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:21:06 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:21:09 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:21:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:47 GMT
 
 
@@ -13,15 +13,6 @@ Auto-generated client library for using the **Ad Experience Report API (version:
 ---
 
 ## API Reference
-
-### `violatingSites`
-
-#### `violatingSites.list()`
-
-Lists sites that are failing in the Ad Experience Report on at least one platform.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 
 ### `sites`
 
@@ -32,3 +23,12 @@ Gets a site's Ad Experience Report summary.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}` |
+
+### `violatingSites`
+
+#### `violatingSites.list()`
+
+Lists sites that are failing in the Ad Experience Report on at least one platform.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
