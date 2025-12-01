@@ -21,6 +21,18 @@ class Deploymentmanager {
     this.compositeTypes = {};
 
     /**
+     * Creates a composite type.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.compositeTypes.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/compositeTypes', 'POST', apiParams, clientConfig);
+
+    /**
      * Updates a composite type.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.compositeType - (Required) The name of the composite type for this request.
@@ -32,6 +44,19 @@ class Deploymentmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.compositeTypes.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Patches a composite type.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.compositeType - (Required) The name of the composite type for this request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.compositeTypes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Deletes a composite type.
@@ -71,35 +96,81 @@ class Deploymentmanager {
      */
     this.compositeTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/compositeTypes', 'GET', apiParams, clientConfig);
 
+    this.deployments = {};
+
     /**
-     * Patches a composite type.
+     * Creates a deployment and all of the resources described by the deployment manifest.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.compositeType - (Required) The name of the composite type for this request.
+     * @param {string} apiParams.createPolicy - Sets the policy to use for creating new resources.
      * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {boolean} apiParams.preview - If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
      * @param {string} apiParams.project - (Required) The project ID for this request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.compositeTypes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/compositeTypes/{compositeType}', 'PATCH', apiParams, clientConfig);
+    this.deployments.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments', 'POST', apiParams, clientConfig);
 
     /**
-     * Creates a composite type.
+     * Updates a deployment and all of the resources described by the deployment manifest.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.createPolicy - Sets the policy to use for creating new resources.
+     * @param {string} apiParams.deletePolicy - Sets the policy to use for deleting resources.
+     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
      * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {boolean} apiParams.preview - If set to true, updates the deployment and creates and updates the "shell" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
      * @param {string} apiParams.project - (Required) The project ID for this request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.compositeTypes.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/compositeTypes', 'POST', apiParams, clientConfig);
-
-    this.types = {};
+    this.deployments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Lists all resource types for Deployment Manager.
+     * Patches a deployment and all of the resources described by the deployment manifest.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.createPolicy - Sets the policy to use for creating new resources.
+     * @param {string} apiParams.deletePolicy - Sets the policy to use for deleting resources.
+     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {boolean} apiParams.preview - If set to true, updates the deployment and creates and updates the "shell" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a deployment and all of the resources in the deployment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.deletePolicy - Sets the policy to use for deleting resources.
+     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets information about a specific deployment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all deployments for a given project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
      * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
@@ -110,141 +181,69 @@ class Deploymentmanager {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.types.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/types', 'GET', apiParams, clientConfig);
-
-    this.operations = {};
+    this.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets information about a specific operation.
+     * Cancels and removes the preview currently associated with the deployment.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {string} apiParams.operation - (Required) The name of the operation for this request.
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/operations/{operation}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all operations for a project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
-     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
-     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
-     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/operations', 'GET', apiParams, clientConfig);
-
-    this.typeProviders = {};
-
-    /**
-     * Updates a type provider.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.typeProviders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Gets information about a specific type provider.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.typeProviders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a type provider.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
      * @param {string} apiParams.project - (Required) The project ID for this request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.typeProviders.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders', 'POST', apiParams, clientConfig);
+    this.deployments.cancelPreview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/cancelPreview', 'POST', apiParams, clientConfig);
 
     /**
-     * Patches a type provider.
+     * Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents any new work from being started.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
      * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.typeProviders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', 'PATCH', apiParams, clientConfig);
+    this.deployments.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/stop', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists all the type info for a TypeProvider.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
-     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
-     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
-     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.typeProviders.listTypes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}/types', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a type info for a type provided by a TypeProvider.
+     * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {string} apiParams.type - (Required) The name of the type provider type for this request.
-     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
+     * @param {integer} apiParams.optionsRequestedPolicyVersion - Requested IAM Policy version.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.resource - (Required) Name or id of the resource for this request.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.typeProviders.getType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}/types/{type}', 'GET', apiParams, clientConfig);
+    this.deployments.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/getIamPolicy', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes a type provider.
+     * Sets the access control policy on the specified resource. Replaces any existing policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.resource - (Required) Name or id of the resource for this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.deployments.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/setIamPolicy', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns permissions that a caller has on the specified resource.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
+     * @param {string} apiParams.project - (Required) Project ID for this request.
+     * @param {string} apiParams.resource - (Required) Name or id of the resource for this request.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.typeProviders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists all resource type providers for Deployment Manager.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
-     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
-     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
-     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.typeProviders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders', 'GET', apiParams, clientConfig);
+    this.deployments.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.manifests = {};
 
@@ -276,60 +275,22 @@ class Deploymentmanager {
      */
     this.manifests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/manifests', 'GET', apiParams, clientConfig);
 
-    this.deployments = {};
+    this.operations = {};
 
     /**
-     * Cancels and removes the preview currently associated with the deployment.
+     * Gets information about a specific operation.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deployments.cancelPreview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/cancelPreview', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates a deployment and all of the resources described by the deployment manifest.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.createPolicy - Sets the policy to use for creating new resources.
      * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {boolean} apiParams.preview - If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deployments.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments', 'POST', apiParams, clientConfig);
-
-    /**
-     * Stops an ongoing operation. This does not roll back any work that has already been completed, but prevents any new work from being started.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deployments.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/stop', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets information about a specific deployment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.operation - (Required) The name of the operation for this request.
      * @param {string} apiParams.project - (Required) The project ID for this request.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', 'GET', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/operations/{operation}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists all deployments for a given project.
+     * Lists all operations for a project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
      * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
@@ -340,90 +301,7 @@ class Deploymentmanager {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the access control policy for a resource. May be empty if no such policy or resource exists.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {integer} apiParams.optionsRequestedPolicyVersion - Requested IAM Policy version.
-     * @param {string} apiParams.project - (Required) Project ID for this request.
-     * @param {string} apiParams.resource - (Required) Name or id of the resource for this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deployments.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/getIamPolicy', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a deployment and all of the resources described by the deployment manifest.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.createPolicy - Sets the policy to use for creating new resources.
-     * @param {string} apiParams.deletePolicy - Sets the policy to use for deleting resources.
-     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {boolean} apiParams.preview - If set to true, updates the deployment and creates and updates the "shell" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deployments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', 'PUT', apiParams, clientConfig);
-
-    /**
-     * Deletes a deployment and all of the resources in the deployment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.deletePolicy - Sets the policy to use for deleting resources.
-     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Patches a deployment and all of the resources described by the deployment manifest.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.createPolicy - Sets the policy to use for creating new resources.
-     * @param {string} apiParams.deletePolicy - Sets the policy to use for deleting resources.
-     * @param {string} apiParams.deployment - (Required) The name of the deployment for this request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {boolean} apiParams.preview - If set to true, updates the deployment and creates and updates the "shell" resources but does not actually alter or instantiate these resources. This allows you to preview what your deployment will look like. You can use this intent to preview how an update would affect your deployment. You must provide a `target.config` with a configuration if this is set to true. After previewing a deployment, you can deploy your resources by making a request with the `update()` or you can `cancelPreview()` to remove the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
-     * @param {string} apiParams.project - (Required) The project ID for this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Sets the access control policy on the specified resource. Replaces any existing policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.project - (Required) Project ID for this request.
-     * @param {string} apiParams.resource - (Required) Name or id of the resource for this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deployments.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/setIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns permissions that a caller has on the specified resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.header.bypassBillingFilter - 
-     * @param {string} apiParams.project - (Required) Project ID for this request.
-     * @param {string} apiParams.resource - (Required) Name or id of the resource for this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.deployments.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{resource}/testIamPermissions', 'POST', apiParams, clientConfig);
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/operations', 'GET', apiParams, clientConfig);
 
     this.resources = {};
 
@@ -454,6 +332,128 @@ class Deploymentmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.resources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/deployments/{deployment}/resources', 'GET', apiParams, clientConfig);
+
+    this.typeProviders = {};
+
+    /**
+     * Creates a type provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.typeProviders.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a type provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.typeProviders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Patches a type provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.typeProviders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a type provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.typeProviders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets information about a specific type provider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.typeProviders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all resource type providers for Deployment Manager.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
+     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.typeProviders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all the type info for a TypeProvider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
+     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.typeProviders.listTypes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}/types', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a type info for a type provided by a TypeProvider.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.header.bypassBillingFilter - 
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {string} apiParams.type - (Required) The name of the type provider type for this request.
+     * @param {string} apiParams.typeProvider - (Required) The name of the type provider for this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.typeProviders.getType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/typeProviders/{typeProvider}/types/{type}', 'GET', apiParams, clientConfig);
+
+    this.types = {};
+
+    /**
+     * Lists all resource types for Deployment Manager.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Most Compute resources support two types of filter expressions: expressions that support regular expressions and expressions that follow API improvement proposal AIP-160. These two types of filter expressions cannot be mixed in one request. If you want to use AIP-160, your expression must specify the field name, an operator, and the value that you want to use for filtering. The value must be a string, a number, or a boolean. The operator must be either `=`, `!=`, `>`, `<`, `<=`, `>=` or `:`. For example, if you are filtering Compute Engine instances, you can exclude instances named `example-instance` by specifying `name != example-instance`. The `:*` comparison can be used to test whether a key has been defined. For example, to find all objects with `owner` label use: ``` labels.owner:* ``` You can also filter nested fields. For example, you could specify `scheduling.automaticRestart = false` to include instances only if they are not scheduled for automatic restarts. You can use filtering on nested fields to filter based on resource labels. To filter on multiple expressions, provide each separate expression within parentheses. For example: ``` (scheduling.automaticRestart = true) (cpuPlatform = "Intel Skylake") ``` By default, each expression is an `AND` expression. However, you can include `AND` and `OR` expressions explicitly. For example: ``` (cpuPlatform = "Intel Skylake") OR (cpuPlatform = "Intel Broadwell") AND (scheduling.automaticRestart = true) ``` If you want to use a regular expression, use the `eq` (equal) or `ne` (not equal) operator against a single un-parenthesized expression with or without quotes or against multiple parenthesized expressions. Examples: `fieldname eq unquoted literal` `fieldname eq 'single quoted literal'` `fieldname eq "double quoted literal"` `(fieldname1 eq literal) (fieldname2 ne "literal")` The literal value is interpreted as a regular expression using Google RE2 library syntax. The literal value must match the entire field. For example, to filter for instances that do not end with name "instance", you would use `name ne .*instance`. You cannot combine constraints on multiple fields using regular expressions.
+     * @param {integer} apiParams.maxResults - The maximum number of results per page that should be returned. If the number of available results is larger than `maxResults`, Compute Engine returns a `nextPageToken` that can be used to get the next page of results in subsequent list requests. Acceptable values are `0` to `500`, inclusive. (Default: `500`)
+     * @param {string} apiParams.orderBy - Sorts list results by a certain order. By default, results are returned in alphanumerical order based on the resource name. You can also sort results in descending order based on the creation timestamp using `orderBy="creationTimestamp desc"`. This sorts results based on the `creationTimestamp` field in reverse chronological order (newest result first). Use this to sort resources like operations so that the newest operation is returned first. Currently, only sorting by `name` or `creationTimestamp desc` is supported.
+     * @param {string} apiParams.pageToken - Specifies a page token to use. Set `pageToken` to the `nextPageToken` returned by a previous list request to get the next page of results.
+     * @param {string} apiParams.project - (Required) The project ID for this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.types.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('deploymentmanager/v2beta/projects/{project}/global/types', 'GET', apiParams, clientConfig);
   }
 
 /**
