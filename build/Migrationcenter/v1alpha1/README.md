@@ -4,8 +4,8 @@ Auto-generated client library for using the **Migration Center API (version: v1a
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:03:50 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:03:50 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:57:38 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:57:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:13 GMT
 
 
@@ -18,37 +18,6 @@ Auto-generated client library for using the **Migration Center API (version: v1a
 
 ### `projects.locations`
 
-#### `projects.locations.get()`
-
-Gets information about a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Resource name for the location. |
-
-#### `projects.locations.updateSettings()`
-
-Updates the regional-level project settings.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `Settings` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Output only. The name of the resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.list()`
-
-Lists information about the supported locations for this service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-
 #### `projects.locations.getSettings()`
 
 Gets the details of regional settings.
@@ -57,447 +26,58 @@ Gets the details of regional settings.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. |
 
-### `projects.locations.assetsExportJobs`
+#### `projects.locations.updateSettings()`
 
-#### `projects.locations.assetsExportJobs.list()`
-
-Lists all the assets export jobs in a given project and location.
+Updates the regional-level project settings.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource. |
-| `params.pageSize` | `integer` | No | Optional. Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. |
-| `params.pageToken` | `string` | No | Optional. A token identifying a page of results that the server should return. |
-
-#### `projects.locations.assetsExportJobs.run()`
-
-Runs an assets export job, returning an AssetsExportJobExecution.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.assetsExportJobs.create()`
-
-Creates a new assets export job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource where the assts export job will be created. |
-| `params.assetsExportJobId` | `string` | No | Required. The ID to use for the asset export job. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.assetsExportJobs.delete()`
-
-Deletes an assets export job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the assets export job to delete. |
-
-#### `projects.locations.assetsExportJobs.get()`
-
-Gets the details of an assets export job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-
-### `projects.locations.importJobs`
-
-#### `projects.locations.importJobs.get()`
-
-Gets the details of an import job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.view` | `string` | No | Optional. The level of details of the import job. Default value is FULL. |
-
-#### `projects.locations.importJobs.patch()`
-
-Updates an import job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The full name of the import job. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `Asset` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.importJobs.delete()`
-
-Deletes an import job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.force` | `boolean` | No | Optional. If set to `true`, any `ImportDataFiles` of this job will also be deleted If set to `false`, the request only works if the job has no data files. |
-
-#### `projects.locations.importJobs.create()`
-
-Creates an import job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.importJobId` | `string` | No | Required. ID of the import job. |
+| `params.name` | `string` | Yes | Output only. The name of the resource. |
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `Settings` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.importJobs.run()`
+#### `projects.locations.list()`
 
-Runs an import job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the import job to run. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.importJobs.validate()`
-
-Validates an import job.
+Lists information about the supported locations for this service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the import job to validate. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
-#### `projects.locations.importJobs.list()`
+#### `projects.locations.get()`
 
-Lists all import jobs.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.view` | `string` | No | Optional. The level of details of each import job. Default value is BASIC. |
-| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.filter` | `string` | No | Filtering results. |
-| `params.parent` | `string` | Yes | Required. Parent value for `ListImportJobsRequest`. |
-
-### `projects.locations.importJobs.importDataFiles`
-
-#### `projects.locations.importJobs.importDataFiles.get()`
-
-Gets an import data file.
+Gets information about a location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the ImportDataFile. |
-
-#### `projects.locations.importJobs.importDataFiles.create()`
-
-Creates an import data file.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.importDataFileId` | `string` | No | Required. The ID of the new data file. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. Name of the parent of the ImportDataFile. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.importJobs.importDataFiles.list()`
-
-List import data files.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Filtering results. |
-| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.parent` | `string` | Yes | Required. Name of the parent of the `ImportDataFiles` resource. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListImportDataFiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImportDataFiles` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | The maximum number of data files to return. The service may return fewer than this value. If unspecified, at most 500 data files will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-
-#### `projects.locations.importJobs.importDataFiles.delete()`
-
-Delete an import data file.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the ImportDataFile to delete. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-### `projects.locations.sources`
-
-#### `projects.locations.sources.delete()`
-
-Deletes a source.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-#### `projects.locations.sources.create()`
-
-Creates a new source in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.sourceId` | `string` | No | Required. User specified ID for the source. It will become the last component of the source name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. |
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.get()`
-
-Gets the details of a source.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-
-#### `projects.locations.sources.patch()`
-
-Updates the parameters of a source.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The full name of the source. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `Source` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.sources.list()`
-
-Lists all the sources in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for `ListSourcesRequest`. |
-| `params.filter` | `string` | No | Filtering results. |
-| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. |
-| `params.pageToken` | `string` | No | A token identifying a page of results that the server should return. |
-
-### `projects.locations.sources.errorFrames`
-
-#### `projects.locations.sources.errorFrames.list()`
-
-Lists all error frames in a given source and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.parent` | `string` | Yes | Required. Parent value (the source) for `ListErrorFramesRequest`. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.view` | `string` | No | Optional. An optional view mode to control the level of details of each error frame. The default is a BASIC frame view. |
-
-#### `projects.locations.sources.errorFrames.get()`
-
-Gets the details of an error frame.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.view` | `string` | No | Optional. An optional view mode to control the level of details for the frame. The default is a basic frame view. |
-| `params.name` | `string` | Yes | Required. The name of the frame to retrieve. Format: projects/{project}/locations/{location}/sources/{source}/errorFrames/{error_frame} |
-
-### `projects.locations.reportConfigs`
-
-#### `projects.locations.reportConfigs.create()`
-
-Creates a report configuration.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.reportConfigId` | `string` | No | Required. User specified ID for the report config. It will become the last component of the report config name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.reportConfigs.delete()`
-
-Deletes a ReportConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.force` | `boolean` | No | Optional. If set to `true`, any child `Reports` of this entity will also be deleted. If set to `false`, the request only works if the resource has no children. |
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-
-#### `projects.locations.reportConfigs.get()`
-
-Gets details of a single ReportConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-
-#### `projects.locations.reportConfigs.list()`
-
-Lists ReportConfigs in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.parent` | `string` | Yes | Required. Parent value for `ListReportConfigsRequest`. |
-| `params.filter` | `string` | No | Filtering results. |
-
-### `projects.locations.reportConfigs.reports`
-
-#### `projects.locations.reportConfigs.reports.delete()`
-
-Deletes a Report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-
-#### `projects.locations.reportConfigs.reports.get()`
-
-Gets details of a single Report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-| `params.view` | `string` | No | Determines what information to retrieve for the Report. |
-
-#### `projects.locations.reportConfigs.reports.create()`
-
-Creates a report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.reportId` | `string` | No | Required. User specified id for the report. It will become the last component of the report name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The id must match the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.reportConfigs.reports.list()`
-
-Lists Reports in a given ReportConfig.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Filtering results. |
-| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. |
-| `params.parent` | `string` | Yes | Required. Parent value for `ListReportsRequest`. |
-| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.view` | `string` | No | Determines what information to retrieve for each Report. |
-| `params.pageToken` | `string` | No | A token identifying a page of results that the server should return. |
-
-### `projects.locations.discoveryClients`
-
-#### `projects.locations.discoveryClients.delete()`
-
-Deletes a discovery client.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Required. The discovery client name. |
-
-#### `projects.locations.discoveryClients.create()`
-
-Creates a new discovery client.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource. |
-| `params.discoveryClientId` | `string` | No | Required. User specified ID for the discovery client. It will become the last component of the discovery client name. The ID must be unique within the project, is restricted to lower-cased letters and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.discoveryClients.list()`
-
-Lists all the discovery clients in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDiscoveryClients` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDiscoveryClients` must match the call that provided the page token. |
-| `params.orderBy` | `string` | No | Optional. Field to sort by. |
-| `params.filter` | `string` | No | Optional. Filter expression to filter results by. |
-| `params.parent` | `string` | Yes | Required. Parent resource. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. |
-
-#### `projects.locations.discoveryClients.sendHeartbeat()`
-
-Sends a discovery client heartbeat. Healthy clients are expected to send heartbeats regularly (normally every few minutes).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The discovery client name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.discoveryClients.patch()`
-
-Updates a discovery client.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.updateMask` | `string` | No | Required. Update mask is used to specify the fields to be overwritten in the `DiscoveryClient` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
-| `params.name` | `string` | Yes | Output only. Identifier. Full name of this discovery client. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.discoveryClients.get()`
-
-Gets the details of a discovery client.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The discovery client name. |
-
-### `projects.locations.preferenceSets`
-
-#### `projects.locations.preferenceSets.get()`
-
-Gets the details of a preference set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource. |
-
-#### `projects.locations.preferenceSets.delete()`
-
-Deletes a preference set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the group resource. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-#### `projects.locations.preferenceSets.patch()`
-
-Updates the parameters of a preference set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `PreferenceSet` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
-| `params.name` | `string` | Yes | Output only. Name of the PreferenceSet. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.preferenceSets.create()`
-
-Creates a new preference set in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Value for parent. |
-| `params.preferenceSetId` | `string` | No |  |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.preferenceSets.list()`
-
-Lists all the preference sets in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, at most 500 preference sets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.parent` | `string` | Yes | Required. Parent value for `ListPreferenceSetsRequest`. |
+| `params.name` | `string` | Yes | Resource name for the location. |
 
 ### `projects.locations.operations`
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
 #### `projects.locations.operations.delete()`
 
@@ -516,36 +96,30 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
 ### `projects.locations.assets`
 
-#### `projects.locations.assets.batchDelete()`
+#### `projects.locations.assets.list()`
 
-Deletes list of Assets.
+Lists all the assets in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for batch asset delete. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. Parent value for `ListAssetsRequest`. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Filtering results. |
+| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+| `params.view` | `string` | No | View of the assets. Defaults to BASIC. |
+| `params.showHidden` | `boolean` | No | Optional. When this value is set to 'true' the response will include all assets, including those that are hidden. |
+
+#### `projects.locations.assets.get()`
+
+Gets the details of an asset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.view` | `string` | No | View of the assets. Defaults to BASIC. |
 
 #### `projects.locations.assets.patch()`
 
@@ -554,8 +128,8 @@ Updates the parameters of an asset.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The full name of the asset. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `Asset` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.assets.batchUpdate()`
@@ -567,28 +141,23 @@ Updates the parameters of a list of assets.
 | `params.parent` | `string` | Yes | Required. Parent value for batch asset update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.assets.get()`
+#### `projects.locations.assets.delete()`
 
-Gets the details of an asset.
+Deletes an asset.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.view` | `string` | No | View of the assets. Defaults to BASIC. |
 | `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
-#### `projects.locations.assets.list()`
+#### `projects.locations.assets.batchDelete()`
 
-Lists all the assets in a given project and location.
+Deletes list of Assets.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.parent` | `string` | Yes | Required. Parent value for `ListAssetsRequest`. |
-| `params.view` | `string` | No | View of the assets. Defaults to BASIC. |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
-| `params.filter` | `string` | No | Filtering results. |
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
-| `params.showHidden` | `boolean` | No | Optional. When this value is set to 'true' the response will include all assets, including those that are hidden. |
+| `params.parent` | `string` | Yes | Required. Parent value for batch asset delete. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.assets.reportAssetFrames()`
 
@@ -596,18 +165,9 @@ Reports a set of frames.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.source` | `string` | No | Required. Reference to a source. |
 | `params.parent` | `string` | Yes | Required. Parent of the resource. |
+| `params.source` | `string` | No | Required. Reference to a source. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.assets.delete()`
-
-Deletes an asset.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Required. Name of the resource. |
 
 #### `projects.locations.assets.aggregateValues()`
 
@@ -618,16 +178,123 @@ Aggregates the requested fields based on provided function.
 | `params.parent` | `string` | Yes | Required. Parent value for `AggregateAssetsValuesRequest`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.groups`
+### `projects.locations.importJobs`
 
-#### `projects.locations.groups.removeAssets()`
+#### `projects.locations.importJobs.create()`
 
-Removes assets from a group.
+Creates an import job.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.group` | `string` | Yes | Required. Group reference. |
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.importJobId` | `string` | No | Required. ID of the import job. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.importJobs.list()`
+
+Lists all import jobs.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for `ListImportJobsRequest`. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Filtering results. |
+| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+| `params.view` | `string` | No | Optional. The level of details of each import job. Default value is BASIC. |
+
+#### `projects.locations.importJobs.get()`
+
+Gets the details of an import job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.view` | `string` | No | Optional. The level of details of the import job. Default value is FULL. |
+
+#### `projects.locations.importJobs.delete()`
+
+Deletes an import job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.force` | `boolean` | No | Optional. If set to `true`, any `ImportDataFiles` of this job will also be deleted If set to `false`, the request only works if the job has no data files. |
+
+#### `projects.locations.importJobs.patch()`
+
+Updates an import job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The full name of the import job. |
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `Asset` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.importJobs.validate()`
+
+Validates an import job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the import job to validate. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.importJobs.run()`
+
+Runs an import job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the import job to run. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.importJobs.importDataFiles`
+
+#### `projects.locations.importJobs.importDataFiles.get()`
+
+Gets an import data file.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the ImportDataFile. |
+
+#### `projects.locations.importJobs.importDataFiles.list()`
+
+List import data files.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the parent of the `ImportDataFiles` resource. |
+| `params.pageSize` | `integer` | No | The maximum number of data files to return. The service may return fewer than this value. If unspecified, at most 500 data files will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListImportDataFiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListImportDataFiles` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Filtering results. |
+| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+
+#### `projects.locations.importJobs.importDataFiles.create()`
+
+Creates an import data file.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the parent of the ImportDataFile. |
+| `params.importDataFileId` | `string` | No | Required. The ID of the new data file. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.importJobs.importDataFiles.delete()`
+
+Delete an import data file.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the ImportDataFile to delete. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.groups`
 
 #### `projects.locations.groups.list()`
 
@@ -635,11 +302,11 @@ Lists all groups in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for `ListGroupsRequest`. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
 | `params.filter` | `string` | No | Filtering results. |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.parent` | `string` | Yes | Required. Parent value for `ListGroupsRequest`. |
 
 #### `projects.locations.groups.get()`
 
@@ -655,18 +322,9 @@ Creates a new group in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.parent` | `string` | Yes | Required. Value for parent. |
 | `params.groupId` | `string` | No | Required. User specified ID for the group. It will become the last component of the group name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.groups.addAssets()`
-
-Adds assets to a group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.group` | `string` | Yes | Required. Group reference. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.groups.patch()`
@@ -675,8 +333,8 @@ Updates the parameters of a group.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `Group` resource by the update. The values specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
 | `params.name` | `string` | Yes | Output only. The name of the group. |
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `Group` resource by the update. The values specified in the `update_mask` are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
@@ -689,19 +347,416 @@ Deletes a group.
 | `params.name` | `string` | Yes | Required. Name of the group resource. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 
-### `projects.locations.relations`
+#### `projects.locations.groups.addAssets()`
 
-#### `projects.locations.relations.list()`
-
-Lists all the relations in a given project and location.
+Adds assets to a group.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent value for `ListRelationsRequest`. |
+| `params.group` | `string` | Yes | Required. Group reference. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.groups.removeAssets()`
+
+Removes assets from a group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.group` | `string` | Yes | Required. Group reference. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.sources`
+
+#### `projects.locations.sources.list()`
+
+Lists all the sources in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for `ListSourcesRequest`. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. |
+| `params.pageToken` | `string` | No | A token identifying a page of results that the server should return. |
+| `params.filter` | `string` | No | Filtering results. |
+| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+
+#### `projects.locations.sources.get()`
+
+Gets the details of a source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+
+#### `projects.locations.sources.create()`
+
+Creates a new source in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.sourceId` | `string` | No | Required. User specified ID for the source. It will become the last component of the source name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.patch()`
+
+Updates the parameters of a source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The full name of the source. |
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `Source` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.sources.delete()`
+
+Deletes a source.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.sources.errorFrames`
+
+#### `projects.locations.sources.errorFrames.list()`
+
+Lists all error frames in a given source and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value (the source) for `ListErrorFramesRequest`. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.view` | `string` | No | Optional. An optional view mode to control the level of details of each error frame. The default is a BASIC frame view. |
+
+#### `projects.locations.sources.errorFrames.get()`
+
+Gets the details of an error frame.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the frame to retrieve. Format: projects/{project}/locations/{location}/sources/{source}/errorFrames/{error_frame} |
+| `params.view` | `string` | No | Optional. An optional view mode to control the level of details for the frame. The default is a basic frame view. |
+
+### `projects.locations.preferenceSets`
+
+#### `projects.locations.preferenceSets.list()`
+
+Lists all the preference sets in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for `ListPreferenceSetsRequest`. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, at most 500 preference sets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+
+#### `projects.locations.preferenceSets.get()`
+
+Gets the details of a preference set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+
+#### `projects.locations.preferenceSets.create()`
+
+Creates a new preference set in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.preferenceSetId` | `string` | No |  |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.preferenceSets.patch()`
+
+Updates the parameters of a preference set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Name of the PreferenceSet. |
+| `params.updateMask` | `string` | No | Required. Field mask is used to specify the fields to be overwritten in the `PreferenceSet` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.preferenceSets.delete()`
+
+Deletes a preference set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the group resource. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.reportConfigs`
+
+#### `projects.locations.reportConfigs.create()`
+
+Creates a report configuration.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.reportConfigId` | `string` | No | Required. User specified ID for the report config. It will become the last component of the report config name. The ID must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The ID must match the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.reportConfigs.get()`
+
+Gets details of a single ReportConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+
+#### `projects.locations.reportConfigs.list()`
+
+Lists ReportConfigs in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for `ListReportConfigsRequest`. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
 | `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
 | `params.filter` | `string` | No | Filtering results. |
 | `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+
+#### `projects.locations.reportConfigs.delete()`
+
+Deletes a ReportConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.force` | `boolean` | No | Optional. If set to `true`, any child `Reports` of this entity will also be deleted. If set to `false`, the request only works if the resource has no children. |
+
+### `projects.locations.reportConfigs.reports`
+
+#### `projects.locations.reportConfigs.reports.create()`
+
+Creates a report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Value for parent. |
+| `params.reportId` | `string` | No | Required. User specified id for the report. It will become the last component of the report name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. The id must match the regular expression: [a-z]([a-z0-9-]{0,61}[a-z0-9])?. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.reportConfigs.reports.get()`
+
+Gets details of a single Report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.view` | `string` | No | Determines what information to retrieve for the Report. |
+
+#### `projects.locations.reportConfigs.reports.list()`
+
+Lists Reports in a given ReportConfig.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for `ListReportsRequest`. |
+| `params.pageSize` | `integer` | No | Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. |
+| `params.pageToken` | `string` | No | A token identifying a page of results that the server should return. |
+| `params.filter` | `string` | No | Filtering results. |
+| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
+| `params.view` | `string` | No | Determines what information to retrieve for each Report. |
+
+#### `projects.locations.reportConfigs.reports.artifactLink()`
+
+Gets the link to the generated artifact of a given type for a Report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.reportConfigs.reports.delete()`
+
+Deletes a Report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.reportConfigs.reports.export()`
+
+Export a Report into a supported format.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.reportConfigs.reports.reportExportJobs`
+
+#### `projects.locations.reportConfigs.reports.reportExportJobs.create()`
+
+Export a Report into a supported destination.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource where this export job will be created. |
+| `params.reportExportJobId` | `string` | No | Required. The ID to use for the report export job. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.reportConfigs.reports.reportExportJobs.get()`
+
+Gets the details of a report export job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+
+#### `projects.locations.reportConfigs.reports.reportExportJobs.list()`
+
+Lists all the report export jobs for a given report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent report owning the export jobs. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results that the server should return. |
+
+#### `projects.locations.reportConfigs.reports.reportExportJobs.delete()`
+
+Deletes an report export job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+#### `projects.locations.reportConfigs.reports.reportExportJobs.run()`
+
+Runs a report export job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.assetsExportJobs`
+
+#### `projects.locations.assetsExportJobs.create()`
+
+Creates a new assets export job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource where the assts export job will be created. |
+| `params.assetsExportJobId` | `string` | No | Required. The ID to use for the asset export job. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.assetsExportJobs.get()`
+
+Gets the details of an assets export job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+
+#### `projects.locations.assetsExportJobs.list()`
+
+Lists all the assets export jobs in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource. |
+| `params.pageSize` | `integer` | No | Optional. Requested page size. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. |
+| `params.pageToken` | `string` | No | Optional. A token identifying a page of results that the server should return. |
+
+#### `projects.locations.assetsExportJobs.delete()`
+
+Deletes an assets export job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the assets export job to delete. |
+
+#### `projects.locations.assetsExportJobs.run()`
+
+Runs an assets export job, returning an AssetsExportJobExecution.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.discoveryClients`
+
+#### `projects.locations.discoveryClients.create()`
+
+Creates a new discovery client.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource. |
+| `params.discoveryClientId` | `string` | No | Required. User specified ID for the discovery client. It will become the last component of the discovery client name. The ID must be unique within the project, is restricted to lower-cased letters and has a maximum length of 63 characters. The ID must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.discoveryClients.get()`
+
+Gets the details of a discovery client.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The discovery client name. |
+
+#### `projects.locations.discoveryClients.list()`
+
+Lists all the discovery clients in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. The server may return fewer items than requested. If unspecified, the server will pick an appropriate default value. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDiscoveryClients` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDiscoveryClients` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. Filter expression to filter results by. |
+| `params.orderBy` | `string` | No | Optional. Field to sort by. |
+
+#### `projects.locations.discoveryClients.patch()`
+
+Updates a discovery client.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Identifier. Full name of this discovery client. |
+| `params.updateMask` | `string` | No | Required. Update mask is used to specify the fields to be overwritten in the `DiscoveryClient` resource by the update. The values specified in the `update_mask` field are relative to the resource, not the full request. A field will be overwritten if it is in the mask. A single * value in the mask lets you to overwrite all fields. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.discoveryClients.sendHeartbeat()`
+
+Sends a discovery client heartbeat. Healthy clients are expected to send heartbeats regularly (normally every few minutes).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The discovery client name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.discoveryClients.delete()`
+
+Deletes a discovery client.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The discovery client name. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+
+### `projects.locations.relations`
 
 #### `projects.locations.relations.get()`
 
@@ -710,3 +765,15 @@ Gets the details of an relation.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource. |
+
+#### `projects.locations.relations.list()`
+
+Lists all the relations in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent value for `ListRelationsRequest`. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer items than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. |
+| `params.filter` | `string` | No | Filtering results. |
+| `params.orderBy` | `string` | No | Field to sort by. See https://google.aip.dev/132#ordering for more details. |
