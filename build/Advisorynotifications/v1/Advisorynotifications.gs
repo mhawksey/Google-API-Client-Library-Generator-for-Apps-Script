@@ -31,8 +31,8 @@ class Advisorynotifications {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.getSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.updateSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.getSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.notifications = {};
     this.projects.locations.notifications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/notifications', 'GET', apiParams, clientConfig);
