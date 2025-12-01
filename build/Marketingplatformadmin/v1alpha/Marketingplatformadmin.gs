@@ -19,16 +19,16 @@ class Marketingplatformadmin {
 
 
     this.organizations = {};
-    this.organizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/organizations', 'GET', apiParams, clientConfig);
-    this.organizations.reportPropertyUsage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:reportPropertyUsage', 'POST', apiParams, clientConfig);
     this.organizations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/organizations', 'GET', apiParams, clientConfig);
     this.organizations.findSalesPartnerManagedClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:findSalesPartnerManagedClients', 'POST', apiParams, clientConfig);
+    this.organizations.reportPropertyUsage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+organization}:reportPropertyUsage', 'POST', apiParams, clientConfig);
 
     this.organizations.analyticsAccountLinks = {};
-    this.organizations.analyticsAccountLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.analyticsAccountLinks.setPropertyServiceLevel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+analyticsAccountLink}:setPropertyServiceLevel', 'POST', apiParams, clientConfig);
     this.organizations.analyticsAccountLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'GET', apiParams, clientConfig);
     this.organizations.analyticsAccountLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/analyticsAccountLinks', 'POST', apiParams, clientConfig);
+    this.organizations.analyticsAccountLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.analyticsAccountLinks.setPropertyServiceLevel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+analyticsAccountLink}:setPropertyServiceLevel', 'POST', apiParams, clientConfig);
   }
 
 /**
