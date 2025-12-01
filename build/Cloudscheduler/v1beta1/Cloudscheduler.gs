@@ -31,14 +31,14 @@ class Cloudscheduler {
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.jobs = {};
-    this.projects.locations.jobs.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:pause', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:run', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:resume', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/jobs', 'POST', apiParams, clientConfig);
     this.projects.locations.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/jobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/jobs', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:pause', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.jobs.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:run', 'POST', apiParams, clientConfig);
   }
 
 /**
