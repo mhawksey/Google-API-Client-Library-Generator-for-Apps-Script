@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Trace API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:33:09 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:34:24 GMT
 - **Last Modified:** Sat, 01 Nov 2025 00:33:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:09 GMT
 
@@ -33,14 +33,14 @@ Returns a list of traces that match the specified filter conditions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Maximum number of traces to return. If not specified or <= 0, the implementation selects a reasonable value. The implementation may return fewer traces than the requested page size. |
+| `params.projectId` | `string` | Yes | Required. ID of the Cloud project where the trace data is stored. |
 | `params.view` | `string` | No | Optional. Type of data returned for traces in the list. Default is `MINIMAL`. |
-| `params.orderBy` | `string` | No | Optional. Field used to sort the returned traces. Can be one of the following: * `trace_id` * `name` (`name` field of root span in the trace) * `duration` (difference between `end_time` and `start_time` fields of the root span) * `start` (`start_time` field of the root span) Descending order can be specified by appending `desc` to the sort field (for example, `name desc`). Only one sort field is permitted. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of traces to return. If not specified or <= 0, the implementation selects a reasonable value. The implementation may return fewer traces than the requested page size. |
 | `params.pageToken` | `string` | No | Token identifying the page of results to return. If provided, use the value of the `next_page_token` field from a previous request. |
 | `params.startTime` | `string` | No | Start of the time interval (inclusive) during which the trace data was collected from the application. |
-| `params.filter` | `string` | No | Optional. A filter against properties of the trace. See [filter syntax documentation](https://cloud.google.com/trace/docs/trace-filters) for details. |
-| `params.projectId` | `string` | Yes | Required. ID of the Cloud project where the trace data is stored. |
 | `params.endTime` | `string` | No | End of the time interval (inclusive) during which the trace data was collected from the application. |
+| `params.filter` | `string` | No | Optional. A filter against properties of the trace. See [filter syntax documentation](https://cloud.google.com/trace/docs/trace-filters) for details. |
+| `params.orderBy` | `string` | No | Optional. Field used to sort the returned traces. Can be one of the following: * `trace_id` * `name` (`name` field of root span in the trace) * `duration` (difference between `end_time` and `start_time` fields of the root span) * `start` (`start_time` field of the root span) Descending order can be specified by appending `desc` to the sort field (for example, `name desc`). Only one sort field is permitted. |
 
 #### `projects.traces.get()`
 
@@ -48,5 +48,5 @@ Gets a single trace by its ID.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.traceId` | `string` | Yes | Required. ID of the trace to return. |
 | `params.projectId` | `string` | Yes | Required. ID of the Cloud project where the trace data is stored. |
+| `params.traceId` | `string` | Yes | Required. ID of the trace to return. |
