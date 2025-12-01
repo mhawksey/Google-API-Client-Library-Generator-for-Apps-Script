@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Storage JSON API (version: v
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:23:09 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:16:41 GMT
 - **Last Modified:** Sat, 01 Nov 2025 01:23:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:09 GMT
 
