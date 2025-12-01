@@ -21,10 +21,10 @@ class Mybusinessqanda {
     this.locations = {};
 
     this.locations.questions = {};
+    this.locations.questions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.locations.questions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}', 'POST', apiParams, clientConfig);
     this.locations.questions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}', 'GET', apiParams, clientConfig);
     this.locations.questions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.locations.questions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.locations.questions.answers = {};
     this.locations.questions.answers.upsert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/answers:upsert', 'POST', apiParams, clientConfig);
