@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Document AI API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:43:45 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:43:45 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:44:48 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:44:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:14 GMT
 
 
@@ -18,17 +18,25 @@ Auto-generated client library for using the **Cloud Document AI API (version: v1
 
 ### `projects.locations`
 
+#### `projects.locations.fetchProcessorTypes()`
+
+Fetches processor types. Note that we don't use ListProcessorTypes here, because it isn't paginated.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The location of processor types to list. Format: `projects/{project}/locations/{location}`. |
+
 #### `projects.locations.list()`
 
 Lists information about the supported locations for this service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
 | `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
@@ -38,119 +46,65 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-#### `projects.locations.fetchProcessorTypes()`
+### `projects.locations.operations`
 
-Fetches processor types. Note that we don't use ListProcessorTypes here, because it isn't paginated.
+#### `projects.locations.operations.list()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The location of processor types to list. Format: `projects/{project}/locations/{location}`. |
-
-### `projects.locations.schemas`
-
-#### `projects.locations.schemas.list()`
-
-Lists Schemas.
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}` |
-| `params.pageToken` | `string` | No | Optional. We will return the schema groups sorted by creation time. The page token will point to the next Schema. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of schema groups to return. If unspecified, at most `10` Schema will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
-#### `projects.locations.schemas.get()`
+#### `projects.locations.operations.get()`
 
-Gets a schema.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Schema to get. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
-
-#### `projects.locations.schemas.delete()`
-
-Deletes a schema.
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.force` | `boolean` | No | Optional. If set to true, any child resources of this Schema will also be deleted. (Otherwise, the request will only work if the Schema has no child resources.) |
-| `params.name` | `string` | Yes | Required. The name of the Schema to be deleted. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
-#### `projects.locations.schemas.create()`
+#### `projects.locations.operations.cancel()`
 
-Creates a schema.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) under which to create the Schema. Format: `projects/{project}/locations/{location}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.schemas.patch()`
-
-Updates a schema. Editable fields are: - `display_name` - `labels`
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the Schema. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
-| `params.updateMask` | `string` | No | Optional. The update mask to apply to the resource. **Note:** Only the following fields can be updated: - display_name. - labels. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.schemas.schemaVersions`
-
-#### `projects.locations.schemas.schemaVersions.delete()`
-
-Deletes a schema version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the SchemaVersion to delete. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}` |
-
-#### `projects.locations.schemas.schemaVersions.create()`
-
-Creates a schema version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) under which to create the SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.schemas.schemaVersions.generate()`
-
-Generates a schema version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project, location and schema) under which to generate the SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.schemas.schemaVersions.list()`
-
-Lists SchemaVersions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of SchemaVersion to return. If unspecified, at most `10` SchemaVersion will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`. |
-| `params.pageToken` | `string` | No | Optional. We will return the SchemaVersion sorted by creation time. The page token will point to the next SchemaVersion. |
-| `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
-
-#### `projects.locations.schemas.schemaVersions.patch()`
-
-Updates a schema version. Editable fields are: - `display_name` - `labels`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. The resource name of the SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}` |
-| `params.updateMask` | `string` | No | Optional. The update mask to apply to the resource. **Note:** Only the following fields can be updated: - display_name. - labels. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.schemas.schemaVersions.get()`
-
-Gets a schema version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the SchemaVersion to get. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}` |
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 
 ### `projects.locations.processors`
+
+#### `projects.locations.processors.process()`
+
+Processes a single document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Processor or ProcessorVersion to use for processing. If a Processor is specified, the server will use its default version. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.processors.batchProcess()`
+
+LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of Processor or ProcessorVersion. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.processors.list()`
+
+Lists all processors which belong to this project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project and location) which owns this collection of Processors. Format: `projects/{project}/locations/{location}` |
+| `params.pageSize` | `integer` | No | The maximum number of processors to return. If unspecified, at most `50` processors will be returned. The maximum value is `100`. Values above `100` will be coerced to `100`. |
+| `params.pageToken` | `string` | No | We will return the processors sorted by creation time. The page token will point to the next processor. |
 
 #### `projects.locations.processors.get()`
 
@@ -177,34 +131,6 @@ Deletes the processor, unloads all deployed model artifacts if it was enabled an
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The processor resource name to be deleted. |
 
-#### `projects.locations.processors.updateDataset()`
-
-Updates metadata associated with a dataset. Note that this method requires the `documentai.googleapis.com/datasets.update` permission on the project, which is highly privileged. A user or service account with this permission can create new processors that can interact with any gcs bucket in your project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Dataset resource name. Format: `projects/{project}/locations/{location}/processors/{processor}/dataset` |
-| `params.updateMask` | `string` | No | The update mask applies to the resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.processors.setDefaultProcessorVersion()`
-
-Set the default (active) version of a Processor that will be used in ProcessDocument and BatchProcessDocuments.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.processor` | `string` | Yes | Required. The resource name of the Processor to change default version. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.processors.process()`
-
-Processes a single document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Processor or ProcessorVersion to use for processing. If a Processor is specified, the server will use its default version. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.processors.enable()`
 
 Enables a processor
@@ -223,7 +149,37 @@ Disables a processor
 | `params.name` | `string` | Yes | Required. The processor resource name to be disabled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.processors.batchProcess()`
+#### `projects.locations.processors.setDefaultProcessorVersion()`
+
+Set the default (active) version of a Processor that will be used in ProcessDocument and BatchProcessDocuments.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.processor` | `string` | Yes | Required. The resource name of the Processor to change default version. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.processors.updateDataset()`
+
+Updates metadata associated with a dataset. Note that this method requires the `documentai.googleapis.com/datasets.update` permission on the project, which is highly privileged. A user or service account with this permission can create new processors that can interact with any gcs bucket in your project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Dataset resource name. Format: `projects/{project}/locations/{location}/processors/{processor}/dataset` |
+| `params.updateMask` | `string` | No | The update mask applies to the resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.processors.processorVersions`
+
+#### `projects.locations.processors.processorVersions.process()`
+
+Processes a single document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Processor or ProcessorVersion to use for processing. If a Processor is specified, the server will use its default version. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.processors.processorVersions.batchProcess()`
 
 LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format.
 
@@ -232,30 +188,148 @@ LRO endpoint to batch process many documents. The output is written to Cloud Sto
 | `params.name` | `string` | Yes | Required. The resource name of Processor or ProcessorVersion. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.processors.list()`
+#### `projects.locations.processors.processorVersions.train()`
 
-Lists all processors which belong to this project.
+Trains a new processor version. Operation metadata is returned as TrainProcessorVersionMetadata.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project and location) which owns this collection of Processors. Format: `projects/{project}/locations/{location}` |
-| `params.pageToken` | `string` | No | We will return the processors sorted by creation time. The page token will point to the next processor. |
-| `params.pageSize` | `integer` | No | The maximum number of processors to return. If unspecified, at most `50` processors will be returned. The maximum value is `100`. Values above `100` will be coerced to `100`. |
+| `params.parent` | `string` | Yes | Required. The parent (project, location and processor) to create the new version for. Format: `projects/{project}/locations/{location}/processors/{processor}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.processors.processorVersions.get()`
+
+Gets a processor version detail.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The processor resource name. |
+
+#### `projects.locations.processors.processorVersions.list()`
+
+Lists all versions of a processor.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project, location and processor) to list all versions. Format: `projects/{project}/locations/{location}/processors/{processor}` |
+| `params.pageSize` | `integer` | No | The maximum number of processor versions to return. If unspecified, at most `10` processor versions will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`. |
+| `params.pageToken` | `string` | No | We will return the processor versions sorted by creation time. The page token will point to the next processor version. |
+
+#### `projects.locations.processors.processorVersions.delete()`
+
+Deletes the processor version, all artifacts under the processor version will be deleted.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The processor version resource name to be deleted. |
+
+#### `projects.locations.processors.processorVersions.deploy()`
+
+Deploys the processor version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The processor version resource name to be deployed. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.processors.processorVersions.undeploy()`
+
+Undeploys the processor version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The processor version resource name to be undeployed. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.processors.processorVersions.evaluateProcessorVersion()`
+
+Evaluates a ProcessorVersion against annotated documents, producing an Evaluation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.processorVersion` | `string` | Yes | Required. The resource name of the ProcessorVersion to evaluate. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.processors.processorVersions.importProcessorVersion()`
+
+Imports a processor version from source processor version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The destination processor name to create the processor version in. Format: `projects/{project}/locations/{location}/processors/{processor}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.processors.processorVersions.evaluations`
+
+#### `projects.locations.processors.processorVersions.evaluations.get()`
+
+Retrieves a specific evaluation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the Evaluation to get. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}/evaluations/{evaluation}` |
+
+#### `projects.locations.processors.processorVersions.evaluations.list()`
+
+Retrieves a set of evaluations for a given processor version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the ProcessorVersion to list evaluations for. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
+| `params.pageSize` | `integer` | No | The standard list page size. If unspecified, at most `5` evaluations are returned. The maximum value is `100`. Values above `100` are coerced to `100`. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListEvaluations` call. Provide this to retrieve the subsequent page. |
+
+### `projects.locations.processors.humanReviewConfig`
+
+#### `projects.locations.processors.humanReviewConfig.reviewDocument()`
+
+Send a document for Human Review. The input document should be processed by the specified processor.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.humanReviewConfig` | `string` | Yes | Required. The resource name of the HumanReviewConfig that the document will be reviewed with. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.processors.dataset`
 
-#### `projects.locations.processors.dataset.batchDeleteDocuments()`
+#### `projects.locations.processors.dataset.importDocuments()`
 
-Deletes a set of documents.
+Import documents into a dataset.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.dataset` | `string` | Yes | Required. The dataset resource name. Format: projects/{project}/locations/{location}/processors/{processor}/dataset |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.processors.dataset.importDocuments()`
+#### `projects.locations.processors.dataset.getDocument()`
 
-Import documents into a dataset.
+Returns relevant fields present in the requested document.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dataset` | `string` | Yes | Required. The resource name of the dataset that the document belongs to . Format: projects/{project}/locations/{location}/processors/{processor}/dataset |
+| `params.documentId.gcsManagedDocId.gcsUri` | `string` | No | Required. The Cloud Storage URI where the actual document is stored. |
+| `params.documentId.gcsManagedDocId.cwDocId` | `string` | No | Id of the document (indexed) managed by Content Warehouse. |
+| `params.documentId.unmanagedDocId.docId` | `string` | No | Required. The id of the document. |
+| `params.documentId.revisionRef.revisionCase` | `string` | No | Reads the revision by the predefined case. |
+| `params.documentId.revisionRef.revisionId` | `string` | No | Reads the revision given by the id. |
+| `params.documentId.revisionRef.latestProcessorVersion` | `string` | No | Reads the revision generated by the processor version. The format takes the full resource name of processor version. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
+| `params.readMask` | `string` | No | If set, only fields listed here will be returned. Otherwise, all fields will be returned by default. |
+| `params.pageRange.start` | `integer` | No | First page number (one-based index) to be returned. |
+| `params.pageRange.end` | `integer` | No | Last page number (one-based index) to be returned. |
+
+#### `projects.locations.processors.dataset.listDocuments()`
+
+Returns a list of documents present in the dataset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dataset` | `string` | Yes | Required. The resource name of the dataset to be listed. Format: projects/{project}/locations/{location}/processors/{processor}/dataset |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.processors.dataset.batchDeleteDocuments()`
+
+Deletes a set of documents.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -281,185 +355,17 @@ Updates a `DatasetSchema`.
 | `params.updateMask` | `string` | No | The update mask applies to the resource. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.processors.dataset.getDocument()`
-
-Returns relevant fields present in the requested document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageRange.start` | `integer` | No | First page number (one-based index) to be returned. |
-| `params.documentId.unmanagedDocId.docId` | `string` | No | Required. The id of the document. |
-| `params.documentId.gcsManagedDocId.gcsUri` | `string` | No | Required. The Cloud Storage URI where the actual document is stored. |
-| `params.documentId.revisionRef.revisionCase` | `string` | No | Reads the revision by the predefined case. |
-| `params.dataset` | `string` | Yes | Required. The resource name of the dataset that the document belongs to . Format: projects/{project}/locations/{location}/processors/{processor}/dataset |
-| `params.readMask` | `string` | No | If set, only fields listed here will be returned. Otherwise, all fields will be returned by default. |
-| `params.documentId.gcsManagedDocId.cwDocId` | `string` | No | Id of the document (indexed) managed by Content Warehouse. |
-| `params.documentId.revisionRef.latestProcessorVersion` | `string` | No | Reads the revision generated by the processor version. The format takes the full resource name of processor version. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.pageRange.end` | `integer` | No | Last page number (one-based index) to be returned. |
-| `params.documentId.revisionRef.revisionId` | `string` | No | Reads the revision given by the id. |
-
-#### `projects.locations.processors.dataset.listDocuments()`
-
-Returns a list of documents present in the dataset.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.dataset` | `string` | Yes | Required. The resource name of the dataset to be listed. Format: projects/{project}/locations/{location}/processors/{processor}/dataset |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.processors.humanReviewConfig`
-
-#### `projects.locations.processors.humanReviewConfig.reviewDocument()`
-
-Send a document for Human Review. The input document should be processed by the specified processor.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.humanReviewConfig` | `string` | Yes | Required. The resource name of the HumanReviewConfig that the document will be reviewed with. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.processors.processorVersions`
-
-#### `projects.locations.processors.processorVersions.process()`
-
-Processes a single document.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Processor or ProcessorVersion to use for processing. If a Processor is specified, the server will use its default version. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.processors.processorVersions.undeploy()`
-
-Undeploys the processor version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The processor version resource name to be undeployed. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.processors.processorVersions.get()`
-
-Gets a processor version detail.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The processor resource name. |
-
-#### `projects.locations.processors.processorVersions.deploy()`
-
-Deploys the processor version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The processor version resource name to be deployed. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.processors.processorVersions.evaluateProcessorVersion()`
-
-Evaluates a ProcessorVersion against annotated documents, producing an Evaluation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.processorVersion` | `string` | Yes | Required. The resource name of the ProcessorVersion to evaluate. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.processors.processorVersions.train()`
-
-Trains a new processor version. Operation metadata is returned as TrainProcessorVersionMetadata.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent (project, location and processor) to create the new version for. Format: `projects/{project}/locations/{location}/processors/{processor}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.processors.processorVersions.importProcessorVersion()`
-
-Imports a processor version from source processor version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The destination processor name to create the processor version in. Format: `projects/{project}/locations/{location}/processors/{processor}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.processors.processorVersions.delete()`
-
-Deletes the processor version, all artifacts under the processor version will be deleted.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The processor version resource name to be deleted. |
-
-#### `projects.locations.processors.processorVersions.batchProcess()`
-
-LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of Processor or ProcessorVersion. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.processors.processorVersions.list()`
-
-Lists all versions of a processor.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | We will return the processor versions sorted by creation time. The page token will point to the next processor version. |
-| `params.pageSize` | `integer` | No | The maximum number of processor versions to return. If unspecified, at most `10` processor versions will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`. |
-| `params.parent` | `string` | Yes | Required. The parent (project, location and processor) to list all versions. Format: `projects/{project}/locations/{location}/processors/{processor}` |
-
-### `projects.locations.processors.processorVersions.evaluations`
-
-#### `projects.locations.processors.processorVersions.evaluations.list()`
-
-Retrieves a set of evaluations for a given processor version.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListEvaluations` call. Provide this to retrieve the subsequent page. |
-| `params.pageSize` | `integer` | No | The standard list page size. If unspecified, at most `5` evaluations are returned. The maximum value is `100`. Values above `100` are coerced to `100`. |
-| `params.parent` | `string` | Yes | Required. The resource name of the ProcessorVersion to list evaluations for. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}` |
-
-#### `projects.locations.processors.processorVersions.evaluations.get()`
-
-Retrieves a specific evaluation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Evaluation to get. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}/evaluations/{evaluation}` |
-
-### `projects.locations.operations`
-
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.filter` | `string` | No | The standard list filter. |
-
-#### `projects.locations.operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-
 ### `projects.locations.processorTypes`
+
+#### `projects.locations.processorTypes.list()`
+
+Lists the processor types that exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The location of processor types to list. Format: `projects/{project}/locations/{location}`. |
+| `params.pageSize` | `integer` | No | The maximum number of processor types to return. If unspecified, at most `100` processor types will be returned. The maximum value is `500`. Values above `500` will be coerced to `500`. |
+| `params.pageToken` | `string` | No | Used to retrieve the next page of results, empty if at the end of the list. |
 
 #### `projects.locations.processorTypes.get()`
 
@@ -469,12 +375,106 @@ Gets a processor type detail.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The processor type resource name. |
 
-#### `projects.locations.processorTypes.list()`
+### `projects.locations.schemas`
 
-Lists the processor types that exist.
+#### `projects.locations.schemas.create()`
+
+Creates a schema.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of processor types to return. If unspecified, at most `100` processor types will be returned. The maximum value is `500`. Values above `500` will be coerced to `500`. |
-| `params.pageToken` | `string` | No | Used to retrieve the next page of results, empty if at the end of the list. |
-| `params.parent` | `string` | Yes | Required. The location of processor types to list. Format: `projects/{project}/locations/{location}`. |
+| `params.parent` | `string` | Yes | Required. The parent (project and location) under which to create the Schema. Format: `projects/{project}/locations/{location}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.schemas.patch()`
+
+Updates a schema. Editable fields are: - `display_name` - `labels`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the Schema. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
+| `params.updateMask` | `string` | No | Optional. The update mask to apply to the resource. **Note:** Only the following fields can be updated: - display_name. - labels. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.schemas.delete()`
+
+Deletes a schema.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Schema to be deleted. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
+| `params.force` | `boolean` | No | Optional. If set to true, any child resources of this Schema will also be deleted. (Otherwise, the request will only work if the Schema has no child resources.) |
+
+#### `projects.locations.schemas.list()`
+
+Lists Schemas.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of schema groups to return. If unspecified, at most `10` Schema will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`. |
+| `params.pageToken` | `string` | No | Optional. We will return the schema groups sorted by creation time. The page token will point to the next Schema. |
+
+#### `projects.locations.schemas.get()`
+
+Gets a schema.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Schema to get. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
+
+### `projects.locations.schemas.schemaVersions`
+
+#### `projects.locations.schemas.schemaVersions.create()`
+
+Creates a schema version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project and location) under which to create the SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.schemas.schemaVersions.patch()`
+
+Updates a schema version. Editable fields are: - `display_name` - `labels`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}` |
+| `params.updateMask` | `string` | No | Optional. The update mask to apply to the resource. **Note:** Only the following fields can be updated: - display_name. - labels. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.schemas.schemaVersions.generate()`
+
+Generates a schema version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent (project, location and schema) under which to generate the SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.schemas.schemaVersions.delete()`
+
+Deletes a schema version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the SchemaVersion to delete. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}` |
+
+#### `projects.locations.schemas.schemaVersions.list()`
+
+Lists SchemaVersions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}/schemas/{schema}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of SchemaVersion to return. If unspecified, at most `10` SchemaVersion will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`. |
+| `params.pageToken` | `string` | No | Optional. We will return the SchemaVersion sorted by creation time. The page token will point to the next SchemaVersion. |
+
+#### `projects.locations.schemas.schemaVersions.get()`
+
+Gets a schema version.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the SchemaVersion to get. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}` |
