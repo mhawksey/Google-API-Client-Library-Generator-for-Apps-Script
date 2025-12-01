@@ -18,29 +18,9 @@ class Realtimebidding {
     this._servicePath = '';
 
 
-    this.buyers = {};
-    this.buyers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/buyers', 'GET', apiParams, clientConfig);
-    this.buyers.getRemarketingTag = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getRemarketingTag', 'GET', apiParams, clientConfig);
-
-    this.buyers.creatives = {};
-    this.buyers.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/creatives', 'POST', apiParams, clientConfig);
-    this.buyers.creatives.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.buyers.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/creatives', 'GET', apiParams, clientConfig);
-
-    this.buyers.userLists = {};
-    this.buyers.userLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userLists', 'GET', apiParams, clientConfig);
-    this.buyers.userLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userLists', 'POST', apiParams, clientConfig);
-    this.buyers.userLists.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
-    this.buyers.userLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.userLists.open = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:open', 'POST', apiParams, clientConfig);
-    this.buyers.userLists.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.buyers.userLists.getRemarketingTag = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getRemarketingTag', 'GET', apiParams, clientConfig);
-
     this.bidders = {};
-    this.bidders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/bidders', 'GET', apiParams, clientConfig);
     this.bidders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.bidders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/bidders', 'GET', apiParams, clientConfig);
 
     this.bidders.endpoints = {};
     this.bidders.endpoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -52,25 +32,45 @@ class Realtimebidding {
     this.bidders.creatives.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/creatives:watch', 'POST', apiParams, clientConfig);
 
     this.bidders.pretargetingConfigs = {};
-    this.bidders.pretargetingConfigs.removeTargetedApps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:removeTargetedApps', 'POST', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.addTargetedSites = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:addTargetedSites', 'POST', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.removeTargetedPublishers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:removeTargetedPublishers', 'POST', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:suspend', 'POST', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pretargetingConfigs', 'POST', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.addTargetedPublishers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:addTargetedPublishers', 'POST', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.bidders.pretargetingConfigs.removeTargetedSites = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:removeTargetedSites', 'POST', apiParams, clientConfig);
     this.bidders.pretargetingConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pretargetingConfigs', 'GET', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pretargetingConfigs', 'POST', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:suspend', 'POST', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.addTargetedSites = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:addTargetedSites', 'POST', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.removeTargetedSites = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:removeTargetedSites', 'POST', apiParams, clientConfig);
     this.bidders.pretargetingConfigs.addTargetedApps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:addTargetedApps', 'POST', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.removeTargetedApps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:removeTargetedApps', 'POST', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.addTargetedPublishers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:addTargetedPublishers', 'POST', apiParams, clientConfig);
+    this.bidders.pretargetingConfigs.removeTargetedPublishers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+pretargetingConfig}:removeTargetedPublishers', 'POST', apiParams, clientConfig);
 
     this.bidders.publisherConnections = {};
-    this.bidders.publisherConnections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.bidders.publisherConnections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/publisherConnections', 'GET', apiParams, clientConfig);
+    this.bidders.publisherConnections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.bidders.publisherConnections.batchApprove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/publisherConnections:batchApprove', 'POST', apiParams, clientConfig);
     this.bidders.publisherConnections.batchReject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/publisherConnections:batchReject', 'POST', apiParams, clientConfig);
+
+    this.buyers = {};
+    this.buyers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.buyers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/buyers', 'GET', apiParams, clientConfig);
+    this.buyers.getRemarketingTag = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getRemarketingTag', 'GET', apiParams, clientConfig);
+
+    this.buyers.creatives = {};
+    this.buyers.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/creatives', 'GET', apiParams, clientConfig);
+    this.buyers.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.buyers.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/creatives', 'POST', apiParams, clientConfig);
+    this.buyers.creatives.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.buyers.userLists = {};
+    this.buyers.userLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.buyers.userLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userLists', 'GET', apiParams, clientConfig);
+    this.buyers.userLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userLists', 'POST', apiParams, clientConfig);
+    this.buyers.userLists.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.buyers.userLists.open = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:open', 'POST', apiParams, clientConfig);
+    this.buyers.userLists.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
+    this.buyers.userLists.getRemarketingTag = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getRemarketingTag', 'GET', apiParams, clientConfig);
   }
 
 /**
