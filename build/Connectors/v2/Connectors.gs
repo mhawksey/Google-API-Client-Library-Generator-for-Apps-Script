@@ -23,37 +23,37 @@ class Connectors {
     this.projects.locations = {};
 
     this.projects.locations.connections = {};
-    this.projects.locations.connections.refreshAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:refreshAccessToken', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.checkReadiness = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:checkReadiness', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.executeSqlQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+connection}:executeSqlQuery', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.checkStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:checkStatus', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.checkReadiness = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:checkReadiness', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.exchangeAuthCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:exchangeAuthCode', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.connections.resources = {};
-    this.projects.locations.connections.resources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.resources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/resources', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.refreshAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:refreshAccessToken', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.executeSqlQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+connection}:executeSqlQuery', 'POST', apiParams, clientConfig);
 
     this.projects.locations.connections.actions = {};
-    this.projects.locations.connections.actions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/actions', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.actions.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:execute', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.actions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/actions', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.actions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.connections.tools = {};
+    this.projects.locations.connections.tools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tools', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.tools.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:execute', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.connections.resources = {};
+    this.projects.locations.connections.resources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/resources', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.resources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connections.entityTypes = {};
     this.projects.locations.connections.entityTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.entityTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/entityTypes', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connections.entityTypes.entities = {};
-    this.projects.locations.connections.entityTypes.entities.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.connections.entityTypes.entities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/entities', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.entityTypes.entities.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.entityTypes.entities.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/entities', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.entityTypes.entities.deleteEntitiesWithConditions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+entityType}/entities:deleteEntitiesWithConditions', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.entityTypes.entities.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connections.entityTypes.entities.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.connections.entityTypes.entities.updateEntitiesWithConditions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+entityType}/entities:updateEntitiesWithConditions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.connections.tools = {};
-    this.projects.locations.connections.tools.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:execute', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.tools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tools', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.entityTypes.entities.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connections.entityTypes.entities.deleteEntitiesWithConditions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+entityType}/entities:deleteEntitiesWithConditions', 'POST', apiParams, clientConfig);
   }
 
 /**
