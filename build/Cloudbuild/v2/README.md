@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Build API (version: v2)** in
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:31:19 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:32:38 GMT
 - **Last Modified:** Fri, 03 Oct 2025 08:46:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:21:22 GMT
 
@@ -28,7 +28,7 @@ Lists information about the supported locations for this service.
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
 #### `projects.locations.get()`
 
