@@ -18,18 +18,6 @@ class Firebasedynamiclinks {
     this._servicePath = '';
 
 
-    this.shortLinks = {};
-
-    /**
-     * Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.shortLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/shortLinks', 'POST', apiParams, clientConfig);
-
     this.managedShortLinks = {};
 
     /**
@@ -42,17 +30,19 @@ class Firebasedynamiclinks {
      */
     this.managedShortLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/managedShortLinks:create', 'POST', apiParams, clientConfig);
 
-    this.v1 = {};
+    this.shortLinks = {};
 
     /**
-     * Get iOS reopen attribution for app universal link open deeplinking.
+     * Creates a short Dynamic Link given either a valid long Dynamic Link or details such as Dynamic Link domain, Android and iOS app information. The created short Dynamic Link will not expire. Repeated calls with the same long Dynamic Link or Dynamic Link information will produce the same short Dynamic Link. The Dynamic Link domain in the request must be owned by requester's Firebase project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.v1.reopenAttribution = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/reopenAttribution', 'POST', apiParams, clientConfig);
+    this.shortLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/shortLinks', 'POST', apiParams, clientConfig);
+
+    this.v1 = {};
 
     /**
      * Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens.
@@ -75,6 +65,16 @@ class Firebasedynamiclinks {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.v1.installAttribution = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/installAttribution', 'POST', apiParams, clientConfig);
+
+    /**
+     * Get iOS reopen attribution for app universal link open deeplinking.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.v1.reopenAttribution = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/reopenAttribution', 'POST', apiParams, clientConfig);
   }
 
 /**
