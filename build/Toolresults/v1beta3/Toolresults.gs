@@ -19,8 +19,8 @@ class Toolresults {
 
 
     this.projects = {};
-    this.projects.initializeSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}:initializeSettings', 'POST', apiParams, clientConfig);
     this.projects.getSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/settings', 'GET', apiParams, clientConfig);
+    this.projects.initializeSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}:initializeSettings', 'POST', apiParams, clientConfig);
 
     this.projects.histories = {};
     this.projects.histories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories', 'POST', apiParams, clientConfig);
@@ -28,30 +28,29 @@ class Toolresults {
     this.projects.histories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories', 'GET', apiParams, clientConfig);
 
     this.projects.histories.executions = {};
+    this.projects.histories.executions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions', 'POST', apiParams, clientConfig);
     this.projects.histories.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions', 'GET', apiParams, clientConfig);
     this.projects.histories.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}', 'GET', apiParams, clientConfig);
-    this.projects.histories.executions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions', 'POST', apiParams, clientConfig);
     this.projects.histories.executions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.histories.executions.environments = {};
-    this.projects.histories.executions.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}', 'GET', apiParams, clientConfig);
-    this.projects.histories.executions.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments', 'GET', apiParams, clientConfig);
-
     this.projects.histories.executions.steps = {};
-    this.projects.histories.executions.steps.getPerfMetricsSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', 'GET', apiParams, clientConfig);
-    this.projects.histories.executions.steps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps', 'GET', apiParams, clientConfig);
     this.projects.histories.executions.steps.accessibilityClusters = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/{+name}:accessibilityClusters', 'GET', apiParams, clientConfig);
-    this.projects.histories.executions.steps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}', 'GET', apiParams, clientConfig);
     this.projects.histories.executions.steps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps', 'POST', apiParams, clientConfig);
-    this.projects.histories.executions.steps.publishXunitXmlFiles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles', 'POST', apiParams, clientConfig);
+    this.projects.histories.executions.steps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}', 'GET', apiParams, clientConfig);
+    this.projects.histories.executions.steps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps', 'GET', apiParams, clientConfig);
     this.projects.histories.executions.steps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.histories.executions.steps.perfMetricsSummary = {};
-    this.projects.histories.executions.steps.perfMetricsSummary.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', 'POST', apiParams, clientConfig);
+    this.projects.histories.executions.steps.publishXunitXmlFiles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}:publishXunitXmlFiles', 'POST', apiParams, clientConfig);
+    this.projects.histories.executions.steps.getPerfMetricsSummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', 'GET', apiParams, clientConfig);
 
     this.projects.histories.executions.steps.testCases = {};
     this.projects.histories.executions.steps.testCases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases/{testCaseId}', 'GET', apiParams, clientConfig);
     this.projects.histories.executions.steps.testCases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/testCases', 'GET', apiParams, clientConfig);
+
+    this.projects.histories.executions.steps.thumbnails = {};
+    this.projects.histories.executions.steps.thumbnails.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails', 'GET', apiParams, clientConfig);
+
+    this.projects.histories.executions.steps.perfMetricsSummary = {};
+    this.projects.histories.executions.steps.perfMetricsSummary.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfMetricsSummary', 'POST', apiParams, clientConfig);
 
     this.projects.histories.executions.steps.perfSampleSeries = {};
     this.projects.histories.executions.steps.perfSampleSeries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries', 'POST', apiParams, clientConfig);
@@ -62,12 +61,13 @@ class Toolresults {
     this.projects.histories.executions.steps.perfSampleSeries.samples.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples:batchCreate', 'POST', apiParams, clientConfig);
     this.projects.histories.executions.steps.perfSampleSeries.samples.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/perfSampleSeries/{sampleSeriesId}/samples', 'GET', apiParams, clientConfig);
 
-    this.projects.histories.executions.steps.thumbnails = {};
-    this.projects.histories.executions.steps.thumbnails.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/steps/{stepId}/thumbnails', 'GET', apiParams, clientConfig);
-
     this.projects.histories.executions.clusters = {};
     this.projects.histories.executions.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters/{clusterId}', 'GET', apiParams, clientConfig);
     this.projects.histories.executions.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/clusters', 'GET', apiParams, clientConfig);
+
+    this.projects.histories.executions.environments = {};
+    this.projects.histories.executions.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments/{environmentId}', 'GET', apiParams, clientConfig);
+    this.projects.histories.executions.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('toolresults/v1beta3/projects/{projectId}/histories/{historyId}/executions/{executionId}/environments', 'GET', apiParams, clientConfig);
   }
 
 /**
