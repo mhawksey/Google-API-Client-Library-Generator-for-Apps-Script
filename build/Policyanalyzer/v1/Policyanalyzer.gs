@@ -27,15 +27,6 @@ class Policyanalyzer {
     this.projects.locations.activityTypes.activities = {};
     this.projects.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
 
-    this.folders = {};
-
-    this.folders.locations = {};
-
-    this.folders.locations.activityTypes = {};
-
-    this.folders.locations.activityTypes.activities = {};
-    this.folders.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
-
     this.organizations = {};
 
     this.organizations.locations = {};
@@ -44,6 +35,15 @@ class Policyanalyzer {
 
     this.organizations.locations.activityTypes.activities = {};
     this.organizations.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
+
+    this.folders = {};
+
+    this.folders.locations = {};
+
+    this.folders.locations.activityTypes = {};
+
+    this.folders.locations.activityTypes.activities = {};
+    this.folders.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
   }
 
 /**
