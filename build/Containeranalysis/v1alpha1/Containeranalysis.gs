@@ -18,56 +18,56 @@ class Containeranalysis {
     this._servicePath = '';
 
 
-    this.providers = {};
-
-    this.providers.notes = {};
-    this.providers.notes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.providers.notes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.providers.notes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/notes', 'GET', apiParams, clientConfig);
-    this.providers.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/notes', 'POST', apiParams, clientConfig);
-    this.providers.notes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.providers.notes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.providers.notes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.providers.notes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.providers.notes.occurrences = {};
-    this.providers.notes.occurrences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/occurrences', 'GET', apiParams, clientConfig);
-
     this.projects = {};
+
+    this.projects.occurrences = {};
+    this.projects.occurrences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.occurrences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/occurrences', 'GET', apiParams, clientConfig);
+    this.projects.occurrences.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.occurrences.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/occurrences', 'POST', apiParams, clientConfig);
+    this.projects.occurrences.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.occurrences.getNotes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/notes', 'GET', apiParams, clientConfig);
+    this.projects.occurrences.getVulnerabilitySummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/occurrences:vulnerabilitySummary', 'GET', apiParams, clientConfig);
+    this.projects.occurrences.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.occurrences.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.occurrences.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.notes = {};
+    this.projects.notes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.notes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/notes', 'GET', apiParams, clientConfig);
+    this.projects.notes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/notes', 'POST', apiParams, clientConfig);
+    this.projects.notes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.notes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.notes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.notes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.notes.occurrences = {};
+    this.projects.notes.occurrences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/occurrences', 'GET', apiParams, clientConfig);
 
     this.projects.operations = {};
     this.projects.operations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/operations', 'POST', apiParams, clientConfig);
     this.projects.operations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.notes = {};
-    this.projects.notes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.notes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.notes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.notes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/notes', 'POST', apiParams, clientConfig);
-    this.projects.notes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.notes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.notes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/notes', 'GET', apiParams, clientConfig);
-
-    this.projects.notes.occurrences = {};
-    this.projects.notes.occurrences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/occurrences', 'GET', apiParams, clientConfig);
-
-    this.projects.occurrences = {};
-    this.projects.occurrences.getVulnerabilitySummary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/occurrences:vulnerabilitySummary', 'GET', apiParams, clientConfig);
-    this.projects.occurrences.getNotes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/notes', 'GET', apiParams, clientConfig);
-    this.projects.occurrences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/occurrences', 'GET', apiParams, clientConfig);
-    this.projects.occurrences.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/occurrences', 'POST', apiParams, clientConfig);
-    this.projects.occurrences.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.occurrences.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.occurrences.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.occurrences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.occurrences.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.occurrences.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
     this.projects.scanConfigs = {};
+    this.projects.scanConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.scanConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/scanConfigs', 'GET', apiParams, clientConfig);
     this.projects.scanConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.scanConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.providers = {};
+
+    this.providers.notes = {};
+    this.providers.notes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.providers.notes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/notes', 'GET', apiParams, clientConfig);
+    this.providers.notes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.providers.notes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/notes', 'POST', apiParams, clientConfig);
+    this.providers.notes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.providers.notes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.providers.notes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.providers.notes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.providers.notes.occurrences = {};
+    this.providers.notes.occurrences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/occurrences', 'GET', apiParams, clientConfig);
   }
 
 /**
