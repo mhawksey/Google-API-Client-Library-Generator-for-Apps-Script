@@ -21,41 +21,41 @@ class Servicedirectory {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.namespaces = {};
+    this.projects.locations.namespaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/namespaces', 'POST', apiParams, clientConfig);
     this.projects.locations.namespaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/namespaces', 'GET', apiParams, clientConfig);
     this.projects.locations.namespaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.namespaces.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.namespaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.namespaces.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.namespaces.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.namespaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.namespaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/namespaces', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.namespaces.workloads = {};
-    this.projects.locations.namespaces.workloads.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.namespaces.workloads.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.namespaces.workloads.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.namespaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.namespaces.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.namespaces.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.namespaces.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.namespaces.services = {};
+    this.projects.locations.namespaces.services.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:resolve', 'POST', apiParams, clientConfig);
+    this.projects.locations.namespaces.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/services', 'POST', apiParams, clientConfig);
     this.projects.locations.namespaces.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/services', 'GET', apiParams, clientConfig);
     this.projects.locations.namespaces.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.namespaces.services.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.namespaces.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.namespaces.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/services', 'POST', apiParams, clientConfig);
     this.projects.locations.namespaces.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.namespaces.services.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:resolve', 'POST', apiParams, clientConfig);
-    this.projects.locations.namespaces.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.namespaces.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.namespaces.services.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.namespaces.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.namespaces.services.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.namespaces.services.endpoints = {};
-    this.projects.locations.namespaces.services.endpoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/endpoints', 'GET', apiParams, clientConfig);
-    this.projects.locations.namespaces.services.endpoints.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.namespaces.services.endpoints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/endpoints', 'POST', apiParams, clientConfig);
-    this.projects.locations.namespaces.services.endpoints.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.namespaces.services.endpoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/endpoints', 'GET', apiParams, clientConfig);
     this.projects.locations.namespaces.services.endpoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.namespaces.services.endpoints.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.namespaces.services.endpoints.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.namespaces.workloads = {};
+    this.projects.locations.namespaces.workloads.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.namespaces.workloads.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.namespaces.workloads.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
   }
 
 /**
