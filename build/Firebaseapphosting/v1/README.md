@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase App Hosting API (version:
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:45:27 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:45:27 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:46:21 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:46:21 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:21 GMT
 
 
@@ -18,6 +18,18 @@ Auto-generated client library for using the **Firebase App Hosting API (version:
 
 ### `projects.locations`
 
+#### `projects.locations.list()`
+
+Lists information about the supported locations for this service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+
 #### `projects.locations.get()`
 
 Gets information about a location.
@@ -26,19 +38,27 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-#### `projects.locations.list()`
+### `projects.locations.operations`
 
-Lists information about the supported locations for this service.
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
-### `projects.locations.operations`
+#### `projects.locations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
 
 #### `projects.locations.operations.delete()`
 
@@ -57,27 +77,20 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-
 ### `projects.locations.backends`
+
+#### `projects.locations.backends.list()`
+
+Lists backends in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project}/locations/{locationId}`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. |
+| `params.filter` | `string` | No | Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. |
+| `params.showDeleted` | `boolean` | No | Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. |
 
 #### `projects.locations.backends.get()`
 
@@ -87,31 +100,6 @@ Gets information about a backend.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
 
-#### `projects.locations.backends.delete()`
-
-Deletes a single backend.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated, without persisting the request or updating any resources. |
-| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
-| `params.force` | `boolean` | No | Optional. If set to true, any resources for this backend will also be deleted. Otherwise, any children resources will block deletion. |
-| `params.etag` | `string` | No | Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-#### `projects.locations.backends.list()`
-
-Lists backends in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. |
-| `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project}/locations/{locationId}`. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. If not set, the service selects a default. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. |
-| `params.filter` | `string` | No | Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). |
-| `params.showDeleted` | `boolean` | No | Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. |
-
 #### `projects.locations.backends.create()`
 
 Creates a new backend in a given project and location.
@@ -119,9 +107,9 @@ Creates a new backend in a given project and location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. A parent name of the form `projects/{project}/locations/{locationId}`. |
+| `params.backendId` | `string` | No | Required. Id of the backend. Also used as the service ID for Cloud Run, and as part of the default domain name. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
-| `params.backendId` | `string` | No | Required. Id of the backend. Also used as the service ID for Cloud Run, and as part of the default domain name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.backends.patch()`
@@ -130,152 +118,24 @@ Updates the information for a single backend.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the backend. Format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the backend resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
 | `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the backend is not found, a new backend will be created. |
 | `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated, without persisting the request or updating any resources. |
-| `params.name` | `string` | Yes | Identifier. The resource name of the backend. Format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the backend is not found, a new backend will be created. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.backends.domains`
+#### `projects.locations.backends.delete()`
 
-#### `projects.locations.backends.domains.delete()`
-
-Deletes a single domain.
+Deletes a single backend.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.force` | `boolean` | No | Optional. If set to true, any resources for this backend will also be deleted. Otherwise, any children resources will block deletion. |
+| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated, without persisting the request or updating any resources. |
 | `params.etag` | `string` | No | Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error. |
-| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or deleting any resources. |
-| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-
-#### `projects.locations.backends.domains.get()`
-
-Gets information about a domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`. |
-
-#### `projects.locations.backends.domains.create()`
-
-Links a new domain to a backend.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
-| `params.domainId` | `string` | No | Required. Id of the domain to create. Must be a valid domain name. |
-| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.backends.domains.list()`
-
-Lists domains of a backend.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.showDeleted` | `boolean` | No | Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. |
-| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
-| `params.pageToken` | `string` | No | Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. |
-| `params.filter` | `string` | No | Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. If not set, the service selects a default. |
-
-#### `projects.locations.backends.domains.patch()`
-
-Updates the information for a single domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Domain resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
-| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or modifying any resources. |
-| `params.name` | `string` | Yes | Identifier. The resource name of the domain, e.g. `/projects/p/locations/l/backends/b/domains/foo.com` |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the domain is not found, a new domain will be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.backends.builds`
-
-#### `projects.locations.backends.builds.get()`
-
-Gets information about a build.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`. |
-
-#### `projects.locations.backends.builds.delete()`
-
-Deletes a single build.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or deleting any resources. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`. |
-| `params.etag` | `string` | No | Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error. |
-
-#### `projects.locations.backends.builds.list()`
-
-Lists builds in a given project, location, and backend.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. |
-| `params.parent` | `string` | Yes | Required. The parent backend in the form `projects/{project}/locations/{locationId}/backends/{backendId}`. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. |
-| `params.showDeleted` | `boolean` | No | Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. |
-
-#### `projects.locations.backends.builds.create()`
-
-Creates a new build for a backend.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.buildId` | `string` | No | Required. Desired ID of the build being created. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
-| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.backends.rollouts`
-
-#### `projects.locations.backends.rollouts.create()`
-
-Creates a new rollout for a backend.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.rolloutId` | `string` | No | Optional. Desired ID of the rollout being created. |
-| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.backends.rollouts.get()`
-
-Gets information about a rollout.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/rollouts/{rolloutId}`. |
-
-#### `projects.locations.backends.rollouts.list()`
-
-Lists rollouts for a backend.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
-| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. If not set, the service selects a default. |
-| `params.showDeleted` | `boolean` | No | Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. |
-| `params.filter` | `string` | No | Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). |
-| `params.pageToken` | `string` | No | Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. |
 
 ### `projects.locations.backends.traffic`
 
@@ -293,8 +153,148 @@ Updates a backend's traffic.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
-| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated, without persisting the request or updating any resources. |
 | `params.name` | `string` | Yes | Identifier. The resource name of the backend's traffic. Format: `projects/{project}/locations/{locationId}/backends/{backendId}/traffic`. |
 | `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the traffic resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated, without persisting the request or updating any resources. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.backends.builds`
+
+#### `projects.locations.backends.builds.list()`
+
+Lists builds in a given project, location, and backend.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent backend in the form `projects/{project}/locations/{locationId}/backends/{backendId}`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. |
+| `params.filter` | `string` | No | Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. |
+| `params.showDeleted` | `boolean` | No | Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. |
+
+#### `projects.locations.backends.builds.get()`
+
+Gets information about a build.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`. |
+
+#### `projects.locations.backends.builds.create()`
+
+Creates a new build for a backend.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
+| `params.buildId` | `string` | No | Required. Desired ID of the build being created. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.backends.builds.delete()`
+
+Deletes a single build.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/builds/{buildId}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.etag` | `string` | No | Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error. |
+| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or deleting any resources. |
+
+### `projects.locations.backends.rollouts`
+
+#### `projects.locations.backends.rollouts.list()`
+
+Lists rollouts for a backend.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. |
+| `params.filter` | `string` | No | Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. |
+| `params.showDeleted` | `boolean` | No | Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. |
+
+#### `projects.locations.backends.rollouts.get()`
+
+Gets information about a rollout.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/rollouts/{rolloutId}`. |
+
+#### `projects.locations.backends.rollouts.create()`
+
+Creates a new rollout for a backend.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
+| `params.rolloutId` | `string` | No | Optional. Desired ID of the rollout being created. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.backends.domains`
+
+#### `projects.locations.backends.domains.list()`
+
+Lists domains of a backend.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | Optional. A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. |
+| `params.filter` | `string` | No | Optional. A filter to narrow down results to a preferred subset. Learn more about filtering in Google's [AIP 160 standard](https://google.aip.dev/160). |
+| `params.orderBy` | `string` | No | Optional. Hint for how to order the results. Supported fields are `name` and `createTime`. To specify descending order, append a `desc` suffix. |
+| `params.showDeleted` | `boolean` | No | Optional. If true, the request returns soft-deleted resources that haven't been fully-deleted yet. |
+
+#### `projects.locations.backends.domains.get()`
+
+Gets information about a domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`. |
+
+#### `projects.locations.backends.domains.create()`
+
+Links a new domain to a backend.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent backend in the format: `projects/{project}/locations/{locationId}/backends/{backendId}`. |
+| `params.domainId` | `string` | No | Required. Id of the domain to create. Must be a valid domain name. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or creating any resources. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.backends.domains.patch()`
+
+Updates the information for a single domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the domain, e.g. `/projects/p/locations/l/backends/b/domains/foo.com` |
+| `params.updateMask` | `string` | No | Optional. Field mask is used to specify the fields to be overwritten in the Domain resource by the update. The fields specified in the update_mask are relative to the resource, not the full request. A field will be overwritten if it is in the mask. If the user does not provide a mask then all fields will be overwritten. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or modifying any resources. |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the domain is not found, a new domain will be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.backends.domains.delete()`
+
+Deletes a single domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the resource in the format: `projects/{project}/locations/{locationId}/backends/{backendId}/domains/{domainId}`. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.etag` | `string` | No | Optional. If the client provided etag is out of date, delete will be returned FAILED_PRECONDITION error. |
+| `params.validateOnly` | `boolean` | No | Optional. Indicates that the request should be validated and default values populated, without persisting the request or deleting any resources. |
