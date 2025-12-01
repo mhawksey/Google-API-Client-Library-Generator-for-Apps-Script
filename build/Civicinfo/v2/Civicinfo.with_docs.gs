@@ -47,16 +47,6 @@ class Civicinfo {
     this.divisions = {};
 
     /**
-     * Searches for political divisions by their natural name or OCD ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.query - The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words given in the query are treated as required patterns. In addition to that, most query operators of the Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.divisions.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/divisions', 'GET', apiParams, clientConfig);
-
-    /**
      * Lookup OCDIDs and names for divisions related to an address.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.address - 
@@ -65,6 +55,16 @@ class Civicinfo {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.divisions.queryDivisionByAddress = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/divisionsByAddress', 'GET', apiParams, clientConfig);
+
+    /**
+     * Searches for political divisions by their natural name or OCD ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.query - The search query. Queries can cover any parts of a OCD ID or a human readable division name. All words given in the query are treated as required patterns. In addition to that, most query operators of the Apache Lucene library are supported. See http://lucene.apache.org/core/2_9_4/queryparsersyntax.html
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.divisions.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/divisions', 'GET', apiParams, clientConfig);
   }
 
 /**
