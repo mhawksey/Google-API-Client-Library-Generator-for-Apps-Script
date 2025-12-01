@@ -21,17 +21,6 @@ class Forms {
     this.forms = {};
 
     /**
-     * Change the form with a batch of updates.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. The form ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.forms.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:batchUpdate', 'POST', apiParams, clientConfig);
-
-    /**
      * Create a new form using the title given in the provided form message in the request. *Important:* Only the form.info.title and form.info.document_title fields are copied to the new form. All other fields including the form description, items and settings are disallowed. To create a new form and add items, you must first call forms.create to create an empty form with a title and (optional) document title, and then call forms.update to add the items.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.unpublished - Optional. Whether the form is unpublished. If set to `true`, the form doesn't accept responses. If set to `false` or unset, the form is published and accepts responses.
@@ -43,17 +32,6 @@ class Forms {
     this.forms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. The ID of the form. You can get the id from Form.form_id field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.forms.setPublishSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:setPublishSettings', 'POST', apiParams, clientConfig);
-
-    /**
      * Get a form.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.formId - (Required) Required. The form ID.
@@ -63,51 +41,27 @@ class Forms {
      */
     this.forms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}', 'GET', apiParams, clientConfig);
 
-    this.forms.watches = {};
-
     /**
-     * Renew an existing watch for seven days. The state of the watch after renewal is `ACTIVE`, and the `expire_time` is seven days from the renewal. Renewing a watch in an error state (e.g. `SUSPENDED`) succeeds if the error is no longer present, but fail otherwise. After a watch has expired, RenewWatch returns `NOT_FOUND`.
+     * Change the form with a batch of updates.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. The ID of the Form.
-     * @param {string} apiParams.watchId - (Required) Required. The ID of the Watch to renew.
+     * @param {string} apiParams.formId - (Required) Required. The form ID.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.forms.watches.renew = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches/{watchId}:renew', 'POST', apiParams, clientConfig);
+    this.forms.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:batchUpdate', 'POST', apiParams, clientConfig);
 
     /**
-     * Create a new watch. If a watch ID is provided, it must be unused. For each invoking project, the per form limit is one watch per Watch.EventType. A watch expires seven days after it is created (see Watch.expire_time).
+     * Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. ID of the Form to watch.
+     * @param {string} apiParams.formId - (Required) Required. The ID of the form. You can get the id from Form.form_id field.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.forms.watches.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'POST', apiParams, clientConfig);
-
-    /**
-     * Delete a watch.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. The ID of the Form.
-     * @param {string} apiParams.watchId - (Required) Required. The ID of the Watch to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.forms.watches.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches/{watchId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Return a list of the watches owned by the invoking project. The maximum number of watches is two: For each invoker, the limit is one for each event type per form.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. ID of the Form whose watches to list.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.forms.watches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'GET', apiParams, clientConfig);
+    this.forms.setPublishSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:setPublishSettings', 'POST', apiParams, clientConfig);
 
     this.forms.responses = {};
 
@@ -134,6 +88,52 @@ class Forms {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.forms.responses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/responses', 'GET', apiParams, clientConfig);
+
+    this.forms.watches = {};
+
+    /**
+     * Create a new watch. If a watch ID is provided, it must be unused. For each invoking project, the per form limit is one watch per Watch.EventType. A watch expires seven days after it is created (see Watch.expire_time).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.formId - (Required) Required. ID of the Form to watch.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.forms.watches.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'POST', apiParams, clientConfig);
+
+    /**
+     * Return a list of the watches owned by the invoking project. The maximum number of watches is two: For each invoker, the limit is one for each event type per form.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.formId - (Required) Required. ID of the Form whose watches to list.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.forms.watches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'GET', apiParams, clientConfig);
+
+    /**
+     * Renew an existing watch for seven days. The state of the watch after renewal is `ACTIVE`, and the `expire_time` is seven days from the renewal. Renewing a watch in an error state (e.g. `SUSPENDED`) succeeds if the error is no longer present, but fail otherwise. After a watch has expired, RenewWatch returns `NOT_FOUND`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.formId - (Required) Required. The ID of the Form.
+     * @param {string} apiParams.watchId - (Required) Required. The ID of the Watch to renew.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.forms.watches.renew = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches/{watchId}:renew', 'POST', apiParams, clientConfig);
+
+    /**
+     * Delete a watch.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.formId - (Required) Required. The ID of the Form.
+     * @param {string} apiParams.watchId - (Required) Required. The ID of the Watch to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.forms.watches.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches/{watchId}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
