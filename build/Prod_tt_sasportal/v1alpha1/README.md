@@ -4,8 +4,8 @@ Auto-generated client library for using the **SAS Portal API (Testing) (version:
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:14:00 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:14:00 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:06:37 GMT
+- **Last Modified:** Mon, 01 Dec 2025 01:06:37 GMT
 - **Created:** Sun, 20 Jul 2025 16:46:37 GMT
 
 
@@ -14,421 +14,24 @@ Auto-generated client library for using the **SAS Portal API (Testing) (version:
 
 ## API Reference
 
-### `nodes`
-
-#### `nodes.get()`
-
-Returns a requested node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the node. |
-
-### `nodes.nodes`
-
-#### `nodes.nodes.get()`
-
-Returns a requested node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the node. |
-
-#### `nodes.nodes.delete()`
-
-Deletes a node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the node. |
-
-#### `nodes.nodes.patch()`
-
-Updates an existing node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. Resource name. |
-| `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.nodes.create()`
-
-Creates a new node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.nodes.move()`
-
-Moves a node under another node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the node to move. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.nodes.list()`
-
-Lists nodes.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of nodes to return in the response. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1". |
-| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. |
-
-### `nodes.nodes.devices`
-
-#### `nodes.nodes.devices.create()`
-
-Creates a device under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.nodes.devices.list()`
-
-Lists devices under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
-| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
-
-#### `nodes.nodes.devices.createSigned()`
-
-Creates a signed device under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `nodes.nodes.deployments`
-
-#### `nodes.nodes.deployments.create()`
-
-Creates a new deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name where the deployment is to be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.nodes.deployments.list()`
-
-Lists deployments.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. |
-| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. |
-| `params.pageSize` | `integer` | No | The maximum number of deployments to return in the response. |
-
-### `nodes.nodes.nodes`
-
-#### `nodes.nodes.nodes.list()`
-
-Lists nodes.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1". |
-| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. |
-| `params.pageSize` | `integer` | No | The maximum number of nodes to return in the response. |
-
-#### `nodes.nodes.nodes.create()`
-
-Creates a new node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `nodes.deployments`
-
-#### `nodes.deployments.delete()`
-
-Deletes a deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the deployment. |
-
-#### `nodes.deployments.patch()`
-
-Updates an existing deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.name` | `string` | Yes | Output only. Resource name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.deployments.move()`
-
-Moves a deployment under another node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the deployment to move. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.deployments.list()`
-
-Lists deployments.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. |
-| `params.pageSize` | `integer` | No | The maximum number of deployments to return in the response. |
-| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. |
-
-#### `nodes.deployments.get()`
-
-Returns a requested deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the deployment. |
-
-### `nodes.deployments.devices`
-
-#### `nodes.deployments.devices.createSigned()`
-
-Creates a signed device under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.deployments.devices.list()`
-
-Lists devices under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
-| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
-
-#### `nodes.deployments.devices.create()`
-
-Creates a device under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `nodes.devices`
-
-#### `nodes.devices.createSigned()`
-
-Creates a signed device under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.devices.delete()`
-
-Deletes a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device. |
-
-#### `nodes.devices.updateSigned()`
-
-Updates a signed device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.devices.move()`
-
-Moves a device under another node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device to move. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.devices.create()`
-
-Creates a device under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.devices.patch()`
-
-Updates a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource path name. |
-| `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.devices.get()`
-
-Gets details about a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device. |
-
-#### `nodes.devices.signDevice()`
-
-Signs a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource path name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `nodes.devices.list()`
-
-Lists devices under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
-| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
-
-### `installer`
-
-#### `installer.generateSecret()`
-
-Generates a secret to be used with the ValidateInstaller.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `installer.validate()`
-
-Validates the identity of a Certified Professional Installer (CPI).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `policies`
-
-#### `policies.get()`
-
-Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `policies.test()`
-
-Returns permissions that a caller has on the specified resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `policies.set()`
-
-Sets the access control policy on the specified resource. Replaces any existing policy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `deployments`
-
-#### `deployments.get()`
-
-Returns a requested deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the deployment. |
-
-### `deployments.devices`
-
-#### `deployments.devices.updateSigned()`
-
-Updates a signed device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `deployments.devices.move()`
-
-Moves a device under another node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device to move. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `deployments.devices.signDevice()`
-
-Signs a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource path name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `deployments.devices.get()`
-
-Gets details about a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device. |
-
-#### `deployments.devices.delete()`
-
-Deletes a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device. |
-
-#### `deployments.devices.patch()`
-
-Updates a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource path name. |
-| `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `customers`
+
+#### `customers.get()`
+
+Returns a requested customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the customer. |
+
+#### `customers.list()`
+
+Returns a list of requested customers.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of customers to return in the response. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListCustomers that indicates where this listing should continue from. |
 
 #### `customers.patch()`
 
@@ -436,21 +39,28 @@ Updates an existing customer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Fields to be updated. |
 | `params.name` | `string` | Yes | Output only. Resource name of the customer. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.setupSasAnalytics()`
-
-Setups the a GCP Project to receive SAS Analytics messages via GCP Pub/Sub with a subscription to BigQuery. All the Pub/Sub topics and BigQuery tables are created automatically as part of this service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
+| `params.updateMask` | `string` | No | Fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `customers.listGcpProjectDeployments()`
 
 Returns a list of SAS deployments associated with current GCP project. Includes whether SAS analytics has been enabled or not.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+
+#### `customers.provisionDeployment()`
+
+Creates a new SAS deployment through the GCP workflow. Creates a SAS organization if an organization match is not found.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.listLegacyOrganizations()`
+
+Returns a list of legacy organizations.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -463,39 +73,267 @@ Migrates a SAS organization to the cloud. This will create GCP projects for each
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.list()`
+#### `customers.setupSasAnalytics()`
 
-Returns a list of requested customers.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListCustomers that indicates where this listing should continue from. |
-| `params.pageSize` | `integer` | No | The maximum number of customers to return in the response. |
-
-#### `customers.provisionDeployment()`
-
-Creates a new SAS deployment through the GCP workflow. Creates a SAS organization if an organization match is not found.
+Setups the a GCP Project to receive SAS Analytics messages via GCP Pub/Sub with a subscription to BigQuery. All the Pub/Sub topics and BigQuery tables are created automatically as part of this service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.get()`
+### `customers.devices`
 
-Returns a requested customer.
+#### `customers.devices.create()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the customer. |
-
-#### `customers.listLegacyOrganizations()`
-
-Returns a list of legacy organizations.
+Creates a device under a node or customer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.devices.createSigned()`
+
+Creates a signed device under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.devices.delete()`
+
+Deletes a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device. |
+
+#### `customers.devices.get()`
+
+Gets details about a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device. |
+
+#### `customers.devices.list()`
+
+Lists devices under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
+
+#### `customers.devices.move()`
+
+Moves a device under another node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device to move. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.devices.patch()`
+
+Updates a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The resource path name. |
+| `params.updateMask` | `string` | No | Fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.devices.updateSigned()`
+
+Updates a signed device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.devices.signDevice()`
+
+Signs a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The resource path name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `customers.nodes`
+
+#### `customers.nodes.create()`
+
+Creates a new node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.nodes.delete()`
+
+Deletes a node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the node. |
+
+#### `customers.nodes.get()`
+
+Returns a requested node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the node. |
+
+#### `customers.nodes.list()`
+
+Lists nodes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1". |
+| `params.pageSize` | `integer` | No | The maximum number of nodes to return in the response. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. |
+
+#### `customers.nodes.move()`
+
+Moves a node under another node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the node to move. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.nodes.patch()`
+
+Updates an existing node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Resource name. |
+| `params.updateMask` | `string` | No | Fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `customers.nodes.devices`
+
+#### `customers.nodes.devices.create()`
+
+Creates a device under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.nodes.devices.createSigned()`
+
+Creates a signed device under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.nodes.devices.list()`
+
+Lists devices under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
+
+### `customers.nodes.nodes`
+
+#### `customers.nodes.nodes.create()`
+
+Creates a new node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.nodes.nodes.list()`
+
+Lists nodes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1". |
+| `params.pageSize` | `integer` | No | The maximum number of nodes to return in the response. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. |
+
+### `customers.nodes.deployments`
+
+#### `customers.nodes.deployments.create()`
+
+Creates a new deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name where the deployment is to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.nodes.deployments.list()`
+
+Lists deployments.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. |
+| `params.pageSize` | `integer` | No | The maximum number of deployments to return in the response. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. |
 
 ### `customers.deployments`
+
+#### `customers.deployments.create()`
+
+Creates a new deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name where the deployment is to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `customers.deployments.delete()`
+
+Deletes a deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment. |
+
+#### `customers.deployments.get()`
+
+Returns a requested deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment. |
+
+#### `customers.deployments.list()`
+
+Lists deployments.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. |
+| `params.pageSize` | `integer` | No | The maximum number of deployments to return in the response. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. |
 
 #### `customers.deployments.patch()`
 
@@ -507,17 +345,6 @@ Updates an existing deployment.
 | `params.updateMask` | `string` | No | Fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.deployments.list()`
-
-Lists deployments.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. |
-| `params.pageSize` | `integer` | No | The maximum number of deployments to return in the response. |
-| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. |
-
 #### `customers.deployments.move()`
 
 Moves a deployment under another node or customer.
@@ -526,31 +353,6 @@ Moves a deployment under another node or customer.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the deployment to move. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.deployments.delete()`
-
-Deletes a deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the deployment. |
-
-#### `customers.deployments.create()`
-
-Creates a new deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name where the deployment is to be created. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.deployments.get()`
-
-Returns a requested deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the deployment. |
 
 ### `customers.deployments.devices`
 
@@ -578,23 +380,69 @@ Lists devices under a node or customer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
 | `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
 | `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
-| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
 
-### `customers.devices`
+### `nodes`
 
-#### `customers.devices.updateSigned()`
+#### `nodes.get()`
 
-Updates a signed device.
+Returns a requested node.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device to update. |
+| `params.name` | `string` | Yes | Required. The name of the node. |
+
+### `nodes.devices`
+
+#### `nodes.devices.create()`
+
+Creates a device under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.devices.move()`
+#### `nodes.devices.createSigned()`
+
+Creates a signed device under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `nodes.devices.delete()`
+
+Deletes a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device. |
+
+#### `nodes.devices.get()`
+
+Gets details about a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device. |
+
+#### `nodes.devices.list()`
+
+Lists devices under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
+
+#### `nodes.devices.move()`
 
 Moves a device under another node or customer.
 
@@ -603,26 +451,26 @@ Moves a device under another node or customer.
 | `params.name` | `string` | Yes | Required. The name of the device to move. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.devices.patch()`
+#### `nodes.devices.patch()`
 
 Updates a device.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Fields to be updated. |
 | `params.name` | `string` | Yes | Output only. The resource path name. |
+| `params.updateMask` | `string` | No | Fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.devices.createSigned()`
+#### `nodes.devices.updateSigned()`
 
-Creates a signed device under a node or customer.
+Updates a signed device.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.name` | `string` | Yes | Required. The name of the device to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.devices.signDevice()`
+#### `nodes.devices.signDevice()`
 
 Signs a device.
 
@@ -631,82 +479,9 @@ Signs a device.
 | `params.name` | `string` | Yes | Output only. The resource path name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.devices.list()`
+### `nodes.nodes`
 
-Lists devices under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
-
-#### `customers.devices.create()`
-
-Creates a device under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.devices.get()`
-
-Gets details about a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device. |
-
-#### `customers.devices.delete()`
-
-Deletes a device.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the device. |
-
-### `customers.nodes`
-
-#### `customers.nodes.get()`
-
-Returns a requested node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the node. |
-
-#### `customers.nodes.patch()`
-
-Updates an existing node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | Fields to be updated. |
-| `params.name` | `string` | Yes | Output only. Resource name. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `customers.nodes.list()`
-
-Lists nodes.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of nodes to return in the response. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1". |
-| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. |
-
-#### `customers.nodes.delete()`
-
-Deletes a node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the node. |
-
-#### `customers.nodes.create()`
+#### `nodes.nodes.create()`
 
 Creates a new node.
 
@@ -715,7 +490,34 @@ Creates a new node.
 | `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.nodes.move()`
+#### `nodes.nodes.delete()`
+
+Deletes a node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the node. |
+
+#### `nodes.nodes.get()`
+
+Returns a requested node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the node. |
+
+#### `nodes.nodes.list()`
+
+Lists nodes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1". |
+| `params.pageSize` | `integer` | No | The maximum number of nodes to return in the response. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. |
+
+#### `nodes.nodes.move()`
 
 Moves a node under another node or customer.
 
@@ -724,31 +526,19 @@ Moves a node under another node or customer.
 | `params.name` | `string` | Yes | Required. The name of the node to move. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `customers.nodes.nodes`
+#### `nodes.nodes.patch()`
 
-#### `customers.nodes.nodes.list()`
-
-Lists nodes.
+Updates an existing node.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. |
-| `params.pageSize` | `integer` | No | The maximum number of nodes to return in the response. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1". |
-
-#### `customers.nodes.nodes.create()`
-
-Creates a new node.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
+| `params.name` | `string` | Yes | Output only. Resource name. |
+| `params.updateMask` | `string` | No | Fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `customers.nodes.devices`
+### `nodes.nodes.devices`
 
-#### `customers.nodes.devices.create()`
+#### `nodes.nodes.devices.create()`
 
 Creates a device under a node or customer.
 
@@ -757,18 +547,7 @@ Creates a device under a node or customer.
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `customers.nodes.devices.list()`
-
-Lists devices under a node or customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
-| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
-| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
-
-#### `customers.nodes.devices.createSigned()`
+#### `nodes.nodes.devices.createSigned()`
 
 Creates a signed device under a node or customer.
 
@@ -777,24 +556,245 @@ Creates a signed device under a node or customer.
 | `params.parent` | `string` | Yes | Required. The name of the parent resource. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `customers.nodes.deployments`
+#### `nodes.nodes.devices.list()`
 
-#### `customers.nodes.deployments.list()`
-
-Lists deployments.
+Lists devices under a node or customer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. |
-| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. |
-| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. |
-| `params.pageSize` | `integer` | No | The maximum number of deployments to return in the response. |
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
 
-#### `customers.nodes.deployments.create()`
+### `nodes.nodes.nodes`
+
+#### `nodes.nodes.nodes.create()`
+
+Creates a new node.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name where the node is to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `nodes.nodes.nodes.list()`
+
+Lists nodes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1". |
+| `params.pageSize` | `integer` | No | The maximum number of nodes to return in the response. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListNodes that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no nodes are filtered. |
+
+### `nodes.nodes.deployments`
+
+#### `nodes.nodes.deployments.create()`
 
 Creates a new deployment.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent resource name where the deployment is to be created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `nodes.nodes.deployments.list()`
+
+Lists deployments.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. |
+| `params.pageSize` | `integer` | No | The maximum number of deployments to return in the response. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. |
+
+### `nodes.deployments`
+
+#### `nodes.deployments.delete()`
+
+Deletes a deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment. |
+
+#### `nodes.deployments.get()`
+
+Returns a requested deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment. |
+
+#### `nodes.deployments.list()`
+
+Lists deployments.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name, for example, "nodes/1", customer/1/nodes/2. |
+| `params.pageSize` | `integer` | No | The maximum number of deployments to return in the response. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDeployments that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have the following format: "DIRECT_CHILDREN" or format: "direct_children". The filter is case insensitive. If empty, then no deployments are filtered. |
+
+#### `nodes.deployments.patch()`
+
+Updates an existing deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Resource name. |
+| `params.updateMask` | `string` | No | Fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `nodes.deployments.move()`
+
+Moves a deployment under another node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment to move. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `nodes.deployments.devices`
+
+#### `nodes.deployments.devices.create()`
+
+Creates a device under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `nodes.deployments.devices.createSigned()`
+
+Creates a signed device under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `nodes.deployments.devices.list()`
+
+Lists devices under a node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent resource. |
+| `params.pageSize` | `integer` | No | The maximum number of devices to return in the response. If empty or zero, all devices will be listed. Must be in the range [0, 1000]. |
+| `params.pageToken` | `string` | No | A pagination token returned from a previous call to ListDevices that indicates where this listing should continue from. |
+| `params.filter` | `string` | No | The filter expression. The filter should have one of the following formats: "sn=123454" or "display_name=MyDevice". sn corresponds to serial number of the device. The filter is case insensitive. |
+
+### `installer`
+
+#### `installer.generateSecret()`
+
+Generates a secret to be used with the ValidateInstaller.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `installer.validate()`
+
+Validates the identity of a Certified Professional Installer (CPI).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `deployments`
+
+#### `deployments.get()`
+
+Returns a requested deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the deployment. |
+
+### `deployments.devices`
+
+#### `deployments.devices.delete()`
+
+Deletes a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device. |
+
+#### `deployments.devices.get()`
+
+Gets details about a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device. |
+
+#### `deployments.devices.move()`
+
+Moves a device under another node or customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device to move. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `deployments.devices.patch()`
+
+Updates a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The resource path name. |
+| `params.updateMask` | `string` | No | Fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `deployments.devices.updateSigned()`
+
+Updates a signed device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the device to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `deployments.devices.signDevice()`
+
+Signs a device.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The resource path name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `policies`
+
+#### `policies.set()`
+
+Sets the access control policy on the specified resource. Replaces any existing policy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `policies.get()`
+
+Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `policies.test()`
+
+Returns permissions that a caller has on the specified resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
