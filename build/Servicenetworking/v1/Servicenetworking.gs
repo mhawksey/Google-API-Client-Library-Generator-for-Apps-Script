@@ -18,27 +18,23 @@ class Servicenetworking {
     this._servicePath = '';
 
 
+    this.operations = {};
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
     this.services = {};
-    this.services.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:validate', 'POST', apiParams, clientConfig);
-    this.services.addSubnetwork = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:addSubnetwork', 'POST', apiParams, clientConfig);
     this.services.disableVpcServiceControls = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:disableVpcServiceControls', 'PATCH', apiParams, clientConfig);
     this.services.enableVpcServiceControls = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:enableVpcServiceControls', 'PATCH', apiParams, clientConfig);
+    this.services.addSubnetwork = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:addSubnetwork', 'POST', apiParams, clientConfig);
     this.services.searchRange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:searchRange', 'POST', apiParams, clientConfig);
-
-    this.services.roles = {};
-    this.services.roles.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/roles:add', 'POST', apiParams, clientConfig);
-
-    this.services.dnsRecordSets = {};
-    this.services.dnsRecordSets.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:add', 'POST', apiParams, clientConfig);
-    this.services.dnsRecordSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:get', 'GET', apiParams, clientConfig);
-    this.services.dnsRecordSets.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:remove', 'POST', apiParams, clientConfig);
-    this.services.dnsRecordSets.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:update', 'POST', apiParams, clientConfig);
-    this.services.dnsRecordSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:list', 'GET', apiParams, clientConfig);
+    this.services.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:validate', 'POST', apiParams, clientConfig);
 
     this.services.connections = {};
-    this.services.connections.deleteConnection = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
-    this.services.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'POST', apiParams, clientConfig);
     this.services.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'GET', apiParams, clientConfig);
+    this.services.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'POST', apiParams, clientConfig);
+    this.services.connections.deleteConnection = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
     this.services.connections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.services.projects = {};
@@ -46,28 +42,32 @@ class Servicenetworking {
     this.services.projects.global = {};
 
     this.services.projects.global.networks = {};
+    this.services.projects.global.networks.getVpcServiceControls = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/vpcServiceControls', 'GET', apiParams, clientConfig);
     this.services.projects.global.networks.updateConsumerConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:updateConsumerConfig', 'PATCH', apiParams, clientConfig);
     this.services.projects.global.networks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.services.projects.global.networks.getVpcServiceControls = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/vpcServiceControls', 'GET', apiParams, clientConfig);
 
     this.services.projects.global.networks.dnsZones = {};
-    this.services.projects.global.networks.dnsZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.services.projects.global.networks.dnsZones.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsZones:list', 'GET', apiParams, clientConfig);
+    this.services.projects.global.networks.dnsZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.services.projects.global.networks.peeredDnsDomains = {};
-    this.services.projects.global.networks.peeredDnsDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/peeredDnsDomains', 'GET', apiParams, clientConfig);
     this.services.projects.global.networks.peeredDnsDomains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/peeredDnsDomains', 'POST', apiParams, clientConfig);
     this.services.projects.global.networks.peeredDnsDomains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.services.projects.global.networks.peeredDnsDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/peeredDnsDomains', 'GET', apiParams, clientConfig);
+
+    this.services.roles = {};
+    this.services.roles.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/roles:add', 'POST', apiParams, clientConfig);
 
     this.services.dnsZones = {};
-    this.services.dnsZones.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsZones:remove', 'POST', apiParams, clientConfig);
     this.services.dnsZones.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsZones:add', 'POST', apiParams, clientConfig);
+    this.services.dnsZones.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsZones:remove', 'POST', apiParams, clientConfig);
 
-    this.operations = {};
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.services.dnsRecordSets = {};
+    this.services.dnsRecordSets.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:add', 'POST', apiParams, clientConfig);
+    this.services.dnsRecordSets.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:remove', 'POST', apiParams, clientConfig);
+    this.services.dnsRecordSets.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:update', 'POST', apiParams, clientConfig);
+    this.services.dnsRecordSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:get', 'GET', apiParams, clientConfig);
+    this.services.dnsRecordSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsRecordSets:list', 'GET', apiParams, clientConfig);
   }
 
 /**
