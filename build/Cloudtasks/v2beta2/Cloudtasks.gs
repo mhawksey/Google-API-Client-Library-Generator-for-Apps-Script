@@ -18,43 +18,43 @@ class Cloudtasks {
     this._servicePath = '';
 
 
+    this.projects = {};
+
+    this.projects.locations = {};
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.updateCmekConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.getCmekConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.queues = {};
+    this.projects.locations.queues.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.queues.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/queues', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.queues.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.queues.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:pause', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/queues', 'GET', apiParams, clientConfig);
+    this.projects.locations.queues.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.purge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:purge', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.queues.tasks = {};
+    this.projects.locations.queues.tasks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/tasks', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.tasks.cancelLease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:cancelLease', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.tasks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.queues.tasks.renewLease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:renewLease', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.tasks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.queues.tasks.buffer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+queue}/tasks/{taskId}:buffer', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.tasks.lease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/tasks:lease', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.tasks.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:run', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.tasks.acknowledge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:acknowledge', 'POST', apiParams, clientConfig);
+    this.projects.locations.queues.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/tasks', 'GET', apiParams, clientConfig);
+
     this.api = {};
 
     this.api.queue = {};
     this.api.queue.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('api/queue/update', 'POST', apiParams, clientConfig);
-
-    this.projects = {};
-
-    this.projects.locations = {};
-    this.projects.locations.getCmekConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.updateCmekConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}/locations', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.queues = {};
-    this.projects.locations.queues.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:pause', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.queues.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.queues.purge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:purge', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/queues', 'GET', apiParams, clientConfig);
-    this.projects.locations.queues.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.queues.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:resume', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/queues', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.queues.tasks = {};
-    this.projects.locations.queues.tasks.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:run', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.tasks.renewLease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:renewLease', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.tasks.cancelLease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:cancelLease', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.tasks.acknowledge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}:acknowledge', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.tasks.buffer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+queue}/tasks/{taskId}:buffer', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.tasks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.queues.tasks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/tasks', 'POST', apiParams, clientConfig);
-    this.projects.locations.queues.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/tasks', 'GET', apiParams, clientConfig);
-    this.projects.locations.queues.tasks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.queues.tasks.lease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta2/{+parent}/tasks:lease', 'POST', apiParams, clientConfig);
   }
 
 /**
