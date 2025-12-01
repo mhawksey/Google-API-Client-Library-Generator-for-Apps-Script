@@ -18,32 +18,15 @@ class Cloudbilling {
     this._servicePath = '';
 
 
-    this.projects = {};
-    this.projects.updateBillingInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/billingInfo', 'PUT', apiParams, clientConfig);
-    this.projects.getBillingInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/billingInfo', 'GET', apiParams, clientConfig);
-
-    this.services = {};
-    this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services', 'GET', apiParams, clientConfig);
-
-    this.services.skus = {};
-    this.services.skus.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/skus', 'GET', apiParams, clientConfig);
-
-    this.organizations = {};
-
-    this.organizations.billingAccounts = {};
-    this.organizations.billingAccounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/billingAccounts', 'POST', apiParams, clientConfig);
-    this.organizations.billingAccounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/billingAccounts', 'GET', apiParams, clientConfig);
-    this.organizations.billingAccounts.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+destinationParent}/{+name}:move', 'GET', apiParams, clientConfig);
-
     this.billingAccounts = {};
-    this.billingAccounts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.billingAccounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.billingAccounts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.billingAccounts.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
     this.billingAccounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.billingAccounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/billingAccounts', 'GET', apiParams, clientConfig);
-    this.billingAccounts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.billingAccounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.billingAccounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/billingAccounts', 'POST', apiParams, clientConfig);
+    this.billingAccounts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.billingAccounts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.billingAccounts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.billingAccounts.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
 
     this.billingAccounts.subAccounts = {};
     this.billingAccounts.subAccounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subAccounts', 'GET', apiParams, clientConfig);
@@ -51,6 +34,23 @@ class Cloudbilling {
 
     this.billingAccounts.projects = {};
     this.billingAccounts.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/projects', 'GET', apiParams, clientConfig);
+
+    this.organizations = {};
+
+    this.organizations.billingAccounts = {};
+    this.organizations.billingAccounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/billingAccounts', 'GET', apiParams, clientConfig);
+    this.organizations.billingAccounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/billingAccounts', 'POST', apiParams, clientConfig);
+    this.organizations.billingAccounts.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+destinationParent}/{+name}:move', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+    this.projects.getBillingInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/billingInfo', 'GET', apiParams, clientConfig);
+    this.projects.updateBillingInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/billingInfo', 'PUT', apiParams, clientConfig);
+
+    this.services = {};
+    this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services', 'GET', apiParams, clientConfig);
+
+    this.services.skus = {};
+    this.services.skus.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/skus', 'GET', apiParams, clientConfig);
   }
 
 /**
