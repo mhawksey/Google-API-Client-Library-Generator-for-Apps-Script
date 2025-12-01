@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Trace API (version: v2beta1)
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:33:05 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:33:05 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:34:22 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:34:22 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:06 GMT
 
 
@@ -24,9 +24,26 @@ List all sinks for the parent resource (GCP project).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. |
 | `params.parent` | `string` | Yes | Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]" |
 | `params.pageToken` | `string` | No | Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. |
+
+#### `projects.traceSinks.get()`
+
+Get a trace sink by name under the parent resource (GCP project).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. |
+
+#### `projects.traceSinks.create()`
+
+Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink's `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the 'parent').
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource in which to create the sink (currently only project sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-project"`, `"projects/123456789"`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.traceSinks.patch()`
 
@@ -45,20 +62,3 @@ Deletes a sink.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The full resource name of the sink to delete, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. |
-
-#### `projects.traceSinks.create()`
-
-Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink's `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the 'parent').
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource in which to create the sink (currently only project sinks are supported): "projects/[PROJECT_ID]" Examples: `"projects/my-trace-project"`, `"projects/123456789"`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.traceSinks.get()`
-
-Get a trace sink by name under the parent resource (GCP project).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. |
