@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase ML API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 00:46:08 GMT
-- **Last Modified:** Sat, 01 Nov 2025 00:46:08 GMT
+- **Last Checked:** Mon, 01 Dec 2025 00:46:55 GMT
+- **Last Modified:** Mon, 01 Dec 2025 00:46:55 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:45 GMT
 
 
@@ -16,26 +16,17 @@ Auto-generated client library for using the **Firebase ML API (version: v1)** in
 
 ### `operations`
 
-#### `operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `operations.list()`
 
 Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | The standard list filter. |
 | `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `operations.delete()`
 
@@ -44,3 +35,12 @@ Deletes a long-running operation. This method indicates that the client is no lo
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
+| `params.requestBody` | `object` | Yes | The request body. |
