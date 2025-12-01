@@ -18,94 +18,94 @@ class Drive {
     this._servicePath = 'drive/v3/';
 
 
-    this.teamdrives = {};
-    this.teamdrives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives/{teamDriveId}', 'GET', apiParams, clientConfig);
-    this.teamdrives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives', 'POST', apiParams, clientConfig);
-    this.teamdrives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives/{teamDriveId}', 'DELETE', apiParams, clientConfig);
-    this.teamdrives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives', 'GET', apiParams, clientConfig);
-    this.teamdrives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives/{teamDriveId}', 'PATCH', apiParams, clientConfig);
-
-    this.accessproposals = {};
-    this.accessproposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/accessproposals', 'GET', apiParams, clientConfig);
-    this.accessproposals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/accessproposals/{proposalId}', 'GET', apiParams, clientConfig);
-    this.accessproposals.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/accessproposals/{proposalId}:resolve', 'POST', apiParams, clientConfig);
-
-    this.files = {};
-    this.files.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}', 'DELETE', apiParams, clientConfig);
-    this.files.modifyLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/modifyLabels', 'POST', apiParams, clientConfig);
-    this.files.update = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/drive/v3/files/{fileId}' : 'files/{fileId}';
-      return this._makeRequest(path, 'PATCH', apiParams, clientConfig);
-    };
-    this.files.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/download', 'POST', apiParams, clientConfig);
-    this.files.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/export', 'GET', apiParams, clientConfig);
-    this.files.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/watch', 'POST', apiParams, clientConfig);
-    this.files.generateIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/generateIds', 'GET', apiParams, clientConfig);
-    this.files.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files', 'GET', apiParams, clientConfig);
-    this.files.emptyTrash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/trash', 'DELETE', apiParams, clientConfig);
-    this.files.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}', 'GET', apiParams, clientConfig);
-    this.files.listLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/listLabels', 'GET', apiParams, clientConfig);
-    this.files.create = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/drive/v3/files' : 'files';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-    this.files.copy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/copy', 'POST', apiParams, clientConfig);
-
-    this.revisions = {};
-    this.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/revisions/{revisionId}', 'GET', apiParams, clientConfig);
-    this.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/revisions/{revisionId}', 'DELETE', apiParams, clientConfig);
-    this.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/revisions', 'GET', apiParams, clientConfig);
-    this.revisions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/revisions/{revisionId}', 'PATCH', apiParams, clientConfig);
-
-    this.channels = {};
-    this.channels.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('channels/stop', 'POST', apiParams, clientConfig);
-
-    this.drives = {};
-    this.drives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives', 'POST', apiParams, clientConfig);
-    this.drives.unhide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}/unhide', 'POST', apiParams, clientConfig);
-    this.drives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}', 'PATCH', apiParams, clientConfig);
-    this.drives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}', 'DELETE', apiParams, clientConfig);
-    this.drives.hide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}/hide', 'POST', apiParams, clientConfig);
-    this.drives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}', 'GET', apiParams, clientConfig);
-    this.drives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives', 'GET', apiParams, clientConfig);
-
     this.operations = {};
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('operations/{name}', 'GET', apiParams, clientConfig);
 
-    this.replies = {};
-    this.replies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies', 'POST', apiParams, clientConfig);
-    this.replies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies/{replyId}', 'GET', apiParams, clientConfig);
-    this.replies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies', 'GET', apiParams, clientConfig);
-    this.replies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies/{replyId}', 'DELETE', apiParams, clientConfig);
-    this.replies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies/{replyId}', 'PATCH', apiParams, clientConfig);
-
-    this.permissions = {};
-    this.permissions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions/{permissionId}', 'DELETE', apiParams, clientConfig);
-    this.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions', 'POST', apiParams, clientConfig);
-    this.permissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions/{permissionId}', 'GET', apiParams, clientConfig);
-    this.permissions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions/{permissionId}', 'PATCH', apiParams, clientConfig);
-    this.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions', 'GET', apiParams, clientConfig);
-
-    this.comments = {};
-    this.comments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}', 'PATCH', apiParams, clientConfig);
-    this.comments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments', 'POST', apiParams, clientConfig);
-    this.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments', 'GET', apiParams, clientConfig);
-    this.comments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}', 'GET', apiParams, clientConfig);
-    this.comments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}', 'DELETE', apiParams, clientConfig);
+    this.about = {};
+    this.about.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('about', 'GET', apiParams, clientConfig);
 
     this.apps = {};
     this.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/{appId}', 'GET', apiParams, clientConfig);
     this.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps', 'GET', apiParams, clientConfig);
 
     this.changes = {};
+    this.changes.getStartPageToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('changes/startPageToken', 'GET', apiParams, clientConfig);
     this.changes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('changes', 'GET', apiParams, clientConfig);
     this.changes.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('changes/watch', 'POST', apiParams, clientConfig);
-    this.changes.getStartPageToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('changes/startPageToken', 'GET', apiParams, clientConfig);
 
-    this.about = {};
-    this.about.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('about', 'GET', apiParams, clientConfig);
+    this.channels = {};
+    this.channels.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('channels/stop', 'POST', apiParams, clientConfig);
+
+    this.comments = {};
+    this.comments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments', 'POST', apiParams, clientConfig);
+    this.comments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}', 'DELETE', apiParams, clientConfig);
+    this.comments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}', 'GET', apiParams, clientConfig);
+    this.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments', 'GET', apiParams, clientConfig);
+    this.comments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}', 'PATCH', apiParams, clientConfig);
+
+    this.drives = {};
+    this.drives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives', 'POST', apiParams, clientConfig);
+    this.drives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}', 'DELETE', apiParams, clientConfig);
+    this.drives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}', 'GET', apiParams, clientConfig);
+    this.drives.hide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}/hide', 'POST', apiParams, clientConfig);
+    this.drives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives', 'GET', apiParams, clientConfig);
+    this.drives.unhide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}/unhide', 'POST', apiParams, clientConfig);
+    this.drives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('drives/{driveId}', 'PATCH', apiParams, clientConfig);
+
+    this.files = {};
+    this.files.copy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/copy', 'POST', apiParams, clientConfig);
+    this.files.create = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/drive/v3/files' : 'files';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+    this.files.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}', 'DELETE', apiParams, clientConfig);
+    this.files.emptyTrash = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/trash', 'DELETE', apiParams, clientConfig);
+    this.files.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/export', 'GET', apiParams, clientConfig);
+    this.files.generateIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/generateIds', 'GET', apiParams, clientConfig);
+    this.files.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}', 'GET', apiParams, clientConfig);
+    this.files.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files', 'GET', apiParams, clientConfig);
+    this.files.listLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/listLabels', 'GET', apiParams, clientConfig);
+    this.files.modifyLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/modifyLabels', 'POST', apiParams, clientConfig);
+    this.files.update = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/drive/v3/files/{fileId}' : 'files/{fileId}';
+      return this._makeRequest(path, 'PATCH', apiParams, clientConfig);
+    };
+    this.files.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/watch', 'POST', apiParams, clientConfig);
+    this.files.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/download', 'POST', apiParams, clientConfig);
+
+    this.permissions = {};
+    this.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions', 'POST', apiParams, clientConfig);
+    this.permissions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions/{permissionId}', 'DELETE', apiParams, clientConfig);
+    this.permissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions/{permissionId}', 'GET', apiParams, clientConfig);
+    this.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions', 'GET', apiParams, clientConfig);
+    this.permissions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/permissions/{permissionId}', 'PATCH', apiParams, clientConfig);
+
+    this.replies = {};
+    this.replies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies', 'POST', apiParams, clientConfig);
+    this.replies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies/{replyId}', 'DELETE', apiParams, clientConfig);
+    this.replies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies/{replyId}', 'GET', apiParams, clientConfig);
+    this.replies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies', 'GET', apiParams, clientConfig);
+    this.replies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies/{replyId}', 'PATCH', apiParams, clientConfig);
+
+    this.revisions = {};
+    this.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/revisions/{revisionId}', 'DELETE', apiParams, clientConfig);
+    this.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/revisions/{revisionId}', 'GET', apiParams, clientConfig);
+    this.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/revisions', 'GET', apiParams, clientConfig);
+    this.revisions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/revisions/{revisionId}', 'PATCH', apiParams, clientConfig);
+
+    this.teamdrives = {};
+    this.teamdrives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives', 'POST', apiParams, clientConfig);
+    this.teamdrives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives/{teamDriveId}', 'DELETE', apiParams, clientConfig);
+    this.teamdrives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives/{teamDriveId}', 'GET', apiParams, clientConfig);
+    this.teamdrives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives', 'GET', apiParams, clientConfig);
+    this.teamdrives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives/{teamDriveId}', 'PATCH', apiParams, clientConfig);
+
+    this.accessproposals = {};
+    this.accessproposals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/accessproposals/{proposalId}', 'GET', apiParams, clientConfig);
+    this.accessproposals.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/accessproposals/{proposalId}:resolve', 'POST', apiParams, clientConfig);
+    this.accessproposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/accessproposals', 'GET', apiParams, clientConfig);
   }
 
 /**
