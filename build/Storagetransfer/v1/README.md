@@ -4,7 +4,7 @@ Auto-generated client library for using the **Storage Transfer API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Sat, 01 Nov 2025 01:23:15 GMT
+- **Last Checked:** Mon, 01 Dec 2025 01:16:50 GMT
 - **Last Modified:** Sat, 01 Nov 2025 01:23:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:55:16 GMT
 
@@ -26,6 +26,7 @@ Lists transfer operations. Operations are ordered by their creation time in reve
 | `params.filter` | `string` | Yes | Required. A list of query parameters specified as JSON text in the form of: `{"projectId":"my_project_id", "jobNames":["jobid1","jobid2",...], "jobNamePattern": "job_name_pattern", "operationNames":["opid1","opid2",...], "operationNamePattern": "operation_name_pattern", "minCreationTime": "min_creation_time", "maxCreationTime": "max_creation_time", "transferStatuses":["status1","status2",...]}` Since `jobNames`, `operationNames`, and `transferStatuses` support multiple values, they must be specified with array notation. `projectId` is the only argument that is required. If specified, `jobNamePattern` and `operationNamePattern` must match the full job or operation name respectively. '*' is a wildcard matching 0 or more characters. `minCreationTime` and `maxCreationTime` should be timestamps encoded as a string in the [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. The valid values for `transferStatuses` are case-insensitive: IN_PROGRESS, PAUSED, SUCCESS, FAILED, and ABORTED. |
 | `params.pageSize` | `integer` | No | The list page size. The max allowed value is 256. |
 | `params.pageToken` | `string` | No | The list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `transferOperations.get()`
 
