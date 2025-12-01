@@ -18,48 +18,85 @@ class Run {
     this._servicePath = '';
 
 
+    this.projects = {};
+
+    this.projects.locations = {};
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:wait', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.authorizeddomains = {};
+    this.projects.locations.authorizeddomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authorizeddomains', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.revisions = {};
+    this.projects.locations.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/revisions', 'GET', apiParams, clientConfig);
+    this.projects.locations.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.configurations = {};
+    this.projects.locations.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'GET', apiParams, clientConfig);
+    this.projects.locations.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.domainmappings = {};
+    this.projects.locations.domainmappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/domainmappings', 'POST', apiParams, clientConfig);
+    this.projects.locations.domainmappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/domainmappings', 'GET', apiParams, clientConfig);
+    this.projects.locations.domainmappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.domainmappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.jobs = {};
+    this.projects.locations.jobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.routes = {};
+    this.projects.locations.routes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/routes', 'GET', apiParams, clientConfig);
+    this.projects.locations.routes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.services = {};
+    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.replaceService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.workerpools = {};
+    this.projects.locations.workerpools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.workerpools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.workerpools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.authorizeddomains = {};
+    this.projects.authorizeddomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authorizeddomains', 'GET', apiParams, clientConfig);
+
     this.namespaces = {};
 
+    this.namespaces.authorizeddomains = {};
+    this.namespaces.authorizeddomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+parent}/authorizeddomains', 'GET', apiParams, clientConfig);
+
     this.namespaces.revisions = {};
-    this.namespaces.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'GET', apiParams, clientConfig);
     this.namespaces.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+parent}/revisions', 'GET', apiParams, clientConfig);
+    this.namespaces.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'GET', apiParams, clientConfig);
     this.namespaces.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.namespaces.jobs = {};
-    this.namespaces.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'GET', apiParams, clientConfig);
-    this.namespaces.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/jobs', 'POST', apiParams, clientConfig);
-    this.namespaces.jobs.replaceJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.namespaces.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.namespaces.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/jobs', 'GET', apiParams, clientConfig);
-    this.namespaces.jobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}:run', 'POST', apiParams, clientConfig);
+    this.namespaces.configurations = {};
+    this.namespaces.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+parent}/configurations', 'GET', apiParams, clientConfig);
+    this.namespaces.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.namespaces.routes = {};
-    this.namespaces.routes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'GET', apiParams, clientConfig);
-    this.namespaces.routes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+parent}/routes', 'GET', apiParams, clientConfig);
+    this.namespaces.domainmappings = {};
+    this.namespaces.domainmappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+parent}/domainmappings', 'POST', apiParams, clientConfig);
+    this.namespaces.domainmappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+parent}/domainmappings', 'GET', apiParams, clientConfig);
+    this.namespaces.domainmappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+name}', 'GET', apiParams, clientConfig);
+    this.namespaces.domainmappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.namespaces.tasks = {};
     this.namespaces.tasks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'GET', apiParams, clientConfig);
     this.namespaces.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/tasks', 'GET', apiParams, clientConfig);
-
-    this.namespaces.services = {};
-    this.namespaces.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'GET', apiParams, clientConfig);
-    this.namespaces.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.namespaces.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+parent}/services', 'POST', apiParams, clientConfig);
-    this.namespaces.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.namespaces.services.replaceService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'PUT', apiParams, clientConfig);
-
-    this.namespaces.workerpools = {};
-    this.namespaces.workerpools.replaceWorkerPool = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.namespaces.workerpools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'GET', apiParams, clientConfig);
-    this.namespaces.workerpools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.namespaces.workerpools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/workerpools', 'POST', apiParams, clientConfig);
-    this.namespaces.workerpools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/workerpools', 'GET', apiParams, clientConfig);
-
-    this.namespaces.domainmappings = {};
-    this.namespaces.domainmappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+parent}/domainmappings', 'GET', apiParams, clientConfig);
-    this.namespaces.domainmappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+name}', 'GET', apiParams, clientConfig);
-    this.namespaces.domainmappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+parent}/domainmappings', 'POST', apiParams, clientConfig);
-    this.namespaces.domainmappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.namespaces.executions = {};
     this.namespaces.executions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'DELETE', apiParams, clientConfig);
@@ -67,68 +104,31 @@ class Run {
     this.namespaces.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/executions', 'GET', apiParams, clientConfig);
     this.namespaces.executions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.namespaces.configurations = {};
-    this.namespaces.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+parent}/configurations', 'GET', apiParams, clientConfig);
-    this.namespaces.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'GET', apiParams, clientConfig);
+    this.namespaces.jobs = {};
+    this.namespaces.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/jobs', 'POST', apiParams, clientConfig);
+    this.namespaces.jobs.replaceJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.namespaces.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.namespaces.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'GET', apiParams, clientConfig);
+    this.namespaces.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/jobs', 'GET', apiParams, clientConfig);
+    this.namespaces.jobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}:run', 'POST', apiParams, clientConfig);
 
-    this.namespaces.authorizeddomains = {};
-    this.namespaces.authorizeddomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/domains.cloudrun.com/v1/{+parent}/authorizeddomains', 'GET', apiParams, clientConfig);
+    this.namespaces.routes = {};
+    this.namespaces.routes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+parent}/routes', 'GET', apiParams, clientConfig);
+    this.namespaces.routes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects = {};
+    this.namespaces.services = {};
+    this.namespaces.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.namespaces.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'GET', apiParams, clientConfig);
+    this.namespaces.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+parent}/services', 'POST', apiParams, clientConfig);
+    this.namespaces.services.replaceService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.namespaces.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/serving.knative.dev/v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:wait', 'POST', apiParams, clientConfig);
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.authorizeddomains = {};
-    this.projects.locations.authorizeddomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authorizeddomains', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.configurations = {};
-    this.projects.locations.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'GET', apiParams, clientConfig);
-    this.projects.locations.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.workerpools = {};
-    this.projects.locations.workerpools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.workerpools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.workerpools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.jobs = {};
-    this.projects.locations.jobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.revisions = {};
-    this.projects.locations.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/revisions', 'GET', apiParams, clientConfig);
-    this.projects.locations.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.services = {};
-    this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.services.replaceService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/services', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.domainmappings = {};
-    this.projects.locations.domainmappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/domainmappings', 'POST', apiParams, clientConfig);
-    this.projects.locations.domainmappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.domainmappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.domainmappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/domainmappings', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.routes = {};
-    this.projects.locations.routes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/routes', 'GET', apiParams, clientConfig);
-    this.projects.locations.routes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.authorizeddomains = {};
-    this.projects.authorizeddomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authorizeddomains', 'GET', apiParams, clientConfig);
+    this.namespaces.workerpools = {};
+    this.namespaces.workerpools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/workerpools', 'GET', apiParams, clientConfig);
+    this.namespaces.workerpools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'GET', apiParams, clientConfig);
+    this.namespaces.workerpools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+parent}/workerpools', 'POST', apiParams, clientConfig);
+    this.namespaces.workerpools.replaceWorkerPool = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.namespaces.workerpools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apis/run.googleapis.com/v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
