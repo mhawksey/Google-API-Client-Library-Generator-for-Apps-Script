@@ -33,17 +33,6 @@ class People {
     this.otherContacts.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/otherContacts:search', 'GET', apiParams, clientConfig);
 
     /**
-     * Copies an "Other contact" to a new contact in the user's "myContacts" group Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resourceName - (Required) Required. The resource name of the "Other contact" to copy.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.otherContacts.copyOtherContactToMyContactsGroup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:copyOtherContactToMyContactsGroup', 'POST', apiParams, clientConfig);
-
-    /**
      * List all "Other contacts", that is contacts that are not in a contact group. "Other contacts" are typically auto created contacts from interactions. Sync tokens expire 7 days after the full sync. A request with an expired sync token will get an error with an [google.rpc.ErrorInfo](https://cloud.google.com/apis/design/errors#error_info) with reason "EXPIRED_SYNC_TOKEN". In the case of such an error clients should make a full sync request without a `sync_token`. The first page of a full sync request has an additional quota. If the quota is exceeded, a 429 error will be returned. This quota is fixed and can not be increased. When the `sync_token` is specified, resources deleted since the last sync will be returned as a person with `PersonMetadata.deleted` set to true. When the `page_token` or `sync_token` is specified, all other request parameters must match the first call. Writes may have a propagation delay of several minutes for sync requests. Incremental syncs are not intended for read-after-write use cases. See example usage at [List the user's other contacts that have changed](/people/v1/other-contacts#list_the_users_other_contacts_that_have_changed).
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Optional. The number of "Other contacts" to include in the response. Valid values are between 1 and 1000, inclusive. Defaults to 100 if not set or set to 0.
@@ -58,7 +47,29 @@ class People {
      */
     this.otherContacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/otherContacts', 'GET', apiParams, clientConfig);
 
+    /**
+     * Copies an "Other contact" to a new contact in the user's "myContacts" group Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resourceName - (Required) Required. The resource name of the "Other contact" to copy.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.otherContacts.copyOtherContactToMyContactsGroup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:copyOtherContactToMyContactsGroup', 'POST', apiParams, clientConfig);
+
     this.people = {};
+
+    /**
+     * Update a contact's photo. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resourceName - (Required) Required. Person resource name
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.people.updateContactPhoto = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:updateContactPhoto', 'PATCH', apiParams, clientConfig);
 
     /**
      * Create a batch of new contacts and return the PersonResponses for the newly Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
@@ -71,41 +82,16 @@ class People {
     this.people.batchCreateContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchCreateContacts', 'POST', apiParams, clientConfig);
 
     /**
-     * Update contact data for an existing contact person. Any non-contact data will not be modified. Any non-contact data in the person to update will be ignored. All fields specified in the `update_mask` will be replaced. The server returns a 400 error if `person.metadata.sources` is not specified for the contact to be updated or if there is no contact source. The server returns a 400 error with reason `"failedPrecondition"` if `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed since its data was read. Clients should get the latest person and merge their updates into the latest person. If making sequential updates to the same person, the etag from the `updateContact` response should be used to avoid failures. The server returns a 400 error if `memberships` are being updated and there are no contact group memberships specified on the person. The server returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
+     * Delete a contact's photo. Mutate requests for the same user should be done sequentially to avoid // lock contention.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.personFields - Optional. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
-     * @param {string} apiParams.resourceName - (Required) The resource name for the person, assigned by the server. An ASCII string in the form of `people/{person_id}`.
-     * @param {string} apiParams.sources - Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
-     * @param {string} apiParams.updatePersonFields - Required. A field mask to restrict which fields on the person are updated. Multiple fields can be specified by separating them with commas. All updated fields will be replaced. Valid values are: * addresses * biographies * birthdays * calendarUrls * clientData * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * relations * sipAddresses * urls * userDefined
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.people.updateContact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:updateContact', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Provides information about a list of specific people by specifying a list of requested resource names. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.personFields - Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
-     * @param {string} apiParams.requestMask.includeField - Required. Comma-separated list of person fields to be included in the response. Each path should start with `person.`: for example, `person.names` or `person.photos`.
-     * @param {string} apiParams.resourceNames - Required. The resource names of the people to provide information about. It's repeatable. The URL query parameter should be resourceNames=<name1>&resourceNames=<name2>&... - To get information about the authenticated user, specify `people/me`. - To get information about a google account, specify `people/{account_id}`. - To get information about a contact, specify the resource name that identifies the contact as returned by `people.connections.list`. There is a maximum of 200 resource names.
+     * @param {string} apiParams.personFields - Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
+     * @param {string} apiParams.resourceName - (Required) Required. The resource name of the contact whose photo will be deleted.
      * @param {string} apiParams.sources - Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.people.getBatchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchGet', 'GET', apiParams, clientConfig);
-
-    /**
-     * Delete a batch of contacts. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.people.batchDeleteContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchDeleteContacts', 'POST', apiParams, clientConfig);
+    this.people.deleteContactPhoto = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:deleteContactPhoto', 'DELETE', apiParams, clientConfig);
 
     /**
      * Provides information about a person by specifying a resource name. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified.
@@ -137,6 +123,62 @@ class People {
     this.people.listDirectoryPeople = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:listDirectoryPeople', 'GET', apiParams, clientConfig);
 
     /**
+     * Delete a contact person. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resourceName - (Required) Required. The resource name of the contact to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.people.deleteContact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:deleteContact', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Provides information about a list of specific people by specifying a list of requested resource names. Use `people/me` to indicate the authenticated user. The request returns a 400 error if 'personFields' is not specified.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.personFields - Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
+     * @param {string} apiParams.requestMask.includeField - Required. Comma-separated list of person fields to be included in the response. Each path should start with `person.`: for example, `person.names` or `person.photos`.
+     * @param {string} apiParams.resourceNames - Required. The resource names of the people to provide information about. It's repeatable. The URL query parameter should be resourceNames=<name1>&resourceNames=<name2>&... - To get information about the authenticated user, specify `people/me`. - To get information about a google account, specify `people/{account_id}`. - To get information about a contact, specify the resource name that identifies the contact as returned by `people.connections.list`. There is a maximum of 200 resource names.
+     * @param {string} apiParams.sources - Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.people.getBatchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchGet', 'GET', apiParams, clientConfig);
+
+    /**
+     * Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.people.batchUpdateContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchUpdateContacts', 'POST', apiParams, clientConfig);
+
+    /**
+     * Delete a batch of contacts. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.people.batchDeleteContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchDeleteContacts', 'POST', apiParams, clientConfig);
+
+    /**
+     * Provides a list of contacts in the authenticated user's grouped contacts that matches the search query. The query matches on a contact's `names`, `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations` fields that are from the CONTACT source. **IMPORTANT**: Before searching, clients should send a warmup request with an empty query to update the cache. See https://developers.google.com/people/v1/contacts#search_the_users_contacts
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The number of results to return. Defaults to 10 if field is not set, or set to 0. Values greater than 30 will be capped to 30.
+     * @param {string} apiParams.query - Required. The plain-text query for the request. The query is used to match prefix phrases of the fields on a person. For example, a person with name "foo name" matches queries such as "f", "fo", "foo", "foo n", "nam", etc., but not "oo n".
+     * @param {string} apiParams.readMask - Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
+     * @param {string} apiParams.sources - Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.people.searchContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:searchContacts', 'GET', apiParams, clientConfig);
+
+    /**
      * Create a new contact and return the person resource for that contact. The request returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.personFields - Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
@@ -149,15 +191,18 @@ class People {
     this.people.createContact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:createContact', 'POST', apiParams, clientConfig);
 
     /**
-     * Update a contact's photo. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
+     * Update contact data for an existing contact person. Any non-contact data will not be modified. Any non-contact data in the person to update will be ignored. All fields specified in the `update_mask` will be replaced. The server returns a 400 error if `person.metadata.sources` is not specified for the contact to be updated or if there is no contact source. The server returns a 400 error with reason `"failedPrecondition"` if `person.metadata.sources.etag` is different than the contact's etag, which indicates the contact has changed since its data was read. Clients should get the latest person and merge their updates into the latest person. If making sequential updates to the same person, the etag from the `updateContact` response should be used to avoid failures. The server returns a 400 error if `memberships` are being updated and there are no contact group memberships specified on the person. The server returns a 400 error if more than one field is specified on a field that is a singleton for contact sources: * biographies * birthdays * genders * names Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resourceName - (Required) Required. Person resource name
+     * @param {string} apiParams.personFields - Optional. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Defaults to all fields if not set. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
+     * @param {string} apiParams.resourceName - (Required) The resource name for the person, assigned by the server. An ASCII string in the form of `people/{person_id}`.
+     * @param {string} apiParams.sources - Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
+     * @param {string} apiParams.updatePersonFields - Required. A field mask to restrict which fields on the person are updated. Multiple fields can be specified by separating them with commas. All updated fields will be replaced. Valid values are: * addresses * biographies * birthdays * calendarUrls * clientData * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * relations * sipAddresses * urls * userDefined
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.people.updateContactPhoto = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:updateContactPhoto', 'PATCH', apiParams, clientConfig);
+    this.people.updateContact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:updateContact', 'PATCH', apiParams, clientConfig);
 
     /**
      * Provides a list of domain profiles and domain contacts in the authenticated user's domain directory that match the search query.
@@ -173,51 +218,6 @@ class People {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.people.searchDirectoryPeople = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:searchDirectoryPeople', 'GET', apiParams, clientConfig);
-
-    /**
-     * Update a batch of contacts and return a map of resource names to PersonResponses for the updated contacts. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.people.batchUpdateContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchUpdateContacts', 'POST', apiParams, clientConfig);
-
-    /**
-     * Delete a contact's photo. Mutate requests for the same user should be done sequentially to avoid // lock contention.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.personFields - Optional. A field mask to restrict which fields on the person are returned. Multiple fields can be specified by separating them with commas. Defaults to empty if not set, which will skip the post mutate get. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
-     * @param {string} apiParams.resourceName - (Required) Required. The resource name of the contact whose photo will be deleted.
-     * @param {string} apiParams.sources - Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT and READ_SOURCE_TYPE_PROFILE if not set.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.people.deleteContactPhoto = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:deleteContactPhoto', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Delete a contact person. Any non-contact data will not be deleted. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resourceName - (Required) Required. The resource name of the contact to delete.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.people.deleteContact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:deleteContact', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Provides a list of contacts in the authenticated user's grouped contacts that matches the search query. The query matches on a contact's `names`, `nickNames`, `emailAddresses`, `phoneNumbers`, and `organizations` fields that are from the CONTACT source. **IMPORTANT**: Before searching, clients should send a warmup request with an empty query to update the cache. See https://developers.google.com/people/v1/contacts#search_the_users_contacts
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The number of results to return. Defaults to 10 if field is not set, or set to 0. Values greater than 30 will be capped to 30.
-     * @param {string} apiParams.query - Required. The plain-text query for the request. The query is used to match prefix phrases of the fields on a person. For example, a person with name "foo name" matches queries such as "f", "fo", "foo", "foo n", "nam", etc., but not "oo n".
-     * @param {string} apiParams.readMask - Required. A field mask to restrict which fields on each person are returned. Multiple fields can be specified by separating them with commas. Valid values are: * addresses * ageRanges * biographies * birthdays * calendarUrls * clientData * coverPhotos * emailAddresses * events * externalIds * genders * imClients * interests * locales * locations * memberships * metadata * miscKeywords * names * nicknames * occupations * organizations * phoneNumbers * photos * relations * sipAddresses * skills * urls * userDefined
-     * @param {string} apiParams.sources - Optional. A mask of what source types to return. Defaults to READ_SOURCE_TYPE_CONTACT if not set.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.people.searchContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:searchContacts', 'GET', apiParams, clientConfig);
 
     this.people.connections = {};
 
@@ -253,15 +253,16 @@ class People {
     this.contactGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Update the name of an existing contact group owned by the authenticated user. Updated contact group names must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
+     * Get a list of contact groups owned by the authenticated user by specifying a list of contact group resource names.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resourceName - (Required) The resource name for the contact group, assigned by the server. An ASCII string, in the form of `contactGroups/{contact_group_id}`.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.groupFields - Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount * metadata * name
+     * @param {integer} apiParams.maxMembers - Optional. Specifies the maximum number of members to return for each group. Defaults to 0 if not set, which will return zero members.
+     * @param {string} apiParams.resourceNames - Required. The resource names of the contact groups to get. There is a maximum of 200 resource names.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.contactGroups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'PUT', apiParams, clientConfig);
+    this.contactGroups.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/contactGroups:batchGet', 'GET', apiParams, clientConfig);
 
     /**
      * Get a specific contact group owned by the authenticated user by specifying a contact group resource name.
@@ -286,18 +287,6 @@ class People {
     this.contactGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/contactGroups', 'POST', apiParams, clientConfig);
 
     /**
-     * Get a list of contact groups owned by the authenticated user by specifying a list of contact group resource names.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.groupFields - Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount * metadata * name
-     * @param {integer} apiParams.maxMembers - Optional. Specifies the maximum number of members to return for each group. Defaults to 0 if not set, which will return zero members.
-     * @param {string} apiParams.resourceNames - Required. The resource names of the contact groups to get. There is a maximum of 200 resource names.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.contactGroups.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/contactGroups:batchGet', 'GET', apiParams, clientConfig);
-
-    /**
      * List all contact groups owned by the authenticated user. Members of the contact groups are not populated.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.groupFields - Optional. A field mask to restrict which fields on the group are returned. Defaults to `metadata`, `groupType`, `memberCount`, and `name` if not set or set to empty. Valid fields are: * clientData * groupType * memberCount * metadata * name
@@ -309,6 +298,17 @@ class People {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.contactGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/contactGroups', 'GET', apiParams, clientConfig);
+
+    /**
+     * Update the name of an existing contact group owned by the authenticated user. Updated contact group names must be unique to the users contact groups. Attempting to create a group with a duplicate name will return a HTTP 409 error. Mutate requests for the same user should be sent sequentially to avoid increased latency and failures.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resourceName - (Required) The resource name for the contact group, assigned by the server. An ASCII string, in the form of `contactGroups/{contact_group_id}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.contactGroups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'PUT', apiParams, clientConfig);
 
     this.contactGroups.members = {};
 
