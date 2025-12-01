@@ -18,11 +18,11 @@ class Cloudasset {
     this._servicePath = '';
 
 
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p7beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.v1p7beta1 = {};
     this.v1p7beta1.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p7beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
+
+    this.operations = {};
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p7beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
