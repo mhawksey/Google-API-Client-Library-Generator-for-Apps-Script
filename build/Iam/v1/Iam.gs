@@ -22,201 +22,201 @@ class Iam {
 
     this.projects.locations = {};
 
+    this.projects.locations.oauthClients = {};
+    this.projects.locations.oauthClients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/oauthClients', 'GET', apiParams, clientConfig);
+    this.projects.locations.oauthClients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.oauthClients.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/oauthClients', 'POST', apiParams, clientConfig);
+    this.projects.locations.oauthClients.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.oauthClients.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.oauthClients.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.oauthClients.credentials = {};
+    this.projects.locations.oauthClients.credentials.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/credentials', 'GET', apiParams, clientConfig);
+    this.projects.locations.oauthClients.credentials.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.oauthClients.credentials.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/credentials', 'POST', apiParams, clientConfig);
+    this.projects.locations.oauthClients.credentials.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.oauthClients.credentials.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.projects.locations.workloadIdentityPools = {};
-    this.projects.locations.workloadIdentityPools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workloadIdentityPools', 'GET', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workloadIdentityPools', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.workloadIdentityPools.operations = {};
     this.projects.locations.workloadIdentityPools.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.workloadIdentityPools.namespaces = {};
-    this.projects.locations.workloadIdentityPools.namespaces.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.namespaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/namespaces', 'GET', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.namespaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.namespaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.namespaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/namespaces', 'POST', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.namespaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.namespaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.namespaces.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.workloadIdentityPools.namespaces.operations = {};
+    this.projects.locations.workloadIdentityPools.namespaces.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.workloadIdentityPools.namespaces.managedIdentities = {};
-    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.removeAttestationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:removeAttestationRule', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managedIdentities', 'GET', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managedIdentities', 'POST', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.addAttestationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:addAttestationRule', 'POST', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.listAttestationRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listAttestationRules', 'GET', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managedIdentities', 'GET', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.addAttestationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:addAttestationRule', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.removeAttestationRule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:removeAttestationRule', 'POST', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.setAttestationRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setAttestationRules', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.listAttestationRules = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listAttestationRules', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.operations = {};
+    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.workloadSources = {};
 
     this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.workloadSources.operations = {};
     this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.workloadSources.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.operations = {};
-    this.projects.locations.workloadIdentityPools.namespaces.managedIdentities.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.workloadIdentityPools.namespaces.operations = {};
-    this.projects.locations.workloadIdentityPools.namespaces.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.locations.workloadIdentityPools.providers = {};
-    this.projects.locations.workloadIdentityPools.providers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/providers', 'POST', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.providers.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.providers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.providers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.providers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.providers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/providers', 'GET', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.providers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.providers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/providers', 'POST', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.providers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.providers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.providers.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
 
     this.projects.locations.workloadIdentityPools.providers.operations = {};
     this.projects.locations.workloadIdentityPools.providers.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.workloadIdentityPools.providers.keys = {};
-    this.projects.locations.workloadIdentityPools.providers.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.providers.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'GET', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.providers.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.providers.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'POST', apiParams, clientConfig);
-    this.projects.locations.workloadIdentityPools.providers.keys.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
     this.projects.locations.workloadIdentityPools.providers.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.workloadIdentityPools.providers.keys.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
 
     this.projects.locations.workloadIdentityPools.providers.keys.operations = {};
     this.projects.locations.workloadIdentityPools.providers.keys.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.oauthClients = {};
-    this.projects.locations.oauthClients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.oauthClients.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.oauthClients.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.locations.oauthClients.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.oauthClients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/oauthClients', 'GET', apiParams, clientConfig);
-    this.projects.locations.oauthClients.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/oauthClients', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.oauthClients.credentials = {};
-    this.projects.locations.oauthClients.credentials.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/credentials', 'GET', apiParams, clientConfig);
-    this.projects.locations.oauthClients.credentials.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/credentials', 'POST', apiParams, clientConfig);
-    this.projects.locations.oauthClients.credentials.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.oauthClients.credentials.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.oauthClients.credentials.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.serviceAccounts = {};
-    this.projects.serviceAccounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.serviceAccounts.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.serviceAccounts.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
-    this.projects.serviceAccounts.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
-    this.projects.serviceAccounts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.serviceAccounts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.serviceAccounts.signJwt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:signJwt', 'POST', apiParams, clientConfig);
     this.projects.serviceAccounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/serviceAccounts', 'GET', apiParams, clientConfig);
-    this.projects.serviceAccounts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.serviceAccounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.serviceAccounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/serviceAccounts', 'POST', apiParams, clientConfig);
-    this.projects.serviceAccounts.signBlob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:signBlob', 'POST', apiParams, clientConfig);
-    this.projects.serviceAccounts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.serviceAccounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.serviceAccounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.serviceAccounts.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.signBlob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:signBlob', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.signJwt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:signJwt', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.serviceAccounts.keys = {};
-    this.projects.serviceAccounts.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.serviceAccounts.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.serviceAccounts.keys.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
     this.projects.serviceAccounts.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/keys', 'GET', apiParams, clientConfig);
-    this.projects.serviceAccounts.keys.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/keys:upload', 'POST', apiParams, clientConfig);
-    this.projects.serviceAccounts.keys.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.serviceAccounts.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/keys', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.keys.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/keys:upload', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.serviceAccounts.keys.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.projects.serviceAccounts.keys.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
 
     this.projects.roles = {};
-    this.projects.roles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.roles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/roles', 'GET', apiParams, clientConfig);
+    this.projects.roles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.roles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/roles', 'POST', apiParams, clientConfig);
+    this.projects.roles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.roles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.roles.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.projects.roles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.roles = {};
-    this.roles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/roles', 'GET', apiParams, clientConfig);
-    this.roles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.roles.queryGrantableRoles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/roles:queryGrantableRoles', 'POST', apiParams, clientConfig);
-
-    this.permissions = {};
-    this.permissions.queryTestablePermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/permissions:queryTestablePermissions', 'POST', apiParams, clientConfig);
 
     this.locations = {};
 
     this.locations.workforcePools = {};
-    this.locations.workforcePools.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.locations.workforcePools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.locations.workforcePools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}/workforcePools', 'GET', apiParams, clientConfig);
-    this.locations.workforcePools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.locations.workforcePools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.locations.workforcePools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.locations.workforcePools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.locations.workforcePools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}/workforcePools', 'POST', apiParams, clientConfig);
+    this.locations.workforcePools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.locations.workforcePools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.locations.workforcePools.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.locations.workforcePools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.locations.workforcePools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.locations.workforcePools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.locations.workforcePools.operations = {};
     this.locations.workforcePools.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.locations.workforcePools.subjects = {};
-    this.locations.workforcePools.subjects.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.locations.workforcePools.subjects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.locations.workforcePools.subjects.operations = {};
-    this.locations.workforcePools.subjects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.locations.workforcePools.providers = {};
-    this.locations.workforcePools.providers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.locations.workforcePools.providers.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.locations.workforcePools.providers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.locations.workforcePools.providers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/providers', 'POST', apiParams, clientConfig);
     this.locations.workforcePools.providers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/providers', 'GET', apiParams, clientConfig);
     this.locations.workforcePools.providers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.locations.workforcePools.providers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/providers', 'POST', apiParams, clientConfig);
+    this.locations.workforcePools.providers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.locations.workforcePools.providers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.locations.workforcePools.providers.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
 
     this.locations.workforcePools.providers.operations = {};
     this.locations.workforcePools.providers.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.locations.workforcePools.providers.scimTenants = {};
-    this.locations.workforcePools.providers.scimTenants.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/scimTenants', 'POST', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/scimTenants', 'GET', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.locations.workforcePools.providers.scimTenants.tokens = {};
-    this.locations.workforcePools.providers.scimTenants.tokens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.tokens.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.tokens.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.tokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.tokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tokens', 'POST', apiParams, clientConfig);
-    this.locations.workforcePools.providers.scimTenants.tokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tokens', 'GET', apiParams, clientConfig);
-
     this.locations.workforcePools.providers.keys = {};
+    this.locations.workforcePools.providers.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'GET', apiParams, clientConfig);
+    this.locations.workforcePools.providers.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.locations.workforcePools.providers.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'POST', apiParams, clientConfig);
     this.locations.workforcePools.providers.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.locations.workforcePools.providers.keys.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
-    this.locations.workforcePools.providers.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'GET', apiParams, clientConfig);
-    this.locations.workforcePools.providers.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.locations.workforcePools.providers.keys.operations = {};
     this.locations.workforcePools.providers.keys.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.locations.workforcePools.providers.scimTenants = {};
+    this.locations.workforcePools.providers.scimTenants.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/scimTenants', 'GET', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/scimTenants', 'POST', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
+
+    this.locations.workforcePools.providers.scimTenants.tokens = {};
+    this.locations.workforcePools.providers.scimTenants.tokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tokens', 'GET', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.tokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.tokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tokens', 'POST', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.tokens.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.tokens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.locations.workforcePools.providers.scimTenants.tokens.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
+
+    this.locations.workforcePools.subjects = {};
+    this.locations.workforcePools.subjects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.locations.workforcePools.subjects.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
+
+    this.locations.workforcePools.subjects.operations = {};
+    this.locations.workforcePools.subjects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.roles = {};
+    this.roles.queryGrantableRoles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/roles:queryGrantableRoles', 'POST', apiParams, clientConfig);
+    this.roles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/roles', 'GET', apiParams, clientConfig);
+    this.roles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.organizations = {};
 
     this.organizations.roles = {};
     this.organizations.roles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/roles', 'GET', apiParams, clientConfig);
-    this.organizations.roles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.organizations.roles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.roles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/roles', 'POST', apiParams, clientConfig);
     this.organizations.roles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.roles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.organizations.roles.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
 
+    this.permissions = {};
+    this.permissions.queryTestablePermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/permissions:queryTestablePermissions', 'POST', apiParams, clientConfig);
+
     this.iamPolicies = {};
-    this.iamPolicies.lintPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/iamPolicies:lintPolicy', 'POST', apiParams, clientConfig);
     this.iamPolicies.queryAuditableServices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/iamPolicies:queryAuditableServices', 'POST', apiParams, clientConfig);
+    this.iamPolicies.lintPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/iamPolicies:lintPolicy', 'POST', apiParams, clientConfig);
   }
 
 /**
