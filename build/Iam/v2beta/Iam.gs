@@ -19,11 +19,11 @@ class Iam {
 
 
     this.policies = {};
-    this.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.policies.listPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}', 'GET', apiParams, clientConfig);
-    this.policies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PUT', apiParams, clientConfig);
-    this.policies.createPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}', 'POST', apiParams, clientConfig);
     this.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
+    this.policies.createPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}', 'POST', apiParams, clientConfig);
+    this.policies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PUT', apiParams, clientConfig);
+    this.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.policies.operations = {};
     this.policies.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
