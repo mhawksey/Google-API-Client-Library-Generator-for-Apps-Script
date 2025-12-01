@@ -21,13 +21,6 @@ class Checks {
     this.aisafety = {};
     this.aisafety.classifyContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/aisafety:classifyContent', 'POST', apiParams, clientConfig);
 
-    this.media = {};
-    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1alpha/{+parent}/reports:analyzeUpload' : 'v1alpha/{+parent}/reports:analyzeUpload';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-
     this.accounts = {};
 
     this.accounts.apps = {};
@@ -39,21 +32,28 @@ class Checks {
     this.accounts.apps.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.accounts.apps.operations = {};
-    this.accounts.apps.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.accounts.apps.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/operations', 'GET', apiParams, clientConfig);
     this.accounts.apps.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.apps.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:wait', 'POST', apiParams, clientConfig);
+    this.accounts.apps.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
     this.accounts.apps.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.apps.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/operations', 'GET', apiParams, clientConfig);
 
     this.accounts.repos = {};
+
+    this.accounts.repos.scans = {};
+    this.accounts.repos.scans.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scans', 'GET', apiParams, clientConfig);
+    this.accounts.repos.scans.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.repos.scans.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scans:generate', 'POST', apiParams, clientConfig);
 
     this.accounts.repos.operations = {};
     this.accounts.repos.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
-    this.accounts.repos.scans = {};
-    this.accounts.repos.scans.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.repos.scans.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scans', 'GET', apiParams, clientConfig);
-    this.accounts.repos.scans.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/scans:generate', 'POST', apiParams, clientConfig);
+    this.media = {};
+    this.media.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1alpha/{+parent}/reports:analyzeUpload' : 'v1alpha/{+parent}/reports:analyzeUpload';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
   }
 
 /**
