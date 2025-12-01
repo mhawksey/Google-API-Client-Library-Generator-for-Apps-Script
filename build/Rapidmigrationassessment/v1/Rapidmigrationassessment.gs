@@ -21,28 +21,28 @@ class Rapidmigrationassessment {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.annotations = {};
-    this.projects.locations.annotations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.annotations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/annotations', 'POST', apiParams, clientConfig);
-
     this.projects.locations.collectors = {};
-    this.projects.locations.collectors.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
-    this.projects.locations.collectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.collectors.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
-    this.projects.locations.collectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/collectors', 'GET', apiParams, clientConfig);
-    this.projects.locations.collectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.collectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/collectors', 'POST', apiParams, clientConfig);
-    this.projects.locations.collectors.register = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:register', 'POST', apiParams, clientConfig);
+    this.projects.locations.collectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/collectors', 'GET', apiParams, clientConfig);
+    this.projects.locations.collectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.collectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.collectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.collectors.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.projects.locations.collectors.register = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:register', 'POST', apiParams, clientConfig);
+    this.projects.locations.collectors.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.annotations = {};
+    this.projects.locations.annotations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/annotations', 'POST', apiParams, clientConfig);
+    this.projects.locations.annotations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
