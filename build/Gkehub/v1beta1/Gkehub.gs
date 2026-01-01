@@ -24,24 +24,24 @@ class Gkehub {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.memberships = {};
-    this.projects.locations.memberships.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/memberships', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/memberships', 'POST', apiParams, clientConfig);
-    this.projects.locations.memberships.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.memberships.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.memberships.generateConnectManifest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:generateConnectManifest', 'GET', apiParams, clientConfig);
     this.projects.locations.memberships.validateExclusivity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/memberships:validateExclusivity', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.generateExclusivityManifest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:generateExclusivityManifest', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.memberships.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.memberships.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.memberships.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.memberships.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/memberships', 'POST', apiParams, clientConfig);
+    this.projects.locations.memberships.generateExclusivityManifest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:generateExclusivityManifest', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.memberships.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/memberships', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
   }
 
 /**
