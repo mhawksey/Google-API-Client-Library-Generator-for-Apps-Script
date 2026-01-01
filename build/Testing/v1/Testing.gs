@@ -22,21 +22,21 @@ class Testing {
 
     this.projects.testMatrices = {};
     this.projects.testMatrices.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/testMatrices', 'POST', apiParams, clientConfig);
-    this.projects.testMatrices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/testMatrices/{testMatrixId}', 'GET', apiParams, clientConfig);
     this.projects.testMatrices.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/testMatrices/{testMatrixId}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.testMatrices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/testMatrices/{testMatrixId}', 'GET', apiParams, clientConfig);
 
     this.projects.deviceSessions = {};
-    this.projects.deviceSessions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deviceSessions', 'POST', apiParams, clientConfig);
-    this.projects.deviceSessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deviceSessions', 'GET', apiParams, clientConfig);
-    this.projects.deviceSessions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.deviceSessions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.deviceSessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deviceSessions', 'GET', apiParams, clientConfig);
+    this.projects.deviceSessions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deviceSessions', 'POST', apiParams, clientConfig);
+    this.projects.deviceSessions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.deviceSessions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.applicationDetailService = {};
-    this.applicationDetailService.getApkDetails = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/applicationDetailService/getApkDetails', 'POST', apiParams, clientConfig);
 
     this.testEnvironmentCatalog = {};
     this.testEnvironmentCatalog.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/testEnvironmentCatalog/{environmentType}', 'GET', apiParams, clientConfig);
+
+    this.applicationDetailService = {};
+    this.applicationDetailService.getApkDetails = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/applicationDetailService/getApkDetails', 'POST', apiParams, clientConfig);
   }
 
 /**
