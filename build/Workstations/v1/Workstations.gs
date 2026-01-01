@@ -24,43 +24,43 @@ class Workstations {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.workstationClusters = {};
     this.projects.locations.workstationClusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstationClusters', 'GET', apiParams, clientConfig);
     this.projects.locations.workstationClusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstationClusters', 'POST', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstationClusters', 'GET', apiParams, clientConfig);
     this.projects.locations.workstationClusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.workstationClusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.workstationClusters.workstationConfigs = {};
-    this.projects.locations.workstationClusters.workstationConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstationConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.listUsable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstationConfigs:listUsable', 'GET', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstationConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.workstationClusters.workstationConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workstationClusters.workstationConfigs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.workstationClusters.workstationConfigs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstationConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.listUsable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstationConfigs:listUsable', 'GET', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstationConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.workstationClusters.workstationConfigs.workstations = {};
-    this.projects.locations.workstationClusters.workstationConfigs.workstations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.workstations.generateAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+workstation}:generateAccessToken', 'POST', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.workstations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.locations.workstationClusters.workstationConfigs.workstations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstations', 'GET', apiParams, clientConfig);
     this.projects.locations.workstationClusters.workstationConfigs.workstations.listUsable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstations:listUsable', 'GET', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.workstations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.workstations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.workstations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.workstationClusters.workstationConfigs.workstations.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:stop', 'POST', apiParams, clientConfig);
     this.projects.locations.workstationClusters.workstationConfigs.workstations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workstations', 'POST', apiParams, clientConfig);
     this.projects.locations.workstationClusters.workstationConfigs.workstations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.workstationClusters.workstationConfigs.workstations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.workstationClusters.workstationConfigs.workstations.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:start', 'POST', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.workstations.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:stop', 'POST', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.workstations.generateAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+workstation}:generateAccessToken', 'POST', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.workstations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.workstations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.workstationClusters.workstationConfigs.workstations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
