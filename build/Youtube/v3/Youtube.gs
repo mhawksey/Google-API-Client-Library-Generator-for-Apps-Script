@@ -18,41 +18,30 @@ class Youtube {
     this._servicePath = '';
 
 
-    this.liveChatBans = {};
-    this.liveChatBans.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/bans', 'POST', apiParams, clientConfig);
-    this.liveChatBans.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/bans', 'DELETE', apiParams, clientConfig);
+    this.abuseReports = {};
+    this.abuseReports.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/abuseReports', 'POST', apiParams, clientConfig);
 
-    this.thumbnails = {};
-    this.thumbnails.set = async (apiParams = {}, clientConfig = {}) => {
+    this.activities = {};
+    this.activities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/activities', 'GET', apiParams, clientConfig);
+
+    this.captions = {};
+    this.captions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/captions', 'GET', apiParams, clientConfig);
+    this.captions.insert = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/youtube/v3/thumbnails/set' : 'youtube/v3/thumbnails/set';
+      const path = apiParams.media ? '/upload/youtube/v3/captions' : 'youtube/v3/captions';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
+    this.captions.update = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/youtube/v3/captions' : 'youtube/v3/captions';
+      return this._makeRequest(path, 'PUT', apiParams, clientConfig);
+    };
+    this.captions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/captions', 'DELETE', apiParams, clientConfig);
+    this.captions.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/captions/{id}', 'GET', apiParams, clientConfig);
 
-    this.subscriptions = {};
-    this.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/subscriptions', 'GET', apiParams, clientConfig);
-    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/subscriptions', 'DELETE', apiParams, clientConfig);
-    this.subscriptions.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/subscriptions', 'POST', apiParams, clientConfig);
-
-    this.comments = {};
-    this.comments.setModerationStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments/setModerationStatus', 'POST', apiParams, clientConfig);
-    this.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments', 'GET', apiParams, clientConfig);
-    this.comments.markAsSpam = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments/markAsSpam', 'POST', apiParams, clientConfig);
-    this.comments.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments', 'POST', apiParams, clientConfig);
-    this.comments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments', 'DELETE', apiParams, clientConfig);
-    this.comments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments', 'PUT', apiParams, clientConfig);
-
-    this.membershipsLevels = {};
-    this.membershipsLevels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/membershipsLevels', 'GET', apiParams, clientConfig);
-
-    this.playlists = {};
-    this.playlists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlists', 'GET', apiParams, clientConfig);
-    this.playlists.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlists', 'POST', apiParams, clientConfig);
-    this.playlists.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlists', 'PUT', apiParams, clientConfig);
-    this.playlists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlists', 'DELETE', apiParams, clientConfig);
-
-    this.members = {};
-    this.members.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/members', 'GET', apiParams, clientConfig);
+    this.channels = {};
+    this.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/channels', 'GET', apiParams, clientConfig);
+    this.channels.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/channels', 'PUT', apiParams, clientConfig);
 
     this.channelBanners = {};
     this.channelBanners.insert = async (apiParams = {}, clientConfig = {}) => {
@@ -61,126 +50,23 @@ class Youtube {
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
 
-    this.search = {};
-    this.search.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/search', 'GET', apiParams, clientConfig);
-
-    this.tests = {};
-    this.tests.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/tests', 'POST', apiParams, clientConfig);
-
-    this.activities = {};
-    this.activities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/activities', 'GET', apiParams, clientConfig);
-
-    this.playlistImages = {};
-    this.playlistImages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistImages', 'GET', apiParams, clientConfig);
-    this.playlistImages.update = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/youtube/v3/playlistImages' : 'youtube/v3/playlistImages';
-      return this._makeRequest(path, 'PUT', apiParams, clientConfig);
-    };
-    this.playlistImages.insert = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/youtube/v3/playlistImages' : 'youtube/v3/playlistImages';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-    this.playlistImages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistImages', 'DELETE', apiParams, clientConfig);
-
-    this.liveBroadcasts = {};
-    this.liveBroadcasts.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts', 'POST', apiParams, clientConfig);
-    this.liveBroadcasts.insertCuepoint = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts/cuepoint', 'POST', apiParams, clientConfig);
-    this.liveBroadcasts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts', 'GET', apiParams, clientConfig);
-    this.liveBroadcasts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts', 'PUT', apiParams, clientConfig);
-    this.liveBroadcasts.bind = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts/bind', 'POST', apiParams, clientConfig);
-    this.liveBroadcasts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts', 'DELETE', apiParams, clientConfig);
-    this.liveBroadcasts.transition = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts/transition', 'POST', apiParams, clientConfig);
-
-    this.i18nLanguages = {};
-    this.i18nLanguages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/i18nLanguages', 'GET', apiParams, clientConfig);
-
-    this.playlistItems = {};
-    this.playlistItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistItems', 'GET', apiParams, clientConfig);
-    this.playlistItems.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistItems', 'PUT', apiParams, clientConfig);
-    this.playlistItems.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistItems', 'DELETE', apiParams, clientConfig);
-    this.playlistItems.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistItems', 'POST', apiParams, clientConfig);
-
-    this.superChatEvents = {};
-    this.superChatEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/superChatEvents', 'GET', apiParams, clientConfig);
-
-    this.captions = {};
-    this.captions.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/captions/{id}', 'GET', apiParams, clientConfig);
-    this.captions.update = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/youtube/v3/captions' : 'youtube/v3/captions';
-      return this._makeRequest(path, 'PUT', apiParams, clientConfig);
-    };
-    this.captions.insert = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/youtube/v3/captions' : 'youtube/v3/captions';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-    this.captions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/captions', 'DELETE', apiParams, clientConfig);
-    this.captions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/captions', 'GET', apiParams, clientConfig);
-
-    this.videoCategories = {};
-    this.videoCategories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videoCategories', 'GET', apiParams, clientConfig);
-
     this.channelSections = {};
-    this.channelSections.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/channelSections', 'PUT', apiParams, clientConfig);
     this.channelSections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/channelSections', 'GET', apiParams, clientConfig);
     this.channelSections.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/channelSections', 'POST', apiParams, clientConfig);
+    this.channelSections.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/channelSections', 'PUT', apiParams, clientConfig);
     this.channelSections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/channelSections', 'DELETE', apiParams, clientConfig);
 
-    this.thirdPartyLinks = {};
-    this.thirdPartyLinks.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/thirdPartyLinks', 'POST', apiParams, clientConfig);
-    this.thirdPartyLinks.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/thirdPartyLinks', 'PUT', apiParams, clientConfig);
-    this.thirdPartyLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/thirdPartyLinks', 'GET', apiParams, clientConfig);
-    this.thirdPartyLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/thirdPartyLinks', 'DELETE', apiParams, clientConfig);
-
-    this.videos = {};
-    this.videos.rate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos/rate', 'POST', apiParams, clientConfig);
-    this.videos.insert = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/youtube/v3/videos' : 'youtube/v3/videos';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-    this.videos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos', 'GET', apiParams, clientConfig);
-    this.videos.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos', 'DELETE', apiParams, clientConfig);
-    this.videos.getRating = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos/getRating', 'GET', apiParams, clientConfig);
-    this.videos.reportAbuse = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos/reportAbuse', 'POST', apiParams, clientConfig);
-    this.videos.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos', 'PUT', apiParams, clientConfig);
-
-    this.liveChatModerators = {};
-    this.liveChatModerators.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/moderators', 'GET', apiParams, clientConfig);
-    this.liveChatModerators.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/moderators', 'POST', apiParams, clientConfig);
-    this.liveChatModerators.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/moderators', 'DELETE', apiParams, clientConfig);
-
-    this.abuseReports = {};
-    this.abuseReports.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/abuseReports', 'POST', apiParams, clientConfig);
+    this.comments = {};
+    this.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments', 'GET', apiParams, clientConfig);
+    this.comments.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments', 'POST', apiParams, clientConfig);
+    this.comments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments', 'PUT', apiParams, clientConfig);
+    this.comments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments', 'DELETE', apiParams, clientConfig);
+    this.comments.setModerationStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments/setModerationStatus', 'POST', apiParams, clientConfig);
+    this.comments.markAsSpam = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/comments/markAsSpam', 'POST', apiParams, clientConfig);
 
     this.commentThreads = {};
-    this.commentThreads.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/commentThreads', 'POST', apiParams, clientConfig);
     this.commentThreads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/commentThreads', 'GET', apiParams, clientConfig);
-
-    this.liveChatMessages = {};
-    this.liveChatMessages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages', 'GET', apiParams, clientConfig);
-    this.liveChatMessages.transition = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages/transition', 'POST', apiParams, clientConfig);
-    this.liveChatMessages.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages', 'POST', apiParams, clientConfig);
-    this.liveChatMessages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages', 'DELETE', apiParams, clientConfig);
-
-    this.channels = {};
-    this.channels.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/channels', 'PUT', apiParams, clientConfig);
-    this.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/channels', 'GET', apiParams, clientConfig);
-
-    this.videoAbuseReportReasons = {};
-    this.videoAbuseReportReasons.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videoAbuseReportReasons', 'GET', apiParams, clientConfig);
-
-    this.liveStreams = {};
-    this.liveStreams.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveStreams', 'DELETE', apiParams, clientConfig);
-    this.liveStreams.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveStreams', 'PUT', apiParams, clientConfig);
-    this.liveStreams.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveStreams', 'GET', apiParams, clientConfig);
-    this.liveStreams.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveStreams', 'POST', apiParams, clientConfig);
-
-    this.i18nRegions = {};
-    this.i18nRegions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/i18nRegions', 'GET', apiParams, clientConfig);
+    this.commentThreads.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/commentThreads', 'POST', apiParams, clientConfig);
 
     this.youtube = {};
 
@@ -195,16 +81,130 @@ class Youtube {
     this.youtube.v3.videos = {};
     this.youtube.v3.videos.batchGetStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos:batchGetStats', 'GET', apiParams, clientConfig);
 
+    this.i18nLanguages = {};
+    this.i18nLanguages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/i18nLanguages', 'GET', apiParams, clientConfig);
+
+    this.i18nRegions = {};
+    this.i18nRegions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/i18nRegions', 'GET', apiParams, clientConfig);
+
+    this.liveBroadcasts = {};
+    this.liveBroadcasts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts', 'GET', apiParams, clientConfig);
+    this.liveBroadcasts.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts', 'POST', apiParams, clientConfig);
+    this.liveBroadcasts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts', 'PUT', apiParams, clientConfig);
+    this.liveBroadcasts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts', 'DELETE', apiParams, clientConfig);
+    this.liveBroadcasts.bind = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts/bind', 'POST', apiParams, clientConfig);
+    this.liveBroadcasts.transition = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts/transition', 'POST', apiParams, clientConfig);
+    this.liveBroadcasts.insertCuepoint = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveBroadcasts/cuepoint', 'POST', apiParams, clientConfig);
+
+    this.liveChatBans = {};
+    this.liveChatBans.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/bans', 'POST', apiParams, clientConfig);
+    this.liveChatBans.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/bans', 'DELETE', apiParams, clientConfig);
+
+    this.liveChatMessages = {};
+    this.liveChatMessages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages', 'GET', apiParams, clientConfig);
+    this.liveChatMessages.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages', 'POST', apiParams, clientConfig);
+    this.liveChatMessages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages', 'DELETE', apiParams, clientConfig);
+    this.liveChatMessages.transition = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/messages/transition', 'POST', apiParams, clientConfig);
+
+    this.liveChatModerators = {};
+    this.liveChatModerators.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/moderators', 'GET', apiParams, clientConfig);
+    this.liveChatModerators.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/moderators', 'POST', apiParams, clientConfig);
+    this.liveChatModerators.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveChat/moderators', 'DELETE', apiParams, clientConfig);
+
+    this.liveStreams = {};
+    this.liveStreams.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveStreams', 'GET', apiParams, clientConfig);
+    this.liveStreams.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveStreams', 'POST', apiParams, clientConfig);
+    this.liveStreams.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveStreams', 'PUT', apiParams, clientConfig);
+    this.liveStreams.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/liveStreams', 'DELETE', apiParams, clientConfig);
+
+    this.members = {};
+    this.members.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/members', 'GET', apiParams, clientConfig);
+
+    this.membershipsLevels = {};
+    this.membershipsLevels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/membershipsLevels', 'GET', apiParams, clientConfig);
+
+    this.playlists = {};
+    this.playlists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlists', 'GET', apiParams, clientConfig);
+    this.playlists.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlists', 'POST', apiParams, clientConfig);
+    this.playlists.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlists', 'PUT', apiParams, clientConfig);
+    this.playlists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlists', 'DELETE', apiParams, clientConfig);
+
+    this.playlistItems = {};
+    this.playlistItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistItems', 'GET', apiParams, clientConfig);
+    this.playlistItems.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistItems', 'DELETE', apiParams, clientConfig);
+    this.playlistItems.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistItems', 'POST', apiParams, clientConfig);
+    this.playlistItems.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistItems', 'PUT', apiParams, clientConfig);
+
+    this.playlistImages = {};
+    this.playlistImages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistImages', 'GET', apiParams, clientConfig);
+    this.playlistImages.insert = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/youtube/v3/playlistImages' : 'youtube/v3/playlistImages';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+    this.playlistImages.update = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/youtube/v3/playlistImages' : 'youtube/v3/playlistImages';
+      return this._makeRequest(path, 'PUT', apiParams, clientConfig);
+    };
+    this.playlistImages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/playlistImages', 'DELETE', apiParams, clientConfig);
+
+    this.search = {};
+    this.search.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/search', 'GET', apiParams, clientConfig);
+
+    this.subscriptions = {};
+    this.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/subscriptions', 'GET', apiParams, clientConfig);
+    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/subscriptions', 'DELETE', apiParams, clientConfig);
+    this.subscriptions.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/subscriptions', 'POST', apiParams, clientConfig);
+
+    this.superChatEvents = {};
+    this.superChatEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/superChatEvents', 'GET', apiParams, clientConfig);
+
+    this.tests = {};
+    this.tests.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/tests', 'POST', apiParams, clientConfig);
+
+    this.thirdPartyLinks = {};
+    this.thirdPartyLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/thirdPartyLinks', 'GET', apiParams, clientConfig);
+    this.thirdPartyLinks.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/thirdPartyLinks', 'POST', apiParams, clientConfig);
+    this.thirdPartyLinks.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/thirdPartyLinks', 'PUT', apiParams, clientConfig);
+    this.thirdPartyLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/thirdPartyLinks', 'DELETE', apiParams, clientConfig);
+
+    this.thumbnails = {};
+    this.thumbnails.set = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/youtube/v3/thumbnails/set' : 'youtube/v3/thumbnails/set';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
+    this.videos = {};
+    this.videos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos', 'GET', apiParams, clientConfig);
+    this.videos.insert = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/youtube/v3/videos' : 'youtube/v3/videos';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+    this.videos.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos', 'PUT', apiParams, clientConfig);
+    this.videos.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos', 'DELETE', apiParams, clientConfig);
+    this.videos.reportAbuse = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos/reportAbuse', 'POST', apiParams, clientConfig);
+    this.videos.rate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos/rate', 'POST', apiParams, clientConfig);
+    this.videos.getRating = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videos/getRating', 'GET', apiParams, clientConfig);
+
+    this.videoAbuseReportReasons = {};
+    this.videoAbuseReportReasons.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videoAbuseReportReasons', 'GET', apiParams, clientConfig);
+
+    this.videoCategories = {};
+    this.videoCategories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videoCategories', 'GET', apiParams, clientConfig);
+
     this.videoTrainability = {};
     this.videoTrainability.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/videoTrainability', 'GET', apiParams, clientConfig);
 
     this.watermarks = {};
-    this.watermarks.unset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/watermarks/unset', 'POST', apiParams, clientConfig);
     this.watermarks.set = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/youtube/v3/watermarks/set' : 'youtube/v3/watermarks/set';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
+    this.watermarks.unset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('youtube/v3/watermarks/unset', 'POST', apiParams, clientConfig);
   }
 
 /**
