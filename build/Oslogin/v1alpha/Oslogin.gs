@@ -18,20 +18,9 @@ class Oslogin {
     this._servicePath = '';
 
 
-    this.projects = {};
-
-    this.projects.locations = {};
-    this.projects.locations.signSshPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}:signSshPublicKey', 'POST', apiParams, clientConfig);
-
     this.users = {};
-    this.users.getLoginProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/loginProfile', 'GET', apiParams, clientConfig);
     this.users.importSshPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}:importSshPublicKey', 'POST', apiParams, clientConfig);
-
-    this.users.sshPublicKeys = {};
-    this.users.sshPublicKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/sshPublicKeys', 'POST', apiParams, clientConfig);
-    this.users.sshPublicKeys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.users.sshPublicKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.users.sshPublicKeys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.users.getLoginProfile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/loginProfile', 'GET', apiParams, clientConfig);
 
     this.users.projects = {};
     this.users.projects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
@@ -42,6 +31,17 @@ class Oslogin {
 
     this.users.projects.locations = {};
     this.users.projects.locations.signSshPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}:signSshPublicKey', 'POST', apiParams, clientConfig);
+
+    this.users.sshPublicKeys = {};
+    this.users.sshPublicKeys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.users.sshPublicKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.users.sshPublicKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/sshPublicKeys', 'POST', apiParams, clientConfig);
+    this.users.sshPublicKeys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects = {};
+
+    this.projects.locations = {};
+    this.projects.locations.signSshPublicKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}:signSshPublicKey', 'POST', apiParams, clientConfig);
   }
 
 /**
