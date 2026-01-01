@@ -4,7 +4,7 @@ Auto-generated client library for using the **versionhistory.googleapis.com API 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:18:10 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:14:48 GMT
 - **Last Modified:** Sat, 01 Nov 2025 01:24:25 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:38 GMT
 
