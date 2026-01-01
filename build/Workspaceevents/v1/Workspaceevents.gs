@@ -18,30 +18,30 @@ class Workspaceevents {
     this._servicePath = '';
 
 
-    this.tasks = {};
-    this.tasks.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.tasks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.tasks.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:subscribe', 'GET', apiParams, clientConfig);
-
-    this.tasks.pushNotificationConfigs = {};
-    this.tasks.pushNotificationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}', 'POST', apiParams, clientConfig);
-    this.tasks.pushNotificationConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.tasks.pushNotificationConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.tasks.pushNotificationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pushNotificationConfigs', 'GET', apiParams, clientConfig);
+    this.operations = {};
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.subscriptions = {};
-    this.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/subscriptions', 'GET', apiParams, clientConfig);
     this.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/subscriptions', 'POST', apiParams, clientConfig);
-    this.subscriptions.reactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:reactivate', 'POST', apiParams, clientConfig);
     this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.subscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/subscriptions', 'GET', apiParams, clientConfig);
+    this.subscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.subscriptions.reactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:reactivate', 'POST', apiParams, clientConfig);
 
     this.message = {};
     this.message.stream = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/message:stream', 'POST', apiParams, clientConfig);
 
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.tasks = {};
+    this.tasks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.tasks.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.tasks.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:subscribe', 'GET', apiParams, clientConfig);
+
+    this.tasks.pushNotificationConfigs = {};
+    this.tasks.pushNotificationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}', 'POST', apiParams, clientConfig);
+    this.tasks.pushNotificationConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.tasks.pushNotificationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pushNotificationConfigs', 'GET', apiParams, clientConfig);
+    this.tasks.pushNotificationConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
