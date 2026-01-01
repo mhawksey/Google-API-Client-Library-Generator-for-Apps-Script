@@ -31,10 +31,10 @@ class Workflows {
 
     this.projects.locations.workflows = {};
     this.projects.locations.workflows.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/workflows', 'GET', apiParams, clientConfig);
-    this.projects.locations.workflows.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.workflows.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.workflows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/workflows', 'POST', apiParams, clientConfig);
     this.projects.locations.workflows.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.workflows.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.workflows.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
