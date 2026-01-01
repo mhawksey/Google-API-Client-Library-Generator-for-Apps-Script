@@ -18,101 +18,101 @@ class Monitoring {
     this._servicePath = '';
 
 
-    this.projects = {};
+    this.folders = {};
 
-    this.projects.monitoredResourceDescriptors = {};
-    this.projects.monitoredResourceDescriptors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/monitoredResourceDescriptors', 'GET', apiParams, clientConfig);
-    this.projects.monitoredResourceDescriptors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.timeSeries = {};
+    this.folders.timeSeries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries', 'GET', apiParams, clientConfig);
 
-    this.projects.metricDescriptors = {};
-    this.projects.metricDescriptors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/metricDescriptors', 'GET', apiParams, clientConfig);
-    this.projects.metricDescriptors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.metricDescriptors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/metricDescriptors', 'POST', apiParams, clientConfig);
-    this.projects.metricDescriptors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.uptimeCheckIps = {};
+    this.uptimeCheckIps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/uptimeCheckIps', 'GET', apiParams, clientConfig);
 
-    this.projects.timeSeries = {};
-    this.projects.timeSeries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries', 'GET', apiParams, clientConfig);
-    this.projects.timeSeries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries', 'POST', apiParams, clientConfig);
-    this.projects.timeSeries.createService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries:createService', 'POST', apiParams, clientConfig);
-    this.projects.timeSeries.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries:query', 'POST', apiParams, clientConfig);
+    this.services = {};
+    this.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/services', 'POST', apiParams, clientConfig);
 
-    this.projects.collectdTimeSeries = {};
-    this.projects.collectdTimeSeries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/collectdTimeSeries', 'POST', apiParams, clientConfig);
-
-    this.projects.alertPolicies = {};
-    this.projects.alertPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/alertPolicies', 'GET', apiParams, clientConfig);
-    this.projects.alertPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.alertPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/alertPolicies', 'POST', apiParams, clientConfig);
-    this.projects.alertPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.alertPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.groups = {};
-    this.projects.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/groups', 'GET', apiParams, clientConfig);
-    this.projects.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.groups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/groups', 'POST', apiParams, clientConfig);
-    this.projects.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.groups.members = {};
-    this.projects.groups.members.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/members', 'GET', apiParams, clientConfig);
-
-    this.projects.alerts = {};
-    this.projects.alerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/alerts', 'GET', apiParams, clientConfig);
-    this.projects.alerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.notificationChannelDescriptors = {};
-    this.projects.notificationChannelDescriptors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/notificationChannelDescriptors', 'GET', apiParams, clientConfig);
-    this.projects.notificationChannelDescriptors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.notificationChannels = {};
-    this.projects.notificationChannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/notificationChannels', 'GET', apiParams, clientConfig);
-    this.projects.notificationChannels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.notificationChannels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/notificationChannels', 'POST', apiParams, clientConfig);
-    this.projects.notificationChannels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.notificationChannels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.notificationChannels.sendVerificationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:sendVerificationCode', 'POST', apiParams, clientConfig);
-    this.projects.notificationChannels.getVerificationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:getVerificationCode', 'POST', apiParams, clientConfig);
-    this.projects.notificationChannels.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:verify', 'POST', apiParams, clientConfig);
-
-    this.projects.snoozes = {};
-    this.projects.snoozes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/snoozes', 'POST', apiParams, clientConfig);
-    this.projects.snoozes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/snoozes', 'GET', apiParams, clientConfig);
-    this.projects.snoozes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.snoozes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.uptimeCheckConfigs = {};
-    this.projects.uptimeCheckConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/uptimeCheckConfigs', 'GET', apiParams, clientConfig);
-    this.projects.uptimeCheckConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.uptimeCheckConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/uptimeCheckConfigs', 'POST', apiParams, clientConfig);
-    this.projects.uptimeCheckConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.uptimeCheckConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.services.serviceLevelObjectives = {};
+    this.services.serviceLevelObjectives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/serviceLevelObjectives', 'GET', apiParams, clientConfig);
+    this.services.serviceLevelObjectives.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.services.serviceLevelObjectives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.services.serviceLevelObjectives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.services.serviceLevelObjectives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/serviceLevelObjectives', 'POST', apiParams, clientConfig);
 
     this.organizations = {};
 
     this.organizations.timeSeries = {};
     this.organizations.timeSeries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries', 'GET', apiParams, clientConfig);
 
-    this.folders = {};
+    this.projects = {};
 
-    this.folders.timeSeries = {};
-    this.folders.timeSeries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries', 'GET', apiParams, clientConfig);
+    this.projects.metricDescriptors = {};
+    this.projects.metricDescriptors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/metricDescriptors', 'GET', apiParams, clientConfig);
+    this.projects.metricDescriptors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/metricDescriptors', 'POST', apiParams, clientConfig);
+    this.projects.metricDescriptors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.metricDescriptors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.services = {};
-    this.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/services', 'POST', apiParams, clientConfig);
-    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.collectdTimeSeries = {};
+    this.projects.collectdTimeSeries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/collectdTimeSeries', 'POST', apiParams, clientConfig);
 
-    this.services.serviceLevelObjectives = {};
-    this.services.serviceLevelObjectives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/serviceLevelObjectives', 'POST', apiParams, clientConfig);
-    this.services.serviceLevelObjectives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
-    this.services.serviceLevelObjectives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/serviceLevelObjectives', 'GET', apiParams, clientConfig);
-    this.services.serviceLevelObjectives.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
-    this.services.serviceLevelObjectives.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.alerts = {};
+    this.projects.alerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.alerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/alerts', 'GET', apiParams, clientConfig);
 
-    this.uptimeCheckIps = {};
-    this.uptimeCheckIps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/uptimeCheckIps', 'GET', apiParams, clientConfig);
+    this.projects.snoozes = {};
+    this.projects.snoozes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.snoozes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/snoozes', 'GET', apiParams, clientConfig);
+    this.projects.snoozes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.snoozes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/snoozes', 'POST', apiParams, clientConfig);
+
+    this.projects.notificationChannels = {};
+    this.projects.notificationChannels.getVerificationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:getVerificationCode', 'POST', apiParams, clientConfig);
+    this.projects.notificationChannels.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:verify', 'POST', apiParams, clientConfig);
+    this.projects.notificationChannels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/notificationChannels', 'POST', apiParams, clientConfig);
+    this.projects.notificationChannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/notificationChannels', 'GET', apiParams, clientConfig);
+    this.projects.notificationChannels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.notificationChannels.sendVerificationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}:sendVerificationCode', 'POST', apiParams, clientConfig);
+    this.projects.notificationChannels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.notificationChannels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.notificationChannelDescriptors = {};
+    this.projects.notificationChannelDescriptors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/notificationChannelDescriptors', 'GET', apiParams, clientConfig);
+    this.projects.notificationChannelDescriptors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.timeSeries = {};
+    this.projects.timeSeries.createService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries:createService', 'POST', apiParams, clientConfig);
+    this.projects.timeSeries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries', 'POST', apiParams, clientConfig);
+    this.projects.timeSeries.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries:query', 'POST', apiParams, clientConfig);
+    this.projects.timeSeries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/timeSeries', 'GET', apiParams, clientConfig);
+
+    this.projects.groups = {};
+    this.projects.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.groups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/groups', 'POST', apiParams, clientConfig);
+    this.projects.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/groups', 'GET', apiParams, clientConfig);
+
+    this.projects.groups.members = {};
+    this.projects.groups.members.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/members', 'GET', apiParams, clientConfig);
+
+    this.projects.monitoredResourceDescriptors = {};
+    this.projects.monitoredResourceDescriptors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/monitoredResourceDescriptors', 'GET', apiParams, clientConfig);
+    this.projects.monitoredResourceDescriptors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.alertPolicies = {};
+    this.projects.alertPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.alertPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.alertPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/alertPolicies', 'POST', apiParams, clientConfig);
+    this.projects.alertPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}/alertPolicies', 'GET', apiParams, clientConfig);
+    this.projects.alertPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.uptimeCheckConfigs = {};
+    this.projects.uptimeCheckConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.uptimeCheckConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/uptimeCheckConfigs', 'GET', apiParams, clientConfig);
+    this.projects.uptimeCheckConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.uptimeCheckConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+parent}/uptimeCheckConfigs', 'POST', apiParams, clientConfig);
+    this.projects.uptimeCheckConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v3/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
