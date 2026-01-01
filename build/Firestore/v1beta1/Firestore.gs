@@ -26,28 +26,29 @@ class Firestore {
 
     this.projects.databases.indexes = {};
     this.projects.databases.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/indexes', 'POST', apiParams, clientConfig);
-    this.projects.databases.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/indexes', 'GET', apiParams, clientConfig);
     this.projects.databases.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.databases.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.databases.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/indexes', 'GET', apiParams, clientConfig);
 
     this.projects.databases.documents = {};
-    this.projects.databases.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.databases.documents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
-    this.projects.databases.documents.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
-    this.projects.databases.documents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.databases.documents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.databases.documents.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:batchGet', 'POST', apiParams, clientConfig);
     this.projects.databases.documents.beginTransaction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:beginTransaction', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:commit', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
     this.projects.databases.documents.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:rollback', 'POST', apiParams, clientConfig);
     this.projects.databases.documents.runQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:runQuery', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:runAggregationQuery', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.partitionQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:partitionQuery', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
+    this.projects.databases.documents.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:commit', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.databases.documents.createDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'POST', apiParams, clientConfig);
     this.projects.databases.documents.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:write', 'POST', apiParams, clientConfig);
     this.projects.databases.documents.listen = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:listen', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.listCollectionIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:listCollectionIds', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:runAggregationQuery', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.databases.documents.partitionQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:partitionQuery', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.databases.documents.executePipeline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:executePipeline', 'POST', apiParams, clientConfig);
     this.projects.databases.documents.batchWrite = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:batchWrite', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.createDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.listCollectionIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:listCollectionIds', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:batchGet', 'POST', apiParams, clientConfig);
   }
 
 /**
