@@ -18,6 +18,28 @@ class Searchads360 {
     this._servicePath = '';
 
 
+    this.searchAds360Fields = {};
+
+    /**
+     * Returns all fields that match the search [query](/search-ads/reporting/concepts/field-service#use_a_query_to_get_field_details). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.searchAds360Fields.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/searchAds360Fields:search', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns just the requested field. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resourceName - (Required) Required. The resource name of the field to get.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.searchAds360Fields.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/{+resourceName}', 'GET', apiParams, clientConfig);
+
     this.customers = {};
 
     /**
@@ -63,28 +85,6 @@ class Searchads360 {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.customers.searchAds360.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers/{+customerId}/searchAds360:search', 'POST', apiParams, clientConfig);
-
-    this.searchAds360Fields = {};
-
-    /**
-     * Returns just the requested field. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resourceName - (Required) Required. The resource name of the field to get.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.searchAds360Fields.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/{+resourceName}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns all fields that match the search [query](/search-ads/reporting/concepts/field-service#use_a_query_to_get_field_details). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.searchAds360Fields.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/searchAds360Fields:search', 'POST', apiParams, clientConfig);
   }
 
 /**
