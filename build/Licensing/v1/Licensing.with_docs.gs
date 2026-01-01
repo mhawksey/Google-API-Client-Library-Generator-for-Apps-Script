@@ -21,6 +21,19 @@ class Licensing {
     this.licenseAssignments = {};
 
     /**
+     * List all users assigned licenses for a specific product SKU.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customerId - (Required) The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended, the server returns an error.
+     * @param {integer} apiParams.maxResults - The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number.
+     * @param {string} apiParams.pageToken - Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page.
+     * @param {string} apiParams.productId - (Required) A product's unique identifier. For more information about products in this version of the API, see Products and SKUs.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.licenseAssignments.listForProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/users', 'GET', apiParams, clientConfig);
+
+    /**
      * Assign a license.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.productId - (Required) A product's unique identifier. For more information about products in this version of the API, see Products and SKUs.
@@ -31,20 +44,6 @@ class Licensing {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.licenseAssignments.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user', 'POST', apiParams, clientConfig);
-
-    /**
-     * List all users assigned licenses for a specific product SKU.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customerId - (Required) The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended, the server returns an error.
-     * @param {integer} apiParams.maxResults - The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number.
-     * @param {string} apiParams.pageToken - Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page.
-     * @param {string} apiParams.productId - (Required) A product's unique identifier. For more information about products in this version of the API, see Products and SKUs.
-     * @param {string} apiParams.skuId - (Required) A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.licenseAssignments.listForProductAndSku = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/users', 'GET', apiParams, clientConfig);
 
     /**
      * Reassign a user's product SKU with a different SKU in the same product.
@@ -72,29 +71,18 @@ class Licensing {
     this.licenseAssignments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Get a specific user's license by product SKU.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.productId - (Required) A product's unique identifier. For more information about products in this version of the API, see Products and SKUs.
-     * @param {string} apiParams.skuId - (Required) A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs.
-     * @param {string} apiParams.userId - (Required) The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.licenseAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'GET', apiParams, clientConfig);
-
-    /**
      * List all users assigned licenses for a specific product SKU.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerId - (Required) The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended, the server returns an error.
      * @param {integer} apiParams.maxResults - The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number.
      * @param {string} apiParams.pageToken - Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page.
      * @param {string} apiParams.productId - (Required) A product's unique identifier. For more information about products in this version of the API, see Products and SKUs.
+     * @param {string} apiParams.skuId - (Required) A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.licenseAssignments.listForProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/users', 'GET', apiParams, clientConfig);
+    this.licenseAssignments.listForProductAndSku = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/users', 'GET', apiParams, clientConfig);
 
     /**
      * Reassign a user's product SKU with a different SKU in the same product. This method supports patch semantics.
@@ -108,6 +96,18 @@ class Licensing {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.licenseAssignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Get a specific user's license by product SKU.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.productId - (Required) A product's unique identifier. For more information about products in this version of the API, see Products and SKUs.
+     * @param {string} apiParams.skuId - (Required) A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs.
+     * @param {string} apiParams.userId - (Required) The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.licenseAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'GET', apiParams, clientConfig);
   }
 
 /**
