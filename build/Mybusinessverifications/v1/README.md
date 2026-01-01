@@ -4,8 +4,8 @@ Auto-generated client library for using the **My Business Verifications API (ver
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:03:46 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:03:46 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:56:36 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:56:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:43:43 GMT
 
 
@@ -26,6 +26,14 @@ Generate a token for the provided location data to verify the location.
 
 ### `locations`
 
+#### `locations.getVoiceOfMerchantState()`
+
+Gets the VoiceOfMerchant state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the location. |
+
 #### `locations.verify()`
 
 Starts the verification process for a location.
@@ -44,15 +52,16 @@ Reports all eligible verification options for a location in a specific language.
 | `params.location` | `string` | Yes | Required. The location to verify. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `locations.getVoiceOfMerchantState()`
+### `locations.verifications`
 
-Gets the VoiceOfMerchant state.
+#### `locations.verifications.complete()`
+
+Completes a `PENDING` verification. It is only necessary for non `AUTO` verification methods. `AUTO` verification request is instantly `VERIFIED` upon creation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the location. |
-
-### `locations.verifications`
+| `params.name` | `string` | Yes | Required. Resource name of the verification to complete. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `locations.verifications.list()`
 
@@ -63,12 +72,3 @@ List verifications of a location, ordered by create time.
 | `params.pageSize` | `integer` | No | How many verification to include per page. Minimum is 1, and the default and maximum page size is 100. |
 | `params.pageToken` | `string` | No | If specified, returns the next page of verifications. |
 | `params.parent` | `string` | Yes | Required. Resource name of the location that verification requests belong to. |
-
-#### `locations.verifications.complete()`
-
-Completes a `PENDING` verification. It is only necessary for non `AUTO` verification methods. `AUTO` verification request is instantly `VERIFIED` upon creation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the verification to complete. |
-| `params.requestBody` | `object` | Yes | The request body. |
