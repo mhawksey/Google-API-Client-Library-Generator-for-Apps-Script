@@ -23,16 +23,6 @@ class Merchantapi {
     this.accounts.merchantReviews = {};
 
     /**
-     * Gets a merchant review.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.merchantReviews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Lists merchant reviews.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Optional. The maximum number of merchant reviews to return. The service can return fewer than this value. The maximum value is 1000; values above 1000 are coerced to 1000. If unspecified, the maximum number of reviews is returned.
@@ -43,6 +33,26 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.merchantReviews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/merchantReviews', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes merchant review.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.merchantReviews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets a merchant review.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.merchantReviews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Inserts a review for your Merchant Center account. If the review already exists, then the review is replaced with the new instance.
@@ -56,27 +66,7 @@ class Merchantapi {
      */
     this.accounts.merchantReviews.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/merchantReviews:insert', 'POST', apiParams, clientConfig);
 
-    /**
-     * Deletes merchant review.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The ID of the merchant review. Format: accounts/{account}/merchantReviews/{merchantReview}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.merchantReviews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.accounts.productReviews = {};
-
-    /**
-     * Gets a product review.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The ID of the merchant review. Format: accounts/{account}/productReviews/{productReview}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.productReviews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists product reviews.
@@ -91,6 +81,26 @@ class Merchantapi {
     this.accounts.productReviews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/productReviews', 'GET', apiParams, clientConfig);
 
     /**
+     * Deletes a product review.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The ID of the Product review. Format: accounts/{account}/productReviews/{productReview}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.productReviews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets a product review.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The ID of the merchant review. Format: accounts/{account}/productReviews/{productReview}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.productReviews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Inserts a product review.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.dataSource - Required. Format: `accounts/{account}/dataSources/{datasource}`.
@@ -101,16 +111,6 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.productReviews.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+parent}/productReviews:insert', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a product review.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The ID of the Product review. Format: accounts/{account}/productReviews/{productReview}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.productReviews.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('reviews/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
