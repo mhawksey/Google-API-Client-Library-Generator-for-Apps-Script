@@ -24,15 +24,15 @@ class Vpcaccess {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connectors = {};
-    this.projects.locations.connectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/connectors', 'POST', apiParams, clientConfig);
-    this.projects.locations.connectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/connectors', 'GET', apiParams, clientConfig);
     this.projects.locations.connectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/connectors', 'GET', apiParams, clientConfig);
+    this.projects.locations.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.connectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.connectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/connectors', 'POST', apiParams, clientConfig);
   }
 
 /**
