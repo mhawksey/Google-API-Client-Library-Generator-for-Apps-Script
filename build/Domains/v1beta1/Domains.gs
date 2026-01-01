@@ -29,30 +29,30 @@ class Domains {
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.registrations = {};
-    this.projects.locations.registrations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.registrations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.registrations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.registrations.searchDomains = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+location}/registrations:searchDomains', 'GET', apiParams, clientConfig);
-    this.projects.locations.registrations.retrieveRegisterParameters = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+location}/registrations:retrieveRegisterParameters', 'GET', apiParams, clientConfig);
-    this.projects.locations.registrations.register = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/registrations:register', 'POST', apiParams, clientConfig);
-    this.projects.locations.registrations.retrieveTransferParameters = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+location}/registrations:retrieveTransferParameters', 'GET', apiParams, clientConfig);
-    this.projects.locations.registrations.transfer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/registrations:transfer', 'POST', apiParams, clientConfig);
-    this.projects.locations.registrations.retrieveImportableDomains = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+location}/registrations:retrieveImportableDomains', 'GET', apiParams, clientConfig);
-    this.projects.locations.registrations.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/registrations:import', 'POST', apiParams, clientConfig);
-    this.projects.locations.registrations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/registrations', 'GET', apiParams, clientConfig);
-    this.projects.locations.registrations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.registrations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.registrations.configureManagementSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:configureManagementSettings', 'POST', apiParams, clientConfig);
-    this.projects.locations.registrations.configureDnsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:configureDnsSettings', 'POST', apiParams, clientConfig);
-    this.projects.locations.registrations.retrieveGoogleDomainsDnsRecords = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:retrieveGoogleDomainsDnsRecords', 'GET', apiParams, clientConfig);
-    this.projects.locations.registrations.retrieveGoogleDomainsForwardingConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:retrieveGoogleDomainsForwardingConfig', 'GET', apiParams, clientConfig);
-    this.projects.locations.registrations.configureContactSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:configureContactSettings', 'POST', apiParams, clientConfig);
-    this.projects.locations.registrations.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:export', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.searchDomains = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+location}/registrations:searchDomains', 'GET', apiParams, clientConfig);
+    this.projects.locations.registrations.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/registrations:import', 'POST', apiParams, clientConfig);
     this.projects.locations.registrations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.registrations.retrieveAuthorizationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:retrieveAuthorizationCode', 'GET', apiParams, clientConfig);
+    this.projects.locations.registrations.retrieveImportableDomains = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+location}/registrations:retrieveImportableDomains', 'GET', apiParams, clientConfig);
+    this.projects.locations.registrations.retrieveRegisterParameters = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+location}/registrations:retrieveRegisterParameters', 'GET', apiParams, clientConfig);
     this.projects.locations.registrations.resetAuthorizationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:resetAuthorizationCode', 'POST', apiParams, clientConfig);
-    this.projects.locations.registrations.initiatePushTransfer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:initiatePushTransfer', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.registrations.renewDomain = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:renewDomain', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.retrieveTransferParameters = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+location}/registrations:retrieveTransferParameters', 'GET', apiParams, clientConfig);
+    this.projects.locations.registrations.initiatePushTransfer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:initiatePushTransfer', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.configureContactSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:configureContactSettings', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.registrations.transfer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/registrations:transfer', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/registrations', 'GET', apiParams, clientConfig);
+    this.projects.locations.registrations.configureManagementSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:configureManagementSettings', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.retrieveAuthorizationCode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:retrieveAuthorizationCode', 'GET', apiParams, clientConfig);
+    this.projects.locations.registrations.retrieveGoogleDomainsForwardingConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:retrieveGoogleDomainsForwardingConfig', 'GET', apiParams, clientConfig);
+    this.projects.locations.registrations.register = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/registrations:register', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.retrieveGoogleDomainsDnsRecords = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:retrieveGoogleDomainsDnsRecords', 'GET', apiParams, clientConfig);
+    this.projects.locations.registrations.configureDnsSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+registration}:configureDnsSettings', 'POST', apiParams, clientConfig);
+    this.projects.locations.registrations.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:export', 'POST', apiParams, clientConfig);
   }
 
 /**
