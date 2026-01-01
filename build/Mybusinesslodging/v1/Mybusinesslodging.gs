@@ -19,8 +19,8 @@ class Mybusinesslodging {
 
 
     this.locations = {};
-    this.locations.updateLodging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.locations.getLodging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.locations.updateLodging = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.locations.lodging = {};
     this.locations.lodging.getGoogleUpdated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getGoogleUpdated', 'GET', apiParams, clientConfig);
