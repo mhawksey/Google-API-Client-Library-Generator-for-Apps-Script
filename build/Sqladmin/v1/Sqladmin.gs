@@ -18,102 +18,103 @@ class Sqladmin {
     this._servicePath = '';
 
 
-    this.instances = {};
-    this.instances.addServerCa = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/addServerCa', 'POST', apiParams, clientConfig);
-    this.instances.addServerCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/addServerCertificate', 'POST', apiParams, clientConfig);
-    this.instances.clone = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/clone', 'POST', apiParams, clientConfig);
-    this.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}', 'DELETE', apiParams, clientConfig);
-    this.instances.demoteMaster = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/demoteMaster', 'POST', apiParams, clientConfig);
-    this.instances.demote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/demote', 'POST', apiParams, clientConfig);
-    this.instances.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/export', 'POST', apiParams, clientConfig);
-    this.instances.failover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/failover', 'POST', apiParams, clientConfig);
-    this.instances.reencrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/reencrypt', 'POST', apiParams, clientConfig);
-    this.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}', 'GET', apiParams, clientConfig);
-    this.instances.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/import', 'POST', apiParams, clientConfig);
-    this.instances.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances', 'POST', apiParams, clientConfig);
-    this.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances', 'GET', apiParams, clientConfig);
-    this.instances.listServerCas = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/listServerCas', 'GET', apiParams, clientConfig);
-    this.instances.ListServerCertificates = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/listServerCertificates', 'GET', apiParams, clientConfig);
-    this.instances.ListEntraIdCertificates = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/listEntraIdCertificates', 'GET', apiParams, clientConfig);
-    this.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}', 'PATCH', apiParams, clientConfig);
-    this.instances.promoteReplica = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/promoteReplica', 'POST', apiParams, clientConfig);
-    this.instances.switchover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/switchover', 'POST', apiParams, clientConfig);
-    this.instances.resetSslConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/resetSslConfig', 'POST', apiParams, clientConfig);
-    this.instances.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/restart', 'POST', apiParams, clientConfig);
-    this.instances.restoreBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/restoreBackup', 'POST', apiParams, clientConfig);
-    this.instances.rotateServerCa = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/rotateServerCa', 'POST', apiParams, clientConfig);
-    this.instances.RotateServerCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/rotateServerCertificate', 'POST', apiParams, clientConfig);
-    this.instances.RotateEntraIdCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/rotateEntraIdCertificate', 'POST', apiParams, clientConfig);
-    this.instances.startReplica = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/startReplica', 'POST', apiParams, clientConfig);
-    this.instances.stopReplica = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/stopReplica', 'POST', apiParams, clientConfig);
-    this.instances.truncateLog = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/truncateLog', 'POST', apiParams, clientConfig);
-    this.instances.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}', 'PUT', apiParams, clientConfig);
-    this.instances.executeSql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/executeSql', 'POST', apiParams, clientConfig);
-    this.instances.acquireSsrsLease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/acquireSsrsLease', 'POST', apiParams, clientConfig);
-    this.instances.releaseSsrsLease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/releaseSsrsLease', 'POST', apiParams, clientConfig);
-    this.instances.preCheckMajorVersionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade', 'POST', apiParams, clientConfig);
-    this.instances.pointInTimeRestore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:pointInTimeRestore', 'POST', apiParams, clientConfig);
-
     this.sslCerts = {};
-    this.sslCerts.createEphemeral = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/createEphemeral', 'POST', apiParams, clientConfig);
     this.sslCerts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}', 'DELETE', apiParams, clientConfig);
-    this.sslCerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}', 'GET', apiParams, clientConfig);
     this.sslCerts.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/sslCerts', 'POST', apiParams, clientConfig);
     this.sslCerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/sslCerts', 'GET', apiParams, clientConfig);
+    this.sslCerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/sslCerts/{sha1Fingerprint}', 'GET', apiParams, clientConfig);
+    this.sslCerts.createEphemeral = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/createEphemeral', 'POST', apiParams, clientConfig);
 
     this.projects = {};
 
     this.projects.instances = {};
     this.projects.instances.rescheduleMaintenance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/rescheduleMaintenance', 'POST', apiParams, clientConfig);
-    this.projects.instances.verifyExternalSyncSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/verifyExternalSyncSettings', 'POST', apiParams, clientConfig);
     this.projects.instances.startExternalSync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/startExternalSync', 'POST', apiParams, clientConfig);
-    this.projects.instances.performDiskShrink = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/performDiskShrink', 'POST', apiParams, clientConfig);
-    this.projects.instances.getDiskShrinkConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/getDiskShrinkConfig', 'GET', apiParams, clientConfig);
+    this.projects.instances.verifyExternalSyncSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/verifyExternalSyncSettings', 'POST', apiParams, clientConfig);
     this.projects.instances.resetReplicaSize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/resetReplicaSize', 'POST', apiParams, clientConfig);
+    this.projects.instances.getDiskShrinkConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/getDiskShrinkConfig', 'GET', apiParams, clientConfig);
+    this.projects.instances.performDiskShrink = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/performDiskShrink', 'POST', apiParams, clientConfig);
     this.projects.instances.getLatestRecoveryTime = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/getLatestRecoveryTime', 'GET', apiParams, clientConfig);
-
-    this.backupRuns = {};
-    this.backupRuns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/backupRuns/{id}', 'DELETE', apiParams, clientConfig);
-    this.backupRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/backupRuns/{id}', 'GET', apiParams, clientConfig);
-    this.backupRuns.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/backupRuns', 'POST', apiParams, clientConfig);
-    this.backupRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/backupRuns', 'GET', apiParams, clientConfig);
-
-    this.Backups = {};
-    this.Backups.CreateBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups', 'POST', apiParams, clientConfig);
-    this.Backups.GetBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.Backups.ListBackups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups', 'GET', apiParams, clientConfig);
-    this.Backups.UpdateBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.Backups.DeleteBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.connect = {};
     this.connect.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/connectSettings', 'GET', apiParams, clientConfig);
     this.connect.generateEphemeralCert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}:generateEphemeralCert', 'POST', apiParams, clientConfig);
 
-    this.databases = {};
-    this.databases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases/{database}', 'DELETE', apiParams, clientConfig);
-    this.databases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases/{database}', 'GET', apiParams, clientConfig);
-    this.databases.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases', 'POST', apiParams, clientConfig);
-    this.databases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases', 'GET', apiParams, clientConfig);
-    this.databases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases/{database}', 'PATCH', apiParams, clientConfig);
-    this.databases.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases/{database}', 'PUT', apiParams, clientConfig);
-
-    this.flags = {};
-    this.flags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/flags', 'GET', apiParams, clientConfig);
-
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/operations/{operation}', 'GET', apiParams, clientConfig);
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/operations', 'GET', apiParams, clientConfig);
-    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/operations/{operation}/cancel', 'POST', apiParams, clientConfig);
+    this.users = {};
+    this.users.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users', 'POST', apiParams, clientConfig);
+    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users/{name}', 'GET', apiParams, clientConfig);
+    this.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users', 'DELETE', apiParams, clientConfig);
+    this.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users', 'GET', apiParams, clientConfig);
+    this.users.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users', 'PUT', apiParams, clientConfig);
 
     this.tiers = {};
     this.tiers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/tiers', 'GET', apiParams, clientConfig);
 
-    this.users = {};
-    this.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users', 'DELETE', apiParams, clientConfig);
-    this.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users/{name}', 'GET', apiParams, clientConfig);
-    this.users.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users', 'POST', apiParams, clientConfig);
-    this.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users', 'GET', apiParams, clientConfig);
-    this.users.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/users', 'PUT', apiParams, clientConfig);
+    this.operations = {};
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/operations', 'GET', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/operations/{operation}', 'GET', apiParams, clientConfig);
+    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/operations/{operation}/cancel', 'POST', apiParams, clientConfig);
+
+    this.databases = {};
+    this.databases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases/{database}', 'PATCH', apiParams, clientConfig);
+    this.databases.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases', 'POST', apiParams, clientConfig);
+    this.databases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases', 'GET', apiParams, clientConfig);
+    this.databases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases/{database}', 'GET', apiParams, clientConfig);
+    this.databases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases/{database}', 'DELETE', apiParams, clientConfig);
+    this.databases.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/databases/{database}', 'PUT', apiParams, clientConfig);
+
+    this.backupRuns = {};
+    this.backupRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/backupRuns/{id}', 'GET', apiParams, clientConfig);
+    this.backupRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/backupRuns', 'GET', apiParams, clientConfig);
+    this.backupRuns.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/backupRuns', 'POST', apiParams, clientConfig);
+    this.backupRuns.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/backupRuns/{id}', 'DELETE', apiParams, clientConfig);
+
+    this.flags = {};
+    this.flags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/flags', 'GET', apiParams, clientConfig);
+
+    this.Backups = {};
+    this.Backups.DeleteBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.Backups.ListBackups = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups', 'GET', apiParams, clientConfig);
+    this.Backups.CreateBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups', 'POST', apiParams, clientConfig);
+    this.Backups.GetBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.Backups.UpdateBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.instances = {};
+    this.instances.failover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/failover', 'POST', apiParams, clientConfig);
+    this.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}', 'PATCH', apiParams, clientConfig);
+    this.instances.acquireSsrsLease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/acquireSsrsLease', 'POST', apiParams, clientConfig);
+    this.instances.startReplica = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/startReplica', 'POST', apiParams, clientConfig);
+    this.instances.demote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/demote', 'POST', apiParams, clientConfig);
+    this.instances.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/import', 'POST', apiParams, clientConfig);
+    this.instances.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances', 'POST', apiParams, clientConfig);
+    this.instances.addServerCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/addServerCertificate', 'POST', apiParams, clientConfig);
+    this.instances.resetSslConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/resetSslConfig', 'POST', apiParams, clientConfig);
+    this.instances.addEntraIdCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/addEntraIdCertificate', 'POST', apiParams, clientConfig);
+    this.instances.ListEntraIdCertificates = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/listEntraIdCertificates', 'GET', apiParams, clientConfig);
+    this.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}', 'GET', apiParams, clientConfig);
+    this.instances.rotateServerCa = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/rotateServerCa', 'POST', apiParams, clientConfig);
+    this.instances.executeSql = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/executeSql', 'POST', apiParams, clientConfig);
+    this.instances.demoteMaster = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/demoteMaster', 'POST', apiParams, clientConfig);
+    this.instances.stopReplica = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/stopReplica', 'POST', apiParams, clientConfig);
+    this.instances.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/export', 'POST', apiParams, clientConfig);
+    this.instances.truncateLog = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/truncateLog', 'POST', apiParams, clientConfig);
+    this.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}', 'DELETE', apiParams, clientConfig);
+    this.instances.releaseSsrsLease = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/releaseSsrsLease', 'POST', apiParams, clientConfig);
+    this.instances.listServerCas = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/listServerCas', 'GET', apiParams, clientConfig);
+    this.instances.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/restart', 'POST', apiParams, clientConfig);
+    this.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances', 'GET', apiParams, clientConfig);
+    this.instances.RotateEntraIdCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/rotateEntraIdCertificate', 'POST', apiParams, clientConfig);
+    this.instances.preCheckMajorVersionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/preCheckMajorVersionUpgrade', 'POST', apiParams, clientConfig);
+    this.instances.promoteReplica = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/promoteReplica', 'POST', apiParams, clientConfig);
+    this.instances.switchover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/switchover', 'POST', apiParams, clientConfig);
+    this.instances.ListServerCertificates = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/listServerCertificates', 'GET', apiParams, clientConfig);
+    this.instances.pointInTimeRestore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:pointInTimeRestore', 'POST', apiParams, clientConfig);
+    this.instances.clone = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/clone', 'POST', apiParams, clientConfig);
+    this.instances.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}', 'PUT', apiParams, clientConfig);
+    this.instances.reencrypt = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/reencrypt', 'POST', apiParams, clientConfig);
+    this.instances.addServerCa = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/addServerCa', 'POST', apiParams, clientConfig);
+    this.instances.restoreBackup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/restoreBackup', 'POST', apiParams, clientConfig);
+    this.instances.RotateServerCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{project}/instances/{instance}/rotateServerCertificate', 'POST', apiParams, clientConfig);
   }
 
 /**
