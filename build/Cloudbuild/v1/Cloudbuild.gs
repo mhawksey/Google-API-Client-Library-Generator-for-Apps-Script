@@ -18,110 +18,110 @@ class Cloudbuild {
     this._servicePath = '';
 
 
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.v1 = {};
+    this.v1.webhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/webhook', 'POST', apiParams, clientConfig);
+
+    this.locations = {};
+    this.locations.regionalWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}/regionalWebhook', 'POST', apiParams, clientConfig);
 
     this.projects = {};
 
+    this.projects.githubEnterpriseConfigs = {};
+    this.projects.githubEnterpriseConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/githubEnterpriseConfigs', 'GET', apiParams, clientConfig);
+    this.projects.githubEnterpriseConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.githubEnterpriseConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.githubEnterpriseConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/githubEnterpriseConfigs', 'POST', apiParams, clientConfig);
+    this.projects.githubEnterpriseConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.builds = {};
-    this.projects.builds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds', 'POST', apiParams, clientConfig);
-    this.projects.builds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds/{id}', 'GET', apiParams, clientConfig);
-    this.projects.builds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds', 'GET', apiParams, clientConfig);
     this.projects.builds.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds/{id}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.builds.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds/{id}:retry', 'POST', apiParams, clientConfig);
     this.projects.builds.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
+    this.projects.builds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds/{id}', 'GET', apiParams, clientConfig);
+    this.projects.builds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds', 'POST', apiParams, clientConfig);
+    this.projects.builds.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds/{id}:retry', 'POST', apiParams, clientConfig);
+    this.projects.builds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/builds', 'GET', apiParams, clientConfig);
 
     this.projects.triggers = {};
     this.projects.triggers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers', 'POST', apiParams, clientConfig);
-    this.projects.triggers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers/{triggerId}', 'GET', apiParams, clientConfig);
-    this.projects.triggers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers', 'GET', apiParams, clientConfig);
-    this.projects.triggers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers/{triggerId}', 'DELETE', apiParams, clientConfig);
-    this.projects.triggers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers/{triggerId}', 'PATCH', apiParams, clientConfig);
-    this.projects.triggers.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers/{triggerId}:run', 'POST', apiParams, clientConfig);
     this.projects.triggers.webhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers/{trigger}:webhook', 'POST', apiParams, clientConfig);
-
-    this.projects.githubEnterpriseConfigs = {};
-    this.projects.githubEnterpriseConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/githubEnterpriseConfigs', 'POST', apiParams, clientConfig);
-    this.projects.githubEnterpriseConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.githubEnterpriseConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.githubEnterpriseConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/githubEnterpriseConfigs', 'GET', apiParams, clientConfig);
-    this.projects.githubEnterpriseConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.triggers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers/{triggerId}', 'DELETE', apiParams, clientConfig);
+    this.projects.triggers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers/{triggerId}', 'GET', apiParams, clientConfig);
+    this.projects.triggers.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers/{triggerId}:run', 'POST', apiParams, clientConfig);
+    this.projects.triggers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers/{triggerId}', 'PATCH', apiParams, clientConfig);
+    this.projects.triggers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/triggers', 'GET', apiParams, clientConfig);
 
     this.projects.locations = {};
     this.projects.locations.getDefaultServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.builds = {};
+    this.projects.locations.builds.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
+    this.projects.locations.builds.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retry', 'POST', apiParams, clientConfig);
+    this.projects.locations.builds.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.builds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/builds', 'POST', apiParams, clientConfig);
+    this.projects.locations.builds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.builds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/builds', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.workerPools = {};
+    this.projects.locations.workerPools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workerPools', 'GET', apiParams, clientConfig);
+    this.projects.locations.workerPools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workerPools', 'POST', apiParams, clientConfig);
+    this.projects.locations.workerPools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.workerPools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.workerPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.githubEnterpriseConfigs = {};
+    this.projects.locations.githubEnterpriseConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.githubEnterpriseConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.githubEnterpriseConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.githubEnterpriseConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/githubEnterpriseConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.githubEnterpriseConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/githubEnterpriseConfigs', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.triggers = {};
+    this.projects.locations.triggers.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:run', 'POST', apiParams, clientConfig);
+    this.projects.locations.triggers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/triggers', 'POST', apiParams, clientConfig);
+    this.projects.locations.triggers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.triggers.webhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:webhook', 'POST', apiParams, clientConfig);
+    this.projects.locations.triggers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.triggers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.triggers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/triggers', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.bitbucketServerConfigs = {};
+    this.projects.locations.bitbucketServerConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.bitbucketServerConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bitbucketServerConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.bitbucketServerConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.bitbucketServerConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bitbucketServerConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.bitbucketServerConfigs.removeBitbucketServerConnectedRepository = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+config}:removeBitbucketServerConnectedRepository', 'POST', apiParams, clientConfig);
+    this.projects.locations.bitbucketServerConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.bitbucketServerConfigs.connectedRepositories = {};
+    this.projects.locations.bitbucketServerConfigs.connectedRepositories.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectedRepositories:batchCreate', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.bitbucketServerConfigs.repos = {};
+    this.projects.locations.bitbucketServerConfigs.repos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repos', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.gitLabConfigs = {};
+    this.projects.locations.gitLabConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.gitLabConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.gitLabConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitLabConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.gitLabConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitLabConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.gitLabConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.gitLabConfigs.removeGitLabConnectedRepository = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+config}:removeGitLabConnectedRepository', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.gitLabConfigs.connectedRepositories = {};
+    this.projects.locations.gitLabConfigs.connectedRepositories.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectedRepositories:batchCreate', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.gitLabConfigs.repos = {};
+    this.projects.locations.gitLabConfigs.repos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repos', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.builds = {};
-    this.projects.locations.builds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/builds', 'POST', apiParams, clientConfig);
-    this.projects.locations.builds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.builds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/builds', 'GET', apiParams, clientConfig);
-    this.projects.locations.builds.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.builds.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retry', 'POST', apiParams, clientConfig);
-    this.projects.locations.builds.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.triggers = {};
-    this.projects.locations.triggers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/triggers', 'POST', apiParams, clientConfig);
-    this.projects.locations.triggers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.triggers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/triggers', 'GET', apiParams, clientConfig);
-    this.projects.locations.triggers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.triggers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.triggers.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:run', 'POST', apiParams, clientConfig);
-    this.projects.locations.triggers.webhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:webhook', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.bitbucketServerConfigs = {};
-    this.projects.locations.bitbucketServerConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bitbucketServerConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.bitbucketServerConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.bitbucketServerConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.bitbucketServerConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/bitbucketServerConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.bitbucketServerConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.bitbucketServerConfigs.removeBitbucketServerConnectedRepository = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+config}:removeBitbucketServerConnectedRepository', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.bitbucketServerConfigs.repos = {};
-    this.projects.locations.bitbucketServerConfigs.repos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repos', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.bitbucketServerConfigs.connectedRepositories = {};
-    this.projects.locations.bitbucketServerConfigs.connectedRepositories.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectedRepositories:batchCreate', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.gitLabConfigs = {};
-    this.projects.locations.gitLabConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitLabConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.gitLabConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.gitLabConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.gitLabConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gitLabConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.gitLabConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.gitLabConfigs.removeGitLabConnectedRepository = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+config}:removeGitLabConnectedRepository', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.gitLabConfigs.repos = {};
-    this.projects.locations.gitLabConfigs.repos.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repos', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.gitLabConfigs.connectedRepositories = {};
-    this.projects.locations.gitLabConfigs.connectedRepositories.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectedRepositories:batchCreate', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.githubEnterpriseConfigs = {};
-    this.projects.locations.githubEnterpriseConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/githubEnterpriseConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.githubEnterpriseConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.githubEnterpriseConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.githubEnterpriseConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/githubEnterpriseConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.githubEnterpriseConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.workerPools = {};
-    this.projects.locations.workerPools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workerPools', 'POST', apiParams, clientConfig);
-    this.projects.locations.workerPools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.workerPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.workerPools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.workerPools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/workerPools', 'GET', apiParams, clientConfig);
+    this.operations = {};
+    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.githubDotComWebhook = {};
     this.githubDotComWebhook.receive = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/githubDotComWebhook:receive', 'POST', apiParams, clientConfig);
-
-    this.locations = {};
-    this.locations.regionalWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}/regionalWebhook', 'POST', apiParams, clientConfig);
-
-    this.v1 = {};
-    this.v1.webhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/webhook', 'POST', apiParams, clientConfig);
   }
 
 /**
