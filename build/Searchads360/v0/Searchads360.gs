@@ -18,6 +18,10 @@ class Searchads360 {
     this._servicePath = '';
 
 
+    this.searchAds360Fields = {};
+    this.searchAds360Fields.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/searchAds360Fields:search', 'POST', apiParams, clientConfig);
+    this.searchAds360Fields.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/{+resourceName}', 'GET', apiParams, clientConfig);
+
     this.customers = {};
     this.customers.listAccessibleCustomers = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers:listAccessibleCustomers', 'GET', apiParams, clientConfig);
 
@@ -27,10 +31,6 @@ class Searchads360 {
 
     this.customers.searchAds360 = {};
     this.customers.searchAds360.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/customers/{+customerId}/searchAds360:search', 'POST', apiParams, clientConfig);
-
-    this.searchAds360Fields = {};
-    this.searchAds360Fields.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/{+resourceName}', 'GET', apiParams, clientConfig);
-    this.searchAds360Fields.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v0/searchAds360Fields:search', 'POST', apiParams, clientConfig);
   }
 
 /**
