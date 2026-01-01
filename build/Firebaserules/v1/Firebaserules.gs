@@ -22,18 +22,18 @@ class Firebaserules {
     this.projects.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:test', 'POST', apiParams, clientConfig);
 
     this.projects.rulesets = {};
-    this.projects.rulesets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/rulesets', 'POST', apiParams, clientConfig);
-    this.projects.rulesets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/rulesets', 'GET', apiParams, clientConfig);
     this.projects.rulesets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.rulesets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.rulesets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/rulesets', 'GET', apiParams, clientConfig);
+    this.projects.rulesets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/rulesets', 'POST', apiParams, clientConfig);
 
     this.projects.releases = {};
-    this.projects.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/releases', 'GET', apiParams, clientConfig);
-    this.projects.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.releases.getExecutable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getExecutable', 'GET', apiParams, clientConfig);
-    this.projects.releases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.releases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/releases', 'POST', apiParams, clientConfig);
+    this.projects.releases.getExecutable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getExecutable', 'GET', apiParams, clientConfig);
+    this.projects.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/releases', 'GET', apiParams, clientConfig);
+    this.projects.releases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
