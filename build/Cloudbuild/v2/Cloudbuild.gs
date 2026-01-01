@@ -25,30 +25,30 @@ class Cloudbuild {
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connections = {};
     this.projects.locations.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/connections', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/connections', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.connections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.connections.processWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/connections:processWebhook', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.fetchLinkableRepositories = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+connection}:fetchLinkableRepositories', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/connections', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.connections.repositories = {};
-    this.projects.locations.connections.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.repositories.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories:batchCreate', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connections.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.repositories.fetchGitRefs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+repository}:fetchGitRefs', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.repositories.accessReadWriteToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+repository}:accessReadWriteToken', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.repositories.accessReadToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+repository}:accessReadToken', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.repositories.fetchGitRefs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+repository}:fetchGitRefs', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.repositories.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories:batchCreate', 'POST', apiParams, clientConfig);
   }
 
 /**
