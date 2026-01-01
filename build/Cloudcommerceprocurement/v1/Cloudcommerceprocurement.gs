@@ -20,22 +20,22 @@ class Cloudcommerceprocurement {
 
     this.providers = {};
 
-    this.providers.accounts = {};
-    this.providers.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.providers.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'GET', apiParams, clientConfig);
-    this.providers.accounts.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
-    this.providers.accounts.reject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:reject', 'POST', apiParams, clientConfig);
-    this.providers.accounts.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:reset', 'POST', apiParams, clientConfig);
-
     this.providers.entitlements = {};
-    this.providers.entitlements.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.providers.entitlements.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.providers.entitlements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entitlements', 'GET', apiParams, clientConfig);
-    this.providers.entitlements.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
-    this.providers.entitlements.reject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:reject', 'POST', apiParams, clientConfig);
     this.providers.entitlements.approvePlanChange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approvePlanChange', 'POST', apiParams, clientConfig);
     this.providers.entitlements.rejectPlanChange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rejectPlanChange', 'POST', apiParams, clientConfig);
+    this.providers.entitlements.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
+    this.providers.entitlements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entitlements', 'GET', apiParams, clientConfig);
+    this.providers.entitlements.reject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:reject', 'POST', apiParams, clientConfig);
     this.providers.entitlements.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:suspend', 'POST', apiParams, clientConfig);
+    this.providers.entitlements.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.providers.entitlements.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.providers.accounts = {};
+    this.providers.accounts.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
+    this.providers.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'GET', apiParams, clientConfig);
+    this.providers.accounts.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:reset', 'POST', apiParams, clientConfig);
+    this.providers.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.providers.accounts.reject = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:reject', 'POST', apiParams, clientConfig);
   }
 
 /**
