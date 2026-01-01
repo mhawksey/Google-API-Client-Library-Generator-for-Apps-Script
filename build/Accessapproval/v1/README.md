@@ -4,8 +4,8 @@ Auto-generated client library for using the **Access Approval API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:20:57 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:20:57 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:20:54 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:20:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:32 GMT
 
 
@@ -14,99 +14,7 @@ Auto-generated client library for using the **Access Approval API (version: v1)*
 
 ## API Reference
 
-### `projects`
-
-#### `projects.getAccessApprovalSettings()`
-
-Gets the Access Approval settings associated with a project, folder, or organization.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" |
-
-#### `projects.updateAccessApprovalSettings()`
-
-Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the settings. Format is one of: * "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" * "organizations/{organization}/accessApprovalSettings" |
-| `params.updateMask` | `string` | No | The update mask applies to the settings. Only the top level fields of AccessApprovalSettings (notification_emails & enrolled_services) are supported. For each field, if it is included, the currently stored value will be entirely overwritten with the value of the field passed in this request. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the notification_emails field will be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.deleteAccessApprovalSettings()`
-
-Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the resource. Access Approval may remain active based on parent resource settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is disabled.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the AccessApprovalSettings to delete. |
-
-#### `projects.getServiceAccount()`
-
-Retrieves the service account that is used by Access Approval to access KMS keys for signing approved approval requests.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the AccessApprovalServiceAccount to retrieve. |
-
-### `projects.approvalRequests`
-
-#### `projects.approvalRequests.list()`
-
-Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | The parent resource. This may be "projects/{project}", "folders/{folder}", or "organizations/{organization}". |
-| `params.filter` | `string` | No | A filter on the type of approval requests to retrieve. Must be one of the following values: * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only requests that have been dismissed, or requests that are not approved and past expiration. * EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active, dismissed and expired requests. |
-| `params.pageSize` | `integer` | No | Requested page size. |
-| `params.pageToken` | `string` | No | A token identifying the page of results to return. |
-
-#### `projects.approvalRequests.get()`
-
-Gets an approval request. Returns NOT_FOUND if the request does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" |
-
-#### `projects.approvalRequests.approve()`
-
-Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the approval request to approve. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.approvalRequests.dismiss()`
-
-Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is considered ignored. Dismissing a request does not prevent access granted by other Access Approval requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the ApprovalRequest to dismiss. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.approvalRequests.invalidate()`
-
-Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes Google access based on this approval request. If the resource has other active approvals, access will remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the ApprovalRequest to invalidate. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `folders`
-
-#### `folders.getAccessApprovalSettings()`
-
-Gets the Access Approval settings associated with a project, folder, or organization.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" |
 
 #### `folders.updateAccessApprovalSettings()`
 
@@ -114,17 +22,9 @@ Updates the settings associated with a project, folder, or organization. Setting
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the settings. Format is one of: * "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" * "organizations/{organization}/accessApprovalSettings" |
 | `params.updateMask` | `string` | No | The update mask applies to the settings. Only the top level fields of AccessApprovalSettings (notification_emails & enrolled_services) are supported. For each field, if it is included, the currently stored value will be entirely overwritten with the value of the field passed in this request. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the notification_emails field will be updated. |
+| `params.name` | `string` | Yes | The resource name of the settings. Format is one of: * "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" * "organizations/{organization}/accessApprovalSettings" |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `folders.deleteAccessApprovalSettings()`
-
-Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the resource. Access Approval may remain active based on parent resource settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is disabled.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the AccessApprovalSettings to delete. |
 
 #### `folders.getServiceAccount()`
 
@@ -134,6 +34,22 @@ Retrieves the service account that is used by Access Approval to access KMS keys
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the AccessApprovalServiceAccount to retrieve. |
 
+#### `folders.deleteAccessApprovalSettings()`
+
+Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the resource. Access Approval may remain active based on parent resource settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is disabled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the AccessApprovalSettings to delete. |
+
+#### `folders.getAccessApprovalSettings()`
+
+Gets the Access Approval settings associated with a project, folder, or organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" |
+
 ### `folders.approvalRequests`
 
 #### `folders.approvalRequests.list()`
@@ -142,10 +58,19 @@ Lists approval requests associated with a project, folder, or organization. Appr
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | The parent resource. This may be "projects/{project}", "folders/{folder}", or "organizations/{organization}". |
 | `params.filter` | `string` | No | A filter on the type of approval requests to retrieve. Must be one of the following values: * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only requests that have been dismissed, or requests that are not approved and past expiration. * EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active, dismissed and expired requests. |
 | `params.pageSize` | `integer` | No | Requested page size. |
 | `params.pageToken` | `string` | No | A token identifying the page of results to return. |
+| `params.parent` | `string` | Yes | The parent resource. This may be "projects/{project}", "folders/{folder}", or "organizations/{organization}". |
+
+#### `folders.approvalRequests.invalidate()`
+
+Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes Google access based on this approval request. If the resource has other active approvals, access will remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the ApprovalRequest to invalidate. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `folders.approvalRequests.get()`
 
@@ -173,24 +98,7 @@ Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request i
 | `params.name` | `string` | Yes | Name of the ApprovalRequest to dismiss. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `folders.approvalRequests.invalidate()`
-
-Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes Google access based on this approval request. If the resource has other active approvals, access will remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the ApprovalRequest to invalidate. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `organizations`
-
-#### `organizations.getAccessApprovalSettings()`
-
-Gets the Access Approval settings associated with a project, folder, or organization.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" |
 
 #### `organizations.updateAccessApprovalSettings()`
 
@@ -218,6 +126,14 @@ Retrieves the service account that is used by Access Approval to access KMS keys
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the AccessApprovalServiceAccount to retrieve. |
 
+#### `organizations.getAccessApprovalSettings()`
+
+Gets the Access Approval settings associated with a project, folder, or organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" |
+
 ### `organizations.approvalRequests`
 
 #### `organizations.approvalRequests.list()`
@@ -226,18 +142,10 @@ Lists approval requests associated with a project, folder, or organization. Appr
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | The parent resource. This may be "projects/{project}", "folders/{folder}", or "organizations/{organization}". |
-| `params.filter` | `string` | No | A filter on the type of approval requests to retrieve. Must be one of the following values: * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only requests that have been dismissed, or requests that are not approved and past expiration. * EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active, dismissed and expired requests. |
-| `params.pageSize` | `integer` | No | Requested page size. |
 | `params.pageToken` | `string` | No | A token identifying the page of results to return. |
-
-#### `organizations.approvalRequests.get()`
-
-Gets an approval request. Returns NOT_FOUND if the request does not exist.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" |
+| `params.parent` | `string` | Yes | The parent resource. This may be "projects/{project}", "folders/{folder}", or "organizations/{organization}". |
+| `params.pageSize` | `integer` | No | Requested page size. |
+| `params.filter` | `string` | No | A filter on the type of approval requests to retrieve. Must be one of the following values: * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only requests that have been dismissed, or requests that are not approved and past expiration. * EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active, dismissed and expired requests. |
 
 #### `organizations.approvalRequests.approve()`
 
@@ -257,6 +165,14 @@ Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request i
 | `params.name` | `string` | Yes | Name of the ApprovalRequest to dismiss. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `organizations.approvalRequests.get()`
+
+Gets an approval request. Returns NOT_FOUND if the request does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" |
+
 #### `organizations.approvalRequests.invalidate()`
 
 Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes Google access based on this approval request. If the resource has other active approvals, access will remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
@@ -264,4 +180,88 @@ Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NO
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Name of the ApprovalRequest to invalidate. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects`
+
+#### `projects.getServiceAccount()`
+
+Retrieves the service account that is used by Access Approval to access KMS keys for signing approved approval requests.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the AccessApprovalServiceAccount to retrieve. |
+
+#### `projects.updateAccessApprovalSettings()`
+
+Updates the settings associated with a project, folder, or organization. Settings to update are determined by the value of field_mask.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource name of the settings. Format is one of: * "projects/{project}/accessApprovalSettings" * "folders/{folder}/accessApprovalSettings" * "organizations/{organization}/accessApprovalSettings" |
+| `params.updateMask` | `string` | No | The update mask applies to the settings. Only the top level fields of AccessApprovalSettings (notification_emails & enrolled_services) are supported. For each field, if it is included, the currently stored value will be entirely overwritten with the value of the field passed in this request. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If this field is left unset, only the notification_emails field will be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.deleteAccessApprovalSettings()`
+
+Deletes the settings associated with a project, folder, or organization. This will have the effect of disabling Access Approval for the resource. Access Approval may remain active based on parent resource settings. To confirm the effective settings, call GetAccessApprovalSettings and verify effective setting is disabled.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the AccessApprovalSettings to delete. |
+
+#### `projects.getAccessApprovalSettings()`
+
+Gets the Access Approval settings associated with a project, folder, or organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the AccessApprovalSettings to retrieve. Format: "{projects|folders|organizations}/{id}/accessApprovalSettings" |
+
+### `projects.approvalRequests`
+
+#### `projects.approvalRequests.approve()`
+
+Approves a request and returns the updated ApprovalRequest. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the approval request to approve. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.approvalRequests.get()`
+
+Gets an approval request. Returns NOT_FOUND if the request does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the approval request to retrieve. Format: "{projects|folders|organizations}/{id}/approvalRequests/{approval_request}" |
+
+#### `projects.approvalRequests.invalidate()`
+
+Invalidates an existing ApprovalRequest. Returns the updated ApprovalRequest. NOTE: This action revokes Google access based on this approval request. If the resource has other active approvals, access will remain granted. Returns FAILED_PRECONDITION if the request exists but is not in an approved state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the ApprovalRequest to invalidate. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.approvalRequests.list()`
+
+Lists approval requests associated with a project, folder, or organization. Approval requests can be filtered by state (pending, active, dismissed). The order is reverse chronological.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | A filter on the type of approval requests to retrieve. Must be one of the following values: * [not set]: Requests that are pending or have active approvals. * ALL: All requests. * PENDING: Only pending requests. * ACTIVE: Only active (i.e. currently approved) requests. * DISMISSED: Only requests that have been dismissed, or requests that are not approved and past expiration. * EXPIRED: Only requests that have been approved, and the approval has expired. * HISTORY: Active, dismissed and expired requests. |
+| `params.pageToken` | `string` | No | A token identifying the page of results to return. |
+| `params.pageSize` | `integer` | No | Requested page size. |
+| `params.parent` | `string` | Yes | The parent resource. This may be "projects/{project}", "folders/{folder}", or "organizations/{organization}". |
+
+#### `projects.approvalRequests.dismiss()`
+
+Dismisses a request. Returns the updated ApprovalRequest. NOTE: When a request is dismissed, it is considered ignored. Dismissing a request does not prevent access granted by other Access Approval requests. Returns NOT_FOUND if the request does not exist. Returns FAILED_PRECONDITION if the request exists but is not in a pending state.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the ApprovalRequest to dismiss. |
 | `params.requestBody` | `object` | Yes | The request body. |
