@@ -4,8 +4,8 @@ Auto-generated client library for using the **Workflows API (version: v1beta)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:19:15 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:19:15 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:15:43 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:15:43 GMT
 - **Created:** Sun, 20 Jul 2025 17:03:16 GMT
 
 
@@ -24,9 +24,9 @@ Lists information about the supported locations for this service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
 
@@ -47,10 +47,10 @@ Lists operations that match the specified filter in the request. If the server d
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
 
@@ -76,19 +76,21 @@ Lists Workflows in a given project and location. The default order is not specif
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location from which the workflows should be listed. Format: projects/{project}/locations/{location} |
-| `params.pageSize` | `integer` | No | Maximum number of workflows to return per call. The service may return fewer than this value. If the value is not specified, a default value of 500 will be used. The maximum permitted value is 1000 and values greater than 1000 will be coerced down to 1000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListWorkflows` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflows` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Filter to restrict results to specific workflows. |
 | `params.orderBy` | `string` | No | Comma-separated list of fields that that specify the order of the results. Default sorting order for a field is ascending. To specify descending order for a field, append a " desc" suffix. If not specified, the results will be returned in an unspecified order. |
+| `params.parent` | `string` | Yes | Required. Project and location from which the workflows should be listed. Format: projects/{project}/locations/{location} |
+| `params.filter` | `string` | No | Filter to restrict results to specific workflows. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListWorkflows` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListWorkflows` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Maximum number of workflows to return per call. The service may return fewer than this value. If the value is not specified, a default value of 500 will be used. The maximum permitted value is 1000 and values greater than 1000 will be coerced down to 1000. |
 
-#### `projects.locations.workflows.get()`
+#### `projects.locations.workflows.patch()`
 
-Gets details of a single Workflow.
+Updates an existing workflow. Running this method has no impact on already running executions of the workflow. A new revision of the workflow may be created as a result of a successful update operation. In that case, such revision will be used in new workflow executions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the workflow which information should be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow} |
+| `params.updateMask` | `string` | No | List of fields to be updated. If not present, the entire workflow will be updated. |
+| `params.name` | `string` | Yes | The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflows.create()`
 
@@ -96,8 +98,8 @@ Creates a new workflow. If a workflow with the specified name already exists in 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location} |
 | `params.workflowId` | `string` | No | Required. The ID of the workflow to be created. It has to fulfill the following requirements: * Must contain only letters, numbers, underscores and hyphens. * Must start with a letter. * Must be between 1-64 characters. * Must end with a number or a letter. * Must be unique within the customer project and location. |
+| `params.parent` | `string` | Yes | Required. Project and location in which the workflow should be created. Format: projects/{project}/locations/{location} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.workflows.delete()`
@@ -108,12 +110,10 @@ Deletes a workflow with the specified name. This method also cancels and deletes
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the workflow to be deleted. Format: projects/{project}/locations/{location}/workflows/{workflow} |
 
-#### `projects.locations.workflows.patch()`
+#### `projects.locations.workflows.get()`
 
-Updates an existing workflow. Running this method has no impact on already running executions of the workflow. A new revision of the workflow may be created as a result of a successful update operation. In that case, such revision will be used in new workflow executions.
+Gets details of a single Workflow.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource name of the workflow. Format: projects/{project}/locations/{location}/workflows/{workflow} |
-| `params.updateMask` | `string` | No | List of fields to be updated. If not present, the entire workflow will be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. Name of the workflow which information should be retrieved. Format: projects/{project}/locations/{location}/workflows/{workflow} |
