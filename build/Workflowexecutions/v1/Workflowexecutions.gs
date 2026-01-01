@@ -27,18 +27,18 @@ class Workflowexecutions {
 
     this.projects.locations.workflows.executions = {};
     this.projects.locations.workflows.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/executions', 'GET', apiParams, clientConfig);
+    this.projects.locations.workflows.executions.deleteExecutionHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteExecutionHistory', 'POST', apiParams, clientConfig);
     this.projects.locations.workflows.executions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/executions', 'POST', apiParams, clientConfig);
     this.projects.locations.workflows.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workflows.executions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
     this.projects.locations.workflows.executions.exportData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:exportData', 'GET', apiParams, clientConfig);
-    this.projects.locations.workflows.executions.deleteExecutionHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteExecutionHistory', 'POST', apiParams, clientConfig);
 
     this.projects.locations.workflows.executions.callbacks = {};
     this.projects.locations.workflows.executions.callbacks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/callbacks', 'GET', apiParams, clientConfig);
 
     this.projects.locations.workflows.executions.stepEntries = {};
-    this.projects.locations.workflows.executions.stepEntries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/stepEntries', 'GET', apiParams, clientConfig);
     this.projects.locations.workflows.executions.stepEntries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.workflows.executions.stepEntries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/stepEntries', 'GET', apiParams, clientConfig);
   }
 
 /**
