@@ -21,6 +21,23 @@ class Businessprofileperformance {
     this.locations = {};
 
     /**
+     * Returns the values for each date from a given time range and optionally the sub entity type, where applicable, that are associated with the specific daily metrics. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=WEBSITE_CLICKS&dailyMetrics=CALL_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31`
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dailyMetrics - Required. The metrics to retrieve time series for.
+     * @param {integer} apiParams.dailyRange.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.dailyRange.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.dailyRange.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {integer} apiParams.dailyRange.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.dailyRange.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.dailyRange.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {string} apiParams.location - (Required) Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.fetchMultiDailyMetricsTimeSeries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:fetchMultiDailyMetricsTimeSeries', 'GET', apiParams, clientConfig);
+
+    /**
      * Returns the values for each date from a given time range that are associated with the specific daily metric. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:getDailyMetricsTimeSeries?dailyMetric=WEBSITE_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31`
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.dailyMetric - Required. The metric to retrieve time series.
@@ -41,23 +58,6 @@ class Businessprofileperformance {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.locations.getDailyMetricsTimeSeries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getDailyMetricsTimeSeries', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns the values for each date from a given time range and optionally the sub entity type, where applicable, that are associated with the specific daily metrics. Example request: `GET https://businessprofileperformance.googleapis.com/v1/locations/12345:fetchMultiDailyMetricsTimeSeries?dailyMetrics=WEBSITE_CLICKS&dailyMetrics=CALL_CLICKS&daily_range.start_date.year=2022&daily_range.start_date.month=1&daily_range.start_date.day=1&daily_range.end_date.year=2022&daily_range.end_date.month=3&daily_range.end_date.day=31`
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dailyMetrics - Required. The metrics to retrieve time series for.
-     * @param {integer} apiParams.dailyRange.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.dailyRange.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.dailyRange.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {integer} apiParams.dailyRange.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.dailyRange.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.dailyRange.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {string} apiParams.location - (Required) Required. The location for which the time series should be fetched. Format: locations/{location_id} where location_id is an unobfuscated listing id.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.fetchMultiDailyMetricsTimeSeries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:fetchMultiDailyMetricsTimeSeries', 'GET', apiParams, clientConfig);
 
     this.locations.searchkeywords = {};
 
