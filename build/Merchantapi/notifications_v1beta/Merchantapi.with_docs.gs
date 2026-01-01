@@ -23,14 +23,16 @@ class Merchantapi {
     this.accounts.notificationsubscriptions = {};
 
     /**
-     * Gets notification subscriptions for an account.
+     * Gets all the notification subscriptions for a merchant.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The `name` of the notification subscription.
+     * @param {integer} apiParams.pageSize - The maximum number of notification subscriptions to return in a page. The default value for `page_size` is 100. The maximum value is `200`. Values above `200` will be coerced to `200`.
+     * @param {string} apiParams.pageToken - Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The merchant account who owns the notification subscriptions. Format: `accounts/{account}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.notificationsubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.notificationsubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+parent}/notificationsubscriptions', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a notification subscription for a business. For standalone or subaccounts accounts, the business can create a subscription for self. For MCAs, the business can create a subscription for all managed accounts or for a specific subaccount. We will allow the following types of notification subscriptions to exist together (per business as a subscriber per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for managed accounts + subscription for self. we will not allow (per business as a subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for the same target account.
@@ -42,6 +44,16 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.notificationsubscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+parent}/notificationsubscriptions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a notification subscription for a merchant.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the notification subscription to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.notificationsubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Updates an existing notification subscription for a merchant.
@@ -56,26 +68,14 @@ class Merchantapi {
     this.accounts.notificationsubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a notification subscription for a merchant.
+     * Gets notification subscriptions for an account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the notification subscription to be deleted.
+     * @param {string} apiParams.name - (Required) Required. The `name` of the notification subscription.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.notificationsubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets all the notification subscriptions for a merchant.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of notification subscriptions to return in a page. The default value for `page_size` is 100. The maximum value is `200`. Values above `200` will be coerced to `200`.
-     * @param {string} apiParams.pageToken - Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The merchant account who owns the notification subscriptions. Format: `accounts/{account}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.notificationsubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+parent}/notificationsubscriptions', 'GET', apiParams, clientConfig);
+    this.accounts.notificationsubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
