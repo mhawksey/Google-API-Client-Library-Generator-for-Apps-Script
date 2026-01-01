@@ -4,8 +4,8 @@ Auto-generated client library for using the **Discovery Engine API (version: v1a
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:43:50 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:43:50 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:42:48 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:42:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:43 GMT
 
 
@@ -480,7 +480,7 @@ Updates a DataConnector.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Output only. The full resource name of the Data Connector. Format: `projects/*/locations/*/collections/*/dataConnector`. |
-| `params.updateMask` | `string` | No | Indicates which fields in the provided DataConnector to update. Supported field paths include: - refresh_interval - params - auto_run_disabled - action_config - action_config.action_params - action_config.service_name - destination_configs - blocking_reasons - sync_mode - incremental_sync_disabled - incremental_refresh_interval Note: Support for these fields may vary depending on the connector type. For example, not all connectors support `destination_configs`. If an unsupported or unknown field path is provided, the request will return an INVALID_ARGUMENT error. |
+| `params.updateMask` | `string` | No | Indicates which fields in the provided DataConnector to update. Supported field paths include: - `refresh_interval` - `params` - `auto_run_disabled` - `action_config` - `action_config.action_params` - `action_config.service_name` - `destination_configs` - `blocking_reasons` - `sync_mode` - `incremental_sync_disabled` - `incremental_refresh_interval` - `data_protection_policy` Note: Support for these fields may vary depending on the connector type. For example, not all connectors support `destination_configs`. If an unsupported or unknown field path is provided, the request will return an INVALID_ARGUMENT error. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.collections.operations`
@@ -651,6 +651,24 @@ Makes a recommendation, which requires a contextual user event.
 |---|---|---|---|
 | `params.servingConfig` | `string` | Yes | Required. Full resource name of a ServingConfig: `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving config is created along with your recommendation engine creation. The engine ID is used as the ID of the default serving config. For example, for Engine `projects/*/locations/global/collections/*/engines/my-engine`, you can use `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your RecommendationService.Recommend requests. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.servingConfigs.create()`
+
+Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+| `params.servingConfigId` | `string` | No | Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-zA-Z0-9+/. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.dataStores.servingConfigs.delete()`
+
+Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
 
 #### `projects.locations.collections.dataStores.servingConfigs.patch()`
 
@@ -1639,6 +1657,24 @@ Makes a recommendation, which requires a contextual user event.
 | `params.servingConfig` | `string` | Yes | Required. Full resource name of a ServingConfig: `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving config is created along with your recommendation engine creation. The engine ID is used as the ID of the default serving config. For example, for Engine `projects/*/locations/global/collections/*/engines/my-engine`, you can use `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your RecommendationService.Recommend requests. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.collections.engines.servingConfigs.create()`
+
+Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+| `params.servingConfigId` | `string` | No | Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-zA-Z0-9+/. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.collections.engines.servingConfigs.delete()`
+
+Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
+
 #### `projects.locations.collections.engines.servingConfigs.patch()`
 
 Updates a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
@@ -1705,6 +1741,7 @@ Lists the data for displaying the Agents under an Assistant which are available 
 | `params.languageCode` | `string` | No | Optional. The UI language currently shown to the user. Specifying this field request that the texts in the AgentViews in the response should be translated to this language. |
 | `params.maxSuggestedPrompts` | `integer` | No | Optional. The maximum number of suggested prompts to return per agent. |
 | `params.filter` | `string` | No | Optional. The filter syntax consists of an expression language for constructing a predicate from one or more fields of the files being filtered. Filter expression is case-sensitive. Allowed fields are: * `display_name` * `state` Some examples of filters would be: * `display_name = 'agent_1'` * `display_name = 'agent_1' AND state = ENABLED` For a full description of the filter format, please see https://google.aip.dev/160. |
+| `params.adminView` | `boolean` | No | Optional. Indicates whether to consider if the caller is an admin. If set, and the caller is an admin, the response will consider admin-only permissions. Otherwise, a caller with admin permissions will get a response as an unprivileged user. |
 
 #### `projects.locations.collections.engines.assistants.streamAssist()`
 
@@ -1861,6 +1898,7 @@ Returns a AgentView for a given Agent, which contains additional information abo
 | `params.name` | `string` | Yes | Required. The name of the Agent to get. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/assistants/{assistant}/agents/{agent}` |
 | `params.languageCode` | `string` | No | Optional. The UI language currently shown to the user. Specifying this field request that the texts in the AgentView in the response should be translated to this language. |
 | `params.maxSuggestedPrompts` | `integer` | No | Optional. The maximum number of suggested prompts to return per agent. |
+| `params.adminView` | `boolean` | No | Optional. Indicates whether to consider if the caller is an admin. If set, and the caller is an admin, the response will consider admin-only permissions. Otherwise, a caller with admin permissions will get a response as an unprivileged user. |
 
 ### `projects.locations.collections.engines.assistants.agents.operations`
 
@@ -2120,6 +2158,28 @@ Lists all Sessions by their parent DataStore.
 | `params.filter` | `string` | No | A comma-separated list of fields to filter by, in EBNF grammar. The supported fields are: * `user_pseudo_id` * `state` * `display_name` * `starred` * `is_pinned` * `labels` * `create_time` * `update_time` Examples: * `user_pseudo_id = some_id` * `display_name = "some_name"` * `starred = true` * `is_pinned=true AND (NOT labels:hidden)` * `create_time > "1970-01-01T12:00:00Z"` |
 | `params.orderBy` | `string` | No | A comma-separated list of fields to order by, sorted in ascending order. Use "desc" after a field name for descending. Supported fields: * `update_time` * `create_time` * `session_name` * `is_pinned` Example: * `update_time desc` * `create_time` * `is_pinned desc,update_time desc`: list sessions by is_pinned first, then by update_time. |
 
+### `projects.locations.collections.engines.sessions.alphaEvolveExperiments`
+
+### `projects.locations.collections.engines.sessions.alphaEvolveExperiments.operations`
+
+#### `projects.locations.collections.engines.sessions.alphaEvolveExperiments.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `projects.locations.collections.engines.sessions.operations`
+
+#### `projects.locations.collections.engines.sessions.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
 ### `projects.locations.collections.engines.sessions.answers`
 
 #### `projects.locations.collections.engines.sessions.answers.get()`
@@ -2303,6 +2363,24 @@ Makes a recommendation, which requires a contextual user event.
 |---|---|---|---|
 | `params.servingConfig` | `string` | Yes | Required. Full resource name of a ServingConfig: `projects/*/locations/global/collections/*/engines/*/servingConfigs/*`, or `projects/*/locations/global/collections/*/dataStores/*/servingConfigs/*` One default serving config is created along with your recommendation engine creation. The engine ID is used as the ID of the default serving config. For example, for Engine `projects/*/locations/global/collections/*/engines/my-engine`, you can use `projects/*/locations/global/collections/*/engines/my-engine/servingConfigs/my-engine` for your RecommendationService.Recommend requests. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.servingConfigs.create()`
+
+Creates a ServingConfig. Note: The Google Cloud console works only with the default serving config. Additional ServingConfigs can be created and managed only via the API. A maximum of 100 ServingConfigs are allowed in an Engine, otherwise a RESOURCE_EXHAUSTED error is returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Full resource name of parent. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` |
+| `params.servingConfigId` | `string` | No | Required. The ID to use for the ServingConfig, which will become the final component of the ServingConfig's resource name. This value should be 4-63 characters, and valid characters are /a-zA-Z0-9+/. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataStores.servingConfigs.delete()`
+
+Deletes a ServingConfig. Returns a NOT_FOUND error if the ServingConfig does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the ServingConfig to delete. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}/servingConfigs/{serving_config_id}` |
 
 #### `projects.locations.dataStores.servingConfigs.patch()`
 
