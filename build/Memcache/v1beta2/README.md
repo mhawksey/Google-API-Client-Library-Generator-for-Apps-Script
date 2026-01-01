@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Memorystore for Memcached AP
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:56:09 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:56:09 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:53:56 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:53:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:22 GMT
 
 
@@ -24,11 +24,11 @@ Lists information about the supported locations for this service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.extraLocationTypes` | `string` | No | Optional. Unless explicitly documented otherwise, don't use this unsupported field which is primarily intended for internal usage. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
 
 #### `projects.locations.get()`
 
@@ -40,18 +40,6 @@ Gets information about a location.
 
 ### `projects.locations.operations`
 
-#### `projects.locations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
 #### `projects.locations.operations.get()`
 
 Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
@@ -59,6 +47,18 @@ Gets the latest state of a long-running operation. Clients can use this method t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `projects.locations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
 
 #### `projects.locations.operations.delete()`
 
@@ -79,6 +79,23 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 
 ### `projects.locations.instances`
 
+#### `projects.locations.instances.delete()`
+
+Deletes a single Instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Memcached instance resource name in the format: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region |
+
+#### `projects.locations.instances.upgrade()`
+
+Upgrades the Memcache instance to a newer memcached engine version specified in the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Memcache instance resource name using the form: `projects/{project}/locations/{location}/instances/{instance}` where `location_id` refers to a GCP region. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.instances.list()`
 
 Lists Instances in a given location.
@@ -86,18 +103,10 @@ Lists Instances in a given location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the `page_size` value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more instances left to be queried. |
 | `params.pageToken` | `string` | No | The `next_page_token` value returned from a previous List request, if any. |
+| `params.pageSize` | `integer` | No | The maximum number of items to return. If not specified, a default value of 1000 will be used by the service. Regardless of the `page_size` value, the response may include a partial list and a caller should only rely on response's `next_page_token` to determine if there are more instances left to be queried. |
 | `params.filter` | `string` | No | List filter. For example, exclude all Memcached instances with name as my-instance by specifying `"name != my-instance"`. |
 | `params.orderBy` | `string` | No | Sort results. Supported values are "name", "name desc" or "" (unsorted). |
-
-#### `projects.locations.instances.get()`
-
-Gets details of a single Instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Memcached instance resource name in the format: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region |
 
 #### `projects.locations.instances.create()`
 
@@ -107,6 +116,23 @@ Creates a new Instance in a given location.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The resource name of the instance location using the form: `projects/{project_id}/locations/{location_id}` where `location_id` refers to a GCP region |
 | `params.instanceId` | `string` | No | Required. The logical name of the Memcached instance in the user project with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-40 characters. * Must end with a number or a letter. * Must be unique within the user project / location. If any of the above are not met, the API raises an invalid argument error. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.instances.get()`
+
+Gets details of a single Instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Memcached instance resource name in the format: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region |
+
+#### `projects.locations.instances.rescheduleMaintenance()`
+
+Performs the apply phase of the RescheduleMaintenance verb.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.instance` | `string` | Yes | Required. Memcache instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.instances.patch()`
@@ -128,14 +154,6 @@ Updates the defined Memcached parameters for an existing instance. This method o
 | `params.name` | `string` | Yes | Required. Resource name of the Memcached instance for which the parameters should be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.instances.delete()`
-
-Deletes a single Instance.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Memcached instance resource name in the format: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region |
-
 #### `projects.locations.instances.applyParameters()`
 
 `ApplyParameters` restarts the set of specified nodes in order to update them to the current set of parameters for the Memcached Instance.
@@ -152,22 +170,4 @@ Updates software on the selected nodes of the Instance.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.instance` | `string` | Yes | Required. Resource name of the Memcached instance for which software update should be applied. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.instances.rescheduleMaintenance()`
-
-Performs the apply phase of the RescheduleMaintenance verb.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.instance` | `string` | Yes | Required. Memcache instance resource name using the form: `projects/{project_id}/locations/{location_id}/instances/{instance_id}` where `location_id` refers to a GCP region. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.instances.upgrade()`
-
-Upgrades the Memcache instance to a newer memcached engine version specified in the request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Memcache instance resource name using the form: `projects/{project}/locations/{location}/instances/{instance}` where `location_id` refers to a GCP region. |
 | `params.requestBody` | `object` | Yes | The request body. |
