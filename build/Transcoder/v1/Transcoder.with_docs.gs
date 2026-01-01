@@ -25,17 +25,6 @@ class Transcoder {
     this.projects.locations.jobs = {};
 
     /**
-     * Creates a job in the specified region.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'POST', apiParams, clientConfig);
-
-    /**
      * Lists jobs in the specified region.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.filter - The filter expression, following the syntax outlined in https://google.aip.dev/160.
@@ -50,14 +39,15 @@ class Transcoder {
     this.projects.locations.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'GET', apiParams, clientConfig);
 
     /**
-     * Returns the job data.
+     * Creates a job in the specified region.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the job to retrieve. Format: `projects/{project}/locations/{location}/jobs/{job}`
+     * @param {string} apiParams.parent - (Required) Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}`
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobs', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a job.
@@ -69,6 +59,16 @@ class Transcoder {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns the job data.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the job to retrieve. Format: `projects/{project}/locations/{location}/jobs/{job}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.jobTemplates = {};
 
@@ -83,20 +83,6 @@ class Transcoder {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.jobTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobTemplates', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists job templates in the specified region.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - The filter expression, following the syntax outlined in https://google.aip.dev/160.
-     * @param {string} apiParams.orderBy - One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering.
-     * @param {integer} apiParams.pageSize - The maximum number of items to return.
-     * @param {string} apiParams.pageToken - The `next_page_token` value returned from a previous List request, if any.
-     * @param {string} apiParams.parent - (Required) Required. The parent location from which to retrieve the collection of job templates. Format: `projects/{project}/locations/{location}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.jobTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobTemplates', 'GET', apiParams, clientConfig);
 
     /**
      * Returns the job template data.
@@ -118,6 +104,20 @@ class Transcoder {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.jobTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists job templates in the specified region.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - The filter expression, following the syntax outlined in https://google.aip.dev/160.
+     * @param {string} apiParams.orderBy - One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering.
+     * @param {integer} apiParams.pageSize - The maximum number of items to return.
+     * @param {string} apiParams.pageToken - The `next_page_token` value returned from a previous List request, if any.
+     * @param {string} apiParams.parent - (Required) Required. The parent location from which to retrieve the collection of job templates. Format: `projects/{project}/locations/{location}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.jobTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobTemplates', 'GET', apiParams, clientConfig);
   }
 
 /**
