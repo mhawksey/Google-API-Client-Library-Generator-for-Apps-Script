@@ -21,21 +21,21 @@ class Texttospeech {
     this.text = {};
     this.text.synthesize = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/text:synthesize', 'POST', apiParams, clientConfig);
 
+    this.operations = {};
+    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.voices = {};
+    this.voices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/voices', 'GET', apiParams, clientConfig);
+
     this.projects = {};
 
     this.projects.locations = {};
     this.projects.locations.synthesizeLongAudio = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:synthesizeLongAudio', 'POST', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-
-    this.voices = {};
-    this.voices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/voices', 'GET', apiParams, clientConfig);
-
-    this.operations = {};
-    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
