@@ -23,18 +23,6 @@ class Cloudtrace {
     this.projects.traceSinks = {};
 
     /**
-     * List all sinks for the parent resource (GCP project).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available.
-     * @param {string} apiParams.pageToken - Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]"
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.traceSinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+parent}/traceSinks', 'GET', apiParams, clientConfig);
-
-    /**
      * Get a trace sink by name under the parent resource (GCP project).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name of the sink: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`.
@@ -66,6 +54,18 @@ class Cloudtrace {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.traceSinks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * List all sinks for the parent resource (GCP project).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available.
+     * @param {string} apiParams.pageToken - Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]"
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.traceSinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+parent}/traceSinks', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes a sink.
