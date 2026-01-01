@@ -19,8 +19,8 @@ class Datastore {
 
 
     this.projects = {};
-    this.projects.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}:export', 'POST', apiParams, clientConfig);
     this.projects.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}:import', 'POST', apiParams, clientConfig);
+    this.projects.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/projects/{projectId}:export', 'POST', apiParams, clientConfig);
   }
 
 /**
