@@ -21,18 +21,6 @@ class Reseller {
     this.subscriptions = {};
 
     /**
-     * Cancels, suspends, or transfers a subscription to direct.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
-     * @param {string} apiParams.deletionType - (Required) The `deletionType` query string enables the cancellation, downgrade, or suspension of a subscription.
-     * @param {string} apiParams.subscriptionId - (Required) This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Lists of subscriptions managed by the reseller. The list can be all subscriptions, all of a customer's subscriptions, or all of a customer's transferable subscriptions. Optionally, this method can filter the response by a `customerNamePrefix`. For more information, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerAuthToken - The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center.
@@ -47,15 +35,16 @@ class Reseller {
     this.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/subscriptions', 'GET', apiParams, clientConfig);
 
     /**
-     * Suspends an active subscription. You can use this method to suspend a paid subscription that is currently in the `ACTIVE` state. * For `FLEXIBLE` subscriptions, billing is paused. * For `ANNUAL_MONTHLY_PAY` or `ANNUAL_YEARLY_PAY` subscriptions: * Suspending the subscription does not change the renewal date that was originally committed to. * A suspended subscription does not renew. If you activate the subscription after the original renewal date, a new annual subscription will be created, starting on the day of activation. We strongly encourage you to suspend subscriptions only for short periods of time as suspensions over 60 days may result in the subscription being cancelled.
+     * Updates a user license's renewal settings. This is applicable for accounts with annual commitment plans only. For more information, see the description in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_renewal).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
      * @param {string} apiParams.subscriptionId - (Required) This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.subscriptions.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend', 'POST', apiParams, clientConfig);
+    this.subscriptions.changeRenewalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings', 'POST', apiParams, clientConfig);
 
     /**
      * Immediately move a 30-day free trial subscription to a paid service subscription. This method is only applicable if a payment plan has already been set up for the 30-day trial subscription. For more information, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#paid_service).
@@ -67,32 +56,6 @@ class Reseller {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.subscriptions.startPaidService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService', 'POST', apiParams, clientConfig);
-
-    /**
-     * Creates or transfer a subscription. Create a subscription for a customer's account that you ordered using the [Order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/insert.html) method. For more information about creating a subscription for different payment plans, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#create_subscription).\ If you did not order the customer's account using the customer insert method, use the customer's `customerAuthToken` when creating a subscription for that customer. If transferring a G Suite subscription with an associated Google Drive or Google Vault subscription, use the [batch operation](https://developers.google.com/workspace/admin/reseller/v1/how-tos/batch.html) to transfer all of these subscriptions. For more information, see how to [transfer subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#transfer_a_subscription).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.action - The intented insert action. Advised to set this when the customer already has a subscription for a different SKU in the same product.
-     * @param {string} apiParams.customerAuthToken - The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center.
-     * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
-     * @param {string} apiParams.sourceSkuId - The sku_id of the existing subscription to be upgraded or downgraded. This is required when action is SWITCH.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a user license's renewal settings. This is applicable for accounts with annual commitment plans only. For more information, see the description in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_renewal).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
-     * @param {string} apiParams.subscriptionId - (Required) This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.changeRenewalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a specific subscription. The `subscriptionId` can be found using the [Retrieve all reseller subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#get_all_subscriptions) method. For more information about retrieving a specific subscription, see the information descrived in [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#get_subscription).
@@ -118,17 +81,6 @@ class Reseller {
     this.subscriptions.changePlan = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changePlan', 'POST', apiParams, clientConfig);
 
     /**
-     * Activates a subscription previously suspended by the reseller. If you did not suspend the customer subscription and it is suspended for any other reason, such as for abuse or a pending ToS acceptance, this call will not reactivate the customer subscription.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
-     * @param {string} apiParams.subscriptionId - (Required) This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.subscriptions.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate', 'POST', apiParams, clientConfig);
-
-    /**
      * Updates a subscription's user license settings. For more information about updating an annual commitment plan or a flexible plan subscription’s licenses, see [Manage Subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#update_subscription_seat).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
@@ -140,61 +92,55 @@ class Reseller {
      */
     this.subscriptions.changeSeats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeSeats', 'POST', apiParams, clientConfig);
 
-    this.customers = {};
-
     /**
-     * Updates a customer account's settings. This method supports patch semantics. You cannot update `customerType` via the Reseller API, but a `"team"` customer can verify their domain and become `customerType = "domain"`. For more information, see [Verify your domain to unlock Essentials features](https://support.google.com/a/answer/9122284).
+     * Suspends an active subscription. You can use this method to suspend a paid subscription that is currently in the `ACTIVE` state. * For `FLEXIBLE` subscriptions, billing is paused. * For `ANNUAL_MONTHLY_PAY` or `ANNUAL_YEARLY_PAY` subscriptions: * Suspending the subscription does not change the renewal date that was originally committed to. * A suspended subscription does not renew. If you activate the subscription after the original renewal date, a new annual subscription will be created, starting on the day of activation. We strongly encourage you to suspend subscriptions only for short periods of time as suspensions over 60 days may result in the subscription being cancelled.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.subscriptionId - (Required) This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'PATCH', apiParams, clientConfig);
+    this.subscriptions.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates a customer account's settings. You cannot update `customerType` via the Reseller API, but a `"team"` customer can verify their domain and become `customerType = "domain"`. For more information, see [update a customer's settings](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#update_customer).
+     * Cancels, suspends, or transfers a subscription to direct.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.deletionType - (Required) The `deletionType` query string enables the cancellation, downgrade, or suspension of a subscription.
+     * @param {string} apiParams.subscriptionId - (Required) This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'PUT', apiParams, clientConfig);
+    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Gets a customer account. Use this operation to see a customer account already in your reseller management, or to see the minimal account information for an existing customer that you do not manage. For more information about the API response for existing customers, see [retrieving a customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#get_customer).
+     * Activates a subscription previously suspended by the reseller. If you did not suspend the customer subscription and it is suspended for any other reason, such as for abuse or a pending ToS acceptance, this call will not reactivate the customer subscription.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
+     * @param {string} apiParams.subscriptionId - (Required) This is a required property. The `subscriptionId` is the subscription identifier and is unique for each customer. Since a `subscriptionId` changes when a subscription is updated, we recommend to not use this ID as a key for persistent data. And the `subscriptionId` can be found using the retrieve all reseller subscriptions method.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'GET', apiParams, clientConfig);
+    this.subscriptions.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate', 'POST', apiParams, clientConfig);
 
     /**
-     * Orders a new customer's account. Before ordering a new customer account, establish whether the customer account already exists using the [`customers.get`](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/get) If the customer account exists as a direct Google account or as a resold customer account from another reseller, use the `customerAuthToken\` as described in [order a resold account for an existing customer](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_existing_customer). For more information about ordering a new customer account, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_customer). After creating a new customer account, you must provision a user as an administrator. The customer's administrator is required to sign in to the Admin console and sign the G Suite via Reseller agreement to activate the account. Resellers are prohibited from signing the G Suite via Reseller agreement on the customer's behalf. For more information, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#tos).
+     * Creates or transfer a subscription. Create a subscription for a customer's account that you ordered using the [Order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/insert.html) method. For more information about creating a subscription for different payment plans, see [manage subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#create_subscription).\ If you did not order the customer's account using the customer insert method, use the customer's `customerAuthToken` when creating a subscription for that customer. If transferring a G Suite subscription with an associated Google Drive or Google Vault subscription, use the [batch operation](https://developers.google.com/workspace/admin/reseller/v1/how-tos/batch.html) to transfer all of these subscriptions. For more information, see how to [transfer subscriptions](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_subscriptions#transfer_a_subscription).
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.action - The intented insert action. Advised to set this when the customer already has a subscription for a different SKU in the same product.
      * @param {string} apiParams.customerAuthToken - The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center.
+     * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
+     * @param {string} apiParams.sourceSkuId - The sku_id of the existing subscription to be upgraded or downgraded. This is required when action is SWITCH.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers', 'POST', apiParams, clientConfig);
+    this.subscriptions.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions', 'POST', apiParams, clientConfig);
 
     this.resellernotify = {};
-
-    /**
-     * Returns all the details of the watch corresponding to the reseller.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.resellernotify.getwatchdetails = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/resellernotify/getwatchdetails', 'GET', apiParams, clientConfig);
 
     /**
      * Unregisters a Reseller for receiving notifications.
@@ -215,6 +161,60 @@ class Reseller {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.resellernotify.register = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/resellernotify/register', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns all the details of the watch corresponding to the reseller.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.resellernotify.getwatchdetails = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/resellernotify/getwatchdetails', 'GET', apiParams, clientConfig);
+
+    this.customers = {};
+
+    /**
+     * Orders a new customer's account. Before ordering a new customer account, establish whether the customer account already exists using the [`customers.get`](https://developers.google.com/workspace/admin/reseller/v1/reference/customers/get) If the customer account exists as a direct Google account or as a resold customer account from another reseller, use the `customerAuthToken\` as described in [order a resold account for an existing customer](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_existing_customer). For more information about ordering a new customer account, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#create_customer). After creating a new customer account, you must provision a user as an administrator. The customer's administrator is required to sign in to the Admin console and sign the G Suite via Reseller agreement to activate the account. Resellers are prohibited from signing the G Suite via Reseller agreement on the customer's behalf. For more information, see [order a new customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#tos).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customerAuthToken - The `customerAuthToken` query string is required when creating a resold account that transfers a direct customer's subscription or transfers another reseller customer's subscription to your reseller management. This is a hexadecimal authentication token needed to complete the subscription transfer. For more information, see the administrator help center.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a customer account's settings. This method supports patch semantics. You cannot update `customerType` via the Reseller API, but a `"team"` customer can verify their domain and become `customerType = "domain"`. For more information, see [Verify your domain to unlock Essentials features](https://support.google.com/a/answer/9122284).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Gets a customer account. Use this operation to see a customer account already in your reseller management, or to see the minimal account information for an existing customer that you do not manage. For more information about the API response for existing customers, see [retrieving a customer account](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#get_customer).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a customer account's settings. You cannot update `customerType` via the Reseller API, but a `"team"` customer can verify their domain and become `customerType = "domain"`. For more information, see [update a customer's settings](https://developers.google.com/workspace/admin/reseller/v1/how-tos/manage_customers#update_customer).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customerId - (Required) This can be either the customer's primary domain name or the customer's unique identifier. If the domain name for a customer changes, the old domain name cannot be used to access the customer, but the customer's unique identifier (as returned by the API) can always be used. We recommend storing the unique identifier in your systems where applicable.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'PUT', apiParams, clientConfig);
   }
 
 /**
