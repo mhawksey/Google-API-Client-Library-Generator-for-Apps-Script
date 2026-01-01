@@ -34,6 +34,17 @@ class Cloudtrace {
     this.projects.traces = {};
 
     /**
+     * Gets a single trace by its ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.projectId - (Required) Required. ID of the Cloud project where the trace data is stored.
+     * @param {string} apiParams.traceId - (Required) Required. ID of the trace to return.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.traces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces/{traceId}', 'GET', apiParams, clientConfig);
+
+    /**
      * Returns a list of traces that match the specified filter conditions.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.endTime - End of the time interval (inclusive) during which the trace data was collected from the application.
@@ -49,17 +60,6 @@ class Cloudtrace {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.traces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a single trace by its ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Required. ID of the Cloud project where the trace data is stored.
-     * @param {string} apiParams.traceId - (Required) Required. ID of the trace to return.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.traces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces/{traceId}', 'GET', apiParams, clientConfig);
   }
 
 /**
