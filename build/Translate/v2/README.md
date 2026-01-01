@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Cloud Translation API (vers
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:17:56 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:14:35 GMT
 - **Last Modified:** Sat, 01 Nov 2025 01:24:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:18 GMT
 
