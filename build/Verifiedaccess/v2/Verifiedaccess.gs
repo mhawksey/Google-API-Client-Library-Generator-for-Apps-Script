@@ -19,8 +19,8 @@ class Verifiedaccess {
 
 
     this.challenge = {};
-    this.challenge.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/challenge:generate', 'POST', apiParams, clientConfig);
     this.challenge.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/challenge:verify', 'POST', apiParams, clientConfig);
+    this.challenge.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/challenge:generate', 'POST', apiParams, clientConfig);
   }
 
 /**
