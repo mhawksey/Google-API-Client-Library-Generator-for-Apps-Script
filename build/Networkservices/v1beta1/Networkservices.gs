@@ -21,133 +21,133 @@ class Networkservices {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.lbTrafficExtensions = {};
-    this.projects.locations.lbTrafficExtensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbTrafficExtensions', 'GET', apiParams, clientConfig);
-    this.projects.locations.lbTrafficExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.lbTrafficExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbTrafficExtensions', 'POST', apiParams, clientConfig);
-    this.projects.locations.lbTrafficExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.lbTrafficExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.httpRoutes = {};
+    this.projects.locations.httpRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/httpRoutes', 'POST', apiParams, clientConfig);
+    this.projects.locations.httpRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/httpRoutes', 'GET', apiParams, clientConfig);
+    this.projects.locations.httpRoutes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.httpRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.httpRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.lbRouteExtensions = {};
     this.projects.locations.lbRouteExtensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbRouteExtensions', 'GET', apiParams, clientConfig);
-    this.projects.locations.lbRouteExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.lbRouteExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbRouteExtensions', 'POST', apiParams, clientConfig);
     this.projects.locations.lbRouteExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.lbRouteExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbRouteExtensions', 'POST', apiParams, clientConfig);
+    this.projects.locations.lbRouteExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.lbRouteExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.lbEdgeExtensions = {};
-    this.projects.locations.lbEdgeExtensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbEdgeExtensions', 'GET', apiParams, clientConfig);
-    this.projects.locations.lbEdgeExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.lbEdgeExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbEdgeExtensions', 'POST', apiParams, clientConfig);
-    this.projects.locations.lbEdgeExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.lbEdgeExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.tlsRoutes = {};
+    this.projects.locations.tlsRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tlsRoutes', 'GET', apiParams, clientConfig);
+    this.projects.locations.tlsRoutes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.tlsRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.tlsRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tlsRoutes', 'POST', apiParams, clientConfig);
+    this.projects.locations.tlsRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.lbTcpExtensions = {};
+    this.projects.locations.lbTcpExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.lbTcpExtensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbTcpExtensions', 'GET', apiParams, clientConfig);
     this.projects.locations.lbTcpExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.lbTcpExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbTcpExtensions', 'POST', apiParams, clientConfig);
-    this.projects.locations.lbTcpExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.lbTcpExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.authzExtensions = {};
     this.projects.locations.authzExtensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/authzExtensions', 'GET', apiParams, clientConfig);
     this.projects.locations.authzExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.authzExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/authzExtensions', 'POST', apiParams, clientConfig);
     this.projects.locations.authzExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.authzExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.authzExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/authzExtensions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.lbTrafficExtensions = {};
+    this.projects.locations.lbTrafficExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.lbTrafficExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbTrafficExtensions', 'POST', apiParams, clientConfig);
+    this.projects.locations.lbTrafficExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.lbTrafficExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.lbTrafficExtensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbTrafficExtensions', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.serviceLbPolicies = {};
+    this.projects.locations.serviceLbPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.serviceLbPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/serviceLbPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.serviceLbPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceLbPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/serviceLbPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceLbPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.tcpRoutes = {};
+    this.projects.locations.tcpRoutes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.tcpRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tcpRoutes', 'POST', apiParams, clientConfig);
+    this.projects.locations.tcpRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.tcpRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tcpRoutes', 'GET', apiParams, clientConfig);
+    this.projects.locations.tcpRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.endpointPolicies = {};
-    this.projects.locations.endpointPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/endpointPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.endpointPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.endpointPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/endpointPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.endpointPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.endpointPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/endpointPolicies', 'GET', apiParams, clientConfig);
     this.projects.locations.endpointPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.endpointPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.wasmPlugins = {};
-    this.projects.locations.wasmPlugins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/wasmPlugins', 'GET', apiParams, clientConfig);
-    this.projects.locations.wasmPlugins.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.wasmPlugins.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/wasmPlugins', 'POST', apiParams, clientConfig);
-    this.projects.locations.wasmPlugins.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.wasmPlugins.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.wasmPlugins.versions = {};
-    this.projects.locations.wasmPlugins.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'GET', apiParams, clientConfig);
-    this.projects.locations.wasmPlugins.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.wasmPlugins.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'POST', apiParams, clientConfig);
-    this.projects.locations.wasmPlugins.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.gateways = {};
-    this.projects.locations.gateways.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/gateways', 'GET', apiParams, clientConfig);
-    this.projects.locations.gateways.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.gateways.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/gateways', 'POST', apiParams, clientConfig);
-    this.projects.locations.gateways.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.gateways.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.gateways.routeViews = {};
-    this.projects.locations.gateways.routeViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.gateways.routeViews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/routeViews', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.grpcRoutes = {};
-    this.projects.locations.grpcRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/grpcRoutes', 'GET', apiParams, clientConfig);
-    this.projects.locations.grpcRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.grpcRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/grpcRoutes', 'POST', apiParams, clientConfig);
-    this.projects.locations.grpcRoutes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.grpcRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.httpRoutes = {};
-    this.projects.locations.httpRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/httpRoutes', 'GET', apiParams, clientConfig);
-    this.projects.locations.httpRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.httpRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/httpRoutes', 'POST', apiParams, clientConfig);
-    this.projects.locations.httpRoutes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.httpRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.tcpRoutes = {};
-    this.projects.locations.tcpRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tcpRoutes', 'GET', apiParams, clientConfig);
-    this.projects.locations.tcpRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.tcpRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tcpRoutes', 'POST', apiParams, clientConfig);
-    this.projects.locations.tcpRoutes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.tcpRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.tlsRoutes = {};
-    this.projects.locations.tlsRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tlsRoutes', 'GET', apiParams, clientConfig);
-    this.projects.locations.tlsRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.tlsRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tlsRoutes', 'POST', apiParams, clientConfig);
-    this.projects.locations.tlsRoutes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.tlsRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.serviceBindings = {};
-    this.projects.locations.serviceBindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/serviceBindings', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceBindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceBindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/serviceBindings', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceBindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.serviceBindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.locations.meshes = {};
-    this.projects.locations.meshes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/meshes', 'GET', apiParams, clientConfig);
     this.projects.locations.meshes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.meshes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/meshes', 'POST', apiParams, clientConfig);
-    this.projects.locations.meshes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.meshes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.meshes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/meshes', 'GET', apiParams, clientConfig);
+    this.projects.locations.meshes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.meshes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/meshes', 'POST', apiParams, clientConfig);
 
     this.projects.locations.meshes.routeViews = {};
     this.projects.locations.meshes.routeViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.meshes.routeViews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/routeViews', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.serviceLbPolicies = {};
-    this.projects.locations.serviceLbPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/serviceLbPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceLbPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.serviceLbPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/serviceLbPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.serviceLbPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.serviceLbPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.grpcRoutes = {};
+    this.projects.locations.grpcRoutes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/grpcRoutes', 'POST', apiParams, clientConfig);
+    this.projects.locations.grpcRoutes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.grpcRoutes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.grpcRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/grpcRoutes', 'GET', apiParams, clientConfig);
+    this.projects.locations.grpcRoutes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.wasmPlugins = {};
+    this.projects.locations.wasmPlugins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/wasmPlugins', 'GET', apiParams, clientConfig);
+    this.projects.locations.wasmPlugins.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.wasmPlugins.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/wasmPlugins', 'POST', apiParams, clientConfig);
+    this.projects.locations.wasmPlugins.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.wasmPlugins.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.wasmPlugins.versions = {};
+    this.projects.locations.wasmPlugins.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.projects.locations.wasmPlugins.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.wasmPlugins.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'GET', apiParams, clientConfig);
+    this.projects.locations.wasmPlugins.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.lbEdgeExtensions = {};
+    this.projects.locations.lbEdgeExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.lbEdgeExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbEdgeExtensions', 'POST', apiParams, clientConfig);
+    this.projects.locations.lbEdgeExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.lbEdgeExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.lbEdgeExtensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/lbEdgeExtensions', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.gateways = {};
+    this.projects.locations.gateways.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.gateways.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/gateways', 'POST', apiParams, clientConfig);
+    this.projects.locations.gateways.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.gateways.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.gateways.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/gateways', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.gateways.routeViews = {};
+    this.projects.locations.gateways.routeViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.gateways.routeViews.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/routeViews', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.serviceBindings = {};
+    this.projects.locations.serviceBindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/serviceBindings', 'POST', apiParams, clientConfig);
+    this.projects.locations.serviceBindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.serviceBindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/serviceBindings', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceBindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.serviceBindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
