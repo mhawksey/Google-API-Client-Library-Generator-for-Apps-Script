@@ -4,7 +4,7 @@ Auto-generated client library for using the **SAS Portal API (version: v1alpha1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:08:03 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:06:44 GMT
 - **Last Modified:** Mon, 01 Dec 2025 01:08:03 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:19 GMT
 
