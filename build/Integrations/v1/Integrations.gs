@@ -25,56 +25,74 @@ class Integrations {
     this.projects.locations.getClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients', 'GET', apiParams, clientConfig);
     this.projects.locations.generateOpenApiSpec = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateOpenApiSpec', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.sfdcInstances = {};
+    this.projects.locations.sfdcInstances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.sfdcInstances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.sfdcInstances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.sfdcInstances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcInstances', 'GET', apiParams, clientConfig);
+    this.projects.locations.sfdcInstances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcInstances', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.sfdcInstances.sfdcChannels = {};
+    this.projects.locations.sfdcInstances.sfdcChannels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.sfdcInstances.sfdcChannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcChannels', 'GET', apiParams, clientConfig);
+    this.projects.locations.sfdcInstances.sfdcChannels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.sfdcInstances.sfdcChannels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.sfdcInstances.sfdcChannels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcChannels', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.templates = {};
+    this.projects.locations.templates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.templates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.templates.unshare = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unshare', 'POST', apiParams, clientConfig);
+    this.projects.locations.templates.share = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:share', 'POST', apiParams, clientConfig);
+    this.projects.locations.templates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates', 'GET', apiParams, clientConfig);
+    this.projects.locations.templates.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates:upload', 'POST', apiParams, clientConfig);
+    this.projects.locations.templates.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates:search', 'GET', apiParams, clientConfig);
+    this.projects.locations.templates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates', 'POST', apiParams, clientConfig);
+    this.projects.locations.templates.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
+    this.projects.locations.templates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.templates.use = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:use', 'POST', apiParams, clientConfig);
+    this.projects.locations.templates.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:import', 'POST', apiParams, clientConfig);
+
     this.projects.locations.appsScriptProjects = {};
     this.projects.locations.appsScriptProjects.link = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/appsScriptProjects:link', 'POST', apiParams, clientConfig);
     this.projects.locations.appsScriptProjects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/appsScriptProjects', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.clients = {};
-    this.projects.locations.clients.provision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:provision', 'POST', apiParams, clientConfig);
-    this.projects.locations.clients.provisionClientPostProcessor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:provisionClientPostProcessor', 'POST', apiParams, clientConfig);
-    this.projects.locations.clients.deprovision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:deprovision', 'POST', apiParams, clientConfig);
-    this.projects.locations.clients.changeConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:changeConfig', 'POST', apiParams, clientConfig);
-    this.projects.locations.clients.switch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:switch', 'POST', apiParams, clientConfig);
-    this.projects.locations.clients.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:replace', 'POST', apiParams, clientConfig);
-    this.projects.locations.clients.switchVariableMasking = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:switchVariableMasking', 'POST', apiParams, clientConfig);
-    this.projects.locations.clients.toggleHttp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:toggleHttp', 'POST', apiParams, clientConfig);
+    this.projects.locations.authConfigs = {};
+    this.projects.locations.authConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.authConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.authConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.authConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.authConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.connections = {};
+    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.getConnectionSchemaMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.connections.runtimeActionSchemas = {};
+    this.projects.locations.connections.runtimeActionSchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeActionSchemas', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.connections.runtimeEntitySchemas = {};
+    this.projects.locations.connections.runtimeEntitySchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeEntitySchemas', 'GET', apiParams, clientConfig);
 
     this.projects.locations.products = {};
 
-    this.projects.locations.products.cloudFunctions = {};
-    this.projects.locations.products.cloudFunctions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cloudFunctions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.products.certificates = {};
-    this.projects.locations.products.certificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'GET', apiParams, clientConfig);
-    this.projects.locations.products.certificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.products.certificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'POST', apiParams, clientConfig);
-    this.projects.locations.products.certificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.products.certificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.products.authConfigs = {};
-    this.projects.locations.products.authConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.products.authConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.products.authConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.products.authConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.products.authConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authConfigs', 'GET', apiParams, clientConfig);
-
     this.projects.locations.products.integrations = {};
     this.projects.locations.products.integrations.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:execute', 'POST', apiParams, clientConfig);
-    this.projects.locations.products.integrations.schedule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:schedule', 'POST', apiParams, clientConfig);
-    this.projects.locations.products.integrations.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:test', 'POST', apiParams, clientConfig);
     this.projects.locations.products.integrations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/integrations', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.integrations.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:test', 'POST', apiParams, clientConfig);
+    this.projects.locations.products.integrations.schedule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:schedule', 'POST', apiParams, clientConfig);
 
     this.projects.locations.products.integrations.versions = {};
-    this.projects.locations.products.integrations.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
-    this.projects.locations.products.integrations.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
     this.projects.locations.products.integrations.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.products.integrations.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.products.integrations.versions.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:publish', 'POST', apiParams, clientConfig);
-    this.projects.locations.products.integrations.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.products.integrations.versions.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions:upload', 'POST', apiParams, clientConfig);
+    this.projects.locations.products.integrations.versions.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:publish', 'POST', apiParams, clientConfig);
     this.projects.locations.products.integrations.versions.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
-    this.projects.locations.products.integrations.versions.takeoverEditLock = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+integrationVersion}:takeoverEditLock', 'POST', apiParams, clientConfig);
     this.projects.locations.products.integrations.versions.unpublish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unpublish', 'POST', apiParams, clientConfig);
+    this.projects.locations.products.integrations.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.projects.locations.products.integrations.versions.takeoverEditLock = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+integrationVersion}:takeoverEditLock', 'POST', apiParams, clientConfig);
+    this.projects.locations.products.integrations.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.products.integrations.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
 
     this.projects.locations.products.integrations.executions = {};
     this.projects.locations.products.integrations.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/executions', 'GET', apiParams, clientConfig);
@@ -86,126 +104,108 @@ class Integrations {
     this.projects.locations.products.integrations.executions.suspensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/suspensions', 'GET', apiParams, clientConfig);
     this.projects.locations.products.integrations.executions.suspensions.lift = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:lift', 'POST', apiParams, clientConfig);
 
+    this.projects.locations.products.certificates = {};
+    this.projects.locations.products.certificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.certificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.products.certificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.products.certificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.certificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'POST', apiParams, clientConfig);
+
     this.projects.locations.products.sfdcInstances = {};
     this.projects.locations.products.sfdcInstances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcInstances', 'POST', apiParams, clientConfig);
-    this.projects.locations.products.sfdcInstances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.products.sfdcInstances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.products.sfdcInstances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.products.sfdcInstances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcInstances', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.sfdcInstances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.products.sfdcInstances.sfdcChannels = {};
     this.projects.locations.products.sfdcInstances.sfdcChannels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcChannels', 'POST', apiParams, clientConfig);
     this.projects.locations.products.sfdcInstances.sfdcChannels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.products.sfdcInstances.sfdcChannels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.products.sfdcInstances.sfdcChannels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.products.sfdcInstances.sfdcChannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcChannels', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.sfdcInstances.sfdcChannels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.products.cloudFunctions = {};
+    this.projects.locations.products.cloudFunctions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cloudFunctions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.products.authConfigs = {};
+    this.projects.locations.products.authConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.products.authConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.authConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.authConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.products.authConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authConfigs', 'POST', apiParams, clientConfig);
 
     this.projects.locations.cloudFunctions = {};
     this.projects.locations.cloudFunctions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cloudFunctions', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.certificates = {};
-    this.projects.locations.certificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'GET', apiParams, clientConfig);
-    this.projects.locations.certificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.certificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'POST', apiParams, clientConfig);
-    this.projects.locations.certificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.certificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.authConfigs = {};
-    this.projects.locations.authConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.authConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.authConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.authConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.authConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authConfigs', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.connections = {};
-    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.getConnectionSchemaMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.connections.runtimeEntitySchemas = {};
-    this.projects.locations.connections.runtimeEntitySchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeEntitySchemas', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.connections.runtimeActionSchemas = {};
-    this.projects.locations.connections.runtimeActionSchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeActionSchemas', 'GET', apiParams, clientConfig);
-
     this.projects.locations.integrations = {};
-    this.projects.locations.integrations.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:execute', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.schedule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:schedule', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.executeEvent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeEvent', 'POST', apiParams, clientConfig);
     this.projects.locations.integrations.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:test', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/integrations', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.executeEvent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeEvent', 'POST', apiParams, clientConfig);
     this.projects.locations.integrations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/integrations:search', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/integrations', 'GET', apiParams, clientConfig);
     this.projects.locations.integrations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.integrations.schedule = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:schedule', 'POST', apiParams, clientConfig);
+    this.projects.locations.integrations.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:execute', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.integrations.executions = {};
+    this.projects.locations.integrations.executions.replay = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:replay', 'POST', apiParams, clientConfig);
+    this.projects.locations.integrations.executions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.integrations.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.executions.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/executions', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.integrations.executions.suspensions = {};
+    this.projects.locations.integrations.executions.suspensions.lift = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:lift', 'POST', apiParams, clientConfig);
+    this.projects.locations.integrations.executions.suspensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/suspensions', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.executions.suspensions.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resolve', 'POST', apiParams, clientConfig);
 
     this.projects.locations.integrations.versions = {};
-    this.projects.locations.integrations.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:publish', 'POST', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:test', 'POST', apiParams, clientConfig);
     this.projects.locations.integrations.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.integrations.versions.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions:upload', 'POST', apiParams, clientConfig);
     this.projects.locations.integrations.versions.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.integrations.versions.downloadJsonPackage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:downloadJsonPackage', 'GET', apiParams, clientConfig);
     this.projects.locations.integrations.versions.unpublish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unpublish', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:test', 'POST', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:publish', 'POST', apiParams, clientConfig);
 
     this.projects.locations.integrations.versions.testCases = {};
-    this.projects.locations.integrations.versions.testCases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/testCases', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.testCases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.testCases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.testCases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.integrations.versions.testCases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/testCases', 'GET', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.testCases.executeTest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+testCaseName}:executeTest', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.testCases.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/testCases:upload', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.versions.testCases.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.testCases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/testCases', 'POST', apiParams, clientConfig);
     this.projects.locations.integrations.versions.testCases.takeoverEditLock = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:takeoverEditLock', 'POST', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.testCases.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/testCases:upload', 'POST', apiParams, clientConfig);
     this.projects.locations.integrations.versions.testCases.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/testCases:execute', 'POST', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.testCases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.testCases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.testCases.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.testCases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.integrations.versions.testCases.executeTest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+testCaseName}:executeTest', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.integrations.executions = {};
-    this.projects.locations.integrations.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/executions', 'GET', apiParams, clientConfig);
-    this.projects.locations.integrations.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.integrations.executions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.executions.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
-    this.projects.locations.integrations.executions.replay = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:replay', 'POST', apiParams, clientConfig);
+    this.projects.locations.certificates = {};
+    this.projects.locations.certificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'POST', apiParams, clientConfig);
+    this.projects.locations.certificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/certificates', 'GET', apiParams, clientConfig);
+    this.projects.locations.certificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.certificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.certificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.integrations.executions.suspensions = {};
-    this.projects.locations.integrations.executions.suspensions.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resolve', 'POST', apiParams, clientConfig);
-    this.projects.locations.integrations.executions.suspensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/suspensions', 'GET', apiParams, clientConfig);
-    this.projects.locations.integrations.executions.suspensions.lift = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:lift', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.sfdcInstances = {};
-    this.projects.locations.sfdcInstances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcInstances', 'POST', apiParams, clientConfig);
-    this.projects.locations.sfdcInstances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.sfdcInstances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.sfdcInstances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.sfdcInstances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcInstances', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.sfdcInstances.sfdcChannels = {};
-    this.projects.locations.sfdcInstances.sfdcChannels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcChannels', 'POST', apiParams, clientConfig);
-    this.projects.locations.sfdcInstances.sfdcChannels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.sfdcInstances.sfdcChannels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.sfdcInstances.sfdcChannels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.sfdcInstances.sfdcChannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sfdcChannels', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.templates = {};
-    this.projects.locations.templates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates', 'GET', apiParams, clientConfig);
-    this.projects.locations.templates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.templates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates', 'POST', apiParams, clientConfig);
-    this.projects.locations.templates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.templates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.templates.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates:search', 'GET', apiParams, clientConfig);
-    this.projects.locations.templates.use = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:use', 'POST', apiParams, clientConfig);
-    this.projects.locations.templates.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:import', 'POST', apiParams, clientConfig);
-    this.projects.locations.templates.share = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:share', 'POST', apiParams, clientConfig);
-    this.projects.locations.templates.unshare = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unshare', 'POST', apiParams, clientConfig);
-    this.projects.locations.templates.upload = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/templates:upload', 'POST', apiParams, clientConfig);
-    this.projects.locations.templates.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
-
-    this.connectorPlatformRegions = {};
-    this.connectorPlatformRegions.enumerate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/connectorPlatformRegions:enumerate', 'GET', apiParams, clientConfig);
+    this.projects.locations.clients = {};
+    this.projects.locations.clients.provision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:provision', 'POST', apiParams, clientConfig);
+    this.projects.locations.clients.switchVariableMasking = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:switchVariableMasking', 'POST', apiParams, clientConfig);
+    this.projects.locations.clients.switch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:switch', 'POST', apiParams, clientConfig);
+    this.projects.locations.clients.changeConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:changeConfig', 'POST', apiParams, clientConfig);
+    this.projects.locations.clients.deprovision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:deprovision', 'POST', apiParams, clientConfig);
+    this.projects.locations.clients.provisionClientPostProcessor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:provisionClientPostProcessor', 'POST', apiParams, clientConfig);
+    this.projects.locations.clients.toggleHttp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:toggleHttp', 'POST', apiParams, clientConfig);
+    this.projects.locations.clients.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients:replace', 'POST', apiParams, clientConfig);
 
     this.callback = {};
     this.callback.generateToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/callback:generateToken', 'GET', apiParams, clientConfig);
+
+    this.connectorPlatformRegions = {};
+    this.connectorPlatformRegions.enumerate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/connectorPlatformRegions:enumerate', 'GET', apiParams, clientConfig);
   }
 
 /**
