@@ -19,8 +19,8 @@ class Businessprofileperformance {
 
 
     this.locations = {};
-    this.locations.getDailyMetricsTimeSeries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getDailyMetricsTimeSeries', 'GET', apiParams, clientConfig);
     this.locations.fetchMultiDailyMetricsTimeSeries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:fetchMultiDailyMetricsTimeSeries', 'GET', apiParams, clientConfig);
+    this.locations.getDailyMetricsTimeSeries = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getDailyMetricsTimeSeries', 'GET', apiParams, clientConfig);
 
     this.locations.searchkeywords = {};
 
