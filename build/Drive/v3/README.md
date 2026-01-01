@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Drive API (version: v3)** i
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:45:22 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:45:22 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:43:45 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:43:45 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:36 GMT
 
 
@@ -489,7 +489,7 @@ Updates a permission with patch semantics. For more information, see [Share file
 
 #### `replies.create()`
 
-Creates a reply to a comment.
+Creates a reply to a comment. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -499,7 +499,7 @@ Creates a reply to a comment.
 
 #### `replies.delete()`
 
-Deletes a reply.
+Deletes a reply. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -509,30 +509,30 @@ Deletes a reply.
 
 #### `replies.get()`
 
-Gets a reply by ID.
+Gets a reply by ID. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID of the file. |
 | `params.commentId` | `string` | Yes | The ID of the comment. |
 | `params.replyId` | `string` | Yes | The ID of the reply. |
-| `params.includeDeleted` | `boolean` | No | Whether to return deleted replies. Deleted replies will not include their original content. |
+| `params.includeDeleted` | `boolean` | No | Whether to return deleted replies. Deleted replies don't include their original content. |
 
 #### `replies.list()`
 
-Lists a comment's replies.
+Lists a comment's replies. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.fileId` | `string` | Yes | The ID of the file. |
 | `params.commentId` | `string` | Yes | The ID of the comment. |
-| `params.includeDeleted` | `boolean` | No | Whether to include deleted replies. Deleted replies will not include their original content. |
+| `params.includeDeleted` | `boolean` | No | Whether to include deleted replies. Deleted replies don't include their original content. |
 | `params.pageSize` | `integer` | No | The maximum number of replies to return per page. |
-| `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response. |
+| `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from the previous response. |
 
 #### `replies.update()`
 
-Updates a reply with patch semantics.
+Updates a reply with patch semantics. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -630,6 +630,27 @@ Deprecated: Use `drives.update` instead.
 | `params.teamDriveId` | `string` | Yes | The ID of the Team Drive |
 | `params.useDomainAdminAccess` | `boolean` | No | Issue the request as a domain administrator; if set to true, then the requester will be granted access if they are an administrator of the domain to which the Team Drive belongs. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `approvals`
+
+#### `approvals.get()`
+
+Gets an Approval by ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.fileId` | `string` | Yes | Required. The ID of the file the Approval is on. |
+| `params.approvalId` | `string` | Yes | Required. The ID of the Approval. |
+
+#### `approvals.list()`
+
+Lists the Approvals on a file.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.fileId` | `string` | Yes | Required. The ID of the file the Approval is on. |
+| `params.pageSize` | `integer` | No | The maximum number of Approvals to return. When not set, at most 100 Approvals will be returned. |
+| `params.pageToken` | `string` | No | The token for continuing a previous list request on the next page. This should be set to the value of nextPageToken from a previous response. |
 
 ### `accessproposals`
 
