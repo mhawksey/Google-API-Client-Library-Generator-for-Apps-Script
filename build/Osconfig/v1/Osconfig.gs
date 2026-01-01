@@ -20,57 +20,57 @@ class Osconfig {
 
     this.projects = {};
 
+    this.projects.patchDeployments = {};
+    this.projects.patchDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/patchDeployments', 'POST', apiParams, clientConfig);
+    this.projects.patchDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.patchDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.patchDeployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/patchDeployments', 'GET', apiParams, clientConfig);
+    this.projects.patchDeployments.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
+    this.projects.patchDeployments.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.projects.patchDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.patchJobs = {};
+    this.projects.patchJobs.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/patchJobs:execute', 'POST', apiParams, clientConfig);
+    this.projects.patchJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/patchJobs', 'GET', apiParams, clientConfig);
+    this.projects.patchJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.patchJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.patchJobs.instanceDetails = {};
+    this.projects.patchJobs.instanceDetails.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instanceDetails', 'GET', apiParams, clientConfig);
+
     this.projects.locations = {};
+
+    this.projects.locations.instances = {};
+
+    this.projects.locations.instances.vulnerabilityReports = {};
+    this.projects.locations.instances.vulnerabilityReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vulnerabilityReports', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.vulnerabilityReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.instances.inventories = {};
+    this.projects.locations.instances.inventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/inventories', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.inventories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.instances.osPolicyAssignments = {};
+
+    this.projects.locations.instances.osPolicyAssignments.reports = {};
+    this.projects.locations.instances.osPolicyAssignments.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.osPolicyAssignments.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.global = {};
     this.projects.locations.global.getProjectFeatureSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.global.updateProjectFeatureSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.osPolicyAssignments = {};
-    this.projects.locations.osPolicyAssignments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/osPolicyAssignments', 'POST', apiParams, clientConfig);
-    this.projects.locations.osPolicyAssignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.osPolicyAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.osPolicyAssignments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/osPolicyAssignments', 'GET', apiParams, clientConfig);
+    this.projects.locations.osPolicyAssignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.osPolicyAssignments.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listRevisions', 'GET', apiParams, clientConfig);
+    this.projects.locations.osPolicyAssignments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/osPolicyAssignments', 'GET', apiParams, clientConfig);
+    this.projects.locations.osPolicyAssignments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/osPolicyAssignments', 'POST', apiParams, clientConfig);
     this.projects.locations.osPolicyAssignments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.osPolicyAssignments.operations = {};
-    this.projects.locations.osPolicyAssignments.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.osPolicyAssignments.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.instances = {};
-
-    this.projects.locations.instances.osPolicyAssignments = {};
-
-    this.projects.locations.instances.osPolicyAssignments.reports = {};
-    this.projects.locations.instances.osPolicyAssignments.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.osPolicyAssignments.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.instances.inventories = {};
-    this.projects.locations.instances.inventories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.inventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/inventories', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.instances.vulnerabilityReports = {};
-    this.projects.locations.instances.vulnerabilityReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.vulnerabilityReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vulnerabilityReports', 'GET', apiParams, clientConfig);
-
-    this.projects.patchJobs = {};
-    this.projects.patchJobs.execute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/patchJobs:execute', 'POST', apiParams, clientConfig);
-    this.projects.patchJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.patchJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.patchJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/patchJobs', 'GET', apiParams, clientConfig);
-
-    this.projects.patchJobs.instanceDetails = {};
-    this.projects.patchJobs.instanceDetails.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instanceDetails', 'GET', apiParams, clientConfig);
-
-    this.projects.patchDeployments = {};
-    this.projects.patchDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/patchDeployments', 'POST', apiParams, clientConfig);
-    this.projects.patchDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.patchDeployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/patchDeployments', 'GET', apiParams, clientConfig);
-    this.projects.patchDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.patchDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.patchDeployments.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
-    this.projects.patchDeployments.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.projects.locations.osPolicyAssignments.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
