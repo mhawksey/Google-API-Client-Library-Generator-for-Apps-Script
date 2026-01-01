@@ -18,146 +18,146 @@ class Classroom {
     this._servicePath = '';
 
 
-    this.invitations = {};
-    this.invitations.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}:accept', 'POST', apiParams, clientConfig);
-    this.invitations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}', 'DELETE', apiParams, clientConfig);
-    this.invitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations', 'GET', apiParams, clientConfig);
-    this.invitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations', 'POST', apiParams, clientConfig);
-    this.invitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}', 'GET', apiParams, clientConfig);
-
-    this.registrations = {};
-    this.registrations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/registrations/{registrationId}', 'DELETE', apiParams, clientConfig);
-    this.registrations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/registrations', 'POST', apiParams, clientConfig);
-
-    this.userProfiles = {};
-    this.userProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{userId}', 'GET', apiParams, clientConfig);
-
-    this.userProfiles.guardianInvitations = {};
-    this.userProfiles.guardianInvitations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', 'PATCH', apiParams, clientConfig);
-    this.userProfiles.guardianInvitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations', 'GET', apiParams, clientConfig);
-    this.userProfiles.guardianInvitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations', 'POST', apiParams, clientConfig);
-    this.userProfiles.guardianInvitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', 'GET', apiParams, clientConfig);
-
-    this.userProfiles.guardians = {};
-    this.userProfiles.guardians.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians/{guardianId}', 'GET', apiParams, clientConfig);
-    this.userProfiles.guardians.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians/{guardianId}', 'DELETE', apiParams, clientConfig);
-    this.userProfiles.guardians.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians', 'GET', apiParams, clientConfig);
-
     this.courses = {};
-    this.courses.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'PUT', apiParams, clientConfig);
-    this.courses.getGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'GET', apiParams, clientConfig);
-    this.courses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'PATCH', apiParams, clientConfig);
-    this.courses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'GET', apiParams, clientConfig);
-    this.courses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'DELETE', apiParams, clientConfig);
-    this.courses.updateGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'PATCH', apiParams, clientConfig);
     this.courses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses', 'POST', apiParams, clientConfig);
+    this.courses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'GET', apiParams, clientConfig);
+    this.courses.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'PUT', apiParams, clientConfig);
+    this.courses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'PATCH', apiParams, clientConfig);
+    this.courses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{id}', 'DELETE', apiParams, clientConfig);
     this.courses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses', 'GET', apiParams, clientConfig);
-
-    this.courses.posts = {};
-    this.courses.posts.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnContext', 'GET', apiParams, clientConfig);
-
-    this.courses.posts.addOnAttachments = {};
-    this.courses.posts.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
-    this.courses.posts.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments', 'POST', apiParams, clientConfig);
-    this.courses.posts.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
-    this.courses.posts.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments', 'GET', apiParams, clientConfig);
-    this.courses.posts.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
-
-    this.courses.posts.addOnAttachments.studentSubmissions = {};
-    this.courses.posts.addOnAttachments.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'PATCH', apiParams, clientConfig);
-    this.courses.posts.addOnAttachments.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'GET', apiParams, clientConfig);
-
-    this.courses.topics = {};
-    this.courses.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'DELETE', apiParams, clientConfig);
-    this.courses.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'GET', apiParams, clientConfig);
-    this.courses.topics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'PATCH', apiParams, clientConfig);
-    this.courses.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics', 'POST', apiParams, clientConfig);
-    this.courses.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics', 'GET', apiParams, clientConfig);
-
-    this.courses.announcements = {};
-    this.courses.announcements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements', 'GET', apiParams, clientConfig);
-    this.courses.announcements.modifyAssignees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}:modifyAssignees', 'POST', apiParams, clientConfig);
-    this.courses.announcements.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'DELETE', apiParams, clientConfig);
-    this.courses.announcements.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
-    this.courses.announcements.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements', 'POST', apiParams, clientConfig);
-    this.courses.announcements.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'GET', apiParams, clientConfig);
-    this.courses.announcements.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'PATCH', apiParams, clientConfig);
-
-    this.courses.announcements.addOnAttachments = {};
-    this.courses.announcements.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
-    this.courses.announcements.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
-    this.courses.announcements.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
-    this.courses.announcements.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
-    this.courses.announcements.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
-
-    this.courses.teachers = {};
-    this.courses.teachers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers', 'POST', apiParams, clientConfig);
-    this.courses.teachers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers/{userId}', 'DELETE', apiParams, clientConfig);
-    this.courses.teachers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers', 'GET', apiParams, clientConfig);
-    this.courses.teachers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers/{userId}', 'GET', apiParams, clientConfig);
-
-    this.courses.courseWorkMaterials = {};
-    this.courses.courseWorkMaterials.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{id}', 'GET', apiParams, clientConfig);
-    this.courses.courseWorkMaterials.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
-    this.courses.courseWorkMaterials.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials', 'POST', apiParams, clientConfig);
-    this.courses.courseWorkMaterials.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{id}', 'PATCH', apiParams, clientConfig);
-    this.courses.courseWorkMaterials.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials', 'GET', apiParams, clientConfig);
-    this.courses.courseWorkMaterials.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{id}', 'DELETE', apiParams, clientConfig);
-
-    this.courses.courseWorkMaterials.addOnAttachments = {};
-    this.courses.courseWorkMaterials.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
-    this.courses.courseWorkMaterials.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
-    this.courses.courseWorkMaterials.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
-    this.courses.courseWorkMaterials.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
-    this.courses.courseWorkMaterials.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
+    this.courses.getGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'GET', apiParams, clientConfig);
+    this.courses.updateGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'PATCH', apiParams, clientConfig);
 
     this.courses.aliases = {};
+    this.courses.aliases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases', 'POST', apiParams, clientConfig);
     this.courses.aliases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases/{alias}', 'DELETE', apiParams, clientConfig);
     this.courses.aliases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases', 'GET', apiParams, clientConfig);
-    this.courses.aliases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases', 'POST', apiParams, clientConfig);
 
     this.courses.courseWork = {};
-    this.courses.courseWork.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork', 'GET', apiParams, clientConfig);
-    this.courses.courseWork.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'PATCH', apiParams, clientConfig);
-    this.courses.courseWork.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
     this.courses.courseWork.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork', 'POST', apiParams, clientConfig);
-    this.courses.courseWork.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'GET', apiParams, clientConfig);
-    this.courses.courseWork.modifyAssignees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}:modifyAssignees', 'POST', apiParams, clientConfig);
+    this.courses.courseWork.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'PATCH', apiParams, clientConfig);
     this.courses.courseWork.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'DELETE', apiParams, clientConfig);
+    this.courses.courseWork.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}', 'GET', apiParams, clientConfig);
+    this.courses.courseWork.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork', 'GET', apiParams, clientConfig);
+    this.courses.courseWork.modifyAssignees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{id}:modifyAssignees', 'POST', apiParams, clientConfig);
+    this.courses.courseWork.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
     this.courses.courseWork.updateRubric = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubric', 'PATCH', apiParams, clientConfig);
 
     this.courses.courseWork.studentSubmissions = {};
-    this.courses.courseWork.studentSubmissions.return = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return', 'POST', apiParams, clientConfig);
-    this.courses.courseWork.studentSubmissions.reclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim', 'POST', apiParams, clientConfig);
     this.courses.courseWork.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', 'GET', apiParams, clientConfig);
-    this.courses.courseWork.studentSubmissions.turnIn = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn', 'POST', apiParams, clientConfig);
-    this.courses.courseWork.studentSubmissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions', 'GET', apiParams, clientConfig);
-    this.courses.courseWork.studentSubmissions.modifyAttachments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments', 'POST', apiParams, clientConfig);
     this.courses.courseWork.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', 'PATCH', apiParams, clientConfig);
+    this.courses.courseWork.studentSubmissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions', 'GET', apiParams, clientConfig);
+    this.courses.courseWork.studentSubmissions.turnIn = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:turnIn', 'POST', apiParams, clientConfig);
+    this.courses.courseWork.studentSubmissions.reclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:reclaim', 'POST', apiParams, clientConfig);
+    this.courses.courseWork.studentSubmissions.return = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:return', 'POST', apiParams, clientConfig);
+    this.courses.courseWork.studentSubmissions.modifyAttachments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}:modifyAttachments', 'POST', apiParams, clientConfig);
 
     this.courses.courseWork.addOnAttachments = {};
-    this.courses.courseWork.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
-    this.courses.courseWork.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
-    this.courses.courseWork.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
     this.courses.courseWork.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
     this.courses.courseWork.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
+    this.courses.courseWork.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
+    this.courses.courseWork.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
+    this.courses.courseWork.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
 
     this.courses.courseWork.addOnAttachments.studentSubmissions = {};
     this.courses.courseWork.addOnAttachments.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'PATCH', apiParams, clientConfig);
     this.courses.courseWork.addOnAttachments.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{itemId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'GET', apiParams, clientConfig);
 
     this.courses.courseWork.rubrics = {};
-    this.courses.courseWork.rubrics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', 'DELETE', apiParams, clientConfig);
     this.courses.courseWork.rubrics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', 'PATCH', apiParams, clientConfig);
     this.courses.courseWork.rubrics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics', 'POST', apiParams, clientConfig);
     this.courses.courseWork.rubrics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', 'GET', apiParams, clientConfig);
     this.courses.courseWork.rubrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics', 'GET', apiParams, clientConfig);
+    this.courses.courseWork.rubrics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/rubrics/{id}', 'DELETE', apiParams, clientConfig);
+
+    this.courses.announcements = {};
+    this.courses.announcements.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'DELETE', apiParams, clientConfig);
+    this.courses.announcements.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements', 'POST', apiParams, clientConfig);
+    this.courses.announcements.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'GET', apiParams, clientConfig);
+    this.courses.announcements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements', 'GET', apiParams, clientConfig);
+    this.courses.announcements.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}', 'PATCH', apiParams, clientConfig);
+    this.courses.announcements.modifyAssignees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{id}:modifyAssignees', 'POST', apiParams, clientConfig);
+    this.courses.announcements.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
+
+    this.courses.announcements.addOnAttachments = {};
+    this.courses.announcements.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
+    this.courses.announcements.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
+    this.courses.announcements.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
+    this.courses.announcements.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
+    this.courses.announcements.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/announcements/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
+
+    this.courses.courseWorkMaterials = {};
+    this.courses.courseWorkMaterials.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials', 'POST', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{id}', 'GET', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials', 'GET', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{id}', 'PATCH', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{id}', 'DELETE', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnContext', 'GET', apiParams, clientConfig);
+
+    this.courses.courseWorkMaterials.addOnAttachments = {};
+    this.courses.courseWorkMaterials.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments', 'GET', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments', 'POST', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
+    this.courses.courseWorkMaterials.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWorkMaterials/{itemId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
+
+    this.courses.topics = {};
+    this.courses.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics', 'POST', apiParams, clientConfig);
+    this.courses.topics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'PATCH', apiParams, clientConfig);
+    this.courses.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'DELETE', apiParams, clientConfig);
+    this.courses.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics/{id}', 'GET', apiParams, clientConfig);
+    this.courses.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/topics', 'GET', apiParams, clientConfig);
+
+    this.courses.posts = {};
+    this.courses.posts.getAddOnContext = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnContext', 'GET', apiParams, clientConfig);
+
+    this.courses.posts.addOnAttachments = {};
+    this.courses.posts.addOnAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'GET', apiParams, clientConfig);
+    this.courses.posts.addOnAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments', 'GET', apiParams, clientConfig);
+    this.courses.posts.addOnAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments', 'POST', apiParams, clientConfig);
+    this.courses.posts.addOnAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'PATCH', apiParams, clientConfig);
+    this.courses.posts.addOnAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}', 'DELETE', apiParams, clientConfig);
+
+    this.courses.posts.addOnAttachments.studentSubmissions = {};
+    this.courses.posts.addOnAttachments.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'PATCH', apiParams, clientConfig);
+    this.courses.posts.addOnAttachments.studentSubmissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/posts/{postId}/addOnAttachments/{attachmentId}/studentSubmissions/{submissionId}', 'GET', apiParams, clientConfig);
+
+    this.courses.teachers = {};
+    this.courses.teachers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers', 'POST', apiParams, clientConfig);
+    this.courses.teachers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers/{userId}', 'GET', apiParams, clientConfig);
+    this.courses.teachers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers/{userId}', 'DELETE', apiParams, clientConfig);
+    this.courses.teachers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/teachers', 'GET', apiParams, clientConfig);
 
     this.courses.students = {};
-    this.courses.students.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students/{userId}', 'DELETE', apiParams, clientConfig);
     this.courses.students.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students', 'POST', apiParams, clientConfig);
     this.courses.students.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students/{userId}', 'GET', apiParams, clientConfig);
+    this.courses.students.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students/{userId}', 'DELETE', apiParams, clientConfig);
     this.courses.students.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/students', 'GET', apiParams, clientConfig);
+
+    this.userProfiles = {};
+    this.userProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{userId}', 'GET', apiParams, clientConfig);
+
+    this.userProfiles.guardianInvitations = {};
+    this.userProfiles.guardianInvitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations', 'GET', apiParams, clientConfig);
+    this.userProfiles.guardianInvitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', 'GET', apiParams, clientConfig);
+    this.userProfiles.guardianInvitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations', 'POST', apiParams, clientConfig);
+    this.userProfiles.guardianInvitations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardianInvitations/{invitationId}', 'PATCH', apiParams, clientConfig);
+
+    this.userProfiles.guardians = {};
+    this.userProfiles.guardians.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians', 'GET', apiParams, clientConfig);
+    this.userProfiles.guardians.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians/{guardianId}', 'GET', apiParams, clientConfig);
+    this.userProfiles.guardians.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/userProfiles/{studentId}/guardians/{guardianId}', 'DELETE', apiParams, clientConfig);
+
+    this.invitations = {};
+    this.invitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations', 'POST', apiParams, clientConfig);
+    this.invitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}', 'GET', apiParams, clientConfig);
+    this.invitations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}', 'DELETE', apiParams, clientConfig);
+    this.invitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations', 'GET', apiParams, clientConfig);
+    this.invitations.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/invitations/{id}:accept', 'POST', apiParams, clientConfig);
+
+    this.registrations = {};
+    this.registrations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/registrations', 'POST', apiParams, clientConfig);
+    this.registrations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/registrations/{registrationId}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
