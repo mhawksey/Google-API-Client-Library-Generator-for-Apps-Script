@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Translation API (version: v3
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:17:58 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:14:37 GMT
 - **Last Modified:** Sat, 01 Nov 2025 01:24:11 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:21 GMT
 
