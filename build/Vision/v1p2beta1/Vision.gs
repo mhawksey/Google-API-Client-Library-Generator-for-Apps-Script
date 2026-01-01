@@ -18,33 +18,33 @@ class Vision {
     this._servicePath = '';
 
 
+    this.files = {};
+    this.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/files:annotate', 'POST', apiParams, clientConfig);
+    this.files.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/files:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
+
     this.images = {};
     this.images.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/images:annotate', 'POST', apiParams, clientConfig);
     this.images.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/images:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
 
     this.projects = {};
 
-    this.projects.locations = {};
-
-    this.projects.locations.images = {};
-    this.projects.locations.images.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/images:annotate', 'POST', apiParams, clientConfig);
-    this.projects.locations.images.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/images:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.files = {};
-    this.projects.locations.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/files:annotate', 'POST', apiParams, clientConfig);
-    this.projects.locations.files.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/files:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
-
     this.projects.images = {};
-    this.projects.images.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/images:annotate', 'POST', apiParams, clientConfig);
     this.projects.images.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/images:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
+    this.projects.images.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/images:annotate', 'POST', apiParams, clientConfig);
 
     this.projects.files = {};
     this.projects.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/files:annotate', 'POST', apiParams, clientConfig);
     this.projects.files.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/files:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
 
-    this.files = {};
-    this.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/files:annotate', 'POST', apiParams, clientConfig);
-    this.files.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/files:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
+    this.projects.locations = {};
+
+    this.projects.locations.files = {};
+    this.projects.locations.files.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/files:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
+    this.projects.locations.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/files:annotate', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.images = {};
+    this.projects.locations.images.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/images:annotate', 'POST', apiParams, clientConfig);
+    this.projects.locations.images.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1p2beta1/{+parent}/images:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
   }
 
 /**
