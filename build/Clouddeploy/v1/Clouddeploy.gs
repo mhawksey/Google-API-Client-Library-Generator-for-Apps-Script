@@ -22,41 +22,49 @@ class Clouddeploy {
 
     this.projects.locations = {};
     this.projects.locations.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.deployPolicies = {};
+    this.projects.locations.deployPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.deployPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.deployPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.deployPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.deployPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.deployPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.deployPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
 
     this.projects.locations.deliveryPipelines = {};
-    this.projects.locations.deliveryPipelines.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deliveryPipelines', 'GET', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deliveryPipelines', 'POST', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.rollbackTarget = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollbackTarget', 'POST', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deliveryPipelines', 'GET', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.rollbackTarget = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollbackTarget', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.deliveryPipelines.automationRuns = {};
+    this.projects.locations.deliveryPipelines.automationRuns.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.automationRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/automationRuns', 'GET', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.automationRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.deliveryPipelines.releases = {};
-    this.projects.locations.deliveryPipelines.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases', 'GET', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases', 'POST', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.releases.abandon = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:abandon', 'POST', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/releases', 'GET', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.deliveryPipelines.releases.rollouts = {};
-    this.projects.locations.deliveryPipelines.releases.rollouts.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.releases.rollouts.advance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:advance', 'POST', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.releases.rollouts.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.releases.rollouts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rollouts', 'GET', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.releases.rollouts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.releases.rollouts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rollouts', 'POST', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.releases.rollouts.ignoreJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+rollout}:ignoreJob', 'POST', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.releases.rollouts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rollouts', 'GET', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.releases.rollouts.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.releases.rollouts.advance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:advance', 'POST', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.releases.rollouts.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.releases.rollouts.retryJob = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+rollout}:retryJob', 'POST', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.releases.rollouts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rollouts', 'POST', apiParams, clientConfig);
 
     this.projects.locations.deliveryPipelines.releases.rollouts.jobRuns = {};
     this.projects.locations.deliveryPipelines.releases.rollouts.jobRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/jobRuns', 'GET', apiParams, clientConfig);
@@ -64,44 +72,36 @@ class Clouddeploy {
     this.projects.locations.deliveryPipelines.releases.rollouts.jobRuns.terminate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:terminate', 'POST', apiParams, clientConfig);
 
     this.projects.locations.deliveryPipelines.automations = {};
-    this.projects.locations.deliveryPipelines.automations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/automations', 'POST', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.automations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.automations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/automations', 'GET', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.automations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.deliveryPipelines.automations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.automations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/automations', 'GET', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.automations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.deliveryPipelines.automations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/automations', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.deliveryPipelines.automationRuns = {};
-    this.projects.locations.deliveryPipelines.automationRuns.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.automationRuns.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/automationRuns', 'GET', apiParams, clientConfig);
-    this.projects.locations.deliveryPipelines.automationRuns.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.targets = {};
-    this.projects.locations.targets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/targets', 'GET', apiParams, clientConfig);
-    this.projects.locations.targets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.targets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/targets', 'POST', apiParams, clientConfig);
-    this.projects.locations.targets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.targets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.targets.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.targets.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.targets.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.customTargetTypes = {};
-    this.projects.locations.customTargetTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customTargetTypes', 'GET', apiParams, clientConfig);
+    this.projects.locations.customTargetTypes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.customTargetTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.customTargetTypes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customTargetTypes', 'POST', apiParams, clientConfig);
+    this.projects.locations.customTargetTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customTargetTypes', 'GET', apiParams, clientConfig);
     this.projects.locations.customTargetTypes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.customTargetTypes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.customTargetTypes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.customTargetTypes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.deployPolicies = {};
-    this.projects.locations.deployPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.deployPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.deployPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.deployPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.deployPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.deployPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.deployPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.targets = {};
+    this.projects.locations.targets.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.targets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/targets', 'GET', apiParams, clientConfig);
+    this.projects.locations.targets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/targets', 'POST', apiParams, clientConfig);
+    this.projects.locations.targets.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.targets.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.targets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.targets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.targets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
