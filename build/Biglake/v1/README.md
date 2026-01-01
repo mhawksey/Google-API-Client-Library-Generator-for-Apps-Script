@@ -4,8 +4,8 @@ Auto-generated client library for using the **BigLake API (version: v1)** in Goo
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:24:42 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:24:42 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:24:14 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:24:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:58 GMT
 
 
@@ -20,23 +20,13 @@ Auto-generated client library for using the **BigLake API (version: v1)** in Goo
 
 ### `projects.locations.catalogs`
 
-#### `projects.locations.catalogs.delete()`
+#### `projects.locations.catalogs.get()`
 
-Deletes an existing catalog specified by the catalog ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the catalog to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} |
-
-#### `projects.locations.catalogs.list()`
-
-List all catalogs in a specified project.
+Gets the catalog specified by the resource name.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of catalogs. Format: projects/{project_id_or_number}/locations/{location_id} |
-| `params.pageSize` | `integer` | No | The maximum number of catalogs to return. The service may return fewer than this value. If unspecified, at most 50 catalogs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListCatalogs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCatalogs` must match the call that provided the page token. |
+| `params.name` | `string` | Yes | Required. The name of the catalog to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} |
 
 #### `projects.locations.catalogs.create()`
 
@@ -48,13 +38,23 @@ Creates a new catalog.
 | `params.catalogId` | `string` | No | Required. The ID to use for the catalog, which will become the final component of the catalog's resource name. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.catalogs.get()`
+#### `projects.locations.catalogs.list()`
 
-Gets the catalog specified by the resource name.
+List all catalogs in a specified project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the catalog to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of catalogs. Format: projects/{project_id_or_number}/locations/{location_id} |
+| `params.pageSize` | `integer` | No | The maximum number of catalogs to return. The service may return fewer than this value. If unspecified, at most 50 catalogs will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListCatalogs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListCatalogs` must match the call that provided the page token. |
+
+#### `projects.locations.catalogs.delete()`
+
+Deletes an existing catalog specified by the catalog ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the catalog to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} |
 
 ### `projects.locations.catalogs.databases`
 
@@ -64,37 +64,9 @@ Creates a new database.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.databaseId` | `string` | No | Required. The ID to use for the database, which will become the final component of the database's resource name. |
 | `params.parent` | `string` | Yes | Required. The parent resource where this database will be created. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} |
+| `params.databaseId` | `string` | No | Required. The ID to use for the database, which will become the final component of the database's resource name. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.catalogs.databases.patch()`
-
-Updates an existing database specified by the database ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.updateMask` | `string` | No | The list of fields to update. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update. |
-| `params.name` | `string` | Yes | Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.catalogs.databases.get()`
-
-Gets the database specified by the resource name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the database to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
-
-#### `projects.locations.catalogs.databases.list()`
-
-List all databases in a specified catalog.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListDatabases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatabases` must match the call that provided the page token. |
-| `params.pageSize` | `integer` | No | The maximum number of databases to return. The service may return fewer than this value. If unspecified, at most 50 databases will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of databases. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} |
 
 #### `projects.locations.catalogs.databases.delete()`
 
@@ -104,23 +76,35 @@ Deletes an existing database specified by the database ID.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the database to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
 
+#### `projects.locations.catalogs.databases.patch()`
+
+Updates an existing database specified by the database ID.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
+| `params.updateMask` | `string` | No | The list of fields to update. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.catalogs.databases.list()`
+
+List all databases in a specified catalog.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of databases to return. The service may return fewer than this value. If unspecified, at most 50 databases will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of databases. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id} |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListDatabases` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDatabases` must match the call that provided the page token. |
+
+#### `projects.locations.catalogs.databases.get()`
+
+Gets the database specified by the resource name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the database to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
+
 ### `projects.locations.catalogs.databases.tables`
-
-#### `projects.locations.catalogs.databases.tables.get()`
-
-Gets the table specified by the resource name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the table to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} |
-
-#### `projects.locations.catalogs.databases.tables.delete()`
-
-Deletes an existing table specified by the table ID.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the table to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} |
 
 #### `projects.locations.catalogs.databases.tables.patch()`
 
@@ -128,20 +112,19 @@ Updates an existing table specified by the table ID.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} |
 | `params.updateMask` | `string` | No | The list of fields to update. For the `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask If not set, defaults to all of the fields that are allowed to update. |
+| `params.name` | `string` | Yes | Output only. The resource name. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.catalogs.databases.tables.list()`
+#### `projects.locations.catalogs.databases.tables.create()`
 
-List all tables in a specified database.
+Creates a new table.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | The maximum number of tables to return. The service may return fewer than this value. If unspecified, at most 50 tables will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.view` | `string` | No | The view for the returned tables. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListTables` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTables` must match the call that provided the page token. |
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of tables. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
+| `params.parent` | `string` | Yes | Required. The parent resource where this table will be created. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
+| `params.tableId` | `string` | No | Required. The ID to use for the table, which will become the final component of the table's resource name. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.catalogs.databases.tables.rename()`
 
@@ -152,15 +135,32 @@ Renames an existing table specified by the table ID.
 | `params.name` | `string` | Yes | Required. The table's `name` field is used to identify the table to rename. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.catalogs.databases.tables.create()`
+#### `projects.locations.catalogs.databases.tables.delete()`
 
-Creates a new table.
+Deletes an existing table specified by the table ID.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.tableId` | `string` | No | Required. The ID to use for the table, which will become the final component of the table's resource name. |
-| `params.parent` | `string` | Yes | Required. The parent resource where this table will be created. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The name of the table to delete. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} |
+
+#### `projects.locations.catalogs.databases.tables.get()`
+
+Gets the table specified by the resource name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the table to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id}/tables/{table_id} |
+
+#### `projects.locations.catalogs.databases.tables.list()`
+
+List all tables in a specified database.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.view` | `string` | No | The view for the returned tables. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListTables` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTables` must match the call that provided the page token. |
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of tables. Format: projects/{project_id_or_number}/locations/{location_id}/catalogs/{catalog_id}/databases/{database_id} |
+| `params.pageSize` | `integer` | No | The maximum number of tables to return. The service may return fewer than this value. If unspecified, at most 50 tables will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
 
 ### `projects.catalogs`
 
