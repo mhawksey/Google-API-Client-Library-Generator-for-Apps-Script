@@ -4,7 +4,7 @@ Auto-generated client library for using the **Firebase Management API (version: 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:46:00 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:44:06 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:46:00 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:05 GMT
 
