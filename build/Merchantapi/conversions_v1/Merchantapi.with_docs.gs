@@ -23,15 +23,27 @@ class Merchantapi {
     this.accounts.conversionSources = {};
 
     /**
-     * Creates a new conversion source.
+     * Archives an existing conversion source. If the conversion source is a Merchant Center Destination, it will be recoverable for 30 days. If the conversion source is a Google Analytics Link, it will be deleted immediately and can be restored by creating a new one.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The merchant account that will own the new conversion source. Format: `accounts/{account}`
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The name of the conversion source to be deleted. Format: `accounts/{account}/conversionSources/{conversion_source}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.conversionSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+parent}/conversionSources', 'POST', apiParams, clientConfig);
+    this.accounts.conversionSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Retrieves the list of conversion sources the caller has access to.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of conversion sources to return in a page. If no `page_size` is specified, `100` is used as the default value. The maximum value is `200`. Values above `200` will be coerced to `200`. Regardless of pagination, at most `200` conversion sources are returned in total.
+     * @param {string} apiParams.pageToken - Optional. Page token.
+     * @param {string} apiParams.parent - (Required) Required. The merchant account who owns the collection of conversion sources. Format: `accounts/{account}`
+     * @param {boolean} apiParams.showDeleted - Optional. Show deleted (archived) conversion sources. By default, deleted conversion sources are not returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.conversionSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+parent}/conversionSources', 'GET', apiParams, clientConfig);
 
     /**
      * Updates information of an existing conversion source. Available only for Merchant Center Destination conversion sources.
@@ -44,16 +56,6 @@ class Merchantapi {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.conversionSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Archives an existing conversion source. If the conversion source is a Merchant Center Destination, it will be recoverable for 30 days. If the conversion source is a Google Analytics Link, it will be deleted immediately and can be restored by creating a new one.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the conversion source to be deleted. Format: `accounts/{account}/conversionSources/{conversion_source}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.conversionSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Re-enables an archived conversion source. Only Available for Merchant Center Destination conversion sources.
@@ -77,17 +79,15 @@ class Merchantapi {
     this.accounts.conversionSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Retrieves the list of conversion sources the caller has access to.
+     * Creates a new conversion source.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of conversion sources to return in a page. If no `page_size` is specified, `100` is used as the default value. The maximum value is `200`. Values above `200` will be coerced to `200`. Regardless of pagination, at most `200` conversion sources are returned in total.
-     * @param {string} apiParams.pageToken - Optional. Page token.
-     * @param {string} apiParams.parent - (Required) Required. The merchant account who owns the collection of conversion sources. Format: `accounts/{account}`
-     * @param {boolean} apiParams.showDeleted - Optional. Show deleted (archived) conversion sources. By default, deleted conversion sources are not returned.
+     * @param {string} apiParams.parent - (Required) Required. The merchant account that will own the new conversion source. Format: `accounts/{account}`
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.conversionSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+parent}/conversionSources', 'GET', apiParams, clientConfig);
+    this.accounts.conversionSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('conversions/v1/{+parent}/conversionSources', 'POST', apiParams, clientConfig);
   }
 
 /**
