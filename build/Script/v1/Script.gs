@@ -19,30 +19,30 @@ class Script {
 
 
     this.projects = {};
+    this.projects.getContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/content', 'GET', apiParams, clientConfig);
+    this.projects.updateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/content', 'PUT', apiParams, clientConfig);
     this.projects.getMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/metrics', 'GET', apiParams, clientConfig);
     this.projects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects', 'POST', apiParams, clientConfig);
     this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}', 'GET', apiParams, clientConfig);
-    this.projects.getContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/content', 'GET', apiParams, clientConfig);
-    this.projects.updateContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/content', 'PUT', apiParams, clientConfig);
-
-    this.projects.deployments = {};
-    this.projects.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments', 'POST', apiParams, clientConfig);
-    this.projects.deployments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'PUT', apiParams, clientConfig);
-    this.projects.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'DELETE', apiParams, clientConfig);
-    this.projects.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'GET', apiParams, clientConfig);
-    this.projects.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments', 'GET', apiParams, clientConfig);
 
     this.projects.versions = {};
     this.projects.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/versions', 'POST', apiParams, clientConfig);
     this.projects.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/versions/{versionNumber}', 'GET', apiParams, clientConfig);
     this.projects.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/versions', 'GET', apiParams, clientConfig);
 
-    this.processes = {};
-    this.processes.listScriptProcesses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/processes:listScriptProcesses', 'GET', apiParams, clientConfig);
-    this.processes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/processes', 'GET', apiParams, clientConfig);
+    this.projects.deployments = {};
+    this.projects.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'DELETE', apiParams, clientConfig);
+    this.projects.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments', 'POST', apiParams, clientConfig);
+    this.projects.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments', 'GET', apiParams, clientConfig);
+    this.projects.deployments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'PUT', apiParams, clientConfig);
+    this.projects.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{scriptId}/deployments/{deploymentId}', 'GET', apiParams, clientConfig);
 
     this.scripts = {};
     this.scripts.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/scripts/{scriptId}:run', 'POST', apiParams, clientConfig);
+
+    this.processes = {};
+    this.processes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/processes', 'GET', apiParams, clientConfig);
+    this.processes.listScriptProcesses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/processes:listScriptProcesses', 'GET', apiParams, clientConfig);
   }
 
 /**
