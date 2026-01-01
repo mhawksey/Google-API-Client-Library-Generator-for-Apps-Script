@@ -23,14 +23,14 @@ class Area120tables {
     this.tables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/tables', 'GET', apiParams, clientConfig);
 
     this.tables.rows = {};
-    this.tables.rows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows', 'POST', apiParams, clientConfig);
-    this.tables.rows.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.tables.rows.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows', 'GET', apiParams, clientConfig);
-    this.tables.rows.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchUpdate', 'POST', apiParams, clientConfig);
-    this.tables.rows.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchDelete', 'POST', apiParams, clientConfig);
-    this.tables.rows.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
     this.tables.rows.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.tables.rows.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows', 'GET', apiParams, clientConfig);
+    this.tables.rows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows', 'POST', apiParams, clientConfig);
     this.tables.rows.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchCreate', 'POST', apiParams, clientConfig);
+    this.tables.rows.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.tables.rows.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchUpdate', 'POST', apiParams, clientConfig);
+    this.tables.rows.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.tables.rows.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/rows:batchDelete', 'POST', apiParams, clientConfig);
 
     this.workspaces = {};
     this.workspaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
