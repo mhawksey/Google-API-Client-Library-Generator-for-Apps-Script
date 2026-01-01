@@ -19,17 +19,17 @@ class Cloudresourcemanager {
 
 
     this.folders = {};
-    this.folders.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:move', 'POST', apiParams, clientConfig);
+    this.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
     this.folders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/folders', 'POST', apiParams, clientConfig);
     this.folders.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/folders:search', 'POST', apiParams, clientConfig);
-    this.folders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.folders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.folders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/folders', 'GET', apiParams, clientConfig);
     this.folders.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.folders.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.folders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/folders', 'GET', apiParams, clientConfig);
+    this.folders.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.folders.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:move', 'POST', apiParams, clientConfig);
     this.folders.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.folders.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
 
     this.operations = {};
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
