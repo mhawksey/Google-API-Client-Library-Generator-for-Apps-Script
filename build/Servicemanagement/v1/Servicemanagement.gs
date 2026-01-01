@@ -18,37 +18,37 @@ class Servicemanagement {
     this._servicePath = '';
 
 
-    this.operations = {};
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations', 'GET', apiParams, clientConfig);
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.services = {};
-    this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services', 'GET', apiParams, clientConfig);
-    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}', 'GET', apiParams, clientConfig);
-    this.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services', 'POST', apiParams, clientConfig);
-    this.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}', 'DELETE', apiParams, clientConfig);
     this.services.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}:undelete', 'POST', apiParams, clientConfig);
-    this.services.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/config', 'GET', apiParams, clientConfig);
     this.services.generateConfigReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services:generateConfigReport', 'POST', apiParams, clientConfig);
-    this.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.services.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
     this.services.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}', 'GET', apiParams, clientConfig);
+    this.services.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services', 'GET', apiParams, clientConfig);
+    this.services.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/config', 'GET', apiParams, clientConfig);
+    this.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services', 'POST', apiParams, clientConfig);
+    this.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}', 'DELETE', apiParams, clientConfig);
 
     this.services.configs = {};
-    this.services.configs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/configs', 'GET', apiParams, clientConfig);
-    this.services.configs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/configs/{configId}', 'GET', apiParams, clientConfig);
-    this.services.configs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/configs', 'POST', apiParams, clientConfig);
     this.services.configs.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/configs:submit', 'POST', apiParams, clientConfig);
-
-    this.services.rollouts = {};
-    this.services.rollouts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/rollouts', 'GET', apiParams, clientConfig);
-    this.services.rollouts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/rollouts/{rolloutId}', 'GET', apiParams, clientConfig);
-    this.services.rollouts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/rollouts', 'POST', apiParams, clientConfig);
+    this.services.configs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/configs', 'POST', apiParams, clientConfig);
+    this.services.configs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/configs/{configId}', 'GET', apiParams, clientConfig);
+    this.services.configs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/configs', 'GET', apiParams, clientConfig);
 
     this.services.consumers = {};
     this.services.consumers.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.services.consumers.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
     this.services.consumers.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.services.rollouts = {};
+    this.services.rollouts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/rollouts', 'POST', apiParams, clientConfig);
+    this.services.rollouts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/rollouts', 'GET', apiParams, clientConfig);
+    this.services.rollouts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}/rollouts/{rolloutId}', 'GET', apiParams, clientConfig);
+
+    this.operations = {};
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations', 'GET', apiParams, clientConfig);
   }
 
 /**
