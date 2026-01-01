@@ -18,47 +18,6 @@ class Pubsublite {
     this._servicePath = '';
 
 
-    this.admin = {};
-
-    this.admin.projects = {};
-
-    this.admin.projects.locations = {};
-
-    this.admin.projects.locations.operations = {};
-    this.admin.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.admin.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
-    this.admin.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
-    this.admin.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.admin.projects.locations.topics = {};
-    this.admin.projects.locations.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/topics', 'POST', apiParams, clientConfig);
-    this.admin.projects.locations.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
-    this.admin.projects.locations.topics.getPartitions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/partitions', 'GET', apiParams, clientConfig);
-    this.admin.projects.locations.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/topics', 'GET', apiParams, clientConfig);
-    this.admin.projects.locations.topics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
-    this.admin.projects.locations.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.admin.projects.locations.topics.subscriptions = {};
-    this.admin.projects.locations.topics.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/subscriptions', 'GET', apiParams, clientConfig);
-
-    this.admin.projects.locations.subscriptions = {};
-    this.admin.projects.locations.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
-    this.admin.projects.locations.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
-    this.admin.projects.locations.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/subscriptions', 'GET', apiParams, clientConfig);
-    this.admin.projects.locations.subscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
-    this.admin.projects.locations.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
-    this.admin.projects.locations.subscriptions.seek = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}:seek', 'POST', apiParams, clientConfig);
-
-    this.admin.projects.locations.reservations = {};
-    this.admin.projects.locations.reservations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/reservations', 'POST', apiParams, clientConfig);
-    this.admin.projects.locations.reservations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
-    this.admin.projects.locations.reservations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/reservations', 'GET', apiParams, clientConfig);
-    this.admin.projects.locations.reservations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
-    this.admin.projects.locations.reservations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.admin.projects.locations.reservations.topics = {};
-    this.admin.projects.locations.reservations.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/topics', 'GET', apiParams, clientConfig);
-
     this.cursor = {};
 
     this.cursor.projects = {};
@@ -79,8 +38,49 @@ class Pubsublite {
 
     this.topicStats.projects.locations.topics = {};
     this.topicStats.projects.locations.topics.computeMessageStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/topicStats/{+topic}:computeMessageStats', 'POST', apiParams, clientConfig);
-    this.topicStats.projects.locations.topics.computeHeadCursor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/topicStats/{+topic}:computeHeadCursor', 'POST', apiParams, clientConfig);
     this.topicStats.projects.locations.topics.computeTimeCursor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/topicStats/{+topic}:computeTimeCursor', 'POST', apiParams, clientConfig);
+    this.topicStats.projects.locations.topics.computeHeadCursor = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/topicStats/{+topic}:computeHeadCursor', 'POST', apiParams, clientConfig);
+
+    this.admin = {};
+
+    this.admin.projects = {};
+
+    this.admin.projects.locations = {};
+
+    this.admin.projects.locations.operations = {};
+    this.admin.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
+    this.admin.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.admin.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
+    this.admin.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    this.admin.projects.locations.subscriptions = {};
+    this.admin.projects.locations.subscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
+    this.admin.projects.locations.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/subscriptions', 'GET', apiParams, clientConfig);
+    this.admin.projects.locations.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
+    this.admin.projects.locations.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
+    this.admin.projects.locations.subscriptions.seek = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}:seek', 'POST', apiParams, clientConfig);
+    this.admin.projects.locations.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
+
+    this.admin.projects.locations.reservations = {};
+    this.admin.projects.locations.reservations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
+    this.admin.projects.locations.reservations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/reservations', 'POST', apiParams, clientConfig);
+    this.admin.projects.locations.reservations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
+    this.admin.projects.locations.reservations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/reservations', 'GET', apiParams, clientConfig);
+    this.admin.projects.locations.reservations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
+
+    this.admin.projects.locations.reservations.topics = {};
+    this.admin.projects.locations.reservations.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/topics', 'GET', apiParams, clientConfig);
+
+    this.admin.projects.locations.topics = {};
+    this.admin.projects.locations.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/topics', 'GET', apiParams, clientConfig);
+    this.admin.projects.locations.topics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'PATCH', apiParams, clientConfig);
+    this.admin.projects.locations.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'GET', apiParams, clientConfig);
+    this.admin.projects.locations.topics.getPartitions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/partitions', 'GET', apiParams, clientConfig);
+    this.admin.projects.locations.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}', 'DELETE', apiParams, clientConfig);
+    this.admin.projects.locations.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+parent}/topics', 'POST', apiParams, clientConfig);
+
+    this.admin.projects.locations.topics.subscriptions = {};
+    this.admin.projects.locations.topics.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/admin/{+name}/subscriptions', 'GET', apiParams, clientConfig);
   }
 
 /**
