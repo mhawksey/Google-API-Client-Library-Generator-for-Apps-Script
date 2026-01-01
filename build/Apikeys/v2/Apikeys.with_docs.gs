@@ -37,29 +37,6 @@ class Apikeys {
     this.projects.locations.keys = {};
 
     /**
-     * Lists the API keys owned by a project. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. Specifies the maximum number of results to be returned at a time.
-     * @param {string} apiParams.pageToken - Optional. Requests a specific page of results.
-     * @param {string} apiParams.parent - (Required) Required. Lists all API keys associated with this project.
-     * @param {boolean} apiParams.showDeleted - Optional. Indicate that keys deleted in the past 30 days should also be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/keys', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the metadata for an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to get.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name of the API key to be undeleted.
@@ -69,6 +46,17 @@ class Apikeys {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.keys.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:undelete', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
@@ -83,14 +71,27 @@ class Apikeys {
     this.projects.locations.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/keys', 'POST', apiParams, clientConfig);
 
     /**
-     * Get the key string for an API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * Gets the metadata for an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to be retrieved.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to get.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.keys.getKeyString = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/keyString', 'GET', apiParams, clientConfig);
+    this.projects.locations.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the API keys owned by a project. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. Specifies the maximum number of results to be returned at a time.
+     * @param {string} apiParams.pageToken - Optional. Requests a specific page of results.
+     * @param {string} apiParams.parent - (Required) Required. Lists all API keys associated with this project.
+     * @param {boolean} apiParams.showDeleted - Optional. Indicate that keys deleted in the past 30 days should also be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.keys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/keys', 'GET', apiParams, clientConfig);
 
     /**
      * Patches the modifiable fields of an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
@@ -105,15 +106,14 @@ class Apikeys {
     this.projects.locations.keys.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+     * Get the key string for an API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to be deleted.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the API key to be retrieved.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.keys.getKeyString = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/keyString', 'GET', apiParams, clientConfig);
 
     this.keys = {};
 
