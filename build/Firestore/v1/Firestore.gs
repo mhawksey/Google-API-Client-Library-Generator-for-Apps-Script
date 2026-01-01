@@ -20,34 +20,44 @@ class Firestore {
 
     this.projects = {};
 
-    this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.backups = {};
-    this.projects.locations.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups', 'GET', apiParams, clientConfig);
-    this.projects.locations.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.databases = {};
     this.projects.databases.exportDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:exportDocuments', 'POST', apiParams, clientConfig);
-    this.projects.databases.importDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:importDocuments', 'POST', apiParams, clientConfig);
-    this.projects.databases.bulkDeleteDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:bulkDeleteDocuments', 'POST', apiParams, clientConfig);
-    this.projects.databases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/databases', 'POST', apiParams, clientConfig);
-    this.projects.databases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.databases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/databases', 'GET', apiParams, clientConfig);
-    this.projects.databases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.databases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.databases.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/databases:restore', 'POST', apiParams, clientConfig);
+    this.projects.databases.bulkDeleteDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:bulkDeleteDocuments', 'POST', apiParams, clientConfig);
     this.projects.databases.clone = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/databases:clone', 'POST', apiParams, clientConfig);
+    this.projects.databases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.databases.importDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:importDocuments', 'POST', apiParams, clientConfig);
+    this.projects.databases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.databases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/databases', 'POST', apiParams, clientConfig);
+    this.projects.databases.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/databases:restore', 'POST', apiParams, clientConfig);
+    this.projects.databases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.databases.operations = {};
-    this.projects.databases.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.databases.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.databases.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.databases.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents = {};
+    this.projects.databases.documents.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:rollback', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.databases.documents.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:commit', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.listen = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:listen', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
+    this.projects.databases.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.databases.documents.partitionQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:partitionQuery', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:runAggregationQuery', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.listCollectionIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:listCollectionIds', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.batchWrite = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:batchWrite', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.runQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:runQuery', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.createDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/{collectionId}', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.databases.documents.executePipeline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:executePipeline', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.beginTransaction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:beginTransaction', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:write', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
+    this.projects.databases.documents.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:batchGet', 'POST', apiParams, clientConfig);
 
     this.projects.databases.collectionGroups = {};
+
+    this.projects.databases.collectionGroups.fields = {};
+    this.projects.databases.collectionGroups.fields.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/fields', 'GET', apiParams, clientConfig);
+    this.projects.databases.collectionGroups.fields.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.databases.collectionGroups.fields.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.databases.collectionGroups.indexes = {};
     this.projects.databases.collectionGroups.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/indexes', 'POST', apiParams, clientConfig);
@@ -55,45 +65,36 @@ class Firestore {
     this.projects.databases.collectionGroups.indexes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.databases.collectionGroups.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.databases.collectionGroups.fields = {};
-    this.projects.databases.collectionGroups.fields.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.databases.collectionGroups.fields.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.databases.collectionGroups.fields.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/fields', 'GET', apiParams, clientConfig);
+    this.projects.databases.operations = {};
+    this.projects.databases.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.databases.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.databases.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.databases.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
 
     this.projects.databases.userCreds = {};
-    this.projects.databases.userCreds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userCreds', 'POST', apiParams, clientConfig);
+    this.projects.databases.userCreds.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
     this.projects.databases.userCreds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.databases.userCreds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.databases.userCreds.resetPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resetPassword', 'POST', apiParams, clientConfig);
     this.projects.databases.userCreds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userCreds', 'GET', apiParams, clientConfig);
     this.projects.databases.userCreds.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
-    this.projects.databases.userCreds.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
-    this.projects.databases.userCreds.resetPassword = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resetPassword', 'POST', apiParams, clientConfig);
-    this.projects.databases.userCreds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.databases.userCreds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userCreds', 'POST', apiParams, clientConfig);
 
     this.projects.databases.backupSchedules = {};
+    this.projects.databases.backupSchedules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.databases.backupSchedules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupSchedules', 'POST', apiParams, clientConfig);
     this.projects.databases.backupSchedules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.databases.backupSchedules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backupSchedules', 'GET', apiParams, clientConfig);
     this.projects.databases.backupSchedules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.databases.backupSchedules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.databases.documents = {};
-    this.projects.databases.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.databases.documents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
-    this.projects.databases.documents.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
-    this.projects.databases.documents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.databases.documents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.databases.documents.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:batchGet', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.beginTransaction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:beginTransaction', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:commit', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:rollback', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.runQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:runQuery', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:runAggregationQuery', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.partitionQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:partitionQuery', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:write', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.listen = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:listen', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.listCollectionIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:listCollectionIds', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.batchWrite = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+database}/documents:batchWrite', 'POST', apiParams, clientConfig);
-    this.projects.databases.documents.createDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/{collectionId}', 'POST', apiParams, clientConfig);
+    this.projects.locations = {};
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.backups = {};
+    this.projects.locations.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backups', 'GET', apiParams, clientConfig);
   }
 
 /**
