@@ -24,33 +24,33 @@ class Networkmanagement {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.vpcFlowLogsConfigs = {};
+    this.projects.locations.vpcFlowLogsConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.vpcFlowLogsConfigs.queryOrgVpcFlowLogsConfigs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.vpcFlowLogsConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.vpcFlowLogsConfigs.showEffectiveFlowLogsConfigs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.vpcFlowLogsConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.vpcFlowLogsConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.vpcFlowLogsConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.global = {};
+
+    this.projects.locations.global.connectivityTests = {};
+    this.projects.locations.global.connectivityTests.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.connectivityTests.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.connectivityTests.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.global.connectivityTests.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectivityTests', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.connectivityTests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectivityTests', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.connectivityTests.rerun = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rerun', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.connectivityTests.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.connectivityTests.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.connectivityTests.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.global.operations = {};
     this.projects.locations.global.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.global.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.global.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.global.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.global.connectivityTests = {};
-    this.projects.locations.global.connectivityTests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectivityTests', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.connectivityTests.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.connectivityTests.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectivityTests', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.connectivityTests.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.global.connectivityTests.rerun = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rerun', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.connectivityTests.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.global.connectivityTests.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.connectivityTests.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.connectivityTests.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.vpcFlowLogsConfigs = {};
-    this.projects.locations.vpcFlowLogsConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.vpcFlowLogsConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.vpcFlowLogsConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.vpcFlowLogsConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.vpcFlowLogsConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.vpcFlowLogsConfigs.queryOrgVpcFlowLogsConfigs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs:queryOrgVpcFlowLogsConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.vpcFlowLogsConfigs.showEffectiveFlowLogsConfigs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs:showEffectiveFlowLogsConfigs', 'GET', apiParams, clientConfig);
 
     this.organizations = {};
 
@@ -59,17 +59,17 @@ class Networkmanagement {
     this.organizations.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.organizations.locations.operations = {};
-    this.organizations.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.organizations.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.organizations.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.organizations.locations.vpcFlowLogsConfigs = {};
+    this.organizations.locations.vpcFlowLogsConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs', 'POST', apiParams, clientConfig);
     this.organizations.locations.vpcFlowLogsConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs', 'GET', apiParams, clientConfig);
     this.organizations.locations.vpcFlowLogsConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.vpcFlowLogsConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vpcFlowLogsConfigs', 'POST', apiParams, clientConfig);
-    this.organizations.locations.vpcFlowLogsConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.locations.vpcFlowLogsConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.vpcFlowLogsConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
