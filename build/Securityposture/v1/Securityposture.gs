@@ -18,9 +18,28 @@ class Securityposture {
     this._servicePath = '';
 
 
+    this.projects = {};
+
+    this.projects.locations = {};
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+
     this.organizations = {};
 
     this.organizations.locations = {};
+
+    this.organizations.locations.postureTemplates = {};
+    this.organizations.locations.postureTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.postureTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postureTemplates', 'GET', apiParams, clientConfig);
+
+    this.organizations.locations.postures = {};
+    this.organizations.locations.postures.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.postures.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.postures.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postures', 'POST', apiParams, clientConfig);
+    this.organizations.locations.postures.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listRevisions', 'GET', apiParams, clientConfig);
+    this.organizations.locations.postures.extract = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postures:extract', 'POST', apiParams, clientConfig);
+    this.organizations.locations.postures.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postures', 'GET', apiParams, clientConfig);
+    this.organizations.locations.postures.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.organizations.locations.operations = {};
     this.organizations.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
@@ -28,36 +47,17 @@ class Securityposture {
     this.organizations.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.organizations.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.organizations.locations.postures = {};
-    this.organizations.locations.postures.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postures', 'GET', apiParams, clientConfig);
-    this.organizations.locations.postures.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listRevisions', 'GET', apiParams, clientConfig);
-    this.organizations.locations.postures.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.postures.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postures', 'POST', apiParams, clientConfig);
-    this.organizations.locations.postures.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.locations.postures.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.locations.postures.extract = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postures:extract', 'POST', apiParams, clientConfig);
+    this.organizations.locations.reports = {};
+    this.organizations.locations.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'GET', apiParams, clientConfig);
+    this.organizations.locations.reports.createIaCValidationReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports:createIaCValidationReport', 'POST', apiParams, clientConfig);
 
     this.organizations.locations.postureDeployments = {};
     this.organizations.locations.postureDeployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postureDeployments', 'GET', apiParams, clientConfig);
-    this.organizations.locations.postureDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.postureDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.organizations.locations.postureDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postureDeployments', 'POST', apiParams, clientConfig);
     this.organizations.locations.postureDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.locations.postureDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.organizations.locations.postureTemplates = {};
-    this.organizations.locations.postureTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/postureTemplates', 'GET', apiParams, clientConfig);
-    this.organizations.locations.postureTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.organizations.locations.reports = {};
-    this.organizations.locations.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'GET', apiParams, clientConfig);
-    this.organizations.locations.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.reports.createIaCValidationReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports:createIaCValidationReport', 'POST', apiParams, clientConfig);
-
-    this.projects = {};
-
-    this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.postureDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
