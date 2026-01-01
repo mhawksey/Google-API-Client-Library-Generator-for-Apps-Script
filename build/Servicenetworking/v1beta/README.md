@@ -4,8 +4,8 @@ Auto-generated client library for using the **Service Networking API (version: v
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:15:27 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:15:27 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:07:38 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:07:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:23 GMT
 
 
@@ -26,17 +26,6 @@ Gets the latest state of a long-running operation. Clients can use this method t
 
 ### `services`
 
-#### `services.updateConnections()`
-
-Updates the allocated ranges that are assigned to a connection. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The service producer peering service that is managing peering connectivity for a service producer organization. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com`. |
-| `params.updateMask` | `string` | No | The update mask. If this is omitted, it defaults to "*". You can only update the listed peering ranges. |
-| `params.force` | `boolean` | No | If a previously defined allocated range is removed, force flag must be set to true. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `services.addSubnetwork()`
 
 For service producers, provisions a new subnet in a peered service's shared VPC network in the requested region and with the requested size that's expressed as a CIDR range (number of leading bits of ipV4 network mask). The method checks against the assigned allocated ranges to find a non-conflicting IP address range. The method will reuse a subnet if subsequent calls contain the same subnet name, region, and prefix length. This method will make producer's tenant project to be a shared VPC service project as needed. The response from the `get` operation will be of type `Subnetwork` if the operation successfully completes.
@@ -44,6 +33,17 @@ For service producers, provisions a new subnet in a peered service's shared VPC 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. A tenant project in the service producer organization, in the following format: services/{service}/{collection-id}/{resource-id}. {collection-id} is the cloud resource collection type that represents the tenant project. Only `projects` are supported. {resource-id} is the tenant project numeric id, such as `123456`. {service} the name of the peering service, such as `service-peering.example.com`. This service must already be enabled in the service consumer's project. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `services.updateConnections()`
+
+Updates the allocated ranges that are assigned to a connection. The response from the `get` operation will be of type `Connection` if the operation successfully completes.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | The update mask. If this is omitted, it defaults to "*". You can only update the listed peering ranges. |
+| `params.force` | `boolean` | No | If a previously defined allocated range is removed, force flag must be set to true. |
+| `params.name` | `string` | Yes | The service producer peering service that is managing peering connectivity for a service producer organization. For Google services that support this functionality, this is `services/servicenetworking.googleapis.com`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `services.searchRange()`
