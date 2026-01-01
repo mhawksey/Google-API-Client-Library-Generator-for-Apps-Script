@@ -19,77 +19,77 @@ class Tagmanager {
 
 
     this.accounts = {};
-    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts', 'GET', apiParams, clientConfig);
     this.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}', 'GET', apiParams, clientConfig);
+    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts', 'GET', apiParams, clientConfig);
     this.accounts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}', 'PUT', apiParams, clientConfig);
 
     this.accounts.permissions = {};
-    this.accounts.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions', 'POST', apiParams, clientConfig);
-    this.accounts.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions', 'GET', apiParams, clientConfig);
-    this.accounts.permissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', 'GET', apiParams, clientConfig);
     this.accounts.permissions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', 'PUT', apiParams, clientConfig);
+    this.accounts.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions', 'GET', apiParams, clientConfig);
+    this.accounts.permissions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions', 'POST', apiParams, clientConfig);
+    this.accounts.permissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', 'GET', apiParams, clientConfig);
     this.accounts.permissions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/permissions/{permissionId}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.containers = {};
-    this.accounts.containers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers', 'POST', apiParams, clientConfig);
     this.accounts.containers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers', 'GET', apiParams, clientConfig);
+    this.accounts.containers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers', 'POST', apiParams, clientConfig);
+    this.accounts.containers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'DELETE', apiParams, clientConfig);
     this.accounts.containers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'GET', apiParams, clientConfig);
     this.accounts.containers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'PUT', apiParams, clientConfig);
-    this.accounts.containers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}', 'DELETE', apiParams, clientConfig);
-
-    this.accounts.containers.versions = {};
-    this.accounts.containers.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions', 'POST', apiParams, clientConfig);
-    this.accounts.containers.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'GET', apiParams, clientConfig);
-    this.accounts.containers.versions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'PUT', apiParams, clientConfig);
-    this.accounts.containers.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'DELETE', apiParams, clientConfig);
-    this.accounts.containers.versions.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/undelete', 'POST', apiParams, clientConfig);
-    this.accounts.containers.versions.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish', 'POST', apiParams, clientConfig);
-    this.accounts.containers.versions.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore', 'POST', apiParams, clientConfig);
-    this.accounts.containers.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions', 'GET', apiParams, clientConfig);
-
-    this.accounts.containers.variables = {};
-    this.accounts.containers.variables.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables', 'POST', apiParams, clientConfig);
-    this.accounts.containers.variables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables', 'GET', apiParams, clientConfig);
-    this.accounts.containers.variables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'GET', apiParams, clientConfig);
-    this.accounts.containers.variables.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'PUT', apiParams, clientConfig);
-    this.accounts.containers.variables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'DELETE', apiParams, clientConfig);
-
-    this.accounts.containers.triggers = {};
-    this.accounts.containers.triggers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', 'POST', apiParams, clientConfig);
-    this.accounts.containers.triggers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', 'GET', apiParams, clientConfig);
-    this.accounts.containers.triggers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'GET', apiParams, clientConfig);
-    this.accounts.containers.triggers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'PUT', apiParams, clientConfig);
-    this.accounts.containers.triggers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'DELETE', apiParams, clientConfig);
-
-    this.accounts.containers.tags = {};
-    this.accounts.containers.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', 'POST', apiParams, clientConfig);
-    this.accounts.containers.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', 'GET', apiParams, clientConfig);
-    this.accounts.containers.tags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'GET', apiParams, clientConfig);
-    this.accounts.containers.tags.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'PUT', apiParams, clientConfig);
-    this.accounts.containers.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.containers.folders = {};
-    this.accounts.containers.folders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders', 'POST', apiParams, clientConfig);
-    this.accounts.containers.folders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders', 'GET', apiParams, clientConfig);
-    this.accounts.containers.folders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', 'GET', apiParams, clientConfig);
-    this.accounts.containers.folders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', 'PUT', apiParams, clientConfig);
     this.accounts.containers.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', 'DELETE', apiParams, clientConfig);
+    this.accounts.containers.folders.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders', 'POST', apiParams, clientConfig);
+    this.accounts.containers.folders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', 'PUT', apiParams, clientConfig);
+    this.accounts.containers.folders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}', 'GET', apiParams, clientConfig);
+    this.accounts.containers.folders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders', 'GET', apiParams, clientConfig);
 
     this.accounts.containers.folders.entities = {};
     this.accounts.containers.folders.entities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/folders/{folderId}/entities', 'GET', apiParams, clientConfig);
 
+    this.accounts.containers.tags = {};
+    this.accounts.containers.tags.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'PUT', apiParams, clientConfig);
+    this.accounts.containers.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'DELETE', apiParams, clientConfig);
+    this.accounts.containers.tags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags/{tagId}', 'GET', apiParams, clientConfig);
+    this.accounts.containers.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', 'POST', apiParams, clientConfig);
+    this.accounts.containers.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/tags', 'GET', apiParams, clientConfig);
+
     this.accounts.containers.move_folders = {};
     this.accounts.containers.move_folders.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/move_folders/{folderId}', 'PUT', apiParams, clientConfig);
 
-    this.accounts.containers.environments = {};
-    this.accounts.containers.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', 'POST', apiParams, clientConfig);
-    this.accounts.containers.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', 'GET', apiParams, clientConfig);
-    this.accounts.containers.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'GET', apiParams, clientConfig);
-    this.accounts.containers.environments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'PUT', apiParams, clientConfig);
-    this.accounts.containers.environments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'DELETE', apiParams, clientConfig);
+    this.accounts.containers.versions = {};
+    this.accounts.containers.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'GET', apiParams, clientConfig);
+    this.accounts.containers.versions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'PUT', apiParams, clientConfig);
+    this.accounts.containers.versions.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/restore', 'POST', apiParams, clientConfig);
+    this.accounts.containers.versions.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/undelete', 'POST', apiParams, clientConfig);
+    this.accounts.containers.versions.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}/publish', 'POST', apiParams, clientConfig);
+    this.accounts.containers.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions', 'GET', apiParams, clientConfig);
+    this.accounts.containers.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions', 'POST', apiParams, clientConfig);
+    this.accounts.containers.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/versions/{containerVersionId}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.containers.reauthorize_environments = {};
     this.accounts.containers.reauthorize_environments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/reauthorize_environments/{environmentId}', 'PUT', apiParams, clientConfig);
+
+    this.accounts.containers.triggers = {};
+    this.accounts.containers.triggers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'PUT', apiParams, clientConfig);
+    this.accounts.containers.triggers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', 'POST', apiParams, clientConfig);
+    this.accounts.containers.triggers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'GET', apiParams, clientConfig);
+    this.accounts.containers.triggers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers/{triggerId}', 'DELETE', apiParams, clientConfig);
+    this.accounts.containers.triggers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/triggers', 'GET', apiParams, clientConfig);
+
+    this.accounts.containers.environments = {};
+    this.accounts.containers.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', 'GET', apiParams, clientConfig);
+    this.accounts.containers.environments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'PUT', apiParams, clientConfig);
+    this.accounts.containers.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'GET', apiParams, clientConfig);
+    this.accounts.containers.environments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments/{environmentId}', 'DELETE', apiParams, clientConfig);
+    this.accounts.containers.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/environments', 'POST', apiParams, clientConfig);
+
+    this.accounts.containers.variables = {};
+    this.accounts.containers.variables.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'PUT', apiParams, clientConfig);
+    this.accounts.containers.variables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables', 'GET', apiParams, clientConfig);
+    this.accounts.containers.variables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'GET', apiParams, clientConfig);
+    this.accounts.containers.variables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables/{variableId}', 'DELETE', apiParams, clientConfig);
+    this.accounts.containers.variables.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('tagmanager/v1/accounts/{accountId}/containers/{containerId}/variables', 'POST', apiParams, clientConfig);
   }
 
 /**
