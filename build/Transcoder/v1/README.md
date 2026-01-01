@@ -4,8 +4,8 @@ Auto-generated client library for using the **Transcoder API (version: v1)** in 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:17:52 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:17:52 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:14:32 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:14:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:11 GMT
 
 
@@ -20,15 +20,6 @@ Auto-generated client library for using the **Transcoder API (version: v1)** in 
 
 ### `projects.locations.jobs`
 
-#### `projects.locations.jobs.create()`
-
-Creates a job in the specified region.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.jobs.list()`
 
 Lists jobs in the specified region.
@@ -37,17 +28,18 @@ Lists jobs in the specified region.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Format: `projects/{project}/locations/{location}` |
 | `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.pageToken` | `string` | No | The `next_page_token` value returned from a previous List request, if any. |
 | `params.filter` | `string` | No | The filter expression, following the syntax outlined in https://google.aip.dev/160. |
+| `params.pageToken` | `string` | No | The `next_page_token` value returned from a previous List request, if any. |
 | `params.orderBy` | `string` | No | One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
 
-#### `projects.locations.jobs.get()`
+#### `projects.locations.jobs.create()`
 
-Returns the job data.
+Creates a job in the specified region.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the job to retrieve. Format: `projects/{project}/locations/{location}/jobs/{job}` |
+| `params.parent` | `string` | Yes | Required. The parent location to create and process this job. Format: `projects/{project}/locations/{location}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.jobs.delete()`
 
@@ -58,6 +50,14 @@ Deletes a job.
 | `params.name` | `string` | Yes | Required. The name of the job to delete. Format: `projects/{project}/locations/{location}/jobs/{job}` |
 | `params.allowMissing` | `boolean` | No | If set to true, and the job is not found, the request will succeed but no action will be taken on the server. |
 
+#### `projects.locations.jobs.get()`
+
+Returns the job data.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the job to retrieve. Format: `projects/{project}/locations/{location}/jobs/{job}` |
+
 ### `projects.locations.jobTemplates`
 
 #### `projects.locations.jobTemplates.create()`
@@ -66,21 +66,9 @@ Creates a job template in the specified region.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}` |
 | `params.jobTemplateId` | `string` | No | Required. The ID to use for the job template, which will become the final component of the job template's resource name. This value should be 4-63 characters, and valid characters must match the regular expression `a-zA-Z*`. |
+| `params.parent` | `string` | Yes | Required. The parent location to create this job template. Format: `projects/{project}/locations/{location}` |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.jobTemplates.list()`
-
-Lists job templates in the specified region.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent location from which to retrieve the collection of job templates. Format: `projects/{project}/locations/{location}` |
-| `params.pageSize` | `integer` | No | The maximum number of items to return. |
-| `params.pageToken` | `string` | No | The `next_page_token` value returned from a previous List request, if any. |
-| `params.filter` | `string` | No | The filter expression, following the syntax outlined in https://google.aip.dev/160. |
-| `params.orderBy` | `string` | No | One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
 
 #### `projects.locations.jobTemplates.get()`
 
@@ -96,5 +84,17 @@ Deletes a job template.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the job template to delete. `projects/{project}/locations/{location}/jobTemplates/{job_template}` |
 | `params.allowMissing` | `boolean` | No | If set to true, and the job template is not found, the request will succeed but no action will be taken on the server. |
+| `params.name` | `string` | Yes | Required. The name of the job template to delete. `projects/{project}/locations/{location}/jobTemplates/{job_template}` |
+
+#### `projects.locations.jobTemplates.list()`
+
+Lists job templates in the specified region.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | The maximum number of items to return. |
+| `params.orderBy` | `string` | No | One or more fields to compare and use to sort the output. See https://google.aip.dev/132#ordering. |
+| `params.parent` | `string` | Yes | Required. The parent location from which to retrieve the collection of job templates. Format: `projects/{project}/locations/{location}` |
+| `params.pageToken` | `string` | No | The `next_page_token` value returned from a previous List request, if any. |
+| `params.filter` | `string` | No | The filter expression, following the syntax outlined in https://google.aip.dev/160. |
