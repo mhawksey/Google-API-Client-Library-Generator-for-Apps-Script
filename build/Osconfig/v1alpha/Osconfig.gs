@@ -23,36 +23,36 @@ class Osconfig {
     this.projects.locations = {};
 
     this.projects.locations.osPolicyAssignments = {};
-    this.projects.locations.osPolicyAssignments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/osPolicyAssignments', 'POST', apiParams, clientConfig);
     this.projects.locations.osPolicyAssignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.osPolicyAssignments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.osPolicyAssignments.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:listRevisions', 'GET', apiParams, clientConfig);
+    this.projects.locations.osPolicyAssignments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/osPolicyAssignments', 'POST', apiParams, clientConfig);
     this.projects.locations.osPolicyAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.osPolicyAssignments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/osPolicyAssignments', 'GET', apiParams, clientConfig);
-    this.projects.locations.osPolicyAssignments.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:listRevisions', 'GET', apiParams, clientConfig);
-    this.projects.locations.osPolicyAssignments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.osPolicyAssignments.operations = {};
     this.projects.locations.osPolicyAssignments.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.osPolicyAssignments.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.instanceOSPoliciesCompliances = {};
-    this.projects.locations.instanceOSPoliciesCompliances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.instanceOSPoliciesCompliances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instanceOSPoliciesCompliances', 'GET', apiParams, clientConfig);
 
     this.projects.locations.instances = {};
 
     this.projects.locations.instances.osPolicyAssignments = {};
 
     this.projects.locations.instances.osPolicyAssignments.reports = {};
-    this.projects.locations.instances.osPolicyAssignments.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.instances.osPolicyAssignments.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/reports', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.osPolicyAssignments.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.instances.inventories = {};
-    this.projects.locations.instances.inventories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.instances.inventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/inventories', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.inventories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.instances.vulnerabilityReports = {};
     this.projects.locations.instances.vulnerabilityReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.instances.vulnerabilityReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/vulnerabilityReports', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.instanceOSPoliciesCompliances = {};
+    this.projects.locations.instanceOSPoliciesCompliances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instanceOSPoliciesCompliances', 'GET', apiParams, clientConfig);
+    this.projects.locations.instanceOSPoliciesCompliances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
