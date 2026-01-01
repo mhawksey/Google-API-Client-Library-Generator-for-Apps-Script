@@ -21,118 +21,118 @@ class Connectors {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.getRuntimeConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.getRegionalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.updateRegionalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.getRuntimeConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.endpointAttachments = {};
+    this.projects.locations.endpointAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.endpointAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.endpointAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.endpointAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endpointAttachments', 'GET', apiParams, clientConfig);
+    this.projects.locations.endpointAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endpointAttachments', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.global = {};
+    this.projects.locations.global.updateSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.global.getSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.global.managedZones = {};
+    this.projects.locations.global.managedZones.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managedZones', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.managedZones.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managedZones', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.managedZones.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.global.managedZones.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.global.managedZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.global.customConnectors = {};
+    this.projects.locations.global.customConnectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customConnectors', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.customConnectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customConnectors', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.customConnectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.global.customConnectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.customConnectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.global.customConnectors.customConnectorVersions = {};
+    this.projects.locations.global.customConnectors.customConnectorVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customConnectorVersions', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.customConnectors.customConnectorVersions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customConnectorVersions', 'POST', apiParams, clientConfig);
+    this.projects.locations.global.customConnectors.customConnectorVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connections = {};
-    this.projects.locations.connections.listenEvent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourcePath}:listenEvent', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:search', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.connections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connections.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:search', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.getConnectionSchemaMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.repairEventing = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:repairEventing', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.connections.connectionSchemaMetadata = {};
-    this.projects.locations.connections.connectionSchemaMetadata.refresh = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:refresh', 'POST', apiParams, clientConfig);
-    this.projects.locations.connections.connectionSchemaMetadata.listEntityTypes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listEntityTypes', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.connectionSchemaMetadata.listActions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listActions', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.connectionSchemaMetadata.getEntityType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getEntityType', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.connectionSchemaMetadata.getAction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getAction', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.connections.runtimeEntitySchemas = {};
-    this.projects.locations.connections.runtimeEntitySchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeEntitySchemas', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connections.repairEventing = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:repairEventing', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connections', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.listenEvent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourcePath}:listenEvent', 'POST', apiParams, clientConfig);
 
     this.projects.locations.connections.runtimeActionSchemas = {};
     this.projects.locations.connections.runtimeActionSchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeActionSchemas', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connections.eventSubscriptions = {};
-    this.projects.locations.connections.eventSubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/eventSubscriptions', 'GET', apiParams, clientConfig);
-    this.projects.locations.connections.eventSubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.eventSubscriptions.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retry', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.eventSubscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/eventSubscriptions', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.eventSubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.eventSubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.connections.eventSubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.connections.eventSubscriptions.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retry', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.eventSubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/eventSubscriptions', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connections.endUserAuthentications = {};
-    this.projects.locations.connections.endUserAuthentications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endUserAuthentications', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.endUserAuthentications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.endUserAuthentications.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endUserAuthentications', 'POST', apiParams, clientConfig);
     this.projects.locations.connections.endUserAuthentications.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.connections.endUserAuthentications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endUserAuthentications', 'GET', apiParams, clientConfig);
     this.projects.locations.connections.endUserAuthentications.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.connectionSchemaMetadata = {};
+    this.projects.locations.connections.connectionSchemaMetadata.getEntityType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getEntityType', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.connectionSchemaMetadata.listEntityTypes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listEntityTypes', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.connectionSchemaMetadata.refresh = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:refresh', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.connectionSchemaMetadata.listActions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listActions', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.connectionSchemaMetadata.getAction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getAction', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.providers = {};
-    this.projects.locations.providers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/providers', 'GET', apiParams, clientConfig);
-    this.projects.locations.providers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.providers.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.providers.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.providers.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.providers.connectors = {};
-    this.projects.locations.providers.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectors', 'GET', apiParams, clientConfig);
-    this.projects.locations.providers.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.providers.connectors.versions = {};
-    this.projects.locations.providers.connectors.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
-    this.projects.locations.providers.connectors.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.providers.connectors.versions.fetchAuthSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchAuthSchema', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.providers.connectors.versions.eventtypes = {};
-    this.projects.locations.providers.connectors.versions.eventtypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/eventtypes', 'GET', apiParams, clientConfig);
-    this.projects.locations.providers.connectors.versions.eventtypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.global = {};
-    this.projects.locations.global.getSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.updateSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.global.managedZones = {};
-    this.projects.locations.global.managedZones.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managedZones', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.managedZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.managedZones.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managedZones', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.managedZones.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.global.managedZones.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.global.customConnectors = {};
-    this.projects.locations.global.customConnectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.global.customConnectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customConnectors', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.customConnectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.customConnectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customConnectors', 'POST', apiParams, clientConfig);
-    this.projects.locations.global.customConnectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.global.customConnectors.customConnectorVersions = {};
-    this.projects.locations.global.customConnectors.customConnectorVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customConnectorVersions', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.customConnectors.customConnectorVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.global.customConnectors.customConnectorVersions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customConnectorVersions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.endpointAttachments = {};
-    this.projects.locations.endpointAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endpointAttachments', 'GET', apiParams, clientConfig);
-    this.projects.locations.endpointAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.endpointAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endpointAttachments', 'POST', apiParams, clientConfig);
-    this.projects.locations.endpointAttachments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.endpointAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connections.runtimeEntitySchemas = {};
+    this.projects.locations.connections.runtimeEntitySchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeEntitySchemas', 'GET', apiParams, clientConfig);
 
     this.projects.locations.customConnectors = {};
     this.projects.locations.customConnectors.validateCustomConnectorSpec = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customConnectors:validateCustomConnectorSpec', 'POST', apiParams, clientConfig);
 
     this.projects.locations.customConnectors.customConnectorVersions = {};
-    this.projects.locations.customConnectors.customConnectorVersions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.customConnectors.customConnectorVersions.deprecate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deprecate', 'POST', apiParams, clientConfig);
-    this.projects.locations.customConnectors.customConnectorVersions.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:publish', 'POST', apiParams, clientConfig);
     this.projects.locations.customConnectors.customConnectorVersions.withdraw = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:withdraw', 'POST', apiParams, clientConfig);
+    this.projects.locations.customConnectors.customConnectorVersions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.customConnectors.customConnectorVersions.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:publish', 'POST', apiParams, clientConfig);
+    this.projects.locations.customConnectors.customConnectorVersions.deprecate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deprecate', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.providers = {};
+    this.projects.locations.providers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.providers.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.providers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/providers', 'GET', apiParams, clientConfig);
+    this.projects.locations.providers.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.providers.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.providers.connectors = {};
+    this.projects.locations.providers.connectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.providers.connectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/connectors', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.providers.connectors.versions = {};
+    this.projects.locations.providers.connectors.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.providers.connectors.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
+    this.projects.locations.providers.connectors.versions.fetchAuthSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchAuthSchema', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.providers.connectors.versions.eventtypes = {};
+    this.projects.locations.providers.connectors.versions.eventtypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.providers.connectors.versions.eventtypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/eventtypes', 'GET', apiParams, clientConfig);
   }
 
 /**
