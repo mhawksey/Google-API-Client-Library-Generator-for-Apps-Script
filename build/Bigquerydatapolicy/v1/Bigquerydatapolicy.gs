@@ -23,15 +23,15 @@ class Bigquerydatapolicy {
     this.projects.locations = {};
 
     this.projects.locations.dataPolicies = {};
-    this.projects.locations.dataPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.dataPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.dataPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataPolicies', 'GET', apiParams, clientConfig);
     this.projects.locations.dataPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataPolicies', 'POST', apiParams, clientConfig);
     this.projects.locations.dataPolicies.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rename', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
