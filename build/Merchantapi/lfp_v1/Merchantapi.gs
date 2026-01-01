@@ -20,20 +20,20 @@ class Merchantapi {
 
     this.accounts = {};
 
-    this.accounts.lfpInventories = {};
-    this.accounts.lfpInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpInventories:insert', 'POST', apiParams, clientConfig);
-
-    this.accounts.lfpMerchantStates = {};
-    this.accounts.lfpMerchantStates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.accounts.lfpSales = {};
     this.accounts.lfpSales.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpSales:insert', 'POST', apiParams, clientConfig);
 
     this.accounts.lfpStores = {};
-    this.accounts.lfpStores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.lfpStores.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpStores:insert', 'POST', apiParams, clientConfig);
     this.accounts.lfpStores.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.lfpStores.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpStores:insert', 'POST', apiParams, clientConfig);
     this.accounts.lfpStores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpStores', 'GET', apiParams, clientConfig);
+    this.accounts.lfpStores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.accounts.lfpMerchantStates = {};
+    this.accounts.lfpMerchantStates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.accounts.lfpInventories = {};
+    this.accounts.lfpInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('lfp/v1/{+parent}/lfpInventories:insert', 'POST', apiParams, clientConfig);
   }
 
 /**
