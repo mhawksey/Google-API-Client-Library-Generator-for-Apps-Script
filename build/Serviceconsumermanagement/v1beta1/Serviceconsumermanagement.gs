@@ -18,15 +18,12 @@ class Serviceconsumermanagement {
     this._servicePath = '';
 
 
-    this.operations = {};
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.services = {};
 
     this.services.consumerQuotaMetrics = {};
     this.services.consumerQuotaMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics', 'GET', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.importProducerQuotaPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importProducerQuotaPolicies', 'POST', apiParams, clientConfig);
     this.services.consumerQuotaMetrics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.importProducerQuotaPolicies = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importProducerQuotaPolicies', 'POST', apiParams, clientConfig);
     this.services.consumerQuotaMetrics.importProducerOverrides = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/consumerQuotaMetrics:importProducerOverrides', 'POST', apiParams, clientConfig);
 
     this.services.consumerQuotaMetrics.limits = {};
@@ -35,14 +32,17 @@ class Serviceconsumermanagement {
     this.services.consumerQuotaMetrics.limits.producerOverrides = {};
     this.services.consumerQuotaMetrics.limits.producerOverrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.services.consumerQuotaMetrics.limits.producerOverrides.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.limits.producerOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/producerOverrides', 'GET', apiParams, clientConfig);
     this.services.consumerQuotaMetrics.limits.producerOverrides.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/producerOverrides', 'POST', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.producerOverrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/producerOverrides', 'GET', apiParams, clientConfig);
 
     this.services.consumerQuotaMetrics.limits.producerQuotaPolicies = {};
     this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/producerQuotaPolicies', 'POST', apiParams, clientConfig);
     this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/producerQuotaPolicies', 'GET', apiParams, clientConfig);
+    this.services.consumerQuotaMetrics.limits.producerQuotaPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/producerQuotaPolicies', 'POST', apiParams, clientConfig);
+
+    this.operations = {};
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
