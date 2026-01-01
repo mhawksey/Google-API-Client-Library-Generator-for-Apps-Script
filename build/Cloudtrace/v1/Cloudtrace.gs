@@ -22,8 +22,8 @@ class Cloudtrace {
     this.projects.patchTraces = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces', 'PATCH', apiParams, clientConfig);
 
     this.projects.traces = {};
-    this.projects.traces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces', 'GET', apiParams, clientConfig);
     this.projects.traces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces/{traceId}', 'GET', apiParams, clientConfig);
+    this.projects.traces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{projectId}/traces', 'GET', apiParams, clientConfig);
   }
 
 /**
