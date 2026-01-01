@@ -85,7 +85,7 @@ class Dataplex {
      * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
      * @param {integer} apiParams.pageSize - The standard list page size.
      * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections e.g. when parent is set to "projects/example/locations/-".This field is not by default supported and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -2302,6 +2302,132 @@ class Dataplex {
      */
     this.projects.locations.dataProducts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
+    /**
+     * Creates a Data Product.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataProductId - Optional. The ID of the Data Product to create.The ID must conform to RFC-1034 and contain only lower-case letters (a-z), numbers (0-9), or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. Characters outside of ASCII are not permitted. Valid format regex: (^a-z?$) If not provided, a system generated ID will be used.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource where this Data Product will be created. Format: projects/{project_id_or_number}/locations/{location_id}
+     * @param {boolean} apiParams.validateOnly - Optional. Validates the request without actually creating the Data Product. Default: false.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataProducts', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a Data Product. The deletion will fail if the Data Product is not empty (i.e. contains at least one Data Asset).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The etag of the Data Product.If an etag is provided and does not match the current etag of the Data Product, then the deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. The name of the Data Product to delete. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
+     * @param {boolean} apiParams.validateOnly - Optional. Validates the request without actually deleting the Data Product. Default: false.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets a Data Product.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the Data Product to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists Data Products for a given project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression that filters Data Products listed in the response.Example of using this filter is: display_name="my-data-product"
+     * @param {string} apiParams.orderBy - Optional. Order by expression that orders Data Products listed in the response.Supported Order by fields are: name or create_time.If not specified, the ordering is undefined.Ordering by create_time is not supported when listing resources across locations (i.e. when request contains /locations/-).
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of Data Products to return. The service may return fewer than this value. If unspecified, at most 50 Data Products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous ListDataProducts call. Provide this to retrieve the subsequent page.When paginating, all other parameters provided to ListDataProducts must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent, which has this collection of Data Products.Format: projects/{project_id_or_number}/locations/{location_id}.Supports listing across all locations with the wildcard - (hyphen) character. Example: projects/{project_id_or_number}/locations/-
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataProducts', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a Data Product.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. Resource name of the Data Product. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}.
+     * @param {string} apiParams.updateMask - Optional. The list of fields to update. If this is empty or not set, then all the fields will be updated.
+     * @param {boolean} apiParams.validateOnly - Optional. Validates the request without actually updating the Data Product. Default: false.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.dataProducts.dataAssets = {};
+
+    /**
+     * Creates a Data Asset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataAssetId - Optional. The ID of the Data Asset to create.The ID must conform to RFC-1034 and contain only lower-case letters (a-z), numbers (0-9), or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. Characters outside of ASCII are not permitted. Valid format regex: (^a-z?$) If not provided, a system generated ID will be used.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource where this Data Asset will be created. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
+     * @param {boolean} apiParams.validateOnly - Optional. Validates the request without actually creating the Data Asset. Defaults to false.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.dataAssets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataAssets', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a Data Asset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. Resource name of the Data Asset. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
+     * @param {string} apiParams.updateMask - Optional. The list of fields to update. If this is empty or not set, then all fields that are populated (have a non-empty value) in data_asset above will be updated.
+     * @param {boolean} apiParams.validateOnly - Optional. Validates the request without actually updating the Data Asset. Defaults to false.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.dataAssets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a Data Asset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - Optional. The etag of the Data Asset. If this is provided, it must match the server's etag. If the etag is provided and does not match the server-computed etag, the request must fail with a ABORTED error code.
+     * @param {string} apiParams.name - (Required) Required. The name of the Data Asset to delete. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
+     * @param {boolean} apiParams.validateOnly - Optional. Validates the request without actually deleting the Data Asset. Defaults to false.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.dataAssets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets a Data Asset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the Data Asset to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.dataAssets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists Data Assets for a given Data Product.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. Filter expression that filters DataAssets listed in the response.
+     * @param {string} apiParams.orderBy - Optional. Order by expression that orders DataAssets listed in the response.Supported Order by fields are: name or create_time.If not specified, the ordering is undefined.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of Data Assets to return. The service may return fewer than this value. If unspecified, at most 50 Data Assets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous ListDataAssets call. Provide this to retrieve the subsequent page.When paginating, all other parameters provided to ListDataAssets must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent, which has this collection of Data Assets. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dataProducts.dataAssets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataAssets', 'GET', apiParams, clientConfig);
+
     this.organizations = {};
 
     this.organizations.locations = {};
@@ -2315,7 +2441,7 @@ class Dataplex {
      * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
      * @param {integer} apiParams.pageSize - The standard list page size.
      * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections e.g. when parent is set to "projects/example/locations/-".This field is not by default supported and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
