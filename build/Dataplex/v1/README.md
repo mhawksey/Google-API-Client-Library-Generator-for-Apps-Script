@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Dataplex API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:36:38 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:36:38 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:35:40 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:35:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:17 GMT
 
 
@@ -76,7 +76,7 @@ Lists operations that match the specified filter in the request. If the server d
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections e.g. when parent is set to "projects/example/locations/-".This field is not by default supported and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
 
@@ -1918,6 +1918,112 @@ Returns permissions that a caller has on the specified resource. If the resource
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See Resource names (https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.dataProducts.create()`
+
+Creates a Data Product.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource where this Data Product will be created. Format: projects/{project_id_or_number}/locations/{location_id} |
+| `params.dataProductId` | `string` | No | Optional. The ID of the Data Product to create.The ID must conform to RFC-1034 and contain only lower-case letters (a-z), numbers (0-9), or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. Characters outside of ASCII are not permitted. Valid format regex: (^a-z?$) If not provided, a system generated ID will be used. |
+| `params.validateOnly` | `boolean` | No | Optional. Validates the request without actually creating the Data Product. Default: false. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataProducts.delete()`
+
+Deletes a Data Product. The deletion will fail if the Data Product is not empty (i.e. contains at least one Data Asset).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Data Product to delete. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id} |
+| `params.etag` | `string` | No | Optional. The etag of the Data Product.If an etag is provided and does not match the current etag of the Data Product, then the deletion will be blocked and an ABORTED error will be returned. |
+| `params.validateOnly` | `boolean` | No | Optional. Validates the request without actually deleting the Data Product. Default: false. |
+
+#### `projects.locations.dataProducts.get()`
+
+Gets a Data Product.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Data Product to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id} |
+
+#### `projects.locations.dataProducts.list()`
+
+Lists Data Products for a given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which has this collection of Data Products.Format: projects/{project_id_or_number}/locations/{location_id}.Supports listing across all locations with the wildcard - (hyphen) character. Example: projects/{project_id_or_number}/locations/- |
+| `params.filter` | `string` | No | Optional. Filter expression that filters Data Products listed in the response.Example of using this filter is: display_name="my-data-product" |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of Data Products to return. The service may return fewer than this value. If unspecified, at most 50 Data Products will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous ListDataProducts call. Provide this to retrieve the subsequent page.When paginating, all other parameters provided to ListDataProducts must match the call that provided the page token. |
+| `params.orderBy` | `string` | No | Optional. Order by expression that orders Data Products listed in the response.Supported Order by fields are: name or create_time.If not specified, the ordering is undefined.Ordering by create_time is not supported when listing resources across locations (i.e. when request contains /locations/-). |
+
+#### `projects.locations.dataProducts.patch()`
+
+Updates a Data Product.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Resource name of the Data Product. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. If this is empty or not set, then all the fields will be updated. |
+| `params.validateOnly` | `boolean` | No | Optional. Validates the request without actually updating the Data Product. Default: false. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.dataProducts.dataAssets`
+
+#### `projects.locations.dataProducts.dataAssets.create()`
+
+Creates a Data Asset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource where this Data Asset will be created. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id} |
+| `params.dataAssetId` | `string` | No | Optional. The ID of the Data Asset to create.The ID must conform to RFC-1034 and contain only lower-case letters (a-z), numbers (0-9), or hyphens, with the first character a letter, the last a letter or a number, and a 63 character maximum. Characters outside of ASCII are not permitted. Valid format regex: (^a-z?$) If not provided, a system generated ID will be used. |
+| `params.validateOnly` | `boolean` | No | Optional. Validates the request without actually creating the Data Asset. Defaults to false. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataProducts.dataAssets.patch()`
+
+Updates a Data Asset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Resource name of the Data Asset. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id} |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. If this is empty or not set, then all fields that are populated (have a non-empty value) in data_asset above will be updated. |
+| `params.validateOnly` | `boolean` | No | Optional. Validates the request without actually updating the Data Asset. Defaults to false. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataProducts.dataAssets.delete()`
+
+Deletes a Data Asset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Data Asset to delete. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id} |
+| `params.etag` | `string` | No | Optional. The etag of the Data Asset. If this is provided, it must match the server's etag. If the etag is provided and does not match the server-computed etag, the request must fail with a ABORTED error code. |
+| `params.validateOnly` | `boolean` | No | Optional. Validates the request without actually deleting the Data Asset. Defaults to false. |
+
+#### `projects.locations.dataProducts.dataAssets.get()`
+
+Gets a Data Asset.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Data Asset to retrieve. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id} |
+
+#### `projects.locations.dataProducts.dataAssets.list()`
+
+Lists Data Assets for a given Data Product.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which has this collection of Data Assets. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id} |
+| `params.filter` | `string` | No | Optional. Filter expression that filters DataAssets listed in the response. |
+| `params.orderBy` | `string` | No | Optional. Order by expression that orders DataAssets listed in the response.Supported Order by fields are: name or create_time.If not specified, the ordering is undefined. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of Data Assets to return. The service may return fewer than this value. If unspecified, at most 50 Data Assets will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous ListDataAssets call. Provide this to retrieve the subsequent page.When paginating, all other parameters provided to ListDataAssets must match the call that provided the page token. |
+
 ### `organizations`
 
 ### `organizations.locations`
@@ -1934,7 +2040,7 @@ Lists operations that match the specified filter in the request. If the server d
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections e.g. when parent is set to "projects/example/locations/-".This field is not by default supported and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `organizations.locations.operations.get()`
 
