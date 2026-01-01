@@ -25,9 +25,9 @@ class Workflowexecutions {
     this.projects.locations.workflows = {};
 
     this.projects.locations.workflows.executions = {};
+    this.projects.locations.workflows.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workflows.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/executions', 'GET', apiParams, clientConfig);
     this.projects.locations.workflows.executions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/executions', 'POST', apiParams, clientConfig);
-    this.projects.locations.workflows.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workflows.executions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
   }
 
