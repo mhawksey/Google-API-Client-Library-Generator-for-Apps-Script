@@ -19,9 +19,9 @@ class Groupssettings {
 
 
     this.groups = {};
-    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'GET', apiParams, clientConfig);
-    this.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'PUT', apiParams, clientConfig);
     this.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'PATCH', apiParams, clientConfig);
+    this.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'PUT', apiParams, clientConfig);
+    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'GET', apiParams, clientConfig);
   }
 
 /**
