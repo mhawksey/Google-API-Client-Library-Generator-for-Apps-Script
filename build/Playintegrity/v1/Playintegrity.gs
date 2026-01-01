@@ -18,12 +18,12 @@ class Playintegrity {
     this._servicePath = '';
 
 
-    this.deviceRecall = {};
-    this.deviceRecall.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+packageName}/deviceRecall:write', 'POST', apiParams, clientConfig);
-
     this.v1 = {};
     this.v1.decodeIntegrityToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+packageName}:decodeIntegrityToken', 'POST', apiParams, clientConfig);
     this.v1.decodePcIntegrityToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+packageName}:decodePcIntegrityToken', 'POST', apiParams, clientConfig);
+
+    this.deviceRecall = {};
+    this.deviceRecall.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+packageName}/deviceRecall:write', 'POST', apiParams, clientConfig);
   }
 
 /**
