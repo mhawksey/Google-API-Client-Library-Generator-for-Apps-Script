@@ -21,35 +21,35 @@ class Essentialcontacts {
     this.projects = {};
 
     this.projects.contacts = {};
-    this.projects.contacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'POST', apiParams, clientConfig);
-    this.projects.contacts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.contacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'GET', apiParams, clientConfig);
     this.projects.contacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.contacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.contacts.compute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts:compute', 'GET', apiParams, clientConfig);
+    this.projects.contacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'POST', apiParams, clientConfig);
     this.projects.contacts.sendTestMessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}/contacts:sendTestMessage', 'POST', apiParams, clientConfig);
+    this.projects.contacts.compute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts:compute', 'GET', apiParams, clientConfig);
+    this.projects.contacts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.contacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.contacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'GET', apiParams, clientConfig);
 
     this.folders = {};
 
     this.folders.contacts = {};
-    this.folders.contacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'POST', apiParams, clientConfig);
-    this.folders.contacts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.contacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'GET', apiParams, clientConfig);
-    this.folders.contacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.contacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.folders.contacts.compute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts:compute', 'GET', apiParams, clientConfig);
+    this.folders.contacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.folders.contacts.sendTestMessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}/contacts:sendTestMessage', 'POST', apiParams, clientConfig);
+    this.folders.contacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.folders.contacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'GET', apiParams, clientConfig);
+    this.folders.contacts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.contacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'POST', apiParams, clientConfig);
 
     this.organizations = {};
 
     this.organizations.contacts = {};
     this.organizations.contacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'POST', apiParams, clientConfig);
-    this.organizations.contacts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.contacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'GET', apiParams, clientConfig);
     this.organizations.contacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.contacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.contacts.compute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts:compute', 'GET', apiParams, clientConfig);
+    this.organizations.contacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts', 'GET', apiParams, clientConfig);
     this.organizations.contacts.sendTestMessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}/contacts:sendTestMessage', 'POST', apiParams, clientConfig);
+    this.organizations.contacts.compute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/contacts:compute', 'GET', apiParams, clientConfig);
+    this.organizations.contacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.contacts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
