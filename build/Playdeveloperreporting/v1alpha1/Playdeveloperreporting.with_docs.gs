@@ -18,30 +18,114 @@ class Playdeveloperreporting {
     this._servicePath = '';
 
 
-    this.vitals = {};
-
-    this.vitals.crashrate = {};
+    this.apps = {};
 
     /**
-     * Describes the properties of the metric set.
+     * Describes filtering options for releases.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/crashRateMetricSet
+     * @param {string} apiParams.name - (Required) Required. Name of the resource, i.e. app the filtering options are for. Format: apps/{app}
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.vitals.crashrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.apps.fetchReleaseFilterOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:fetchReleaseFilterOptions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Searches for Apps accessible by the user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of apps to return. The service may return fewer than this value. If unspecified, at most 50 apps will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match the call that provided the page token.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/apps:search', 'GET', apiParams, clientConfig);
+
+    this.anomalies = {};
+
+    /**
+     * Lists anomalies in any of the datasets.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Filtering criteria for anomalies. For basic filter guidance, please check: https://google.aip.dev/160. **Supported functions:** * `activeBetween(startTime, endTime)`: If specified, only list anomalies that were active in between `startTime` (inclusive) and `endTime` (exclusive). Both parameters are expected to conform to an RFC-3339 formatted string (e.g. `2012-04-21T11:30:00-04:00`). UTC offsets are supported. Both `startTime` and `endTime` accept the special value `UNBOUNDED`, to signify intervals with no lower or upper bound, respectively. Examples: * `activeBetween("2021-04-21T11:30:00Z", "2021-07-21T00:00:00Z")` * `activeBetween(UNBOUNDED, "2021-11-21T00:00:00-04:00")` * `activeBetween("2021-07-21T00:00:00-04:00", UNBOUNDED)`
+     * @param {integer} apiParams.pageSize - Maximum size of the returned data. If unspecified, at most 10 anomalies will be returned. The maximum value is 100; values above 100 will be coerced to 100.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListErrorReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListErrorReports` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. Parent app for which anomalies were detected. Format: apps/{app}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.anomalies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/anomalies', 'GET', apiParams, clientConfig);
+
+    this.vitals = {};
+
+    this.vitals.slowrenderingrate = {};
+
+    /**
+     * Describes the properties of the metric set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.vitals.slowrenderingrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Queries the metrics in the metric set.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/crashRateMetricSet
+     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.vitals.crashrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:query', 'POST', apiParams, clientConfig);
+    this.vitals.slowrenderingrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:query', 'POST', apiParams, clientConfig);
+
+    this.vitals.lmkrate = {};
+
+    /**
+     * Describes the properties of the metric set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/lmkRateMetricSet
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.vitals.lmkrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Queries the metrics in the metric set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/lmkRateMetricSet
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.vitals.lmkrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:query', 'POST', apiParams, clientConfig);
+
+    this.vitals.excessivewakeuprate = {};
+
+    /**
+     * Describes the properties of the metric set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.vitals.excessivewakeuprate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Queries the metrics in the metric set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.vitals.excessivewakeuprate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:query', 'POST', apiParams, clientConfig);
 
     this.vitals.errors = {};
 
@@ -85,6 +169,16 @@ class Playdeveloperreporting {
     this.vitals.errors.counts = {};
 
     /**
+     * Describes the properties of the metrics set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the errors metric set. Format: apps/{app}/errorCountMetricSet
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.vitals.errors.counts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Queries the metrics in the metrics set.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/errorCountMetricSet
@@ -94,16 +188,6 @@ class Playdeveloperreporting {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.vitals.errors.counts.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:query', 'POST', apiParams, clientConfig);
-
-    /**
-     * Describes the properties of the metrics set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the errors metric set. Format: apps/{app}/errorCountMetricSet
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.vitals.errors.counts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     this.vitals.errors.reports = {};
 
@@ -186,51 +270,28 @@ class Playdeveloperreporting {
      */
     this.vitals.slowstartrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.vitals.excessivewakeuprate = {};
+    this.vitals.crashrate = {};
 
     /**
      * Describes the properties of the metric set.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet
+     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/crashRateMetricSet
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.vitals.excessivewakeuprate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.crashrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Queries the metrics in the metric set.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/excessiveWakeupRateMetricSet
+     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/crashRateMetricSet
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.vitals.excessivewakeuprate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:query', 'POST', apiParams, clientConfig);
-
-    this.vitals.lmkrate = {};
-
-    /**
-     * Queries the metrics in the metric set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/lmkRateMetricSet
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.vitals.lmkrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:query', 'POST', apiParams, clientConfig);
-
-    /**
-     * Describes the properties of the metric set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/lmkRateMetricSet
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.vitals.lmkrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.vitals.crashrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:query', 'POST', apiParams, clientConfig);
 
     this.vitals.anrrate = {};
 
@@ -254,67 +315,6 @@ class Playdeveloperreporting {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.vitals.anrrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.vitals.slowrenderingrate = {};
-
-    /**
-     * Queries the metrics in the metric set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.vitals.slowrenderingrate.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:query', 'POST', apiParams, clientConfig);
-
-    /**
-     * Describes the properties of the metric set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name. Format: apps/{app}/slowRenderingRateMetricSet
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.vitals.slowrenderingrate.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.anomalies = {};
-
-    /**
-     * Lists anomalies in any of the datasets.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Filtering criteria for anomalies. For basic filter guidance, please check: https://google.aip.dev/160. **Supported functions:** * `activeBetween(startTime, endTime)`: If specified, only list anomalies that were active in between `startTime` (inclusive) and `endTime` (exclusive). Both parameters are expected to conform to an RFC-3339 formatted string (e.g. `2012-04-21T11:30:00-04:00`). UTC offsets are supported. Both `startTime` and `endTime` accept the special value `UNBOUNDED`, to signify intervals with no lower or upper bound, respectively. Examples: * `activeBetween("2021-04-21T11:30:00Z", "2021-07-21T00:00:00Z")` * `activeBetween(UNBOUNDED, "2021-11-21T00:00:00-04:00")` * `activeBetween("2021-07-21T00:00:00-04:00", UNBOUNDED)`
-     * @param {integer} apiParams.pageSize - Maximum size of the returned data. If unspecified, at most 10 anomalies will be returned. The maximum value is 100; values above 100 will be coerced to 100.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListErrorReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListErrorReports` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. Parent app for which anomalies were detected. Format: apps/{app}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.anomalies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/anomalies', 'GET', apiParams, clientConfig);
-
-    this.apps = {};
-
-    /**
-     * Searches for Apps accessible by the user.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of apps to return. The service may return fewer than this value. If unspecified, at most 50 apps will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `SearchAccessibleApps` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `SearchAccessibleApps` must match the call that provided the page token.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/apps:search', 'GET', apiParams, clientConfig);
-
-    /**
-     * Describes filtering options for releases.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the resource, i.e. app the filtering options are for. Format: apps/{app}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.fetchReleaseFilterOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:fetchReleaseFilterOptions', 'GET', apiParams, clientConfig);
   }
 
 /**
