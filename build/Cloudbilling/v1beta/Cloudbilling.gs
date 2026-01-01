@@ -21,16 +21,8 @@ class Cloudbilling {
     this.billingAccounts = {};
 
     this.billingAccounts.services = {};
-    this.billingAccounts.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
     this.billingAccounts.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.billingAccounts.skuGroups = {};
-    this.billingAccounts.skuGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/skuGroups', 'GET', apiParams, clientConfig);
-    this.billingAccounts.skuGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.billingAccounts.skuGroups.skus = {};
-    this.billingAccounts.skuGroups.skus.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/skus', 'GET', apiParams, clientConfig);
-    this.billingAccounts.skuGroups.skus.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.billingAccounts.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
 
     this.billingAccounts.skus = {};
     this.billingAccounts.skus.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/skus', 'GET', apiParams, clientConfig);
@@ -42,13 +34,13 @@ class Cloudbilling {
     this.billingAccounts.skus.prices = {};
     this.billingAccounts.skus.prices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/prices', 'GET', apiParams, clientConfig);
 
-    this.skus = {};
+    this.billingAccounts.skuGroups = {};
+    this.billingAccounts.skuGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.billingAccounts.skuGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/skuGroups', 'GET', apiParams, clientConfig);
 
-    this.skus.price = {};
-    this.skus.price.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.skus.prices = {};
-    this.skus.prices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/prices', 'GET', apiParams, clientConfig);
+    this.billingAccounts.skuGroups.skus = {};
+    this.billingAccounts.skuGroups.skus.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.billingAccounts.skuGroups.skus.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/skus', 'GET', apiParams, clientConfig);
 
     this.skuGroups = {};
     this.skuGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/skuGroups', 'GET', apiParams, clientConfig);
@@ -57,6 +49,14 @@ class Cloudbilling {
     this.skuGroups.skus = {};
     this.skuGroups.skus.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/skus', 'GET', apiParams, clientConfig);
     this.skuGroups.skus.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    this.skus = {};
+
+    this.skus.prices = {};
+    this.skus.prices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/prices', 'GET', apiParams, clientConfig);
+
+    this.skus.price = {};
+    this.skus.price.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
