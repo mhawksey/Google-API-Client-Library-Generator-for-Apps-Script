@@ -102,6 +102,10 @@ class Drive {
     this.teamdrives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives', 'GET', apiParams, clientConfig);
     this.teamdrives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives/{teamDriveId}', 'PATCH', apiParams, clientConfig);
 
+    this.approvals = {};
+    this.approvals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/approvals/{approvalId}', 'GET', apiParams, clientConfig);
+    this.approvals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/approvals', 'GET', apiParams, clientConfig);
+
     this.accessproposals = {};
     this.accessproposals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/accessproposals/{proposalId}', 'GET', apiParams, clientConfig);
     this.accessproposals.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/accessproposals/{proposalId}:resolve', 'POST', apiParams, clientConfig);
