@@ -4,7 +4,7 @@ Auto-generated client library for using the **Data Manager API (version: v1)** i
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:36:23 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:35:28 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:36:23 GMT
 - **Created:** Sat, 01 Nov 2025 00:35:17 GMT
 
