@@ -21,208 +21,222 @@ class Networksecurity {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.addressGroups = {};
-    this.projects.locations.addressGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addressGroups', 'GET', apiParams, clientConfig);
-    this.projects.locations.addressGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.addressGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addressGroups', 'POST', apiParams, clientConfig);
-    this.projects.locations.addressGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.addressGroups.addItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:addItems', 'POST', apiParams, clientConfig);
-    this.projects.locations.addressGroups.removeItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:removeItems', 'POST', apiParams, clientConfig);
-    this.projects.locations.addressGroups.cloneItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:cloneItems', 'POST', apiParams, clientConfig);
-    this.projects.locations.addressGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.addressGroups.listReferences = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:listReferences', 'GET', apiParams, clientConfig);
-    this.projects.locations.addressGroups.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.addressGroups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.addressGroups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.firewallEndpointAssociations = {};
-    this.projects.locations.firewallEndpointAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallEndpointAssociations', 'GET', apiParams, clientConfig);
-    this.projects.locations.firewallEndpointAssociations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.firewallEndpointAssociations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallEndpointAssociations', 'POST', apiParams, clientConfig);
-    this.projects.locations.firewallEndpointAssociations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.firewallEndpointAssociations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.interceptEndpointGroups = {};
-    this.projects.locations.interceptEndpointGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptEndpointGroups', 'GET', apiParams, clientConfig);
-    this.projects.locations.interceptEndpointGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.interceptEndpointGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptEndpointGroups', 'POST', apiParams, clientConfig);
     this.projects.locations.interceptEndpointGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.interceptEndpointGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptEndpointGroups', 'GET', apiParams, clientConfig);
     this.projects.locations.interceptEndpointGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.interceptEndpointGroupAssociations = {};
-    this.projects.locations.interceptEndpointGroupAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptEndpointGroupAssociations', 'GET', apiParams, clientConfig);
-    this.projects.locations.interceptEndpointGroupAssociations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.interceptEndpointGroupAssociations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptEndpointGroupAssociations', 'POST', apiParams, clientConfig);
-    this.projects.locations.interceptEndpointGroupAssociations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.interceptEndpointGroupAssociations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.interceptDeploymentGroups = {};
-    this.projects.locations.interceptDeploymentGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptDeploymentGroups', 'GET', apiParams, clientConfig);
-    this.projects.locations.interceptDeploymentGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.interceptDeploymentGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptDeploymentGroups', 'POST', apiParams, clientConfig);
-    this.projects.locations.interceptDeploymentGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.interceptDeploymentGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.interceptEndpointGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptEndpointGroups', 'POST', apiParams, clientConfig);
+    this.projects.locations.interceptEndpointGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.interceptDeployments = {};
-    this.projects.locations.interceptDeployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptDeployments', 'GET', apiParams, clientConfig);
-    this.projects.locations.interceptDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.interceptDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptDeployments', 'POST', apiParams, clientConfig);
     this.projects.locations.interceptDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.interceptDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.interceptDeployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptDeployments', 'GET', apiParams, clientConfig);
+    this.projects.locations.interceptDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptDeployments', 'POST', apiParams, clientConfig);
     this.projects.locations.interceptDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.locations.mirroringEndpointGroups = {};
-    this.projects.locations.mirroringEndpointGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringEndpointGroups', 'GET', apiParams, clientConfig);
-    this.projects.locations.mirroringEndpointGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.mirroringEndpointGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringEndpointGroups', 'POST', apiParams, clientConfig);
-    this.projects.locations.mirroringEndpointGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.mirroringEndpointGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.mirroringEndpointGroupAssociations = {};
-    this.projects.locations.mirroringEndpointGroupAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringEndpointGroupAssociations', 'GET', apiParams, clientConfig);
-    this.projects.locations.mirroringEndpointGroupAssociations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.mirroringEndpointGroupAssociations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringEndpointGroupAssociations', 'POST', apiParams, clientConfig);
-    this.projects.locations.mirroringEndpointGroupAssociations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.mirroringEndpointGroupAssociations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.locations.mirroringDeploymentGroups = {};
-    this.projects.locations.mirroringDeploymentGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringDeploymentGroups', 'GET', apiParams, clientConfig);
     this.projects.locations.mirroringDeploymentGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.mirroringDeploymentGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringDeploymentGroups', 'POST', apiParams, clientConfig);
     this.projects.locations.mirroringDeploymentGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.mirroringDeploymentGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.mirroringDeploymentGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringDeploymentGroups', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.mirroringDeployments = {};
-    this.projects.locations.mirroringDeployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringDeployments', 'GET', apiParams, clientConfig);
-    this.projects.locations.mirroringDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.mirroringDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringDeployments', 'POST', apiParams, clientConfig);
-    this.projects.locations.mirroringDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.mirroringDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.gatewaySecurityPolicies = {};
+    this.projects.locations.gatewaySecurityPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.gatewaySecurityPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.gatewaySecurityPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gatewaySecurityPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.gatewaySecurityPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gatewaySecurityPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.gatewaySecurityPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.gatewaySecurityPolicies.rules = {};
+    this.projects.locations.gatewaySecurityPolicies.rules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.gatewaySecurityPolicies.rules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rules', 'GET', apiParams, clientConfig);
+    this.projects.locations.gatewaySecurityPolicies.rules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.gatewaySecurityPolicies.rules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.gatewaySecurityPolicies.rules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rules', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.backendAuthenticationConfigs = {};
+    this.projects.locations.backendAuthenticationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backendAuthenticationConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.backendAuthenticationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backendAuthenticationConfigs', 'GET', apiParams, clientConfig);
+    this.projects.locations.backendAuthenticationConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.backendAuthenticationConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.backendAuthenticationConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.mirroringEndpointGroups = {};
+    this.projects.locations.mirroringEndpointGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.mirroringEndpointGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringEndpointGroups', 'GET', apiParams, clientConfig);
+    this.projects.locations.mirroringEndpointGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringEndpointGroups', 'POST', apiParams, clientConfig);
+    this.projects.locations.mirroringEndpointGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.mirroringEndpointGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.serverTlsPolicies = {};
+    this.projects.locations.serverTlsPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.serverTlsPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serverTlsPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.serverTlsPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.serverTlsPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.serverTlsPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.serverTlsPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serverTlsPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.serverTlsPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.serverTlsPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.interceptDeploymentGroups = {};
+    this.projects.locations.interceptDeploymentGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.interceptDeploymentGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptDeploymentGroups', 'POST', apiParams, clientConfig);
+    this.projects.locations.interceptDeploymentGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.interceptDeploymentGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptDeploymentGroups', 'GET', apiParams, clientConfig);
+    this.projects.locations.interceptDeploymentGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.firewallEndpointAssociations = {};
+    this.projects.locations.firewallEndpointAssociations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.firewallEndpointAssociations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallEndpointAssociations', 'POST', apiParams, clientConfig);
+    this.projects.locations.firewallEndpointAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallEndpointAssociations', 'GET', apiParams, clientConfig);
+    this.projects.locations.firewallEndpointAssociations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.firewallEndpointAssociations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.dnsThreatDetectors = {};
+    this.projects.locations.dnsThreatDetectors.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.dnsThreatDetectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsThreatDetectors', 'POST', apiParams, clientConfig);
+    this.projects.locations.dnsThreatDetectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsThreatDetectors', 'GET', apiParams, clientConfig);
+    this.projects.locations.dnsThreatDetectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.dnsThreatDetectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.tlsInspectionPolicies = {};
+    this.projects.locations.tlsInspectionPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tlsInspectionPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.tlsInspectionPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.tlsInspectionPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.tlsInspectionPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tlsInspectionPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.tlsInspectionPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.authorizationPolicies = {};
     this.projects.locations.authorizationPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authorizationPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.authorizationPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.authorizationPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authorizationPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.authorizationPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.authorizationPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.authorizationPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.authorizationPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.authorizationPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.backendAuthenticationConfigs = {};
-    this.projects.locations.backendAuthenticationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backendAuthenticationConfigs', 'GET', apiParams, clientConfig);
-    this.projects.locations.backendAuthenticationConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.backendAuthenticationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/backendAuthenticationConfigs', 'POST', apiParams, clientConfig);
-    this.projects.locations.backendAuthenticationConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.backendAuthenticationConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.serverTlsPolicies = {};
-    this.projects.locations.serverTlsPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serverTlsPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.serverTlsPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.serverTlsPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/serverTlsPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.serverTlsPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.serverTlsPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.serverTlsPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.serverTlsPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.serverTlsPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.authorizationPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.authorizationPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.authorizationPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.authorizationPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.authorizationPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authorizationPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.authorizationPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
     this.projects.locations.clientTlsPolicies = {};
     this.projects.locations.clientTlsPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clientTlsPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.clientTlsPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.clientTlsPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clientTlsPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.clientTlsPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.clientTlsPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.clientTlsPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.clientTlsPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clientTlsPolicies', 'POST', apiParams, clientConfig);
     this.projects.locations.clientTlsPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.clientTlsPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.clientTlsPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.gatewaySecurityPolicies = {};
-    this.projects.locations.gatewaySecurityPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gatewaySecurityPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.gatewaySecurityPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.gatewaySecurityPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gatewaySecurityPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.gatewaySecurityPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.gatewaySecurityPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.gatewaySecurityPolicies.rules = {};
-    this.projects.locations.gatewaySecurityPolicies.rules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rules', 'GET', apiParams, clientConfig);
-    this.projects.locations.gatewaySecurityPolicies.rules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.gatewaySecurityPolicies.rules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rules', 'POST', apiParams, clientConfig);
-    this.projects.locations.gatewaySecurityPolicies.rules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.gatewaySecurityPolicies.rules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.clientTlsPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.clientTlsPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
     this.projects.locations.urlLists = {};
-    this.projects.locations.urlLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/urlLists', 'GET', apiParams, clientConfig);
+    this.projects.locations.urlLists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.urlLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.urlLists.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.urlLists.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/urlLists', 'POST', apiParams, clientConfig);
-    this.projects.locations.urlLists.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.urlLists.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.urlLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/urlLists', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.tlsInspectionPolicies = {};
-    this.projects.locations.tlsInspectionPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tlsInspectionPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.tlsInspectionPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.tlsInspectionPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tlsInspectionPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.tlsInspectionPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.tlsInspectionPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.interceptEndpointGroupAssociations = {};
+    this.projects.locations.interceptEndpointGroupAssociations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.interceptEndpointGroupAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptEndpointGroupAssociations', 'GET', apiParams, clientConfig);
+    this.projects.locations.interceptEndpointGroupAssociations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.interceptEndpointGroupAssociations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/interceptEndpointGroupAssociations', 'POST', apiParams, clientConfig);
+    this.projects.locations.interceptEndpointGroupAssociations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.authzPolicies = {};
-    this.projects.locations.authzPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authzPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.authzPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.authzPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authzPolicies', 'POST', apiParams, clientConfig);
     this.projects.locations.authzPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.authzPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.authzPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.authzPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.authzPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.authzPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.authzPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.authzPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authzPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.authzPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.authzPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authzPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.authzPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.mirroringEndpointGroupAssociations = {};
+    this.projects.locations.mirroringEndpointGroupAssociations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.mirroringEndpointGroupAssociations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.mirroringEndpointGroupAssociations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.mirroringEndpointGroupAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringEndpointGroupAssociations', 'GET', apiParams, clientConfig);
+    this.projects.locations.mirroringEndpointGroupAssociations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringEndpointGroupAssociations', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.mirroringDeployments = {};
+    this.projects.locations.mirroringDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.mirroringDeployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.mirroringDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.mirroringDeployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringDeployments', 'GET', apiParams, clientConfig);
+    this.projects.locations.mirroringDeployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mirroringDeployments', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.addressGroups = {};
+    this.projects.locations.addressGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.addressGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.addressGroups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.addressGroups.cloneItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:cloneItems', 'POST', apiParams, clientConfig);
+    this.projects.locations.addressGroups.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.addressGroups.listReferences = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:listReferences', 'GET', apiParams, clientConfig);
+    this.projects.locations.addressGroups.removeItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:removeItems', 'POST', apiParams, clientConfig);
+    this.projects.locations.addressGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addressGroups', 'POST', apiParams, clientConfig);
+    this.projects.locations.addressGroups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.addressGroups.addItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:addItems', 'POST', apiParams, clientConfig);
+    this.projects.locations.addressGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addressGroups', 'GET', apiParams, clientConfig);
+    this.projects.locations.addressGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.firewallEndpoints = {};
+    this.projects.locations.firewallEndpoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallEndpoints', 'GET', apiParams, clientConfig);
+    this.projects.locations.firewallEndpoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.firewallEndpoints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallEndpoints', 'POST', apiParams, clientConfig);
+    this.projects.locations.firewallEndpoints.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.firewallEndpoints.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.organizations = {};
 
     this.organizations.locations = {};
 
-    this.organizations.locations.operations = {};
-    this.organizations.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.organizations.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.organizations.locations.addressGroups = {};
-    this.organizations.locations.addressGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addressGroups', 'GET', apiParams, clientConfig);
-    this.organizations.locations.addressGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.addressGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addressGroups', 'POST', apiParams, clientConfig);
-    this.organizations.locations.addressGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.locations.addressGroups.addItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:addItems', 'POST', apiParams, clientConfig);
-    this.organizations.locations.addressGroups.removeItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:removeItems', 'POST', apiParams, clientConfig);
-    this.organizations.locations.addressGroups.cloneItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:cloneItems', 'POST', apiParams, clientConfig);
-    this.organizations.locations.addressGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.locations.addressGroups.listReferences = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:listReferences', 'GET', apiParams, clientConfig);
-
     this.organizations.locations.firewallEndpoints = {};
+    this.organizations.locations.firewallEndpoints.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.locations.firewallEndpoints.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.firewallEndpoints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallEndpoints', 'POST', apiParams, clientConfig);
     this.organizations.locations.firewallEndpoints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallEndpoints', 'GET', apiParams, clientConfig);
     this.organizations.locations.firewallEndpoints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.firewallEndpoints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/firewallEndpoints', 'POST', apiParams, clientConfig);
-    this.organizations.locations.firewallEndpoints.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.locations.firewallEndpoints.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.organizations.locations.securityProfileGroups = {};
-    this.organizations.locations.securityProfileGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityProfileGroups', 'GET', apiParams, clientConfig);
     this.organizations.locations.securityProfileGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.securityProfileGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityProfileGroups', 'POST', apiParams, clientConfig);
     this.organizations.locations.securityProfileGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.locations.securityProfileGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.securityProfileGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityProfileGroups', 'GET', apiParams, clientConfig);
+    this.organizations.locations.securityProfileGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityProfileGroups', 'POST', apiParams, clientConfig);
+
+    this.organizations.locations.addressGroups = {};
+    this.organizations.locations.addressGroups.cloneItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:cloneItems', 'POST', apiParams, clientConfig);
+    this.organizations.locations.addressGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addressGroups', 'GET', apiParams, clientConfig);
+    this.organizations.locations.addressGroups.removeItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:removeItems', 'POST', apiParams, clientConfig);
+    this.organizations.locations.addressGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addressGroups', 'POST', apiParams, clientConfig);
+    this.organizations.locations.addressGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.addressGroups.addItems = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:addItems', 'POST', apiParams, clientConfig);
+    this.organizations.locations.addressGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.addressGroups.listReferences = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+addressGroup}:listReferences', 'GET', apiParams, clientConfig);
+    this.organizations.locations.addressGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.organizations.locations.securityProfiles = {};
+    this.organizations.locations.securityProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.securityProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityProfiles', 'POST', apiParams, clientConfig);
     this.organizations.locations.securityProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityProfiles', 'GET', apiParams, clientConfig);
     this.organizations.locations.securityProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.securityProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityProfiles', 'POST', apiParams, clientConfig);
     this.organizations.locations.securityProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.locations.securityProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.organizations.locations.operations = {};
+    this.organizations.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.organizations.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.organizations.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
