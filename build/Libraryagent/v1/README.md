@@ -4,7 +4,7 @@ Auto-generated client library for using the **Library Agent API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:55:04 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:47:02 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:55:04 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:57 GMT
 
@@ -49,9 +49,9 @@ Lists books in a shelf. The order is unspecified but deterministic. Newly create
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBooksResponse.next_page_token. returned from the previous call to `ListBooks` method. |
-| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer books than requested. If unspecified, server will pick an appropriate default. |
 | `params.parent` | `string` | Yes | Required. The name of the shelf whose books we'd like to list. |
+| `params.pageSize` | `integer` | No | Requested page size. Server may return fewer books than requested. If unspecified, server will pick an appropriate default. |
+| `params.pageToken` | `string` | No | A token identifying a page of results the server should return. Typically, this is the value of ListBooksResponse.next_page_token. returned from the previous call to `ListBooks` method. |
 
 #### `shelves.books.borrow()`
 
