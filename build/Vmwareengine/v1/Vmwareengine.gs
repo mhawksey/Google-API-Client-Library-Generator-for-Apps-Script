@@ -21,136 +21,145 @@ class Vmwareengine {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.getDnsBindPermission = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
+    this.projects.locations.getDnsBindPermission = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.nodeTypes = {};
+    this.projects.locations.nodeTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.nodeTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodeTypes', 'GET', apiParams, clientConfig);
+
     this.projects.locations.operations = {};
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.networkPolicies = {};
+    this.projects.locations.networkPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.networkPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.networkPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkPolicies.fetchExternalAddresses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+networkPolicy}:fetchExternalAddresses', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.networkPolicies.externalAccessRules = {};
+    this.projects.locations.networkPolicies.externalAccessRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalAccessRules', 'POST', apiParams, clientConfig);
+    this.projects.locations.networkPolicies.externalAccessRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.networkPolicies.externalAccessRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalAccessRules', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkPolicies.externalAccessRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkPolicies.externalAccessRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.vmwareEngineNetworks = {};
+    this.projects.locations.vmwareEngineNetworks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareEngineNetworks', 'POST', apiParams, clientConfig);
+    this.projects.locations.vmwareEngineNetworks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareEngineNetworks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.vmwareEngineNetworks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareEngineNetworks', 'GET', apiParams, clientConfig);
+    this.projects.locations.vmwareEngineNetworks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.networkPeerings = {};
+    this.projects.locations.networkPeerings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.networkPeerings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPeerings', 'POST', apiParams, clientConfig);
+    this.projects.locations.networkPeerings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkPeerings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPeerings', 'GET', apiParams, clientConfig);
+    this.projects.locations.networkPeerings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.networkPeerings.peeringRoutes = {};
+    this.projects.locations.networkPeerings.peeringRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/peeringRoutes', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.datastores = {};
+    this.projects.locations.datastores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/datastores', 'GET', apiParams, clientConfig);
+    this.projects.locations.datastores.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.datastores.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/datastores', 'POST', apiParams, clientConfig);
+    this.projects.locations.datastores.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.datastores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.dnsBindPermission = {};
+    this.projects.locations.dnsBindPermission.revoke = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:revoke', 'POST', apiParams, clientConfig);
+    this.projects.locations.dnsBindPermission.grant = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:grant', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.privateConnections = {};
+    this.projects.locations.privateConnections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateConnections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.privateConnections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/privateConnections', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateConnections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.privateConnections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/privateConnections', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.privateConnections.peeringRoutes = {};
+    this.projects.locations.privateConnections.peeringRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/peeringRoutes', 'GET', apiParams, clientConfig);
 
     this.projects.locations.privateClouds = {};
-    this.projects.locations.privateClouds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/privateClouds', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/privateClouds', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.privateClouds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.privateClouds.privateCloudDeletionNow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:privateCloudDeletionNow', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
     this.projects.locations.privateClouds.showNsxCredentials = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+privateCloud}:showNsxCredentials', 'GET', apiParams, clientConfig);
     this.projects.locations.privateClouds.showVcenterCredentials = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+privateCloud}:showVcenterCredentials', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.resetNsxCredentials = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+privateCloud}:resetNsxCredentials', 'POST', apiParams, clientConfig);
     this.projects.locations.privateClouds.resetVcenterCredentials = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+privateCloud}:resetVcenterCredentials', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.getDnsForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.updateDnsForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.privateClouds.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.privateClouds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.privateClouds.resetNsxCredentials = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+privateCloud}:resetNsxCredentials', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.getDnsForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/privateClouds', 'GET', apiParams, clientConfig);
     this.projects.locations.privateClouds.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/privateClouds', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.updateDnsForwarding = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.privateClouds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.privateCloudDeletionNow = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:privateCloudDeletionNow', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.privateClouds.clusters = {};
-    this.projects.locations.privateClouds.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clusters', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clusters', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.clusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.privateClouds.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.privateClouds.clusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.clusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.clusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.upgrades = {};
+    this.projects.locations.privateClouds.upgrades.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.privateClouds.upgrades.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.upgrades.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/upgrades', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.privateClouds.clusters.nodes = {};
-    this.projects.locations.privateClouds.clusters.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodes', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.clusters.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.hcxActivationKeys = {};
+    this.projects.locations.privateClouds.hcxActivationKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hcxActivationKeys', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.hcxActivationKeys.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.hcxActivationKeys.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.hcxActivationKeys.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.hcxActivationKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.hcxActivationKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hcxActivationKeys', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.privateClouds.externalAddresses = {};
-    this.projects.locations.privateClouds.externalAddresses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalAddresses', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.externalAddresses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.externalAddresses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalAddresses', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.externalAddresses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.privateClouds.externalAddresses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.privateClouds.subnets = {};
-    this.projects.locations.privateClouds.subnets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subnets', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.subnets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.subnets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.privateClouds.managementDnsZoneBindings = {};
+    this.projects.locations.privateClouds.managementDnsZoneBindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.managementDnsZoneBindings.repair = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:repair', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.managementDnsZoneBindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.privateClouds.managementDnsZoneBindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managementDnsZoneBindings', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.managementDnsZoneBindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managementDnsZoneBindings', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.managementDnsZoneBindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.privateClouds.loggingServers = {};
     this.projects.locations.privateClouds.loggingServers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/loggingServers', 'GET', apiParams, clientConfig);
     this.projects.locations.privateClouds.loggingServers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.privateClouds.loggingServers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/loggingServers', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.loggingServers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.privateClouds.loggingServers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.privateClouds.loggingServers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.locations.privateClouds.hcxActivationKeys = {};
-    this.projects.locations.privateClouds.hcxActivationKeys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hcxActivationKeys', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.hcxActivationKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hcxActivationKeys', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.hcxActivationKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.hcxActivationKeys.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.hcxActivationKeys.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.hcxActivationKeys.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters = {};
+    this.projects.locations.privateClouds.clusters.unmountDatastore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unmountDatastore', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.mountDatastore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:mountDatastore', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clusters', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clusters', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.privateClouds.managementDnsZoneBindings = {};
-    this.projects.locations.privateClouds.managementDnsZoneBindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managementDnsZoneBindings', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.managementDnsZoneBindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.managementDnsZoneBindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/managementDnsZoneBindings', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateClouds.managementDnsZoneBindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.privateClouds.managementDnsZoneBindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.privateClouds.managementDnsZoneBindings.repair = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:repair', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.nodes = {};
+    this.projects.locations.privateClouds.clusters.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.clusters.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodes', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.privateClouds.upgrades = {};
-    this.projects.locations.privateClouds.upgrades.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/upgrades', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.upgrades.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateClouds.upgrades.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.privateClouds.subnets = {};
+    this.projects.locations.privateClouds.subnets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.subnets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subnets', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.subnets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.locations.networkPolicies = {};
-    this.projects.locations.networkPolicies.fetchExternalAddresses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+networkPolicy}:fetchExternalAddresses', 'GET', apiParams, clientConfig);
-    this.projects.locations.networkPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.networkPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.networkPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.networkPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.networkPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.networkPolicies.externalAccessRules = {};
-    this.projects.locations.networkPolicies.externalAccessRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalAccessRules', 'GET', apiParams, clientConfig);
-    this.projects.locations.networkPolicies.externalAccessRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.networkPolicies.externalAccessRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalAccessRules', 'POST', apiParams, clientConfig);
-    this.projects.locations.networkPolicies.externalAccessRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.networkPolicies.externalAccessRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.nodeTypes = {};
-    this.projects.locations.nodeTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/nodeTypes', 'GET', apiParams, clientConfig);
-    this.projects.locations.nodeTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.networkPeerings = {};
-    this.projects.locations.networkPeerings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.networkPeerings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPeerings', 'GET', apiParams, clientConfig);
-    this.projects.locations.networkPeerings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/networkPeerings', 'POST', apiParams, clientConfig);
-    this.projects.locations.networkPeerings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.networkPeerings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.networkPeerings.peeringRoutes = {};
-    this.projects.locations.networkPeerings.peeringRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/peeringRoutes', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.vmwareEngineNetworks = {};
-    this.projects.locations.vmwareEngineNetworks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareEngineNetworks', 'POST', apiParams, clientConfig);
-    this.projects.locations.vmwareEngineNetworks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.vmwareEngineNetworks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.vmwareEngineNetworks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.vmwareEngineNetworks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vmwareEngineNetworks', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.privateConnections = {};
-    this.projects.locations.privateConnections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/privateConnections', 'POST', apiParams, clientConfig);
-    this.projects.locations.privateConnections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateConnections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/privateConnections', 'GET', apiParams, clientConfig);
-    this.projects.locations.privateConnections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.privateConnections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.privateConnections.peeringRoutes = {};
-    this.projects.locations.privateConnections.peeringRoutes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/peeringRoutes', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.dnsBindPermission = {};
-    this.projects.locations.dnsBindPermission.grant = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:grant', 'POST', apiParams, clientConfig);
-    this.projects.locations.dnsBindPermission.revoke = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:revoke', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.externalAddresses = {};
+    this.projects.locations.privateClouds.externalAddresses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalAddresses', 'POST', apiParams, clientConfig);
+    this.projects.locations.privateClouds.externalAddresses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.externalAddresses.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.privateClouds.externalAddresses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalAddresses', 'GET', apiParams, clientConfig);
+    this.projects.locations.privateClouds.externalAddresses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.announcements = {};
     this.projects.locations.announcements.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/announcements', 'GET', apiParams, clientConfig);
