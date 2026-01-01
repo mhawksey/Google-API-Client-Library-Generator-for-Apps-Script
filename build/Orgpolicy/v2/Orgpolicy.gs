@@ -18,51 +18,51 @@ class Orgpolicy {
     this._servicePath = '';
 
 
-    this.projects = {};
-
-    this.projects.constraints = {};
-    this.projects.constraints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/constraints', 'GET', apiParams, clientConfig);
-
-    this.projects.policies = {};
-    this.projects.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'GET', apiParams, clientConfig);
-    this.projects.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.policies.getEffectivePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:getEffectivePolicy', 'GET', apiParams, clientConfig);
-    this.projects.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'POST', apiParams, clientConfig);
-    this.projects.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.folders = {};
-
-    this.folders.constraints = {};
-    this.folders.constraints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/constraints', 'GET', apiParams, clientConfig);
-
-    this.folders.policies = {};
-    this.folders.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'GET', apiParams, clientConfig);
-    this.folders.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.policies.getEffectivePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:getEffectivePolicy', 'GET', apiParams, clientConfig);
-    this.folders.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'POST', apiParams, clientConfig);
-    this.folders.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.organizations = {};
 
     this.organizations.constraints = {};
     this.organizations.constraints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/constraints', 'GET', apiParams, clientConfig);
 
     this.organizations.policies = {};
-    this.organizations.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'GET', apiParams, clientConfig);
-    this.organizations.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.policies.getEffectivePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:getEffectivePolicy', 'GET', apiParams, clientConfig);
     this.organizations.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'POST', apiParams, clientConfig);
-    this.organizations.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'GET', apiParams, clientConfig);
+    this.organizations.policies.getEffectivePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:getEffectivePolicy', 'GET', apiParams, clientConfig);
 
     this.organizations.customConstraints = {};
-    this.organizations.customConstraints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/customConstraints', 'POST', apiParams, clientConfig);
-    this.organizations.customConstraints.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.customConstraints.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.customConstraints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/customConstraints', 'GET', apiParams, clientConfig);
+    this.organizations.customConstraints.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.customConstraints.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/customConstraints', 'POST', apiParams, clientConfig);
     this.organizations.customConstraints.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects = {};
+
+    this.projects.constraints = {};
+    this.projects.constraints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/constraints', 'GET', apiParams, clientConfig);
+
+    this.projects.policies = {};
+    this.projects.policies.getEffectivePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:getEffectivePolicy', 'GET', apiParams, clientConfig);
+    this.projects.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'GET', apiParams, clientConfig);
+    this.projects.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'POST', apiParams, clientConfig);
+    this.projects.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.folders = {};
+
+    this.folders.policies = {};
+    this.folders.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'POST', apiParams, clientConfig);
+    this.folders.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.folders.policies.getEffectivePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:getEffectivePolicy', 'GET', apiParams, clientConfig);
+    this.folders.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policies', 'GET', apiParams, clientConfig);
+
+    this.folders.constraints = {};
+    this.folders.constraints.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/constraints', 'GET', apiParams, clientConfig);
   }
 
 /**
