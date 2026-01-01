@@ -24,28 +24,28 @@ class Tpu {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.nodes = {};
-    this.projects.locations.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
-    this.projects.locations.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
-    this.projects.locations.nodes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.nodes.reimage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:reimage', 'POST', apiParams, clientConfig);
     this.projects.locations.nodes.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:stop', 'POST', apiParams, clientConfig);
+    this.projects.locations.nodes.reimage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:reimage', 'POST', apiParams, clientConfig);
+    this.projects.locations.nodes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.nodes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'GET', apiParams, clientConfig);
+    this.projects.locations.nodes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.nodes.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:start', 'POST', apiParams, clientConfig);
+    this.projects.locations.nodes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/nodes', 'POST', apiParams, clientConfig);
 
     this.projects.locations.tensorflowVersions = {};
     this.projects.locations.tensorflowVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/tensorflowVersions', 'GET', apiParams, clientConfig);
     this.projects.locations.tensorflowVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.acceleratorTypes = {};
-    this.projects.locations.acceleratorTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/acceleratorTypes', 'GET', apiParams, clientConfig);
     this.projects.locations.acceleratorTypes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.acceleratorTypes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/acceleratorTypes', 'GET', apiParams, clientConfig);
   }
 
 /**
