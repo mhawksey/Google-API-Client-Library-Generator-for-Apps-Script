@@ -23,33 +23,33 @@ class Securitycenter {
     this.organizations.updateOrganizationSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.organizations.operations = {};
+    this.organizations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.organizations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.organizations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
-    this.organizations.sources = {};
-    this.organizations.sources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sources', 'POST', apiParams, clientConfig);
-    this.organizations.sources.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.organizations.sources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.sources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sources', 'GET', apiParams, clientConfig);
-    this.organizations.sources.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.organizations.sources.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.organizations.sources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.organizations.sources.findings = {};
-    this.organizations.sources.findings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings', 'POST', apiParams, clientConfig);
-    this.organizations.sources.findings.group = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings:group', 'POST', apiParams, clientConfig);
-    this.organizations.sources.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings', 'GET', apiParams, clientConfig);
-    this.organizations.sources.findings.setState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:setState', 'POST', apiParams, clientConfig);
-    this.organizations.sources.findings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.sources.findings.updateSecurityMarks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
     this.organizations.assets = {};
-    this.organizations.assets.group = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/assets:group', 'POST', apiParams, clientConfig);
     this.organizations.assets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/assets', 'GET', apiParams, clientConfig);
+    this.organizations.assets.group = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/assets:group', 'POST', apiParams, clientConfig);
     this.organizations.assets.runDiscovery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/assets:runDiscovery', 'POST', apiParams, clientConfig);
     this.organizations.assets.updateSecurityMarks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.organizations.sources = {};
+    this.organizations.sources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sources', 'GET', apiParams, clientConfig);
+    this.organizations.sources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.sources.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.sources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.sources.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.organizations.sources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sources', 'POST', apiParams, clientConfig);
+    this.organizations.sources.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.organizations.sources.findings = {};
+    this.organizations.sources.findings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings', 'GET', apiParams, clientConfig);
+    this.organizations.sources.findings.updateSecurityMarks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.sources.findings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.sources.findings.setState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:setState', 'POST', apiParams, clientConfig);
+    this.organizations.sources.findings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings', 'POST', apiParams, clientConfig);
+    this.organizations.sources.findings.group = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/findings:group', 'POST', apiParams, clientConfig);
   }
 
 /**
