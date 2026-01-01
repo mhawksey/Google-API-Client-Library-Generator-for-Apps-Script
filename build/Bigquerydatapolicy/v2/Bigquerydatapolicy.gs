@@ -23,16 +23,16 @@ class Bigquerydatapolicy {
     this.projects.locations = {};
 
     this.projects.locations.dataPolicies = {};
-    this.projects.locations.dataPolicies.removeGrantees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+dataPolicy}:removeGrantees', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/dataPolicies', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.addGrantees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+dataPolicy}:addGrantees', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/dataPolicies', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.dataPolicies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/dataPolicies', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.removeGrantees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+dataPolicy}:removeGrantees', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/dataPolicies', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.addGrantees = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+dataPolicy}:addGrantees', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
