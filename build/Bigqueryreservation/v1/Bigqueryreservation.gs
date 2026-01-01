@@ -22,45 +22,45 @@ class Bigqueryreservation {
 
     this.projects.locations = {};
     this.projects.locations.searchAssignments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:searchAssignments', 'GET', apiParams, clientConfig);
-    this.projects.locations.updateBiReservation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.searchAllAssignments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:searchAllAssignments', 'GET', apiParams, clientConfig);
     this.projects.locations.getBiReservation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.capacityCommitments = {};
-    this.projects.locations.capacityCommitments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.capacityCommitments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/capacityCommitments', 'GET', apiParams, clientConfig);
-    this.projects.locations.capacityCommitments.merge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/capacityCommitments:merge', 'POST', apiParams, clientConfig);
-    this.projects.locations.capacityCommitments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.capacityCommitments.split = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:split', 'POST', apiParams, clientConfig);
-    this.projects.locations.capacityCommitments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/capacityCommitments', 'POST', apiParams, clientConfig);
-    this.projects.locations.capacityCommitments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.reservationGroups = {};
-    this.projects.locations.reservationGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reservationGroups', 'GET', apiParams, clientConfig);
-    this.projects.locations.reservationGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.reservationGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reservationGroups', 'POST', apiParams, clientConfig);
-    this.projects.locations.reservationGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.updateBiReservation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.reservations = {};
-    this.projects.locations.reservations.failoverReservation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:failoverReservation', 'POST', apiParams, clientConfig);
     this.projects.locations.reservations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reservations', 'POST', apiParams, clientConfig);
     this.projects.locations.reservations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reservations', 'GET', apiParams, clientConfig);
-    this.projects.locations.reservations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.reservations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.reservations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.reservations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.reservations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.locations.reservations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.reservations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.reservations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.reservations.failoverReservation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:failoverReservation', 'POST', apiParams, clientConfig);
+    this.projects.locations.reservations.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.reservations.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.reservations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.projects.locations.reservations.assignments = {};
-    this.projects.locations.reservations.assignments.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
-    this.projects.locations.reservations.assignments.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.reservations.assignments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/assignments', 'GET', apiParams, clientConfig);
     this.projects.locations.reservations.assignments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/assignments', 'POST', apiParams, clientConfig);
-    this.projects.locations.reservations.assignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.reservations.assignments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/assignments', 'GET', apiParams, clientConfig);
     this.projects.locations.reservations.assignments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.reservations.assignments.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.reservations.assignments.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.projects.locations.reservations.assignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.reservations.assignments.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.reservations.assignments.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.reservations.assignments.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.capacityCommitments = {};
+    this.projects.locations.capacityCommitments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/capacityCommitments', 'POST', apiParams, clientConfig);
+    this.projects.locations.capacityCommitments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/capacityCommitments', 'GET', apiParams, clientConfig);
+    this.projects.locations.capacityCommitments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.capacityCommitments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.capacityCommitments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.capacityCommitments.split = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:split', 'POST', apiParams, clientConfig);
+    this.projects.locations.capacityCommitments.merge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/capacityCommitments:merge', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.reservationGroups = {};
+    this.projects.locations.reservationGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reservationGroups', 'POST', apiParams, clientConfig);
+    this.projects.locations.reservationGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.reservationGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.reservationGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reservationGroups', 'GET', apiParams, clientConfig);
   }
 
 /**
