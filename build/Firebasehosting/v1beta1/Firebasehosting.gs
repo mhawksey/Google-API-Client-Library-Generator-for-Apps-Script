@@ -20,105 +20,105 @@ class Firebasehosting {
 
     this.projects = {};
 
-    this.projects.operations = {};
-    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.sites = {};
-    this.projects.sites.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.sites.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sites', 'POST', apiParams, clientConfig);
-    this.projects.sites.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sites', 'GET', apiParams, clientConfig);
     this.projects.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sites', 'POST', apiParams, clientConfig);
+    this.projects.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/sites', 'GET', apiParams, clientConfig);
+    this.projects.sites.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.sites.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.sites.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.sites.releases = {};
+    this.projects.sites.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'POST', apiParams, clientConfig);
+    this.projects.sites.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.sites.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'GET', apiParams, clientConfig);
+
+    this.projects.sites.channels = {};
+    this.projects.sites.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.sites.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/channels', 'POST', apiParams, clientConfig);
+    this.projects.sites.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.sites.channels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.sites.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/channels', 'GET', apiParams, clientConfig);
+
+    this.projects.sites.channels.releases = {};
+    this.projects.sites.channels.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.sites.channels.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'GET', apiParams, clientConfig);
+    this.projects.sites.channels.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'POST', apiParams, clientConfig);
 
     this.projects.sites.customDomains = {};
     this.projects.sites.customDomains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/customDomains', 'POST', apiParams, clientConfig);
-    this.projects.sites.customDomains.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.sites.customDomains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.sites.customDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/customDomains', 'GET', apiParams, clientConfig);
-    this.projects.sites.customDomains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.sites.customDomains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.sites.customDomains.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:undelete', 'POST', apiParams, clientConfig);
+    this.projects.sites.customDomains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.sites.customDomains.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.sites.customDomains.operations = {};
     this.projects.sites.customDomains.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.sites.customDomains.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.sites.domains = {};
-    this.projects.sites.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/domains', 'GET', apiParams, clientConfig);
-    this.projects.sites.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.sites.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/domains', 'POST', apiParams, clientConfig);
-    this.projects.sites.domains.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.sites.domains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.sites.versions = {};
-    this.projects.sites.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.projects.sites.versions.clone = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions:clone', 'POST', apiParams, clientConfig);
+    this.projects.sites.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'GET', apiParams, clientConfig);
     this.projects.sites.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.sites.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.sites.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'POST', apiParams, clientConfig);
     this.projects.sites.versions.populateFiles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:populateFiles', 'POST', apiParams, clientConfig);
-    this.projects.sites.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'GET', apiParams, clientConfig);
     this.projects.sites.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.sites.versions.clone = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions:clone', 'POST', apiParams, clientConfig);
 
     this.projects.sites.versions.files = {};
     this.projects.sites.versions.files.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/files', 'GET', apiParams, clientConfig);
 
-    this.projects.sites.releases = {};
-    this.projects.sites.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'GET', apiParams, clientConfig);
-    this.projects.sites.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.sites.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'POST', apiParams, clientConfig);
+    this.projects.sites.domains = {};
+    this.projects.sites.domains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.sites.domains.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.sites.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/domains', 'GET', apiParams, clientConfig);
+    this.projects.sites.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.sites.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/domains', 'POST', apiParams, clientConfig);
 
-    this.projects.sites.channels = {};
-    this.projects.sites.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/channels', 'GET', apiParams, clientConfig);
-    this.projects.sites.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/channels', 'POST', apiParams, clientConfig);
-    this.projects.sites.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.sites.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.sites.channels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.sites.channels.releases = {};
-    this.projects.sites.channels.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'GET', apiParams, clientConfig);
-    this.projects.sites.channels.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.sites.channels.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'POST', apiParams, clientConfig);
+    this.projects.operations = {};
+    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.sites = {};
-    this.sites.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.sites.updateConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.sites.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.sites.domains = {};
-    this.sites.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/domains', 'GET', apiParams, clientConfig);
-    this.sites.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.sites.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/domains', 'POST', apiParams, clientConfig);
-    this.sites.domains.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
-    this.sites.domains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.sites.releases = {};
+    this.sites.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'POST', apiParams, clientConfig);
+    this.sites.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'GET', apiParams, clientConfig);
+    this.sites.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.sites.versions = {};
-    this.sites.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'POST', apiParams, clientConfig);
-    this.sites.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.sites.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.sites.versions.populateFiles = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:populateFiles', 'POST', apiParams, clientConfig);
     this.sites.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'GET', apiParams, clientConfig);
     this.sites.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.sites.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.sites.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.sites.versions.clone = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions:clone', 'POST', apiParams, clientConfig);
+    this.sites.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.sites.versions.files = {};
     this.sites.versions.files.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/files', 'GET', apiParams, clientConfig);
 
-    this.sites.releases = {};
-    this.sites.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'GET', apiParams, clientConfig);
-    this.sites.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.sites.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'POST', apiParams, clientConfig);
+    this.sites.domains = {};
+    this.sites.domains.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
+    this.sites.domains.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/domains', 'POST', apiParams, clientConfig);
+    this.sites.domains.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.sites.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.sites.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/domains', 'GET', apiParams, clientConfig);
 
     this.sites.channels = {};
-    this.sites.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/channels', 'GET', apiParams, clientConfig);
-    this.sites.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/channels', 'POST', apiParams, clientConfig);
-    this.sites.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.sites.channels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.sites.channels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.sites.channels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.sites.channels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/channels', 'POST', apiParams, clientConfig);
+    this.sites.channels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/channels', 'GET', apiParams, clientConfig);
 
     this.sites.channels.releases = {};
     this.sites.channels.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'GET', apiParams, clientConfig);
-    this.sites.channels.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.sites.channels.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/releases', 'POST', apiParams, clientConfig);
+    this.sites.channels.releases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
