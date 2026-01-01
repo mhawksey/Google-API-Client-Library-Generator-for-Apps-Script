@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:54:58 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:54:58 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:46:58 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:46:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:52 GMT
 
 
@@ -16,17 +16,17 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ### `documents`
 
-#### `documents.analyzeSentiment()`
+#### `documents.classifyText()`
 
-Analyzes the sentiment of the provided text.
+Classifies a document into categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeEntities()`
+#### `documents.analyzeSentiment()`
 
-Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.
+Analyzes the sentiment of the provided text.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -40,22 +40,6 @@ Finds entities, similar to AnalyzeEntities in the text and analyzes sentiment as
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeSyntax()`
-
-Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `documents.classifyText()`
-
-Classifies a document into categories.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `documents.moderateText()`
 
 Moderates a document for harmful and sensitive categories.
@@ -64,9 +48,25 @@ Moderates a document for harmful and sensitive categories.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `documents.analyzeSyntax()`
+
+Analyzes the syntax of the text and provides sentence boundaries and tokenization along with part of speech tags, dependency trees, and other properties.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `documents.annotateText()`
 
 A convenience method that provides all the features that analyzeSentiment, analyzeEntities, and analyzeSyntax provide in one call.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `documents.analyzeEntities()`
+
+Finds named entities (currently proper names and common nouns) in the text along with entity types, salience, mentions for each entity, and other properties.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
