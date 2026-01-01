@@ -4,8 +4,8 @@ Auto-generated client library for using the **Search Ads 360 Reporting API (vers
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:08:09 GMT
-- **Last Modified:** Sat, 01 Nov 2025 01:15:53 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:06:51 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:06:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:27 GMT
 
 
@@ -13,6 +13,24 @@ Auto-generated client library for using the **Search Ads 360 Reporting API (vers
 ---
 
 ## API Reference
+
+### `searchAds360Fields`
+
+#### `searchAds360Fields.search()`
+
+Returns all fields that match the search [query](/search-ads/reporting/concepts/field-service#use_a_query_to_get_field_details). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `searchAds360Fields.get()`
+
+Returns just the requested field. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resourceName` | `string` | Yes | Required. The resource name of the field to get. |
 
 ### `customers`
 
@@ -50,22 +68,4 @@ Returns all rows that match the search query. List of thrown errors: [Authentica
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Required. The ID of the customer being queried. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `searchAds360Fields`
-
-#### `searchAds360Fields.get()`
-
-Returns just the requested field. List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QuotaError]() [RequestError]()
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resourceName` | `string` | Yes | Required. The resource name of the field to get. |
-
-#### `searchAds360Fields.search()`
-
-Returns all fields that match the search [query](/search-ads/reporting/concepts/field-service#use_a_query_to_get_field_details). List of thrown errors: [AuthenticationError]() [AuthorizationError]() [HeaderError]() [InternalError]() [QueryError]() [QuotaError]() [RequestError]()
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
