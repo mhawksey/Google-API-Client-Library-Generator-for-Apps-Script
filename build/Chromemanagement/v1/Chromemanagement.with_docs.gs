@@ -18,72 +18,284 @@ class Chromemanagement {
     this._servicePath = '';
 
 
-    this.operations = {};
-
-    /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - The standard list filter.
-     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
-     * @param {integer} apiParams.pageSize - The standard list page size.
-     * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {boolean} apiParams.returnPartialSuccess - When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.customers = {};
 
-    this.customers.thirdPartyProfileUsers = {};
+    this.customers.apps = {};
 
     /**
-     * Moves a third party chrome profile user to a destination OU. All profiles associated to that user will be moved to the destination OU.
+     * Generate summary of app installation requests.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id}
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.customer - (Required) Required. Customer id or "my_customer" to use the customer associated to the account making the request.
+     * @param {string} apiParams.orderBy - Field used to order results. Supported fields: * request_count * latest_request_time
+     * @param {string} apiParams.orgUnitId - The ID of the organizational unit.
+     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 50, anything above will be coerced to 50.
+     * @param {string} apiParams.pageToken - Token to specify the page of the request to be returned.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.thirdPartyProfileUsers.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.customers.apps.countChromeAppRequests = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:countChromeAppRequests', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a list of devices that have requested to install an extension.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
+     * @param {string} apiParams.extensionId - Required. The extension for which we want to find requesting devices.
+     * @param {string} apiParams.orgUnitId - The ID of the organizational unit. Only consider devices that directly belong to this org unit, i.e. sub-orgunits are not counted. If omitted, all data will be returned.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. Maximum and default are 50. Any page size larger than 50 will be coerced to 50.
+     * @param {string} apiParams.pageToken - Optional. Token to specify the page of the request to be returned. Token expires after 1 day.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.apps.fetchDevicesRequestingExtension = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:fetchDevicesRequestingExtension', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a list of users that have requested to install an extension.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
+     * @param {string} apiParams.extensionId - Required. The extension for which we want to find the requesting users.
+     * @param {string} apiParams.orgUnitId - The ID of the organizational unit. Only consider devices that directly belong to this org unit, i.e. sub-orgunits are not counted. If omitted, all data will be returned.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. Maximum and default are 50. Any page size larger than 50 will be coerced to 50.
+     * @param {string} apiParams.pageToken - Optional. Token to specify the page of the request to be returned. Token expires after 1 day.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.apps.fetchUsersRequestingExtension = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:fetchUsersRequestingExtension', 'GET', apiParams, clientConfig);
+
+    this.customers.apps.chrome = {};
+
+    /**
+     * Get a specific app for a customer by its resource name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The app for which details are being queried. Examples: "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's latest version.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.apps.chrome.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.customers.apps.android = {};
+
+    /**
+     * Get a specific app for a customer by its resource name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The app for which details are being queried. Examples: "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's latest version.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.apps.android.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.customers.apps.web = {};
+
+    /**
+     * Get a specific app for a customer by its resource name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The app for which details are being queried. Examples: "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's latest version.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.apps.web.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.customers.reports = {};
+
+    /**
+     * Generate report of the number of devices expiring in each month of the selected time frame. Devices are grouped by auto update expiration date and model. Further information can be found [here](https://support.google.com/chrome/a/answer/10564947).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
+     * @param {string} apiParams.maxAueDate - Optional. Maximum expiration date in format yyyy-mm-dd in UTC timezone. If included returns all devices that have already expired and devices with auto expiration date equal to or earlier than the maximum date.
+     * @param {string} apiParams.minAueDate - Optional. Maximum expiration date in format yyyy-mm-dd in UTC timezone. If included returns all devices that have already expired and devices with auto expiration date equal to or later than the minimum date.
+     * @param {string} apiParams.orgUnitId - Optional. The organizational unit ID, if omitted, will return data for all organizational units.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countChromeDevicesReachingAutoExpirationDate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeDevicesReachingAutoExpirationDate', 'GET', apiParams, clientConfig);
+
+    /**
+     * Counts of ChromeOS devices that have not synced policies or have lacked user activity in the past 28 days, are out of date, or are not complaint. Further information can be found here https://support.google.com/chrome/a/answer/10564947
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
+     * @param {string} apiParams.orgUnitId - Optional. The ID of the organizational unit. If omitted, all data will be returned.
+     * @param {string} apiParams.readMask - Required. Mask of the fields that should be populated in the returned report.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countChromeDevicesThatNeedAttention = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeDevicesThatNeedAttention', 'GET', apiParams, clientConfig);
+
+    /**
+     * Count of Chrome Browsers that have been recently enrolled, have new policy to be synced, or have no recent activity.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
+     * @param {string} apiParams.orgUnitId - Optional. The ID of the organizational unit. If omitted, all data will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countChromeBrowsersNeedingAttention = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeBrowsersNeedingAttention', 'GET', apiParams, clientConfig);
+
+    /**
+     * Counts of devices with a specific hardware specification from the requested hardware type (for example model name, processor type). Further information can be found here https://support.google.com/chrome/a/answer/10564947
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer".
+     * @param {string} apiParams.orgUnitId - Optional. The ID of the organizational unit. If omitted, all data will be returned.
+     * @param {string} apiParams.readMask - Required. Mask of the fields that should be populated in the returned report.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countChromeHardwareFleetDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeHardwareFleetDevices', 'GET', apiParams, clientConfig);
+
+    /**
+     * Generate report of app installations.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. Customer id or "my_customer" to use the customer associated to the account making the request.
+     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Supported filter fields: * app_name * app_type * install_type * number_of_permissions * total_install_count * latest_profile_active_date * permission_name * app_id * manifest_versions * risk_score
+     * @param {string} apiParams.orderBy - Field used to order results. Supported order by fields: * app_name * app_type * install_type * number_of_permissions * total_install_count * app_id * manifest_versions * risk_score
+     * @param {string} apiParams.orgUnitId - The ID of the organizational unit.
+     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
+     * @param {string} apiParams.pageToken - Token to specify the page of the request to be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countInstalledApps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countInstalledApps', 'GET', apiParams, clientConfig);
+
+    /**
+     * Generate report of managed Chrome browser devices that have a specified app installed.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appId - Unique identifier of the app. For Chrome apps and extensions, the 32-character id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android apps, the package name (e.g. com.evernote).
+     * @param {string} apiParams.appType - Type of the app. Optional. If not provided, an app type will be inferred from the format of the app ID.
+     * @param {string} apiParams.customer - (Required) Required. Customer id or "my_customer" to use the customer associated to the account making the request.
+     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Supported filter fields: * last_active_date
+     * @param {string} apiParams.orderBy - Field used to order results. Supported order by fields: * machine * device_id
+     * @param {string} apiParams.orgUnitId - The ID of the organizational unit.
+     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
+     * @param {string} apiParams.pageToken - Token to specify the page of the request to be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.findInstalledAppDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:findInstalledAppDevices', 'GET', apiParams, clientConfig);
+
+    /**
+     * Generate report of installed Chrome versions.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. Customer id or "my_customer" to use the customer associated to the account making the request.
+     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Supported filter fields: * last_active_date
+     * @param {string} apiParams.orgUnitId - The ID of the organizational unit.
+     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
+     * @param {string} apiParams.pageToken - Token to specify the page of the request to be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countChromeVersions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeVersions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a summary of printing done by each user.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer associated to the account making the request.
+     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Note: Only >= and <= comparators are supported in this filter. Supported filter fields: * complete_time
+     * @param {string} apiParams.orderBy - Field used to order results. If omitted, results will be ordered in ascending order of the 'user_email' field. Supported order_by fields: * user_email * job_count * printer_count * device_count
+     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
+     * @param {string} apiParams.pageToken - Token to specify the page of the response to be returned.
+     * @param {string} apiParams.printerOrgUnitId - The ID of the organizational unit for printers. If specified, only print jobs initiated with printers from the specified organizational unit will be counted. If omitted, all print jobs will be counted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countPrintJobsByUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countPrintJobsByUser', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a summary of printing done by each printer.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer associated to the account making the request.
+     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Note: Only >= and <= comparators are supported in this filter. Supported filter fields: * complete_time
+     * @param {string} apiParams.orderBy - Field used to order results. If omitted, results will be ordered in ascending order of the 'printer' field. Supported order_by fields: * printer * job_count * device_count * user_count
+     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
+     * @param {string} apiParams.pageToken - Token to specify the page of the response to be returned.
+     * @param {string} apiParams.printerOrgUnitId - The ID of the organizational unit for printers. If specified, only data for printers from the specified organizational unit will be returned. If omitted, data for printers from all organizational units will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countPrintJobsByPrinter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countPrintJobsByPrinter', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a list of print jobs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer associated to the account making the request.
+     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Note: Only >= and <= comparators are supported for `complete_time`. Note: Only = comparator supported for `user_id` and `printer_id`. Supported filter fields: * complete_time * printer_id * user_id
+     * @param {string} apiParams.orderBy - Field used to order results. If not specified, results will be ordered in descending order of the `complete_time` field. Supported order by fields: * title * state * create_time * complete_time * document_page_count * color_mode * duplex_mode * printer * user_email
+     * @param {integer} apiParams.pageSize - The number of print jobs in the page from 0 to 100 inclusive, if page_size is not specified or zero, the size will be 50.
+     * @param {string} apiParams.pageToken - A page token received from a previous `EnumeratePrintJobs` call. Provide this to retrieve the subsequent page. If omitted, the first page of results will be returned. When paginating, all other parameters provided to `EnumeratePrintJobs` must match the call that provided the page token.
+     * @param {string} apiParams.printerOrgUnitId - The ID of the organizational unit for printers. If specified, only print jobs submitted to printers from the specified organizational unit will be returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.enumeratePrintJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:enumeratePrintJobs', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a count of Chrome crash events.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Customer ID.
+     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Supported filter fields: * major_browser_version * minor_browser_version * browser_channel * device_platform * past_number_days Example: `major_browser_version = 'M115' AND past_number_days = '28'`.
+     * @param {string} apiParams.orderBy - Field used to order results. Supported order by fields: * browser_version * count * date
+     * @param {string} apiParams.orgUnitId - If specified, only count the number of crash events of the devices in this organizational unit.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countChromeCrashEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeCrashEvents', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a count of active devices per set time frames.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+     * @param {integer} apiParams.date.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.date.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.date.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countActiveDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countActiveDevices', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a count of devices per channel.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+     * @param {integer} apiParams.date.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.date.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.date.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countDevicesPerReleaseChannel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countDevicesPerReleaseChannel', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get a count of devices per boot type.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.customer - (Required) Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
+     * @param {integer} apiParams.date.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.date.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.date.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.reports.countDevicesPerBootType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countDevicesPerBootType', 'GET', apiParams, clientConfig);
 
     this.customers.telemetry = {};
 
     this.customers.telemetry.devices = {};
-
-    /**
-     * Get telemetry device.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the `TelemetryDevice` to return.
-     * @param {string} apiParams.readMask - Required. Read mask to specify which fields to return. Supported read_mask paths are: - name - org_unit_id - device_id - serial_number - cpu_info - cpu_status_report - memory_info - memory_status_report - network_info - network_diagnostics_report - network_status_report - os_update_status - graphics_info - graphics_status_report - battery_info - battery_status_report - storage_info - storage_status_report - thunderbolt_info - audio_status_report - boot_performance_report - heartbeat_status_report - network_bandwidth_report - peripherals_report - kiosk_app_status_report - app_report - runtime_counters_report
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.telemetry.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * List all telemetry devices.
@@ -98,6 +310,17 @@ class Chromemanagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.customers.telemetry.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/devices', 'GET', apiParams, clientConfig);
+
+    /**
+     * Get telemetry device.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the `TelemetryDevice` to return.
+     * @param {string} apiParams.readMask - Required. Read mask to specify which fields to return. Supported read_mask paths are: - name - org_unit_id - device_id - serial_number - cpu_info - cpu_status_report - memory_info - memory_status_report - network_info - network_diagnostics_report - network_status_report - os_update_status - graphics_info - graphics_status_report - battery_info - battery_status_report - storage_info - storage_status_report - thunderbolt_info - audio_status_report - boot_performance_report - heartbeat_status_report - network_bandwidth_report - peripherals_report - kiosk_app_status_report - app_report - runtime_counters_report
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.telemetry.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.customers.telemetry.events = {};
 
@@ -114,41 +337,6 @@ class Chromemanagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.customers.telemetry.events.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/events', 'GET', apiParams, clientConfig);
-
-    this.customers.telemetry.notificationConfigs = {};
-
-    /**
-     * Delete a telemetry notification config.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the notification config to delete. Format: `customers/{customer}/telemetry/notificationConfigs/{notification_config}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.telemetry.notificationConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * List all telemetry notification configs.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of notification configs to return. The service may return fewer than this value. If unspecified, at most 100 notification configs will be returned. The maximum value is 100; values above 100 will be coerced to 100.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListTelemetryNotificationConfigs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTelemetryNotificationConfigs` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent which owns the notification configs.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.telemetry.notificationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/notificationConfigs', 'GET', apiParams, clientConfig);
-
-    /**
-     * Create a telemetry notification config.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource where this notification config will be created. Format: `customers/{customer}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.telemetry.notificationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/notificationConfigs', 'POST', apiParams, clientConfig);
 
     this.customers.telemetry.users = {};
 
@@ -177,155 +365,52 @@ class Chromemanagement {
      */
     this.customers.telemetry.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.customers.apps = {};
+    this.customers.telemetry.notificationConfigs = {};
 
     /**
-     * Get a list of users that have requested to install an extension.
+     * List all telemetry notification configs.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
-     * @param {string} apiParams.extensionId - Required. The extension for which we want to find the requesting users.
-     * @param {string} apiParams.orgUnitId - The ID of the organizational unit. Only consider devices that directly belong to this org unit, i.e. sub-orgunits are not counted. If omitted, all data will be returned.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. Maximum and default are 50. Any page size larger than 50 will be coerced to 50.
-     * @param {string} apiParams.pageToken - Optional. Token to specify the page of the request to be returned. Token expires after 1 day.
+     * @param {integer} apiParams.pageSize - The maximum number of notification configs to return. The service may return fewer than this value. If unspecified, at most 100 notification configs will be returned. The maximum value is 100; values above 100 will be coerced to 100.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListTelemetryNotificationConfigs` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListTelemetryNotificationConfigs` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The parent which owns the notification configs.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.apps.fetchUsersRequestingExtension = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:fetchUsersRequestingExtension', 'GET', apiParams, clientConfig);
+    this.customers.telemetry.notificationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/notificationConfigs', 'GET', apiParams, clientConfig);
 
     /**
-     * Get a list of devices that have requested to install an extension.
+     * Create a telemetry notification config.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
-     * @param {string} apiParams.extensionId - Required. The extension for which we want to find requesting devices.
-     * @param {string} apiParams.orgUnitId - The ID of the organizational unit. Only consider devices that directly belong to this org unit, i.e. sub-orgunits are not counted. If omitted, all data will be returned.
-     * @param {integer} apiParams.pageSize - Optional. Maximum number of results to return. Maximum and default are 50. Any page size larger than 50 will be coerced to 50.
-     * @param {string} apiParams.pageToken - Optional. Token to specify the page of the request to be returned. Token expires after 1 day.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.apps.fetchDevicesRequestingExtension = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:fetchDevicesRequestingExtension', 'GET', apiParams, clientConfig);
-
-    /**
-     * Generate summary of app installation requests.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. Customer id or "my_customer" to use the customer associated to the account making the request.
-     * @param {string} apiParams.orderBy - Field used to order results. Supported fields: * request_count * latest_request_time
-     * @param {string} apiParams.orgUnitId - The ID of the organizational unit.
-     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 50, anything above will be coerced to 50.
-     * @param {string} apiParams.pageToken - Token to specify the page of the request to be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.apps.countChromeAppRequests = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:countChromeAppRequests', 'GET', apiParams, clientConfig);
-
-    this.customers.apps.android = {};
-
-    /**
-     * Get a specific app for a customer by its resource name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The app for which details are being queried. Examples: "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's latest version.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.apps.android.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.customers.apps.chrome = {};
-
-    /**
-     * Get a specific app for a customer by its resource name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The app for which details are being queried. Examples: "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's latest version.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.apps.chrome.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.customers.apps.web = {};
-
-    /**
-     * Get a specific app for a customer by its resource name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The app for which details are being queried. Examples: "customers/my_customer/apps/chrome/gmbmikajjgmnabiglmofipeabaddhgne@2.1.2" for the Save to Google Drive Chrome extension version 2.1.2, "customers/my_customer/apps/android/com.google.android.apps.docs" for the Google Drive Android app's latest version.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.apps.web.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.customers.certificateProvisioningProcesses = {};
-
-    /**
-     * Claims a certificate provisioning process. For each certificate provisioning process, this operation can succeed only for one `caller_instance_id`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to claim. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource where this notification config will be created. Format: `customers/{customer}`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.certificateProvisioningProcesses.claim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:claim', 'POST', apiParams, clientConfig);
+    this.customers.telemetry.notificationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/notificationConfigs', 'POST', apiParams, clientConfig);
 
     /**
-     * Uploads a successfully issued certificate for a certificate provisioning process.
+     * Delete a telemetry notification config.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. The name of the notification config to delete. Format: `customers/{customer}/telemetry/notificationConfigs/{notification_config}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.certificateProvisioningProcesses.uploadCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:uploadCertificate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Retrieves a certificate provisioning process.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.certificateProvisioningProcesses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Requests the client that initiated a certificate provisioning process to sign data. This should only be called after `ClaimCertificateProvisioningProcess` has been successfully executed.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.certificateProvisioningProcesses.signData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:signData', 'POST', apiParams, clientConfig);
-
-    /**
-     * Marks a certificate provisioning process as failed.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.certificateProvisioningProcesses.setFailure = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setFailure', 'POST', apiParams, clientConfig);
-
-    this.customers.certificateProvisioningProcesses.operations = {};
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.certificateProvisioningProcesses.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.telemetry.notificationConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.customers.profiles = {};
+
+    /**
+     * Gets a Chrome browser profile with customer ID and profile permanent ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.profiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists Chrome browser profiles of a customer based on the given search and sorting criteria.
@@ -340,16 +425,6 @@ class Chromemanagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.customers.profiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/profiles', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a Chrome browser profile with customer ID and profile permanent ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.profiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes the data collected from a Chrome browser profile.
@@ -375,6 +450,16 @@ class Chromemanagement {
     this.customers.profiles.commands.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/commands', 'POST', apiParams, clientConfig);
 
     /**
+     * Gets a Chrome browser profile remote command.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}/commands/{command_id}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.profiles.commands.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists remote commands of a Chrome browser profile.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Optional. The maximum number of commands to return. The default page size is 100 if page_size is unspecified, and the maximum page size allowed is 100.
@@ -386,208 +471,123 @@ class Chromemanagement {
      */
     this.customers.profiles.commands.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/commands', 'GET', apiParams, clientConfig);
 
+    this.customers.certificateProvisioningProcesses = {};
+
     /**
-     * Gets a Chrome browser profile remote command.
+     * Claims a certificate provisioning process. For each certificate provisioning process, this operation can succeed only for one `caller_instance_id`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Format: customers/{customer_id}/profiles/{profile_permanent_id}/commands/{command_id}
+     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to claim. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.profiles.commands.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.customers.reports = {};
+    this.customers.certificateProvisioningProcesses.claim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:claim', 'POST', apiParams, clientConfig);
 
     /**
-     * Generate report of installed Chrome versions.
+     * Retrieves a certificate provisioning process.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. Customer id or "my_customer" to use the customer associated to the account making the request.
-     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Supported filter fields: * last_active_date
-     * @param {string} apiParams.orgUnitId - The ID of the organizational unit.
-     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
-     * @param {string} apiParams.pageToken - Token to specify the page of the request to be returned.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.reports.countChromeVersions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeVersions', 'GET', apiParams, clientConfig);
+    this.customers.certificateProvisioningProcesses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Get a list of print jobs.
+     * Requests the client that initiated a certificate provisioning process to sign data. This should only be called after `ClaimCertificateProvisioningProcess` has been successfully executed.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer associated to the account making the request.
-     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Note: Only >= and <= comparators are supported for `complete_time`. Note: Only = comparator supported for `user_id` and `printer_id`. Supported filter fields: * complete_time * printer_id * user_id
-     * @param {string} apiParams.orderBy - Field used to order results. If not specified, results will be ordered in descending order of the `complete_time` field. Supported order by fields: * title * state * create_time * complete_time * document_page_count * color_mode * duplex_mode * printer * user_email
-     * @param {integer} apiParams.pageSize - The number of print jobs in the page from 0 to 100 inclusive, if page_size is not specified or zero, the size will be 50.
-     * @param {string} apiParams.pageToken - A page token received from a previous `EnumeratePrintJobs` call. Provide this to retrieve the subsequent page. If omitted, the first page of results will be returned. When paginating, all other parameters provided to `EnumeratePrintJobs` must match the call that provided the page token.
-     * @param {string} apiParams.printerOrgUnitId - The ID of the organizational unit for printers. If specified, only print jobs submitted to printers from the specified organizational unit will be returned.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.reports.enumeratePrintJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:enumeratePrintJobs', 'GET', apiParams, clientConfig);
+    this.customers.certificateProvisioningProcesses.signData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:signData', 'POST', apiParams, clientConfig);
 
     /**
-     * Generate report of app installations.
+     * Uploads a successfully issued certificate for a certificate provisioning process.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. Customer id or "my_customer" to use the customer associated to the account making the request.
-     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Supported filter fields: * app_name * app_type * install_type * number_of_permissions * total_install_count * latest_profile_active_date * permission_name * app_id * manifest_versions * risk_score
-     * @param {string} apiParams.orderBy - Field used to order results. Supported order by fields: * app_name * app_type * install_type * number_of_permissions * total_install_count * app_id * manifest_versions * risk_score
-     * @param {string} apiParams.orgUnitId - The ID of the organizational unit.
-     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
-     * @param {string} apiParams.pageToken - Token to specify the page of the request to be returned.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.reports.countInstalledApps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countInstalledApps', 'GET', apiParams, clientConfig);
+    this.customers.certificateProvisioningProcesses.uploadCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:uploadCertificate', 'POST', apiParams, clientConfig);
 
     /**
-     * Generate report of the number of devices expiring in each month of the selected time frame. Devices are grouped by auto update expiration date and model. Further information can be found [here](https://support.google.com/chrome/a/answer/10564947).
+     * Marks a certificate provisioning process as failed.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
-     * @param {string} apiParams.maxAueDate - Optional. Maximum expiration date in format yyyy-mm-dd in UTC timezone. If included returns all devices that have already expired and devices with auto expiration date equal to or earlier than the maximum date.
-     * @param {string} apiParams.minAueDate - Optional. Maximum expiration date in format yyyy-mm-dd in UTC timezone. If included returns all devices that have already expired and devices with auto expiration date equal to or later than the minimum date.
-     * @param {string} apiParams.orgUnitId - Optional. The organizational unit ID, if omitted, will return data for all organizational units.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the `CertificateProvisioningProcess` to return. The name pattern is given as `customers/{customer}/certificateProvisioningProcesses/{certificate_provisioning_process}` with `{customer}` being the obfuscated customer id and `{certificate_provisioning_process}` being the certificate provisioning process id.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.reports.countChromeDevicesReachingAutoExpirationDate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeDevicesReachingAutoExpirationDate', 'GET', apiParams, clientConfig);
+    this.customers.certificateProvisioningProcesses.setFailure = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setFailure', 'POST', apiParams, clientConfig);
+
+    this.customers.certificateProvisioningProcesses.operations = {};
 
     /**
-     * Count of Chrome Browsers that have been recently enrolled, have new policy to be synced, or have no recent activity.
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
-     * @param {string} apiParams.orgUnitId - Optional. The ID of the organizational unit. If omitted, all data will be returned.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.reports.countChromeBrowsersNeedingAttention = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeBrowsersNeedingAttention', 'GET', apiParams, clientConfig);
+    this.customers.certificateProvisioningProcesses.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.customers.thirdPartyProfileUsers = {};
 
     /**
-     * Get a summary of printing done by each user.
+     * Moves a third party chrome profile user to a destination OU. All profiles associated to that user will be moved to the destination OU.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer associated to the account making the request.
-     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Note: Only >= and <= comparators are supported in this filter. Supported filter fields: * complete_time
-     * @param {string} apiParams.orderBy - Field used to order results. If omitted, results will be ordered in ascending order of the 'user_email' field. Supported order_by fields: * user_email * job_count * printer_count * device_count
-     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
-     * @param {string} apiParams.pageToken - Token to specify the page of the response to be returned.
-     * @param {string} apiParams.printerOrgUnitId - The ID of the organizational unit for printers. If specified, only print jobs initiated with printers from the specified organizational unit will be counted. If omitted, all print jobs will be counted.
+     * @param {string} apiParams.name - (Required) Required. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id}
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.reports.countPrintJobsByUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countPrintJobsByUser', 'GET', apiParams, clientConfig);
+    this.customers.thirdPartyProfileUsers.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
+
+    this.operations = {};
 
     /**
-     * Counts of devices with a specific hardware specification from the requested hardware type (for example model name, processor type). Further information can be found here https://support.google.com/chrome/a/answer/10564947
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer".
-     * @param {string} apiParams.orgUnitId - Optional. The ID of the organizational unit. If omitted, all data will be returned.
-     * @param {string} apiParams.readMask - Required. Mask of the fields that should be populated in the returned report.
+     * @param {string} apiParams.filter - The standard list filter.
+     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
+     * @param {integer} apiParams.pageSize - The standard list page size.
+     * @param {string} apiParams.pageToken - The standard list page token.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.reports.countChromeHardwareFleetDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeHardwareFleetDevices', 'GET', apiParams, clientConfig);
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Get a count of devices per channel.
+     * Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
-     * @param {integer} apiParams.date.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.date.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.date.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be deleted.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.reports.countDevicesPerReleaseChannel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countDevicesPerReleaseChannel', 'GET', apiParams, clientConfig);
+    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Counts of ChromeOS devices that have not synced policies or have lacked user activity in the past 28 days, are out of date, or are not complaint. Further information can be found here https://support.google.com/chrome/a/answer/10564947
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. The customer ID or "my_customer" prefixed with "customers/".
-     * @param {string} apiParams.orgUnitId - Optional. The ID of the organizational unit. If omitted, all data will be returned.
-     * @param {string} apiParams.readMask - Required. Mask of the fields that should be populated in the returned report.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.reports.countChromeDevicesThatNeedAttention = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeDevicesThatNeedAttention', 'GET', apiParams, clientConfig);
-
-    /**
-     * Generate report of managed Chrome browser devices that have a specified app installed.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appId - Unique identifier of the app. For Chrome apps and extensions, the 32-character id (e.g. ehoadneljpdggcbbknedodolkkjodefl). For Android apps, the package name (e.g. com.evernote).
-     * @param {string} apiParams.appType - Type of the app. Optional. If not provided, an app type will be inferred from the format of the app ID.
-     * @param {string} apiParams.customer - (Required) Required. Customer id or "my_customer" to use the customer associated to the account making the request.
-     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Supported filter fields: * last_active_date
-     * @param {string} apiParams.orderBy - Field used to order results. Supported order by fields: * machine * device_id
-     * @param {string} apiParams.orgUnitId - The ID of the organizational unit.
-     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
-     * @param {string} apiParams.pageToken - Token to specify the page of the request to be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.reports.findInstalledAppDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:findInstalledAppDevices', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get a count of active devices per set time frames.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
-     * @param {integer} apiParams.date.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.date.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.date.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.reports.countActiveDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countActiveDevices', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get a count of devices per boot type.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. Obfuscated customer ID prefixed with "customers/C" or "customers/my_customer".
-     * @param {integer} apiParams.date.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.date.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.date.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.reports.countDevicesPerBootType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countDevicesPerBootType', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get a count of Chrome crash events.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Customer ID.
-     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Supported filter fields: * major_browser_version * minor_browser_version * browser_channel * device_platform * past_number_days Example: `major_browser_version = 'M115' AND past_number_days = '28'`.
-     * @param {string} apiParams.orderBy - Field used to order results. Supported order by fields: * browser_version * count * date
-     * @param {string} apiParams.orgUnitId - If specified, only count the number of crash events of the devices in this organizational unit.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.reports.countChromeCrashEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeCrashEvents', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get a summary of printing done by each printer.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.customer - (Required) Required. Customer ID prefixed with "customers/" or "customers/my_customer" to use the customer associated to the account making the request.
-     * @param {string} apiParams.filter - Query string to filter results, AND-separated fields in EBNF syntax. Note: OR operations are not supported in this filter. Note: Only >= and <= comparators are supported in this filter. Supported filter fields: * complete_time
-     * @param {string} apiParams.orderBy - Field used to order results. If omitted, results will be ordered in ascending order of the 'printer' field. Supported order_by fields: * printer * job_count * device_count * user_count
-     * @param {integer} apiParams.pageSize - Maximum number of results to return. Maximum and default are 100.
-     * @param {string} apiParams.pageToken - Token to specify the page of the response to be returned.
-     * @param {string} apiParams.printerOrgUnitId - The ID of the organizational unit for printers. If specified, only data for printers from the specified organizational unit will be returned. If omitted, data for printers from all organizational units will be returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.reports.countPrintJobsByPrinter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countPrintJobsByPrinter', 'GET', apiParams, clientConfig);
+    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
   }
 
 /**
