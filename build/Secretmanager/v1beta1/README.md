@@ -4,8 +4,8 @@ Auto-generated client library for using the **Secret Manager API (version: v1bet
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:08:16 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:08:16 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:06:57 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:06:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:34 GMT
 
 
@@ -16,58 +16,7 @@ Auto-generated client library for using the **Secret Manager API (version: v1bet
 
 ### `projects`
 
-### `projects.locations`
-
-#### `projects.locations.list()`
-
-Lists information about the supported locations for this service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-
-#### `projects.locations.get()`
-
-Gets information about a location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Resource name for the location. |
-
 ### `projects.secrets`
-
-#### `projects.secrets.list()`
-
-Lists Secrets.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the project associated with the Secrets, in the format `projects/*`. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
-| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretsResponse.next_page_token. |
-
-#### `projects.secrets.create()`
-
-Creates a new Secret containing no SecretVersions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the project to associate with the Secret, in the format `projects/*`. |
-| `params.secretId` | `string` | No | Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.secrets.addVersion()`
-
-Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*/secrets/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.get()`
 
@@ -95,14 +44,15 @@ Deletes a Secret.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the Secret to delete in the format `projects/*/secrets/*`. |
 
-#### `projects.secrets.setIamPolicy()`
+#### `projects.secrets.list()`
 
-Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
+Lists Secrets.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. The resource name of the project associated with the Secrets, in the format `projects/*`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
+| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretsResponse.next_page_token. |
 
 #### `projects.secrets.getIamPolicy()`
 
@@ -122,33 +72,35 @@ Returns permissions that a caller has for the specified secret. If the secret do
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.secrets.setIamPolicy()`
+
+Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.secrets.addVersion()`
+
+Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*/secrets/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.secrets.create()`
+
+Creates a new Secret containing no SecretVersions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the project to associate with the Secret, in the format `projects/*`. |
+| `params.secretId` | `string` | No | Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.secrets.versions`
-
-#### `projects.secrets.versions.list()`
-
-Lists SecretVersions. This call does not return secret data.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the Secret associated with the SecretVersions to list, in the format `projects/*/secrets/*`. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
-| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretVersionsResponse.next_page_token][]. |
-
-#### `projects.secrets.versions.get()`
-
-Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the `latest` SecretVersion.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` is an alias to the `latest` SecretVersion. |
-
-#### `projects.secrets.versions.access()`
-
-Accesses a SecretVersion. This call returns the secret data. `projects/*/secrets/*/versions/latest` is an alias to the `latest` SecretVersion.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`. |
 
 #### `projects.secrets.versions.disable()`
 
@@ -157,6 +109,15 @@ Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to disable in the format `projects/*/secrets/*/versions/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.secrets.versions.destroy()`
+
+Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to destroy in the format `projects/*/secrets/*/versions/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.versions.enable()`
@@ -168,11 +129,50 @@ Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to enable in the format `projects/*/secrets/*/versions/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.secrets.versions.destroy()`
+#### `projects.secrets.versions.list()`
 
-Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data.
+Lists SecretVersions. This call does not return secret data.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to destroy in the format `projects/*/secrets/*/versions/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretVersionsResponse.next_page_token][]. |
+| `params.parent` | `string` | Yes | Required. The resource name of the Secret associated with the SecretVersions to list, in the format `projects/*/secrets/*`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
+
+#### `projects.secrets.versions.access()`
+
+Accesses a SecretVersion. This call returns the secret data. `projects/*/secrets/*/versions/latest` is an alias to the `latest` SecretVersion.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`. |
+
+#### `projects.secrets.versions.get()`
+
+Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the `latest` SecretVersion.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` is an alias to the `latest` SecretVersion. |
+
+### `projects.locations`
+
+#### `projects.locations.get()`
+
+Gets information about a location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Resource name for the location. |
+
+#### `projects.locations.list()`
+
+Lists information about the supported locations for this service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
