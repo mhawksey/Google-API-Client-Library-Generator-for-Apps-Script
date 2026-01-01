@@ -22,83 +22,83 @@ class Firebaseappcheck {
     this.jwks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.oauthClients = {};
-    this.oauthClients.exchangeDebugToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeDebugToken', 'POST', apiParams, clientConfig);
-    this.oauthClients.generateAppAttestChallenge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:generateAppAttestChallenge', 'POST', apiParams, clientConfig);
-    this.oauthClients.exchangeAppAttestAttestation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeAppAttestAttestation', 'POST', apiParams, clientConfig);
     this.oauthClients.exchangeAppAttestAssertion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeAppAttestAssertion', 'POST', apiParams, clientConfig);
+    this.oauthClients.exchangeDebugToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeDebugToken', 'POST', apiParams, clientConfig);
+    this.oauthClients.exchangeAppAttestAttestation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeAppAttestAttestation', 'POST', apiParams, clientConfig);
+    this.oauthClients.generateAppAttestChallenge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:generateAppAttestChallenge', 'POST', apiParams, clientConfig);
 
     this.projects = {};
     this.projects.verifyAppCheckToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+project}:verifyAppCheckToken', 'POST', apiParams, clientConfig);
 
     this.projects.services = {};
-    this.projects.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.projects.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.services.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/services:batchUpdate', 'POST', apiParams, clientConfig);
+    this.projects.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.services.resourcePolicies = {};
+    this.projects.services.resourcePolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.services.resourcePolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.services.resourcePolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/resourcePolicies', 'POST', apiParams, clientConfig);
+    this.projects.services.resourcePolicies.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/resourcePolicies:batchUpdate', 'POST', apiParams, clientConfig);
     this.projects.services.resourcePolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.services.resourcePolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/resourcePolicies', 'GET', apiParams, clientConfig);
-    this.projects.services.resourcePolicies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/resourcePolicies', 'POST', apiParams, clientConfig);
-    this.projects.services.resourcePolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.services.resourcePolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.services.resourcePolicies.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/resourcePolicies:batchUpdate', 'POST', apiParams, clientConfig);
 
     this.projects.apps = {};
-    this.projects.apps.exchangeSafetyNetToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeSafetyNetToken', 'POST', apiParams, clientConfig);
-    this.projects.apps.generatePlayIntegrityChallenge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:generatePlayIntegrityChallenge', 'POST', apiParams, clientConfig);
     this.projects.apps.exchangePlayIntegrityToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangePlayIntegrityToken', 'POST', apiParams, clientConfig);
-    this.projects.apps.exchangeDeviceCheckToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeDeviceCheckToken', 'POST', apiParams, clientConfig);
-    this.projects.apps.exchangeRecaptchaToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeRecaptchaToken', 'POST', apiParams, clientConfig);
-    this.projects.apps.exchangeRecaptchaV3Token = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeRecaptchaV3Token', 'POST', apiParams, clientConfig);
     this.projects.apps.exchangeRecaptchaEnterpriseToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeRecaptchaEnterpriseToken', 'POST', apiParams, clientConfig);
-    this.projects.apps.exchangeCustomToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeCustomToken', 'POST', apiParams, clientConfig);
-    this.projects.apps.exchangeDebugToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeDebugToken', 'POST', apiParams, clientConfig);
+    this.projects.apps.exchangeRecaptchaV3Token = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeRecaptchaV3Token', 'POST', apiParams, clientConfig);
     this.projects.apps.generateAppAttestChallenge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:generateAppAttestChallenge', 'POST', apiParams, clientConfig);
-    this.projects.apps.exchangeAppAttestAttestation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeAppAttestAttestation', 'POST', apiParams, clientConfig);
+    this.projects.apps.exchangeDeviceCheckToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeDeviceCheckToken', 'POST', apiParams, clientConfig);
     this.projects.apps.exchangeAppAttestAssertion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeAppAttestAssertion', 'POST', apiParams, clientConfig);
+    this.projects.apps.exchangeSafetyNetToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeSafetyNetToken', 'POST', apiParams, clientConfig);
+    this.projects.apps.exchangeAppAttestAttestation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeAppAttestAttestation', 'POST', apiParams, clientConfig);
+    this.projects.apps.exchangeCustomToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeCustomToken', 'POST', apiParams, clientConfig);
+    this.projects.apps.exchangeRecaptchaToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeRecaptchaToken', 'POST', apiParams, clientConfig);
+    this.projects.apps.exchangeDebugToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:exchangeDebugToken', 'POST', apiParams, clientConfig);
+    this.projects.apps.generatePlayIntegrityChallenge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+app}:generatePlayIntegrityChallenge', 'POST', apiParams, clientConfig);
 
-    this.projects.apps.appAttestConfig = {};
-    this.projects.apps.appAttestConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.appAttestConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/appAttestConfig:batchGet', 'GET', apiParams, clientConfig);
-    this.projects.apps.appAttestConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.apps.recaptchaEnterpriseConfig = {};
+    this.projects.apps.recaptchaEnterpriseConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/recaptchaEnterpriseConfig:batchGet', 'GET', apiParams, clientConfig);
+    this.projects.apps.recaptchaEnterpriseConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.apps.recaptchaEnterpriseConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.apps.deviceCheckConfig = {};
-    this.projects.apps.deviceCheckConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.deviceCheckConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/deviceCheckConfig:batchGet', 'GET', apiParams, clientConfig);
-    this.projects.apps.deviceCheckConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.apps.playIntegrityConfig = {};
+    this.projects.apps.playIntegrityConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/playIntegrityConfig:batchGet', 'GET', apiParams, clientConfig);
+    this.projects.apps.playIntegrityConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.apps.playIntegrityConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.apps.recaptchaConfig = {};
-    this.projects.apps.recaptchaConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.recaptchaConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/recaptchaConfig:batchGet', 'GET', apiParams, clientConfig);
     this.projects.apps.recaptchaConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.apps.recaptchaConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/recaptchaConfig:batchGet', 'GET', apiParams, clientConfig);
+    this.projects.apps.recaptchaConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.apps.recaptchaV3Config = {};
     this.projects.apps.recaptchaV3Config.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.apps.recaptchaV3Config.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/recaptchaV3Config:batchGet', 'GET', apiParams, clientConfig);
     this.projects.apps.recaptchaV3Config.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.projects.apps.recaptchaEnterpriseConfig = {};
-    this.projects.apps.recaptchaEnterpriseConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.recaptchaEnterpriseConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/recaptchaEnterpriseConfig:batchGet', 'GET', apiParams, clientConfig);
-    this.projects.apps.recaptchaEnterpriseConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-
     this.projects.apps.safetyNetConfig = {};
-    this.projects.apps.safetyNetConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.apps.safetyNetConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/safetyNetConfig:batchGet', 'GET', apiParams, clientConfig);
     this.projects.apps.safetyNetConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.apps.playIntegrityConfig = {};
-    this.projects.apps.playIntegrityConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.apps.playIntegrityConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/playIntegrityConfig:batchGet', 'GET', apiParams, clientConfig);
-    this.projects.apps.playIntegrityConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.apps.safetyNetConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.apps.debugTokens = {};
-    this.projects.apps.debugTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.apps.debugTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/debugTokens', 'GET', apiParams, clientConfig);
     this.projects.apps.debugTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/debugTokens', 'POST', apiParams, clientConfig);
-    this.projects.apps.debugTokens.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.apps.debugTokens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.apps.debugTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.apps.debugTokens.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.apps.appAttestConfig = {};
+    this.projects.apps.appAttestConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.apps.appAttestConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.apps.appAttestConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/appAttestConfig:batchGet', 'GET', apiParams, clientConfig);
+
+    this.projects.apps.deviceCheckConfig = {};
+    this.projects.apps.deviceCheckConfig.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.apps.deviceCheckConfig.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.apps.deviceCheckConfig.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps/-/deviceCheckConfig:batchGet', 'GET', apiParams, clientConfig);
   }
 
 /**
