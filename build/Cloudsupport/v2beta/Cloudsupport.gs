@@ -19,34 +19,34 @@ class Cloudsupport {
 
 
     this.media = {};
+    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:download', 'GET', apiParams, clientConfig);
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/v2beta/{+parent}/attachments' : 'v2beta/{+parent}/attachments';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
-    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:download', 'GET', apiParams, clientConfig);
+
+    this.caseClassifications = {};
+    this.caseClassifications.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/caseClassifications:search', 'GET', apiParams, clientConfig);
 
     this.cases = {};
-    this.cases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
-    this.cases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/cases', 'GET', apiParams, clientConfig);
+    this.cases.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:escalate', 'POST', apiParams, clientConfig);
+    this.cases.showFeed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}:showFeed', 'GET', apiParams, clientConfig);
     this.cases.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/cases:search', 'GET', apiParams, clientConfig);
     this.cases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/cases', 'POST', apiParams, clientConfig);
-    this.cases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.cases.escalate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:escalate', 'POST', apiParams, clientConfig);
+    this.cases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/cases', 'GET', apiParams, clientConfig);
     this.cases.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}:close', 'POST', apiParams, clientConfig);
-    this.cases.showFeed = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}:showFeed', 'GET', apiParams, clientConfig);
+    this.cases.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
+    this.cases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.cases.attachments = {};
     this.cases.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/attachments', 'GET', apiParams, clientConfig);
     this.cases.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.cases.comments = {};
-    this.cases.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/comments', 'GET', apiParams, clientConfig);
-    this.cases.comments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/comments', 'POST', apiParams, clientConfig);
     this.cases.comments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.caseClassifications = {};
-    this.caseClassifications.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/caseClassifications:search', 'GET', apiParams, clientConfig);
+    this.cases.comments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/comments', 'POST', apiParams, clientConfig);
+    this.cases.comments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/comments', 'GET', apiParams, clientConfig);
   }
 
 /**
