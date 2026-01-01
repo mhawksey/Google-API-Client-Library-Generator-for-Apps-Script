@@ -23,9 +23,9 @@ class Merchantapi {
     this.accounts.products = {};
 
     this.accounts.products.localInventories = {};
+    this.accounts.products.localInventories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.accounts.products.localInventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/localInventories', 'GET', apiParams, clientConfig);
     this.accounts.products.localInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/localInventories:insert', 'POST', apiParams, clientConfig);
-    this.accounts.products.localInventories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.products.regionalInventories = {};
     this.accounts.products.regionalInventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1/{+parent}/regionalInventories', 'GET', apiParams, clientConfig);
