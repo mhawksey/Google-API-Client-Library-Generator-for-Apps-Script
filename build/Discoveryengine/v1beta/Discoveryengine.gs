@@ -72,6 +72,8 @@ class Discoveryengine {
     this.projects.locations.collections.dataStores.servingConfigs.answer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+servingConfig}:answer', 'POST', apiParams, clientConfig);
     this.projects.locations.collections.dataStores.servingConfigs.streamAnswer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+servingConfig}:streamAnswer', 'POST', apiParams, clientConfig);
     this.projects.locations.collections.dataStores.servingConfigs.recommend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+servingConfig}:recommend', 'POST', apiParams, clientConfig);
+    this.projects.locations.collections.dataStores.servingConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/servingConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.collections.dataStores.servingConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.collections.dataStores.servingConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.collections.dataStores.servingConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.collections.dataStores.servingConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/servingConfigs', 'GET', apiParams, clientConfig);
@@ -197,6 +199,8 @@ class Discoveryengine {
     this.projects.locations.collections.engines.servingConfigs.answer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+servingConfig}:answer', 'POST', apiParams, clientConfig);
     this.projects.locations.collections.engines.servingConfigs.streamAnswer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+servingConfig}:streamAnswer', 'POST', apiParams, clientConfig);
     this.projects.locations.collections.engines.servingConfigs.recommend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+servingConfig}:recommend', 'POST', apiParams, clientConfig);
+    this.projects.locations.collections.engines.servingConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/servingConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.collections.engines.servingConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.collections.engines.servingConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.collections.engines.servingConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.collections.engines.servingConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/servingConfigs', 'GET', apiParams, clientConfig);
@@ -286,6 +290,8 @@ class Discoveryengine {
     this.projects.locations.dataStores.servingConfigs.answer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+servingConfig}:answer', 'POST', apiParams, clientConfig);
     this.projects.locations.dataStores.servingConfigs.streamAnswer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+servingConfig}:streamAnswer', 'POST', apiParams, clientConfig);
     this.projects.locations.dataStores.servingConfigs.recommend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+servingConfig}:recommend', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataStores.servingConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/servingConfigs', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataStores.servingConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.dataStores.servingConfigs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.dataStores.servingConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.dataStores.servingConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/servingConfigs', 'GET', apiParams, clientConfig);
