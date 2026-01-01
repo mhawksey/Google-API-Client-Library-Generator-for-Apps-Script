@@ -277,6 +277,18 @@ class Dataplex {
     this.projects.locations.dataProducts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.dataProducts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.dataProducts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataProducts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataProducts', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataProducts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.dataProducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataProducts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataProducts', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataProducts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.dataProducts.dataAssets = {};
+    this.projects.locations.dataProducts.dataAssets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataAssets', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataProducts.dataAssets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.dataProducts.dataAssets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.dataProducts.dataAssets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataProducts.dataAssets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataAssets', 'GET', apiParams, clientConfig);
 
     this.organizations = {};
 
