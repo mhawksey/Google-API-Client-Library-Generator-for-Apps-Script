@@ -576,7 +576,7 @@ class Drive {
     this.replies = {};
 
     /**
-     * Creates a reply to a comment.
+     * Creates a reply to a comment. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.commentId - (Required) The ID of the comment.
      * @param {string} apiParams.fileId - (Required) The ID of the file.
@@ -588,7 +588,7 @@ class Drive {
     this.replies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes a reply.
+     * Deletes a reply. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.commentId - (Required) The ID of the comment.
      * @param {string} apiParams.fileId - (Required) The ID of the file.
@@ -600,11 +600,11 @@ class Drive {
     this.replies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies/{replyId}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Gets a reply by ID.
+     * Gets a reply by ID. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.commentId - (Required) The ID of the comment.
      * @param {string} apiParams.fileId - (Required) The ID of the file.
-     * @param {boolean} apiParams.includeDeleted - Whether to return deleted replies. Deleted replies will not include their original content.
+     * @param {boolean} apiParams.includeDeleted - Whether to return deleted replies. Deleted replies don't include their original content.
      * @param {string} apiParams.replyId - (Required) The ID of the reply.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -613,13 +613,13 @@ class Drive {
     this.replies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies/{replyId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists a comment's replies.
+     * Lists a comment's replies. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.commentId - (Required) The ID of the comment.
      * @param {string} apiParams.fileId - (Required) The ID of the file.
-     * @param {boolean} apiParams.includeDeleted - Whether to include deleted replies. Deleted replies will not include their original content.
+     * @param {boolean} apiParams.includeDeleted - Whether to include deleted replies. Deleted replies don't include their original content.
      * @param {integer} apiParams.pageSize - The maximum number of replies to return per page.
-     * @param {string} apiParams.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of 'nextPageToken' from the previous response.
+     * @param {string} apiParams.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of `nextPageToken` from the previous response.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -627,7 +627,7 @@ class Drive {
     this.replies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/comments/{commentId}/replies', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates a reply with patch semantics.
+     * Updates a reply with patch semantics. For more information, see [Manage comments and replies](https://developers.google.com/workspace/drive/api/guides/manage-comments).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.commentId - (Required) The ID of the comment.
      * @param {string} apiParams.fileId - (Required) The ID of the file.
@@ -746,6 +746,31 @@ class Drive {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.teamdrives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('teamdrives/{teamDriveId}', 'PATCH', apiParams, clientConfig);
+
+    this.approvals = {};
+
+    /**
+     * Gets an Approval by ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.approvalId - (Required) Required. The ID of the Approval.
+     * @param {string} apiParams.fileId - (Required) Required. The ID of the file the Approval is on.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.approvals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/approvals/{approvalId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the Approvals on a file.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.fileId - (Required) Required. The ID of the file the Approval is on.
+     * @param {integer} apiParams.pageSize - The maximum number of Approvals to return. When not set, at most 100 Approvals will be returned.
+     * @param {string} apiParams.pageToken - The token for continuing a previous list request on the next page. This should be set to the value of nextPageToken from a previous response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.approvals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('files/{fileId}/approvals', 'GET', apiParams, clientConfig);
 
     this.accessproposals = {};
 
