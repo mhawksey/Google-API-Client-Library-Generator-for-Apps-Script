@@ -19,10 +19,10 @@ class Places {
 
 
     this.places = {};
-    this.places.autocomplete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:autocomplete', 'POST', apiParams, clientConfig);
-    this.places.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.places.searchNearby = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:searchNearby', 'POST', apiParams, clientConfig);
     this.places.searchText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:searchText', 'POST', apiParams, clientConfig);
+    this.places.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.places.autocomplete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/places:autocomplete', 'POST', apiParams, clientConfig);
 
     this.places.photos = {};
     this.places.photos.getMedia = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
