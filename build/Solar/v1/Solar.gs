@@ -18,14 +18,14 @@ class Solar {
     this._servicePath = '';
 
 
-    this.geoTiff = {};
-    this.geoTiff.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/geoTiff:get', 'GET', apiParams, clientConfig);
+    this.buildingInsights = {};
+    this.buildingInsights.findClosest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/buildingInsights:findClosest', 'GET', apiParams, clientConfig);
 
     this.dataLayers = {};
     this.dataLayers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/dataLayers:get', 'GET', apiParams, clientConfig);
 
-    this.buildingInsights = {};
-    this.buildingInsights.findClosest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/buildingInsights:findClosest', 'GET', apiParams, clientConfig);
+    this.geoTiff = {};
+    this.geoTiff.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/geoTiff:get', 'GET', apiParams, clientConfig);
   }
 
 /**
