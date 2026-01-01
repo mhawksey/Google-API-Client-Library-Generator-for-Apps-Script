@@ -22,21 +22,21 @@ class Binaryauthorization {
     this.projects.getPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.updatePolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
 
-    this.projects.attestors = {};
-    this.projects.attestors.validateAttestationOccurrence = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+attestor}:validateAttestationOccurrence', 'POST', apiParams, clientConfig);
-    this.projects.attestors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/attestors', 'POST', apiParams, clientConfig);
-    this.projects.attestors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.attestors.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.attestors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/attestors', 'GET', apiParams, clientConfig);
-    this.projects.attestors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.attestors.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.attestors.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.attestors.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
     this.projects.policy = {};
     this.projects.policy.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.policy.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.policy.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.policy.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+
+    this.projects.attestors = {};
+    this.projects.attestors.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.attestors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.attestors.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.attestors.validateAttestationOccurrence = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+attestor}:validateAttestationOccurrence', 'POST', apiParams, clientConfig);
+    this.projects.attestors.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.attestors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/attestors', 'GET', apiParams, clientConfig);
+    this.projects.attestors.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.attestors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/attestors', 'POST', apiParams, clientConfig);
+    this.projects.attestors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.systempolicy = {};
     this.systempolicy.getPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
