@@ -24,38 +24,38 @@ class Datamigration {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.migrationJobs = {};
-    this.projects.locations.migrationJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/migrationJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/migrationJobs', 'POST', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:start', 'POST', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:stop', 'POST', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:resume', 'POST', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.promote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:promote', 'POST', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:verify', 'POST', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:restart', 'POST', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.generateSshScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+migrationJob}:generateSshScript', 'POST', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.migrationJobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
     this.projects.locations.connectionProfiles = {};
+    this.projects.locations.connectionProfiles.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.connectionProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/connectionProfiles', 'GET', apiParams, clientConfig);
-    this.projects.locations.connectionProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.connectionProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/connectionProfiles', 'POST', apiParams, clientConfig);
     this.projects.locations.connectionProfiles.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.connectionProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.connectionProfiles.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.connectionProfiles.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.connectionProfiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.connectionProfiles.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.connectionProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.migrationJobs = {};
+    this.projects.locations.migrationJobs.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:stop', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:verify', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.generateSshScript = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+migrationJob}:generateSshScript', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:restart', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.promote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:promote', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:start', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/migrationJobs', 'POST', apiParams, clientConfig);
+    this.projects.locations.migrationJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/migrationJobs', 'GET', apiParams, clientConfig);
   }
 
 /**
