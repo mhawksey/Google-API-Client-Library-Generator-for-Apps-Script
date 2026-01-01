@@ -36,20 +36,6 @@ class Androidmanagement {
     this.enterprises = {};
 
     /**
-     * Creates an enterprise. This is the last step in the enterprise signup flow. See also: SigninDetail
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.agreementAccepted - Whether the enterprise admin has seen and agreed to the managed Google Play Agreement (https://www.android.com/enterprise/terms/). Do not set this field for any customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises). Set this to field to true for all EMM-managed enterprises (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
-     * @param {string} apiParams.enterpriseToken - The enterprise token appended to the callback URL. Set this when creating a customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises) and not when creating a deprecated EMM-managed enterprise (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
-     * @param {string} apiParams.projectId - The ID of the Google Cloud Platform project which will own the enterprise.
-     * @param {string} apiParams.signupUrlName - The name of the SignupUrl used to sign up for the enterprise. Set this when creating a customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises) and not when creating a deprecated EMM-managed enterprise (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/enterprises', 'POST', apiParams, clientConfig);
-
-    /**
      * Permanently deletes an enterprise and all accounts and data associated with it. Warning: this will result in a cascaded deletion of all AM API devices associated with the deleted enterprise. Only available for EMM-managed enterprises.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
@@ -60,6 +46,17 @@ class Androidmanagement {
     this.enterprises.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
+     * Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a managed Google domain. See the guide (https://developers.google.com/android/management/upgrade-an-enterprise) for more details.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the enterprise to be upgraded in the form enterprises/{enterpriseId}.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.generateEnterpriseUpgradeUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateEnterpriseUpgradeUrl', 'POST', apiParams, clientConfig);
+
+    /**
      * Gets an enterprise.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
@@ -68,18 +65,6 @@ class Androidmanagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.enterprises.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates an enterprise. See also: SigninDetail
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
-     * @param {string} apiParams.updateMask - The field mask indicating the fields to update. If not set, all modifiable fields will be modified.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Lists EMM-managed enterprises. Only BASIC fields are returned.
@@ -95,28 +80,147 @@ class Androidmanagement {
     this.enterprises.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/enterprises', 'GET', apiParams, clientConfig);
 
     /**
-     * Generates an enterprise upgrade URL to upgrade an existing managed Google Play Accounts enterprise to a managed Google domain. See the guide (https://developers.google.com/android/management/upgrade-an-enterprise) for more details.
+     * Updates an enterprise. See also: SigninDetail
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the enterprise to be upgraded in the form enterprises/{enterpriseId}.
+     * @param {string} apiParams.name - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
+     * @param {string} apiParams.updateMask - The field mask indicating the fields to update. If not set, all modifiable fields will be modified.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.enterprises.generateEnterpriseUpgradeUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateEnterpriseUpgradeUrl', 'POST', apiParams, clientConfig);
+    this.enterprises.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates an enterprise. This is the last step in the enterprise signup flow. See also: SigninDetail
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.agreementAccepted - Whether the enterprise admin has seen and agreed to the managed Google Play Agreement (https://www.android.com/enterprise/terms/). Do not set this field for any customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises). Set this to field to true for all EMM-managed enterprises (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
+     * @param {string} apiParams.enterpriseToken - The enterprise token appended to the callback URL. Set this when creating a customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises) and not when creating a deprecated EMM-managed enterprise (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
+     * @param {string} apiParams.projectId - The ID of the Google Cloud Platform project which will own the enterprise.
+     * @param {string} apiParams.signupUrlName - The name of the SignupUrl used to sign up for the enterprise. Set this when creating a customer-managed enterprise (https://developers.google.com/android/management/create-enterprise#customer-managed_enterprises) and not when creating a deprecated EMM-managed enterprise (https://developers.google.com/android/management/create-enterprise#emm-managed_enterprises).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/enterprises', 'POST', apiParams, clientConfig);
+
+    this.enterprises.policies = {};
+
+    /**
+     * Removes applications in a policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the policy containing the ApplicationPolicy objects to be removed, in the form enterprises/{enterpriseId}/policies/{policyId}.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.policies.removePolicyApplications = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removePolicyApplications', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates or creates applications in a policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the Policy containing the ApplicationPolicy objects to be updated, in the form enterprises/{enterpriseId}/policies/{policyId}.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.policies.modifyPolicyApplications = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyPolicyApplications', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates or creates a policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.
+     * @param {string} apiParams.updateMask - The field mask indicating the fields to update. If not set, all modifiable fields will be modified.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a policy. This operation is only permitted if no devices are currently referencing the policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists policies for a given enterprise.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The requested page size. The actual page size may be fixed to a min or max value.
+     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
+     * @param {string} apiParams.parent - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policies', 'GET', apiParams, clientConfig);
+
+    this.enterprises.migrationTokens = {};
+
+    /**
+     * Creates a migration token, to migrate an existing device from being managed by the EMM's Device Policy Controller (DPC) to being managed by the Android Management API. See the guide (https://developers.google.com/android/management/dpc-migration) for more details.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The enterprise in which this migration token is created. This must be the same enterprise which already manages the device in the Play EMM API. Format: enterprises/{enterprise}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.migrationTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migrationTokens', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a migration token.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the migration token to retrieve. Format: enterprises/{enterprise}/migrationTokens/{migration_token}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.migrationTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists migration tokens.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of migration tokens to return. Fewer migration tokens may be returned. If unspecified, at most 100 migration tokens will be returned. The maximum value is 100; values above 100 will be coerced to 100.
+     * @param {string} apiParams.pageToken - A page token, received from a previous ListMigrationTokens call. Provide this to retrieve the subsequent page.When paginating, all other parameters provided to ListMigrationTokens must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The enterprise which the migration tokens belong to. Format: enterprises/{enterprise}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.migrationTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migrationTokens', 'GET', apiParams, clientConfig);
 
     this.enterprises.enrollmentTokens = {};
 
     /**
-     * Creates an enrollment token for a given enterprise. It's up to the caller's responsibility to manage the lifecycle of newly created tokens and deleting them when they're not intended to be used anymore.
+     * Lists active, unexpired enrollment tokens for a given enterprise. The list items contain only a partial view of EnrollmentToken object. Only the following fields are populated: name, expirationTimestamp, allowPersonalUsage, value, qrCode. This method is meant to help manage active enrollment tokens lifecycle. For security reasons, it's recommended to delete active enrollment tokens as soon as they're not intended to be used anymore.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.pageSize - The requested page size. The service may return fewer than this value. If unspecified, at most 10 items will be returned. The maximum value is 100; values above 100 will be coerced to 100.
+     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
+     * @param {string} apiParams.parent - (Required) Required. The name of the enterprise in the form enterprises/{enterpriseId}.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.enterprises.enrollmentTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/enrollmentTokens', 'POST', apiParams, clientConfig);
+    this.enterprises.enrollmentTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/enrollmentTokens', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes an enrollment token. This operation invalidates the token, preventing its future use.
@@ -139,16 +243,72 @@ class Androidmanagement {
     this.enterprises.enrollmentTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists active, unexpired enrollment tokens for a given enterprise. The list items contain only a partial view of EnrollmentToken object. Only the following fields are populated: name, expirationTimestamp, allowPersonalUsage, value, qrCode. This method is meant to help manage active enrollment tokens lifecycle. For security reasons, it's recommended to delete active enrollment tokens as soon as they're not intended to be used anymore.
+     * Creates an enrollment token for a given enterprise. It's up to the caller's responsibility to manage the lifecycle of newly created tokens and deleting them when they're not intended to be used anymore.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The requested page size. The service may return fewer than this value. If unspecified, at most 10 items will be returned. The maximum value is 100; values above 100 will be coerced to 100.
-     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
-     * @param {string} apiParams.parent - (Required) Required. The name of the enterprise in the form enterprises/{enterpriseId}.
+     * @param {string} apiParams.parent - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.enterprises.enrollmentTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/enrollmentTokens', 'GET', apiParams, clientConfig);
+    this.enterprises.enrollmentTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/enrollmentTokens', 'POST', apiParams, clientConfig);
+
+    this.enterprises.webApps = {};
+
+    /**
+     * Gets a web app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.webApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a web app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.webApps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates a web app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.
+     * @param {string} apiParams.updateMask - The field mask indicating the fields to update. If not set, all modifiable fields will be modified.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.webApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Creates a web app.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.webApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webApps', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists web apps for a given enterprise.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The requested page size. This is a hint and the actual page size in the response may be different.
+     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
+     * @param {string} apiParams.parent - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.webApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webApps', 'GET', apiParams, clientConfig);
 
     this.enterprises.webTokens = {};
 
@@ -164,6 +324,17 @@ class Androidmanagement {
     this.enterprises.webTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webTokens', 'POST', apiParams, clientConfig);
 
     this.enterprises.devices = {};
+
+    /**
+     * Issues a command to a device. The Operation resource returned contains a Command in its metadata field. Use the get operation method to get the status of the command.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.enterprises.devices.issueCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:issueCommand', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a device. Deleted devices will respond with a 404 error.
@@ -211,18 +382,17 @@ class Androidmanagement {
      */
     this.enterprises.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
+    this.enterprises.devices.operations = {};
+
     /**
-     * Issues a command to a device. The Operation resource returned contains a Command in its metadata field. Use the get operation method to get the status of the command.
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the device in the form enterprises/{enterpriseId}/devices/{deviceId}.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.enterprises.devices.issueCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:issueCommand', 'POST', apiParams, clientConfig);
-
-    this.enterprises.devices.operations = {};
+    this.enterprises.devices.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.
@@ -239,16 +409,6 @@ class Androidmanagement {
     this.enterprises.devices.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.devices.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of 1, corresponding to Code.CANCELLED.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
@@ -257,74 +417,6 @@ class Androidmanagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.enterprises.devices.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.enterprises.policies = {};
-
-    /**
-     * Gets a policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists policies for a given enterprise.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The requested page size. The actual page size may be fixed to a min or max value.
-     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
-     * @param {string} apiParams.parent - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policies', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates or creates a policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.
-     * @param {string} apiParams.updateMask - The field mask indicating the fields to update. If not set, all modifiable fields will be modified.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a policy. This operation is only permitted if no devices are currently referencing the policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the policy in the form enterprises/{enterpriseId}/policies/{policyId}.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates or creates applications in a policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the Policy containing the ApplicationPolicy objects to be updated, in the form enterprises/{enterpriseId}/policies/{policyId}.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.policies.modifyPolicyApplications = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyPolicyApplications', 'POST', apiParams, clientConfig);
-
-    /**
-     * Removes applications in a policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the policy containing the ApplicationPolicy objects to be removed, in the form enterprises/{enterpriseId}/policies/{policyId}.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.policies.removePolicyApplications = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removePolicyApplications', 'POST', apiParams, clientConfig);
 
     this.enterprises.applications = {};
 
@@ -338,98 +430,6 @@ class Androidmanagement {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.enterprises.applications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.enterprises.webApps = {};
-
-    /**
-     * Creates a web app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.webApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webApps', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets a web app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.webApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists web apps for a given enterprise.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The requested page size. This is a hint and the actual page size in the response may be different.
-     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
-     * @param {string} apiParams.parent - (Required) The name of the enterprise in the form enterprises/{enterpriseId}.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.webApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webApps', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a web app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.
-     * @param {string} apiParams.updateMask - The field mask indicating the fields to update. If not set, all modifiable fields will be modified.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.webApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a web app.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the web app in the form enterprises/{enterpriseId}/webApps/{packageName}.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.webApps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.enterprises.migrationTokens = {};
-
-    /**
-     * Creates a migration token, to migrate an existing device from being managed by the EMM's Device Policy Controller (DPC) to being managed by the Android Management API. See the guide (https://developers.google.com/android/management/dpc-migration) for more details.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The enterprise in which this migration token is created. This must be the same enterprise which already manages the device in the Play EMM API. Format: enterprises/{enterprise}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.migrationTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migrationTokens', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets a migration token.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the migration token to retrieve. Format: enterprises/{enterprise}/migrationTokens/{migration_token}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.migrationTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists migration tokens.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of migration tokens to return. Fewer migration tokens may be returned. If unspecified, at most 100 migration tokens will be returned. The maximum value is 100; values above 100 will be coerced to 100.
-     * @param {string} apiParams.pageToken - A page token, received from a previous ListMigrationTokens call. Provide this to retrieve the subsequent page.When paginating, all other parameters provided to ListMigrationTokens must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The enterprise which the migration tokens belong to. Format: enterprises/{enterprise}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.enterprises.migrationTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migrationTokens', 'GET', apiParams, clientConfig);
 
     this.provisioningInfo = {};
 
