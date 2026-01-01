@@ -25,31 +25,31 @@ class Datalineage {
     this.projects.locations.searchLinks = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:searchLinks', 'POST', apiParams, clientConfig);
     this.projects.locations.batchSearchLinkProcesses = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:batchSearchLinkProcesses', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.processes = {};
+    this.projects.locations.processes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.processes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.processes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/processes', 'POST', apiParams, clientConfig);
     this.projects.locations.processes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.processes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.processes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/processes', 'GET', apiParams, clientConfig);
-    this.projects.locations.processes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.processes.runs = {};
     this.projects.locations.processes.runs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runs', 'POST', apiParams, clientConfig);
     this.projects.locations.processes.runs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.processes.runs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.processes.runs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runs', 'GET', apiParams, clientConfig);
+    this.projects.locations.processes.runs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.processes.runs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.processes.runs.lineageEvents = {};
-    this.projects.locations.processes.runs.lineageEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/lineageEvents', 'POST', apiParams, clientConfig);
-    this.projects.locations.processes.runs.lineageEvents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.processes.runs.lineageEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/lineageEvents', 'GET', apiParams, clientConfig);
+    this.projects.locations.processes.runs.lineageEvents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.processes.runs.lineageEvents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.processes.runs.lineageEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/lineageEvents', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
   }
 
 /**
