@@ -4,7 +4,7 @@ Auto-generated client library for using the **Cloud Profiler API (version: v2)**
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:33:30 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:32:54 GMT
 - **Last Modified:** Fri, 03 Oct 2025 08:52:40 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:13 GMT
 
