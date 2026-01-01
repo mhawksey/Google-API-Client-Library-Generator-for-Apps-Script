@@ -20,28 +20,28 @@ class Secretmanager {
 
     this.projects = {};
 
-    this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.secrets = {};
-    this.projects.secrets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/secrets', 'GET', apiParams, clientConfig);
-    this.projects.secrets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/secrets', 'POST', apiParams, clientConfig);
-    this.projects.secrets.addVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:addVersion', 'POST', apiParams, clientConfig);
     this.projects.secrets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.secrets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.secrets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.secrets.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.secrets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/secrets', 'GET', apiParams, clientConfig);
     this.projects.secrets.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.secrets.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.secrets.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.secrets.addVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:addVersion', 'POST', apiParams, clientConfig);
+    this.projects.secrets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/secrets', 'POST', apiParams, clientConfig);
 
     this.projects.secrets.versions = {};
-    this.projects.secrets.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'GET', apiParams, clientConfig);
-    this.projects.secrets.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.secrets.versions.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:access', 'GET', apiParams, clientConfig);
     this.projects.secrets.versions.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:disable', 'POST', apiParams, clientConfig);
-    this.projects.secrets.versions.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:enable', 'POST', apiParams, clientConfig);
     this.projects.secrets.versions.destroy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:destroy', 'POST', apiParams, clientConfig);
+    this.projects.secrets.versions.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.projects.secrets.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'GET', apiParams, clientConfig);
+    this.projects.secrets.versions.access = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:access', 'GET', apiParams, clientConfig);
+    this.projects.secrets.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations = {};
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/locations', 'GET', apiParams, clientConfig);
   }
 
 /**
