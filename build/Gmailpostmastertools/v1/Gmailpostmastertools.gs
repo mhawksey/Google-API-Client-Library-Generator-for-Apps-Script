@@ -19,8 +19,8 @@ class Gmailpostmastertools {
 
 
     this.domains = {};
-    this.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/domains', 'GET', apiParams, clientConfig);
     this.domains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.domains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/domains', 'GET', apiParams, clientConfig);
 
     this.domains.trafficStats = {};
     this.domains.trafficStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
