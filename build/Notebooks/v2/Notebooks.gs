@@ -21,38 +21,38 @@ class Notebooks {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/locations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.instances = {};
-    this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/instances', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.instances.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:start', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:stop', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:reset', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.checkUpgradability = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+notebookInstance}:checkUpgradability', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:upgrade', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.resizeDisk = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+notebookInstance}:resizeDisk', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rollback', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.diagnose = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:diagnose', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/instances:getConfig', 'GET', apiParams, clientConfig);
     this.projects.locations.instances.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:restore', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.getConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/instances:getConfig', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:stop', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.reportInfoSystem = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:reportInfoSystem', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.upgradeSystem = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:upgradeSystem', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.instances.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rollback', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.checkUpgradability = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+notebookInstance}:checkUpgradability', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:reset', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.instances.checkAuthorization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:checkAuthorization', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/instances', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:upgrade', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.generateAccessToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:generateAccessToken', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.diagnose = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:diagnose', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.start = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:start', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.resizeDisk = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+notebookInstance}:resizeDisk', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
