@@ -18,36 +18,36 @@ class Mybusinessbusinessinformation {
     this._servicePath = '';
 
 
+    this.chains = {};
+    this.chains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.chains.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/chains:search', 'GET', apiParams, clientConfig);
+
     this.categories = {};
-    this.categories.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/categories:batchGet', 'GET', apiParams, clientConfig);
     this.categories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/categories', 'GET', apiParams, clientConfig);
+    this.categories.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/categories:batchGet', 'GET', apiParams, clientConfig);
 
     this.accounts = {};
 
     this.accounts.locations = {};
-    this.accounts.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/locations', 'GET', apiParams, clientConfig);
     this.accounts.locations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/locations', 'POST', apiParams, clientConfig);
+    this.accounts.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/locations', 'GET', apiParams, clientConfig);
 
-    this.locations = {};
-    this.locations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.locations.updateAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.locations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.locations.getAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.locations.getGoogleUpdated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getGoogleUpdated', 'GET', apiParams, clientConfig);
-
-    this.locations.attributes = {};
-    this.locations.attributes.getGoogleUpdated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getGoogleUpdated', 'GET', apiParams, clientConfig);
-
-    this.chains = {};
-    this.chains.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/chains:search', 'GET', apiParams, clientConfig);
-    this.chains.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.googleLocations = {};
+    this.googleLocations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/googleLocations:search', 'POST', apiParams, clientConfig);
 
     this.attributes = {};
     this.attributes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/attributes', 'GET', apiParams, clientConfig);
 
-    this.googleLocations = {};
-    this.googleLocations.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/googleLocations:search', 'POST', apiParams, clientConfig);
+    this.locations = {};
+    this.locations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.locations.getAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.locations.getGoogleUpdated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getGoogleUpdated', 'GET', apiParams, clientConfig);
+    this.locations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.locations.updateAttributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.locations.attributes = {};
+    this.locations.attributes.getGoogleUpdated = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getGoogleUpdated', 'GET', apiParams, clientConfig);
   }
 
 /**
