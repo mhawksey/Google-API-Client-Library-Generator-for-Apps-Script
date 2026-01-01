@@ -18,19 +18,19 @@ class Dataportability {
     this._servicePath = '';
 
 
-    this.accessType = {};
-    this.accessType.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accessType:check', 'POST', apiParams, clientConfig);
-
     this.portabilityArchive = {};
     this.portabilityArchive.initiate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/portabilityArchive:initiate', 'POST', apiParams, clientConfig);
-
-    this.authorization = {};
-    this.authorization.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/authorization:reset', 'POST', apiParams, clientConfig);
 
     this.archiveJobs = {};
     this.archiveJobs.getPortabilityArchiveState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.archiveJobs.retry = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retry', 'POST', apiParams, clientConfig);
     this.archiveJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    this.authorization = {};
+    this.authorization.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/authorization:reset', 'POST', apiParams, clientConfig);
+
+    this.accessType = {};
+    this.accessType.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accessType:check', 'POST', apiParams, clientConfig);
   }
 
 /**
