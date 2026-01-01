@@ -22,8 +22,8 @@ class Servicenetworking {
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
 
     this.services = {};
-    this.services.updateConnections = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/connections', 'PATCH', apiParams, clientConfig);
     this.services.addSubnetwork = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:addSubnetwork', 'POST', apiParams, clientConfig);
+    this.services.updateConnections = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/connections', 'PATCH', apiParams, clientConfig);
     this.services.searchRange = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}:searchRange', 'POST', apiParams, clientConfig);
 
     this.services.connections = {};
