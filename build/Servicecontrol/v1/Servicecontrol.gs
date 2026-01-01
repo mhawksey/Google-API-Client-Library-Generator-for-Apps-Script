@@ -19,8 +19,8 @@ class Servicecontrol {
 
 
     this.services = {};
-    this.services.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}:check', 'POST', apiParams, clientConfig);
     this.services.allocateQuota = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}:allocateQuota', 'POST', apiParams, clientConfig);
+    this.services.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}:check', 'POST', apiParams, clientConfig);
     this.services.report = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/services/{serviceName}:report', 'POST', apiParams, clientConfig);
   }
 
