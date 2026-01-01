@@ -21,12 +21,15 @@ class Safebrowsing {
     this.hashes = {};
     this.hashes.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashes:search', 'GET', apiParams, clientConfig);
 
+    this.hashLists = {};
+    this.hashLists.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashLists:batchGet', 'GET', apiParams, clientConfig);
+    this.hashLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashLists', 'GET', apiParams, clientConfig);
+
     this.hashList = {};
     this.hashList.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashList/{name}', 'GET', apiParams, clientConfig);
 
-    this.hashLists = {};
-    this.hashLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashLists', 'GET', apiParams, clientConfig);
-    this.hashLists.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/hashLists:batchGet', 'GET', apiParams, clientConfig);
+    this.urls = {};
+    this.urls.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v5/urls:search', 'GET', apiParams, clientConfig);
   }
 
 /**
