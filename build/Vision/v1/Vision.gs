@@ -19,15 +19,20 @@ class Vision {
 
 
     this.operations = {};
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.files = {};
+    this.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/files:annotate', 'POST', apiParams, clientConfig);
+    this.files.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/files:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
 
     this.projects = {};
 
-    this.projects.operations = {};
-    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.images = {};
+    this.projects.images.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/images:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
+    this.projects.images.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/images:annotate', 'POST', apiParams, clientConfig);
 
     this.projects.locations = {};
 
@@ -36,42 +41,41 @@ class Vision {
 
     this.projects.locations.productSets = {};
     this.projects.locations.productSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/productSets', 'POST', apiParams, clientConfig);
-    this.projects.locations.productSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/productSets', 'GET', apiParams, clientConfig);
-    this.projects.locations.productSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.productSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.productSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.productSets.addProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:addProduct', 'POST', apiParams, clientConfig);
     this.projects.locations.productSets.removeProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removeProduct', 'POST', apiParams, clientConfig);
+    this.projects.locations.productSets.addProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:addProduct', 'POST', apiParams, clientConfig);
+    this.projects.locations.productSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.productSets.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/productSets:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.productSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.productSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.productSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/productSets', 'GET', apiParams, clientConfig);
 
     this.projects.locations.productSets.products = {};
     this.projects.locations.productSets.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/products', 'GET', apiParams, clientConfig);
 
     this.projects.locations.products = {};
-    this.projects.locations.products.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products', 'POST', apiParams, clientConfig);
-    this.projects.locations.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products', 'GET', apiParams, clientConfig);
-    this.projects.locations.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.products.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.products.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.products.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products', 'POST', apiParams, clientConfig);
     this.projects.locations.products.purge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products:purge', 'POST', apiParams, clientConfig);
+    this.projects.locations.products.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products', 'GET', apiParams, clientConfig);
 
     this.projects.locations.products.referenceImages = {};
-    this.projects.locations.products.referenceImages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/referenceImages', 'POST', apiParams, clientConfig);
-    this.projects.locations.products.referenceImages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.products.referenceImages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/referenceImages', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.referenceImages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/referenceImages', 'POST', apiParams, clientConfig);
     this.projects.locations.products.referenceImages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.products.referenceImages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.images = {};
     this.projects.locations.images.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/images:annotate', 'POST', apiParams, clientConfig);
     this.projects.locations.images.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/images:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
 
     this.projects.locations.files = {};
-    this.projects.locations.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/files:annotate', 'POST', apiParams, clientConfig);
     this.projects.locations.files.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/files:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
+    this.projects.locations.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/files:annotate', 'POST', apiParams, clientConfig);
 
-    this.projects.images = {};
-    this.projects.images.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/images:annotate', 'POST', apiParams, clientConfig);
-    this.projects.images.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/images:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
+    this.projects.operations = {};
+    this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.files = {};
     this.projects.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/files:annotate', 'POST', apiParams, clientConfig);
@@ -85,10 +89,6 @@ class Vision {
     this.images = {};
     this.images.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/images:annotate', 'POST', apiParams, clientConfig);
     this.images.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/images:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
-
-    this.files = {};
-    this.files.annotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/files:annotate', 'POST', apiParams, clientConfig);
-    this.files.asyncBatchAnnotate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/files:asyncBatchAnnotate', 'POST', apiParams, clientConfig);
   }
 
 /**
