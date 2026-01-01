@@ -4,8 +4,8 @@ Auto-generated client library for using the **Groups Settings API (version: v1)*
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:53:47 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:53:47 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:45:58 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:45:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:50 GMT
 
 
@@ -16,13 +16,14 @@ Auto-generated client library for using the **Groups Settings API (version: v1)*
 
 ### `groups`
 
-#### `groups.get()`
+#### `groups.patch()`
 
-Gets one resource by id.
+Updates an existing resource. This method supports patch semantics.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.groupUniqueId` | `string` | Yes | The group's email address. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `groups.update()`
 
@@ -33,11 +34,10 @@ Updates an existing resource.
 | `params.groupUniqueId` | `string` | Yes | The group's email address. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `groups.patch()`
+#### `groups.get()`
 
-Updates an existing resource. This method supports patch semantics.
+Gets one resource by id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.groupUniqueId` | `string` | Yes | The group's email address. |
-| `params.requestBody` | `object` | Yes | The request body. |
