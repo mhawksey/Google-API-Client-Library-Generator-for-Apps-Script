@@ -19,71 +19,71 @@ class Bigquery {
 
 
     this.datasets = {};
-    this.datasets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}', 'PATCH', apiParams, clientConfig);
-    this.datasets.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets', 'POST', apiParams, clientConfig);
     this.datasets.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}', 'PUT', apiParams, clientConfig);
-    this.datasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets', 'GET', apiParams, clientConfig);
     this.datasets.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}:undelete', 'POST', apiParams, clientConfig);
+    this.datasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets', 'GET', apiParams, clientConfig);
     this.datasets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}', 'GET', apiParams, clientConfig);
     this.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}', 'DELETE', apiParams, clientConfig);
-
-    this.projects = {};
-    this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects', 'GET', apiParams, clientConfig);
-    this.projects.getServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/serviceAccount', 'GET', apiParams, clientConfig);
-
-    this.routines = {};
-    this.routines.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'PUT', apiParams, clientConfig);
-    this.routines.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.routines.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines', 'GET', apiParams, clientConfig);
-    this.routines.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'DELETE', apiParams, clientConfig);
-    this.routines.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'GET', apiParams, clientConfig);
-    this.routines.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines', 'POST', apiParams, clientConfig);
-    this.routines.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.routines.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    this.rowAccessPolicies = {};
-    this.rowAccessPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies', 'GET', apiParams, clientConfig);
-    this.rowAccessPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.rowAccessPolicies.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete', 'POST', apiParams, clientConfig);
-    this.rowAccessPolicies.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies', 'POST', apiParams, clientConfig);
-    this.rowAccessPolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', 'PUT', apiParams, clientConfig);
-    this.rowAccessPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.rowAccessPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', 'DELETE', apiParams, clientConfig);
-    this.rowAccessPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', 'GET', apiParams, clientConfig);
-
-    this.tables = {};
-    this.tables.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'PATCH', apiParams, clientConfig);
-    this.tables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'GET', apiParams, clientConfig);
-    this.tables.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.tables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.tables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables', 'GET', apiParams, clientConfig);
-    this.tables.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'PUT', apiParams, clientConfig);
-    this.tables.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.tables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'DELETE', apiParams, clientConfig);
-    this.tables.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables', 'POST', apiParams, clientConfig);
-
-    this.tabledata = {};
-    this.tabledata.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/data', 'GET', apiParams, clientConfig);
-    this.tabledata.insertAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/insertAll', 'POST', apiParams, clientConfig);
-
-    this.models = {};
-    this.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'GET', apiParams, clientConfig);
-    this.models.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'PATCH', apiParams, clientConfig);
-    this.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models', 'GET', apiParams, clientConfig);
-    this.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'DELETE', apiParams, clientConfig);
+    this.datasets.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets', 'POST', apiParams, clientConfig);
+    this.datasets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}', 'PATCH', apiParams, clientConfig);
 
     this.jobs = {};
-    this.jobs.getQueryResults = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/queries/{+jobId}', 'GET', apiParams, clientConfig);
+    this.jobs.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/queries', 'POST', apiParams, clientConfig);
+    this.jobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}/cancel', 'POST', apiParams, clientConfig);
     this.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs', 'GET', apiParams, clientConfig);
-    this.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}/delete', 'DELETE', apiParams, clientConfig);
-    this.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}', 'GET', apiParams, clientConfig);
+    this.jobs.getQueryResults = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/queries/{+jobId}', 'GET', apiParams, clientConfig);
     this.jobs.insert = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/bigquery/v2/projects/{+projectId}/jobs' : 'projects/{+projectId}/jobs';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
-    this.jobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}/cancel', 'POST', apiParams, clientConfig);
-    this.jobs.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/queries', 'POST', apiParams, clientConfig);
+    this.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}/delete', 'DELETE', apiParams, clientConfig);
+    this.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}', 'GET', apiParams, clientConfig);
+
+    this.rowAccessPolicies = {};
+    this.rowAccessPolicies.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete', 'POST', apiParams, clientConfig);
+    this.rowAccessPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies', 'GET', apiParams, clientConfig);
+    this.rowAccessPolicies.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies', 'POST', apiParams, clientConfig);
+    this.rowAccessPolicies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.rowAccessPolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', 'DELETE', apiParams, clientConfig);
+    this.rowAccessPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', 'GET', apiParams, clientConfig);
+    this.rowAccessPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.rowAccessPolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', 'PUT', apiParams, clientConfig);
+
+    this.models = {};
+    this.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'DELETE', apiParams, clientConfig);
+    this.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'GET', apiParams, clientConfig);
+    this.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models', 'GET', apiParams, clientConfig);
+    this.models.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'PATCH', apiParams, clientConfig);
+
+    this.tabledata = {};
+    this.tabledata.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/data', 'GET', apiParams, clientConfig);
+    this.tabledata.insertAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/insertAll', 'POST', apiParams, clientConfig);
+
+    this.routines = {};
+    this.routines.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines', 'POST', apiParams, clientConfig);
+    this.routines.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.routines.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.routines.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.routines.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines', 'GET', apiParams, clientConfig);
+    this.routines.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'GET', apiParams, clientConfig);
+    this.routines.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'PUT', apiParams, clientConfig);
+    this.routines.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'DELETE', apiParams, clientConfig);
+
+    this.tables = {};
+    this.tables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'DELETE', apiParams, clientConfig);
+    this.tables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'GET', apiParams, clientConfig);
+    this.tables.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'PUT', apiParams, clientConfig);
+    this.tables.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.tables.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables', 'POST', apiParams, clientConfig);
+    this.tables.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'PATCH', apiParams, clientConfig);
+    this.tables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.tables.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.tables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+    this.projects.getServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/serviceAccount', 'GET', apiParams, clientConfig);
+    this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects', 'GET', apiParams, clientConfig);
   }
 
 /**
