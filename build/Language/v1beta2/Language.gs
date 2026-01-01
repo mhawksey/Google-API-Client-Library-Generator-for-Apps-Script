@@ -19,13 +19,13 @@ class Language {
 
 
     this.documents = {};
-    this.documents.analyzeSentiment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:analyzeSentiment', 'POST', apiParams, clientConfig);
+    this.documents.classifyText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:classifyText', 'POST', apiParams, clientConfig);
     this.documents.analyzeEntities = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:analyzeEntities', 'POST', apiParams, clientConfig);
+    this.documents.analyzeSentiment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:analyzeSentiment', 'POST', apiParams, clientConfig);
+    this.documents.annotateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:annotateText', 'POST', apiParams, clientConfig);
     this.documents.analyzeEntitySentiment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:analyzeEntitySentiment', 'POST', apiParams, clientConfig);
     this.documents.analyzeSyntax = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:analyzeSyntax', 'POST', apiParams, clientConfig);
-    this.documents.classifyText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:classifyText', 'POST', apiParams, clientConfig);
     this.documents.moderateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:moderateText', 'POST', apiParams, clientConfig);
-    this.documents.annotateText = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/documents:annotateText', 'POST', apiParams, clientConfig);
   }
 
 /**
