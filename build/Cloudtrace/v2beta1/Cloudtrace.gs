@@ -21,10 +21,10 @@ class Cloudtrace {
     this.projects = {};
 
     this.projects.traceSinks = {};
-    this.projects.traceSinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+parent}/traceSinks', 'GET', apiParams, clientConfig);
     this.projects.traceSinks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.traceSinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+parent}/traceSinks', 'POST', apiParams, clientConfig);
     this.projects.traceSinks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.traceSinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+parent}/traceSinks', 'GET', apiParams, clientConfig);
     this.projects.traceSinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
