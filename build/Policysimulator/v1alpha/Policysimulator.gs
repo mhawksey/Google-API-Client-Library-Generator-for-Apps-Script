@@ -22,6 +22,26 @@ class Policysimulator {
     this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
+    this.folders = {};
+
+    this.folders.locations = {};
+
+    this.folders.locations.orgPolicyViolationsPreviews = {};
+
+    this.folders.locations.orgPolicyViolationsPreviews.operations = {};
+    this.folders.locations.orgPolicyViolationsPreviews.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    this.folders.locations.replays = {};
+
+    this.folders.locations.replays.operations = {};
+    this.folders.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    this.folders.locations.accessPolicySimulations = {};
+
+    this.folders.locations.accessPolicySimulations.operations = {};
+    this.folders.locations.accessPolicySimulations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects = {};
 
     this.projects.locations = {};
@@ -29,8 +49,8 @@ class Policysimulator {
     this.projects.locations.replays = {};
 
     this.projects.locations.replays.operations = {};
-    this.projects.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.orgPolicyViolationsPreviews = {};
 
@@ -42,26 +62,6 @@ class Policysimulator {
     this.projects.locations.accessPolicySimulations.operations = {};
     this.projects.locations.accessPolicySimulations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
-    this.folders = {};
-
-    this.folders.locations = {};
-
-    this.folders.locations.replays = {};
-
-    this.folders.locations.replays.operations = {};
-    this.folders.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    this.folders.locations.orgPolicyViolationsPreviews = {};
-
-    this.folders.locations.orgPolicyViolationsPreviews.operations = {};
-    this.folders.locations.orgPolicyViolationsPreviews.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    this.folders.locations.accessPolicySimulations = {};
-
-    this.folders.locations.accessPolicySimulations.operations = {};
-    this.folders.locations.accessPolicySimulations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
     this.organizations = {};
 
     this.organizations.locations = {};
@@ -72,15 +72,15 @@ class Policysimulator {
     this.organizations.locations.replays.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.locations.replays.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
-    this.organizations.locations.orgPolicyViolationsPreviews = {};
-
-    this.organizations.locations.orgPolicyViolationsPreviews.operations = {};
-    this.organizations.locations.orgPolicyViolationsPreviews.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
     this.organizations.locations.accessPolicySimulations = {};
 
     this.organizations.locations.accessPolicySimulations.operations = {};
     this.organizations.locations.accessPolicySimulations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+
+    this.organizations.locations.orgPolicyViolationsPreviews = {};
+
+    this.organizations.locations.orgPolicyViolationsPreviews.operations = {};
+    this.organizations.locations.orgPolicyViolationsPreviews.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
