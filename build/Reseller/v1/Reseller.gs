@@ -19,27 +19,27 @@ class Reseller {
 
 
     this.subscriptions = {};
-    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}', 'DELETE', apiParams, clientConfig);
     this.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/subscriptions', 'GET', apiParams, clientConfig);
-    this.subscriptions.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend', 'POST', apiParams, clientConfig);
-    this.subscriptions.startPaidService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService', 'POST', apiParams, clientConfig);
-    this.subscriptions.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions', 'POST', apiParams, clientConfig);
     this.subscriptions.changeRenewalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeRenewalSettings', 'POST', apiParams, clientConfig);
+    this.subscriptions.startPaidService = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/startPaidService', 'POST', apiParams, clientConfig);
     this.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}', 'GET', apiParams, clientConfig);
     this.subscriptions.changePlan = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changePlan', 'POST', apiParams, clientConfig);
-    this.subscriptions.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate', 'POST', apiParams, clientConfig);
     this.subscriptions.changeSeats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/changeSeats', 'POST', apiParams, clientConfig);
-
-    this.customers = {};
-    this.customers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'PATCH', apiParams, clientConfig);
-    this.customers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'PUT', apiParams, clientConfig);
-    this.customers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'GET', apiParams, clientConfig);
-    this.customers.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers', 'POST', apiParams, clientConfig);
+    this.subscriptions.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/suspend', 'POST', apiParams, clientConfig);
+    this.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}', 'DELETE', apiParams, clientConfig);
+    this.subscriptions.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions/{subscriptionId}/activate', 'POST', apiParams, clientConfig);
+    this.subscriptions.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}/subscriptions', 'POST', apiParams, clientConfig);
 
     this.resellernotify = {};
-    this.resellernotify.getwatchdetails = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/resellernotify/getwatchdetails', 'GET', apiParams, clientConfig);
     this.resellernotify.unregister = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/resellernotify/unregister', 'POST', apiParams, clientConfig);
     this.resellernotify.register = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/resellernotify/register', 'POST', apiParams, clientConfig);
+    this.resellernotify.getwatchdetails = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/resellernotify/getwatchdetails', 'GET', apiParams, clientConfig);
+
+    this.customers = {};
+    this.customers.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers', 'POST', apiParams, clientConfig);
+    this.customers.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'PATCH', apiParams, clientConfig);
+    this.customers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'GET', apiParams, clientConfig);
+    this.customers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/reseller/v1/customers/{customerId}', 'PUT', apiParams, clientConfig);
   }
 
 /**
