@@ -19,13 +19,13 @@ class Licensing {
 
 
     this.licenseAssignments = {};
+    this.licenseAssignments.listForProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/users', 'GET', apiParams, clientConfig);
     this.licenseAssignments.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user', 'POST', apiParams, clientConfig);
-    this.licenseAssignments.listForProductAndSku = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/users', 'GET', apiParams, clientConfig);
     this.licenseAssignments.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'PUT', apiParams, clientConfig);
     this.licenseAssignments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'DELETE', apiParams, clientConfig);
-    this.licenseAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'GET', apiParams, clientConfig);
-    this.licenseAssignments.listForProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/users', 'GET', apiParams, clientConfig);
+    this.licenseAssignments.listForProductAndSku = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/users', 'GET', apiParams, clientConfig);
     this.licenseAssignments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'PATCH', apiParams, clientConfig);
+    this.licenseAssignments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('apps/licensing/v1/product/{productId}/sku/{skuId}/user/{userId}', 'GET', apiParams, clientConfig);
   }
 
 /**
