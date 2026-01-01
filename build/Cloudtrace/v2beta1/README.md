@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Trace API (version: v2beta1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:34:22 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:34:22 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:33:42 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:33:42 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:06 GMT
 
 
@@ -17,16 +17,6 @@ Auto-generated client library for using the **Cloud Trace API (version: v2beta1)
 ### `projects`
 
 ### `projects.traceSinks`
-
-#### `projects.traceSinks.list()`
-
-List all sinks for the parent resource (GCP project).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]" |
-| `params.pageToken` | `string` | No | Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. |
 
 #### `projects.traceSinks.get()`
 
@@ -51,9 +41,19 @@ Updates a sink. This method updates fields in the existing sink according to the
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full resource name of the sink to update, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. |
 | `params.updateMask` | `string` | No | Required. Field mask that specifies the fields in `trace_sink` that are to be updated. A sink field is overwritten if, and only if, it is in the update mask. `name` and `writer_identity` fields cannot be updated. An empty `update_mask` is considered an error. For a detailed `FieldMask` definition, see https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#fieldmask Example: `updateMask=output_config`. |
+| `params.name` | `string` | Yes | Required. The full resource name of the sink to update, including the parent resource and the sink identifier: "projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]" Example: `"projects/12345/traceSinks/my-sink-id"`. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.traceSinks.list()`
+
+List all sinks for the parent resource (GCP project).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return from this request. Non-positive values are ignored. The presence of `next_page_token` in the response indicates that more results might be available. |
+| `params.pageToken` | `string` | No | Optional. If present, then retrieve the next batch of results from the preceding call to this method. `page_token` must be the value of `next_page_token` from the previous response. The values of other method parameters should be identical to those in the previous call. |
+| `params.parent` | `string` | Yes | Required. The parent resource whose sinks are to be listed (currently only project parent resources are supported): "projects/[PROJECT_ID]" |
 
 #### `projects.traceSinks.delete()`
 
