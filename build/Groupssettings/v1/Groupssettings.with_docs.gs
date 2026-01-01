@@ -21,14 +21,15 @@ class Groupssettings {
     this.groups = {};
 
     /**
-     * Gets one resource by id.
+     * Updates an existing resource. This method supports patch semantics.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.groupUniqueId - (Required) The group's email address.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'GET', apiParams, clientConfig);
+    this.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Updates an existing resource.
@@ -42,15 +43,14 @@ class Groupssettings {
     this.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Updates an existing resource. This method supports patch semantics.
+     * Gets one resource by id.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.groupUniqueId - (Required) The group's email address.
-     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'PATCH', apiParams, clientConfig);
+    this.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{groupUniqueId}', 'GET', apiParams, clientConfig);
   }
 
 /**
