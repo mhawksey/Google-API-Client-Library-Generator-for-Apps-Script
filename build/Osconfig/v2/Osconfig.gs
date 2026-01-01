@@ -18,62 +18,62 @@ class Osconfig {
     this._servicePath = '';
 
 
+    this.organizations = {};
+
+    this.organizations.locations = {};
+
+    this.organizations.locations.operations = {};
+    this.organizations.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.organizations.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.organizations.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.organizations.locations.global = {};
+
+    this.organizations.locations.global.policyOrchestrators = {};
+    this.organizations.locations.global.policyOrchestrators.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.locations.global.policyOrchestrators.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'POST', apiParams, clientConfig);
+    this.organizations.locations.global.policyOrchestrators.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'GET', apiParams, clientConfig);
+    this.organizations.locations.global.policyOrchestrators.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.locations.global.policyOrchestrators.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.folders = {};
+
+    this.folders.locations = {};
+
+    this.folders.locations.global = {};
+
+    this.folders.locations.global.policyOrchestrators = {};
+    this.folders.locations.global.policyOrchestrators.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.locations.global.policyOrchestrators.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.folders.locations.global.policyOrchestrators.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'POST', apiParams, clientConfig);
+    this.folders.locations.global.policyOrchestrators.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.folders.locations.global.policyOrchestrators.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'GET', apiParams, clientConfig);
+
+    this.folders.locations.operations = {};
+    this.folders.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.folders.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.folders.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
     this.projects = {};
 
     this.projects.locations = {};
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.projects.locations.global = {};
 
     this.projects.locations.global.policyOrchestrators = {};
-    this.projects.locations.global.policyOrchestrators.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'POST', apiParams, clientConfig);
     this.projects.locations.global.policyOrchestrators.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'GET', apiParams, clientConfig);
     this.projects.locations.global.policyOrchestrators.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.global.policyOrchestrators.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'POST', apiParams, clientConfig);
     this.projects.locations.global.policyOrchestrators.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.global.policyOrchestrators.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.folders = {};
-
-    this.folders.locations = {};
-
-    this.folders.locations.operations = {};
-    this.folders.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.folders.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.folders.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.folders.locations.global = {};
-
-    this.folders.locations.global.policyOrchestrators = {};
-    this.folders.locations.global.policyOrchestrators.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'POST', apiParams, clientConfig);
-    this.folders.locations.global.policyOrchestrators.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'GET', apiParams, clientConfig);
-    this.folders.locations.global.policyOrchestrators.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.locations.global.policyOrchestrators.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.locations.global.policyOrchestrators.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.organizations = {};
-
-    this.organizations.locations = {};
-
-    this.organizations.locations.operations = {};
-    this.organizations.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.organizations.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.organizations.locations.global = {};
-
-    this.organizations.locations.global.policyOrchestrators = {};
-    this.organizations.locations.global.policyOrchestrators.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'POST', apiParams, clientConfig);
-    this.organizations.locations.global.policyOrchestrators.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyOrchestrators', 'GET', apiParams, clientConfig);
-    this.organizations.locations.global.policyOrchestrators.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.locations.global.policyOrchestrators.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.locations.global.policyOrchestrators.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
