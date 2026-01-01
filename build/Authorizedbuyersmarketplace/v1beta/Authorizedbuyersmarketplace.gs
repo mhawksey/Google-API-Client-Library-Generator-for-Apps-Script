@@ -22,11 +22,22 @@ class Authorizedbuyersmarketplace {
 
     this.curators.dataSegments = {};
     this.curators.dataSegments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.curators.dataSegments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/dataSegments', 'GET', apiParams, clientConfig);
-    this.curators.dataSegments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/dataSegments', 'POST', apiParams, clientConfig);
     this.curators.dataSegments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.curators.dataSegments.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:activate', 'POST', apiParams, clientConfig);
+    this.curators.dataSegments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/dataSegments', 'GET', apiParams, clientConfig);
+    this.curators.dataSegments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/dataSegments', 'POST', apiParams, clientConfig);
     this.curators.dataSegments.deactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:deactivate', 'POST', apiParams, clientConfig);
+
+    this.curators.curatedPackages = {};
+    this.curators.curatedPackages.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:activate', 'POST', apiParams, clientConfig);
+    this.curators.curatedPackages.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/curatedPackages', 'POST', apiParams, clientConfig);
+    this.curators.curatedPackages.deactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:deactivate', 'POST', apiParams, clientConfig);
+    this.curators.curatedPackages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/curatedPackages', 'GET', apiParams, clientConfig);
+    this.curators.curatedPackages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.curators.curatedPackages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    this.mediaPlanners = {};
+    this.mediaPlanners.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/mediaPlanners', 'GET', apiParams, clientConfig);
   }
 
 /**
