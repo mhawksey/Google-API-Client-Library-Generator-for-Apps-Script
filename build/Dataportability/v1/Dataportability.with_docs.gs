@@ -18,18 +18,6 @@ class Dataportability {
     this._servicePath = '';
 
 
-    this.accessType = {};
-
-    /**
-     * Gets the access type of the token.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accessType.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accessType:check', 'POST', apiParams, clientConfig);
-
     this.portabilityArchive = {};
 
     /**
@@ -41,18 +29,6 @@ class Dataportability {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.portabilityArchive.initiate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/portabilityArchive:initiate', 'POST', apiParams, clientConfig);
-
-    this.authorization = {};
-
-    /**
-     * Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate a request after a new consent is granted. This method also indicates that previous archives can be garbage collected. You should call this method when all jobs are complete and all archives are downloaded. Do not call it only when you start a new job.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.authorization.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/authorization:reset', 'POST', apiParams, clientConfig);
 
     this.archiveJobs = {};
 
@@ -87,6 +63,30 @@ class Dataportability {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.archiveJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    this.authorization = {};
+
+    /**
+     * Revokes OAuth tokens and resets exhausted scopes for a user/project pair. This method allows you to initiate a request after a new consent is granted. This method also indicates that previous archives can be garbage collected. You should call this method when all jobs are complete and all archives are downloaded. Do not call it only when you start a new job.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.authorization.reset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/authorization:reset', 'POST', apiParams, clientConfig);
+
+    this.accessType = {};
+
+    /**
+     * Gets the access type of the token.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accessType.check = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accessType:check', 'POST', apiParams, clientConfig);
   }
 
 /**
