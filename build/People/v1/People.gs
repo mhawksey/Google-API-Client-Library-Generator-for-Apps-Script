@@ -18,34 +18,34 @@ class People {
     this._servicePath = '';
 
 
-    this.otherContacts = {};
-    this.otherContacts.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/otherContacts:search', 'GET', apiParams, clientConfig);
-    this.otherContacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/otherContacts', 'GET', apiParams, clientConfig);
-    this.otherContacts.copyOtherContactToMyContactsGroup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:copyOtherContactToMyContactsGroup', 'POST', apiParams, clientConfig);
-
     this.people = {};
-    this.people.updateContactPhoto = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:updateContactPhoto', 'PATCH', apiParams, clientConfig);
-    this.people.batchCreateContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchCreateContacts', 'POST', apiParams, clientConfig);
-    this.people.deleteContactPhoto = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:deleteContactPhoto', 'DELETE', apiParams, clientConfig);
-    this.people.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'GET', apiParams, clientConfig);
-    this.people.listDirectoryPeople = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:listDirectoryPeople', 'GET', apiParams, clientConfig);
-    this.people.deleteContact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:deleteContact', 'DELETE', apiParams, clientConfig);
-    this.people.getBatchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchGet', 'GET', apiParams, clientConfig);
-    this.people.batchUpdateContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchUpdateContacts', 'POST', apiParams, clientConfig);
-    this.people.batchDeleteContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchDeleteContacts', 'POST', apiParams, clientConfig);
-    this.people.searchContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:searchContacts', 'GET', apiParams, clientConfig);
     this.people.createContact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:createContact', 'POST', apiParams, clientConfig);
+    this.people.deleteContact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:deleteContact', 'DELETE', apiParams, clientConfig);
+    this.people.deleteContactPhoto = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:deleteContactPhoto', 'DELETE', apiParams, clientConfig);
     this.people.updateContact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:updateContact', 'PATCH', apiParams, clientConfig);
+    this.people.updateContactPhoto = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:updateContactPhoto', 'PATCH', apiParams, clientConfig);
+    this.people.searchContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:searchContacts', 'GET', apiParams, clientConfig);
+    this.people.batchDeleteContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchDeleteContacts', 'POST', apiParams, clientConfig);
+    this.people.batchCreateContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchCreateContacts', 'POST', apiParams, clientConfig);
+    this.people.batchUpdateContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchUpdateContacts', 'POST', apiParams, clientConfig);
+    this.people.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'GET', apiParams, clientConfig);
+    this.people.getBatchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:batchGet', 'GET', apiParams, clientConfig);
+    this.people.listDirectoryPeople = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:listDirectoryPeople', 'GET', apiParams, clientConfig);
     this.people.searchDirectoryPeople = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/people:searchDirectoryPeople', 'GET', apiParams, clientConfig);
 
     this.people.connections = {};
     this.people.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}/connections', 'GET', apiParams, clientConfig);
 
+    this.otherContacts = {};
+    this.otherContacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/otherContacts', 'GET', apiParams, clientConfig);
+    this.otherContacts.copyOtherContactToMyContactsGroup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}:copyOtherContactToMyContactsGroup', 'POST', apiParams, clientConfig);
+    this.otherContacts.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/otherContacts:search', 'GET', apiParams, clientConfig);
+
     this.contactGroups = {};
-    this.contactGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'DELETE', apiParams, clientConfig);
     this.contactGroups.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/contactGroups:batchGet', 'GET', apiParams, clientConfig);
-    this.contactGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'GET', apiParams, clientConfig);
     this.contactGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/contactGroups', 'POST', apiParams, clientConfig);
+    this.contactGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'DELETE', apiParams, clientConfig);
+    this.contactGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'GET', apiParams, clientConfig);
     this.contactGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/contactGroups', 'GET', apiParams, clientConfig);
     this.contactGroups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resourceName}', 'PUT', apiParams, clientConfig);
 
