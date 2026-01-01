@@ -32,10 +32,10 @@ class Gkehub {
     this.projects.locations.memberships = {};
 
     this.projects.locations.memberships.features = {};
+    this.projects.locations.memberships.features.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.memberships.features.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.memberships.features.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/features', 'GET', apiParams, clientConfig);
     this.projects.locations.memberships.features.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+parent}/features', 'POST', apiParams, clientConfig);
-    this.projects.locations.memberships.features.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.memberships.features.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
