@@ -20,63 +20,63 @@ class Pubsub {
 
     this.projects = {};
 
-    this.projects.subscriptions = {};
-    this.projects.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}', 'GET', apiParams, clientConfig);
-    this.projects.subscriptions.modifyAckDeadline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:modifyAckDeadline', 'POST', apiParams, clientConfig);
-    this.projects.subscriptions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.subscriptions.seek = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:seek', 'POST', apiParams, clientConfig);
-    this.projects.subscriptions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.subscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.subscriptions.pull = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:pull', 'POST', apiParams, clientConfig);
-    this.projects.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}', 'DELETE', apiParams, clientConfig);
-    this.projects.subscriptions.modifyPushConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:modifyPushConfig', 'POST', apiParams, clientConfig);
-    this.projects.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/subscriptions', 'GET', apiParams, clientConfig);
-    this.projects.subscriptions.acknowledge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:acknowledge', 'POST', apiParams, clientConfig);
-    this.projects.subscriptions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.subscriptions.detach = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:detach', 'POST', apiParams, clientConfig);
-
-    this.projects.snapshots = {};
-    this.projects.snapshots.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/snapshots', 'GET', apiParams, clientConfig);
-    this.projects.snapshots.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.snapshots.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.snapshots.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.snapshots.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+snapshot}', 'GET', apiParams, clientConfig);
-    this.projects.snapshots.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+snapshot}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.schemas = {};
-    this.projects.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas', 'GET', apiParams, clientConfig);
-    this.projects.schemas.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.schemas.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listRevisions', 'GET', apiParams, clientConfig);
-    this.projects.schemas.deleteRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteRevision', 'DELETE', apiParams, clientConfig);
-    this.projects.schemas.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:commit', 'POST', apiParams, clientConfig);
-    this.projects.schemas.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas:validate', 'POST', apiParams, clientConfig);
-    this.projects.schemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas', 'POST', apiParams, clientConfig);
-    this.projects.schemas.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.schemas.validateMessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas:validateMessage', 'POST', apiParams, clientConfig);
-    this.projects.schemas.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollback', 'POST', apiParams, clientConfig);
-    this.projects.schemas.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.schemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.topics = {};
-    this.projects.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+topic}', 'DELETE', apiParams, clientConfig);
-    this.projects.topics.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.topics.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/topics', 'GET', apiParams, clientConfig);
-    this.projects.topics.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.topics.publish = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+topic}:publish', 'POST', apiParams, clientConfig);
-    this.projects.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+topic}', 'GET', apiParams, clientConfig);
     this.projects.topics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.topics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+topic}', 'GET', apiParams, clientConfig);
+    this.projects.topics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.topics.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.topics.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+topic}', 'DELETE', apiParams, clientConfig);
+    this.projects.topics.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.topics.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.topics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/topics', 'GET', apiParams, clientConfig);
 
     this.projects.topics.subscriptions = {};
     this.projects.topics.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+topic}/subscriptions', 'GET', apiParams, clientConfig);
 
     this.projects.topics.snapshots = {};
     this.projects.topics.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+topic}/snapshots', 'GET', apiParams, clientConfig);
+
+    this.projects.schemas = {};
+    this.projects.schemas.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.schemas.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listRevisions', 'GET', apiParams, clientConfig);
+    this.projects.schemas.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.schemas.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollback', 'POST', apiParams, clientConfig);
+    this.projects.schemas.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas:validate', 'POST', apiParams, clientConfig);
+    this.projects.schemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.schemas.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:commit', 'POST', apiParams, clientConfig);
+    this.projects.schemas.deleteRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteRevision', 'DELETE', apiParams, clientConfig);
+    this.projects.schemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas', 'POST', apiParams, clientConfig);
+    this.projects.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas', 'GET', apiParams, clientConfig);
+    this.projects.schemas.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.schemas.validateMessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/schemas:validateMessage', 'POST', apiParams, clientConfig);
+
+    this.projects.subscriptions = {};
+    this.projects.subscriptions.pull = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:pull', 'POST', apiParams, clientConfig);
+    this.projects.subscriptions.modifyPushConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:modifyPushConfig', 'POST', apiParams, clientConfig);
+    this.projects.subscriptions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.subscriptions.acknowledge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:acknowledge', 'POST', apiParams, clientConfig);
+    this.projects.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}', 'GET', apiParams, clientConfig);
+    this.projects.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.subscriptions.detach = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:detach', 'POST', apiParams, clientConfig);
+    this.projects.subscriptions.modifyAckDeadline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:modifyAckDeadline', 'POST', apiParams, clientConfig);
+    this.projects.subscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}', 'DELETE', apiParams, clientConfig);
+    this.projects.subscriptions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.subscriptions.seek = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+subscription}:seek', 'POST', apiParams, clientConfig);
+    this.projects.subscriptions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/subscriptions', 'GET', apiParams, clientConfig);
+
+    this.projects.snapshots = {};
+    this.projects.snapshots.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.snapshots.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.snapshots.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+snapshot}', 'DELETE', apiParams, clientConfig);
+    this.projects.snapshots.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.snapshots.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.snapshots.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.snapshots.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}/snapshots', 'GET', apiParams, clientConfig);
+    this.projects.snapshots.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+snapshot}', 'GET', apiParams, clientConfig);
   }
 
 /**
