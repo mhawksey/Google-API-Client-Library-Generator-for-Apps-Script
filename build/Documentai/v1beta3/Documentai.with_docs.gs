@@ -56,54 +56,7 @@ class Documentai {
      */
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - The standard list filter.
-     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
-     * @param {integer} apiParams.pageSize - The standard list page size.
-     * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {boolean} apiParams.returnPartialSuccess - When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:cancel', 'POST', apiParams, clientConfig);
-
     this.projects.locations.processors = {};
-
-    /**
-     * Processes a single document.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Processor or ProcessorVersion to use for processing. If a Processor is specified, the server will use its default version. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.process = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:process', 'POST', apiParams, clientConfig);
 
     /**
      * LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format.
@@ -115,71 +68,6 @@ class Documentai {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.processors.batchProcess = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:batchProcess', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists all processors which belong to this project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of processors to return. If unspecified, at most `50` processors will be returned. The maximum value is `100`. Values above `100` will be coerced to `100`.
-     * @param {string} apiParams.pageToken - We will return the processors sorted by creation time. The page token will point to the next processor.
-     * @param {string} apiParams.parent - (Required) Required. The parent (project and location) which owns this collection of Processors. Format: `projects/{project}/locations/{location}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processors', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a processor detail.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The processor resource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by default after its creation. Note that this method requires the `documentai.processors.create` permission on the project, which is highly privileged. A user or service account with this permission can create new processors that can interact with any gcs bucket in your project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent (project and location) under which to create the processor. Format: `projects/{project}/locations/{location}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processors', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes the processor, unloads all deployed model artifacts if it was enabled and then deletes all artifacts associated with this processor.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The processor resource name to be deleted.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Enables a processor
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The processor resource name to be enabled.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:enable', 'POST', apiParams, clientConfig);
-
-    /**
-     * Disables a processor
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The processor resource name to be disabled.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:disable', 'POST', apiParams, clientConfig);
 
     /**
      * Set the default (active) version of a Processor that will be used in ProcessDocument and BatchProcessDocuments.
@@ -204,7 +92,94 @@ class Documentai {
      */
     this.projects.locations.processors.updateDataset = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
 
+    /**
+     * Lists all processors which belong to this project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of processors to return. If unspecified, at most `50` processors will be returned. The maximum value is `100`. Values above `100` will be coerced to `100`.
+     * @param {string} apiParams.pageToken - We will return the processors sorted by creation time. The page token will point to the next processor.
+     * @param {string} apiParams.parent - (Required) Required. The parent (project and location) which owns this collection of Processors. Format: `projects/{project}/locations/{location}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processors', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the processor, unloads all deployed model artifacts if it was enabled and then deletes all artifacts associated with this processor.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The processor resource name to be deleted.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Processes a single document.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Processor or ProcessorVersion to use for processing. If a Processor is specified, the server will use its default version. Format: `projects/{project}/locations/{location}/processors/{processor}`, or `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.process = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:process', 'POST', apiParams, clientConfig);
+
+    /**
+     * Enables a processor
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The processor resource name to be enabled.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:enable', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a processor from the ProcessorType provided. The processor will be at `ENABLED` state by default after its creation. Note that this method requires the `documentai.processors.create` permission on the project, which is highly privileged. A user or service account with this permission can create new processors that can interact with any gcs bucket in your project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent (project and location) under which to create the processor. Format: `projects/{project}/locations/{location}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processors', 'POST', apiParams, clientConfig);
+
+    /**
+     * Disables a processor
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The processor resource name to be disabled.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:disable', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a processor detail.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The processor resource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.processors.processorVersions = {};
+
+    /**
+     * Evaluates a ProcessorVersion against annotated documents, producing an Evaluation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.processorVersion - (Required) Required. The resource name of the ProcessorVersion to evaluate. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.processorVersions.evaluateProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+processorVersion}:evaluateProcessorVersion', 'POST', apiParams, clientConfig);
 
     /**
      * Processes a single document.
@@ -216,6 +191,50 @@ class Documentai {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.processors.processorVersions.process = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:process', 'POST', apiParams, clientConfig);
+
+    /**
+     * Undeploys the processor version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The processor version resource name to be undeployed.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.processorVersions.undeploy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:undeploy', 'POST', apiParams, clientConfig);
+
+    /**
+     * Imports a processor version from source processor version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The destination processor name to create the processor version in. Format: `projects/{project}/locations/{location}/processors/{processor}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.processorVersions.importProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions:importProcessorVersion', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all versions of a processor.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of processor versions to return. If unspecified, at most `10` processor versions will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`.
+     * @param {string} apiParams.pageToken - We will return the processor versions sorted by creation time. The page token will point to the next processor version.
+     * @param {string} apiParams.parent - (Required) Required. The parent (project, location and processor) to list all versions. Format: `projects/{project}/locations/{location}/processors/{processor}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.processorVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a processor version detail.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The processor resource name.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.processorVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * LRO endpoint to batch process many documents. The output is written to Cloud Storage as JSON in the [Document] format.
@@ -240,28 +259,6 @@ class Documentai {
     this.projects.locations.processors.processorVersions.train = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions:train', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets a processor version detail.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The processor resource name.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.processorVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all versions of a processor.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of processor versions to return. If unspecified, at most `10` processor versions will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`.
-     * @param {string} apiParams.pageToken - We will return the processor versions sorted by creation time. The page token will point to the next processor version.
-     * @param {string} apiParams.parent - (Required) Required. The parent (project, location and processor) to list all versions. Format: `projects/{project}/locations/{location}/processors/{processor}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.processorVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions', 'GET', apiParams, clientConfig);
-
-    /**
      * Deletes the processor version, all artifacts under the processor version will be deleted.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The processor version resource name to be deleted.
@@ -281,39 +278,6 @@ class Documentai {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.processors.processorVersions.deploy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:deploy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Undeploys the processor version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The processor version resource name to be undeployed.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.processorVersions.undeploy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:undeploy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Evaluates a ProcessorVersion against annotated documents, producing an Evaluation.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.processorVersion - (Required) Required. The resource name of the ProcessorVersion to evaluate. `projects/{project}/locations/{location}/processors/{processor}/processorVersions/{processorVersion}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.processorVersions.evaluateProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+processorVersion}:evaluateProcessorVersion', 'POST', apiParams, clientConfig);
-
-    /**
-     * Imports a processor version from source processor version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The destination processor name to create the processor version in. Format: `projects/{project}/locations/{location}/processors/{processor}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.processorVersions.importProcessorVersion = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/processorVersions:importProcessorVersion', 'POST', apiParams, clientConfig);
 
     this.projects.locations.processors.processorVersions.evaluations = {};
 
@@ -355,6 +319,29 @@ class Documentai {
     this.projects.locations.processors.dataset = {};
 
     /**
+     * Deletes a set of documents.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataset - (Required) Required. The dataset resource name. Format: projects/{project}/locations/{location}/processors/{processor}/dataset
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.dataset.batchDeleteDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:batchDeleteDocuments', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a `DatasetSchema`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Dataset schema resource name. Format: `projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema`
+     * @param {string} apiParams.updateMask - The update mask applies to the resource.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.dataset.updateDatasetSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
      * Import documents into a dataset.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.dataset - (Required) Required. The dataset resource name. Format: projects/{project}/locations/{location}/processors/{processor}/dataset
@@ -364,6 +351,28 @@ class Documentai {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.processors.dataset.importDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:importDocuments', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the `DatasetSchema` of a `Dataset`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The dataset schema resource name. Format: projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema
+     * @param {boolean} apiParams.visibleFieldsOnly - If set, only returns the visible fields of the schema.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.dataset.getDatasetSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Returns a list of documents present in the dataset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dataset - (Required) Required. The resource name of the dataset to be listed. Format: projects/{project}/locations/{location}/processors/{processor}/dataset
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.processors.dataset.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:listDocuments', 'POST', apiParams, clientConfig);
 
     /**
      * Returns relevant fields present in the requested document.
@@ -383,51 +392,6 @@ class Documentai {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.processors.dataset.getDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:getDocument', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns a list of documents present in the dataset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataset - (Required) Required. The resource name of the dataset to be listed. Format: projects/{project}/locations/{location}/processors/{processor}/dataset
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.dataset.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:listDocuments', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a set of documents.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dataset - (Required) Required. The dataset resource name. Format: projects/{project}/locations/{location}/processors/{processor}/dataset
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.dataset.batchDeleteDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+dataset}:batchDeleteDocuments', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the `DatasetSchema` of a `Dataset`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The dataset schema resource name. Format: projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema
-     * @param {boolean} apiParams.visibleFieldsOnly - If set, only returns the visible fields of the schema.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.dataset.getDatasetSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a `DatasetSchema`.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Dataset schema resource name. Format: `projects/{project}/locations/{location}/processors/{processor}/dataset/datasetSchema`
-     * @param {string} apiParams.updateMask - The update mask applies to the resource.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.processors.dataset.updateDatasetSchema = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.processorTypes = {};
 
@@ -467,6 +431,28 @@ class Documentai {
     this.projects.locations.schemas.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemas', 'POST', apiParams, clientConfig);
 
     /**
+     * Lists Schemas.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of schema groups to return. If unspecified, at most `10` Schema will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`.
+     * @param {string} apiParams.pageToken - Optional. We will return the schema groups sorted by creation time. The page token will point to the next Schema.
+     * @param {string} apiParams.parent - (Required) Required. Format: `projects/{project}/locations/{location}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemas', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets a schema.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the Schema to get. Format: `projects/{project}/locations/{location}/schemas/{schema}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Updates a schema. Editable fields are: - `display_name` - `labels`
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Identifier. The resource name of the Schema. Format: `projects/{project}/locations/{location}/schemas/{schema}`
@@ -489,29 +475,38 @@ class Documentai {
      */
     this.projects.locations.schemas.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
 
-    /**
-     * Lists Schemas.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of schema groups to return. If unspecified, at most `10` Schema will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`.
-     * @param {string} apiParams.pageToken - Optional. We will return the schema groups sorted by creation time. The page token will point to the next Schema.
-     * @param {string} apiParams.parent - (Required) Required. Format: `projects/{project}/locations/{location}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.schemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemas', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a schema.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the Schema to get. Format: `projects/{project}/locations/{location}/schemas/{schema}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.schemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects.locations.schemas.schemaVersions = {};
+
+    /**
+     * Generates a schema version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent (project, location and schema) under which to generate the SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.schemas.schemaVersions.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemaVersions:generate', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a schema version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the SchemaVersion to get. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.schemas.schemaVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a schema version.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the SchemaVersion to delete. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.schemas.schemaVersions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Creates a schema version.
@@ -537,27 +532,6 @@ class Documentai {
     this.projects.locations.schemas.schemaVersions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Generates a schema version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent (project, location and schema) under which to generate the SchemaVersion. Format: `projects/{project}/locations/{location}/schemas/{schema}`
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.schemas.schemaVersions.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemaVersions:generate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes a schema version.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the SchemaVersion to delete. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.schemas.schemaVersions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * Lists SchemaVersions.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - Optional. The maximum number of SchemaVersion to return. If unspecified, at most `10` SchemaVersion will be returned. The maximum value is `20`. Values above `20` will be coerced to `20`.
@@ -569,15 +543,41 @@ class Documentai {
      */
     this.projects.locations.schemas.schemaVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+parent}/schemaVersions', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.operations = {};
+
     /**
-     * Gets a schema version.
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the SchemaVersion to get. Format: `projects/{project}/locations/{location}/schemas/{schema}/schemaVersions/{schema_version}`
+     * @param {string} apiParams.filter - The standard list filter.
+     * @param {string} apiParams.name - (Required) The name of the operation's parent resource.
+     * @param {integer} apiParams.pageSize - The standard list page size.
+     * @param {string} apiParams.pageToken - The standard list page token.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.schemas.schemaVersions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta3/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
