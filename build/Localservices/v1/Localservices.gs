@@ -18,11 +18,11 @@ class Localservices {
     this._servicePath = '';
 
 
-    this.accountReports = {};
-    this.accountReports.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accountReports:search', 'GET', apiParams, clientConfig);
-
     this.detailedLeadReports = {};
     this.detailedLeadReports.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/detailedLeadReports:search', 'GET', apiParams, clientConfig);
+
+    this.accountReports = {};
+    this.accountReports.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accountReports:search', 'GET', apiParams, clientConfig);
   }
 
 /**
