@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Identity-Aware Proxy API (ve
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:54:17 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:54:17 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:46:23 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:46:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:12 GMT
 
 
@@ -25,15 +25,6 @@ Sets the access control policy for an Identity-Aware Proxy protected resource. R
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `v1beta1.getIamPolicy()`
-
-Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `v1beta1.testIamPermissions()`
 
 Returns permissions that a caller has on the Identity-Aware Proxy protected resource. If the resource does not exist or the caller does not have Identity-Aware Proxy permissions a [google.rpc.Code.PERMISSION_DENIED] will be returned. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
@@ -41,4 +32,13 @@ Returns permissions that a caller has on the Identity-Aware Proxy protected reso
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `v1beta1.getIamPolicy()`
+
+Gets the access control policy for an Identity-Aware Proxy protected resource. More information about managing access via IAP can be found at: https://cloud.google.com/iap/docs/managing-access#managing_access_via_the_api
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
