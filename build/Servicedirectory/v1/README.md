@@ -4,7 +4,7 @@ Auto-generated client library for using the **Service Directory API (version: v1
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:15:17 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:07:33 GMT
 - **Last Modified:** Mon, 01 Dec 2025 01:15:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:17 GMT
 
