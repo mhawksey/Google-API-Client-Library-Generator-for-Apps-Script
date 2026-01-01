@@ -21,34 +21,34 @@ class Runtimeconfig {
     this.projects = {};
 
     this.projects.configs = {};
-    this.projects.configs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/configs', 'GET', apiParams, clientConfig);
     this.projects.configs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.configs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.configs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/configs', 'GET', apiParams, clientConfig);
     this.projects.configs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/configs', 'POST', apiParams, clientConfig);
     this.projects.configs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.configs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.configs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.configs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.configs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.configs.operations = {};
-    this.projects.configs.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.configs.operations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.configs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.configs.variables = {};
+    this.projects.configs.variables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.configs.variables.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:watch', 'POST', apiParams, clientConfig);
+    this.projects.configs.variables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.configs.variables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/variables', 'GET', apiParams, clientConfig);
     this.projects.configs.variables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.configs.variables.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:watch', 'POST', apiParams, clientConfig);
-    this.projects.configs.variables.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/variables', 'POST', apiParams, clientConfig);
     this.projects.configs.variables.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.configs.variables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.configs.variables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.configs.variables.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/variables', 'POST', apiParams, clientConfig);
+
+    this.projects.configs.operations = {};
+    this.projects.configs.operations.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.configs.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.configs.waiters = {};
-    this.projects.configs.waiters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/waiters', 'GET', apiParams, clientConfig);
-    this.projects.configs.waiters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.configs.waiters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/waiters', 'POST', apiParams, clientConfig);
-    this.projects.configs.waiters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.configs.waiters.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.configs.waiters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.configs.waiters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/waiters', 'GET', apiParams, clientConfig);
+    this.projects.configs.waiters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/waiters', 'POST', apiParams, clientConfig);
+    this.projects.configs.waiters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
