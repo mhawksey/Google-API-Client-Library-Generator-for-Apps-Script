@@ -4,7 +4,7 @@ Auto-generated client library for using the **DoubleClick Bid Manager API (versi
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:45:07 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:43:38 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:45:07 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:28 GMT
 
