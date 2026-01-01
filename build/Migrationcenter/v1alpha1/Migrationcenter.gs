@@ -21,108 +21,106 @@ class Migrationcenter {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.getSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.updateSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.assets = {};
-    this.projects.locations.assets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets', 'GET', apiParams, clientConfig);
-    this.projects.locations.assets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.assets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.assets.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets:batchUpdate', 'POST', apiParams, clientConfig);
-    this.projects.locations.assets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.assets.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets:batchDelete', 'POST', apiParams, clientConfig);
-    this.projects.locations.assets.reportAssetFrames = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets:reportAssetFrames', 'POST', apiParams, clientConfig);
-    this.projects.locations.assets.aggregateValues = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets:aggregateValues', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.importJobs = {};
-    this.projects.locations.importJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/importJobs', 'POST', apiParams, clientConfig);
-    this.projects.locations.importJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/importJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.importJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.importJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.importJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.importJobs.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:validate', 'POST', apiParams, clientConfig);
-    this.projects.locations.importJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:run', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.importJobs.importDataFiles = {};
-    this.projects.locations.importJobs.importDataFiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.importJobs.importDataFiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/importDataFiles', 'GET', apiParams, clientConfig);
-    this.projects.locations.importJobs.importDataFiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/importDataFiles', 'POST', apiParams, clientConfig);
-    this.projects.locations.importJobs.importDataFiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.getSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.groups = {};
-    this.projects.locations.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/groups', 'GET', apiParams, clientConfig);
-    this.projects.locations.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.groups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/groups', 'POST', apiParams, clientConfig);
-    this.projects.locations.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.groups.addAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+group}:addAssets', 'POST', apiParams, clientConfig);
+    this.projects.locations.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/groups', 'GET', apiParams, clientConfig);
+    this.projects.locations.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.groups.removeAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+group}:removeAssets', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.sources = {};
-    this.projects.locations.sources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/sources', 'GET', apiParams, clientConfig);
-    this.projects.locations.sources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.sources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/sources', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.sources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.sources.errorFrames = {};
-    this.projects.locations.sources.errorFrames.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/errorFrames', 'GET', apiParams, clientConfig);
-    this.projects.locations.sources.errorFrames.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.preferenceSets = {};
-    this.projects.locations.preferenceSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/preferenceSets', 'GET', apiParams, clientConfig);
-    this.projects.locations.preferenceSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.preferenceSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/preferenceSets', 'POST', apiParams, clientConfig);
-    this.projects.locations.preferenceSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.preferenceSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.reportConfigs = {};
     this.projects.locations.reportConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reportConfigs', 'POST', apiParams, clientConfig);
     this.projects.locations.reportConfigs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.reportConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reportConfigs', 'GET', apiParams, clientConfig);
     this.projects.locations.reportConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.reportConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reportConfigs', 'GET', apiParams, clientConfig);
 
     this.projects.locations.reportConfigs.reports = {};
-    this.projects.locations.reportConfigs.reports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reports', 'POST', apiParams, clientConfig);
     this.projects.locations.reportConfigs.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.reportConfigs.reports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reports', 'POST', apiParams, clientConfig);
     this.projects.locations.reportConfigs.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reports', 'GET', apiParams, clientConfig);
-    this.projects.locations.reportConfigs.reports.artifactLink = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:artifactLink', 'POST', apiParams, clientConfig);
     this.projects.locations.reportConfigs.reports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.reportConfigs.reports.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:export', 'POST', apiParams, clientConfig);
 
     this.projects.locations.reportConfigs.reports.reportExportJobs = {};
-    this.projects.locations.reportConfigs.reports.reportExportJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reportExportJobs', 'POST', apiParams, clientConfig);
-    this.projects.locations.reportConfigs.reports.reportExportJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.reportConfigs.reports.reportExportJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reportExportJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.reportConfigs.reports.reportExportJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.reportConfigs.reports.reportExportJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:run', 'POST', apiParams, clientConfig);
+    this.projects.locations.reportConfigs.reports.reportExportJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.reportConfigs.reports.reportExportJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.reportConfigs.reports.reportExportJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reportExportJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.reportConfigs.reports.reportExportJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/reportExportJobs', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.assetsExportJobs = {};
-    this.projects.locations.assetsExportJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assetsExportJobs', 'POST', apiParams, clientConfig);
-    this.projects.locations.assetsExportJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.assetsExportJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assetsExportJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.assetsExportJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.assetsExportJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:run', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources = {};
+    this.projects.locations.sources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.sources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/sources', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.sources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/sources', 'GET', apiParams, clientConfig);
+    this.projects.locations.sources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.sources.errorFrames = {};
+    this.projects.locations.sources.errorFrames.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.sources.errorFrames.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/errorFrames', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.assets = {};
+    this.projects.locations.assets.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets:batchUpdate', 'POST', apiParams, clientConfig);
+    this.projects.locations.assets.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets:batchDelete', 'POST', apiParams, clientConfig);
+    this.projects.locations.assets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.assets.aggregateValues = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets:aggregateValues', 'POST', apiParams, clientConfig);
+    this.projects.locations.assets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.assets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.assets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets', 'GET', apiParams, clientConfig);
+    this.projects.locations.assets.reportAssetFrames = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assets:reportAssetFrames', 'POST', apiParams, clientConfig);
 
     this.projects.locations.discoveryClients = {};
-    this.projects.locations.discoveryClients.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/discoveryClients', 'POST', apiParams, clientConfig);
-    this.projects.locations.discoveryClients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.discoveryClients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/discoveryClients', 'GET', apiParams, clientConfig);
-    this.projects.locations.discoveryClients.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.discoveryClients.sendHeartbeat = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:sendHeartbeat', 'POST', apiParams, clientConfig);
     this.projects.locations.discoveryClients.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.discoveryClients.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.discoveryClients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/discoveryClients', 'GET', apiParams, clientConfig);
+    this.projects.locations.discoveryClients.sendHeartbeat = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:sendHeartbeat', 'POST', apiParams, clientConfig);
+    this.projects.locations.discoveryClients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.discoveryClients.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/discoveryClients', 'POST', apiParams, clientConfig);
 
     this.projects.locations.relations = {};
-    this.projects.locations.relations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.relations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/relations', 'GET', apiParams, clientConfig);
+    this.projects.locations.relations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.assetsExportJobs = {};
+    this.projects.locations.assetsExportJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assetsExportJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.assetsExportJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.assetsExportJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:run', 'POST', apiParams, clientConfig);
+    this.projects.locations.assetsExportJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/assetsExportJobs', 'POST', apiParams, clientConfig);
+    this.projects.locations.assetsExportJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.preferenceSets = {};
+    this.projects.locations.preferenceSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/preferenceSets', 'POST', apiParams, clientConfig);
+    this.projects.locations.preferenceSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.preferenceSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.preferenceSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/preferenceSets', 'GET', apiParams, clientConfig);
+    this.projects.locations.preferenceSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.importJobs = {};
+    this.projects.locations.importJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.importJobs.validate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:validate', 'POST', apiParams, clientConfig);
+    this.projects.locations.importJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/importJobs', 'POST', apiParams, clientConfig);
+    this.projects.locations.importJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.importJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/importJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.importJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.importJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:run', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.importJobs.importDataFiles = {};
+    this.projects.locations.importJobs.importDataFiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.importJobs.importDataFiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/importDataFiles', 'POST', apiParams, clientConfig);
+    this.projects.locations.importJobs.importDataFiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.importJobs.importDataFiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+parent}/importDataFiles', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
