@@ -23,30 +23,31 @@ class Cloudfunctions {
     this.projects.locations = {};
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/locations', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.functions = {};
-    this.projects.locations.functions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.functions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.functions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/functions', 'GET', apiParams, clientConfig);
-    this.projects.locations.functions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/functions', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.functions.setupFunctionUpgradeConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:setupFunctionUpgradeConfig', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.abortFunctionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:abortFunctionUpgrade', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.redirectFunctionUpgradeTraffic = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:redirectFunctionUpgradeTraffic', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.rollbackFunctionUpgradeTraffic = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rollbackFunctionUpgradeTraffic', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.commitFunctionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:commitFunctionUpgrade', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.functions.generateUploadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/functions:generateUploadUrl', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.generateDownloadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:generateDownloadUrl', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.detachFunction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:detachFunction', 'POST', apiParams, clientConfig);
-
     this.projects.locations.runtimes = {};
     this.projects.locations.runtimes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/runtimes', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.functions = {};
+    this.projects.locations.functions.detachFunction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:detachFunction', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/functions', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.commitFunctionUpgradeAsGen2 = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:commitFunctionUpgradeAsGen2', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/functions', 'GET', apiParams, clientConfig);
+    this.projects.locations.functions.abortFunctionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:abortFunctionUpgrade', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.functions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.setupFunctionUpgradeConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:setupFunctionUpgradeConfig', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.generateDownloadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:generateDownloadUrl', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.functions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.functions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.redirectFunctionUpgradeTraffic = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:redirectFunctionUpgradeTraffic', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.functions.commitFunctionUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:commitFunctionUpgrade', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.generateUploadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/functions:generateUploadUrl', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.rollbackFunctionUpgradeTraffic = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:rollbackFunctionUpgradeTraffic', 'POST', apiParams, clientConfig);
   }
 
 /**
