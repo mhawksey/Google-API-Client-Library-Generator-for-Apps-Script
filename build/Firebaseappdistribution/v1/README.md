@@ -4,7 +4,7 @@ Auto-generated client library for using the **Firebase App Distribution API (ver
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:46:13 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:44:15 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:46:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:16 GMT
 
