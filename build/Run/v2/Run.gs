@@ -21,72 +21,72 @@ class Run {
     this.projects = {};
 
     this.projects.locations = {};
+    this.projects.locations.exportImageMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:exportImageMetadata', 'GET', apiParams, clientConfig);
     this.projects.locations.exportProjectMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:exportProjectMetadata', 'GET', apiParams, clientConfig);
     this.projects.locations.exportMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:exportMetadata', 'GET', apiParams, clientConfig);
-    this.projects.locations.exportImageMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:exportImageMetadata', 'GET', apiParams, clientConfig);
     this.projects.locations.exportImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:exportImage', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:wait', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs = {};
+    this.projects.locations.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/jobs', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.jobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:run', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/jobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.jobs.executions = {};
+    this.projects.locations.jobs.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.executions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.jobs.executions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.jobs.executions.exportStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/{+operationId}:exportStatus', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/executions', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.jobs.executions.tasks = {};
+    this.projects.locations.jobs.executions.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tasks', 'GET', apiParams, clientConfig);
+    this.projects.locations.jobs.executions.tasks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.services = {};
+    this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/services', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/services', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.services.revisions = {};
+    this.projects.locations.services.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.revisions.exportStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/{+operationId}:exportStatus', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/revisions', 'GET', apiParams, clientConfig);
+    this.projects.locations.services.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.builds = {};
     this.projects.locations.builds.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/builds:submit', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.jobs = {};
-    this.projects.locations.jobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/jobs', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/jobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.jobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:run', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.jobs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.jobs.executions = {};
-    this.projects.locations.jobs.executions.exportStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/{+operationId}:exportStatus', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.executions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.executions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/executions', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.executions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.jobs.executions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.jobs.executions.tasks = {};
-    this.projects.locations.jobs.executions.tasks.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.jobs.executions.tasks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/tasks', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.services = {};
-    this.projects.locations.services.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/services', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/services', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.services.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.services.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.services.revisions = {};
-    this.projects.locations.services.revisions.exportStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/{+operationId}:exportStatus', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/revisions', 'GET', apiParams, clientConfig);
-    this.projects.locations.services.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.projects.locations.workerPools = {};
-    this.projects.locations.workerPools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/workerPools', 'POST', apiParams, clientConfig);
     this.projects.locations.workerPools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.workerPools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/workerPools', 'GET', apiParams, clientConfig);
-    this.projects.locations.workerPools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.workerPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.workerPools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.workerPools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.workerPools.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.workerPools.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.workerPools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/workerPools', 'POST', apiParams, clientConfig);
+    this.projects.locations.workerPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.workerPools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/workerPools', 'GET', apiParams, clientConfig);
+    this.projects.locations.workerPools.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.workerPools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.workerPools.revisions = {};
     this.projects.locations.workerPools.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.workerPools.revisions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/revisions', 'GET', apiParams, clientConfig);
     this.projects.locations.workerPools.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.wait = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:wait', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
