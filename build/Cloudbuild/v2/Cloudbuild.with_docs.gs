@@ -49,16 +49,6 @@ class Cloudbuild {
     this.projects.locations.operations = {};
 
     /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
      * Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the operation resource to be cancelled.
@@ -68,6 +58,16 @@ class Cloudbuild {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.connections = {};
 
@@ -84,27 +84,15 @@ class Cloudbuild {
     this.projects.locations.connections.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/connections', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets details of a single connection.
+     * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the Connection to retrieve. Format: `projects/*\/locations/*\/connections/*`.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.connections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists Connections in a given project and location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Number of results to return in the list.
-     * @param {string} apiParams.pageToken - Page start.
-     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of Connections. Format: `projects/*\/locations/*`.
-     * @param {boolean} apiParams.returnPartialSuccess - Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/connections', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     /**
      * Updates a single connection.
@@ -121,18 +109,6 @@ class Cloudbuild {
     this.projects.locations.connections.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a single connection.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - The current etag of the connection. If an etag is provided and does not match the current etag of the connection, deletion will be blocked and an ABORTED error will be returned.
-     * @param {string} apiParams.name - (Required) Required. The name of the Connection to delete. Format: `projects/*\/locations/*\/connections/*`.
-     * @param {boolean} apiParams.validateOnly - If set, validate the request, but do not actually post it.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
      * ProcessWebhook is called by the external SCM for notifying of events.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. Project and location where the webhook will be received. Format: `projects/*\/locations/*`.
@@ -143,6 +119,16 @@ class Cloudbuild {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.connections.processWebhook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/connections:processWebhook', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets details of a single connection.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the Connection to retrieve. Format: `projects/*\/locations/*\/connections/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * FetchLinkableRepositories get repositories from SCM that are accessible and could be added to the connection.
@@ -179,17 +165,53 @@ class Cloudbuild {
     this.projects.locations.connections.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
     /**
-     * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+     * Lists Connections in a given project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.pageSize - Number of results to return in the list.
+     * @param {string} apiParams.pageToken - Page start.
+     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of Connections. Format: `projects/*\/locations/*`.
+     * @param {boolean} apiParams.returnPartialSuccess - Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.connections.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.connections.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/connections', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a single connection.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - The current etag of the connection. If an etag is provided and does not match the current etag of the connection, deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. The name of the Connection to delete. Format: `projects/*\/locations/*\/connections/*`.
+     * @param {boolean} apiParams.validateOnly - If set, validate the request, but do not actually post it.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.connections.repositories = {};
+
+    /**
+     * Gets details of a single repository.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the Repository to retrieve. Format: `projects/*\/locations/*\/connections/*\/repositories/*`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a single repository.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.etag - The current etag of the repository. If an etag is provided and does not match the current etag of the repository, deletion will be blocked and an ABORTED error will be returned.
+     * @param {string} apiParams.name - (Required) Required. The name of the Repository to delete. Format: `projects/*\/locations/*\/connections/*\/repositories/*`.
+     * @param {boolean} apiParams.validateOnly - If set, validate the request, but do not actually post it.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Creates a Repository.
@@ -204,51 +226,17 @@ class Cloudbuild {
     this.projects.locations.connections.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories', 'POST', apiParams, clientConfig);
 
     /**
-     * Creates multiple repositories inside a connection.
+     * Fetch the list of branches or tags for a given repository.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The connection to contain all the repositories being created. Format: projects/*\/locations/*\/connections/* The parent field in the CreateRepositoryRequest messages must either be empty or match this field.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {integer} apiParams.pageSize - Optional. Number of results to return in the list. Default to 20.
+     * @param {string} apiParams.pageToken - Optional. Page start.
+     * @param {string} apiParams.refType - Type of refs to fetch
+     * @param {string} apiParams.repository - (Required) Required. The resource name of the repository in the format `projects/*\/locations/*\/connections/*\/repositories/*`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.connections.repositories.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories:batchCreate', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets details of a single repository.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the Repository to retrieve. Format: `projects/*\/locations/*\/connections/*\/repositories/*`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists Repositories in a given connection.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Expressions must follow API improvement proposal [AIP-160](https://google.aip.dev/160). e.g. `remote_uri:"https://github.com*"`.
-     * @param {integer} apiParams.pageSize - Number of results to return in the list.
-     * @param {string} apiParams.pageToken - Page start.
-     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of Repositories. Format: `projects/*\/locations/*\/connections/*`.
-     * @param {boolean} apiParams.returnPartialSuccess - Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes a single repository.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.etag - The current etag of the repository. If an etag is provided and does not match the current etag of the repository, deletion will be blocked and an ABORTED error will be returned.
-     * @param {string} apiParams.name - (Required) Required. The name of the Repository to delete. Format: `projects/*\/locations/*\/connections/*\/repositories/*`.
-     * @param {boolean} apiParams.validateOnly - If set, validate the request, but do not actually post it.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.connections.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.connections.repositories.fetchGitRefs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+repository}:fetchGitRefs', 'GET', apiParams, clientConfig);
 
     /**
      * Fetches read/write token of a given repository.
@@ -273,17 +261,29 @@ class Cloudbuild {
     this.projects.locations.connections.repositories.accessReadToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+repository}:accessReadToken', 'POST', apiParams, clientConfig);
 
     /**
-     * Fetch the list of branches or tags for a given repository.
+     * Lists Repositories in a given connection.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. Number of results to return in the list. Default to 20.
-     * @param {string} apiParams.pageToken - Optional. Page start.
-     * @param {string} apiParams.refType - Type of refs to fetch
-     * @param {string} apiParams.repository - (Required) Required. The resource name of the repository in the format `projects/*\/locations/*\/connections/*\/repositories/*`.
+     * @param {string} apiParams.filter - A filter expression that filters resources listed in the response. Expressions must follow API improvement proposal [AIP-160](https://google.aip.dev/160). e.g. `remote_uri:"https://github.com*"`.
+     * @param {integer} apiParams.pageSize - Number of results to return in the list.
+     * @param {string} apiParams.pageToken - Page start.
+     * @param {string} apiParams.parent - (Required) Required. The parent, which owns this collection of Repositories. Format: `projects/*\/locations/*\/connections/*`.
+     * @param {boolean} apiParams.returnPartialSuccess - Optional. If set to true, the response will return partial results when some regions are unreachable. If set to false, the response will fail if any region is unreachable.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.connections.repositories.fetchGitRefs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+repository}:fetchGitRefs', 'GET', apiParams, clientConfig);
+    this.projects.locations.connections.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates multiple repositories inside a connection.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The connection to contain all the repositories being created. Format: projects/*\/locations/*\/connections/* The parent field in the CreateRepositoryRequest messages must either be empty or match this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.connections.repositories.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/repositories:batchCreate', 'POST', apiParams, clientConfig);
   }
 
 /**
