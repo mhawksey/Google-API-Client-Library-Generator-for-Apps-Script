@@ -18,108 +18,108 @@ class Datacatalog {
     this._servicePath = '';
 
 
-    this.projects = {};
-
-    this.projects.locations = {};
-    this.projects.locations.setConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setConfig', 'POST', apiParams, clientConfig);
-    this.projects.locations.retrieveEffectiveConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retrieveEffectiveConfig', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.entryGroups = {};
-    this.projects.locations.entryGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entryGroups', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.entryGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.entryGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.entryGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entryGroups', 'GET', apiParams, clientConfig);
-    this.projects.locations.entryGroups.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.entryGroups.entries = {};
-    this.projects.locations.entryGroups.entries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'GET', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.modifyEntryOverview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyEntryOverview', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.modifyEntryContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyEntryContacts', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.star = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:star', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.unstar = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unstar', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries:import', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.entryGroups.entries.tags = {};
-    this.projects.locations.entryGroups.entries.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.tags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'GET', apiParams, clientConfig);
-    this.projects.locations.entryGroups.entries.tags.reconcile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags:reconcile', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.entryGroups.tags = {};
-    this.projects.locations.entryGroups.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'POST', apiParams, clientConfig);
-    this.projects.locations.entryGroups.tags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.entryGroups.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.entryGroups.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.tagTemplates = {};
-    this.projects.locations.tagTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tagTemplates', 'POST', apiParams, clientConfig);
-    this.projects.locations.tagTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.tagTemplates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.tagTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.tagTemplates.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.tagTemplates.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.tagTemplates.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.tagTemplates.fields = {};
-    this.projects.locations.tagTemplates.fields.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/fields', 'POST', apiParams, clientConfig);
-    this.projects.locations.tagTemplates.fields.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.tagTemplates.fields.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rename', 'POST', apiParams, clientConfig);
-    this.projects.locations.tagTemplates.fields.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.tagTemplates.fields.enumValues = {};
-    this.projects.locations.tagTemplates.fields.enumValues.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rename', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.taxonomies = {};
-    this.projects.locations.taxonomies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/taxonomies', 'POST', apiParams, clientConfig);
-    this.projects.locations.taxonomies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.taxonomies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.taxonomies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/taxonomies', 'GET', apiParams, clientConfig);
-    this.projects.locations.taxonomies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.taxonomies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.taxonomies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.taxonomies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.taxonomies.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:replace', 'POST', apiParams, clientConfig);
-    this.projects.locations.taxonomies.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/taxonomies:import', 'POST', apiParams, clientConfig);
-    this.projects.locations.taxonomies.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/taxonomies:export', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.taxonomies.policyTags = {};
-    this.projects.locations.taxonomies.policyTags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policyTags', 'POST', apiParams, clientConfig);
-    this.projects.locations.taxonomies.policyTags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.taxonomies.policyTags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.taxonomies.policyTags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policyTags', 'GET', apiParams, clientConfig);
-    this.projects.locations.taxonomies.policyTags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.taxonomies.policyTags.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.taxonomies.policyTags.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.taxonomies.policyTags.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.entries = {};
+    this.entries.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/entries:lookup', 'GET', apiParams, clientConfig);
 
     this.catalog = {};
     this.catalog.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/catalog:search', 'POST', apiParams, clientConfig);
 
-    this.entries = {};
-    this.entries.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/entries:lookup', 'GET', apiParams, clientConfig);
-
     this.organizations = {};
 
     this.organizations.locations = {};
-    this.organizations.locations.setConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setConfig', 'POST', apiParams, clientConfig);
     this.organizations.locations.retrieveConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retrieveConfig', 'GET', apiParams, clientConfig);
     this.organizations.locations.retrieveEffectiveConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retrieveEffectiveConfig', 'GET', apiParams, clientConfig);
+    this.organizations.locations.setConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setConfig', 'POST', apiParams, clientConfig);
+
+    this.projects = {};
+
+    this.projects.locations = {};
+    this.projects.locations.retrieveEffectiveConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:retrieveEffectiveConfig', 'GET', apiParams, clientConfig);
+    this.projects.locations.setConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setConfig', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.taxonomies = {};
+    this.projects.locations.taxonomies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/taxonomies', 'GET', apiParams, clientConfig);
+    this.projects.locations.taxonomies.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/taxonomies:export', 'GET', apiParams, clientConfig);
+    this.projects.locations.taxonomies.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/taxonomies:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.taxonomies.replace = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:replace', 'POST', apiParams, clientConfig);
+    this.projects.locations.taxonomies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.taxonomies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/taxonomies', 'POST', apiParams, clientConfig);
+    this.projects.locations.taxonomies.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.taxonomies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.taxonomies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.taxonomies.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.taxonomies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.taxonomies.policyTags = {};
+    this.projects.locations.taxonomies.policyTags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.taxonomies.policyTags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policyTags', 'GET', apiParams, clientConfig);
+    this.projects.locations.taxonomies.policyTags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policyTags', 'POST', apiParams, clientConfig);
+    this.projects.locations.taxonomies.policyTags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.taxonomies.policyTags.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.taxonomies.policyTags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.taxonomies.policyTags.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.taxonomies.policyTags.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.entryGroups = {};
+    this.projects.locations.entryGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.entryGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entryGroups', 'GET', apiParams, clientConfig);
+    this.projects.locations.entryGroups.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.entryGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.entryGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entryGroups', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.entryGroups.entries = {};
+    this.projects.locations.entryGroups.entries.modifyEntryOverview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyEntryOverview', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.star = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:star', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.unstar = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unstar', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'GET', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.modifyEntryContacts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyEntryContacts', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.entryGroups.entries.tags = {};
+    this.projects.locations.entryGroups.entries.tags.reconcile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags:reconcile', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'POST', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.tags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.entryGroups.entries.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.entryGroups.tags = {};
+    this.projects.locations.entryGroups.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.entryGroups.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'GET', apiParams, clientConfig);
+    this.projects.locations.entryGroups.tags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.entryGroups.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.tagTemplates = {};
+    this.projects.locations.tagTemplates.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.tagTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tagTemplates', 'POST', apiParams, clientConfig);
+    this.projects.locations.tagTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.tagTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.tagTemplates.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.tagTemplates.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.tagTemplates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.tagTemplates.fields = {};
+    this.projects.locations.tagTemplates.fields.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.tagTemplates.fields.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.tagTemplates.fields.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/fields', 'POST', apiParams, clientConfig);
+    this.projects.locations.tagTemplates.fields.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rename', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.tagTemplates.fields.enumValues = {};
+    this.projects.locations.tagTemplates.fields.enumValues.rename = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rename', 'POST', apiParams, clientConfig);
   }
 
 /**
