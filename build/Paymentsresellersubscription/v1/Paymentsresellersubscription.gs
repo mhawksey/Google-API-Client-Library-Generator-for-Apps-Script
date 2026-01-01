@@ -20,29 +20,29 @@ class Paymentsresellersubscription {
 
     this.partners = {};
 
-    this.partners.subscriptions = {};
-    this.partners.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
-    this.partners.subscriptions.provision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions:provision', 'POST', apiParams, clientConfig);
-    this.partners.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.partners.subscriptions.entitle = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:entitle', 'POST', apiParams, clientConfig);
-    this.partners.subscriptions.extend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:extend', 'POST', apiParams, clientConfig);
-    this.partners.subscriptions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.partners.subscriptions.undoCancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undoCancel', 'POST', apiParams, clientConfig);
-    this.partners.subscriptions.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:suspend', 'POST', apiParams, clientConfig);
-    this.partners.subscriptions.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.partners.userSessions = {};
+    this.partners.userSessions.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userSessions:generate', 'POST', apiParams, clientConfig);
 
-    this.partners.subscriptions.lineItems = {};
-    this.partners.subscriptions.lineItems.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.partners.promotions = {};
+    this.partners.promotions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/promotions', 'GET', apiParams, clientConfig);
+    this.partners.promotions.findEligible = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/promotions:findEligible', 'POST', apiParams, clientConfig);
 
     this.partners.products = {};
     this.partners.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/products', 'GET', apiParams, clientConfig);
 
-    this.partners.promotions = {};
-    this.partners.promotions.findEligible = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/promotions:findEligible', 'POST', apiParams, clientConfig);
-    this.partners.promotions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/promotions', 'GET', apiParams, clientConfig);
+    this.partners.subscriptions = {};
+    this.partners.subscriptions.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.extend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:extend', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.suspend = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:suspend', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.entitle = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:entitle', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.provision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions:provision', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.undoCancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:undoCancel', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.partners.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
 
-    this.partners.userSessions = {};
-    this.partners.userSessions.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/userSessions:generate', 'POST', apiParams, clientConfig);
+    this.partners.subscriptions.lineItems = {};
+    this.partners.subscriptions.lineItems.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
