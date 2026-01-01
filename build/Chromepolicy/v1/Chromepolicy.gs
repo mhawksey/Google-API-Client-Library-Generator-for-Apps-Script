@@ -18,37 +18,37 @@ class Chromepolicy {
     this._servicePath = '';
 
 
-    this.customers = {};
-
-    this.customers.policies = {};
-    this.customers.policies.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies:resolve', 'POST', apiParams, clientConfig);
-
-    this.customers.policies.orgunits = {};
-    this.customers.policies.orgunits.batchInherit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/orgunits:batchInherit', 'POST', apiParams, clientConfig);
-    this.customers.policies.orgunits.batchModify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/orgunits:batchModify', 'POST', apiParams, clientConfig);
-
-    this.customers.policies.groups = {};
-    this.customers.policies.groups.batchModify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:batchModify', 'POST', apiParams, clientConfig);
-    this.customers.policies.groups.listGroupPriorityOrdering = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:listGroupPriorityOrdering', 'POST', apiParams, clientConfig);
-    this.customers.policies.groups.updateGroupPriorityOrdering = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:updateGroupPriorityOrdering', 'POST', apiParams, clientConfig);
-    this.customers.policies.groups.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:batchDelete', 'POST', apiParams, clientConfig);
-
-    this.customers.policies.networks = {};
-    this.customers.policies.networks.defineNetwork = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:defineNetwork', 'POST', apiParams, clientConfig);
-    this.customers.policies.networks.removeCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:removeCertificate', 'POST', apiParams, clientConfig);
-    this.customers.policies.networks.removeNetwork = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:removeNetwork', 'POST', apiParams, clientConfig);
-    this.customers.policies.networks.defineCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:defineCertificate', 'POST', apiParams, clientConfig);
-
-    this.customers.policySchemas = {};
-    this.customers.policySchemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.customers.policySchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policySchemas', 'GET', apiParams, clientConfig);
-
     this.media = {};
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/v1/{+customer}/policies/files:uploadPolicyFile' : 'v1/{+customer}/policies/files:uploadPolicyFile';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
+
+    this.customers = {};
+
+    this.customers.policies = {};
+    this.customers.policies.resolve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies:resolve', 'POST', apiParams, clientConfig);
+
+    this.customers.policies.orgunits = {};
+    this.customers.policies.orgunits.batchModify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/orgunits:batchModify', 'POST', apiParams, clientConfig);
+    this.customers.policies.orgunits.batchInherit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/orgunits:batchInherit', 'POST', apiParams, clientConfig);
+
+    this.customers.policies.groups = {};
+    this.customers.policies.groups.batchModify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:batchModify', 'POST', apiParams, clientConfig);
+    this.customers.policies.groups.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:batchDelete', 'POST', apiParams, clientConfig);
+    this.customers.policies.groups.listGroupPriorityOrdering = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:listGroupPriorityOrdering', 'POST', apiParams, clientConfig);
+    this.customers.policies.groups.updateGroupPriorityOrdering = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/groups:updateGroupPriorityOrdering', 'POST', apiParams, clientConfig);
+
+    this.customers.policies.networks = {};
+    this.customers.policies.networks.defineCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:defineCertificate', 'POST', apiParams, clientConfig);
+    this.customers.policies.networks.removeCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:removeCertificate', 'POST', apiParams, clientConfig);
+    this.customers.policies.networks.removeNetwork = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:removeNetwork', 'POST', apiParams, clientConfig);
+    this.customers.policies.networks.defineNetwork = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/policies/networks:defineNetwork', 'POST', apiParams, clientConfig);
+
+    this.customers.policySchemas = {};
+    this.customers.policySchemas.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.policySchemas.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policySchemas', 'GET', apiParams, clientConfig);
   }
 
 /**
