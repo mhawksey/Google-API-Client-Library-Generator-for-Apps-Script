@@ -4,8 +4,8 @@ Auto-generated client library for using the **Enterprise License Manager API (ve
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:55:08 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:55:08 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:47:05 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:47:05 GMT
 - **Created:** Sun, 20 Jul 2025 16:36:00 GMT
 
 
@@ -16,27 +16,26 @@ Auto-generated client library for using the **Enterprise License Manager API (ve
 
 ### `licenseAssignments`
 
+#### `licenseAssignments.listForProduct()`
+
+List all users assigned licenses for a specific product SKU.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page. |
+| `params.customerId` | `string` | Yes | The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended, the server returns an error. |
+| `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
+| `params.maxResults` | `integer` | No | The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number. |
+
 #### `licenseAssignments.insert()`
 
 Assign a license.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
 | `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
+| `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `licenseAssignments.listForProductAndSku()`
-
-List all users assigned licenses for a specific product SKU.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
-| `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
-| `params.pageToken` | `string` | No | Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page. |
-| `params.customerId` | `string` | Yes | The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended, the server returns an error. |
-| `params.maxResults` | `integer` | No | The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number. |
 
 #### `licenseAssignments.update()`
 
@@ -45,8 +44,8 @@ Reassign a user's product SKU with a different SKU in the same product.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.userId` | `string` | Yes | The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes. |
-| `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
 | `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
+| `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `licenseAssignments.delete()`
@@ -59,6 +58,29 @@ Revoke a license.
 | `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
 | `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
 
+#### `licenseAssignments.listForProductAndSku()`
+
+List all users assigned licenses for a specific product SKU.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page. |
+| `params.customerId` | `string` | Yes | The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended, the server returns an error. |
+| `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
+| `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
+| `params.maxResults` | `integer` | No | The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number. |
+
+#### `licenseAssignments.patch()`
+
+Reassign a user's product SKU with a different SKU in the same product. This method supports patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
+| `params.userId` | `string` | Yes | The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes. |
+| `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `licenseAssignments.get()`
 
 Get a specific user's license by product SKU.
@@ -68,25 +90,3 @@ Get a specific user's license by product SKU.
 | `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
 | `params.userId` | `string` | Yes | The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes. |
 | `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
-
-#### `licenseAssignments.listForProduct()`
-
-List all users assigned licenses for a specific product SKU.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.maxResults` | `integer` | No | The `maxResults` query string determines how many entries are returned on each page of a large response. This is an optional parameter. The value must be a positive number. |
-| `params.pageToken` | `string` | No | Token to fetch the next page of data. The `maxResults` query string is related to the `pageToken` since `maxResults` determines how many entries are returned on each page. This is an optional query string. If not specified, the server returns the first page. |
-| `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
-| `params.customerId` | `string` | Yes | The customer's unique ID as defined in the Admin console, such as `C00000000`. If the customer is suspended, the server returns an error. |
-
-#### `licenseAssignments.patch()`
-
-Reassign a user's product SKU with a different SKU in the same product. This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.productId` | `string` | Yes | A product's unique identifier. For more information about products in this version of the API, see Products and SKUs. |
-| `params.skuId` | `string` | Yes | A product SKU's unique identifier. For more information about available SKUs in this version of the API, see Products and SKUs. |
-| `params.userId` | `string` | Yes | The user's current primary email address. If the user's email address changes, use the new email address in your API requests. Since a `userId` is subject to change, do not use a `userId` value as a key for persistent data. This key could break if the current user's email address changes. If the `userId` is suspended, the license status changes. |
-| `params.requestBody` | `object` | Yes | The request body. |
