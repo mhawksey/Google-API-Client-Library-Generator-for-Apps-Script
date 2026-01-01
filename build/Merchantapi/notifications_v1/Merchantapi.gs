@@ -22,9 +22,9 @@ class Merchantapi {
 
     this.accounts.notificationsubscriptions = {};
     this.accounts.notificationsubscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.notificationsubscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+parent}/notificationsubscriptions', 'POST', apiParams, clientConfig);
     this.accounts.notificationsubscriptions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.notificationsubscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.notificationsubscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+parent}/notificationsubscriptions', 'POST', apiParams, clientConfig);
     this.accounts.notificationsubscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('notifications/v1/{+parent}/notificationsubscriptions', 'GET', apiParams, clientConfig);
   }
 
