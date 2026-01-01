@@ -18,6 +18,12 @@ class Cloudasset {
     this._servicePath = '';
 
 
+    this.folders = {};
+    this.folders.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
+
+    this.folders.operations = {};
+    this.folders.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects = {};
     this.projects.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
     this.projects.batchGetAssetsHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:batchGetAssetsHistory', 'GET', apiParams, clientConfig);
@@ -25,15 +31,9 @@ class Cloudasset {
     this.projects.operations = {};
     this.projects.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.folders = {};
-    this.folders.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
-
-    this.folders.operations = {};
-    this.folders.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-
     this.organizations = {};
-    this.organizations.batchGetAssetsHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:batchGetAssetsHistory', 'GET', apiParams, clientConfig);
     this.organizations.exportAssets = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:exportAssets', 'POST', apiParams, clientConfig);
+    this.organizations.batchGetAssetsHistory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:batchGetAssetsHistory', 'GET', apiParams, clientConfig);
 
     this.organizations.operations = {};
     this.organizations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
