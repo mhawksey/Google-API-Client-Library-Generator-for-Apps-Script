@@ -18,59 +18,6 @@ class Authorizedbuyersmarketplace {
     this._servicePath = '';
 
 
-    this.buyers = {};
-
-    this.buyers.auctionPackages = {};
-    this.buyers.auctionPackages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.auctionPackages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/auctionPackages', 'GET', apiParams, clientConfig);
-    this.buyers.auctionPackages.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:subscribe', 'POST', apiParams, clientConfig);
-    this.buyers.auctionPackages.unsubscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unsubscribe', 'POST', apiParams, clientConfig);
-    this.buyers.auctionPackages.subscribeClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+auctionPackage}:subscribeClients', 'POST', apiParams, clientConfig);
-    this.buyers.auctionPackages.unsubscribeClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+auctionPackage}:unsubscribeClients', 'POST', apiParams, clientConfig);
-
-    this.buyers.clients = {};
-    this.buyers.clients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.clients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients', 'GET', apiParams, clientConfig);
-    this.buyers.clients.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients', 'POST', apiParams, clientConfig);
-    this.buyers.clients.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.buyers.clients.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
-    this.buyers.clients.deactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deactivate', 'POST', apiParams, clientConfig);
-
-    this.buyers.clients.users = {};
-    this.buyers.clients.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.clients.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/users', 'GET', apiParams, clientConfig);
-    this.buyers.clients.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/users', 'POST', apiParams, clientConfig);
-    this.buyers.clients.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.buyers.clients.users.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
-    this.buyers.clients.users.deactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deactivate', 'POST', apiParams, clientConfig);
-
-    this.buyers.finalizedDeals = {};
-    this.buyers.finalizedDeals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.finalizedDeals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/finalizedDeals', 'GET', apiParams, clientConfig);
-    this.buyers.finalizedDeals.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
-    this.buyers.finalizedDeals.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
-    this.buyers.finalizedDeals.addCreative = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+deal}:addCreative', 'POST', apiParams, clientConfig);
-    this.buyers.finalizedDeals.setReadyToServe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+deal}:setReadyToServe', 'POST', apiParams, clientConfig);
-
-    this.buyers.proposals = {};
-    this.buyers.proposals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.proposals.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.buyers.proposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/proposals', 'GET', apiParams, clientConfig);
-    this.buyers.proposals.cancelNegotiation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+proposal}:cancelNegotiation', 'POST', apiParams, clientConfig);
-    this.buyers.proposals.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accept', 'POST', apiParams, clientConfig);
-    this.buyers.proposals.addNote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+proposal}:addNote', 'POST', apiParams, clientConfig);
-    this.buyers.proposals.sendRfp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+buyer}/proposals:sendRfp', 'POST', apiParams, clientConfig);
-
-    this.buyers.proposals.deals = {};
-    this.buyers.proposals.deals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.proposals.deals.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.buyers.proposals.deals.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deals:batchUpdate', 'POST', apiParams, clientConfig);
-    this.buyers.proposals.deals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deals', 'GET', apiParams, clientConfig);
-
-    this.buyers.publisherProfiles = {};
-    this.buyers.publisherProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.publisherProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/publisherProfiles', 'GET', apiParams, clientConfig);
-
     this.bidders = {};
 
     this.bidders.auctionPackages = {};
@@ -79,6 +26,59 @@ class Authorizedbuyersmarketplace {
     this.bidders.finalizedDeals = {};
     this.bidders.finalizedDeals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/finalizedDeals', 'GET', apiParams, clientConfig);
     this.bidders.finalizedDeals.setReadyToServe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+deal}:setReadyToServe', 'POST', apiParams, clientConfig);
+
+    this.buyers = {};
+
+    this.buyers.publisherProfiles = {};
+    this.buyers.publisherProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/publisherProfiles', 'GET', apiParams, clientConfig);
+    this.buyers.publisherProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.buyers.proposals = {};
+    this.buyers.proposals.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:accept', 'POST', apiParams, clientConfig);
+    this.buyers.proposals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.buyers.proposals.sendRfp = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+buyer}/proposals:sendRfp', 'POST', apiParams, clientConfig);
+    this.buyers.proposals.addNote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+proposal}:addNote', 'POST', apiParams, clientConfig);
+    this.buyers.proposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/proposals', 'GET', apiParams, clientConfig);
+    this.buyers.proposals.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.buyers.proposals.cancelNegotiation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+proposal}:cancelNegotiation', 'POST', apiParams, clientConfig);
+
+    this.buyers.proposals.deals = {};
+    this.buyers.proposals.deals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deals', 'GET', apiParams, clientConfig);
+    this.buyers.proposals.deals.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.buyers.proposals.deals.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deals:batchUpdate', 'POST', apiParams, clientConfig);
+    this.buyers.proposals.deals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.buyers.finalizedDeals = {};
+    this.buyers.finalizedDeals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.buyers.finalizedDeals.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
+    this.buyers.finalizedDeals.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.buyers.finalizedDeals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/finalizedDeals', 'GET', apiParams, clientConfig);
+    this.buyers.finalizedDeals.setReadyToServe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+deal}:setReadyToServe', 'POST', apiParams, clientConfig);
+    this.buyers.finalizedDeals.addCreative = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+deal}:addCreative', 'POST', apiParams, clientConfig);
+
+    this.buyers.auctionPackages = {};
+    this.buyers.auctionPackages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/auctionPackages', 'GET', apiParams, clientConfig);
+    this.buyers.auctionPackages.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:subscribe', 'POST', apiParams, clientConfig);
+    this.buyers.auctionPackages.unsubscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:unsubscribe', 'POST', apiParams, clientConfig);
+    this.buyers.auctionPackages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.buyers.auctionPackages.subscribeClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+auctionPackage}:subscribeClients', 'POST', apiParams, clientConfig);
+    this.buyers.auctionPackages.unsubscribeClients = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+auctionPackage}:unsubscribeClients', 'POST', apiParams, clientConfig);
+
+    this.buyers.clients = {};
+    this.buyers.clients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.buyers.clients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients', 'GET', apiParams, clientConfig);
+    this.buyers.clients.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
+    this.buyers.clients.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/clients', 'POST', apiParams, clientConfig);
+    this.buyers.clients.deactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deactivate', 'POST', apiParams, clientConfig);
+    this.buyers.clients.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.buyers.clients.users = {};
+    this.buyers.clients.users.deactivate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deactivate', 'POST', apiParams, clientConfig);
+    this.buyers.clients.users.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
+    this.buyers.clients.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/users', 'GET', apiParams, clientConfig);
+    this.buyers.clients.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.buyers.clients.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.buyers.clients.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/users', 'POST', apiParams, clientConfig);
   }
 
 /**
