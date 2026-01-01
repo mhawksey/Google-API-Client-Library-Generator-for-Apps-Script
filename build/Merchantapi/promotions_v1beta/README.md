@@ -4,7 +4,7 @@ Auto-generated client library for using the **Merchant API (version: promotions_
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:57:10 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:55:24 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:57:10 GMT
 - **Created:** Sun, 20 Jul 2025 16:42:53 GMT
 
