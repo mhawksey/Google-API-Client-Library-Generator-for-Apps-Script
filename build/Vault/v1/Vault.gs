@@ -21,47 +21,47 @@ class Vault {
     this.operations = {};
     this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.matters = {};
-    this.matters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters', 'POST', apiParams, clientConfig);
-    this.matters.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}', 'PUT', apiParams, clientConfig);
+    this.matters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}', 'GET', apiParams, clientConfig);
+    this.matters.count = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:count', 'POST', apiParams, clientConfig);
+    this.matters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}', 'DELETE', apiParams, clientConfig);
+    this.matters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters', 'GET', apiParams, clientConfig);
     this.matters.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:close', 'POST', apiParams, clientConfig);
     this.matters.reopen = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:reopen', 'POST', apiParams, clientConfig);
-    this.matters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}', 'DELETE', apiParams, clientConfig);
+    this.matters.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}', 'PUT', apiParams, clientConfig);
     this.matters.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:undelete', 'POST', apiParams, clientConfig);
-    this.matters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}', 'GET', apiParams, clientConfig);
-    this.matters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters', 'GET', apiParams, clientConfig);
+    this.matters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters', 'POST', apiParams, clientConfig);
     this.matters.addPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:addPermissions', 'POST', apiParams, clientConfig);
     this.matters.removePermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:removePermissions', 'POST', apiParams, clientConfig);
-    this.matters.count = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}:count', 'POST', apiParams, clientConfig);
+
+    this.matters.savedQueries = {};
+    this.matters.savedQueries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries', 'GET', apiParams, clientConfig);
+    this.matters.savedQueries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries/{savedQueryId}', 'GET', apiParams, clientConfig);
+    this.matters.savedQueries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries', 'POST', apiParams, clientConfig);
+    this.matters.savedQueries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries/{savedQueryId}', 'DELETE', apiParams, clientConfig);
 
     this.matters.exports = {};
-    this.matters.exports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports', 'POST', apiParams, clientConfig);
-    this.matters.exports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports/{exportId}', 'DELETE', apiParams, clientConfig);
-    this.matters.exports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports/{exportId}', 'GET', apiParams, clientConfig);
     this.matters.exports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports', 'GET', apiParams, clientConfig);
+    this.matters.exports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports/{exportId}', 'DELETE', apiParams, clientConfig);
+    this.matters.exports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports', 'POST', apiParams, clientConfig);
+    this.matters.exports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/exports/{exportId}', 'GET', apiParams, clientConfig);
 
     this.matters.holds = {};
-    this.matters.holds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds', 'POST', apiParams, clientConfig);
     this.matters.holds.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'PUT', apiParams, clientConfig);
-    this.matters.holds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'DELETE', apiParams, clientConfig);
     this.matters.holds.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'GET', apiParams, clientConfig);
     this.matters.holds.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds', 'GET', apiParams, clientConfig);
     this.matters.holds.addHeldAccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}:addHeldAccounts', 'POST', apiParams, clientConfig);
+    this.matters.holds.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds', 'POST', apiParams, clientConfig);
     this.matters.holds.removeHeldAccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}:removeHeldAccounts', 'POST', apiParams, clientConfig);
+    this.matters.holds.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}', 'DELETE', apiParams, clientConfig);
 
     this.matters.holds.accounts = {};
     this.matters.holds.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}/accounts', 'POST', apiParams, clientConfig);
     this.matters.holds.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}/accounts/{accountId}', 'DELETE', apiParams, clientConfig);
     this.matters.holds.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/holds/{holdId}/accounts', 'GET', apiParams, clientConfig);
-
-    this.matters.savedQueries = {};
-    this.matters.savedQueries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries', 'POST', apiParams, clientConfig);
-    this.matters.savedQueries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries/{savedQueryId}', 'DELETE', apiParams, clientConfig);
-    this.matters.savedQueries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries/{savedQueryId}', 'GET', apiParams, clientConfig);
-    this.matters.savedQueries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/matters/{matterId}/savedQueries', 'GET', apiParams, clientConfig);
   }
 
 /**
