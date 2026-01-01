@@ -4,8 +4,8 @@ Auto-generated client library for using the **Analytics Hub API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:22:43 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:22:43 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:22:23 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:22:23 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:07 GMT
 
 
@@ -20,22 +20,23 @@ Auto-generated client library for using the **Analytics Hub API (version: v1)** 
 
 ### `projects.locations.dataExchanges`
 
-#### `projects.locations.dataExchanges.testIamPermissions()`
+#### `projects.locations.dataExchanges.list()`
 
-Returns the permissions that a caller has.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataExchanges.delete()`
-
-Deletes an existing data exchange.
+Lists all data exchanges in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The full name of the data exchange resource that you want to delete. For example, `projects/myproject/locations/us/dataExchanges/123`. |
+| `params.parent` | `string` | Yes | Required. The parent resource path of the data exchanges. e.g. `projects/myproject/locations/us`. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. |
+| `params.pageToken` | `string` | No | Page token, returned by a previous call, to request the next page of results. |
+
+#### `projects.locations.dataExchanges.get()`
+
+Gets the details of a data exchange.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the data exchange. e.g. `projects/myproject/locations/us/dataExchanges/123`. |
 
 #### `projects.locations.dataExchanges.create()`
 
@@ -47,24 +48,23 @@ Creates a new data exchange.
 | `params.dataExchangeId` | `string` | No | Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Max length: 100 bytes. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataExchanges.getIamPolicy()`
+#### `projects.locations.dataExchanges.patch()`
 
-Gets the IAM policy.
+Updates an existing data exchange.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.name` | `string` | Yes | Output only. The resource name of the data exchange. e.g. `projects/myproject/locations/us/dataExchanges/123`. |
+| `params.updateMask` | `string` | No | Required. Field mask specifies the fields to update in the data exchange resource. The fields specified in the `updateMask` are relative to the resource and are not a full request. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataExchanges.list()`
+#### `projects.locations.dataExchanges.delete()`
 
-Lists all data exchanges in a given project and location.
+Deletes an existing data exchange.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Page token, returned by a previous call, to request the next page of results. |
-| `params.parent` | `string` | Yes | Required. The parent resource path of the data exchanges. e.g. `projects/myproject/locations/us`. |
-| `params.pageSize` | `integer` | No | The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. |
+| `params.name` | `string` | Yes | Required. The full name of the data exchange resource that you want to delete. For example, `projects/myproject/locations/us/dataExchanges/123`. |
 
 #### `projects.locations.dataExchanges.subscribe()`
 
@@ -86,14 +86,13 @@ Lists all subscriptions on a given Data Exchange or Listing.
 | `params.pageSize` | `integer` | No | The maximum number of results to return in a single response page. |
 | `params.pageToken` | `string` | No | Page token, returned by a previous call. |
 
-#### `projects.locations.dataExchanges.patch()`
+#### `projects.locations.dataExchanges.getIamPolicy()`
 
-Updates an existing data exchange.
+Gets the IAM policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name of the data exchange. e.g. `projects/myproject/locations/us/dataExchanges/123`. |
-| `params.updateMask` | `string` | No | Required. Field mask specifies the fields to update in the data exchange resource. The fields specified in the `updateMask` are relative to the resource and are not a full request. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataExchanges.setIamPolicy()`
@@ -105,35 +104,7 @@ Sets the IAM policy.
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataExchanges.get()`
-
-Gets the details of a data exchange.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the data exchange. e.g. `projects/myproject/locations/us/dataExchanges/123`. |
-
-### `projects.locations.dataExchanges.listings`
-
-#### `projects.locations.dataExchanges.listings.delete()`
-
-Deletes a listing.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.deleteCommercial` | `boolean` | No | Optional. If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally. |
-| `params.name` | `string` | Yes | Required. Resource name of the listing to delete. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`. |
-
-#### `projects.locations.dataExchanges.listings.subscribe()`
-
-Subscribes to a listing. Currently, with Analytics Hub, you can create listings that reference only BigQuery datasets. Upon subscription to a listing for a BigQuery dataset, Analytics Hub creates a linked dataset in the subscriber's project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the listing that you want to subscribe to. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataExchanges.listings.testIamPermissions()`
+#### `projects.locations.dataExchanges.testIamPermissions()`
 
 Returns the permissions that a caller has.
 
@@ -142,33 +113,7 @@ Returns the permissions that a caller has.
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataExchanges.listings.getIamPolicy()`
-
-Gets the IAM policy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataExchanges.listings.patch()`
-
-Updates an existing listing.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name of the listing. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456` |
-| `params.updateMask` | `string` | No | Required. Field mask specifies the fields to update in the listing resource. The fields specified in the `updateMask` are relative to the resource and are not a full request. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.dataExchanges.listings.setIamPolicy()`
-
-Sets the IAM policy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+### `projects.locations.dataExchanges.listings`
 
 #### `projects.locations.dataExchanges.listings.list()`
 
@@ -198,27 +143,82 @@ Creates a new listing.
 | `params.listingId` | `string` | No | Required. The ID of the listing to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Max length: 100 bytes. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.dataExchanges.listings.patch()`
+
+Updates an existing listing.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The resource name of the listing. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456` |
+| `params.updateMask` | `string` | No | Required. Field mask specifies the fields to update in the listing resource. The fields specified in the `updateMask` are relative to the resource and are not a full request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataExchanges.listings.delete()`
+
+Deletes a listing.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the listing to delete. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`. |
+| `params.deleteCommercial` | `boolean` | No | Optional. If the listing is commercial then this field must be set to true, otherwise a failure is thrown. This acts as a safety guard to avoid deleting commercial listings accidentally. |
+
+#### `projects.locations.dataExchanges.listings.subscribe()`
+
+Subscribes to a listing. Currently, with Analytics Hub, you can create listings that reference only BigQuery datasets. Upon subscription to a listing for a BigQuery dataset, Analytics Hub creates a linked dataset in the subscriber's project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the listing that you want to subscribe to. e.g. `projects/myproject/locations/us/dataExchanges/123/listings/456`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.dataExchanges.listings.listSubscriptions()`
 
 Lists all subscriptions on a given Data Exchange or Listing.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Page token, returned by a previous call. |
-| `params.includeDeletedSubscriptions` | `boolean` | No | If selected, includes deleted subscriptions in the response (up to 63 days after deletion). |
 | `params.resource` | `string` | Yes | Required. Resource name of the requested target. This resource may be either a Listing or a DataExchange. e.g. projects/123/locations/us/dataExchanges/456 OR e.g. projects/123/locations/us/dataExchanges/456/listings/789 |
+| `params.includeDeletedSubscriptions` | `boolean` | No | If selected, includes deleted subscriptions in the response (up to 63 days after deletion). |
 | `params.pageSize` | `integer` | No | The maximum number of results to return in a single response page. |
+| `params.pageToken` | `string` | No | Page token, returned by a previous call. |
 
-### `projects.locations.dataExchanges.queryTemplates`
+#### `projects.locations.dataExchanges.listings.getIamPolicy()`
 
-#### `projects.locations.dataExchanges.queryTemplates.patch()`
-
-Updates an existing QueryTemplate
+Gets the IAM policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Optional. Field mask specifies the fields to update in the query template resource. The fields specified in the `updateMask` are relative to the resource and are not a full request. |
-| `params.name` | `string` | Yes | Output only. The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456` |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataExchanges.listings.setIamPolicy()`
+
+Sets the IAM policy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dataExchanges.listings.testIamPermissions()`
+
+Returns the permissions that a caller has.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.dataExchanges.queryTemplates`
+
+#### `projects.locations.dataExchanges.queryTemplates.create()`
+
+Creates a new QueryTemplate
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myQueryTemplate`. |
+| `params.queryTemplateId` | `string` | No | Required. The ID of the QueryTemplate to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Max length: 100 bytes. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataExchanges.queryTemplates.get()`
@@ -229,6 +229,26 @@ Gets a QueryTemplate
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The parent resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. |
 
+#### `projects.locations.dataExchanges.queryTemplates.list()`
+
+Lists all QueryTemplates in a given project and location.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource path of the QueryTemplates. e.g. `projects/myproject/locations/us/dataExchanges/123`. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. |
+| `params.pageToken` | `string` | No | Optional. Page token, returned by a previous call, to request the next page of results. |
+
+#### `projects.locations.dataExchanges.queryTemplates.patch()`
+
+Updates an existing QueryTemplate
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. The resource name of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/456` |
+| `params.updateMask` | `string` | No | Optional. Field mask specifies the fields to update in the query template resource. The fields specified in the `updateMask` are relative to the resource and are not a full request. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.dataExchanges.queryTemplates.delete()`
 
 Deletes a query template.
@@ -237,14 +257,13 @@ Deletes a query template.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. |
 
-#### `projects.locations.dataExchanges.queryTemplates.create()`
+#### `projects.locations.dataExchanges.queryTemplates.submit()`
 
-Creates a new QueryTemplate
+Submits a query template for approval.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.queryTemplateId` | `string` | No | Required. The ID of the QueryTemplate to create. Must contain only Unicode letters, numbers (0-9), underscores (_). Max length: 100 bytes. |
-| `params.parent` | `string` | Yes | Required. The parent resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myQueryTemplate`. |
+| `params.name` | `string` | Yes | Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.dataExchanges.queryTemplates.approve()`
@@ -256,26 +275,16 @@ Approves a query template.
 | `params.name` | `string` | Yes | Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.dataExchanges.queryTemplates.list()`
-
-Lists all QueryTemplates in a given project and location.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. |
-| `params.pageToken` | `string` | No | Optional. Page token, returned by a previous call, to request the next page of results. |
-| `params.parent` | `string` | Yes | Required. The parent resource path of the QueryTemplates. e.g. `projects/myproject/locations/us/dataExchanges/123`. |
-
-#### `projects.locations.dataExchanges.queryTemplates.submit()`
-
-Submits a query template for approval.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource path of the QueryTemplate. e.g. `projects/myproject/locations/us/dataExchanges/123/queryTemplates/myqueryTemplate`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `projects.locations.subscriptions`
+
+#### `projects.locations.subscriptions.refresh()`
+
+Refreshes a Subscription to a Data Exchange. A Data Exchange can become stale when a publisher adds or removes data. This is a long-running operation as it may create many linked datasets.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Subscription to refresh. e.g. `projects/subscriberproject/locations/us/subscriptions/123` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.subscriptions.get()`
 
@@ -285,23 +294,16 @@ Gets the details of a Subscription.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the subscription. e.g. projects/123/locations/us/subscriptions/456 |
 
-#### `projects.locations.subscriptions.setIamPolicy()`
+#### `projects.locations.subscriptions.list()`
 
-Sets the IAM policy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.subscriptions.getIamPolicy()`
-
-Gets the IAM policy.
+Lists all subscriptions in a given project and location.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. The parent resource path of the subscription. e.g. projects/myproject/locations/us |
+| `params.filter` | `string` | No | An expression for filtering the results of the request. Eligible fields for filtering are: + `listing` + `data_exchange` Alternatively, a literal wrapped in double quotes may be provided. This will be checked for an exact match against both fields above. In all cases, the full Data Exchange or Listing resource name must be provided. Some example of using filters: + data_exchange="projects/myproject/locations/us/dataExchanges/123" + listing="projects/123/locations/us/dataExchanges/456/listings/789" + "projects/myproject/locations/us/dataExchanges/123" |
+| `params.pageSize` | `integer` | No | The maximum number of results to return in a single response page. |
+| `params.pageToken` | `string` | No | Page token, returned by a previous call. |
 
 #### `projects.locations.subscriptions.revoke()`
 
@@ -320,25 +322,23 @@ Deletes a subscription.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the subscription to delete. e.g. projects/123/locations/us/subscriptions/456 |
 
-#### `projects.locations.subscriptions.refresh()`
+#### `projects.locations.subscriptions.getIamPolicy()`
 
-Refreshes a Subscription to a Data Exchange. A Data Exchange can become stale when a publisher adds or removes data. This is a long-running operation as it may create many linked datasets.
+Gets the IAM policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Subscription to refresh. e.g. `projects/subscriberproject/locations/us/subscriptions/123` |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.subscriptions.list()`
+#### `projects.locations.subscriptions.setIamPolicy()`
 
-Lists all subscriptions in a given project and location.
+Sets the IAM policy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Page token, returned by a previous call. |
-| `params.filter` | `string` | No | An expression for filtering the results of the request. Eligible fields for filtering are: + `listing` + `data_exchange` Alternatively, a literal wrapped in double quotes may be provided. This will be checked for an exact match against both fields above. In all cases, the full Data Exchange or Listing resource name must be provided. Some example of using filters: + data_exchange="projects/myproject/locations/us/dataExchanges/123" + listing="projects/123/locations/us/dataExchanges/456/listings/789" + "projects/myproject/locations/us/dataExchanges/123" |
-| `params.parent` | `string` | Yes | Required. The parent resource path of the subscription. e.g. projects/myproject/locations/us |
-| `params.pageSize` | `integer` | No | The maximum number of results to return in a single response page. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `organizations`
 
@@ -353,5 +353,5 @@ Lists all data exchanges from projects in a given organization and location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.organization` | `string` | Yes | Required. The organization resource path of the projects containing DataExchanges. e.g. `organizations/myorg/locations/us`. |
-| `params.pageToken` | `string` | No | Page token, returned by a previous call, to request the next page of results. |
 | `params.pageSize` | `integer` | No | The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection. |
+| `params.pageToken` | `string` | No | Page token, returned by a previous call, to request the next page of results. |
