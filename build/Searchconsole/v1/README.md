@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Search Console API (version
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:08:13 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:08:13 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:06:54 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:06:54 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:30 GMT
 
 
@@ -13,6 +13,29 @@ Auto-generated client library for using the **Google Search Console API (version
 ---
 
 ## API Reference
+
+### `urlInspection`
+
+### `urlInspection.index`
+
+#### `urlInspection.index.inspect()`
+
+Index inspection.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `searchanalytics`
+
+#### `searchanalytics.query()`
+
+Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `urlTestingTools`
 
@@ -28,18 +51,18 @@ Runs Mobile-Friendly Test for a given URL.
 
 ### `sitemaps`
 
-#### `sitemaps.get()`
+#### `sitemaps.delete()`
 
-Retrieves information about a specific sitemap.
+Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that were previously crawled in the deleted sitemap.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
 | `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
 
-#### `sitemaps.submit()`
+#### `sitemaps.get()`
 
-Submits a sitemap for a site.
+Retrieves information about a specific sitemap.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -55,14 +78,14 @@ Submits a sitemap for a site.
 | `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
 | `params.sitemapIndex` | `string` | No |  A URL of a site's sitemap index. For example: `http://www.example.com/sitemapindex.xml`. |
 
-#### `sitemaps.delete()`
+#### `sitemaps.submit()`
 
-Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling this sitemap or the URLs that were previously crawled in the deleted sitemap.
+Submits a sitemap for a site.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
 | `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
+| `params.feedpath` | `string` | Yes | The URL of the actual sitemap. For example: `http://www.example.com/sitemap.xml`. |
 
 ### `sites`
 
@@ -96,26 +119,3 @@ Deletes a sitemap from the Sitemaps report. Does not stop Google from crawling t
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.siteUrl` | `string` | Yes | The URL of the site to add. |
-
-### `urlInspection`
-
-### `urlInspection.index`
-
-#### `urlInspection.index.inspect()`
-
-Index inspection.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `searchanalytics`
-
-#### `searchanalytics.query()`
-
-Query your data with filters and parameters that you define. Returns zero or more rows grouped by the row keys that you define. You must define a date range of one or more days. When date is one of the group by values, any days without data are omitted from the result list. If you need to know which days have data, issue a broad date range query grouped by date for any metric, and see which day rows are returned.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.siteUrl` | `string` | Yes | The site's URL, including protocol. For example: `http://www.example.com/`. |
-| `params.requestBody` | `object` | Yes | The request body. |
