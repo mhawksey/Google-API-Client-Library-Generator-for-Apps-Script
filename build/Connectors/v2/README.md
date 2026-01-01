@@ -4,8 +4,8 @@ Auto-generated client library for using the **Connectors API (version: v2)** in 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:35:15 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:35:15 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:34:26 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:34:26 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:50 GMT
 
 
@@ -45,15 +45,6 @@ ExchangeAuthCode exchanges the OAuth authorization code (and other necessary dat
 | `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.refreshAccessToken()`
-
-RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) for a new access token (and new associated credentials).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.connections.executeSqlQuery()`
 
 Executes a SQL statement specified in the body of the request. An example of this SQL statement in the case of Salesforce connector would be 'select
@@ -64,6 +55,35 @@ Executes a SQL statement specified in the body of the request. An example of thi
 |---|---|---|---|
 | `params.connection` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.connections.refreshAccessToken()`
+
+RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) for a new access token (and new associated credentials).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes |  |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.connections.resources`
+
+#### `projects.locations.connections.resources.get()`
+
+Gets a specific resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} |
+
+#### `projects.locations.connections.resources.list()`
+
+Lists all available resources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Optional. Page token for the request. |
+| `params.pageSize` | `integer` | No | Optional. Page size for the request. |
+| `params.parent` | `string` | Yes | Required. Resource name of the connection. Format: projects/{project}/locations/{location}/connections/{connection} |
 
 ### `projects.locations.connections.actions`
 
@@ -76,25 +96,25 @@ Executes an action with the name specified in the request. The input parameters 
 | `params.name` | `string` | Yes | Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.actions.list()`
-
-Gets the schema of all the actions supported by the connector.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.pageSize` | `integer` | No | Number of Actions to return. Defaults to 25. |
-| `params.pageToken` | `string` | No | Page token, return from a previous ListActions call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of actions. |
-| `params.view` | `string` | No | Specifies which fields of the Action are returned in the response. |
-
 #### `projects.locations.connections.actions.get()`
 
 Gets the schema of the given action.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} |
 | `params.view` | `string` | No | Specified view of the action schema. |
+| `params.name` | `string` | Yes | Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} |
+
+#### `projects.locations.connections.actions.list()`
+
+Gets the schema of all the actions supported by the connector.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | Page token, return from a previous ListActions call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of actions. |
+| `params.pageSize` | `integer` | No | Number of Actions to return. Defaults to 25. |
+| `params.view` | `string` | No | Specifies which fields of the Action are returned in the response. |
+| `params.parent` | `string` | Yes | Required. Parent resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection} |
 
 ### `projects.locations.connections.tools`
 
@@ -105,8 +125,8 @@ Lists all available tools.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.pageSize` | `integer` | No | Page size. |
 | `params.pageToken` | `string` | No | Page token. |
+| `params.pageSize` | `integer` | No | Page size. |
 
 #### `projects.locations.connections.tools.execute()`
 
@@ -117,37 +137,7 @@ Executes a specific tool.
 | `params.name` | `string` | Yes | Required. Resource name of the Tool. Format: projects/{project}/locations/{location}/connections/{connection}/tools/{tool} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations.connections.resources`
-
-#### `projects.locations.connections.resources.list()`
-
-Lists all available resources.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the connection. Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.pageSize` | `integer` | No | Optional. Page size for the request. |
-| `params.pageToken` | `string` | No | Optional. Page token for the request. |
-
-#### `projects.locations.connections.resources.get()`
-
-Gets a specific resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} |
-
 ### `projects.locations.connections.entityTypes`
-
-#### `projects.locations.connections.entityTypes.get()`
-
-Gets metadata of given entity type
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType} |
-| `params.view` | `string` | No | Specifies view for entity type schema. |
-| `params.contextMetadata` | `string` | No | Context metadata for request could be used to fetch customization of entity type schema. |
 
 #### `projects.locations.connections.entityTypes.list()`
 
@@ -156,11 +146,29 @@ Lists metadata related to all entity types present in the external system.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.pageSize` | `integer` | No | Number of entity types to return. Defaults to 25. |
 | `params.pageToken` | `string` | No | Page token, return from a previous ListEntityTypes call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of entity types. |
+| `params.pageSize` | `integer` | No | Number of entity types to return. Defaults to 25. |
 | `params.view` | `string` | No | Specifies which fields of the Entity Type are returned in the response. |
 
+#### `projects.locations.connections.entityTypes.get()`
+
+Gets metadata of given entity type
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.contextMetadata` | `string` | No | Context metadata for request could be used to fetch customization of entity type schema. |
+| `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType} |
+| `params.view` | `string` | No | Specifies view for entity type schema. |
+
 ### `projects.locations.connections.entityTypes.entities`
+
+#### `projects.locations.connections.entityTypes.entities.delete()`
+
+Deletes an existing entity row matching the entity type and entity id specified in the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
 
 #### `projects.locations.connections.entityTypes.entities.list()`
 
@@ -169,19 +177,11 @@ Lists entity rows of a particular entity type contained in the request. Note: 1.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
-| `params.pageSize` | `integer` | No | Number of entity rows to return. Defaults page size = 25. Max page size = 200. |
-| `params.pageToken` | `string` | No | Page token value if available from a previous request. |
-| `params.sortBy` | `string` | No | List of 'sort_by' columns to use when returning the results. |
 | `params.sortOrder` | `string` | No | List of 'sort_order' columns to use when returning the results. |
+| `params.pageSize` | `integer` | No | Number of entity rows to return. Defaults page size = 25. Max page size = 200. |
+| `params.sortBy` | `string` | No | List of 'sort_by' columns to use when returning the results. |
+| `params.pageToken` | `string` | No | Page token value if available from a previous request. |
 | `params.conditions` | `string` | No | Conditions to be used when listing entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. |
-
-#### `projects.locations.connections.entityTypes.entities.get()`
-
-Gets a single entity row matching the entity type and entity id specified in the request.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
 
 #### `projects.locations.connections.entityTypes.entities.create()`
 
@@ -192,14 +192,14 @@ Creates a new entity row of the specified entity type in the external system. Th
 | `params.parent` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.entityTypes.entities.patch()`
+#### `projects.locations.connections.entityTypes.entities.deleteEntitiesWithConditions()`
 
-Updates an existing entity row matching the entity type and entity id specified in the request. The fields in the entity row that need to be modified are contained in the body of the request. All unspecified fields are left unchanged. The response message contains a `Entity` message object returned as a response by the external system.
+Deletes entities based on conditions specified in the request and not on entity id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Output only. Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.entityType` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
+| `params.conditions` | `string` | No | Required. Conditions to be used when deleting entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. |
 
 #### `projects.locations.connections.entityTypes.entities.updateEntitiesWithConditions()`
 
@@ -211,19 +211,19 @@ Updates entities based on conditions specified in the request and not on entity 
 | `params.conditions` | `string` | No | Required. Conditions to be used when updating entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.entityTypes.entities.delete()`
+#### `projects.locations.connections.entityTypes.entities.patch()`
 
-Deletes an existing entity row matching the entity type and entity id specified in the request.
+Updates an existing entity row matching the entity type and entity id specified in the request. The fields in the entity row that need to be modified are contained in the body of the request. All unspecified fields are left unchanged. The response message contains a `Entity` message object returned as a response by the external system.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Resource name of the Entity. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.connections.entityTypes.entities.get()`
+
+Gets a single entity row matching the entity type and entity id specified in the request.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
-
-#### `projects.locations.connections.entityTypes.entities.deleteEntitiesWithConditions()`
-
-Deletes entities based on conditions specified in the request and not on entity id.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.entityType` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
-| `params.conditions` | `string` | No | Required. Conditions to be used when deleting entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. |
