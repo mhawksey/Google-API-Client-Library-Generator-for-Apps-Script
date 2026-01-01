@@ -18,27 +18,27 @@ class Cloudfunctions {
     this._servicePath = '';
 
 
-    this.operations = {};
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations', 'GET', apiParams, clientConfig);
-    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.projects = {};
 
     this.projects.locations = {};
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.functions = {};
-    this.projects.locations.functions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/functions', 'GET', apiParams, clientConfig);
-    this.projects.locations.functions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.functions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}/functions', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.functions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.functions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/functions', 'GET', apiParams, clientConfig);
+    this.projects.locations.functions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.functions.call = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:call', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.functions.generateUploadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/functions:generateUploadUrl', 'POST', apiParams, clientConfig);
     this.projects.locations.functions.generateDownloadUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateDownloadUrl', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.functions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.functions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.functions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.functions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.operations = {};
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/operations', 'GET', apiParams, clientConfig);
+    this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
