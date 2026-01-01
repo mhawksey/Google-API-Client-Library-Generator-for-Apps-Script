@@ -23,42 +23,42 @@ class Recommendationengine {
     this.projects.locations = {};
 
     this.projects.locations.catalogs = {};
-    this.projects.locations.catalogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/catalogs', 'GET', apiParams, clientConfig);
     this.projects.locations.catalogs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.catalogs.operations = {};
-    this.projects.locations.catalogs.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.catalogs.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.catalogs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/catalogs', 'GET', apiParams, clientConfig);
 
     this.projects.locations.catalogs.eventStores = {};
 
+    this.projects.locations.catalogs.eventStores.userEvents = {};
+    this.projects.locations.catalogs.eventStores.userEvents.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.eventStores.userEvents.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:write', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.eventStores.userEvents.rejoin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:rejoin', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.eventStores.userEvents.collect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:collect', 'GET', apiParams, clientConfig);
+    this.projects.locations.catalogs.eventStores.userEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents', 'GET', apiParams, clientConfig);
+    this.projects.locations.catalogs.eventStores.userEvents.purge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:purge', 'POST', apiParams, clientConfig);
+
     this.projects.locations.catalogs.eventStores.operations = {};
-    this.projects.locations.catalogs.eventStores.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.catalogs.eventStores.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.catalogs.eventStores.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.catalogs.eventStores.predictionApiKeyRegistrations = {};
-    this.projects.locations.catalogs.eventStores.predictionApiKeyRegistrations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/predictionApiKeyRegistrations', 'POST', apiParams, clientConfig);
     this.projects.locations.catalogs.eventStores.predictionApiKeyRegistrations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/predictionApiKeyRegistrations', 'GET', apiParams, clientConfig);
     this.projects.locations.catalogs.eventStores.predictionApiKeyRegistrations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.catalogs.eventStores.predictionApiKeyRegistrations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/predictionApiKeyRegistrations', 'POST', apiParams, clientConfig);
 
     this.projects.locations.catalogs.eventStores.placements = {};
     this.projects.locations.catalogs.eventStores.placements.predict = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:predict', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.catalogs.eventStores.userEvents = {};
-    this.projects.locations.catalogs.eventStores.userEvents.write = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:write', 'POST', apiParams, clientConfig);
-    this.projects.locations.catalogs.eventStores.userEvents.collect = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:collect', 'GET', apiParams, clientConfig);
-    this.projects.locations.catalogs.eventStores.userEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents', 'GET', apiParams, clientConfig);
-    this.projects.locations.catalogs.eventStores.userEvents.purge = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:purge', 'POST', apiParams, clientConfig);
-    this.projects.locations.catalogs.eventStores.userEvents.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:import', 'POST', apiParams, clientConfig);
-    this.projects.locations.catalogs.eventStores.userEvents.rejoin = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userEvents:rejoin', 'POST', apiParams, clientConfig);
-
     this.projects.locations.catalogs.catalogItems = {};
-    this.projects.locations.catalogs.catalogItems.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/catalogItems', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.catalogItems.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/catalogItems:import', 'POST', apiParams, clientConfig);
     this.projects.locations.catalogs.catalogItems.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.catalogs.catalogItems.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/catalogItems', 'GET', apiParams, clientConfig);
-    this.projects.locations.catalogs.catalogItems.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.catalogs.catalogItems.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.catalogs.catalogItems.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/catalogItems:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.catalogs.catalogItems.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.catalogs.catalogItems.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/catalogItems', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.catalogs.operations = {};
+    this.projects.locations.catalogs.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.catalogs.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
