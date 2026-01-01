@@ -18,83 +18,83 @@ class Chromemanagement {
     this._servicePath = '';
 
 
-    this.operations = {};
-    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.customers = {};
 
-    this.customers.thirdPartyProfileUsers = {};
-    this.customers.thirdPartyProfileUsers.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.customers.apps = {};
+    this.customers.apps.countChromeAppRequests = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:countChromeAppRequests', 'GET', apiParams, clientConfig);
+    this.customers.apps.fetchDevicesRequestingExtension = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:fetchDevicesRequestingExtension', 'GET', apiParams, clientConfig);
+    this.customers.apps.fetchUsersRequestingExtension = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:fetchUsersRequestingExtension', 'GET', apiParams, clientConfig);
+
+    this.customers.apps.chrome = {};
+    this.customers.apps.chrome.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.customers.apps.android = {};
+    this.customers.apps.android.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.customers.apps.web = {};
+    this.customers.apps.web.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.customers.reports = {};
+    this.customers.reports.countChromeDevicesReachingAutoExpirationDate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeDevicesReachingAutoExpirationDate', 'GET', apiParams, clientConfig);
+    this.customers.reports.countChromeDevicesThatNeedAttention = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeDevicesThatNeedAttention', 'GET', apiParams, clientConfig);
+    this.customers.reports.countChromeBrowsersNeedingAttention = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeBrowsersNeedingAttention', 'GET', apiParams, clientConfig);
+    this.customers.reports.countChromeHardwareFleetDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeHardwareFleetDevices', 'GET', apiParams, clientConfig);
+    this.customers.reports.countInstalledApps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countInstalledApps', 'GET', apiParams, clientConfig);
+    this.customers.reports.findInstalledAppDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:findInstalledAppDevices', 'GET', apiParams, clientConfig);
+    this.customers.reports.countChromeVersions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeVersions', 'GET', apiParams, clientConfig);
+    this.customers.reports.countPrintJobsByUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countPrintJobsByUser', 'GET', apiParams, clientConfig);
+    this.customers.reports.countPrintJobsByPrinter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countPrintJobsByPrinter', 'GET', apiParams, clientConfig);
+    this.customers.reports.enumeratePrintJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:enumeratePrintJobs', 'GET', apiParams, clientConfig);
+    this.customers.reports.countChromeCrashEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeCrashEvents', 'GET', apiParams, clientConfig);
+    this.customers.reports.countActiveDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countActiveDevices', 'GET', apiParams, clientConfig);
+    this.customers.reports.countDevicesPerReleaseChannel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countDevicesPerReleaseChannel', 'GET', apiParams, clientConfig);
+    this.customers.reports.countDevicesPerBootType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countDevicesPerBootType', 'GET', apiParams, clientConfig);
 
     this.customers.telemetry = {};
 
     this.customers.telemetry.devices = {};
-    this.customers.telemetry.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.customers.telemetry.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/devices', 'GET', apiParams, clientConfig);
+    this.customers.telemetry.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.customers.telemetry.events = {};
     this.customers.telemetry.events.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/events', 'GET', apiParams, clientConfig);
-
-    this.customers.telemetry.notificationConfigs = {};
-    this.customers.telemetry.notificationConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.customers.telemetry.notificationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/notificationConfigs', 'GET', apiParams, clientConfig);
-    this.customers.telemetry.notificationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/notificationConfigs', 'POST', apiParams, clientConfig);
 
     this.customers.telemetry.users = {};
     this.customers.telemetry.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/users', 'GET', apiParams, clientConfig);
     this.customers.telemetry.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.customers.apps = {};
-    this.customers.apps.fetchUsersRequestingExtension = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:fetchUsersRequestingExtension', 'GET', apiParams, clientConfig);
-    this.customers.apps.fetchDevicesRequestingExtension = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:fetchDevicesRequestingExtension', 'GET', apiParams, clientConfig);
-    this.customers.apps.countChromeAppRequests = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/apps:countChromeAppRequests', 'GET', apiParams, clientConfig);
+    this.customers.telemetry.notificationConfigs = {};
+    this.customers.telemetry.notificationConfigs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/notificationConfigs', 'GET', apiParams, clientConfig);
+    this.customers.telemetry.notificationConfigs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/telemetry/notificationConfigs', 'POST', apiParams, clientConfig);
+    this.customers.telemetry.notificationConfigs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.customers.apps.android = {};
-    this.customers.apps.android.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.profiles = {};
+    this.customers.profiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.profiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/profiles', 'GET', apiParams, clientConfig);
+    this.customers.profiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.customers.apps.chrome = {};
-    this.customers.apps.chrome.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.customers.apps.web = {};
-    this.customers.apps.web.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.profiles.commands = {};
+    this.customers.profiles.commands.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/commands', 'POST', apiParams, clientConfig);
+    this.customers.profiles.commands.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.profiles.commands.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/commands', 'GET', apiParams, clientConfig);
 
     this.customers.certificateProvisioningProcesses = {};
     this.customers.certificateProvisioningProcesses.claim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:claim', 'POST', apiParams, clientConfig);
-    this.customers.certificateProvisioningProcesses.uploadCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:uploadCertificate', 'POST', apiParams, clientConfig);
     this.customers.certificateProvisioningProcesses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.customers.certificateProvisioningProcesses.signData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:signData', 'POST', apiParams, clientConfig);
+    this.customers.certificateProvisioningProcesses.uploadCertificate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:uploadCertificate', 'POST', apiParams, clientConfig);
     this.customers.certificateProvisioningProcesses.setFailure = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setFailure', 'POST', apiParams, clientConfig);
 
     this.customers.certificateProvisioningProcesses.operations = {};
     this.customers.certificateProvisioningProcesses.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.customers.profiles = {};
-    this.customers.profiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/profiles', 'GET', apiParams, clientConfig);
-    this.customers.profiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.customers.profiles.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.customers.thirdPartyProfileUsers = {};
+    this.customers.thirdPartyProfileUsers.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
 
-    this.customers.profiles.commands = {};
-    this.customers.profiles.commands.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/commands', 'POST', apiParams, clientConfig);
-    this.customers.profiles.commands.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/commands', 'GET', apiParams, clientConfig);
-    this.customers.profiles.commands.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.customers.reports = {};
-    this.customers.reports.countChromeVersions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeVersions', 'GET', apiParams, clientConfig);
-    this.customers.reports.enumeratePrintJobs = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:enumeratePrintJobs', 'GET', apiParams, clientConfig);
-    this.customers.reports.countInstalledApps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countInstalledApps', 'GET', apiParams, clientConfig);
-    this.customers.reports.countChromeDevicesReachingAutoExpirationDate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeDevicesReachingAutoExpirationDate', 'GET', apiParams, clientConfig);
-    this.customers.reports.countChromeBrowsersNeedingAttention = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeBrowsersNeedingAttention', 'GET', apiParams, clientConfig);
-    this.customers.reports.countPrintJobsByUser = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countPrintJobsByUser', 'GET', apiParams, clientConfig);
-    this.customers.reports.countChromeHardwareFleetDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeHardwareFleetDevices', 'GET', apiParams, clientConfig);
-    this.customers.reports.countDevicesPerReleaseChannel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countDevicesPerReleaseChannel', 'GET', apiParams, clientConfig);
-    this.customers.reports.countChromeDevicesThatNeedAttention = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeDevicesThatNeedAttention', 'GET', apiParams, clientConfig);
-    this.customers.reports.findInstalledAppDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:findInstalledAppDevices', 'GET', apiParams, clientConfig);
-    this.customers.reports.countActiveDevices = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countActiveDevices', 'GET', apiParams, clientConfig);
-    this.customers.reports.countDevicesPerBootType = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countDevicesPerBootType', 'GET', apiParams, clientConfig);
-    this.customers.reports.countChromeCrashEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countChromeCrashEvents', 'GET', apiParams, clientConfig);
-    this.customers.reports.countPrintJobsByPrinter = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+customer}/reports:countPrintJobsByPrinter', 'GET', apiParams, clientConfig);
+    this.operations = {};
+    this.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
   }
 
 /**
