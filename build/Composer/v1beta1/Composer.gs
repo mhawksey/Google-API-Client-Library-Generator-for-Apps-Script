@@ -22,54 +22,46 @@ class Composer {
 
     this.projects.locations = {};
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.imageVersions = {};
+    this.projects.locations.imageVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/imageVersions', 'GET', apiParams, clientConfig);
 
     this.projects.locations.environments = {};
-    this.projects.locations.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/environments', 'POST', apiParams, clientConfig);
     this.projects.locations.environments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/environments', 'GET', apiParams, clientConfig);
-    this.projects.locations.environments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.environments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.environments.restartWebServer = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}:restartWebServer', 'POST', apiParams, clientConfig);
-    this.projects.locations.environments.checkUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:checkUpgrade', 'POST', apiParams, clientConfig);
-    this.projects.locations.environments.executeAirflowCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:executeAirflowCommand', 'POST', apiParams, clientConfig);
+    this.projects.locations.environments.fetchDatabaseProperties = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:fetchDatabaseProperties', 'GET', apiParams, clientConfig);
     this.projects.locations.environments.stopAirflowCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:stopAirflowCommand', 'POST', apiParams, clientConfig);
+    this.projects.locations.environments.checkUpgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:checkUpgrade', 'POST', apiParams, clientConfig);
+    this.projects.locations.environments.databaseFailover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:databaseFailover', 'POST', apiParams, clientConfig);
     this.projects.locations.environments.pollAirflowCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:pollAirflowCommand', 'POST', apiParams, clientConfig);
+    this.projects.locations.environments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.environments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/environments', 'GET', apiParams, clientConfig);
+    this.projects.locations.environments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/environments', 'POST', apiParams, clientConfig);
+    this.projects.locations.environments.executeAirflowCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:executeAirflowCommand', 'POST', apiParams, clientConfig);
     this.projects.locations.environments.saveSnapshot = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:saveSnapshot', 'POST', apiParams, clientConfig);
     this.projects.locations.environments.loadSnapshot = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:loadSnapshot', 'POST', apiParams, clientConfig);
-    this.projects.locations.environments.databaseFailover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:databaseFailover', 'POST', apiParams, clientConfig);
-    this.projects.locations.environments.fetchDatabaseProperties = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+environment}:fetchDatabaseProperties', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.environments.userWorkloadsConfigMaps = {};
+    this.projects.locations.environments.userWorkloadsConfigMaps.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.environments.userWorkloadsConfigMaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userWorkloadsConfigMaps', 'POST', apiParams, clientConfig);
+    this.projects.locations.environments.userWorkloadsConfigMaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userWorkloadsConfigMaps', 'GET', apiParams, clientConfig);
+    this.projects.locations.environments.userWorkloadsConfigMaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.environments.userWorkloadsConfigMaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.environments.workloads = {};
     this.projects.locations.environments.workloads.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/workloads', 'GET', apiParams, clientConfig);
 
     this.projects.locations.environments.userWorkloadsSecrets = {};
-    this.projects.locations.environments.userWorkloadsSecrets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userWorkloadsSecrets', 'POST', apiParams, clientConfig);
-    this.projects.locations.environments.userWorkloadsSecrets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.environments.userWorkloadsSecrets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userWorkloadsSecrets', 'GET', apiParams, clientConfig);
     this.projects.locations.environments.userWorkloadsSecrets.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.environments.userWorkloadsSecrets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userWorkloadsSecrets', 'POST', apiParams, clientConfig);
     this.projects.locations.environments.userWorkloadsSecrets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.environments.userWorkloadsSecrets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userWorkloadsSecrets', 'GET', apiParams, clientConfig);
+    this.projects.locations.environments.userWorkloadsSecrets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.environments.userWorkloadsConfigMaps = {};
-    this.projects.locations.environments.userWorkloadsConfigMaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userWorkloadsConfigMaps', 'POST', apiParams, clientConfig);
-    this.projects.locations.environments.userWorkloadsConfigMaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.environments.userWorkloadsConfigMaps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/userWorkloadsConfigMaps', 'GET', apiParams, clientConfig);
-    this.projects.locations.environments.userWorkloadsConfigMaps.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.environments.userWorkloadsConfigMaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.environments.dags = {};
-
-    this.projects.locations.environments.dags.dagRuns = {};
-
-    this.projects.locations.environments.dags.dagRuns.taskInstances = {};
-    this.projects.locations.environments.dags.dagRuns.taskInstances.analyzeTask = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+taskInstance}:analyzeTask', 'POST', apiParams, clientConfig);
-    this.projects.locations.environments.dags.dagRuns.taskInstances.getAnalyzeTaskOperation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+taskInstance}:getAnalyzeTaskOperation', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.imageVersions = {};
-    this.projects.locations.imageVersions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/imageVersions', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
