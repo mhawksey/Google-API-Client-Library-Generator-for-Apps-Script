@@ -18,125 +18,133 @@ class Walletobjects {
     this._servicePath = '';
 
 
-    this.issuer = {};
-    this.issuer.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer/{resourceId}', 'GET', apiParams, clientConfig);
-    this.issuer.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer', 'POST', apiParams, clientConfig);
-    this.issuer.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer', 'GET', apiParams, clientConfig);
-    this.issuer.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.issuer.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.genericobject = {};
+    this.genericobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.genericobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject', 'GET', apiParams, clientConfig);
+    this.genericobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject', 'POST', apiParams, clientConfig);
+    this.genericobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.genericobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject/{resourceId}', 'GET', apiParams, clientConfig);
+    this.genericobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
 
-    this.eventticketclass = {};
-    this.eventticketclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.eventticketclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass/{resourceId}', 'GET', apiParams, clientConfig);
-    this.eventticketclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass', 'POST', apiParams, clientConfig);
-    this.eventticketclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass', 'GET', apiParams, clientConfig);
-    this.eventticketclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.eventticketclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.eventticketobject = {};
-    this.eventticketobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.eventticketobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}', 'GET', apiParams, clientConfig);
-    this.eventticketobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject', 'POST', apiParams, clientConfig);
-    this.eventticketobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject', 'GET', apiParams, clientConfig);
-    this.eventticketobject.modifylinkedofferobjects = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}/modifyLinkedOfferObjects', 'POST', apiParams, clientConfig);
-    this.eventticketobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.eventticketobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.flightclass = {};
-    this.flightclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.flightclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass/{resourceId}', 'GET', apiParams, clientConfig);
-    this.flightclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass', 'POST', apiParams, clientConfig);
-    this.flightclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass', 'GET', apiParams, clientConfig);
-    this.flightclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.flightclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.smarttap = {};
+    this.smarttap.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/smartTap', 'POST', apiParams, clientConfig);
 
     this.flightobject = {};
-    this.flightobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.flightobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject/{resourceId}', 'GET', apiParams, clientConfig);
-    this.flightobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject', 'POST', apiParams, clientConfig);
-    this.flightobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject', 'GET', apiParams, clientConfig);
-    this.flightobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject/{resourceId}', 'PATCH', apiParams, clientConfig);
     this.flightobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.genericclass = {};
-    this.genericclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.genericclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass/{resourceId}', 'GET', apiParams, clientConfig);
-    this.genericclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass', 'POST', apiParams, clientConfig);
-    this.genericclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass', 'GET', apiParams, clientConfig);
-    this.genericclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.genericclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.genericobject = {};
-    this.genericobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.genericobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject/{resourceId}', 'GET', apiParams, clientConfig);
-    this.genericobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject', 'POST', apiParams, clientConfig);
-    this.genericobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject', 'GET', apiParams, clientConfig);
-    this.genericobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.genericobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericObject/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.giftcardclass = {};
-    this.giftcardclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.giftcardclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass/{resourceId}', 'GET', apiParams, clientConfig);
-    this.giftcardclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass', 'POST', apiParams, clientConfig);
-    this.giftcardclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass', 'GET', apiParams, clientConfig);
-    this.giftcardclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.giftcardclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.giftcardobject = {};
-    this.giftcardobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.giftcardobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject/{resourceId}', 'GET', apiParams, clientConfig);
-    this.giftcardobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject', 'POST', apiParams, clientConfig);
-    this.giftcardobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject', 'GET', apiParams, clientConfig);
-    this.giftcardobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.giftcardobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.jwt = {};
-    this.jwt.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/jwt', 'POST', apiParams, clientConfig);
-
-    this.loyaltyclass = {};
-    this.loyaltyclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.loyaltyclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass/{resourceId}', 'GET', apiParams, clientConfig);
-    this.loyaltyclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass', 'POST', apiParams, clientConfig);
-    this.loyaltyclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass', 'GET', apiParams, clientConfig);
-    this.loyaltyclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.loyaltyclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.loyaltyobject = {};
-    this.loyaltyobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.loyaltyobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}', 'GET', apiParams, clientConfig);
-    this.loyaltyobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject', 'POST', apiParams, clientConfig);
-    this.loyaltyobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject', 'GET', apiParams, clientConfig);
-    this.loyaltyobject.modifylinkedofferobjects = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}/modifyLinkedOfferObjects', 'POST', apiParams, clientConfig);
-    this.loyaltyobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.loyaltyobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.offerclass = {};
-    this.offerclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.offerclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass/{resourceId}', 'GET', apiParams, clientConfig);
-    this.offerclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass', 'POST', apiParams, clientConfig);
-    this.offerclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass', 'GET', apiParams, clientConfig);
-    this.offerclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.offerclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.offerobject = {};
-    this.offerobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.offerobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject/{resourceId}', 'GET', apiParams, clientConfig);
-    this.offerobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject', 'POST', apiParams, clientConfig);
-    this.offerobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject', 'GET', apiParams, clientConfig);
-    this.offerobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.offerobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.permissions = {};
-    this.permissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/permissions/{resourceId}', 'GET', apiParams, clientConfig);
-    this.permissions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/permissions/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.flightobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject', 'GET', apiParams, clientConfig);
+    this.flightobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject', 'POST', apiParams, clientConfig);
+    this.flightobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.flightobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.flightobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightObject/{resourceId}', 'GET', apiParams, clientConfig);
 
     this.media = {};
+    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/downloadRotatingBarcodeValues', 'GET', apiParams, clientConfig);
     this.media.upload = async (apiParams = {}, clientConfig = {}) => {
       // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
       const path = apiParams.media ? '/upload/walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues' : 'walletobjects/v1/transitObject/{resourceId}/uploadRotatingBarcodeValues';
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
-    this.media.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/downloadRotatingBarcodeValues', 'GET', apiParams, clientConfig);
+
+    this.eventticketobject = {};
+    this.eventticketobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.eventticketobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.eventticketobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject', 'GET', apiParams, clientConfig);
+    this.eventticketobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}', 'GET', apiParams, clientConfig);
+    this.eventticketobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.eventticketobject.modifylinkedofferobjects = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject/{resourceId}/modifyLinkedOfferObjects', 'POST', apiParams, clientConfig);
+    this.eventticketobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketObject', 'POST', apiParams, clientConfig);
+
+    this.transitobject = {};
+    this.transitobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.transitobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject', 'GET', apiParams, clientConfig);
+    this.transitobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.transitobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject', 'POST', apiParams, clientConfig);
+    this.transitobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.transitobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}', 'GET', apiParams, clientConfig);
+
+    this.giftcardclass = {};
+    this.giftcardclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass', 'GET', apiParams, clientConfig);
+    this.giftcardclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.giftcardclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.giftcardclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass/{resourceId}', 'GET', apiParams, clientConfig);
+    this.giftcardclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass', 'POST', apiParams, clientConfig);
+    this.giftcardclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardClass/{resourceId}', 'PATCH', apiParams, clientConfig);
+
+    this.giftcardobject = {};
+    this.giftcardobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject', 'POST', apiParams, clientConfig);
+    this.giftcardobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject/{resourceId}', 'GET', apiParams, clientConfig);
+    this.giftcardobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.giftcardobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject', 'GET', apiParams, clientConfig);
+    this.giftcardobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.giftcardobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/giftCardObject/{resourceId}', 'PATCH', apiParams, clientConfig);
+
+    this.loyaltyobject = {};
+    this.loyaltyobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.loyaltyobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject', 'GET', apiParams, clientConfig);
+    this.loyaltyobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.loyaltyobject.modifylinkedofferobjects = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}/modifyLinkedOfferObjects', 'POST', apiParams, clientConfig);
+    this.loyaltyobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject', 'POST', apiParams, clientConfig);
+    this.loyaltyobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.loyaltyobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyObject/{resourceId}', 'GET', apiParams, clientConfig);
+
+    this.eventticketclass = {};
+    this.eventticketclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.eventticketclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.eventticketclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass', 'GET', apiParams, clientConfig);
+    this.eventticketclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass/{resourceId}', 'GET', apiParams, clientConfig);
+    this.eventticketclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.eventticketclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/eventTicketClass', 'POST', apiParams, clientConfig);
+
+    this.loyaltyclass = {};
+    this.loyaltyclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass/{resourceId}', 'GET', apiParams, clientConfig);
+    this.loyaltyclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.loyaltyclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass', 'POST', apiParams, clientConfig);
+    this.loyaltyclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.loyaltyclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass', 'GET', apiParams, clientConfig);
+    this.loyaltyclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/loyaltyClass/{resourceId}', 'PATCH', apiParams, clientConfig);
+
+    this.offerclass = {};
+    this.offerclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.offerclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass', 'GET', apiParams, clientConfig);
+    this.offerclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass', 'POST', apiParams, clientConfig);
+    this.offerclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass/{resourceId}', 'GET', apiParams, clientConfig);
+    this.offerclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.offerclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerClass/{resourceId}', 'PUT', apiParams, clientConfig);
+
+    this.issuer = {};
+    this.issuer.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer/{resourceId}', 'GET', apiParams, clientConfig);
+    this.issuer.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.issuer.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer', 'POST', apiParams, clientConfig);
+    this.issuer.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.issuer.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/issuer', 'GET', apiParams, clientConfig);
+
+    this.flightclass = {};
+    this.flightclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.flightclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.flightclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.flightclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass/{resourceId}', 'GET', apiParams, clientConfig);
+    this.flightclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass', 'POST', apiParams, clientConfig);
+    this.flightclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/flightClass', 'GET', apiParams, clientConfig);
+
+    this.permissions = {};
+    this.permissions.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/permissions/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.permissions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/permissions/{resourceId}', 'GET', apiParams, clientConfig);
+
+    this.transitclass = {};
+    this.transitclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass/{resourceId}', 'GET', apiParams, clientConfig);
+    this.transitclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.transitclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.transitclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.transitclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass', 'POST', apiParams, clientConfig);
+    this.transitclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass', 'GET', apiParams, clientConfig);
+
+    this.offerobject = {};
+    this.offerobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject/{resourceId}', 'PATCH', apiParams, clientConfig);
+    this.offerobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject/{resourceId}', 'GET', apiParams, clientConfig);
+    this.offerobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject', 'GET', apiParams, clientConfig);
+    this.offerobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject', 'POST', apiParams, clientConfig);
+    this.offerobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.offerobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/offerObject/{resourceId}', 'PUT', apiParams, clientConfig);
 
     this.walletobjects = {};
 
@@ -145,24 +153,16 @@ class Walletobjects {
     this.walletobjects.v1.privateContent = {};
     this.walletobjects.v1.privateContent.setPassUpdateNotice = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/privateContent/setPassUpdateNotice', 'POST', apiParams, clientConfig);
 
-    this.smarttap = {};
-    this.smarttap.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/smartTap', 'POST', apiParams, clientConfig);
+    this.jwt = {};
+    this.jwt.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/jwt', 'POST', apiParams, clientConfig);
 
-    this.transitclass = {};
-    this.transitclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.transitclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass/{resourceId}', 'GET', apiParams, clientConfig);
-    this.transitclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass', 'POST', apiParams, clientConfig);
-    this.transitclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass', 'GET', apiParams, clientConfig);
-    this.transitclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.transitclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitClass/{resourceId}', 'PUT', apiParams, clientConfig);
-
-    this.transitobject = {};
-    this.transitobject.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
-    this.transitobject.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}', 'GET', apiParams, clientConfig);
-    this.transitobject.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject', 'POST', apiParams, clientConfig);
-    this.transitobject.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject', 'GET', apiParams, clientConfig);
-    this.transitobject.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}', 'PATCH', apiParams, clientConfig);
-    this.transitobject.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/transitObject/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.genericclass = {};
+    this.genericclass.addmessage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass/{resourceId}/addMessage', 'POST', apiParams, clientConfig);
+    this.genericclass.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass/{resourceId}', 'PUT', apiParams, clientConfig);
+    this.genericclass.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass/{resourceId}', 'GET', apiParams, clientConfig);
+    this.genericclass.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass', 'POST', apiParams, clientConfig);
+    this.genericclass.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass', 'GET', apiParams, clientConfig);
+    this.genericclass.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('walletobjects/v1/genericClass/{resourceId}', 'PATCH', apiParams, clientConfig);
   }
 
 /**
