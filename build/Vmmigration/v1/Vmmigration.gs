@@ -21,100 +21,100 @@ class Vmmigration {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
     this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.imageImports = {};
+    this.projects.locations.imageImports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.imageImports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/imageImports', 'POST', apiParams, clientConfig);
+    this.projects.locations.imageImports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.imageImports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/imageImports', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.imageImports.imageImportJobs = {};
+    this.projects.locations.imageImports.imageImportJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.imageImports.imageImportJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/imageImportJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.imageImports.imageImportJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.targetProjects = {};
+    this.projects.locations.targetProjects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.targetProjects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/targetProjects', 'POST', apiParams, clientConfig);
+    this.projects.locations.targetProjects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.targetProjects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/targetProjects', 'GET', apiParams, clientConfig);
+    this.projects.locations.targetProjects.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.groups = {};
+    this.projects.locations.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'GET', apiParams, clientConfig);
+    this.projects.locations.groups.removeGroupMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+group}:removeGroupMigration', 'POST', apiParams, clientConfig);
+    this.projects.locations.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.groups.addGroupMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+group}:addGroupMigration', 'POST', apiParams, clientConfig);
+    this.projects.locations.groups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'POST', apiParams, clientConfig);
+    this.projects.locations.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.sources = {};
+    this.projects.locations.sources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.sources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sources', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sources', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.sources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.sources.fetchInventory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+source}:fetchInventory', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.fetchStorageInventory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+source}:fetchStorageInventory', 'GET', apiParams, clientConfig);
+    this.projects.locations.sources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.sources.fetchInventory = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+source}:fetchInventory', 'GET', apiParams, clientConfig);
 
     this.projects.locations.sources.utilizationReports = {};
+    this.projects.locations.sources.utilizationReports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.sources.utilizationReports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/utilizationReports', 'POST', apiParams, clientConfig);
     this.projects.locations.sources.utilizationReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/utilizationReports', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.utilizationReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.sources.utilizationReports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/utilizationReports', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.utilizationReports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.sources.datacenterConnectors = {};
-    this.projects.locations.sources.datacenterConnectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/datacenterConnectors', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.datacenterConnectors.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.sources.datacenterConnectors.upgradeAppliance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+datacenterConnector}:upgradeAppliance', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.datacenterConnectors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/datacenterConnectors', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.datacenterConnectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/datacenterConnectors', 'POST', apiParams, clientConfig);
     this.projects.locations.sources.datacenterConnectors.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.sources.datacenterConnectors.upgradeAppliance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+datacenterConnector}:upgradeAppliance', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.sources.diskMigrationJobs = {};
+    this.projects.locations.sources.diskMigrationJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.sources.diskMigrationJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:run', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.diskMigrationJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/diskMigrationJobs', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.diskMigrationJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.sources.diskMigrationJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.diskMigrationJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/diskMigrationJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.sources.diskMigrationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.sources.migratingVms = {};
-    this.projects.locations.sources.migratingVms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migratingVms', 'POST', apiParams, clientConfig);
     this.projects.locations.sources.migratingVms.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migratingVms', 'GET', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.startMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:startMigration', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.finalizeMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:finalizeMigration', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.pauseMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:pauseMigration', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.resumeMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:resumeMigration', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migratingVms', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.extendMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:extendMigration', 'POST', apiParams, clientConfig);
     this.projects.locations.sources.migratingVms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.migratingVms.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.startMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:startMigration', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.resumeMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:resumeMigration', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.pauseMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:pauseMigration', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.finalizeMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:finalizeMigration', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.extendMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+migratingVm}:extendMigration', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.sources.migratingVms.cloneJobs = {};
-    this.projects.locations.sources.migratingVms.cloneJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cloneJobs', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.cloneJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.cloneJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cloneJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.cloneJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.sources.migratingVms.cutoverJobs = {};
+    this.projects.locations.sources.migratingVms.cutoverJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cutoverJobs', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.migratingVms.cutoverJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cutoverJobs', 'POST', apiParams, clientConfig);
     this.projects.locations.sources.migratingVms.cutoverJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.migratingVms.cutoverJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cutoverJobs', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.migratingVms.cutoverJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.sources.migratingVms.cloneJobs = {};
+    this.projects.locations.sources.migratingVms.cloneJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.cloneJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cloneJobs', 'POST', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.cloneJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/cloneJobs', 'GET', apiParams, clientConfig);
+    this.projects.locations.sources.migratingVms.cloneJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.sources.migratingVms.replicationCycles = {};
     this.projects.locations.sources.migratingVms.replicationCycles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/replicationCycles', 'GET', apiParams, clientConfig);
     this.projects.locations.sources.migratingVms.replicationCycles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.sources.diskMigrationJobs = {};
-    this.projects.locations.sources.diskMigrationJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/diskMigrationJobs', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.diskMigrationJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/diskMigrationJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.sources.diskMigrationJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.sources.diskMigrationJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.sources.diskMigrationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.sources.diskMigrationJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:run', 'POST', apiParams, clientConfig);
-    this.projects.locations.sources.diskMigrationJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.groups = {};
-    this.projects.locations.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'GET', apiParams, clientConfig);
-    this.projects.locations.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.groups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/groups', 'POST', apiParams, clientConfig);
-    this.projects.locations.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.groups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.groups.addGroupMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+group}:addGroupMigration', 'POST', apiParams, clientConfig);
-    this.projects.locations.groups.removeGroupMigration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+group}:removeGroupMigration', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.targetProjects = {};
-    this.projects.locations.targetProjects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/targetProjects', 'GET', apiParams, clientConfig);
-    this.projects.locations.targetProjects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.targetProjects.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/targetProjects', 'POST', apiParams, clientConfig);
-    this.projects.locations.targetProjects.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.targetProjects.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.imageImports = {};
-    this.projects.locations.imageImports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/imageImports', 'GET', apiParams, clientConfig);
-    this.projects.locations.imageImports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.imageImports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/imageImports', 'POST', apiParams, clientConfig);
-    this.projects.locations.imageImports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.imageImports.imageImportJobs = {};
-    this.projects.locations.imageImports.imageImportJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/imageImportJobs', 'GET', apiParams, clientConfig);
-    this.projects.locations.imageImports.imageImportJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.imageImports.imageImportJobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
   }
 
 /**
