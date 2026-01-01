@@ -20,19 +20,19 @@ class Forms {
 
     this.forms = {};
     this.forms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms', 'POST', apiParams, clientConfig);
-    this.forms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}', 'GET', apiParams, clientConfig);
     this.forms.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:batchUpdate', 'POST', apiParams, clientConfig);
+    this.forms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}', 'GET', apiParams, clientConfig);
     this.forms.setPublishSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:setPublishSettings', 'POST', apiParams, clientConfig);
 
     this.forms.responses = {};
-    this.forms.responses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/responses/{responseId}', 'GET', apiParams, clientConfig);
     this.forms.responses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/responses', 'GET', apiParams, clientConfig);
+    this.forms.responses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/responses/{responseId}', 'GET', apiParams, clientConfig);
 
     this.forms.watches = {};
-    this.forms.watches.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'POST', apiParams, clientConfig);
-    this.forms.watches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'GET', apiParams, clientConfig);
-    this.forms.watches.renew = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches/{watchId}:renew', 'POST', apiParams, clientConfig);
     this.forms.watches.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches/{watchId}', 'DELETE', apiParams, clientConfig);
+    this.forms.watches.renew = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches/{watchId}:renew', 'POST', apiParams, clientConfig);
+    this.forms.watches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'GET', apiParams, clientConfig);
+    this.forms.watches.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'POST', apiParams, clientConfig);
   }
 
 /**
