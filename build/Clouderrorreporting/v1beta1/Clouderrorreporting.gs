@@ -21,29 +21,29 @@ class Clouderrorreporting {
     this.projects = {};
     this.projects.deleteEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/events', 'DELETE', apiParams, clientConfig);
 
+    this.projects.groupStats = {};
+    this.projects.groupStats.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/groupStats', 'GET', apiParams, clientConfig);
+
     this.projects.groups = {};
     this.projects.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+groupName}', 'GET', apiParams, clientConfig);
     this.projects.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
 
-    this.projects.groupStats = {};
-    this.projects.groupStats.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/groupStats', 'GET', apiParams, clientConfig);
-
     this.projects.events = {};
-    this.projects.events.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/events', 'GET', apiParams, clientConfig);
     this.projects.events.report = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/events:report', 'POST', apiParams, clientConfig);
+    this.projects.events.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/events', 'GET', apiParams, clientConfig);
 
     this.projects.locations = {};
     this.projects.locations.deleteEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/events', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.groups = {};
-    this.projects.locations.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+groupName}', 'GET', apiParams, clientConfig);
     this.projects.locations.groups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PUT', apiParams, clientConfig);
-
-    this.projects.locations.groupStats = {};
-    this.projects.locations.groupStats.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/groupStats', 'GET', apiParams, clientConfig);
+    this.projects.locations.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+groupName}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.events = {};
     this.projects.locations.events.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/events', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.groupStats = {};
+    this.projects.locations.groupStats.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+projectName}/groupStats', 'GET', apiParams, clientConfig);
   }
 
 /**
