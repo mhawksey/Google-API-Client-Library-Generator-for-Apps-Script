@@ -25,22 +25,22 @@ class Memcache {
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:cancel', 'POST', apiParams, clientConfig);
 
     this.projects.locations.instances = {};
+    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.instances.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:upgrade', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+parent}/instances', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.rescheduleMaintenance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+instance}:rescheduleMaintenance', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.instances.updateParameters = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:updateParameters', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.instances.applyParameters = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:applyParameters', 'POST', apiParams, clientConfig);
     this.projects.locations.instances.applySoftwareUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+instance}:applySoftwareUpdate', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.rescheduleMaintenance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+instance}:rescheduleMaintenance', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta2/{+name}:upgrade', 'POST', apiParams, clientConfig);
   }
 
 /**
