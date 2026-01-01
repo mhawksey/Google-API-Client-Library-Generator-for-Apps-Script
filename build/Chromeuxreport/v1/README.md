@@ -4,7 +4,7 @@ Auto-generated client library for using the **Chrome UX Report API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:32:02 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:31:20 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:32:02 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:18 GMT
 
