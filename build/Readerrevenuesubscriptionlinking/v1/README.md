@@ -4,8 +4,8 @@ Auto-generated client library for using the **Reader Revenue Subscription Linkin
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:07:02 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:07:02 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:05:50 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:05:50 GMT
 - **Created:** Sun, 20 Jul 2025 16:52:07 GMT
 
 
@@ -18,14 +18,13 @@ Auto-generated client library for using the **Reader Revenue Subscription Linkin
 
 ### `publications.readers`
 
-#### `publications.readers.delete()`
+#### `publications.readers.getEntitlements()`
 
-Removes a publication reader, effectively severing the association with a Google user. If `force` is set to true, any entitlements for this reader will also be deleted. (Otherwise, the request will only work if the reader has no entitlements.) - If the reader does not exist, return NOT_FOUND. - Return FAILED_PRECONDITION if the force field is false (or unset) and entitlements are present.
+Gets the reader entitlements for a publication reader. - Returns PERMISSION_DENIED if the caller does not have access. - Returns NOT_FOUND if the reader does not exist.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.force` | `boolean` | No | If set to true, any entitlements under the reader will also be purged. |
-| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
+| `params.name` | `string` | Yes | Required. The name of the reader entitlements to retrieve. Format: publications/{publication_id}/readers/{reader_id}/entitlements |
 
 #### `publications.readers.updateEntitlements()`
 
@@ -45,10 +44,11 @@ Gets a reader of a publication. Returns NOT_FOUND if the reader does not exist.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
 
-#### `publications.readers.getEntitlements()`
+#### `publications.readers.delete()`
 
-Gets the reader entitlements for a publication reader. - Returns PERMISSION_DENIED if the caller does not have access. - Returns NOT_FOUND if the reader does not exist.
+Removes a publication reader, effectively severing the association with a Google user. If `force` is set to true, any entitlements for this reader will also be deleted. (Otherwise, the request will only work if the reader has no entitlements.) - If the reader does not exist, return NOT_FOUND. - Return FAILED_PRECONDITION if the force field is false (or unset) and entitlements are present.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the reader entitlements to retrieve. Format: publications/{publication_id}/readers/{reader_id}/entitlements |
+| `params.force` | `boolean` | No | If set to true, any entitlements under the reader will also be purged. |
+| `params.name` | `string` | Yes | Required. The resource name of the reader. Format: publications/{publication_id}/readers/{ppid} |
