@@ -21,12 +21,12 @@ class Merchantapi {
     this.accounts = {};
 
     this.accounts.dataSources = {};
-    this.accounts.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+parent}/dataSources', 'GET', apiParams, clientConfig);
     this.accounts.dataSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+parent}/dataSources', 'POST', apiParams, clientConfig);
+    this.accounts.dataSources.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}:fetch', 'POST', apiParams, clientConfig);
     this.accounts.dataSources.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.dataSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.dataSources.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}:fetch', 'POST', apiParams, clientConfig);
+    this.accounts.dataSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.dataSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+parent}/dataSources', 'GET', apiParams, clientConfig);
 
     this.accounts.dataSources.fileUploads = {};
     this.accounts.dataSources.fileUploads.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('datasources/v1beta/{+name}', 'GET', apiParams, clientConfig);
