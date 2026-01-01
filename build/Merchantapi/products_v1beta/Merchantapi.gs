@@ -21,13 +21,13 @@ class Merchantapi {
     this.accounts = {};
 
     this.accounts.productInputs = {};
-    this.accounts.productInputs.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1beta/{+parent}/productInputs:insert', 'POST', apiParams, clientConfig);
     this.accounts.productInputs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.productInputs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.productInputs.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1beta/{+parent}/productInputs:insert', 'POST', apiParams, clientConfig);
 
     this.accounts.products = {};
-    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1beta/{+parent}/products', 'GET', apiParams, clientConfig);
+    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('products/v1beta/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
