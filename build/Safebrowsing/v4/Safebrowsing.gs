@@ -18,12 +18,6 @@ class Safebrowsing {
     this._servicePath = '';
 
 
-    this.threatMatches = {};
-    this.threatMatches.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatMatches:find', 'POST', apiParams, clientConfig);
-
-    this.threatListUpdates = {};
-    this.threatListUpdates.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatListUpdates:fetch', 'POST', apiParams, clientConfig);
-
     this.encodedUpdates = {};
     this.encodedUpdates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/encodedUpdates/{encodedRequest}', 'GET', apiParams, clientConfig);
 
@@ -33,11 +27,17 @@ class Safebrowsing {
     this.encodedFullHashes = {};
     this.encodedFullHashes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/encodedFullHashes/{encodedRequest}', 'GET', apiParams, clientConfig);
 
-    this.threatHits = {};
-    this.threatHits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatHits', 'POST', apiParams, clientConfig);
+    this.threatMatches = {};
+    this.threatMatches.find = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatMatches:find', 'POST', apiParams, clientConfig);
+
+    this.threatListUpdates = {};
+    this.threatListUpdates.fetch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatListUpdates:fetch', 'POST', apiParams, clientConfig);
 
     this.threatLists = {};
     this.threatLists.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatLists', 'GET', apiParams, clientConfig);
+
+    this.threatHits = {};
+    this.threatHits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v4/threatHits', 'POST', apiParams, clientConfig);
   }
 
 /**
