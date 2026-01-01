@@ -18,15 +18,6 @@ class Policyanalyzer {
     this._servicePath = '';
 
 
-    this.projects = {};
-
-    this.projects.locations = {};
-
-    this.projects.locations.activityTypes = {};
-
-    this.projects.locations.activityTypes.activities = {};
-    this.projects.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
-
     this.organizations = {};
 
     this.organizations.locations = {};
@@ -44,6 +35,15 @@ class Policyanalyzer {
 
     this.folders.locations.activityTypes.activities = {};
     this.folders.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+
+    this.projects.locations = {};
+
+    this.projects.locations.activityTypes = {};
+
+    this.projects.locations.activityTypes.activities = {};
+    this.projects.locations.activityTypes.activities.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/activities:query', 'GET', apiParams, clientConfig);
   }
 
 /**
