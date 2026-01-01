@@ -4,8 +4,8 @@ Auto-generated client library for using the **HomeGraph API (version: v1)** in G
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:54:00 GMT
-- **Last Modified:** Mon, 01 Dec 2025 00:54:00 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:46:09 GMT
+- **Last Modified:** Thu, 01 Jan 2026 00:46:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:34:58 GMT
 
 
@@ -16,17 +16,17 @@ Auto-generated client library for using the **HomeGraph API (version: v1)** in G
 
 ### `devices`
 
-#### `devices.reportStateAndNotification()`
+#### `devices.requestSync()`
 
-Reports device state and optionally sends device notifications. Called by your smart home Action when the state of a third-party device changes or you need to send a notification about the device. See [Implement Report State](https://developers.home.google.com/cloud-to-cloud/integration/report-state) for more information. This method updates the device state according to its declared [traits](https://developers.home.google.com/cloud-to-cloud/primer/device-types-and-traits). Publishing a new state value outside of these traits will result in an `INVALID_ARGUMENT` error response. The third-party user's identity is passed in via the `agent_user_id` (see ReportStateAndNotificationRequest). This request must be authorized using service account credentials from your Actions console project.
+Requests Google to send an `action.devices.SYNC` [intent](https://developers.home.google.com/cloud-to-cloud/intents/sync) to your smart home Action to update device metadata for the given user. The third-party user's identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest). This request must be authorized using service account credentials from your Actions console project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `devices.requestSync()`
+#### `devices.reportStateAndNotification()`
 
-Requests Google to send an `action.devices.SYNC` [intent](https://developers.home.google.com/cloud-to-cloud/intents/sync) to your smart home Action to update device metadata for the given user. The third-party user's identity is passed via the `agent_user_id` (see RequestSyncDevicesRequest). This request must be authorized using service account credentials from your Actions console project.
+Reports device state and optionally sends device notifications. Called by your smart home Action when the state of a third-party device changes or you need to send a notification about the device. See [Implement Report State](https://developers.home.google.com/cloud-to-cloud/integration/report-state) for more information. This method updates the device state according to its declared [traits](https://developers.home.google.com/cloud-to-cloud/primer/device-types-and-traits). Publishing a new state value outside of these traits will result in an `INVALID_ARGUMENT` error response. The third-party user's identity is passed in via the `agent_user_id` (see ReportStateAndNotificationRequest). This request must be authorized using service account credentials from your Actions console project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
