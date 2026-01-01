@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Slides API (version: v1)** 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:16:04 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:16:04 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:07:59 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:07:59 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:43 GMT
 
 
@@ -15,14 +15,6 @@ Auto-generated client library for using the **Google Slides API (version: v1)** 
 ## API Reference
 
 ### `presentations`
-
-#### `presentations.get()`
-
-Gets the latest version of the specified presentation.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
 
 #### `presentations.create()`
 
@@ -41,6 +33,14 @@ Applies one or more updates to the presentation. Each request is validated befor
 | `params.presentationId` | `string` | Yes | The presentation to apply the updates to. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `presentations.get()`
+
+Gets the latest version of the specified presentation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
+
 ### `presentations.pages`
 
 #### `presentations.pages.get()`
@@ -49,8 +49,8 @@ Gets the latest version of the specified page in the presentation.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
 | `params.pageObjectId` | `string` | Yes | The object ID of the page to retrieve. |
+| `params.presentationId` | `string` | Yes | The ID of the presentation to retrieve. |
 
 #### `presentations.pages.getThumbnail()`
 
