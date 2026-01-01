@@ -58,19 +58,6 @@ class Firestore {
     this.projects.databases.indexes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/indexes', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists the indexes that match the specified filters.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - 
-     * @param {integer} apiParams.pageSize - The standard List page size.
-     * @param {string} apiParams.pageToken - The standard List page token.
-     * @param {string} apiParams.parent - (Required) The database name. For example: `projects/{project_id}/databases/{database_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/indexes', 'GET', apiParams, clientConfig);
-
-    /**
      * Gets an index.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) The name of the index. For example: `projects/{project_id}/databases/{database_id}/indexes/{index_id}`
@@ -90,20 +77,31 @@ class Firestore {
      */
     this.projects.databases.indexes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.projects.databases.documents = {};
-
     /**
-     * Gets a single document.
+     * Lists the indexes that match the specified filters.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.mask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Document to get. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-     * @param {string} apiParams.readTime - Reads the version of the document at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
-     * @param {string} apiParams.transaction - Reads the document in a transaction.
+     * @param {string} apiParams.filter - 
+     * @param {integer} apiParams.pageSize - The standard List page size.
+     * @param {string} apiParams.pageToken - The standard List page token.
+     * @param {string} apiParams.parent - (Required) The database name. For example: `projects/{project_id}/databases/{database_id}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.databases.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.databases.indexes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/indexes', 'GET', apiParams, clientConfig);
+
+    this.projects.databases.documents = {};
+
+    /**
+     * Starts a new transaction.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.database - (Required) Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.documents.beginTransaction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:beginTransaction', 'POST', apiParams, clientConfig);
 
     /**
      * Lists documents.
@@ -122,84 +120,6 @@ class Firestore {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.databases.documents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists documents.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.collectionId - (Required) Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`. This is optional, and when not provided, Firestore will list documents from all collections under the provided `parent`.
-     * @param {string} apiParams.mask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
-     * @param {string} apiParams.orderBy - Optional. The optional ordering of the documents to return. For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY` used in Firestore queries but in a string representation. When absent, documents are ordered based on `__name__ ASC`.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of documents to return in a single response. Firestore may return fewer than this value.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListDocuments` response. Provide this to retrieve the subsequent page. When paginating, all other parameters (with the exception of `page_size`) must match the values set in the request that generated the page token.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
-     * @param {string} apiParams.readTime - Perform the read at the provided time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
-     * @param {boolean} apiParams.showMissing - If the list should show missing documents. A document is missing if it does not exist, but there are sub-documents nested underneath it. When true, such missing documents will be returned with a key but will not have fields, `create_time`, or `update_time` set. Requests with `show_missing` may not specify `where` or `order_by`.
-     * @param {string} apiParams.transaction - Perform the read as part of an already active transaction.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.documents.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates or inserts a document.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.currentDocument.exists - When set to `true`, the target document must exist. When set to `false`, the target document must not exist.
-     * @param {string} apiParams.currentDocument.updateTime - When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned.
-     * @param {string} apiParams.mask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
-     * @param {string} apiParams.name - (Required) The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-     * @param {string} apiParams.updateMask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.documents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a document.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.currentDocument.exists - When set to `true`, the target document must exist. When set to `false`, the target document must not exist.
-     * @param {string} apiParams.currentDocument.updateTime - When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned.
-     * @param {string} apiParams.name - (Required) Required. The resource name of the Document to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.documents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.database - (Required) Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.documents.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:batchGet', 'POST', apiParams, clientConfig);
-
-    /**
-     * Starts a new transaction.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.database - (Required) Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.documents.beginTransaction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:beginTransaction', 'POST', apiParams, clientConfig);
-
-    /**
-     * Commits a transaction, while optionally updating documents.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.database - (Required) Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.databases.documents.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:commit', 'POST', apiParams, clientConfig);
 
     /**
      * Rolls back a transaction.
@@ -224,26 +144,60 @@ class Firestore {
     this.projects.databases.documents.runQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:runQuery', 'POST', apiParams, clientConfig);
 
     /**
-     * Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API allows running an aggregation to produce a series of AggregationResult server-side. High-Level Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM ( SELECT * FROM k where a = true ); ```
+     * Lists documents.
      * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.collectionId - (Required) Optional. The collection ID, relative to `parent`, to list. For example: `chatrooms` or `messages`. This is optional, and when not provided, Firestore will list documents from all collections under the provided `parent`.
+     * @param {string} apiParams.mask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
+     * @param {string} apiParams.orderBy - Optional. The optional ordering of the documents to return. For example: `priority desc, __name__ desc`. This mirrors the `ORDER BY` used in Firestore queries but in a string representation. When absent, documents are ordered based on `__name__ ASC`.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of documents to return in a single response. Firestore may return fewer than this value.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListDocuments` response. Provide this to retrieve the subsequent page. When paginating, all other parameters (with the exception of `page_size`) must match the values set in the request that generated the page token.
      * @param {string} apiParams.parent - (Required) Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.readTime - Perform the read at the provided time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
+     * @param {boolean} apiParams.showMissing - If the list should show missing documents. A document is missing if it does not exist, but there are sub-documents nested underneath it. When true, such missing documents will be returned with a key but will not have fields, `create_time`, or `update_time` set. Requests with `show_missing` may not specify `where` or `order_by`.
+     * @param {string} apiParams.transaction - Perform the read as part of an already active transaction.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.databases.documents.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:runAggregationQuery', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.listDocuments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results.
+     * Commits a transaction, while optionally updating documents.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not supported; only database resource names can be specified.
+     * @param {string} apiParams.database - (Required) Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.databases.documents.partitionQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:partitionQuery', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.commit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:commit', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a single document.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.mask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Document to get. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
+     * @param {string} apiParams.readTime - Reads the version of the document at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days.
+     * @param {string} apiParams.transaction - Reads the document in a transaction.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.documents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new document.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.collectionId - (Required) Required. The collection ID, relative to `parent`, to list. For example: `chatrooms`.
+     * @param {string} apiParams.documentId - The client-assigned document ID to use for this document. Optional. If not specified, an ID will be assigned by the service.
+     * @param {string} apiParams.mask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource. For example: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.documents.createDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'POST', apiParams, clientConfig);
 
     /**
      * Streams batches of document updates and deletes, in order. This method is only available via gRPC or WebChannel (not REST).
@@ -268,15 +222,64 @@ class Firestore {
     this.projects.databases.documents.listen = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:listen', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists all the collection IDs underneath a document.
+     * Runs an aggregation query. Rather than producing Document results like Firestore.RunQuery, this API allows running an aggregation to produce a series of AggregationResult server-side. High-Level Example: ``` -- Return the number of documents in table given a filter. SELECT COUNT(*) FROM ( SELECT * FROM k where a = true ); ```
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent document. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.databases.documents.listCollectionIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:listCollectionIds', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.runAggregationQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:runAggregationQuery', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a document.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.currentDocument.exists - When set to `true`, the target document must exist. When set to `false`, the target document must not exist.
+     * @param {string} apiParams.currentDocument.updateTime - When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned.
+     * @param {string} apiParams.name - (Required) Required. The resource name of the Document to delete. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.documents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Partitions a query by returning partition cursors that can be used to run the query in parallel. The returned partition cursors are split points that can be used by RunQuery as starting/end points for the query results.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents`. Document resource names are not supported; only database resource names can be specified.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.documents.partitionQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:partitionQuery', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates or inserts a document.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.currentDocument.exists - When set to `true`, the target document must exist. When set to `false`, the target document must not exist.
+     * @param {string} apiParams.currentDocument.updateTime - When set, the target document must exist and have been last updated at that time. Timestamp must be microsecond aligned.
+     * @param {string} apiParams.mask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
+     * @param {string} apiParams.name - (Required) The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`.
+     * @param {string} apiParams.updateMask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.documents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Executes a pipeline query.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.database - (Required) Required. Database identifier, in the form `projects/{project}/databases/{database}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.documents.executePipeline = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:executePipeline', 'POST', apiParams, clientConfig);
 
     /**
      * Applies a batch of write operations. The BatchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the BatchWriteResponse for the success status of each write. If you require an atomically applied set of writes, use Commit instead.
@@ -290,18 +293,26 @@ class Firestore {
     this.projects.databases.documents.batchWrite = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:batchWrite', 'POST', apiParams, clientConfig);
 
     /**
-     * Creates a new document.
+     * Lists all the collection IDs underneath a document.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.collectionId - (Required) Required. The collection ID, relative to `parent`, to list. For example: `chatrooms`.
-     * @param {string} apiParams.documentId - The client-assigned document ID to use for this document. Optional. If not specified, an ID will be assigned by the service.
-     * @param {string} apiParams.mask.fieldPaths - The list of field paths in the mask. See Document.fields for a field path syntax reference.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource. For example: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/chatrooms/{chatroom_id}`
+     * @param {string} apiParams.parent - (Required) Required. The parent document. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom`
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.databases.documents.createDocument = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/{collectionId}', 'POST', apiParams, clientConfig);
+    this.projects.databases.documents.listCollectionIds = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}:listCollectionIds', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets multiple documents. Documents returned by this method are not guaranteed to be returned in the same order that they were requested.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.database - (Required) Required. The database name. In the format: `projects/{project_id}/databases/{database_id}`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.databases.documents.batchGet = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+database}/documents:batchGet', 'POST', apiParams, clientConfig);
   }
 
 /**
