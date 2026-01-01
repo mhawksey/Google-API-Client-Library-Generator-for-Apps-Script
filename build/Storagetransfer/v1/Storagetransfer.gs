@@ -18,32 +18,32 @@ class Storagetransfer {
     this._servicePath = '';
 
 
-    this.transferOperations = {};
-    this.transferOperations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.transferOperations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.transferOperations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.transferOperations.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
-    this.transferOperations.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
-
     this.googleServiceAccounts = {};
     this.googleServiceAccounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/googleServiceAccounts/{projectId}', 'GET', apiParams, clientConfig);
-
-    this.transferJobs = {};
-    this.transferJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/transferJobs', 'POST', apiParams, clientConfig);
-    this.transferJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'PATCH', apiParams, clientConfig);
-    this.transferJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'GET', apiParams, clientConfig);
-    this.transferJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/transferJobs', 'GET', apiParams, clientConfig);
-    this.transferJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}:run', 'POST', apiParams, clientConfig);
-    this.transferJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'DELETE', apiParams, clientConfig);
 
     this.projects = {};
 
     this.projects.agentPools = {};
     this.projects.agentPools.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+projectId}/agentPools', 'POST', apiParams, clientConfig);
+    this.projects.agentPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.agentPools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+projectId}/agentPools', 'GET', apiParams, clientConfig);
     this.projects.agentPools.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.agentPools.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.agentPools.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/projects/{+projectId}/agentPools', 'GET', apiParams, clientConfig);
-    this.projects.agentPools.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.transferOperations = {};
+    this.transferOperations.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:pause', 'POST', apiParams, clientConfig);
+    this.transferOperations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.transferOperations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.transferOperations.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:resume', 'POST', apiParams, clientConfig);
+    this.transferOperations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+
+    this.transferJobs = {};
+    this.transferJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/transferJobs', 'POST', apiParams, clientConfig);
+    this.transferJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/transferJobs', 'GET', apiParams, clientConfig);
+    this.transferJobs.run = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}:run', 'POST', apiParams, clientConfig);
+    this.transferJobs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'PATCH', apiParams, clientConfig);
+    this.transferJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'DELETE', apiParams, clientConfig);
+    this.transferJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+jobName}', 'GET', apiParams, clientConfig);
   }
 
 /**
