@@ -4,7 +4,7 @@ Auto-generated client library for using the **Certificate Manager API (version: 
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 00:25:46 GMT
+- **Last Checked:** Thu, 01 Jan 2026 00:25:39 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:25:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:59 GMT
 
@@ -50,7 +50,7 @@ Lists operations that match the specified filter in the request. If the server d
 | `params.filter` | `string` | No | The standard list filter. |
 | `params.pageSize` | `integer` | No | The standard list page size. |
 | `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the [ListOperationsResponse.unreachable] field. This can only be `true` when reading across collections e.g. when `parent` is set to `"projects/example/locations/-"`. This field is not by default supported and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
 
 #### `projects.locations.operations.get()`
 
