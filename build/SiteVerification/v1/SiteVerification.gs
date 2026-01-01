@@ -19,13 +19,13 @@ class SiteVerification {
 
 
     this.webResource = {};
-    this.webResource.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'DELETE', apiParams, clientConfig);
-    this.webResource.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'GET', apiParams, clientConfig);
-    this.webResource.getToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('token', 'POST', apiParams, clientConfig);
-    this.webResource.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource', 'POST', apiParams, clientConfig);
-    this.webResource.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource', 'GET', apiParams, clientConfig);
     this.webResource.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'PATCH', apiParams, clientConfig);
     this.webResource.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'PUT', apiParams, clientConfig);
+    this.webResource.getToken = async (apiParams = {}, clientConfig = {}) => this._makeRequest('token', 'POST', apiParams, clientConfig);
+    this.webResource.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'GET', apiParams, clientConfig);
+    this.webResource.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource/{id}', 'DELETE', apiParams, clientConfig);
+    this.webResource.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource', 'GET', apiParams, clientConfig);
+    this.webResource.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('webResource', 'POST', apiParams, clientConfig);
   }
 
 /**
