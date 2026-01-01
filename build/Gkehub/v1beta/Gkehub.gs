@@ -18,104 +18,104 @@ class Gkehub {
     this._servicePath = '';
 
 
-    this.projects = {};
-
-    this.projects.locations = {};
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/locations', 'GET', apiParams, clientConfig);
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.memberships = {};
-    this.projects.locations.memberships.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/memberships', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/memberships', 'POST', apiParams, clientConfig);
-    this.projects.locations.memberships.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.memberships.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.memberships.generateConnectManifest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateConnectManifest', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.memberships.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.memberships.bindings = {};
-    this.projects.locations.memberships.bindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.bindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/bindings', 'POST', apiParams, clientConfig);
-    this.projects.locations.memberships.bindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.memberships.bindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.memberships.bindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/bindings', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.memberships.rbacrolebindings = {};
-    this.projects.locations.memberships.rbacrolebindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.rbacrolebindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings', 'POST', apiParams, clientConfig);
-    this.projects.locations.memberships.rbacrolebindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.memberships.rbacrolebindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.memberships.rbacrolebindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings', 'GET', apiParams, clientConfig);
-    this.projects.locations.memberships.rbacrolebindings.generateMembershipRBACRoleBindingYAML = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings:generateMembershipRBACRoleBindingYAML', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.scopes = {};
-    this.projects.locations.scopes.listMemberships = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+scopeName}:listMemberships', 'GET', apiParams, clientConfig);
-    this.projects.locations.scopes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.scopes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scopes', 'POST', apiParams, clientConfig);
-    this.projects.locations.scopes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.scopes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.scopes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scopes', 'GET', apiParams, clientConfig);
-    this.projects.locations.scopes.listPermitted = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scopes:listPermitted', 'GET', apiParams, clientConfig);
-    this.projects.locations.scopes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.scopes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.scopes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.scopes.namespaces = {};
-    this.projects.locations.scopes.namespaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.scopes.namespaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/namespaces', 'POST', apiParams, clientConfig);
-    this.projects.locations.scopes.namespaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.scopes.namespaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.scopes.namespaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/namespaces', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.scopes.rbacrolebindings = {};
-    this.projects.locations.scopes.rbacrolebindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.scopes.rbacrolebindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings', 'POST', apiParams, clientConfig);
-    this.projects.locations.scopes.rbacrolebindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.scopes.rbacrolebindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.scopes.rbacrolebindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.features = {};
-    this.projects.locations.features.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/features', 'GET', apiParams, clientConfig);
-    this.projects.locations.features.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.features.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/features', 'POST', apiParams, clientConfig);
-    this.projects.locations.features.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.features.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.features.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.features.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.features.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.fleets = {};
-    this.projects.locations.fleets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/fleets', 'POST', apiParams, clientConfig);
-    this.projects.locations.fleets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.fleets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.fleets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.fleets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/fleets', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.rollouts = {};
-    this.projects.locations.rollouts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.rollouts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rollouts', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.rolloutSequences = {};
-    this.projects.locations.rolloutSequences.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rolloutSequences', 'POST', apiParams, clientConfig);
-    this.projects.locations.rolloutSequences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.rolloutSequences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rolloutSequences', 'GET', apiParams, clientConfig);
-    this.projects.locations.rolloutSequences.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.rolloutSequences.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.organizations = {};
 
     this.organizations.locations = {};
 
     this.organizations.locations.fleets = {};
     this.organizations.locations.fleets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/fleets', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
+
+    this.projects.locations = {};
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/locations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.rolloutSequences = {};
+    this.projects.locations.rolloutSequences.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rolloutSequences', 'POST', apiParams, clientConfig);
+    this.projects.locations.rolloutSequences.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.rolloutSequences.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.rolloutSequences.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.rolloutSequences.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rolloutSequences', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.scopes = {};
+    this.projects.locations.scopes.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.scopes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scopes', 'GET', apiParams, clientConfig);
+    this.projects.locations.scopes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scopes', 'POST', apiParams, clientConfig);
+    this.projects.locations.scopes.listPermitted = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/scopes:listPermitted', 'GET', apiParams, clientConfig);
+    this.projects.locations.scopes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.scopes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.scopes.listMemberships = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+scopeName}:listMemberships', 'GET', apiParams, clientConfig);
+    this.projects.locations.scopes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.scopes.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.scopes.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.scopes.namespaces = {};
+    this.projects.locations.scopes.namespaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/namespaces', 'POST', apiParams, clientConfig);
+    this.projects.locations.scopes.namespaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/namespaces', 'GET', apiParams, clientConfig);
+    this.projects.locations.scopes.namespaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.scopes.namespaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.scopes.namespaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.scopes.rbacrolebindings = {};
+    this.projects.locations.scopes.rbacrolebindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings', 'POST', apiParams, clientConfig);
+    this.projects.locations.scopes.rbacrolebindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.scopes.rbacrolebindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.scopes.rbacrolebindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings', 'GET', apiParams, clientConfig);
+    this.projects.locations.scopes.rbacrolebindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}/operations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.memberships = {};
+    this.projects.locations.memberships.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/memberships', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.generateConnectManifest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:generateConnectManifest', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.memberships.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/memberships', 'POST', apiParams, clientConfig);
+    this.projects.locations.memberships.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.memberships.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.memberships.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.memberships.rbacrolebindings = {};
+    this.projects.locations.memberships.rbacrolebindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings', 'POST', apiParams, clientConfig);
+    this.projects.locations.memberships.rbacrolebindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.memberships.rbacrolebindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.rbacrolebindings.generateMembershipRBACRoleBindingYAML = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rbacrolebindings:generateMembershipRBACRoleBindingYAML', 'POST', apiParams, clientConfig);
+    this.projects.locations.memberships.rbacrolebindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.memberships.rbacrolebindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.memberships.bindings = {};
+    this.projects.locations.memberships.bindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.memberships.bindings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/bindings', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.bindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.memberships.bindings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.memberships.bindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/bindings', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.rollouts = {};
+    this.projects.locations.rollouts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.rollouts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/rollouts', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.features = {};
+    this.projects.locations.features.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.features.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.features.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.features.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/features', 'GET', apiParams, clientConfig);
+    this.projects.locations.features.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.features.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/features', 'POST', apiParams, clientConfig);
+    this.projects.locations.features.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.features.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.fleets = {};
+    this.projects.locations.fleets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/fleets', 'GET', apiParams, clientConfig);
+    this.projects.locations.fleets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.fleets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/fleets', 'POST', apiParams, clientConfig);
+    this.projects.locations.fleets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.fleets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
