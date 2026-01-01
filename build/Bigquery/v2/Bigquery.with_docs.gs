@@ -21,32 +21,6 @@ class Bigquery {
     this.datasets = {};
 
     /**
-     * Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource. This method supports RFC5789 patch semantics.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.accessPolicyVersion - Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. This version refers to the schema version of the access policy and not the version of access policy. This field's value can be equal or more than the access policy schema provided in the request. For example, * Operations updating conditional access policy binding in datasets must specify version 3. Some of the operations are : - Adding a new access policy entry with condition. - Removing an access policy entry with condition. - Updating an access policy entry with condition. * But dataset with no conditional role bindings in access policy may specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional bindings, request will be rejected. This field will be mapped to IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the dataset being updated
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the dataset being updated
-     * @param {string} apiParams.updateMode - Optional. Specifies the fields of dataset that update/patch operation is targeting By default, both metadata and ACL fields are updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.datasets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates a new empty dataset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.accessPolicyVersion - Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. This version refers to the schema version of the access policy and not the version of access policy. This field's value can be equal or more than the access policy schema provided in the request. For example, * Requests with conditional access policy binding in datasets must specify version 3. * But dataset with no conditional role bindings in access policy may specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional bindings, request will be rejected. This field will be mapped to IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM.
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the new dataset
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.datasets.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets', 'POST', apiParams, clientConfig);
-
-    /**
      * Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.accessPolicyVersion - Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. This version refers to the schema version of the access policy and not the version of access policy. This field's value can be equal or more than the access policy schema provided in the request. For example, * Operations updating conditional access policy binding in datasets must specify version 3. Some of the operations are : - Adding a new access policy entry with condition. - Removing an access policy entry with condition. - Updating an access policy entry with condition. * But dataset with no conditional role bindings in access policy may specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional bindings, request will be rejected. This field will be mapped to IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM.
@@ -61,6 +35,18 @@ class Bigquery {
     this.datasets.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}', 'PUT', apiParams, clientConfig);
 
     /**
+     * Undeletes a dataset which is within time travel window based on datasetId. If a time is specified, the dataset version deleted at that time is undeleted, else the last live version is undeleted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of dataset being deleted
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the dataset to be undeleted
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.datasets.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}:undelete', 'POST', apiParams, clientConfig);
+
+    /**
      * Lists all datasets in the specified project to which the user has been granted the READER dataset role.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.all - Whether to list all datasets, including hidden ones
@@ -73,18 +59,6 @@ class Bigquery {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.datasets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets', 'GET', apiParams, clientConfig);
-
-    /**
-     * Undeletes a dataset which is within time travel window based on datasetId. If a time is specified, the dataset version deleted at that time is undeleted, else the last live version is undeleted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of dataset being deleted
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the dataset to be undeleted
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.datasets.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}:undelete', 'POST', apiParams, clientConfig);
 
     /**
      * Returns the dataset specified by datasetID.
@@ -111,130 +85,146 @@ class Bigquery {
      */
     this.datasets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}', 'DELETE', apiParams, clientConfig);
 
-    this.projects = {};
-
     /**
-     * RPC to list projects to which the user has been granted any project role. Users of this method are encouraged to consider the [Resource Manager](https://cloud.google.com/resource-manager/docs/) API, which provides the underlying data for this method and has more capabilities.
+     * Creates a new empty dataset.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.maxResults - `maxResults` unset returns all results, up to 50 per page. Additionally, the number of projects in a page may be fewer than `maxResults` because projects are retrieved and then filtered to only projects with the BigQuery API enabled.
-     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results. If not present, no further pages are present.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects', 'GET', apiParams, clientConfig);
-
-    /**
-     * RPC to get the service account for a project used for interactions with Google Cloud KMS
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Required. ID of the project.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.getServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/serviceAccount', 'GET', apiParams, clientConfig);
-
-    this.routines = {};
-
-    /**
-     * Updates information in an existing routine. The update method replaces the entire Routine resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the routine to update
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the routine to update
-     * @param {string} apiParams.routineId - (Required) Required. Routine ID of the routine to update
+     * @param {integer} apiParams.accessPolicyVersion - Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. This version refers to the schema version of the access policy and not the version of access policy. This field's value can be equal or more than the access policy schema provided in the request. For example, * Requests with conditional access policy binding in datasets must specify version 3. * But dataset with no conditional role bindings in access policy may specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional bindings, request will be rejected. This field will be mapped to IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM.
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the new dataset
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.routines.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'PUT', apiParams, clientConfig);
+    this.datasets.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+     * Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource. This method supports RFC5789 patch semantics.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {integer} apiParams.accessPolicyVersion - Optional. The version of the provided access policy schema. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. This version refers to the schema version of the access policy and not the version of access policy. This field's value can be equal or more than the access policy schema provided in the request. For example, * Operations updating conditional access policy binding in datasets must specify version 3. Some of the operations are : - Adding a new access policy entry with condition. - Removing an access policy entry with condition. - Updating an access policy entry with condition. * But dataset with no conditional role bindings in access policy may specify any valid value or leave the field unset. If unset or if 0 or 1 value is used for dataset with conditional bindings, request will be rejected. This field will be mapped to IAM Policy version (https://cloud.google.com/iam/docs/policies#versions) and will be used to set policy in IAM.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the dataset being updated
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the dataset being updated
+     * @param {string} apiParams.updateMode - Optional. Specifies the fields of dataset that update/patch operation is targeting By default, both metadata and ACL fields are updated.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.routines.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.datasets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}', 'PATCH', apiParams, clientConfig);
+
+    this.jobs = {};
 
     /**
-     * Lists all routines in the specified dataset. Requires the READER dataset role.
+     * Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the routines to list
-     * @param {string} apiParams.filter - If set, then only the Routines matching this filter are returned. The supported format is `routineType:{RoutineType}`, where `{RoutineType}` is a RoutineType enum. For example: `routineType:SCALAR_FUNCTION`.
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the query request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.jobs.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/queries', 'POST', apiParams, clientConfig);
+
+    /**
+     * Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.jobId - (Required) Required. Job ID of the job to cancel
+     * @param {string} apiParams.location - The geographic location of the job. You must [specify the location](https://cloud.google.com/bigquery/docs/locations#specify_locations) to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`)
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the job to cancel
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.jobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}/cancel', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.allUsers - Whether to display jobs owned by all users in the project. Default False.
+     * @param {string} apiParams.maxCreationTime - Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs created before or at this timestamp are returned.
      * @param {integer} apiParams.maxResults - The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection.
-     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the routines to list
-     * @param {string} apiParams.readMask - If set, then only the Routine fields in the field mask, as well as project_id, dataset_id and routine_id, are returned in the response. If unset, then the following Routine fields are returned: etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, and language.
+     * @param {string} apiParams.minCreationTime - Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs created after or at this timestamp are returned.
+     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results.
+     * @param {string} apiParams.parentJobId - If set, show only child jobs of the specified parent. Otherwise, show all top-level jobs.
+     * @param {string} apiParams.projectId - (Required) Project ID of the jobs to list.
+     * @param {string} apiParams.projection - Restrict information returned to a set of selected fields
+     * @param {string} apiParams.stateFilter - Filter for job state
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.routines.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines', 'GET', apiParams, clientConfig);
+    this.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes the routine specified by routineId from the dataset.
+     * RPC to get the results of a query job.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the routine to delete
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the routine to delete
-     * @param {string} apiParams.routineId - (Required) Required. Routine ID of the routine to delete
+     * @param {string} apiParams.formatOptions.timestampOutputFormat - Optional. The API output format for a timestamp. This offers more explicit control over the timestamp output format as compared to the existing `use_int64_timestamp` option.
+     * @param {boolean} apiParams.formatOptions.useInt64Timestamp - Optional. Output timestamp as usec int64. Default is false.
+     * @param {string} apiParams.jobId - (Required) Required. Job ID of the query job.
+     * @param {string} apiParams.location - The geographic location of the job. You must specify the location to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`) For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
+     * @param {integer} apiParams.maxResults - Maximum number of results to read.
+     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results.
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the query job.
+     * @param {string} apiParams.startIndex - Zero-based index of the starting row.
+     * @param {integer} apiParams.timeoutMs - Optional: Specifies the maximum amount of time, in milliseconds, that the client is willing to wait for the query to complete. By default, this limit is 10 seconds (10,000 milliseconds). If the query is complete, the jobComplete field in the response is true. If the query has not yet completed, jobComplete is false. You can request a longer timeout period in the timeoutMs field. However, the call is not guaranteed to wait for the specified timeout; it typically returns after around 200 seconds (200,000 milliseconds), even if the query is not complete. If jobComplete is false, you can continue to wait for the query to complete by calling the getQueryResults method until the jobComplete field in the getQueryResults response is true.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.routines.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'DELETE', apiParams, clientConfig);
+    this.jobs.getQueryResults = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/queries/{+jobId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the specified routine resource by routine ID.
+     * Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the requested routine
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the requested routine
-     * @param {string} apiParams.readMask - If set, only the Routine fields in the field mask are returned in the response. If unset, all Routine fields are returned.
-     * @param {string} apiParams.routineId - (Required) Required. Routine ID of the requested routine
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.routines.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a new routine in the dataset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the new routine
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the new routine
+     * @param {string} apiParams.projectId - (Required) Project ID of project that will be billed for the job.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.routines.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines', 'POST', apiParams, clientConfig);
+    this.jobs.insert = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/bigquery/v2/projects/{+projectId}/jobs' : 'projects/{+projectId}/jobs';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
 
     /**
-     * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+     * Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.jobId - (Required) Required. Job ID of the job for which metadata is to be deleted. If this is a parent job which has child jobs, the metadata from all child jobs will be deleted as well. Direct deletion of the metadata of child jobs is not allowed.
+     * @param {string} apiParams.location - The geographic location of the job. Required. For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the job for which metadata is to be deleted.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.routines.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}/delete', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+     * Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.jobId - (Required) Required. Job ID of the requested job.
+     * @param {string} apiParams.location - The geographic location of the job. You must specify the location to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`) For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the requested job.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.routines.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}', 'GET', apiParams, clientConfig);
 
     this.rowAccessPolicies = {};
+
+    /**
+     * Deletes provided row access policies.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to delete the row access policies.
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to delete the row access policies.
+     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to delete the row access policies.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.rowAccessPolicies.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete', 'POST', apiParams, clientConfig);
 
     /**
      * Lists all row access policies on the specified table.
@@ -251,30 +241,6 @@ class Bigquery {
     this.rowAccessPolicies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies', 'GET', apiParams, clientConfig);
 
     /**
-     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.rowAccessPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes provided row access policies.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to delete the row access policies.
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to delete the row access policies.
-     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to delete the row access policies.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.rowAccessPolicies.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies:batchDelete', 'POST', apiParams, clientConfig);
-
-    /**
      * Creates a row access policy.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to get the row access policy.
@@ -286,20 +252,6 @@ class Bigquery {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.rowAccessPolicies.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates a row access policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to get the row access policy.
-     * @param {string} apiParams.policyId - (Required) Required. Policy ID of the row access policy.
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to get the row access policy.
-     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to get the row access policy.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.rowAccessPolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', 'PUT', apiParams, clientConfig);
 
     /**
      * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
@@ -339,85 +291,6 @@ class Bigquery {
      */
     this.rowAccessPolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', 'GET', apiParams, clientConfig);
 
-    this.tables = {};
-
-    /**
-     * Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource. This method supports RFC5789 patch semantics.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.autodetect_schema - Optional.  When true will autodetect schema, else will keep original schema
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to update
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to update
-     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to update
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the requested table
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the requested table
-     * @param {string} apiParams.selectedFields - List of table schema fields to return (comma-separated). If unspecified, all fields are returned. A fieldMask cannot be used here because the fields will automatically be converted from camelCase to snake_case and the conversion will fail if there are underscores. Since these are fields in BigQuery table schemas, underscores are allowed.
-     * @param {string} apiParams.tableId - (Required) Required. Table ID of the requested table
-     * @param {string} apiParams.view - Optional. Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists all tables in the specified dataset. Requires the READER dataset role.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the tables to list
-     * @param {integer} apiParams.maxResults - The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection.
-     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the tables to list
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates information in an existing table. The update method replaces the entire Table resource, whereas the patch method only replaces fields that are provided in the submitted Table resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.autodetect_schema - Optional.  When true will autodetect schema, else will keep original schema
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to update
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to update
-     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to update
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'PUT', apiParams, clientConfig);
-
     /**
      * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
      * @param {object} apiParams - The parameters for the API request.
@@ -427,31 +300,73 @@ class Bigquery {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.tables.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.rowAccessPolicies.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
 
     /**
-     * Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be deleted.
+     * Updates a row access policy.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to delete
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to delete
-     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to delete
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.tables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a new, empty table in the dataset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the new table
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the new table
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to get the row access policy.
+     * @param {string} apiParams.policyId - (Required) Required. Policy ID of the row access policy.
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to get the row access policy.
+     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to get the row access policy.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.tables.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables', 'POST', apiParams, clientConfig);
+    this.rowAccessPolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/rowAccessPolicies/{+policyId}', 'PUT', apiParams, clientConfig);
+
+    this.models = {};
+
+    /**
+     * Deletes the model specified by modelId from the dataset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the model to delete.
+     * @param {string} apiParams.modelId - (Required) Required. Model ID of the model to delete.
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the model to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets the specified model resource by model ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the requested model.
+     * @param {string} apiParams.modelId - (Required) Required. Model ID of the requested model.
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the requested model.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all models in the specified dataset. Requires the READER dataset role. After retrieving the list of models, you can get information about a particular model by calling the models.get method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the models to list.
+     * @param {integer} apiParams.maxResults - The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection.
+     * @param {string} apiParams.pageToken - Page token, returned by a previous call to request the next page of results
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the models to list.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models', 'GET', apiParams, clientConfig);
+
+    /**
+     * Patch specific fields in the specified model.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the model to patch.
+     * @param {string} apiParams.modelId - (Required) Required. Model ID of the model to patch.
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the model to patch.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.models.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'PATCH', apiParams, clientConfig);
 
     this.tabledata = {};
 
@@ -486,157 +401,242 @@ class Bigquery {
      */
     this.tabledata.insertAll = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}/insertAll', 'POST', apiParams, clientConfig);
 
-    this.models = {};
+    this.routines = {};
 
     /**
-     * Gets the specified model resource by model ID.
+     * Creates a new routine in the dataset.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the requested model.
-     * @param {string} apiParams.modelId - (Required) Required. Model ID of the requested model.
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the requested model.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.models.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Patch specific fields in the specified model.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the model to patch.
-     * @param {string} apiParams.modelId - (Required) Required. Model ID of the model to patch.
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the model to patch.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the new routine
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the new routine
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.models.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'PATCH', apiParams, clientConfig);
+    this.routines.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines', 'POST', apiParams, clientConfig);
 
     /**
-     * Lists all models in the specified dataset. Requires the READER dataset role. After retrieving the list of models, you can get information about a particular model by calling the models.get method.
+     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the models to list.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.routines.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.routines.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.routines.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all routines in the specified dataset. Requires the READER dataset role.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the routines to list
+     * @param {string} apiParams.filter - If set, then only the Routines matching this filter are returned. The supported format is `routineType:{RoutineType}`, where `{RoutineType}` is a RoutineType enum. For example: `routineType:SCALAR_FUNCTION`.
      * @param {integer} apiParams.maxResults - The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection.
-     * @param {string} apiParams.pageToken - Page token, returned by a previous call to request the next page of results
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the models to list.
+     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the routines to list
+     * @param {string} apiParams.readMask - If set, then only the Routine fields in the field mask, as well as project_id, dataset_id and routine_id, are returned in the response. If unset, then the following Routine fields are returned: etag, project_id, dataset_id, routine_id, routine_type, creation_time, last_modified_time, and language.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.models.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models', 'GET', apiParams, clientConfig);
+    this.routines.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes the model specified by modelId from the dataset.
+     * Gets the specified routine resource by routine ID.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the model to delete.
-     * @param {string} apiParams.modelId - (Required) Required. Model ID of the model to delete.
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the model to delete.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the requested routine
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the requested routine
+     * @param {string} apiParams.readMask - If set, only the Routine fields in the field mask are returned in the response. If unset, all Routine fields are returned.
+     * @param {string} apiParams.routineId - (Required) Required. Routine ID of the requested routine
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.models.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/models/{+modelId}', 'DELETE', apiParams, clientConfig);
-
-    this.jobs = {};
+    this.routines.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'GET', apiParams, clientConfig);
 
     /**
-     * RPC to get the results of a query job.
+     * Updates information in an existing routine. The update method replaces the entire Routine resource.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formatOptions.timestampOutputFormat - Optional. The API output format for a timestamp. This offers more explicit control over the timestamp output format as compared to the existing `use_int64_timestamp` option.
-     * @param {boolean} apiParams.formatOptions.useInt64Timestamp - Optional. Output timestamp as usec int64. Default is false.
-     * @param {string} apiParams.jobId - (Required) Required. Job ID of the query job.
-     * @param {string} apiParams.location - The geographic location of the job. You must specify the location to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`) For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
-     * @param {integer} apiParams.maxResults - Maximum number of results to read.
-     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results.
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the query job.
-     * @param {string} apiParams.startIndex - Zero-based index of the starting row.
-     * @param {integer} apiParams.timeoutMs - Optional: Specifies the maximum amount of time, in milliseconds, that the client is willing to wait for the query to complete. By default, this limit is 10 seconds (10,000 milliseconds). If the query is complete, the jobComplete field in the response is true. If the query has not yet completed, jobComplete is false. You can request a longer timeout period in the timeoutMs field. However, the call is not guaranteed to wait for the specified timeout; it typically returns after around 200 seconds (200,000 milliseconds), even if the query is not complete. If jobComplete is false, you can continue to wait for the query to complete by calling the getQueryResults method until the jobComplete field in the getQueryResults response is true.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the routine to update
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the routine to update
+     * @param {string} apiParams.routineId - (Required) Required. Routine ID of the routine to update
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.jobs.getQueryResults = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/queries/{+jobId}', 'GET', apiParams, clientConfig);
+    this.routines.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property.
+     * Deletes the routine specified by routineId from the dataset.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {boolean} apiParams.allUsers - Whether to display jobs owned by all users in the project. Default False.
-     * @param {string} apiParams.maxCreationTime - Max value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs created before or at this timestamp are returned.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the routine to delete
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the routine to delete
+     * @param {string} apiParams.routineId - (Required) Required. Routine ID of the routine to delete
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.routines.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/routines/{+routineId}', 'DELETE', apiParams, clientConfig);
+
+    this.tables = {};
+
+    /**
+     * Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be deleted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to delete
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to delete
+     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to delete
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the requested table
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the requested table
+     * @param {string} apiParams.selectedFields - List of table schema fields to return (comma-separated). If unspecified, all fields are returned. A fieldMask cannot be used here because the fields will automatically be converted from camelCase to snake_case and the conversion will fail if there are underscores. Since these are fields in BigQuery table schemas, underscores are allowed.
+     * @param {string} apiParams.tableId - (Required) Required. Table ID of the requested table
+     * @param {string} apiParams.view - Optional. Specifies the view that determines which table information is returned. By default, basic table information and storage statistics (STORAGE_STATS) are returned.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates information in an existing table. The update method replaces the entire Table resource, whereas the patch method only replaces fields that are provided in the submitted Table resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.autodetect_schema - Optional.  When true will autodetect schema, else will keep original schema
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to update
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to update
+     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to update
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    /**
+     * Creates a new, empty table in the dataset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the new table
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the new table
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource. This method supports RFC5789 patch semantics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {boolean} apiParams.autodetect_schema - Optional.  When true will autodetect schema, else will keep original schema
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the table to update
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the table to update
+     * @param {string} apiParams.tableId - (Required) Required. Table ID of the table to update
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables/{+tableId}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.tables.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists all tables in the specified dataset. Requires the READER dataset role.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.datasetId - (Required) Required. Dataset ID of the tables to list
      * @param {integer} apiParams.maxResults - The maximum number of results to return in a single response page. Leverage the page tokens to iterate through the entire collection.
-     * @param {string} apiParams.minCreationTime - Min value for job creation time, in milliseconds since the POSIX epoch. If set, only jobs created after or at this timestamp are returned.
-     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results.
-     * @param {string} apiParams.parentJobId - If set, show only child jobs of the specified parent. Otherwise, show all top-level jobs.
-     * @param {string} apiParams.projectId - (Required) Project ID of the jobs to list.
-     * @param {string} apiParams.projection - Restrict information returned to a set of selected fields
-     * @param {string} apiParams.stateFilter - Filter for job state
+     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results
+     * @param {string} apiParams.projectId - (Required) Required. Project ID of the tables to list
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.jobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs', 'GET', apiParams, clientConfig);
+    this.tables.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/datasets/{+datasetId}/tables', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
 
     /**
-     * Requests the deletion of the metadata of a job. This call returns when the job's metadata is deleted.
+     * RPC to get the service account for a project used for interactions with Google Cloud KMS
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.jobId - (Required) Required. Job ID of the job for which metadata is to be deleted. If this is a parent job which has child jobs, the metadata from all child jobs will be deleted as well. Direct deletion of the metadata of child jobs is not allowed.
-     * @param {string} apiParams.location - The geographic location of the job. Required. For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the job for which metadata is to be deleted.
+     * @param {string} apiParams.projectId - (Required) Required. ID of the project.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.jobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}/delete', 'DELETE', apiParams, clientConfig);
+    this.projects.getServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/serviceAccount', 'GET', apiParams, clientConfig);
 
     /**
-     * Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.
+     * RPC to list projects to which the user has been granted any project role. Users of this method are encouraged to consider the [Resource Manager](https://cloud.google.com/resource-manager/docs/) API, which provides the underlying data for this method and has more capabilities.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.jobId - (Required) Required. Job ID of the requested job.
-     * @param {string} apiParams.location - The geographic location of the job. You must specify the location to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`) For more information, see how to [specify locations](https://cloud.google.com/bigquery/docs/locations#specify_locations).
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the requested job.
+     * @param {integer} apiParams.maxResults - `maxResults` unset returns all results, up to 50 per page. Additionally, the number of projects in a page may be fewer than `maxResults` because projects are retrieved and then filtered to only projects with the BigQuery API enabled.
+     * @param {string} apiParams.pageToken - Page token, returned by a previous call, to request the next page of results. If not present, no further pages are present.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.jobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Starts a new asynchronous job. This API has two different kinds of endpoint URIs, as this method supports a variety of use cases. * The *Metadata* URI is used for most interactions, as it accepts the job configuration directly. * The *Upload* URI is ONLY for the case when you're sending both a load job configuration and a data stream together. In this case, the Upload URI accepts the job configuration and the data as two distinct multipart MIME parts.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Project ID of project that will be billed for the job.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.jobs.insert = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/bigquery/v2/projects/{+projectId}/jobs' : 'projects/{+projectId}/jobs';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-
-    /**
-     * Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.jobId - (Required) Required. Job ID of the job to cancel
-     * @param {string} apiParams.location - The geographic location of the job. You must [specify the location](https://cloud.google.com/bigquery/docs/locations#specify_locations) to run the job for the following scenarios: * If the location to run a job is not in the `us` or the `eu` multi-regional location * If the job's location is in a single region (for example, `us-central1`)
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the job to cancel
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.jobs.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/jobs/{+jobId}/cancel', 'POST', apiParams, clientConfig);
-
-    /**
-     * Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.projectId - (Required) Required. Project ID of the query request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.jobs.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects/{+projectId}/queries', 'POST', apiParams, clientConfig);
+    this.projects.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('projects', 'GET', apiParams, clientConfig);
   }
 
 /**
