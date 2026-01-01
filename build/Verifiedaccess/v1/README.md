@@ -4,8 +4,8 @@ Auto-generated client library for using the **Chrome Verified Access API (versio
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:18:07 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:18:07 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:14:44 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:14:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:31 GMT
 
 
@@ -16,17 +16,17 @@ Auto-generated client library for using the **Chrome Verified Access API (versio
 
 ### `challenge`
 
-#### `challenge.create()`
+#### `challenge.verify()`
 
-CreateChallenge API
+VerifyChallengeResponse API
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `challenge.verify()`
+#### `challenge.create()`
 
-VerifyChallengeResponse API
+CreateChallenge API
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
