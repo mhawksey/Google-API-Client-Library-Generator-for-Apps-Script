@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Site Verification API (vers
 
 ## Metadata
 
-- **Last Checked:** Mon, 01 Dec 2025 01:15:58 GMT
-- **Last Modified:** Mon, 01 Dec 2025 01:15:58 GMT
+- **Last Checked:** Thu, 01 Jan 2026 01:07:56 GMT
+- **Last Modified:** Thu, 01 Jan 2026 01:07:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:54:40 GMT
 
 
@@ -15,44 +15,6 @@ Auto-generated client library for using the **Google Site Verification API (vers
 ## API Reference
 
 ### `webResource`
-
-#### `webResource.delete()`
-
-Relinquish ownership of a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The id of a verified site or domain. |
-
-#### `webResource.get()`
-
-Get the most current data for a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.id` | `string` | Yes | The id of a verified site or domain. |
-
-#### `webResource.getToken()`
-
-Get a verification token for placing on a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `webResource.insert()`
-
-Attempt verification of a website or domain.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.verificationMethod` | `string` | Yes | The method to use for verifying a site or domain. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `webResource.list()`
-
-Get the list of your verified websites and domains.
-
 
 #### `webResource.patch()`
 
@@ -70,4 +32,42 @@ Modify the list of owners for your website or domain.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.id` | `string` | Yes | The id of a verified site or domain. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `webResource.getToken()`
+
+Get a verification token for placing on a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `webResource.get()`
+
+Get the most current data for a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The id of a verified site or domain. |
+
+#### `webResource.delete()`
+
+Relinquish ownership of a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.id` | `string` | Yes | The id of a verified site or domain. |
+
+#### `webResource.list()`
+
+Get the list of your verified websites and domains.
+
+
+#### `webResource.insert()`
+
+Attempt verification of a website or domain.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.verificationMethod` | `string` | Yes | The method to use for verifying a site or domain. |
 | `params.requestBody` | `object` | Yes | The request body. |
