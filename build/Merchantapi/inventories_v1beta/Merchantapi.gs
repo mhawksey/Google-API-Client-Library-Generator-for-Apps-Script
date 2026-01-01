@@ -24,13 +24,13 @@ class Merchantapi {
 
     this.accounts.products.localInventories = {};
     this.accounts.products.localInventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1beta/{+parent}/localInventories', 'GET', apiParams, clientConfig);
-    this.accounts.products.localInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1beta/{+parent}/localInventories:insert', 'POST', apiParams, clientConfig);
     this.accounts.products.localInventories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.products.localInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1beta/{+parent}/localInventories:insert', 'POST', apiParams, clientConfig);
 
     this.accounts.products.regionalInventories = {};
-    this.accounts.products.regionalInventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1beta/{+parent}/regionalInventories', 'GET', apiParams, clientConfig);
     this.accounts.products.regionalInventories.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1beta/{+parent}/regionalInventories:insert', 'POST', apiParams, clientConfig);
     this.accounts.products.regionalInventories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.products.regionalInventories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('inventories/v1beta/{+parent}/regionalInventories', 'GET', apiParams, clientConfig);
   }
 
 /**
