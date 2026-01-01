@@ -18,9 +18,6 @@ class Firebasedynamiclinks {
     this._servicePath = '';
 
 
-    this.managedShortLinks = {};
-    this.managedShortLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/managedShortLinks:create', 'POST', apiParams, clientConfig);
-
     this.shortLinks = {};
     this.shortLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/shortLinks', 'POST', apiParams, clientConfig);
 
@@ -28,6 +25,9 @@ class Firebasedynamiclinks {
     this.v1.getLinkStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{dynamicLink}/linkStats', 'GET', apiParams, clientConfig);
     this.v1.installAttribution = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/installAttribution', 'POST', apiParams, clientConfig);
     this.v1.reopenAttribution = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/reopenAttribution', 'POST', apiParams, clientConfig);
+
+    this.managedShortLinks = {};
+    this.managedShortLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/managedShortLinks:create', 'POST', apiParams, clientConfig);
   }
 
 /**
