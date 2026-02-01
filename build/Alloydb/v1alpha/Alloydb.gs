@@ -24,55 +24,55 @@ class Alloydb {
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
+
     this.projects.locations.clusters = {};
     this.projects.locations.clusters.restoreFromCloudSQL = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:restoreFromCloudSQL', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:restore', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:import', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.clusters.switchover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:switchover', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.createsecondary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:createsecondary', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.clusters.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:upgrade', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.clusters.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:export', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.promote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:promote', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.clusters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.clusters.users = {};
-    this.projects.locations.clusters.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.clusters.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.clusters.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.clusters.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/users', 'GET', apiParams, clientConfig);
-    this.projects.locations.clusters.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/users', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.clusters.export = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:export', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.upgrade = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:upgrade', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.clusters.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.clusters.promote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:promote', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.switchover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:switchover', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.restore = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:restore', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.createsecondary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/clusters:createsecondary', 'POST', apiParams, clientConfig);
 
     this.projects.locations.clusters.instances = {};
-    this.projects.locations.clusters.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instances', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.clusters.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instances', 'POST', apiParams, clientConfig);
     this.projects.locations.clusters.instances.createsecondary = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instances:createsecondary', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.projects.locations.clusters.instances.failover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:failover', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.instances.getConnectionInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/connectionInfo', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.clusters.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.clusters.instances.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:restart', 'POST', apiParams, clientConfig);
-    this.projects.locations.clusters.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.failover = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:failover', 'POST', apiParams, clientConfig);
     this.projects.locations.clusters.instances.injectFault = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:injectFault', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.restart = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:restart', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.instances.getConnectionInfo = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/connectionInfo', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.clusters.users = {};
+    this.projects.locations.clusters.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/users', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.clusters.users.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/users', 'POST', apiParams, clientConfig);
+    this.projects.locations.clusters.users.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.clusters.users.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.backups = {};
+    this.projects.locations.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/backups', 'GET', apiParams, clientConfig);
+    this.projects.locations.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.backups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/backups', 'POST', apiParams, clientConfig);
+    this.projects.locations.backups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.supportedDatabaseFlags = {};
     this.projects.locations.supportedDatabaseFlags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/supportedDatabaseFlags', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.backups = {};
-    this.projects.locations.backups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.backups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.backups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/backups', 'POST', apiParams, clientConfig);
-    this.projects.locations.backups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/backups', 'GET', apiParams, clientConfig);
-    this.projects.locations.backups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
