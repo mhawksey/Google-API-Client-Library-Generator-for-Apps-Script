@@ -21,11 +21,11 @@ class Adsenseplatform {
     this.platforms = {};
 
     this.platforms.accounts = {};
-    this.platforms.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.platforms.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/accounts', 'GET', apiParams, clientConfig);
     this.platforms.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/accounts', 'POST', apiParams, clientConfig);
-    this.platforms.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/accounts:lookup', 'GET', apiParams, clientConfig);
+    this.platforms.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.platforms.accounts.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:close', 'POST', apiParams, clientConfig);
+    this.platforms.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/accounts:lookup', 'GET', apiParams, clientConfig);
+    this.platforms.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/accounts', 'GET', apiParams, clientConfig);
 
     this.platforms.accounts.events = {};
     this.platforms.accounts.events.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/events', 'POST', apiParams, clientConfig);
@@ -46,13 +46,13 @@ class Adsenseplatform {
     this.accounts.platforms.childAccounts = {};
 
     this.accounts.platforms.childAccounts.sites = {};
-    this.accounts.platforms.childAccounts.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/sites', 'GET', apiParams, clientConfig);
     this.accounts.platforms.childAccounts.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.platforms.childAccounts.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/sites', 'GET', apiParams, clientConfig);
     this.accounts.platforms.childAccounts.sites.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.accounts.platforms.groups = {};
-    this.accounts.platforms.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.platforms.groups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.platforms.groups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.platforms.groups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/groups', 'GET', apiParams, clientConfig);
   }
 
