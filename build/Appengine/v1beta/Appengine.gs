@@ -18,6 +18,67 @@ class Appengine {
     this._servicePath = '';
 
 
+    this.apps = {};
+    this.apps.repair = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}:repair', 'POST', apiParams, clientConfig);
+    this.apps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps', 'POST', apiParams, clientConfig);
+    this.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}', 'GET', apiParams, clientConfig);
+    this.apps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}', 'PATCH', apiParams, clientConfig);
+    this.apps.listRuntimes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}:listRuntimes', 'GET', apiParams, clientConfig);
+
+    this.apps.firewall = {};
+
+    this.apps.firewall.ingressRules = {};
+    this.apps.firewall.ingressRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules', 'GET', apiParams, clientConfig);
+    this.apps.firewall.ingressRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'PATCH', apiParams, clientConfig);
+    this.apps.firewall.ingressRules.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules:batchUpdate', 'POST', apiParams, clientConfig);
+    this.apps.firewall.ingressRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'DELETE', apiParams, clientConfig);
+    this.apps.firewall.ingressRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'GET', apiParams, clientConfig);
+    this.apps.firewall.ingressRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules', 'POST', apiParams, clientConfig);
+
+    this.apps.services = {};
+    this.apps.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}', 'GET', apiParams, clientConfig);
+    this.apps.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}', 'PATCH', apiParams, clientConfig);
+    this.apps.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services', 'GET', apiParams, clientConfig);
+    this.apps.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}', 'DELETE', apiParams, clientConfig);
+
+    this.apps.services.versions = {};
+    this.apps.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
+    this.apps.services.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions', 'POST', apiParams, clientConfig);
+    this.apps.services.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'GET', apiParams, clientConfig);
+    this.apps.services.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions', 'GET', apiParams, clientConfig);
+    this.apps.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
+
+    this.apps.services.versions.instances = {};
+    this.apps.services.versions.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', 'GET', apiParams, clientConfig);
+    this.apps.services.versions.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'DELETE', apiParams, clientConfig);
+    this.apps.services.versions.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'GET', apiParams, clientConfig);
+    this.apps.services.versions.instances.debug = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', 'POST', apiParams, clientConfig);
+
+    this.apps.authorizedDomains = {};
+    this.apps.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedDomains', 'GET', apiParams, clientConfig);
+
+    this.apps.authorizedCertificates = {};
+    this.apps.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
+    this.apps.authorizedCertificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates', 'POST', apiParams, clientConfig);
+    this.apps.authorizedCertificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'PATCH', apiParams, clientConfig);
+    this.apps.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
+    this.apps.authorizedCertificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'GET', apiParams, clientConfig);
+
+    this.apps.domainMappings = {};
+    this.apps.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
+    this.apps.domainMappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings/{domainMappingsId}', 'GET', apiParams, clientConfig);
+    this.apps.domainMappings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings/{domainMappingsId}', 'PATCH', apiParams, clientConfig);
+    this.apps.domainMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings', 'POST', apiParams, clientConfig);
+    this.apps.domainMappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings', 'GET', apiParams, clientConfig);
+
+    this.apps.locations = {};
+    this.apps.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/locations/{locationsId}', 'GET', apiParams, clientConfig);
+    this.apps.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/locations', 'GET', apiParams, clientConfig);
+
+    this.apps.operations = {};
+    this.apps.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/operations/{operationsId}', 'GET', apiParams, clientConfig);
+    this.apps.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/operations', 'GET', apiParams, clientConfig);
+
     this.projects = {};
 
     this.projects.locations = {};
@@ -25,99 +86,39 @@ class Appengine {
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/operations', 'GET', apiParams, clientConfig);
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/operations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.applications = {};
     this.projects.locations.applications.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.applications.domainMappings = {};
-    this.projects.locations.applications.domainMappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', 'GET', apiParams, clientConfig);
-    this.projects.locations.applications.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.applications.domainMappings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.applications.domainMappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'GET', apiParams, clientConfig);
-    this.projects.locations.applications.domainMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.applications.authorizedDomains = {};
-    this.projects.locations.applications.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.applications.authorizedCertificates = {};
-    this.projects.locations.applications.authorizedCertificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.applications.authorizedCertificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'POST', apiParams, clientConfig);
-    this.projects.locations.applications.authorizedCertificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'GET', apiParams, clientConfig);
-    this.projects.locations.applications.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.applications.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
 
     this.projects.locations.applications.services = {};
     this.projects.locations.applications.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.applications.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.applications.services.versions = {};
-    this.projects.locations.applications.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
-    this.projects.locations.applications.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.applications.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.applications.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
 
-    this.apps = {};
-    this.apps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps', 'POST', apiParams, clientConfig);
-    this.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}', 'GET', apiParams, clientConfig);
-    this.apps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}', 'PATCH', apiParams, clientConfig);
-    this.apps.repair = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}:repair', 'POST', apiParams, clientConfig);
-    this.apps.listRuntimes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}:listRuntimes', 'GET', apiParams, clientConfig);
+    this.projects.locations.applications.services.versions.instances = {};
+    this.projects.locations.applications.services.versions.instances.debug = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', 'POST', apiParams, clientConfig);
 
-    this.apps.firewall = {};
+    this.projects.locations.applications.domainMappings = {};
+    this.projects.locations.applications.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.applications.domainMappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', 'GET', apiParams, clientConfig);
+    this.projects.locations.applications.domainMappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'GET', apiParams, clientConfig);
+    this.projects.locations.applications.domainMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', 'POST', apiParams, clientConfig);
+    this.projects.locations.applications.domainMappings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'PATCH', apiParams, clientConfig);
 
-    this.apps.firewall.ingressRules = {};
-    this.apps.firewall.ingressRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules', 'GET', apiParams, clientConfig);
-    this.apps.firewall.ingressRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules', 'POST', apiParams, clientConfig);
-    this.apps.firewall.ingressRules.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules:batchUpdate', 'POST', apiParams, clientConfig);
-    this.apps.firewall.ingressRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'DELETE', apiParams, clientConfig);
-    this.apps.firewall.ingressRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'PATCH', apiParams, clientConfig);
-    this.apps.firewall.ingressRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/firewall/ingressRules/{ingressRulesId}', 'GET', apiParams, clientConfig);
+    this.projects.locations.applications.authorizedCertificates = {};
+    this.projects.locations.applications.authorizedCertificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.applications.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
+    this.projects.locations.applications.authorizedCertificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'POST', apiParams, clientConfig);
+    this.projects.locations.applications.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.applications.authorizedCertificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'GET', apiParams, clientConfig);
 
-    this.apps.operations = {};
-    this.apps.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/operations', 'GET', apiParams, clientConfig);
-    this.apps.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/operations/{operationsId}', 'GET', apiParams, clientConfig);
-
-    this.apps.services = {};
-    this.apps.services.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services', 'GET', apiParams, clientConfig);
-    this.apps.services.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}', 'DELETE', apiParams, clientConfig);
-    this.apps.services.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}', 'GET', apiParams, clientConfig);
-    this.apps.services.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}', 'PATCH', apiParams, clientConfig);
-
-    this.apps.services.versions = {};
-    this.apps.services.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'PATCH', apiParams, clientConfig);
-    this.apps.services.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'GET', apiParams, clientConfig);
-    this.apps.services.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions', 'POST', apiParams, clientConfig);
-    this.apps.services.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions', 'GET', apiParams, clientConfig);
-    this.apps.services.versions.exportAppImage = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}:exportAppImage', 'POST', apiParams, clientConfig);
-    this.apps.services.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}', 'DELETE', apiParams, clientConfig);
-
-    this.apps.services.versions.instances = {};
-    this.apps.services.versions.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'GET', apiParams, clientConfig);
-    this.apps.services.versions.instances.debug = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}:debug', 'POST', apiParams, clientConfig);
-    this.apps.services.versions.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances/{instancesId}', 'DELETE', apiParams, clientConfig);
-    this.apps.services.versions.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/services/{servicesId}/versions/{versionsId}/instances', 'GET', apiParams, clientConfig);
-
-    this.apps.authorizedDomains = {};
-    this.apps.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedDomains', 'GET', apiParams, clientConfig);
-
-    this.apps.locations = {};
-    this.apps.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/locations', 'GET', apiParams, clientConfig);
-    this.apps.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/locations/{locationsId}', 'GET', apiParams, clientConfig);
-
-    this.apps.authorizedCertificates = {};
-    this.apps.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
-    this.apps.authorizedCertificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'PATCH', apiParams, clientConfig);
-    this.apps.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
-    this.apps.authorizedCertificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates', 'POST', apiParams, clientConfig);
-    this.apps.authorizedCertificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'GET', apiParams, clientConfig);
-
-    this.apps.domainMappings = {};
-    this.apps.domainMappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings', 'GET', apiParams, clientConfig);
-    this.apps.domainMappings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings/{domainMappingsId}', 'PATCH', apiParams, clientConfig);
-    this.apps.domainMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings', 'POST', apiParams, clientConfig);
-    this.apps.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
-    this.apps.domainMappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/apps/{appsId}/domainMappings/{domainMappingsId}', 'GET', apiParams, clientConfig);
+    this.projects.locations.applications.authorizedDomains = {};
+    this.projects.locations.applications.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains', 'GET', apiParams, clientConfig);
   }
 
 /**
