@@ -4,8 +4,8 @@ Auto-generated client library for using the **AdSense Platform API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:21:31 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:21:31 GMT
+- **Last Checked:** Sun, 01 Feb 2026 00:21:34 GMT
+- **Last Modified:** Sun, 01 Feb 2026 00:21:34 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:15 GMT
 
 
@@ -27,13 +27,13 @@ Looks up information about a sub-account for a specified creation_request_id. If
 | `params.parent` | `string` | Yes | Required. Platform who parents the account. Format: platforms/{platform} |
 | `params.creationRequestId` | `string` | No | Optional. The creation_request_id provided when calling createAccount. |
 
-#### `platforms.accounts.create()`
+#### `platforms.accounts.close()`
 
-Creates a sub-account.
+Closes a sub-account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Platform to create an account for. Format: platforms/{platform} |
+| `params.name` | `string` | Yes | Required. Account to close. Format: platforms/{platform}/accounts/{account_id} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `platforms.accounts.list()`
@@ -42,17 +42,17 @@ Lists a partial view of sub-accounts for a specific parent account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Platform who parents the accounts. Format: platforms/{platform} |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of accounts to include in the response, used for paging. If unspecified, at most 10000 accounts will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page. |
+| `params.parent` | `string` | Yes | Required. Platform who parents the accounts. Format: platforms/{platform} |
 
-#### `platforms.accounts.close()`
+#### `platforms.accounts.create()`
 
-Closes a sub-account.
+Creates a sub-account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Account to close. Format: platforms/{platform}/accounts/{account_id} |
+| `params.parent` | `string` | Yes | Required. Platform to create an account for. Format: platforms/{platform} |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `platforms.accounts.get()`
@@ -76,13 +76,14 @@ Creates an account event.
 
 ### `platforms.accounts.sites`
 
-#### `platforms.accounts.sites.requestReview()`
+#### `platforms.accounts.sites.create()`
 
-Requests the review of a site. The site should be in REQUIRES_REVIEW or NEEDS_ATTENTION state. Note: Make sure you place an [ad tag](https://developers.google.com/adsense/platforms/direct/ad-tags) on your site before requesting a review.
+Creates a site for a specified account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the site to submit for review. Format: platforms/{platform}/accounts/{account}/sites/{site} |
+| `params.parent` | `string` | Yes | Required. Account to create site. Format: platforms/{platform}/accounts/{account_id} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `platforms.accounts.sites.get()`
 
@@ -92,24 +93,23 @@ Gets a site from a specified sub-account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the site to retrieve. Format: platforms/{platform}/accounts/{account}/sites/{site} |
 
+#### `platforms.accounts.sites.requestReview()`
+
+Requests the review of a site. The site should be in REQUIRES_REVIEW or NEEDS_ATTENTION state. Note: Make sure you place an [ad tag](https://developers.google.com/adsense/platforms/direct/ad-tags) on your site before requesting a review.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the site to submit for review. Format: platforms/{platform}/accounts/{account}/sites/{site} |
+
 #### `platforms.accounts.sites.list()`
 
 Lists sites for a specific account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} |
 | `params.pageSize` | `integer` | No | The maximum number of sites to include in the response, used for paging. If unspecified, at most 10000 sites will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000. |
 | `params.pageToken` | `string` | No | A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token. |
-
-#### `platforms.accounts.sites.create()`
-
-Creates a site for a specified account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Account to create site. Format: platforms/{platform}/accounts/{account_id} |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.parent` | `string` | Yes | Required. The account which owns the sites. Format: platforms/{platform}/accounts/{account} |
 
 #### `platforms.accounts.sites.delete()`
 
