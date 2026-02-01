@@ -4,8 +4,8 @@ Auto-generated client library for using the **Apigee API (version: v1)** in Goog
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:22:47 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:22:47 GMT
+- **Last Checked:** Sun, 01 Feb 2026 00:22:56 GMT
+- **Last Modified:** Sun, 01 Feb 2026 00:22:56 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:32 GMT
 
 
@@ -159,114 +159,1974 @@ UpdateSecuritySettings updates the current security settings for API Security.
 | `params.updateMask` | `string` | No | Optional. The list of fields to update. Allowed fields are: - ml_retraining_feedback_enabled |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `organizations.sites`
+### `organizations.apis`
 
-### `organizations.sites.apicategories`
+#### `organizations.apis.list()`
 
-#### `organizations.sites.apicategories.create()`
-
-Creates a new API category.
+Lists the names of all API proxies in an organization. The names returned correspond to the names defined in the configuration files for each API proxy. If the resource has the `space` attribute set, the response may not return all resources. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}` |
+| `params.parent` | `string` | Yes | Required. Name of the organization in the following format: `organizations/{org}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.includeRevisions` | `boolean` | No | Flag that specifies whether to include a list of revisions in the response. |
+| `params.includeMetaData` | `boolean` | No | Flag that specifies whether to include API proxy metadata in the response. |
+| `params.space` | `string` | No | Optional. The space ID to filter the list of proxies (optional). If unspecified, all proxies in the organization will be listed. |
+
+#### `organizations.apis.patch()`
+
+Updates an existing API proxy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. API proxy to update in the following format: `organizations/{org}/apis/{api}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.updateMask` | `string` | No | Required. The list of fields to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.sites.apicategories.delete()`
+#### `organizations.apis.move()`
 
-Deletes an API category.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the category. Use the following structure in your request: `organizations/{org}/sites/{site}/apicategories/{apicategory}` |
-
-#### `organizations.sites.apicategories.patch()`
-
-Updates an API category.
+Moves an API proxy to a different space.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the category. Use the following structure in your request: `organizations/{org}/sites/{site}/apicategories/{apicategory}` |
+| `params.name` | `string` | Yes | Required. API proxy to move in the following format: `organizations/{org}/apis/{api}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.sites.apicategories.get()`
+#### `organizations.apis.get()`
 
-Gets an API category.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the category. Use the following structure in your request: `organizations/{org}/sites/{site}/apicategories/{apicategory}` |
-
-#### `organizations.sites.apicategories.list()`
-
-Returns the API categories associated with a portal.
+Gets an API proxy including a list of existing revisions.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}` |
+| `params.name` | `string` | Yes | Required. Name of the API proxy in the following format: `organizations/{org}/apis/{api}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 
-### `organizations.sites.apidocs`
+#### `organizations.apis.delete()`
 
-#### `organizations.sites.apidocs.get()`
-
-Gets a catalog item.
+Deletes an API proxy and all associated endpoints, policies, resources, and revisions. The API proxy must be undeployed before you can delete it.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the catalog item. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}` |
+| `params.name` | `string` | Yes | Required. Name of the API proxy in the following format: `organizations/{org}/apis/{api}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 
-#### `organizations.sites.apidocs.create()`
+#### `organizations.apis.create()`
 
-Creates a new catalog item.
+Creates an API proxy. The API proxy created will not be accessible at runtime until it is deployed to an environment. Create a new API proxy by setting the `name` query parameter to the name of the API proxy. Import an API proxy configuration bundle stored in zip format on your local machine to your organization by doing the following:
+
+* Set the `name` query parameter to the name of the API proxy.
+
+* Set the `action` query parameter to `import`.
+
+* Set the `Content-Type` header to `multipart/form-data`.
+
+* Pass as a file the name of API proxy configuration bundle stored in zip format on your local machine using the `file` form field. **Note**: To validate the API proxy configuration bundle only without importing it, set the `action` query parameter to `validate`. When importing an API proxy configuration bundle, if the API proxy does not exist, it will be created. If the API proxy exists, then a new revision is created. Invalid API proxy configurations are rejected, and a list of validation errors is returned to the client.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}` |
+| `params.parent` | `string` | Yes | Required. Name of the organization in the following format: `organizations/{org}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.name` | `string` | No | Name of the API proxy. Restrict the characters used to: A-Za-z0-9._- |
+| `params.action` | `string` | No | Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it. |
+| `params.validate` | `boolean` | No | Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API. |
+| `params.space` | `string` | No | Optional. The ID of the space associated with this proxy. Any IAM policies applied to the space will affect access to this proxy. Note that this field is only respected when creating a new proxy. It has no effect when creating a new revision for an existing proxy. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.sites.apidocs.update()`
+### `organizations.apis.revisions`
 
-Updates a catalog item.
+#### `organizations.apis.revisions.updateApiProxyRevision()`
+
+Updates an existing API proxy revision by uploading the API proxy configuration bundle as a zip file from your local machine. You can update only API proxy revisions that have never been deployed. After deployment, an API proxy revision becomes immutable, even if it is undeployed. Set the `Content-Type` header to either `multipart/form-data` or `application/octet-stream`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the catalog item. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}` |
+| `params.name` | `string` | Yes | Required. API proxy revision to update in the following format: `organizations/{org}/apis/{api}/revisions/{rev}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.validate` | `boolean` | No | Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.sites.apidocs.list()`
+#### `organizations.apis.revisions.get()`
 
-Returns the catalog items associated with a portal.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. The service may return fewer than this value. If unspecified, at most 25 books will be returned. The maximum value is 100; values above 100 will be coerced to 100. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListApiDocs` call. Provide this to retrieve the subsequent page. |
-
-#### `organizations.sites.apidocs.delete()`
-
-Deletes a catalog item.
+Gets an API proxy revision. To download the API proxy configuration bundle for the specified revision as a zip file, set the `format` query parameter to `bundle`. If you are using curl, specify `-o filename.zip` to save the output to a file; otherwise, it displays to `stdout`. Then, develop the API proxy configuration locally and upload the updated API proxy configuration revision, as described in [updateApiProxyRevision](updateApiProxyRevision).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the catalog item. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}` |
+| `params.name` | `string` | Yes | Required. API proxy revision in the following format: `organizations/{org}/apis/{api}/revisions/{rev}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.format` | `string` | No | Format used when downloading the API proxy configuration revision. Set to `bundle` to download the API proxy configuration revision as a zip file. |
 
-#### `organizations.sites.apidocs.updateDocumentation()`
+#### `organizations.apis.revisions.delete()`
 
-Updates the documentation for the specified catalog item. Note that the documentation file contents will not be populated in the return message.
+Deletes an API proxy revision and all policies, resources, endpoints, and revisions associated with it. The API proxy revision must be undeployed before you can delete it.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the catalog item documentation. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}/documentation` |
+| `params.name` | `string` | Yes | Required. API proxy revision in the following format: `organizations/{org}/apis/{api}/revisions/{rev}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.apis.revisions.deployments`
+
+#### `organizations.apis.revisions.deployments.list()`
+
+Lists all deployments of an API proxy revision.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the API proxy revision for which to return deployment information in the following format: `organizations/{org}/apis/{api}/revisions/{rev}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.apis.deployments`
+
+#### `organizations.apis.deployments.list()`
+
+Lists all deployments of an API proxy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the API proxy for which to return deployment information in the following format: `organizations/{org}/apis/{api}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.apis.keyvaluemaps`
+
+#### `organizations.apis.keyvaluemaps.get()`
+
+Get the key value map scoped to an organization, environment, or API proxy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.apis.keyvaluemaps.update()`
+
+Update the key value map scoped to an organization, environment, or API proxy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.sites.apidocs.getDocumentation()`
+#### `organizations.apis.keyvaluemaps.create()`
 
-Gets the documentation for the specified catalog item.
+Creates a key value map in an API proxy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the catalog item documentation. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}/documentation` |
+| `params.parent` | `string` | Yes | Required. Name of the environment in which to create the key value map. Use the following structure in your request: `organizations/{org}/apis/{api}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.apis.keyvaluemaps.delete()`
+
+Deletes a key value map from an API proxy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the key value map. Use the following structure in your request: `organizations/{org}/apis/{api}/keyvaluemaps/{keyvaluemap}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.apis.keyvaluemaps.entries`
+
+#### `organizations.apis.keyvaluemaps.entries.get()`
+
+Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map entry/value. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.apis.keyvaluemaps.entries.delete()`
+
+Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:**
+
+* After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior.
+
+* Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to delete the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.apis.keyvaluemaps.entries.create()`
+
+Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.apis.keyvaluemaps.entries.update()`
+
+Update key value entry scoped to an organization, environment, or API proxy for an existing key.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.apis.keyvaluemaps.entries.list()`
+
+Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to list key value maps. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of key value entries to return. If unspecified, at most 100 entries will be returned. |
+| `params.pageToken` | `string` | No | Optional. Page token. If provides, must be a valid key value entry returned from a previous call that can be used to retrieve the next page. |
+
+### `organizations.apis.debugsessions`
+
+#### `organizations.apis.debugsessions.list()`
+
+Lists debug sessions that are currently active in the given API Proxy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the API Proxy for which to list debug sessions. Must be of the form: `organizations/{organization}/apis/{api}`. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of debug sessions to return. The page size defaults to 25. |
+| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous ListApiDebugSessions call, that you can use to retrieve the next page. |
+
+### `organizations.operations`
+
+#### `organizations.operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+
+#### `organizations.operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+### `organizations.datacollectors`
+
+#### `organizations.datacollectors.create()`
+
+Creates a new data collector.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization in which to create the data collector in the following format: `organizations/{org}`. |
+| `params.dataCollectorId` | `string` | No | ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.datacollectors.list()`
+
+Lists all data collectors.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization for which to list data collectors in the following format: `organizations/{org}`. |
+| `params.pageSize` | `integer` | No | Maximum number of data collectors to return. The page size defaults to 25. |
+| `params.pageToken` | `string` | No | Page token, returned from a previous ListDataCollectors call, that you can use to retrieve the next page. |
+
+#### `organizations.datacollectors.get()`
+
+Gets a data collector.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the data collector in the following format: `organizations/{org}/datacollectors/{data_collector_id}`. |
+
+#### `organizations.datacollectors.patch()`
+
+Updates a data collector.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the data collector in the following format: `organizations/{org}/datacollectors/{data_collector_id}`. |
+| `params.updateMask` | `string` | No | List of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.datacollectors.delete()`
+
+Deletes a data collector.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the data collector in the following format: `organizations/{org}/datacollectors/{data_collector_id}`. |
+
+### `organizations.environments`
+
+#### `organizations.environments.getDebugmask()`
+
+Gets the debug mask singleton resource for an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the debug mask. Use the following structure in your request: `organizations/{org}/environments/{env}/debugmask`. |
+
+#### `organizations.environments.updateDebugmask()`
+
+Updates the debug mask singleton resource for an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the debug mask. |
+| `params.updateMask` | `string` | No | Field debug mask to support partial updates. |
+| `params.replaceRepeatedFields` | `boolean` | No | Boolean flag that specifies whether to replace existing values in the debug mask when doing an update. Set to true to replace existing values. The default behavior is to append the values (false). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.getTraceConfig()`
+
+Get distributed trace configuration in an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the trace configuration. Use the following structure in your request: "organizations/*/environments/*/traceConfig". |
+
+#### `organizations.environments.updateTraceConfig()`
+
+Updates the trace configurations in an environment. Note that the repeated fields have replace semantics when included in the field mask and that they will be overwritten by the value of the fields in the request body.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the trace configuration. Use the following structure in your request: "organizations/*/environments/*/traceConfig". |
+| `params.updateMask` | `string` | No | List of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.create()`
+
+Creates an environment in an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization in which the environment will be created. Use the following structure in your request: `organizations/{org}` |
+| `params.name` | `string` | No | Optional. Name of the environment. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.delete()`
+
+Deletes an environment from an organization. **Warning: You must delete all key value maps and key value entries before you delete an environment.** Otherwise, if you re-create the environment the key value map entry operations will encounter encryption/decryption discrepancies.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
+
+#### `organizations.environments.get()`
+
+Gets environment details.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
+
+#### `organizations.environments.updateEnvironment()`
+
+Updates an existing environment. When updating properties, you must pass all existing properties to the API, even if they are not being changed. If you omit properties from the payload, the properties are removed. To get the current list of properties for the environment, use the [Get Environment API](get). **Note**: Both `PUT` and `POST` methods are supported for updating an existing environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.update()`
+
+Updates an existing environment. When updating properties, you must pass all existing properties to the API, even if they are not being changed. If you omit properties from the payload, the properties are removed. To get the current list of properties for the environment, use the [Get Environment API](get). **Note**: Both `PUT` and `POST` methods are supported for updating an existing environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.getDeployedConfig()`
+
+Gets the deployed configuration for an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment deployed configuration resource. Use the following structure in your request: `organizations/{org}/environments/{env}/deployedConfig` |
+
+#### `organizations.environments.getApiSecurityRuntimeConfig()`
+
+Gets the API Security runtime configuration for an environment. This named ApiSecurityRuntimeConfig to prevent conflicts with ApiSecurityConfig from addon config.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment API Security Runtime configuration resource. Use the following structure in your request: `organizations/{org}/environments/{env}/apiSecurityRuntimeConfig` |
+
+#### `organizations.environments.setIamPolicy()`
+
+Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.getIamPolicy()`
+
+Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `organizations.environments.testIamPermissions()`
+
+Tests the permissions of a user on an environment, and returns a subset of permissions that the user has on the environment. If the environment does not exist, an empty permission set is returned (a NOT_FOUND error is not returned).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.subscribe()`
+
+Creates a subscription for the environment's Pub/Sub topic. The server will assign a random name for this subscription. The "name" and "push_config" must *not* be specified.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
+
+#### `organizations.environments.unsubscribe()`
+
+Deletes a subscription for the environment's Pub/Sub topic.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.modifyEnvironment()`
+
+Updates properties for an Apigee environment with patch semantics using a field mask. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{environment}`. |
+| `params.updateMask` | `string` | No | List of fields to be updated. Fields that can be updated: node_config. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.getAddonsConfig()`
+
+Gets the add-ons config of an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the add-ons config. Must be in the format of `/organizations/{org}/environments/{env}/addonsConfig` |
+
+#### `organizations.environments.getSecurityActionsConfig()`
+
+GetSecurityActionConfig returns the current SecurityActions configuration.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the SecurityActionsConfig to retrieve. This will always be: `organizations/{org}/environments/{env}/security_actions_config` |
+
+#### `organizations.environments.updateSecurityActionsConfig()`
+
+UpdateSecurityActionConfig updates the current SecurityActions configuration. This method is used to enable/disable the feature at the environment level.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | This is a singleton resource, the name will always be set by SecurityActions and any user input will be ignored. The name is always: `organizations/{org}/environments/{env}/security_actions_config` |
+| `params.updateMask` | `string` | No | The list of fields to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.environments.resourcefiles`
+
+#### `organizations.environments.resourcefiles.create()`
+
+Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment in which to create the resource file in the following format: `organizations/{org}/environments/{env}`. |
+| `params.type` | `string` | No | Required. Resource file type. {{ resource_file_type }} |
+| `params.name` | `string` | No | Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.resourcefiles.update()`
+
+Updates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment in the following format: `organizations/{org}/environments/{env}`. |
+| `params.type` | `string` | Yes | Required. Resource file type. {{ resource_file_type }} |
+| `params.name` | `string` | Yes | Required. ID of the resource file to update. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.resourcefiles.get()`
+
+Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment in the following format: `organizations/{org}/environments/{env}`. |
+| `params.type` | `string` | Yes | Required. Resource file type. {{ resource_file_type }} |
+| `params.name` | `string` | Yes | Required. ID of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255} |
+
+#### `organizations.environments.resourcefiles.delete()`
+
+Deletes a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment in the following format: `organizations/{org}/environments/{env}`. |
+| `params.type` | `string` | Yes | Required. Resource file type. {{ resource_file_type }} |
+| `params.name` | `string` | Yes | Required. ID of the resource file to delete. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255} |
+
+#### `organizations.environments.resourcefiles.list()`
+
+Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment in which to list resource files in the following format: `organizations/{org}/environments/{env}`. |
+| `params.type` | `string` | No | Optional. Type of resource files to list. {{ resource_file_type }} |
+
+#### `organizations.environments.resourcefiles.listEnvironmentResources()`
+
+Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment in which to list resource files in the following format: `organizations/{org}/environments/{env}`. |
+| `params.type` | `string` | Yes | Optional. Type of resource files to list. {{ resource_file_type }} |
+
+### `organizations.environments.archiveDeployments`
+
+#### `organizations.environments.archiveDeployments.get()`
+
+Gets the specified ArchiveDeployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`. |
+
+#### `organizations.environments.archiveDeployments.list()`
+
+Lists the ArchiveDeployments in the specified Environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the Environment for which to list Archive Deployments in the format: `organizations/{org}/environments/{env}`. |
+| `params.filter` | `string` | No | Optional. An optional query used to return a subset of Archive Deployments using the semantics defined in https://google.aip.dev/160. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of Archive Deployments to return. If unspecified, at most 25 deployments will be returned. |
+| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous ListArchiveDeployments call, that you can use to retrieve the next page. |
+
+#### `organizations.environments.archiveDeployments.generateUploadUrl()`
+
+Generates a signed URL for uploading an Archive zip file to Google Cloud Storage. Once the upload is complete, the signed URL should be passed to CreateArchiveDeployment. When uploading to the generated signed URL, please follow these restrictions:
+
+* Source file type should be a zip file.
+
+* Source file size should not exceed 1GB limit.
+
+* No credentials should be attached - the signed URLs provide access to the target bucket using internal service identity; if credentials were attached, the identity from the credentials would be used, but that identity does not have permissions to upload files to the URL. When making a HTTP PUT request, these two headers need to be specified:
+
+* `content-type: application/zip`
+
+* `x-goog-content-length-range: 0,1073741824` And this header SHOULD NOT be specified:
+
+* `Authorization: Bearer YOUR_TOKEN`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The organization and environment to upload to. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.archiveDeployments.generateDownloadUrl()`
+
+Generates a signed URL for downloading the original zip file used to create an Archive Deployment. The URL is only valid for a limited period and should be used within minutes after generation. Each call returns a new upload URL.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Archive Deployment you want to download. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.archiveDeployments.create()`
+
+Creates a new ArchiveDeployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The Environment this Archive Deployment will be created in. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.archiveDeployments.patch()`
+
+Updates an existing ArchiveDeployment. Labels can modified but most of the other fields are not modifiable.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`. |
+| `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.archiveDeployments.delete()`
+
+Deletes an archive deployment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`. |
+
+### `organizations.environments.apis`
+
+### `organizations.environments.apis.revisions`
+
+#### `organizations.environments.apis.revisions.deploy()`
+
+Deploys a revision of an API proxy. If another revision of the same API proxy revision is currently deployed, set the `override` parameter to `true` to have this revision replace the currently deployed revision. You cannot invoke an API proxy until it has been deployed to an environment. After you deploy an API proxy revision, you cannot edit it. To edit the API proxy, you must create and deploy a new revision. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`, two permissions are required:
+
+* `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}`
+
+* `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` All successful API proxy deployments to Apigee are [zero-downtime deployments](https://cloud.google.com/apigee/docs/api-platform/deploy/ui-deploy-overview#zero-downtime-deployment). Apigee hybrid validates the dependencies between shared flows and API proxies at deployment time. For example, if the Flow Callout policy in an API proxy references a shared flow that either doesn't exist or isn't deployed, the API proxy deployment fails.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the API proxy revision deployment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the API proxy resource being deployed has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.override` | `boolean` | No | Flag that specifies whether the new deployment replaces other deployed revisions of the API proxy in the environment. Set `override` to `true` to replace other deployed revisions. By default, `override` is `false` and the deployment is rejected if other revisions of the API proxy are deployed in the environment. |
+| `params.sequencedRollout` | `boolean` | No | Flag that specifies whether to enable sequenced rollout. If set to `true`, the routing rules for this deployment and the environment changes to add the deployment will be rolled out in a safe order. This reduces the risk of downtime that could be caused by changing the environment group's routing before the new destination for the affected traffic is ready to receive it. This should only be necessary if the new deployment will be capturing traffic from another environment under a shared environment group or if traffic will be rerouted to a different environment due to a base path removal. The generateDeployChangeReport API may be used to examine routing changes before issuing the deployment request, and its response will indicate if a sequenced rollout is recommended for the deployment. |
+| `params.serviceAccount` | `string` | No | Google Cloud IAM service account. The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`. |
+
+#### `organizations.environments.apis.revisions.undeploy()`
+
+Undeploys an API proxy revision from an environment. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`, two permissions are required:
+
+* `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}`
+
+* `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the API proxy revision deployment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.sequencedRollout` | `boolean` | No | Flag that specifies whether to enable sequenced rollout. If set to `true`, the environment group routing rules corresponding to this deployment will be removed before removing the deployment from the runtime. This is likely to be a rare use case; it is only needed when the intended effect of undeploying this proxy is to cause the traffic it currently handles to be rerouted to some other existing proxy in the environment group. The GenerateUndeployChangeReport API may be used to examine routing changes before issuing the undeployment request, and its response will indicate if a sequenced rollout is recommended for the undeployment. |
+
+#### `organizations.environments.apis.revisions.getDeployments()`
+
+Gets the deployment of an API proxy revision and actual state reported by runtime pods.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name representing an API proxy revision in an environment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.environments.apis.revisions.deployments`
+
+#### `organizations.environments.apis.revisions.deployments.generateDeployChangeReport()`
+
+Generates a report for a dry run analysis of a DeployApiProxy request without committing the deployment. In addition to the standard validations performed when adding deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being created. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run DeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateDeployChangeReport`, two permissions are required:
+
+* `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}`
+
+* `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the API proxy revision deployment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.override` | `boolean` | No | Flag that specifies whether to force the deployment of the new revision over the currently deployed revision by overriding conflict checks. |
+
+#### `organizations.environments.apis.revisions.deployments.generateUndeployChangeReport()`
+
+Generates a report for a dry run analysis of an UndeployApiProxy request without committing the undeploy. In addition to the standard validations performed when removing deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being removed. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run UndeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateUndeployChangeReport`, two permissions are required:
+
+* `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}`
+
+* `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the API proxy revision deployment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` |
+
+### `organizations.environments.apis.revisions.debugsessions`
+
+#### `organizations.environments.apis.revisions.debugsessions.create()`
+
+Creates a debug session for a deployed API Proxy revision.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the API Proxy revision deployment for which to create the DebugSession. Must be of the form `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.timeout` | `string` | No | Optional. The time in seconds after which this DebugSession should end. A timeout specified in DebugSession will overwrite this value. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.apis.revisions.debugsessions.get()`
+
+Retrieves a debug session.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the debug session to retrieve. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.environments.apis.revisions.debugsessions.list()`
+
+Lists debug sessions that are currently active in the given API Proxy revision.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the API Proxy revision deployment for which to list debug sessions. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of debug sessions to return. The page size defaults to 25. |
+| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous ListDebugSessions call, that you can use to retrieve the next page. |
+
+#### `organizations.environments.apis.revisions.debugsessions.deleteData()`
+
+Deletes the data from a debug session. This does not cancel the debug session or prevent further data from being collected if the session is still active in runtime pods.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the debug session to delete. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debugsession}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.environments.apis.revisions.debugsessions.data`
+
+#### `organizations.environments.apis.revisions.debugsessions.data.get()`
+
+Gets the debug data from a transaction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the debug session transaction. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}/data/{transaction}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.environments.apis.deployments`
+
+#### `organizations.environments.apis.deployments.list()`
+
+Lists all deployments of an API proxy in an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name representing an API proxy in an environment in the following format: `organizations/{org}/environments/{env}/apis/{api}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.environments.sharedflows`
+
+### `organizations.environments.sharedflows.revisions`
+
+#### `organizations.environments.sharedflows.revisions.deploy()`
+
+Deploys a revision of a shared flow. If another revision of the same shared flow is currently deployed, set the `override` parameter to `true` to have this revision replace the currently deployed revision. You cannot use a shared flow until it has been deployed to an environment. For a request path `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`, two permissions are required:
+
+* `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}`
+
+* `apigee.sharedflowrevisions.deploy` on the resource `organizations/{org}/sharedflows/{sf}/revisions/{rev}`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the shared flow revision to deploy in the following format: `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}` If the shared flow resource being deployed has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.override` | `boolean` | No | Flag that specifies whether the new deployment replaces other deployed revisions of the shared flow in the environment. Set `override` to `true` to replace other deployed revisions. By default, `override` is `false` and the deployment is rejected if other revisions of the shared flow are deployed in the environment. |
+| `params.serviceAccount` | `string` | No | Google Cloud IAM service account. The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`. |
+
+#### `organizations.environments.sharedflows.revisions.undeploy()`
+
+Undeploys a shared flow revision from an environment. For a request path `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`, two permissions are required:
+
+* `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}`
+
+* `apigee.sharedflowrevisions.undeploy` on the resource `organizations/{org}/sharedflows/{sf}/revisions/{rev}`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the shared flow revision to undeploy in the following format: `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}` If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.environments.sharedflows.revisions.getDeployments()`
+
+Gets the deployment of a shared flow revision and actual state reported by runtime pods.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name representing a shared flow in an environment in the following format: `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}` If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.environments.sharedflows.deployments`
+
+#### `organizations.environments.sharedflows.deployments.list()`
+
+Lists all deployments of a shared flow in an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name representing a shared flow in an environment in the following format: `organizations/{org}/environments/{env}/sharedflows/{sharedflow}` If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.environments.deployments`
+
+#### `organizations.environments.deployments.list()`
+
+Lists all deployments of API proxies or shared flows in an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment for which to return deployment information in the following format: `organizations/{org}/environments/{env}` |
+| `params.sharedFlows` | `boolean` | No | Optional. Flag that specifies whether to return shared flow or API proxy deployments. Set to `true` to return shared flow deployments; set to `false` to return API proxy deployments. Defaults to `false`. |
+
+#### `organizations.environments.deployments.get()`
+
+Gets a particular deployment of Api proxy or a shared flow in an environment
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the api proxy or the shared flow deployment. Use the following structure in your request: `organizations/{org}/environments/{env}/deployments/{deployment}` |
+
+#### `organizations.environments.deployments.setIamPolicy()`
+
+Sets the IAM policy on a deployment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.deployments.setIamPolicy` permission to call this API.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.deployments.getIamPolicy()`
+
+Gets the IAM policy on a deployment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.deployments.getIamPolicy` permission to call this API.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `organizations.environments.deployments.testIamPermissions()`
+
+Tests the permissions of a user on a deployment, and returns a subset of permissions that the user has on the deployment. If the deployment does not exist, an empty permission set is returned (a NOT_FOUND error is not returned).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.environments.flowhooks`
+
+#### `organizations.environments.flowhooks.get()`
+
+Returns the name of the shared flow attached to the specified flow hook. If there's no shared flow attached to the flow hook, the API does not return an error; it simply does not return a name in the response.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the flow hook in the following format: `organizations/{org}/environments/{env}/flowhooks/{flowhook}` |
+
+#### `organizations.environments.flowhooks.attachSharedFlowToFlowHook()`
+
+Attaches a shared flow to a flow hook.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the flow hook to which the shared flow should be attached in the following format: `organizations/{org}/environments/{env}/flowhooks/{flowhook}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.flowhooks.detachSharedFlowFromFlowHook()`
+
+Detaches a shared flow from a flow hook.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the flow hook to detach in the following format: `organizations/{org}/environments/{env}/flowhooks/{flowhook}` |
+
+### `organizations.environments.keystores`
+
+#### `organizations.environments.keystores.create()`
+
+Creates a keystore or truststore. - Keystore: Contains certificates and their associated keys. - Truststore: Contains trusted certificates used to validate a server's certificate. These certificates are typically self-signed certificates or certificates that are not signed by a trusted CA.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment in which to create the keystore. Use the following format in your request: `organizations/{org}/environments/{env}` |
+| `params.name` | `string` | No | Optional. Name of the keystore. Overrides the value in Keystore. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.keystores.delete()`
+
+Deletes a keystore or truststore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the keystore. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}` |
+
+#### `organizations.environments.keystores.get()`
+
+Gets a keystore or truststore.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the keystore. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}`. |
+
+### `organizations.environments.keystores.aliases`
+
+#### `organizations.environments.keystores.aliases.create()`
+
+Creates an alias from a key/certificate pair. The structure of the request is controlled by the `format` query parameter: - `keycertfile` - Separate PEM-encoded key and certificate files are uploaded. Set `Content-Type: multipart/form-data` and include the `keyFile`, `certFile`, and `password` (if keys are encrypted) fields in the request body. If uploading to a truststore, omit `keyFile`. - `pkcs12` - A PKCS12 file is uploaded. Set `Content-Type: multipart/form-data`, provide the file in the `file` field, and include the `password` field if the file is encrypted in the request body. - `selfsignedcert` - A new private key and certificate are generated. Set `Content-Type: application/json` and include CertificateGenerationSpec in the request body.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the keystore. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}`. |
+| `params.alias` | `string` | No | Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body. |
+| `params.format` | `string` | No | Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12` |
+| `params.ignoreExpiryValidation` | `boolean` | No | Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed. |
+| `params._password` | `string` | No | DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required. |
+| `params.ignoreNewlineValidation` | `boolean` | No | Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.keystores.aliases.get()`
+
+Gets an alias.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`. |
+
+#### `organizations.environments.keystores.aliases.delete()`
+
+Deletes an alias.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`. |
+
+#### `organizations.environments.keystores.aliases.update()`
+
+Updates the certificate in an alias. The updated certificate must be in PEM- or DER-encoded X.509 format.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}` |
+| `params.ignoreExpiryValidation` | `boolean` | No | Required. Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed. |
+| `params.ignoreNewlineValidation` | `boolean` | No | Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.keystores.aliases.csr()`
+
+Generates a PKCS #10 Certificate Signing Request for the private key in an alias.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`. |
+
+#### `organizations.environments.keystores.aliases.getCertificate()`
+
+Gets the certificate from an alias in PEM-encoded form.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`. |
+
+### `organizations.environments.targetservers`
+
+#### `organizations.environments.targetservers.create()`
+
+Creates a TargetServer in the specified environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent environment name under which the TargetServer will be created. Must be of the form `organizations/{org}/environments/{env}`. |
+| `params.name` | `string` | No | Optional. The ID to give the TargetServer. This will overwrite the value in TargetServer. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.targetservers.delete()`
+
+Deletes a TargetServer from an environment. Returns the deleted TargetServer resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the TargetServer to delete. Must be of the form `organizations/{org}/environments/{env}/targetservers/{target_server_id}`. |
+
+#### `organizations.environments.targetservers.get()`
+
+Gets a TargetServer resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the TargetServer to get. Must be of the form `organizations/{org}/environments/{env}/targetservers/{target_server_id}`. |
+
+#### `organizations.environments.targetservers.update()`
+
+Updates an existing TargetServer. Note that this operation has PUT semantics; it will replace the entirety of the existing TargetServer with the resource in the request body.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the TargetServer to replace. Must be of the form `organizations/{org}/environments/{env}/targetservers/{target_server_id}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.environments.addonsConfig`
+
+#### `organizations.environments.addonsConfig.setAddonEnablement()`
+
+Updates an add-on enablement status of an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the add-ons config. Must be in the format of `/organizations/{org}/environments/{env}/addonsConfig` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.environments.references`
+
+#### `organizations.environments.references.create()`
+
+Creates a Reference in the specified environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent environment name under which the Reference will be created. Must be of the form `organizations/{org}/environments/{env}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.references.delete()`
+
+Deletes a Reference from an environment. Returns the deleted Reference resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Reference to delete. Must be of the form `organizations/{org}/environments/{env}/references/{ref}`. |
+
+#### `organizations.environments.references.get()`
+
+Gets a Reference resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Reference to get. Must be of the form `organizations/{org}/environments/{env}/references/{ref}`. |
+
+#### `organizations.environments.references.update()`
+
+Updates an existing Reference. Note that this operation has PUT semantics; it will replace the entirety of the existing Reference with the resource in the request body.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the Reference to update. Must be of the form `organizations/{org}/environments/{env}/references/{ref}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.environments.traceConfig`
+
+### `organizations.environments.traceConfig.overrides`
+
+#### `organizations.environments.traceConfig.overrides.create()`
+
+Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the trace configuration override. Use the following structure in your request. "organizations/*/environments/*/traceConfig". |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.traceConfig.overrides.list()`
+
+Lists all of the distributed trace configuration overrides in an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Parent resource of the trace configuration override. Use the following structure in your request: "organizations/*/environments/*/traceConfig". |
+| `params.pageSize` | `integer` | No | Maximum number of trace configuration overrides to return. If not specified, the maximum number returned is 25. The maximum number cannot exceed 100. |
+| `params.pageToken` | `string` | No | A page token, returned from a previous `ListTraceConfigOverrides` call. Token value that can be used to retrieve the subsequent page. When paginating, all other parameters provided to `ListTraceConfigOverrides` must match those specified in the call to obtain the page token. |
+
+#### `organizations.environments.traceConfig.overrides.get()`
+
+Gets a trace configuration override.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the trace configuration override. Use the following structure in your request: "organizations/*/environments/*/traceConfig/overrides/*". |
+
+#### `organizations.environments.traceConfig.overrides.patch()`
+
+Updates a distributed trace configuration override. Note that the repeated fields have replace semantics when included in the field mask and that they will be overwritten by the value of the fields in the request body.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the trace configuration override. Use the following structure in your request: "organizations/*/environments/*/traceConfig/overrides/*". |
+| `params.updateMask` | `string` | No | List of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.traceConfig.overrides.delete()`
+
+Deletes a distributed trace configuration override.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the trace configuration override. Use the following structure in your request: "organizations/*/environments/*/traceConfig/overrides/*". |
+
+### `organizations.environments.stats`
+
+#### `organizations.environments.stats.get()`
+
+Retrieve metrics grouped by dimensions. The types of metrics you can retrieve include traffic, message counts, API call latency, response size, and cache hits and counts. Dimensions let you view metrics in meaningful groups. You can optionally pass dimensions as path parameters to the `stats` API. If dimensions are not specified, the metrics are computed on the entire set of data for the given time range.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name for which the interactive query will be executed. Use the following format in your request: `organizations/{org}/environments/{env}/stats/{dimensions}` Dimensions let you view metrics in meaningful groupings, such as `apiproxy` or `target_host`. The value of dimensions should be a comma-separated list, as shown below: `organizations/{org}/environments/{env}/stats/apiproxy,request_verb` |
+| `params.select` | `string` | No | Comma-separated list of metrics. For example: `sum(message_count),sum(error_count)` |
+| `params.timeUnit` | `string` | No | Granularity of metrics returned. Valid values include: `second`, `minute`, `hour`, `day`, `week`, or` month`. |
+| `params.timeRange` | `string` | No | Time interval for the interactive query. Time range is specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59` |
+| `params.filter` | `string` | No | Filter that enables you to drill down on specific dimension values. |
+| `params.sort` | `string` | No | Flag that specifies whether the sort order should be ascending or descending. Valid values include: `DESC` and `ASC`. |
+| `params.sortby` | `string` | No | Comma-separated list of metrics to sort the final result. |
+| `params.aggTable` | `string` | No | Table name used to query custom aggregate tables. If this parameter is skipped, then Apigee will try to retrieve the data from fact tables which will be expensive. |
+| `params.limit` | `string` | No | Maximum number of result items to return. |
+| `params.offset` | `string` | No | Offset value. Use `offset` with `limit` to enable pagination of results. For example, to display results 11-20, set limit to `10` and offset to `10`. |
+| `params.topk` | `string` | No | Top number of results to return. For example, to return the top 5 results, set `topk=5`. |
+| `params.tsAscending` | `boolean` | No | Flag that specifies whether to list timestamps in ascending (`true`) or descending (`false`) order. Apigee recommends that you set this value to `true` if you are using `sortby` with `sort=DESC`. |
+| `params.realtime` | `boolean` | No | No longer used by Apigee. Supported for backwards compatibility. |
+| `params.sonar` | `boolean` | No | Routes the query to API Monitoring for the last hour. |
+| `params.tzo` | `string` | No | Timezone offset value. |
+| `params.accuracy` | `string` | No | No longer used by Apigee. Supported for backwards compatibility. |
+
+### `organizations.environments.optimizedStats`
+
+#### `organizations.environments.optimizedStats.get()`
+
+Similar to GetStats except that the response is less verbose.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name for which the interactive query will be executed. Use the following format in your request: `organizations/{org}/environments/{env}/optimizedStats/{dimensions}` Dimensions let you view metrics in meaningful groupings, such as `apiproxy`, `target_host`. The value of `dimensions` should be a comma-separated list as shown below: `organizations/{org}/environments/{env}/optimizedStats/apiproxy,request_verb` |
+| `params.select` | `string` | No | Required. Comma-separated list of metrics. For example: `sum(message_count),sum(error_count)` |
+| `params.timeUnit` | `string` | No | Granularity of metrics returned. Valid values include: `second`, `minute`, `hour`, `day`, `week`, or `month`. |
+| `params.timeRange` | `string` | No | Required. Time interval for the interactive query. Time range is specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59` |
+| `params.filter` | `string` | No | Filter that enables you to drill-down on specific dimension values. |
+| `params.sort` | `string` | No | Flag that specifies whether the sort order should be ascending or descending. Valid values include `DESC` and `ASC`. |
+| `params.sortby` | `string` | No | Comma-separated list of metrics to sort the final result. |
+| `params.aggTable` | `string` | No | Table name used to query custom aggregate tables. If this parameter is skipped, then Apigee will try to retrieve the data from fact tables which will be expensive. |
+| `params.limit` | `string` | No | Maximum number of result items to return. |
+| `params.offset` | `string` | No | Offset value. Use `offset` with `limit` to enable pagination of results. For example, to display results 11-20, set limit to `10` and offset to `10`. |
+| `params.topk` | `string` | No | Top number of results to return. For example, to return the top 5 results, set `topk=5`. |
+| `params.tsAscending` | `boolean` | No | Flag that specifies whether to list timestamps in ascending (`true`) or descending (`false`) order. Apigee recommends setting this value to `true` if you are using `sortby` with `sort=DESC`. |
+| `params.realtime` | `boolean` | No | No longer used by Apigee. Supported for backwards compatibility. |
+| `params.sonar` | `boolean` | No | Routes the query to API Monitoring for the last hour. |
+| `params.tzo` | `string` | No | Timezone offset value. |
+| `params.accuracy` | `string` | No | No longer used by Apigee. Supported for backwards compatibility. |
+
+### `organizations.environments.analytics`
+
+### `organizations.environments.analytics.admin`
+
+#### `organizations.environments.analytics.admin.getSchemav2()`
+
+Gets a list of metrics and dimensions that can be used to create analytics queries and reports. Each schema element contains the name of the field, its associated type, and a flag indicating whether it is a standard or custom field.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Path to the schema. Use the following structure in your request: `organizations/{org}/environments/{env}/analytics/admin/schemav2`. |
+| `params.type` | `string` | No | Required. Name of the dataset for which you want to retrieve the schema. For example: `fact` or `agg_cus1` |
+| `params.disableCache` | `boolean` | No | Flag that specifies whether the schema is be read from the database or cache. Set to `true` to read the schema from the database. Defaults to cache. |
+
+### `organizations.environments.analytics.exports`
+
+#### `organizations.environments.analytics.exports.create()`
+
+Submit a data export job to be processed in the background. If the request is successful, the API returns a 201 status, a URI that can be used to retrieve the status of the export job, and the `state` value of "enqueued".
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Names of the parent organization and environment. Must be of the form `organizations/{org}/environments/{env}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.analytics.exports.get()`
+
+Gets the details and status of an analytics export job. If the export job is still in progress, its `state` is set to "running". After the export job has completed successfully, its `state` is set to "completed". If the export job fails, its `state` is set to `failed`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the export to get. |
+
+#### `organizations.environments.analytics.exports.list()`
+
+Lists the details and status of all analytics export jobs belonging to the parent organization and environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Names of the parent organization and environment. Must be of the form `organizations/{org}/environments/{env}`. |
+
+### `organizations.environments.queries`
+
+#### `organizations.environments.queries.create()`
+
+Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.queries.get()`
+
+Get query status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the asynchronous query to get. Must be of the form `organizations/{org}/environments/{env}/queries/{queryId}`. |
+
+#### `organizations.environments.queries.getResult()`
+
+After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the asynchronous query result to get. Must be of the form `organizations/{org}/environments/{env}/queries/{queryId}/result`. |
+
+#### `organizations.environments.queries.getResulturl()`
+
+After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is sent to the client as a list of urls to JSON files.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the asynchronous query result to get. Must be of the form `organizations/{org}/environments/{env}/queries/{queryId}/resulturl`. |
+
+#### `organizations.environments.queries.list()`
+
+Return a list of Asynchronous Queries
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`. |
+| `params.submittedBy` | `string` | No | Filter response list by user who submitted queries. |
+| `params.status` | `string` | No | Filter response list by asynchronous query status. |
+| `params.from` | `string` | No | Filter response list by returning asynchronous queries that created after this date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'. |
+| `params.to` | `string` | No | Filter response list by returning asynchronous queries that created before this date time. Time must be in ISO date-time format like '2011-12-03T10:16:30Z'. |
+| `params.dataset` | `string` | No | Filter response list by dataset. Example: `api`, `mint` |
+| `params.inclQueriesWithoutReport` | `string` | No | Flag to include asynchronous queries that don't have a report denifition. |
+
+### `organizations.environments.caches`
+
+#### `organizations.environments.caches.delete()`
+
+Deletes a cache.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Cache resource name of the form: `organizations/{organization_id}/environments/{environment_id}/caches/{cache_id}` |
+
+### `organizations.environments.securityReports`
+
+#### `organizations.environments.securityReports.create()`
+
+Submit a report request to be processed in the background. If the submission succeeds, the API returns a 200 status and an ID that refer to the report request. In addition to the HTTP status 200, the `state` of "enqueued" means that the request succeeded.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.securityReports.get()`
+
+Get security report status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the security report to get. Must be of the form `organizations/{org}/environments/{env}/securityReports/{reportId}`. |
+
+#### `organizations.environments.securityReports.getResult()`
+
+After the query is completed, use this API to retrieve the results as file. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the security report result to get. Must be of the form `organizations/{org}/environments/{env}/securityReports/{reportId}/result`. |
+
+#### `organizations.environments.securityReports.getResultView()`
+
+After the query is completed, use this API to view the query result when result size is small.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the security report result view to get. Must be of the form `organizations/{org}/environments/{env}/securityReports/{reportId}/resultView`. |
+
+#### `organizations.environments.securityReports.list()`
+
+Return a list of Security Reports
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`. |
+| `params.submittedBy` | `string` | No | Filter response list by user who submitted queries. |
+| `params.status` | `string` | No | Filter response list by security reports status. |
+| `params.from` | `string` | No | Filter response list by returning security reports that created after this date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'. |
+| `params.to` | `string` | No | Filter response list by returning security reports that created before this date time. Time must be in ISO date-time format like '2011-12-03T10:16:30Z'. |
+| `params.dataset` | `string` | No | Filter response list by dataset. Example: `api`, `mint` |
+| `params.pageSize` | `integer` | No | The maximum number of security report to return in the list response. |
+| `params.pageToken` | `string` | No | Token returned from the previous list response to fetch the next page. |
+
+### `organizations.environments.securityStats`
+
+#### `organizations.environments.securityStats.queryTabularStats()`
+
+Retrieve security statistics as tabular rows.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orgenv` | `string` | Yes | Required. Should be of the form organizations//environments/. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.securityStats.queryTimeSeriesStats()`
+
+Retrieve security statistics as a collection of time series.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.orgenv` | `string` | Yes | Required. Should be of the form organizations//environments/. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.environments.securityIncidents`
+
+#### `organizations.environments.securityIncidents.get()`
+
+GetSecurityIncident gets the specified security incident. Returns NOT_FOUND if security incident is not present for the specified organization and environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Security incident in the following format: `organizations/{org}/environments/{environment}/securityIncidents/{incident}'. Example: organizations/testOrg/environments/testEnv/securityIncidents/1234-4567-890-111 |
+
+#### `organizations.environments.securityIncidents.list()`
+
+ListSecurityIncidents lists all the security incident associated with the environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. For a specific organization, list of all the security incidents. Format: `organizations/{org}/environments/{environment}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of incidents to return. The service may return fewer than this value. If unspecified, at most 50 incidents will be returned. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListSecurityIncident` call. Provide this to retrieve the subsequent page. |
+| `params.filter` | `string` | No | The filter expression to be used to get the list of security incidents, where filtering can be done on API Proxies. Example: filter = "api_proxy = /", "first_detected_time >", "last_detected_time <" |
+
+#### `organizations.environments.securityIncidents.patch()`
+
+UpdateSecurityIncidents updates an existing security incident.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Name of the security incident resource. Format: organizations/{org}/environments/{environment}/securityIncidents/{incident} Example: organizations/apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111 |
+| `params.updateMask` | `string` | No | Required. The list of fields to update. Allowed fields are: LINT.IfChange(allowed_update_fields_comment) - observability LINT.ThenChange() |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.securityIncidents.batchUpdate()`
+
+BatchUpdateSecurityIncident updates multiple existing security incidents.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Optional. The parent resource shared by all security incidents being updated. If this is set, the parent field in the UpdateSecurityIncidentRequest messages must either be empty or match this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.environments.securityActions`
+
+#### `organizations.environments.securityActions.create()`
+
+CreateSecurityAction creates a SecurityAction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The organization and environment that this SecurityAction applies to. Format: organizations/{org}/environments/{env} |
+| `params.securityActionId` | `string` | No | Required. The ID to use for the SecurityAction, which will become the final component of the action's resource name. This value should be 0-61 characters, and valid format is (^[a-z]([a-z0-9-]{​0,61}[a-z0-9])?$). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.securityActions.get()`
+
+Get a SecurityAction by name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The fully qualified name of the SecurityAction to retrieve. Format: organizations/{org}/environments/{env}/securityActions/{security_action} |
+
+#### `organizations.environments.securityActions.list()`
+
+Returns a list of SecurityActions. This returns both enabled and disabled actions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of SecurityActions. Format: organizations/{org}/environments/{env} |
+| `params.pageSize` | `integer` | No | The maximum number of SecurityActions to return. If unspecified, at most 50 SecurityActions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | A page token, received from a previous `ListSecurityActions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSecurityActions` must match the call that provided the page token. |
+| `params.filter` | `string` | No | The filter expression to filter List results. https://google.aip.dev/160. Allows for filtering over: state and api_proxies. E.g.: state = ACTIVE AND apiProxies:foo. Filtering by action is not supported https://github.com/aip-dev/google.aip.dev/issues/624 |
+
+#### `organizations.environments.securityActions.patch()`
+
+Update a SecurityAction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. This field is ignored during creation as per AIP-133. Please set the `security_action_id` field in the CreateSecurityActionRequest when creating a new SecurityAction. Format: organizations/{org}/environments/{env}/securityActions/{security_action} |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. Valid fields to update are `description`, `state`, `allow`, `deny`, and `flag`, `expire_time`, and `ttl`, `api_proxies`, and `condition_config`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.securityActions.delete()`
+
+Delete a SecurityAction.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the security action to delete. Format: `organizations/{org}/environment/{env}/securityActions/{security_action}` |
+
+#### `organizations.environments.securityActions.enable()`
+
+Enable a SecurityAction. The `state` of the SecurityAction after enabling is `ENABLED`. `EnableSecurityAction` can be called on SecurityActions in the state `DISABLED`; SecurityActions in a different state (including `ENABLED) return an error.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the SecurityAction to enable. Format: organizations/{org}/environments/{env}/securityActions/{security_action} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.securityActions.disable()`
+
+Disable a SecurityAction. The `state` of the SecurityAction after disabling is `DISABLED`. `DisableSecurityAction` can be called on SecurityActions in the state `ENABLED`; SecurityActions in a different state (including `DISABLED`) return an error.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the SecurityAction to disable. Format: organizations/{org}/environments/{env}/securityActions/{security_action} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.environments.keyvaluemaps`
+
+#### `organizations.environments.keyvaluemaps.create()`
+
+Creates a key value map in an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment in which to create the key value map. Use the following structure in your request: `organizations/{org}/environments/{env}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.keyvaluemaps.get()`
+
+Get the key value map scoped to an organization, environment, or API proxy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.environments.keyvaluemaps.update()`
+
+Update the key value map scoped to an organization, environment, or API proxy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.keyvaluemaps.delete()`
+
+Deletes a key value map from an environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the key value map. Use the following structure in your request: `organizations/{org}/environments/{env}/keyvaluemaps/{keyvaluemap}` |
+
+### `organizations.environments.keyvaluemaps.entries`
+
+#### `organizations.environments.keyvaluemaps.entries.get()`
+
+Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map entry/value. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.environments.keyvaluemaps.entries.delete()`
+
+Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:**
+
+* After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior.
+
+* Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to delete the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.environments.keyvaluemaps.entries.create()`
+
+Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.keyvaluemaps.entries.update()`
+
+Update key value entry scoped to an organization, environment, or API proxy for an existing key.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.environments.keyvaluemaps.entries.list()`
+
+Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to list key value maps. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of key value entries to return. If unspecified, at most 100 entries will be returned. |
+| `params.pageToken` | `string` | No | Optional. Page token. If provides, must be a valid key value entry returned from a previous call that can be used to retrieve the next page. |
+
+### `organizations.deployments`
+
+#### `organizations.deployments.list()`
+
+Lists all deployments of API proxies or shared flows.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization for which to return deployment information in the following format: `organizations/{org}` |
+| `params.sharedFlows` | `boolean` | No | Optional. Flag that specifies whether to return shared flow or API proxy deployments. Set to `true` to return shared flow deployments; set to `false` to return API proxy deployments. Defaults to `false`. |
+
+### `organizations.envgroups`
+
+#### `organizations.envgroups.create()`
+
+Creates a new environment group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization in which to create the environment group in the following format: `organizations/{org}`. |
+| `params.name` | `string` | No | Optional. ID of the environment group. Overrides any ID in the environment_group resource. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.envgroups.list()`
+
+Lists all environment groups.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization for which to list environment groups in the following format: `organizations/{org}`. |
+| `params.pageSize` | `integer` | No | Maximum number of environment groups to return. The page size defaults to 25. |
+| `params.pageToken` | `string` | No | Page token, returned from a previous ListEnvironmentGroups call, that you can use to retrieve the next page. |
+
+#### `organizations.envgroups.get()`
+
+Gets an environment group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment group in the following format: `organizations/{org}/envgroups/{envgroup}`. |
+
+#### `organizations.envgroups.patch()`
+
+Updates an environment group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment group to update in the format: `organizations/{org}/envgroups/{envgroup}. |
+| `params.updateMask` | `string` | No | Optional. List of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.envgroups.delete()`
+
+Deletes an environment group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment group in the following format: `organizations/{org}/envgroups/{envgroup}`. |
+
+#### `organizations.envgroups.getDeployedIngressConfig()`
+
+Gets the deployed ingress configuration for an environment group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the deployed configuration for the environment group in the following format: 'organizations/{org}/envgroups/{envgroup}/deployedIngressConfig'. |
+| `params.view` | `string` | No | When set to FULL, additional details about the specific deployments receiving traffic will be included in the IngressConfig response's RoutingRules. |
+
+### `organizations.envgroups.attachments`
+
+#### `organizations.envgroups.attachments.create()`
+
+Creates a new attachment of an environment to an environment group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. EnvironmentGroup under which to create the attachment in the following format: `organizations/{org}/envgroups/{envgroup}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.envgroups.attachments.list()`
+
+Lists all attachments of an environment group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the environment group in the following format: `organizations/{org}/envgroups/{envgroup}`. |
+| `params.pageSize` | `integer` | No | Maximum number of environment group attachments to return. The page size defaults to 25. |
+| `params.pageToken` | `string` | No | Page token, returned by a previous ListEnvironmentGroupAttachments call, that you can use to retrieve the next page. |
+
+#### `organizations.envgroups.attachments.get()`
+
+Gets an environment group attachment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment group attachment in the following format: `organizations/{org}/envgroups/{envgroup}/attachments/{attachment}` |
+
+#### `organizations.envgroups.attachments.delete()`
+
+Deletes an environment group attachment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the environment group attachment to delete in the following format: `organizations/{org}/envgroups/{envgroup}/attachments/{attachment}`. |
+
+### `organizations.instances`
+
+#### `organizations.instances.create()`
+
+Creates an Apigee runtime instance. The instance is accessible from the authorized network configured on the organization. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.instances.delete()`
+
+Deletes an Apigee runtime instance. The instance stops serving requests and the runtime data is deleted. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
+
+#### `organizations.instances.get()`
+
+Gets the details for an Apigee runtime instance. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
+
+#### `organizations.instances.list()`
+
+Lists all Apigee runtime instances for the organization. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}`. |
+| `params.pageSize` | `integer` | No | Maximum number of instances to return. Defaults to 25. |
+| `params.pageToken` | `string` | No | Page token, returned from a previous ListInstances call, that you can use to retrieve the next page of content. |
+
+#### `organizations.instances.patch()`
+
+Updates an Apigee runtime instance. You can update the fields described in NodeConfig. No other fields will be updated. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
+| `params.updateMask` | `string` | No | List of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.instances.reportStatus()`
+
+Reports the latest status for a runtime instance.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.instance` | `string` | Yes | The name of the instance reporting this status. For SaaS the request will be rejected if no instance exists under this name. Format is organizations/{org}/instances/{instance} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.instances.canaryevaluations`
+
+#### `organizations.instances.canaryevaluations.create()`
+
+Creates a new canary evaluation for an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.instances.canaryevaluations.get()`
+
+Gets a CanaryEvaluation for an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the CanaryEvaluation. Use the following structure in your request: `organizations/{org}/instances/*/canaryevaluations/{evaluation}` |
+
+### `organizations.instances.attachments`
+
+#### `organizations.instances.attachments.create()`
+
+Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.instances.attachments.list()`
+
+Lists all attachments to an instance. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}` |
+| `params.pageSize` | `integer` | No | Maximum number of instance attachments to return. Defaults to 25. |
+| `params.pageToken` | `string` | No | Page token, returned by a previous ListInstanceAttachments call, that you can use to retrieve the next page of content. |
+
+#### `organizations.instances.attachments.get()`
+
+Gets an attachment. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the attachment. Use the following structure in your request: `organizations/{org}/instances/{instance}/attachments/{attachment}` |
+
+#### `organizations.instances.attachments.delete()`
+
+Deletes an attachment. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the attachment. Use the following structure in your request: `organizations/{org}/instances/{instance}/attachments/{attachment}`. |
+
+### `organizations.instances.natAddresses`
+
+#### `organizations.instances.natAddresses.list()`
+
+Lists the NAT addresses for an Apigee instance. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}` |
+| `params.pageSize` | `integer` | No | Maximum number of natAddresses to return. Defaults to 25. |
+| `params.pageToken` | `string` | No | Page token, returned from a previous ListNatAddresses call, that you can use to retrieve the next page of content. |
+
+#### `organizations.instances.natAddresses.get()`
+
+Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the nat address. Use the following structure in your request: `organizations/{org}/instances/{instances}/natAddresses/{nataddress}` |
+
+#### `organizations.instances.natAddresses.create()`
+
+Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.instances.natAddresses.activate()`
+
+Activates the NAT address. The Apigee instance can now use this for Internet egress traffic. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the nat address. Use the following structure in your request: `organizations/{org}/instances/{instances}/natAddresses/{nataddress}`` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.instances.natAddresses.delete()`
+
+Deletes the NAT address. Connections that are actively using the address are drained before it is removed. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the nat address. Use the following structure in your request: `organizations/{org}/instances/{instances}/natAddresses/{nataddress}`` |
+
+### `organizations.sharedflows`
+
+#### `organizations.sharedflows.list()`
+
+Lists all shared flows in the organization. If the resource has the `space` attribute set, the response may not return all resources. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent organization under which to get shared flows. Must be of the form: `organizations/{organization_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.includeRevisions` | `boolean` | No | Indicates whether to include a list of revisions in the response. |
+| `params.includeMetaData` | `boolean` | No | Indicates whether to include shared flow metadata in the response. |
+| `params.space` | `string` | No | Optional. The space ID used to filter the list of shared flows (optional). If unspecified, all shared flows in the organization will be listed. To learn how Spaces can be used to manage resources, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.sharedflows.get()`
+
+Gets a shared flow by name, including a list of its revisions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the shared flow to get. Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.sharedflows.delete()`
+
+Deletes a shared flow and all it's revisions. The shared flow must be undeployed before you can delete it.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. shared flow name of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.sharedflows.create()`
+
+Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The name of the parent organization under which to create the shared flow. Must be of the form: `organizations/{organization_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.action` | `string` | No | Required. Must be set to either `import` or `validate`. |
+| `params.name` | `string` | No | Required. The name to give the shared flow |
+| `params.space` | `string` | No | Optional. The ID of the space to associated with this shared flow. Any IAM policies applied to the space will affect access to this shared flow. Note that this field is only respected when creating a new shared flow. It has no effect when creating a new revision for an existing shared flow. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.sharedflows.move()`
+
+Moves an shared flow to a different space.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Shared Flow to move in the following format: `organizations/{org}/sharedflows/{shared_flow}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.sharedflows.deployments`
+
+#### `organizations.sharedflows.deployments.list()`
+
+Lists all deployments of a shared flow.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the shared flow for which to return deployment information in the following format: `organizations/{org}/sharedflows/{sharedflow}` If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.sharedflows.revisions`
+
+#### `organizations.sharedflows.revisions.updateSharedFlowRevision()`
+
+Updates a shared flow revision. This operation is only allowed on revisions which have never been deployed. After deployment a revision becomes immutable, even if it becomes undeployed. The payload is a ZIP-formatted shared flow. Content type must be either multipart/form-data or application/octet-stream.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the shared flow revision to update. Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.validate` | `boolean` | No | Ignored. All uploads are validated regardless of the value of this field. It is kept for compatibility with existing APIs. Must be `true` or `false` if provided. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.sharedflows.revisions.get()`
+
+Gets a revision of a shared flow. To download the shared flow configuration bundle for the specified revision as a zip file, set the `format` query parameter to `bundle`. If you are using curl, specify `-o filename.zip` to save the output to a file; otherwise, it displays to `stdout`. Then, develop the shared flow configuration locally and upload the updated sharedFlow configuration revision, as described in [updateSharedFlowRevision](updateSharedFlowRevision).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the shared flow revision to get. Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}` If the Shared Flow resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.format` | `string` | No | Specify `bundle` to export the contents of the shared flow bundle. Otherwise, the bundle metadata is returned. |
+
+#### `organizations.sharedflows.revisions.delete()`
+
+Deletes a shared flow and all associated policies, resources, and revisions. You must undeploy the shared flow before deleting it.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the shared flow revision to delete. Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}` If the Shared Flow resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.sharedflows.revisions.deployments`
+
+#### `organizations.sharedflows.revisions.deployments.list()`
+
+Lists all deployments of a shared flow revision.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the API proxy revision for which to return deployment information in the following format: `organizations/{org}/sharedflows/{sharedflow}/revisions/{rev}`. If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+### `organizations.spaces`
+
+#### `organizations.spaces.create()`
+
+Create a space under an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the Google Cloud project in which to associate the Apigee space. Pass the information as a query parameter using the following structure in your request: `organizations/` |
+| `params.spaceId` | `string` | No | Required. Resource ID of the space. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.spaces.get()`
+
+Get a space under an Organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Apigee organization space name in the following format: `organizations/{org}/spaces/{space}` |
+
+#### `organizations.spaces.patch()`
+
+Updates a space.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the space in the following format: `organizations/{org}/spaces/{space_id}`. |
+| `params.updateMask` | `string` | No | Required. List of fields to be updated. Fields that can be updated: display_name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.spaces.delete()`
+
+Deletes an organization space.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Apigee organization space name in the following format: `organizations/{org}/spaces/{space}` |
+
+#### `organizations.spaces.list()`
+
+Lists spaces under an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Use the following structure in your request: `organizations` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of spaces to return. The service may return fewer than this value. If unspecified, at most 50 spaces will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListSpaces` call. Provide this to retrieve the subsequent page. When paginating, all parameters must match the original call. |
+
+#### `organizations.spaces.setIamPolicy()`
+
+IAM META APIs Callers must have apigee.spaces.setIamPolicy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.spaces.getIamPolicy()`
+
+Callers must have apigee.spaces.getIamPolicy.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+
+#### `organizations.spaces.testIamPermissions()`
+
+Callers don't need any permissions.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `organizations.hostStats`
+
+#### `organizations.hostStats.get()`
+
+Retrieve metrics grouped by dimensions in host level. The types of metrics you can retrieve include traffic, message counts, API call latency, response size, and cache hits and counts. Dimensions let you view metrics in meaningful groups. You can optionally pass dimensions as path parameters to the `stats` API. If dimensions are not specified, the metrics are computed on the entire set of data for the given time range.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name for which the interactive query will be executed. Use the following format in your request: `organizations/{org}/hostStats/{dimensions}` Dimensions let you view metrics in meaningful groupings, such as `apiproxy`, `target_host`. The value of dimensions should be a comma-separated list as shown below `organizations/{org}/hostStats/apiproxy,request_verb` |
+| `params.select` | `string` | No | Comma-separated list of metrics. For example: `sum(message_count),sum(error_count)` |
+| `params.timeUnit` | `string` | No | Granularity of metrics returned. Valid values include: `second`, `minute`, `hour`, `day`, `week`, or `month`. |
+| `params.timeRange` | `string` | No | Time interval for the interactive query. Time range is specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59` |
+| `params.filter` | `string` | No | Flag that enables drill-down on specific dimension values. |
+| `params.sort` | `string` | No | Flag that specifies if the sort order should be ascending or descending. Valid values are `DESC` and `ASC`. |
+| `params.sortby` | `string` | No | Comma-separated list of metrics to sort the final result. |
+| `params.limit` | `string` | No | Maximum number of result items to return. |
+| `params.offset` | `string` | No | Offset value. Use `offset` with `limit` to enable pagination of results. For example, to display results 11-20, set limit to `10` and offset to `10`. |
+| `params.topk` | `string` | No | Top number of results to return. For example, to return the top 5 results, set `topk=5`. |
+| `params.tsAscending` | `boolean` | No | Flag that specifies whether to list timestamps in ascending (`true`) or descending (`false`) order. Apigee recommends that you set this value to `true` if you are using `sortby` with `sort=DESC`. |
+| `params.realtime` | `boolean` | No | No longer used by Apigee. Supported for backwards compatibility. |
+| `params.tzo` | `string` | No | Timezone offset value. |
+| `params.accuracy` | `string` | No | No longer used by Apigee. Supported for backwards compatibility. |
+| `params.envgroupHostname` | `string` | No | Required. Hostname for which the interactive query will be executed. |
+
+### `organizations.optimizedHostStats`
+
+#### `organizations.optimizedHostStats.get()`
+
+Similar to GetHostStats except that the response is less verbose.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name for which the interactive query will be executed. Use the following format in your request: `organizations/{organization_id}/optimizedHostStats/{dimensions}` Dimensions let you view metrics in meaningful groupings, such as `apiproxy`, `target_host`. The value of dimensions should be a comma-separated list as shown below: `organizations/{org}/optimizedHostStats/apiproxy,request_verb` |
+| `params.select` | `string` | No | Required. Comma-separated list of metrics. For example: `sum(message_count),sum(error_count)` |
+| `params.timeUnit` | `string` | No | Granularity of metrics returned. Valid values include: `second`, `minute`, `hour`, `day`, `week`, or `month`. |
+| `params.timeRange` | `string` | No | Required. Time interval for the interactive query. Time range is specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`. |
+| `params.filter` | `string` | No | Filter that enables you to drill-down on specific dimension values. |
+| `params.sort` | `string` | No | Flag that specifies whether the sort order should be ascending or descending. Valid values include `DESC` and `ASC`. |
+| `params.sortby` | `string` | No | Comma-separated list of metrics used to sort the final result. |
+| `params.limit` | `string` | No | Maximum number of result items to return. |
+| `params.offset` | `string` | No | Offset value. Use `offset` with `limit` to enable pagination of results. For example, to display results 11-20, set limit to `10` and offset to `10`. |
+| `params.topk` | `string` | No | Top number of results to return. For example, to return the top 5 results, set `topk=5`. |
+| `params.tsAscending` | `boolean` | No | Flag that specifies whether to list timestamps in ascending (`true`) or descending (`false`) order. Apigee recommends that you set this value to `true` if you are using `sortby` with `sort=DESC`. |
+| `params.realtime` | `boolean` | No | No longer used by Apigee. Supported for backwards compatibility. |
+| `params.tzo` | `string` | No | Timezone offset value. |
+| `params.accuracy` | `string` | No | No longer used by Apigee. Supported for backwards compatibility. |
+| `params.envgroupHostname` | `string` | No | Required. Hostname for which the interactive query will be executed. |
 
 ### `organizations.apiproducts`
 
@@ -420,526 +2280,6 @@ Deletes a rate plan.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. ID of the rate plan. Use the following structure in your request: `organizations/{org}/apiproducts/{apiproduct}/rateplans/{rateplan}` If the API Product resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 
-### `organizations.apis`
-
-#### `organizations.apis.list()`
-
-Lists the names of all API proxies in an organization. The names returned correspond to the names defined in the configuration files for each API proxy. If the resource has the `space` attribute set, the response may not return all resources. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization in the following format: `organizations/{org}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.includeRevisions` | `boolean` | No | Flag that specifies whether to include a list of revisions in the response. |
-| `params.includeMetaData` | `boolean` | No | Flag that specifies whether to include API proxy metadata in the response. |
-| `params.space` | `string` | No | Optional. The space ID to filter the list of proxies (optional). If unspecified, all proxies in the organization will be listed. |
-
-#### `organizations.apis.patch()`
-
-Updates an existing API proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. API proxy to update in the following format: `organizations/{org}/apis/{api}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.updateMask` | `string` | No | Required. The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.apis.move()`
-
-Moves an API proxy to a different space.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. API proxy to move in the following format: `organizations/{org}/apis/{api}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.apis.get()`
-
-Gets an API proxy including a list of existing revisions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the API proxy in the following format: `organizations/{org}/apis/{api}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.apis.delete()`
-
-Deletes an API proxy and all associated endpoints, policies, resources, and revisions. The API proxy must be undeployed before you can delete it.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the API proxy in the following format: `organizations/{org}/apis/{api}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.apis.create()`
-
-Creates an API proxy. The API proxy created will not be accessible at runtime until it is deployed to an environment. Create a new API proxy by setting the `name` query parameter to the name of the API proxy. Import an API proxy configuration bundle stored in zip format on your local machine to your organization by doing the following:
-
-* Set the `name` query parameter to the name of the API proxy.
-
-* Set the `action` query parameter to `import`.
-
-* Set the `Content-Type` header to `multipart/form-data`.
-
-* Pass as a file the name of API proxy configuration bundle stored in zip format on your local machine using the `file` form field. **Note**: To validate the API proxy configuration bundle only without importing it, set the `action` query parameter to `validate`. When importing an API proxy configuration bundle, if the API proxy does not exist, it will be created. If the API proxy exists, then a new revision is created. Invalid API proxy configurations are rejected, and a list of validation errors is returned to the client.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization in the following format: `organizations/{org}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.name` | `string` | No | Name of the API proxy. Restrict the characters used to: A-Za-z0-9._- |
-| `params.action` | `string` | No | Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it. |
-| `params.validate` | `boolean` | No | Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API. |
-| `params.space` | `string` | No | Optional. The ID of the space associated with this proxy. Any IAM policies applied to the space will affect access to this proxy. Note that this field is only respected when creating a new proxy. It has no effect when creating a new revision for an existing proxy. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.apis.revisions`
-
-#### `organizations.apis.revisions.updateApiProxyRevision()`
-
-Updates an existing API proxy revision by uploading the API proxy configuration bundle as a zip file from your local machine. You can update only API proxy revisions that have never been deployed. After deployment, an API proxy revision becomes immutable, even if it is undeployed. Set the `Content-Type` header to either `multipart/form-data` or `application/octet-stream`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. API proxy revision to update in the following format: `organizations/{org}/apis/{api}/revisions/{rev}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.validate` | `boolean` | No | Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.apis.revisions.get()`
-
-Gets an API proxy revision. To download the API proxy configuration bundle for the specified revision as a zip file, set the `format` query parameter to `bundle`. If you are using curl, specify `-o filename.zip` to save the output to a file; otherwise, it displays to `stdout`. Then, develop the API proxy configuration locally and upload the updated API proxy configuration revision, as described in [updateApiProxyRevision](updateApiProxyRevision).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. API proxy revision in the following format: `organizations/{org}/apis/{api}/revisions/{rev}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.format` | `string` | No | Format used when downloading the API proxy configuration revision. Set to `bundle` to download the API proxy configuration revision as a zip file. |
-
-#### `organizations.apis.revisions.delete()`
-
-Deletes an API proxy revision and all policies, resources, endpoints, and revisions associated with it. The API proxy revision must be undeployed before you can delete it.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. API proxy revision in the following format: `organizations/{org}/apis/{api}/revisions/{rev}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.apis.revisions.deployments`
-
-#### `organizations.apis.revisions.deployments.list()`
-
-Lists all deployments of an API proxy revision.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the API proxy revision for which to return deployment information in the following format: `organizations/{org}/apis/{api}/revisions/{rev}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.apis.debugsessions`
-
-#### `organizations.apis.debugsessions.list()`
-
-Lists debug sessions that are currently active in the given API Proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the API Proxy for which to list debug sessions. Must be of the form: `organizations/{organization}/apis/{api}`. |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of debug sessions to return. The page size defaults to 25. |
-| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous ListApiDebugSessions call, that you can use to retrieve the next page. |
-
-### `organizations.apis.deployments`
-
-#### `organizations.apis.deployments.list()`
-
-Lists all deployments of an API proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the API proxy for which to return deployment information in the following format: `organizations/{org}/apis/{api}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.apis.keyvaluemaps`
-
-#### `organizations.apis.keyvaluemaps.get()`
-
-Get the key value map scoped to an organization, environment, or API proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.apis.keyvaluemaps.update()`
-
-Update the key value map scoped to an organization, environment, or API proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.apis.keyvaluemaps.create()`
-
-Creates a key value map in an API proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment in which to create the key value map. Use the following structure in your request: `organizations/{org}/apis/{api}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.apis.keyvaluemaps.delete()`
-
-Deletes a key value map from an API proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the key value map. Use the following structure in your request: `organizations/{org}/apis/{api}/keyvaluemaps/{keyvaluemap}` If the API Proxy resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.apis.keyvaluemaps.entries`
-
-#### `organizations.apis.keyvaluemaps.entries.get()`
-
-Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map entry/value. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.apis.keyvaluemaps.entries.delete()`
-
-Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:**
-
-* After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior.
-
-* Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to delete the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.apis.keyvaluemaps.entries.create()`
-
-Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.apis.keyvaluemaps.entries.update()`
-
-Update key value entry scoped to an organization, environment, or API proxy for an existing key.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.apis.keyvaluemaps.entries.list()`
-
-Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to list key value maps. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of key value entries to return. If unspecified, at most 100 entries will be returned. |
-| `params.pageToken` | `string` | No | Optional. Page token. If provides, must be a valid key value entry returned from a previous call that can be used to retrieve the next page. |
-
-### `organizations.operations`
-
-#### `organizations.operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-
-#### `organizations.operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
-
-### `organizations.apimServiceExtensions`
-
-#### `organizations.apimServiceExtensions.create()`
-
-Creates an APIM ServiceExtension in an organization.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization in which the service extension will be created. Use the following structure in your request: `organizations/{org}` |
-| `params.apimServiceExtensionId` | `string` | No | Optional. ID used to uniquely identify of the service extension. It must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.apimServiceExtensions.get()`
-
-Gets APIM service extension details.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the service extension. Use the following structure in your request: `organizations/{org}/apimServiceExtensions/{extension_id}` |
-
-#### `organizations.apimServiceExtensions.list()`
-
-Lists all APIM service extensions in an organization.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization for which to list the service extension. Use the following structure in your request: `organizations/{org}/apimServiceExtensions` |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of items to return. If unspecified, at most 25 service extension will be returned. |
-| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous `ListApimServiceExtensions` call, that you can use to retrieve the next page. |
-
-#### `organizations.apimServiceExtensions.patch()`
-
-Updates an APIM service extension in an organization.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Identifier. unique name of the APIM service extension. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number. |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the service extension is not found, a new service extension will be created. In this situation, `update_mask` is ignored. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.apimServiceExtensions.delete()`
-
-Deletes APIM service extension from an organization.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the service extension. Use the following structure in your request: `organizations/{org}/apimServiceExtensions/{extension_id}` |
-
-### `organizations.appgroups`
-
-#### `organizations.appgroups.create()`
-
-Creates an AppGroup. Once created, user can register apps under the AppGroup to obtain secret key and password. At creation time, the AppGroup's state is set as `active`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the Apigee organization in which the AppGroup is created. Use the following structure in your request: `organizations/{org}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.appgroups.get()`
-
-Returns the AppGroup details for the provided AppGroup name in the request URI.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
-
-#### `organizations.appgroups.delete()`
-
-Deletes an AppGroup. All app and API keys associations with the AppGroup are also removed. **Warning**: This API will permanently delete the AppGroup and related artifacts. **Note**: The delete operation is asynchronous. The AppGroup is deleted immediately, but its associated resources, such as apps and API keys, may take anywhere from a few seconds to a few minutes to be deleted.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
-
-#### `organizations.appgroups.list()`
-
-Lists all AppGroups in an organization. A maximum of 1000 AppGroups are returned in the response if PageSize is not specified, or if the PageSize is greater than 1000.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the Apigee organization. Use the following structure in your request: `organizations/{org}`. |
-| `params.filter` | `string` | No | The filter expression to be used to get the list of AppGroups, where filtering can be done on status, channelId or channelUri of the app group. Examples: filter=status=active", filter=channelId=, filter=channelUri= |
-| `params.pageSize` | `integer` | No | Count of AppGroups a single page can have in the response. If unspecified, at most 1000 AppGroups will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | The starting index record for listing the AppGroups. |
-
-#### `organizations.appgroups.update()`
-
-Updates an AppGroup. This API replaces the existing AppGroup details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. Note that the state of the AppGroup should be updated using `action`, and not via AppGroup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
-| `params.action` | `string` | No | Activate or de-activate the AppGroup by setting the action as `active` or `inactive`. The `Content-Type` header must be set to `application/octet-stream`, with empty body. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.appgroups.getBalance()`
-
-Gets the account balance for the AppGroup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Account balance for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/balance` |
-
-#### `organizations.appgroups.getMonetizationConfig()`
-
-Gets the monetization configuration for the AppGroup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Monetization configuration for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/monetizationConfig` |
-
-#### `organizations.appgroups.updateMonetizationConfig()`
-
-Updates the monetization configuration for the AppGroup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Monetization configuration for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/monetizationConfig` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.appgroups.apps`
-
-#### `organizations.appgroups.apps.create()`
-
-Creates an app and associates it with an AppGroup. This API associates the AppGroup app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.appgroups.apps.delete()`
-
-Deletes an AppGroup app. **Note**: The delete operation is asynchronous. The AppGroup app is deleted immediately, but its associated resources, such as app keys or access tokens, may take anywhere from a few seconds to a few minutes to be deleted.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AppGroup app. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}` |
-
-#### `organizations.appgroups.apps.get()`
-
-Returns the details for an AppGroup app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AppGroup app. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}` |
-
-#### `organizations.appgroups.apps.list()`
-
-Lists all apps created by an AppGroup in an Apigee organization. Optionally, you can request an expanded view of the AppGroup apps. Lists all AppGroupApps in an AppGroup. A maximum of 1000 AppGroup apps are returned in the response if PageSize is not specified, or if the PageSize is greater than 1000.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
-| `params.pageSize` | `integer` | No | Optional. Maximum number entries to return. If unspecified, at most 1000 entries will be returned. |
-| `params.pageToken` | `string` | No | Optional. Page token. If provides, must be a valid AppGroup app returned from a previous call that can be used to retrieve the next page. |
-
-#### `organizations.appgroups.apps.update()`
-
-Updates the details for an AppGroup app. In addition, you can add an API product to an AppGroup app and automatically generate an API key for the app to use when calling APIs in the API product. If you want to use an existing API key for the API product, add the API product to the API key using the UpdateAppGroupAppKey API. Using this API, you cannot update the app name, as it is the primary key used to identify the app and cannot be changed. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AppGroup app. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}` |
-| `params.action` | `string` | No | Approve or revoke the consumer key by setting this value to `approve` or `revoke`. The `Content-Type` header must be set to `application/octet-stream`, with empty body. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.appgroups.apps.keys`
-
-#### `organizations.appgroups.apps.keys.create()`
-
-Creates a custom consumer key and secret for a AppGroup app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateAppGroupAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteAppGroupAppKey API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.appgroups.apps.keys.delete()`
-
-Deletes an app's consumer key and removes all API products associated with the app. After the consumer key is deleted, it cannot be used to access any APIs.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}` |
-
-#### `organizations.appgroups.apps.keys.get()`
-
-Gets details for a consumer key for a AppGroup app, including the key and secret value, associated API products, and other information.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}` |
-
-#### `organizations.appgroups.apps.keys.updateAppGroupAppKey()`
-
-Adds an API product to an AppGroupAppKey, enabling the app that holds the key to access the API resources bundled in the API product. In addition, you can add attributes and scopes to the AppGroupAppKey. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively. You can use the same key to access all API products associated with the app.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.appgroups.apps.keys.apiproducts`
-
-#### `organizations.appgroups.apps.keys.apiproducts.updateAppGroupAppKeyApiProduct()`
-
-Approves or revokes the consumer key for an API product. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee checks the status of the consumer key and if set to `revoked` will not allow access to the API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the API product in the developer app key in the following format: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}/apiproducts/{apiproduct}` |
-| `params.action` | `string` | No | Approve or revoke the consumer key by setting this value to `approve` or `revoke` respectively. The `Content-Type` header, if set, must be set to `application/octet-stream`, with empty body. |
-
-#### `organizations.appgroups.apps.keys.apiproducts.delete()`
-
-Removes an API product from an app's consumer key. After the API product is removed, the app cannot access the API resources defined in that API product. **Note**: The consumer key is not removed, only its association with the API product.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Parent of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}/apiproducts/{apiproduct}` |
-
-### `organizations.appgroups.subscriptions`
-
-#### `organizations.appgroups.subscriptions.create()`
-
-Creates a subscription to an API product. 
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the appgroup that is purchasing a subscription to the API product. Use the following structure in your request: `organizations/{org}/appgroups/{appgroup}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.appgroups.subscriptions.get()`
-
-Get an api product subscription for an appgroup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the AppGroupSubscription to retrieve. Format: `organizations/{org}/appgroups/{appgroup}/subscriptions/{subscription}` |
-
-#### `organizations.appgroups.subscriptions.list()`
-
-List all api product subscriptions for an appgroup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the appgroup. Use the following structure in your request: `organizations/{org}/appgroups/{appgroup}` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of subscriptions to return. The service may return fewer than this value. If unspecified, at most 100 subscriptions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListAppGroupSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAppGroupSubscriptions` must match the call that provided the page token. |
-
-#### `organizations.appgroups.subscriptions.expire()`
-
-Expires an API product subscription immediately.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the API product subscription. Use the following structure in your request: `organizations/{org}/appgroups/{appgroup}/subscriptions/{subscription}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.appgroups.balance`
-
-#### `organizations.appgroups.balance.credit()`
-
-Credits the account balance for the AppGroup.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Account balance for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/balance` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.appgroups.balance.adjust()`
-
-Adjust the prepaid balance for the AppGroup. This API will be used in scenarios where the AppGroup has been under-charged or over-charged.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Account balance for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/balance` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `organizations.apps`
 
 #### `organizations.apps.get()`
@@ -1062,1252 +2402,6 @@ Deletes an existing custom report definition
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Custom Report name of the form: `organizations/{organization_id}/reports/{report_name}` |
 
-### `organizations.datacollectors`
-
-#### `organizations.datacollectors.create()`
-
-Creates a new data collector.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization in which to create the data collector in the following format: `organizations/{org}`. |
-| `params.dataCollectorId` | `string` | No | ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.datacollectors.list()`
-
-Lists all data collectors.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization for which to list data collectors in the following format: `organizations/{org}`. |
-| `params.pageSize` | `integer` | No | Maximum number of data collectors to return. The page size defaults to 25. |
-| `params.pageToken` | `string` | No | Page token, returned from a previous ListDataCollectors call, that you can use to retrieve the next page. |
-
-#### `organizations.datacollectors.get()`
-
-Gets a data collector.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the data collector in the following format: `organizations/{org}/datacollectors/{data_collector_id}`. |
-
-#### `organizations.datacollectors.patch()`
-
-Updates a data collector.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the data collector in the following format: `organizations/{org}/datacollectors/{data_collector_id}`. |
-| `params.updateMask` | `string` | No | List of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.datacollectors.delete()`
-
-Deletes a data collector.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the data collector in the following format: `organizations/{org}/datacollectors/{data_collector_id}`. |
-
-### `organizations.environments`
-
-#### `organizations.environments.getDebugmask()`
-
-Gets the debug mask singleton resource for an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the debug mask. Use the following structure in your request: `organizations/{org}/environments/{env}/debugmask`. |
-
-#### `organizations.environments.updateDebugmask()`
-
-Updates the debug mask singleton resource for an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the debug mask. |
-| `params.updateMask` | `string` | No | Field debug mask to support partial updates. |
-| `params.replaceRepeatedFields` | `boolean` | No | Boolean flag that specifies whether to replace existing values in the debug mask when doing an update. Set to true to replace existing values. The default behavior is to append the values (false). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.getAddonsConfig()`
-
-Gets the add-ons config of an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the add-ons config. Must be in the format of `/organizations/{org}/environments/{env}/addonsConfig` |
-
-#### `organizations.environments.getTraceConfig()`
-
-Get distributed trace configuration in an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the trace configuration. Use the following structure in your request: "organizations/*/environments/*/traceConfig". |
-
-#### `organizations.environments.updateTraceConfig()`
-
-Updates the trace configurations in an environment. Note that the repeated fields have replace semantics when included in the field mask and that they will be overwritten by the value of the fields in the request body.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the trace configuration. Use the following structure in your request: "organizations/*/environments/*/traceConfig". |
-| `params.updateMask` | `string` | No | List of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.create()`
-
-Creates an environment in an organization.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization in which the environment will be created. Use the following structure in your request: `organizations/{org}` |
-| `params.name` | `string` | No | Optional. Name of the environment. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.delete()`
-
-Deletes an environment from an organization. **Warning: You must delete all key value maps and key value entries before you delete an environment.** Otherwise, if you re-create the environment the key value map entry operations will encounter encryption/decryption discrepancies.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
-
-#### `organizations.environments.get()`
-
-Gets environment details.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
-
-#### `organizations.environments.updateEnvironment()`
-
-Updates an existing environment. When updating properties, you must pass all existing properties to the API, even if they are not being changed. If you omit properties from the payload, the properties are removed. To get the current list of properties for the environment, use the [Get Environment API](get). **Note**: Both `PUT` and `POST` methods are supported for updating an existing environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.update()`
-
-Updates an existing environment. When updating properties, you must pass all existing properties to the API, even if they are not being changed. If you omit properties from the payload, the properties are removed. To get the current list of properties for the environment, use the [Get Environment API](get). **Note**: Both `PUT` and `POST` methods are supported for updating an existing environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.getDeployedConfig()`
-
-Gets the deployed configuration for an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment deployed configuration resource. Use the following structure in your request: `organizations/{org}/environments/{env}/deployedConfig` |
-
-#### `organizations.environments.getApiSecurityRuntimeConfig()`
-
-Gets the API Security runtime configuration for an environment. This named ApiSecurityRuntimeConfig to prevent conflicts with ApiSecurityConfig from addon config.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment API Security Runtime configuration resource. Use the following structure in your request: `organizations/{org}/environments/{env}/apiSecurityRuntimeConfig` |
-
-#### `organizations.environments.setIamPolicy()`
-
-Sets the IAM policy on an environment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.setIamPolicy` permission to call this API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.getIamPolicy()`
-
-Gets the IAM policy on an environment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.environments.getIamPolicy` permission to call this API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `organizations.environments.testIamPermissions()`
-
-Tests the permissions of a user on an environment, and returns a subset of permissions that the user has on the environment. If the environment does not exist, an empty permission set is returned (a NOT_FOUND error is not returned).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.subscribe()`
-
-Creates a subscription for the environment's Pub/Sub topic. The server will assign a random name for this subscription. The "name" and "push_config" must *not* be specified.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
-
-#### `organizations.environments.unsubscribe()`
-
-Deletes a subscription for the environment's Pub/Sub topic.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{env}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.modifyEnvironment()`
-
-Updates properties for an Apigee environment with patch semantics using a field mask. **Note:** Not supported for Apigee hybrid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment. Use the following structure in your request: `organizations/{org}/environments/{environment}`. |
-| `params.updateMask` | `string` | No | List of fields to be updated. Fields that can be updated: node_config. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.getSecurityActionsConfig()`
-
-GetSecurityActionConfig returns the current SecurityActions configuration.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the SecurityActionsConfig to retrieve. This will always be: `organizations/{org}/environments/{env}/security_actions_config` |
-
-#### `organizations.environments.updateSecurityActionsConfig()`
-
-UpdateSecurityActionConfig updates the current SecurityActions configuration. This method is used to enable/disable the feature at the environment level.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | This is a singleton resource, the name will always be set by SecurityActions and any user input will be ignored. The name is always: `organizations/{org}/environments/{env}/security_actions_config` |
-| `params.updateMask` | `string` | No | The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.environments.analytics`
-
-### `organizations.environments.analytics.admin`
-
-#### `organizations.environments.analytics.admin.getSchemav2()`
-
-Gets a list of metrics and dimensions that can be used to create analytics queries and reports. Each schema element contains the name of the field, its associated type, and a flag indicating whether it is a standard or custom field.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Path to the schema. Use the following structure in your request: `organizations/{org}/environments/{env}/analytics/admin/schemav2`. |
-| `params.type` | `string` | No | Required. Name of the dataset for which you want to retrieve the schema. For example: `fact` or `agg_cus1` |
-| `params.disableCache` | `boolean` | No | Flag that specifies whether the schema is be read from the database or cache. Set to `true` to read the schema from the database. Defaults to cache. |
-
-### `organizations.environments.analytics.exports`
-
-#### `organizations.environments.analytics.exports.create()`
-
-Submit a data export job to be processed in the background. If the request is successful, the API returns a 201 status, a URI that can be used to retrieve the status of the export job, and the `state` value of "enqueued".
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Names of the parent organization and environment. Must be of the form `organizations/{org}/environments/{env}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.analytics.exports.get()`
-
-Gets the details and status of an analytics export job. If the export job is still in progress, its `state` is set to "running". After the export job has completed successfully, its `state` is set to "completed". If the export job fails, its `state` is set to `failed`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the export to get. |
-
-#### `organizations.environments.analytics.exports.list()`
-
-Lists the details and status of all analytics export jobs belonging to the parent organization and environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Names of the parent organization and environment. Must be of the form `organizations/{org}/environments/{env}`. |
-
-### `organizations.environments.resourcefiles`
-
-#### `organizations.environments.resourcefiles.create()`
-
-Creates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment in which to create the resource file in the following format: `organizations/{org}/environments/{env}`. |
-| `params.type` | `string` | No | Required. Resource file type. {{ resource_file_type }} |
-| `params.name` | `string` | No | Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.resourcefiles.update()`
-
-Updates a resource file. Specify the `Content-Type` as `application/octet-stream` or `multipart/form-data`. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment in the following format: `organizations/{org}/environments/{env}`. |
-| `params.type` | `string` | Yes | Required. Resource file type. {{ resource_file_type }} |
-| `params.name` | `string` | Yes | Required. ID of the resource file to update. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.resourcefiles.get()`
-
-Gets the contents of a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment in the following format: `organizations/{org}/environments/{env}`. |
-| `params.type` | `string` | Yes | Required. Resource file type. {{ resource_file_type }} |
-| `params.name` | `string` | Yes | Required. ID of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255} |
-
-#### `organizations.environments.resourcefiles.delete()`
-
-Deletes a resource file. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment in the following format: `organizations/{org}/environments/{env}`. |
-| `params.type` | `string` | Yes | Required. Resource file type. {{ resource_file_type }} |
-| `params.name` | `string` | Yes | Required. ID of the resource file to delete. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255} |
-
-#### `organizations.environments.resourcefiles.list()`
-
-Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment in which to list resource files in the following format: `organizations/{org}/environments/{env}`. |
-| `params.type` | `string` | No | Optional. Type of resource files to list. {{ resource_file_type }} |
-
-#### `organizations.environments.resourcefiles.listEnvironmentResources()`
-
-Lists all resource files, optionally filtering by type. For more information about resource files, see [Resource files](https://cloud.google.com/apigee/docs/api-platform/develop/resource-files).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment in which to list resource files in the following format: `organizations/{org}/environments/{env}`. |
-| `params.type` | `string` | Yes | Optional. Type of resource files to list. {{ resource_file_type }} |
-
-### `organizations.environments.archiveDeployments`
-
-#### `organizations.environments.archiveDeployments.get()`
-
-Gets the specified ArchiveDeployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`. |
-
-#### `organizations.environments.archiveDeployments.list()`
-
-Lists the ArchiveDeployments in the specified Environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the Environment for which to list Archive Deployments in the format: `organizations/{org}/environments/{env}`. |
-| `params.filter` | `string` | No | Optional. An optional query used to return a subset of Archive Deployments using the semantics defined in https://google.aip.dev/160. |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of Archive Deployments to return. If unspecified, at most 25 deployments will be returned. |
-| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous ListArchiveDeployments call, that you can use to retrieve the next page. |
-
-#### `organizations.environments.archiveDeployments.generateUploadUrl()`
-
-Generates a signed URL for uploading an Archive zip file to Google Cloud Storage. Once the upload is complete, the signed URL should be passed to CreateArchiveDeployment. When uploading to the generated signed URL, please follow these restrictions:
-
-* Source file type should be a zip file.
-
-* Source file size should not exceed 1GB limit.
-
-* No credentials should be attached - the signed URLs provide access to the target bucket using internal service identity; if credentials were attached, the identity from the credentials would be used, but that identity does not have permissions to upload files to the URL. When making a HTTP PUT request, these two headers need to be specified:
-
-* `content-type: application/zip`
-
-* `x-goog-content-length-range: 0,1073741824` And this header SHOULD NOT be specified:
-
-* `Authorization: Bearer YOUR_TOKEN`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The organization and environment to upload to. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.archiveDeployments.generateDownloadUrl()`
-
-Generates a signed URL for downloading the original zip file used to create an Archive Deployment. The URL is only valid for a limited period and should be used within minutes after generation. Each call returns a new upload URL.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Archive Deployment you want to download. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.archiveDeployments.create()`
-
-Creates a new ArchiveDeployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The Environment this Archive Deployment will be created in. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.archiveDeployments.patch()`
-
-Updates an existing ArchiveDeployment. Labels can modified but most of the other fields are not modifiable.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`. |
-| `params.updateMask` | `string` | No | Required. The list of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.archiveDeployments.delete()`
-
-Deletes an archive deployment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the Archive Deployment in the following format: `organizations/{org}/environments/{env}/archiveDeployments/{id}`. |
-
-### `organizations.environments.queries`
-
-#### `organizations.environments.queries.create()`
-
-Submit a query to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.queries.get()`
-
-Get query status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the asynchronous query to get. Must be of the form `organizations/{org}/environments/{env}/queries/{queryId}`. |
-
-#### `organizations.environments.queries.getResult()`
-
-After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the asynchronous query result to get. Must be of the form `organizations/{org}/environments/{env}/queries/{queryId}/result`. |
-
-#### `organizations.environments.queries.getResulturl()`
-
-After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is sent to the client as a list of urls to JSON files.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the asynchronous query result to get. Must be of the form `organizations/{org}/environments/{env}/queries/{queryId}/resulturl`. |
-
-#### `organizations.environments.queries.list()`
-
-Return a list of Asynchronous Queries
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`. |
-| `params.submittedBy` | `string` | No | Filter response list by user who submitted queries. |
-| `params.status` | `string` | No | Filter response list by asynchronous query status. |
-| `params.from` | `string` | No | Filter response list by returning asynchronous queries that created after this date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'. |
-| `params.to` | `string` | No | Filter response list by returning asynchronous queries that created before this date time. Time must be in ISO date-time format like '2011-12-03T10:16:30Z'. |
-| `params.dataset` | `string` | No | Filter response list by dataset. Example: `api`, `mint` |
-| `params.inclQueriesWithoutReport` | `string` | No | Flag to include asynchronous queries that don't have a report denifition. |
-
-### `organizations.environments.caches`
-
-#### `organizations.environments.caches.delete()`
-
-Deletes a cache.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Cache resource name of the form: `organizations/{organization_id}/environments/{environment_id}/caches/{cache_id}` |
-
-### `organizations.environments.apis`
-
-### `organizations.environments.apis.revisions`
-
-#### `organizations.environments.apis.revisions.deploy()`
-
-Deploys a revision of an API proxy. If another revision of the same API proxy revision is currently deployed, set the `override` parameter to `true` to have this revision replace the currently deployed revision. You cannot invoke an API proxy until it has been deployed to an environment. After you deploy an API proxy revision, you cannot edit it. To edit the API proxy, you must create and deploy a new revision. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`, two permissions are required:
-
-* `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}`
-
-* `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}` All successful API proxy deployments to Apigee are [zero-downtime deployments](https://cloud.google.com/apigee/docs/api-platform/deploy/ui-deploy-overview#zero-downtime-deployment). Apigee hybrid validates the dependencies between shared flows and API proxies at deployment time. For example, if the Flow Callout policy in an API proxy references a shared flow that either doesn't exist or isn't deployed, the API proxy deployment fails.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the API proxy revision deployment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the API proxy resource being deployed has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.override` | `boolean` | No | Flag that specifies whether the new deployment replaces other deployed revisions of the API proxy in the environment. Set `override` to `true` to replace other deployed revisions. By default, `override` is `false` and the deployment is rejected if other revisions of the API proxy are deployed in the environment. |
-| `params.sequencedRollout` | `boolean` | No | Flag that specifies whether to enable sequenced rollout. If set to `true`, the routing rules for this deployment and the environment changes to add the deployment will be rolled out in a safe order. This reduces the risk of downtime that could be caused by changing the environment group's routing before the new destination for the affected traffic is ready to receive it. This should only be necessary if the new deployment will be capturing traffic from another environment under a shared environment group or if traffic will be rerouted to a different environment due to a base path removal. The generateDeployChangeReport API may be used to examine routing changes before issuing the deployment request, and its response will indicate if a sequenced rollout is recommended for the deployment. |
-| `params.serviceAccount` | `string` | No | Google Cloud IAM service account. The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`. |
-
-#### `organizations.environments.apis.revisions.undeploy()`
-
-Undeploys an API proxy revision from an environment. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments`, two permissions are required:
-
-* `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}`
-
-* `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the API proxy revision deployment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.sequencedRollout` | `boolean` | No | Flag that specifies whether to enable sequenced rollout. If set to `true`, the environment group routing rules corresponding to this deployment will be removed before removing the deployment from the runtime. This is likely to be a rare use case; it is only needed when the intended effect of undeploying this proxy is to cause the traffic it currently handles to be rerouted to some other existing proxy in the environment group. The GenerateUndeployChangeReport API may be used to examine routing changes before issuing the undeployment request, and its response will indicate if a sequenced rollout is recommended for the undeployment. |
-
-#### `organizations.environments.apis.revisions.getDeployments()`
-
-Gets the deployment of an API proxy revision and actual state reported by runtime pods.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name representing an API proxy revision in an environment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.environments.apis.revisions.debugsessions`
-
-#### `organizations.environments.apis.revisions.debugsessions.create()`
-
-Creates a debug session for a deployed API Proxy revision.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the API Proxy revision deployment for which to create the DebugSession. Must be of the form `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.timeout` | `string` | No | Optional. The time in seconds after which this DebugSession should end. A timeout specified in DebugSession will overwrite this value. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.apis.revisions.debugsessions.get()`
-
-Retrieves a debug session.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the debug session to retrieve. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.environments.apis.revisions.debugsessions.list()`
-
-Lists debug sessions that are currently active in the given API Proxy revision.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the API Proxy revision deployment for which to list debug sessions. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of debug sessions to return. The page size defaults to 25. |
-| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous ListDebugSessions call, that you can use to retrieve the next page. |
-
-#### `organizations.environments.apis.revisions.debugsessions.deleteData()`
-
-Deletes the data from a debug session. This does not cancel the debug session or prevent further data from being collected if the session is still active in runtime pods.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the debug session to delete. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debugsession}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.environments.apis.revisions.debugsessions.data`
-
-#### `organizations.environments.apis.revisions.debugsessions.data.get()`
-
-Gets the debug data from a transaction.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the debug session transaction. Must be of the form: `organizations/{organization}/environments/{environment}/apis/{api}/revisions/{revision}/debugsessions/{debug_session}/data/{transaction}`. If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.environments.apis.revisions.deployments`
-
-#### `organizations.environments.apis.revisions.deployments.generateDeployChangeReport()`
-
-Generates a report for a dry run analysis of a DeployApiProxy request without committing the deployment. In addition to the standard validations performed when adding deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being created. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run DeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateDeployChangeReport`, two permissions are required:
-
-* `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}`
-
-* `apigee.proxyrevisions.deploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the API proxy revision deployment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.override` | `boolean` | No | Flag that specifies whether to force the deployment of the new revision over the currently deployed revision by overriding conflict checks. |
-
-#### `organizations.environments.apis.revisions.deployments.generateUndeployChangeReport()`
-
-Generates a report for a dry run analysis of an UndeployApiProxy request without committing the undeploy. In addition to the standard validations performed when removing deployments, additional analysis will be done to detect possible traffic routing changes that would result from this deployment being removed. Any potential routing conflicts or unsafe changes will be reported in the response. This routing analysis is not performed for a non-dry-run UndeployApiProxy request. For a request path `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}/deployments:generateUndeployChangeReport`, two permissions are required:
-
-* `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}`
-
-* `apigee.proxyrevisions.undeploy` on the resource `organizations/{org}/apis/{api}/revisions/{rev}`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Name of the API proxy revision deployment in the following format: `organizations/{org}/environments/{env}/apis/{api}/revisions/{rev}` |
-
-### `organizations.environments.apis.deployments`
-
-#### `organizations.environments.apis.deployments.list()`
-
-Lists all deployments of an API proxy in an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name representing an API proxy in an environment in the following format: `organizations/{org}/environments/{env}/apis/{api}` If the API proxy resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.environments.sharedflows`
-
-### `organizations.environments.sharedflows.revisions`
-
-#### `organizations.environments.sharedflows.revisions.deploy()`
-
-Deploys a revision of a shared flow. If another revision of the same shared flow is currently deployed, set the `override` parameter to `true` to have this revision replace the currently deployed revision. You cannot use a shared flow until it has been deployed to an environment. For a request path `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`, two permissions are required:
-
-* `apigee.deployments.create` on the resource `organizations/{org}/environments/{env}`
-
-* `apigee.sharedflowrevisions.deploy` on the resource `organizations/{org}/sharedflows/{sf}/revisions/{rev}`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the shared flow revision to deploy in the following format: `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}` If the shared flow resource being deployed has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.override` | `boolean` | No | Flag that specifies whether the new deployment replaces other deployed revisions of the shared flow in the environment. Set `override` to `true` to replace other deployed revisions. By default, `override` is `false` and the deployment is rejected if other revisions of the shared flow are deployed in the environment. |
-| `params.serviceAccount` | `string` | No | Google Cloud IAM service account. The service account represents the identity of the deployed proxy, and determines what permissions it has. The format must be `{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com`. |
-
-#### `organizations.environments.sharedflows.revisions.undeploy()`
-
-Undeploys a shared flow revision from an environment. For a request path `organizations/{org}/environments/{env}/sharedflows/{sf}/revisions/{rev}/deployments`, two permissions are required:
-
-* `apigee.deployments.delete` on the resource `organizations/{org}/environments/{env}`
-
-* `apigee.sharedflowrevisions.undeploy` on the resource `organizations/{org}/sharedflows/{sf}/revisions/{rev}`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the shared flow revision to undeploy in the following format: `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}` If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.environments.sharedflows.revisions.getDeployments()`
-
-Gets the deployment of a shared flow revision and actual state reported by runtime pods.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name representing a shared flow in an environment in the following format: `organizations/{org}/environments/{env}/sharedflows/{sharedflow}/revisions/{rev}` If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.environments.sharedflows.deployments`
-
-#### `organizations.environments.sharedflows.deployments.list()`
-
-Lists all deployments of a shared flow in an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name representing a shared flow in an environment in the following format: `organizations/{org}/environments/{env}/sharedflows/{sharedflow}` If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-### `organizations.environments.deployments`
-
-#### `organizations.environments.deployments.list()`
-
-Lists all deployments of API proxies or shared flows in an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment for which to return deployment information in the following format: `organizations/{org}/environments/{env}` |
-| `params.sharedFlows` | `boolean` | No | Optional. Flag that specifies whether to return shared flow or API proxy deployments. Set to `true` to return shared flow deployments; set to `false` to return API proxy deployments. Defaults to `false`. |
-
-#### `organizations.environments.deployments.get()`
-
-Gets a particular deployment of Api proxy or a shared flow in an environment
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the api proxy or the shared flow deployment. Use the following structure in your request: `organizations/{org}/environments/{env}/deployments/{deployment}` |
-
-#### `organizations.environments.deployments.setIamPolicy()`
-
-Sets the IAM policy on a deployment, if the policy already exists it will be replaced. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.deployments.setIamPolicy` permission to call this API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.deployments.getIamPolicy()`
-
-Gets the IAM policy on a deployment. For more information, see [Manage users, roles, and permissions using the API](https://cloud.google.com/apigee/docs/api-platform/system-administration/manage-users-roles). You must have the `apigee.deployments.getIamPolicy` permission to call this API.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `organizations.environments.deployments.testIamPermissions()`
-
-Tests the permissions of a user on a deployment, and returns a subset of permissions that the user has on the deployment. If the deployment does not exist, an empty permission set is returned (a NOT_FOUND error is not returned).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.environments.flowhooks`
-
-#### `organizations.environments.flowhooks.get()`
-
-Returns the name of the shared flow attached to the specified flow hook. If there's no shared flow attached to the flow hook, the API does not return an error; it simply does not return a name in the response.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the flow hook in the following format: `organizations/{org}/environments/{env}/flowhooks/{flowhook}` |
-
-#### `organizations.environments.flowhooks.attachSharedFlowToFlowHook()`
-
-Attaches a shared flow to a flow hook.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the flow hook to which the shared flow should be attached in the following format: `organizations/{org}/environments/{env}/flowhooks/{flowhook}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.flowhooks.detachSharedFlowFromFlowHook()`
-
-Detaches a shared flow from a flow hook.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the flow hook to detach in the following format: `organizations/{org}/environments/{env}/flowhooks/{flowhook}` |
-
-### `organizations.environments.addonsConfig`
-
-#### `organizations.environments.addonsConfig.setAddonEnablement()`
-
-Updates an add-on enablement status of an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the add-ons config. Must be in the format of `/organizations/{org}/environments/{env}/addonsConfig` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.environments.keystores`
-
-#### `organizations.environments.keystores.create()`
-
-Creates a keystore or truststore. - Keystore: Contains certificates and their associated keys. - Truststore: Contains trusted certificates used to validate a server's certificate. These certificates are typically self-signed certificates or certificates that are not signed by a trusted CA.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment in which to create the keystore. Use the following format in your request: `organizations/{org}/environments/{env}` |
-| `params.name` | `string` | No | Optional. Name of the keystore. Overrides the value in Keystore. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.keystores.delete()`
-
-Deletes a keystore or truststore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the keystore. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}` |
-
-#### `organizations.environments.keystores.get()`
-
-Gets a keystore or truststore.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the keystore. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}`. |
-
-### `organizations.environments.keystores.aliases`
-
-#### `organizations.environments.keystores.aliases.create()`
-
-Creates an alias from a key/certificate pair. The structure of the request is controlled by the `format` query parameter: - `keycertfile` - Separate PEM-encoded key and certificate files are uploaded. Set `Content-Type: multipart/form-data` and include the `keyFile`, `certFile`, and `password` (if keys are encrypted) fields in the request body. If uploading to a truststore, omit `keyFile`. - `pkcs12` - A PKCS12 file is uploaded. Set `Content-Type: multipart/form-data`, provide the file in the `file` field, and include the `password` field if the file is encrypted in the request body. - `selfsignedcert` - A new private key and certificate are generated. Set `Content-Type: application/json` and include CertificateGenerationSpec in the request body.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the keystore. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}`. |
-| `params.alias` | `string` | No | Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body. |
-| `params.format` | `string` | No | Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12` |
-| `params.ignoreExpiryValidation` | `boolean` | No | Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed. |
-| `params._password` | `string` | No | DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required. |
-| `params.ignoreNewlineValidation` | `boolean` | No | Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.keystores.aliases.get()`
-
-Gets an alias.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`. |
-
-#### `organizations.environments.keystores.aliases.delete()`
-
-Deletes an alias.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`. |
-
-#### `organizations.environments.keystores.aliases.update()`
-
-Updates the certificate in an alias. The updated certificate must be in PEM- or DER-encoded X.509 format.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}` |
-| `params.ignoreExpiryValidation` | `boolean` | No | Required. Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed. |
-| `params.ignoreNewlineValidation` | `boolean` | No | Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.keystores.aliases.csr()`
-
-Generates a PKCS #10 Certificate Signing Request for the private key in an alias.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`. |
-
-#### `organizations.environments.keystores.aliases.getCertificate()`
-
-Gets the certificate from an alias in PEM-encoded form.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the alias. Use the following format in your request: `organizations/{org}/environments/{env}/keystores/{keystore}/aliases/{alias}`. |
-
-### `organizations.environments.targetservers`
-
-#### `organizations.environments.targetservers.create()`
-
-Creates a TargetServer in the specified environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent environment name under which the TargetServer will be created. Must be of the form `organizations/{org}/environments/{env}`. |
-| `params.name` | `string` | No | Optional. The ID to give the TargetServer. This will overwrite the value in TargetServer. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.targetservers.delete()`
-
-Deletes a TargetServer from an environment. Returns the deleted TargetServer resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the TargetServer to delete. Must be of the form `organizations/{org}/environments/{env}/targetservers/{target_server_id}`. |
-
-#### `organizations.environments.targetservers.get()`
-
-Gets a TargetServer resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the TargetServer to get. Must be of the form `organizations/{org}/environments/{env}/targetservers/{target_server_id}`. |
-
-#### `organizations.environments.targetservers.update()`
-
-Updates an existing TargetServer. Note that this operation has PUT semantics; it will replace the entirety of the existing TargetServer with the resource in the request body.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the TargetServer to replace. Must be of the form `organizations/{org}/environments/{env}/targetservers/{target_server_id}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.environments.keyvaluemaps`
-
-#### `organizations.environments.keyvaluemaps.create()`
-
-Creates a key value map in an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment in which to create the key value map. Use the following structure in your request: `organizations/{org}/environments/{env}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.keyvaluemaps.get()`
-
-Get the key value map scoped to an organization, environment, or API proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.environments.keyvaluemaps.update()`
-
-Update the key value map scoped to an organization, environment, or API proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.keyvaluemaps.delete()`
-
-Deletes a key value map from an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the key value map. Use the following structure in your request: `organizations/{org}/environments/{env}/keyvaluemaps/{keyvaluemap}` |
-
-### `organizations.environments.keyvaluemaps.entries`
-
-#### `organizations.environments.keyvaluemaps.entries.get()`
-
-Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map entry/value. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.environments.keyvaluemaps.entries.delete()`
-
-Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:**
-
-* After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior.
-
-* Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to delete the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.environments.keyvaluemaps.entries.create()`
-
-Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.keyvaluemaps.entries.update()`
-
-Update key value entry scoped to an organization, environment, or API proxy for an existing key.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.keyvaluemaps.entries.list()`
-
-Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to list key value maps. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of key value entries to return. If unspecified, at most 100 entries will be returned. |
-| `params.pageToken` | `string` | No | Optional. Page token. If provides, must be a valid key value entry returned from a previous call that can be used to retrieve the next page. |
-
-### `organizations.environments.references`
-
-#### `organizations.environments.references.create()`
-
-Creates a Reference in the specified environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent environment name under which the Reference will be created. Must be of the form `organizations/{org}/environments/{env}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.references.delete()`
-
-Deletes a Reference from an environment. Returns the deleted Reference resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Reference to delete. Must be of the form `organizations/{org}/environments/{env}/references/{ref}`. |
-
-#### `organizations.environments.references.get()`
-
-Gets a Reference resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Reference to get. Must be of the form `organizations/{org}/environments/{env}/references/{ref}`. |
-
-#### `organizations.environments.references.update()`
-
-Updates an existing Reference. Note that this operation has PUT semantics; it will replace the entirety of the existing Reference with the resource in the request body.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the Reference to update. Must be of the form `organizations/{org}/environments/{env}/references/{ref}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.environments.securityActions`
-
-#### `organizations.environments.securityActions.create()`
-
-CreateSecurityAction creates a SecurityAction.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The organization and environment that this SecurityAction applies to. Format: organizations/{org}/environments/{env} |
-| `params.securityActionId` | `string` | No | Required. The ID to use for the SecurityAction, which will become the final component of the action's resource name. This value should be 0-61 characters, and valid format is (^[a-z]([a-z0-9-]{​0,61}[a-z0-9])?$). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.securityActions.get()`
-
-Get a SecurityAction by name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The fully qualified name of the SecurityAction to retrieve. Format: organizations/{org}/environments/{env}/securityActions/{security_action} |
-
-#### `organizations.environments.securityActions.list()`
-
-Returns a list of SecurityActions. This returns both enabled and disabled actions.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent, which owns this collection of SecurityActions. Format: organizations/{org}/environments/{env} |
-| `params.pageSize` | `integer` | No | The maximum number of SecurityActions to return. If unspecified, at most 50 SecurityActions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListSecurityActions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSecurityActions` must match the call that provided the page token. |
-| `params.filter` | `string` | No | The filter expression to filter List results. https://google.aip.dev/160. Allows for filtering over: state and api_proxies. E.g.: state = ACTIVE AND apiProxies:foo. Filtering by action is not supported https://github.com/aip-dev/google.aip.dev/issues/624 |
-
-#### `organizations.environments.securityActions.patch()`
-
-Update a SecurityAction.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. This field is ignored during creation as per AIP-133. Please set the `security_action_id` field in the CreateSecurityActionRequest when creating a new SecurityAction. Format: organizations/{org}/environments/{env}/securityActions/{security_action} |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. Valid fields to update are `description`, `state`, `allow`, `deny`, and `flag`, `expire_time`, and `ttl`, `api_proxies`, and `condition_config`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.securityActions.delete()`
-
-Delete a SecurityAction.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the security action to delete. Format: `organizations/{org}/environment/{env}/securityActions/{security_action}` |
-
-#### `organizations.environments.securityActions.enable()`
-
-Enable a SecurityAction. The `state` of the SecurityAction after enabling is `ENABLED`. `EnableSecurityAction` can be called on SecurityActions in the state `DISABLED`; SecurityActions in a different state (including `ENABLED) return an error.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the SecurityAction to enable. Format: organizations/{org}/environments/{env}/securityActions/{security_action} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.securityActions.disable()`
-
-Disable a SecurityAction. The `state` of the SecurityAction after disabling is `DISABLED`. `DisableSecurityAction` can be called on SecurityActions in the state `ENABLED`; SecurityActions in a different state (including `DISABLED`) return an error.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the SecurityAction to disable. Format: organizations/{org}/environments/{env}/securityActions/{security_action} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.environments.securityIncidents`
-
-#### `organizations.environments.securityIncidents.get()`
-
-GetSecurityIncident gets the specified security incident. Returns NOT_FOUND if security incident is not present for the specified organization and environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Security incident in the following format: `organizations/{org}/environments/{environment}/securityIncidents/{incident}'. Example: organizations/testOrg/environments/testEnv/securityIncidents/1234-4567-890-111 |
-
-#### `organizations.environments.securityIncidents.list()`
-
-ListSecurityIncidents lists all the security incident associated with the environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. For a specific organization, list of all the security incidents. Format: `organizations/{org}/environments/{environment}` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of incidents to return. The service may return fewer than this value. If unspecified, at most 50 incidents will be returned. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListSecurityIncident` call. Provide this to retrieve the subsequent page. |
-| `params.filter` | `string` | No | The filter expression to be used to get the list of security incidents, where filtering can be done on API Proxies. Example: filter = "api_proxy = /", "first_detected_time >", "last_detected_time <" |
-
-#### `organizations.environments.securityIncidents.patch()`
-
-UpdateSecurityIncidents updates an existing security incident.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Immutable. Name of the security incident resource. Format: organizations/{org}/environments/{environment}/securityIncidents/{incident} Example: organizations/apigee-org/environments/dev/securityIncidents/1234-5678-9101-1111 |
-| `params.updateMask` | `string` | No | Required. The list of fields to update. Allowed fields are: LINT.IfChange(allowed_update_fields_comment) - observability LINT.ThenChange() |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.securityIncidents.batchUpdate()`
-
-BatchUpdateSecurityIncident updates multiple existing security incidents.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Optional. The parent resource shared by all security incidents being updated. If this is set, the parent field in the UpdateSecurityIncidentRequest messages must either be empty or match this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.environments.securityReports`
-
-#### `organizations.environments.securityReports.create()`
-
-Submit a report request to be processed in the background. If the submission succeeds, the API returns a 200 status and an ID that refer to the report request. In addition to the HTTP status 200, the `state` of "enqueued" means that the request succeeded.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.securityReports.get()`
-
-Get security report status If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the security report to get. Must be of the form `organizations/{org}/environments/{env}/securityReports/{reportId}`. |
-
-#### `organizations.environments.securityReports.getResult()`
-
-After the query is completed, use this API to retrieve the results as file. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the security report result to get. Must be of the form `organizations/{org}/environments/{env}/securityReports/{reportId}/result`. |
-
-#### `organizations.environments.securityReports.getResultView()`
-
-After the query is completed, use this API to view the query result when result size is small.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the security report result view to get. Must be of the form `organizations/{org}/environments/{env}/securityReports/{reportId}/resultView`. |
-
-#### `organizations.environments.securityReports.list()`
-
-Return a list of Security Reports
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}/environments/{env}`. |
-| `params.submittedBy` | `string` | No | Filter response list by user who submitted queries. |
-| `params.status` | `string` | No | Filter response list by security reports status. |
-| `params.from` | `string` | No | Filter response list by returning security reports that created after this date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'. |
-| `params.to` | `string` | No | Filter response list by returning security reports that created before this date time. Time must be in ISO date-time format like '2011-12-03T10:16:30Z'. |
-| `params.dataset` | `string` | No | Filter response list by dataset. Example: `api`, `mint` |
-| `params.pageSize` | `integer` | No | The maximum number of security report to return in the list response. |
-| `params.pageToken` | `string` | No | Token returned from the previous list response to fetch the next page. |
-
-### `organizations.environments.securityStats`
-
-#### `organizations.environments.securityStats.queryTabularStats()`
-
-Retrieve security statistics as tabular rows.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.orgenv` | `string` | Yes | Required. Should be of the form organizations//environments/. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.securityStats.queryTimeSeriesStats()`
-
-Retrieve security statistics as a collection of time series.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.orgenv` | `string` | Yes | Required. Should be of the form organizations//environments/. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.environments.stats`
-
-#### `organizations.environments.stats.get()`
-
-Retrieve metrics grouped by dimensions. The types of metrics you can retrieve include traffic, message counts, API call latency, response size, and cache hits and counts. Dimensions let you view metrics in meaningful groups. You can optionally pass dimensions as path parameters to the `stats` API. If dimensions are not specified, the metrics are computed on the entire set of data for the given time range.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name for which the interactive query will be executed. Use the following format in your request: `organizations/{org}/environments/{env}/stats/{dimensions}` Dimensions let you view metrics in meaningful groupings, such as `apiproxy` or `target_host`. The value of dimensions should be a comma-separated list, as shown below: `organizations/{org}/environments/{env}/stats/apiproxy,request_verb` |
-| `params.select` | `string` | No | Comma-separated list of metrics. For example: `sum(message_count),sum(error_count)` |
-| `params.timeUnit` | `string` | No | Granularity of metrics returned. Valid values include: `second`, `minute`, `hour`, `day`, `week`, or` month`. |
-| `params.timeRange` | `string` | No | Time interval for the interactive query. Time range is specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59` |
-| `params.filter` | `string` | No | Filter that enables you to drill down on specific dimension values. |
-| `params.sort` | `string` | No | Flag that specifies whether the sort order should be ascending or descending. Valid values include: `DESC` and `ASC`. |
-| `params.sortby` | `string` | No | Comma-separated list of metrics to sort the final result. |
-| `params.aggTable` | `string` | No | Table name used to query custom aggregate tables. If this parameter is skipped, then Apigee will try to retrieve the data from fact tables which will be expensive. |
-| `params.limit` | `string` | No | Maximum number of result items to return. |
-| `params.offset` | `string` | No | Offset value. Use `offset` with `limit` to enable pagination of results. For example, to display results 11-20, set limit to `10` and offset to `10`. |
-| `params.topk` | `string` | No | Top number of results to return. For example, to return the top 5 results, set `topk=5`. |
-| `params.tsAscending` | `boolean` | No | Flag that specifies whether to list timestamps in ascending (`true`) or descending (`false`) order. Apigee recommends that you set this value to `true` if you are using `sortby` with `sort=DESC`. |
-| `params.realtime` | `boolean` | No | No longer used by Apigee. Supported for backwards compatibility. |
-| `params.sonar` | `boolean` | No | Routes the query to API Monitoring for the last hour. |
-| `params.tzo` | `string` | No | Timezone offset value. |
-| `params.accuracy` | `string` | No | No longer used by Apigee. Supported for backwards compatibility. |
-
-### `organizations.environments.optimizedStats`
-
-#### `organizations.environments.optimizedStats.get()`
-
-Similar to GetStats except that the response is less verbose.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name for which the interactive query will be executed. Use the following format in your request: `organizations/{org}/environments/{env}/optimizedStats/{dimensions}` Dimensions let you view metrics in meaningful groupings, such as `apiproxy`, `target_host`. The value of `dimensions` should be a comma-separated list as shown below: `organizations/{org}/environments/{env}/optimizedStats/apiproxy,request_verb` |
-| `params.select` | `string` | No | Required. Comma-separated list of metrics. For example: `sum(message_count),sum(error_count)` |
-| `params.timeUnit` | `string` | No | Granularity of metrics returned. Valid values include: `second`, `minute`, `hour`, `day`, `week`, or `month`. |
-| `params.timeRange` | `string` | No | Required. Time interval for the interactive query. Time range is specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59` |
-| `params.filter` | `string` | No | Filter that enables you to drill-down on specific dimension values. |
-| `params.sort` | `string` | No | Flag that specifies whether the sort order should be ascending or descending. Valid values include `DESC` and `ASC`. |
-| `params.sortby` | `string` | No | Comma-separated list of metrics to sort the final result. |
-| `params.aggTable` | `string` | No | Table name used to query custom aggregate tables. If this parameter is skipped, then Apigee will try to retrieve the data from fact tables which will be expensive. |
-| `params.limit` | `string` | No | Maximum number of result items to return. |
-| `params.offset` | `string` | No | Offset value. Use `offset` with `limit` to enable pagination of results. For example, to display results 11-20, set limit to `10` and offset to `10`. |
-| `params.topk` | `string` | No | Top number of results to return. For example, to return the top 5 results, set `topk=5`. |
-| `params.tsAscending` | `boolean` | No | Flag that specifies whether to list timestamps in ascending (`true`) or descending (`false`) order. Apigee recommends setting this value to `true` if you are using `sortby` with `sort=DESC`. |
-| `params.realtime` | `boolean` | No | No longer used by Apigee. Supported for backwards compatibility. |
-| `params.sonar` | `boolean` | No | Routes the query to API Monitoring for the last hour. |
-| `params.tzo` | `string` | No | Timezone offset value. |
-| `params.accuracy` | `string` | No | No longer used by Apigee. Supported for backwards compatibility. |
-
-### `organizations.environments.traceConfig`
-
-### `organizations.environments.traceConfig.overrides`
-
-#### `organizations.environments.traceConfig.overrides.create()`
-
-Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource of the trace configuration override. Use the following structure in your request. "organizations/*/environments/*/traceConfig". |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.traceConfig.overrides.list()`
-
-Lists all of the distributed trace configuration overrides in an environment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource of the trace configuration override. Use the following structure in your request: "organizations/*/environments/*/traceConfig". |
-| `params.pageSize` | `integer` | No | Maximum number of trace configuration overrides to return. If not specified, the maximum number returned is 25. The maximum number cannot exceed 100. |
-| `params.pageToken` | `string` | No | A page token, returned from a previous `ListTraceConfigOverrides` call. Token value that can be used to retrieve the subsequent page. When paginating, all other parameters provided to `ListTraceConfigOverrides` must match those specified in the call to obtain the page token. |
-
-#### `organizations.environments.traceConfig.overrides.get()`
-
-Gets a trace configuration override.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the trace configuration override. Use the following structure in your request: "organizations/*/environments/*/traceConfig/overrides/*". |
-
-#### `organizations.environments.traceConfig.overrides.patch()`
-
-Updates a distributed trace configuration override. Note that the repeated fields have replace semantics when included in the field mask and that they will be overwritten by the value of the fields in the request body.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the trace configuration override. Use the following structure in your request: "organizations/*/environments/*/traceConfig/overrides/*". |
-| `params.updateMask` | `string` | No | List of fields to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.environments.traceConfig.overrides.delete()`
-
-Deletes a distributed trace configuration override.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the trace configuration override. Use the following structure in your request: "organizations/*/environments/*/traceConfig/overrides/*". |
-
 ### `organizations.analytics`
 
 ### `organizations.analytics.datastores`
@@ -2363,17 +2457,6 @@ Update a Datastore
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of datastore to be updated. Must be of the form `organizations/{org}/analytics/datastores/{datastoreId}` |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.deployments`
-
-#### `organizations.deployments.list()`
-
-Lists all deployments of API proxies or shared flows.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization for which to return deployment information in the following format: `organizations/{org}` |
-| `params.sharedFlows` | `boolean` | No | Optional. Flag that specifies whether to return shared flow or API proxy deployments. Set to `true` to return shared flow deployments; set to `false` to return API proxy deployments. Defaults to `false`. |
 
 ### `organizations.developers`
 
@@ -2661,44 +2744,6 @@ Returns a list of all developer app attributes.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Name of the developer app. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/apps/{app}` |
 
-### `organizations.developers.subscriptions`
-
-#### `organizations.developers.subscriptions.create()`
-
-Creates a subscription to an API product. 
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Email address of the developer that is purchasing a subscription to the API product. Use the following structure in your request: `organizations/{org}/developers/{developer_email}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.developers.subscriptions.get()`
-
-Gets details for an API product subscription.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the API product subscription. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/subscriptions/{subscription}` |
-
-#### `organizations.developers.subscriptions.list()`
-
-Lists all API product subscriptions for a developer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Email address of the developer. Use the following structure in your request: `organizations/{org}/developers/{developer_email}` |
-| `params.startKey` | `string` | No | Name of the API product subscription from which to start displaying the list of subscriptions. If omitted, the list starts from the first item. For example, to view the API product subscriptions from 51-150, set the value of `startKey` to the name of the 51st subscription and set the value of `count` to 100. |
-| `params.count` | `integer` | No | Number of API product subscriptions to return in the API call. Use with `startKey` to provide more targeted filtering. Defaults to 100. The maximum limit is 1000. |
-
-#### `organizations.developers.subscriptions.expire()`
-
-Expires an API product subscription immediately.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the API product subscription. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/subscriptions/{subscription}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 ### `organizations.developers.attributes`
 
 #### `organizations.developers.attributes.get()`
@@ -2754,467 +2799,327 @@ Adjust the prepaid balance for the developer. This API will be used in scenarios
 | `params.name` | `string` | Yes | Required. Account balance for the developer. Use the following structure in your request: `organizations/{org}/developers/{developer}/balance` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `organizations.dnsZones`
+### `organizations.developers.subscriptions`
 
-#### `organizations.dnsZones.create()`
+#### `organizations.developers.subscriptions.create()`
 
-Creates a new DNS zone.
+Creates a subscription to an API product. 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Organization where the DNS zone will be created. |
-| `params.dnsZoneId` | `string` | No | Required. User assigned ID for this resource. Must be unique within the organization. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes. |
+| `params.parent` | `string` | Yes | Required. Email address of the developer that is purchasing a subscription to the API product. Use the following structure in your request: `organizations/{org}/developers/{developer_email}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.dnsZones.get()`
+#### `organizations.developers.subscriptions.get()`
 
-Fetches the representation of an existing DNS zone.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the DNS zone to fetch. Use the following structure in your request: `organizations/{org}/dnsZones/{dns_zone}`. |
-
-#### `organizations.dnsZones.list()`
-
-Enumerates DNS zones that have been created but not yet deleted.
+Gets details for an API product subscription.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization for which to list the DNS zones. Use the following structure in your request: `organizations/{org}` |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of DNS zones to return. If unspecified, at most 25 DNS zones will be returned. |
-| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous `ListDnsZones` call, that you can use to retrieve the next page. |
+| `params.name` | `string` | Yes | Required. Name of the API product subscription. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/subscriptions/{subscription}` |
 
-#### `organizations.dnsZones.delete()`
+#### `organizations.developers.subscriptions.list()`
 
-Deletes a previously created DNS zone.
+Lists all API product subscriptions for a developer.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the DNS zone to delete. Use the following structure in your request: `organizations/{org}/dnsZones/{dns_zone}`. |
+| `params.parent` | `string` | Yes | Required. Email address of the developer. Use the following structure in your request: `organizations/{org}/developers/{developer_email}` |
+| `params.startKey` | `string` | No | Name of the API product subscription from which to start displaying the list of subscriptions. If omitted, the list starts from the first item. For example, to view the API product subscriptions from 51-150, set the value of `startKey` to the name of the 51st subscription and set the value of `count` to 100. |
+| `params.count` | `integer` | No | Number of API product subscriptions to return in the API call. Use with `startKey` to provide more targeted filtering. Defaults to 100. The maximum limit is 1000. |
 
-### `organizations.endpointAttachments`
+#### `organizations.developers.subscriptions.expire()`
 
-#### `organizations.endpointAttachments.create()`
-
-Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
+Expires an API product subscription immediately.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Organization the endpoint attachment will be created in. |
-| `params.endpointAttachmentId` | `string` | No | ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2. |
+| `params.name` | `string` | Yes | Required. Name of the API product subscription. Use the following structure in your request: `organizations/{org}/developers/{developer_email}/subscriptions/{subscription}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.endpointAttachments.get()`
+### `organizations.appgroups`
 
-Gets the endpoint attachment.
+#### `organizations.appgroups.create()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}` |
-
-#### `organizations.endpointAttachments.list()`
-
-Lists the endpoint attachments in an organization.
+Creates an AppGroup. Once created, user can register apps under the AppGroup to obtain secret key and password. At creation time, the AppGroup's state is set as `active`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization for which to list endpoint attachments. Use the following structure in your request: `organizations/{org}` |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of endpoint attachments to return. If unspecified, at most 25 attachments will be returned. |
-| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous `ListEndpointAttachments` call, that you can use to retrieve the next page. |
-
-#### `organizations.endpointAttachments.delete()`
-
-Deletes an endpoint attachment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}` |
-
-### `organizations.envgroups`
-
-#### `organizations.envgroups.create()`
-
-Creates a new environment group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization in which to create the environment group in the following format: `organizations/{org}`. |
-| `params.name` | `string` | No | Optional. ID of the environment group. Overrides any ID in the environment_group resource. |
+| `params.parent` | `string` | Yes | Required. Name of the Apigee organization in which the AppGroup is created. Use the following structure in your request: `organizations/{org}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.envgroups.list()`
+#### `organizations.appgroups.get()`
 
-Lists all environment groups.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization for which to list environment groups in the following format: `organizations/{org}`. |
-| `params.pageSize` | `integer` | No | Maximum number of environment groups to return. The page size defaults to 25. |
-| `params.pageToken` | `string` | No | Page token, returned from a previous ListEnvironmentGroups call, that you can use to retrieve the next page. |
-
-#### `organizations.envgroups.get()`
-
-Gets an environment group.
+Returns the AppGroup details for the provided AppGroup name in the request URI.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment group in the following format: `organizations/{org}/envgroups/{envgroup}`. |
+| `params.name` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
 
-#### `organizations.envgroups.patch()`
+#### `organizations.appgroups.delete()`
 
-Updates an environment group.
+Deletes an AppGroup. All app and API keys associations with the AppGroup are also removed. **Warning**: This API will permanently delete the AppGroup and related artifacts. **Note**: The delete operation is asynchronous. The AppGroup is deleted immediately, but its associated resources, such as apps and API keys, may take anywhere from a few seconds to a few minutes to be deleted.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment group to update in the format: `organizations/{org}/envgroups/{envgroup}. |
-| `params.updateMask` | `string` | No | Optional. List of fields to be updated. |
+| `params.name` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
+
+#### `organizations.appgroups.list()`
+
+Lists all AppGroups in an organization. A maximum of 1000 AppGroups are returned in the response if PageSize is not specified, or if the PageSize is greater than 1000.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the Apigee organization. Use the following structure in your request: `organizations/{org}`. |
+| `params.filter` | `string` | No | The filter expression to be used to get the list of AppGroups, where filtering can be done on status, channelId or channelUri of the app group. Examples: filter=status=active", filter=channelId=, filter=channelUri= |
+| `params.pageSize` | `integer` | No | Count of AppGroups a single page can have in the response. If unspecified, at most 1000 AppGroups will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | The starting index record for listing the AppGroups. |
+
+#### `organizations.appgroups.update()`
+
+Updates an AppGroup. This API replaces the existing AppGroup details with those specified in the request. Include or exclude any existing details that you want to retain or delete, respectively. Note that the state of the AppGroup should be updated using `action`, and not via AppGroup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
+| `params.action` | `string` | No | Activate or de-activate the AppGroup by setting the action as `active` or `inactive`. The `Content-Type` header must be set to `application/octet-stream`, with empty body. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.envgroups.delete()`
+#### `organizations.appgroups.getBalance()`
 
-Deletes an environment group.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment group in the following format: `organizations/{org}/envgroups/{envgroup}`. |
-
-#### `organizations.envgroups.getDeployedIngressConfig()`
-
-Gets the deployed ingress configuration for an environment group.
+Gets the account balance for the AppGroup.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the deployed configuration for the environment group in the following format: 'organizations/{org}/envgroups/{envgroup}/deployedIngressConfig'. |
-| `params.view` | `string` | No | When set to FULL, additional details about the specific deployments receiving traffic will be included in the IngressConfig response's RoutingRules. |
+| `params.name` | `string` | Yes | Required. Account balance for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/balance` |
 
-### `organizations.envgroups.attachments`
+#### `organizations.appgroups.getMonetizationConfig()`
 
-#### `organizations.envgroups.attachments.create()`
-
-Creates a new attachment of an environment to an environment group.
+Gets the monetization configuration for the AppGroup.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. EnvironmentGroup under which to create the attachment in the following format: `organizations/{org}/envgroups/{envgroup}`. |
+| `params.name` | `string` | Yes | Required. Monetization configuration for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/monetizationConfig` |
+
+#### `organizations.appgroups.updateMonetizationConfig()`
+
+Updates the monetization configuration for the AppGroup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Monetization configuration for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/monetizationConfig` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.envgroups.attachments.list()`
+### `organizations.appgroups.balance`
 
-Lists all attachments of an environment group.
+#### `organizations.appgroups.balance.credit()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the environment group in the following format: `organizations/{org}/envgroups/{envgroup}`. |
-| `params.pageSize` | `integer` | No | Maximum number of environment group attachments to return. The page size defaults to 25. |
-| `params.pageToken` | `string` | No | Page token, returned by a previous ListEnvironmentGroupAttachments call, that you can use to retrieve the next page. |
-
-#### `organizations.envgroups.attachments.get()`
-
-Gets an environment group attachment.
+Credits the account balance for the AppGroup.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment group attachment in the following format: `organizations/{org}/envgroups/{envgroup}/attachments/{attachment}` |
-
-#### `organizations.envgroups.attachments.delete()`
-
-Deletes an environment group attachment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the environment group attachment to delete in the following format: `organizations/{org}/envgroups/{envgroup}/attachments/{attachment}`. |
-
-### `organizations.instances`
-
-#### `organizations.instances.create()`
-
-Creates an Apigee runtime instance. The instance is accessible from the authorized network configured on the organization. **Note:** Not supported for Apigee hybrid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}`. |
+| `params.name` | `string` | Yes | Required. Account balance for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/balance` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.instances.delete()`
+#### `organizations.appgroups.balance.adjust()`
 
-Deletes an Apigee runtime instance. The instance stops serving requests and the runtime data is deleted. **Note:** Not supported for Apigee hybrid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
-
-#### `organizations.instances.get()`
-
-Gets the details for an Apigee runtime instance. **Note:** Not supported for Apigee hybrid.
+Adjust the prepaid balance for the AppGroup. This API will be used in scenarios where the AppGroup has been under-charged or over-charged.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
-
-#### `organizations.instances.list()`
-
-Lists all Apigee runtime instances for the organization. **Note:** Not supported for Apigee hybrid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}`. |
-| `params.pageSize` | `integer` | No | Maximum number of instances to return. Defaults to 25. |
-| `params.pageToken` | `string` | No | Page token, returned from a previous ListInstances call, that you can use to retrieve the next page of content. |
-
-#### `organizations.instances.patch()`
-
-Updates an Apigee runtime instance. You can update the fields described in NodeConfig. No other fields will be updated. **Note:** Not supported for Apigee hybrid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
-| `params.updateMask` | `string` | No | List of fields to be updated. |
+| `params.name` | `string` | Yes | Required. Account balance for the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group}/balance` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.instances.reportStatus()`
+### `organizations.appgroups.apps`
 
-Reports the latest status for a runtime instance.
+#### `organizations.appgroups.apps.create()`
+
+Creates an app and associates it with an AppGroup. This API associates the AppGroup app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.instance` | `string` | Yes | The name of the instance reporting this status. For SaaS the request will be rejected if no instance exists under this name. Format is organizations/{org}/instances/{instance} |
+| `params.parent` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `organizations.instances.attachments`
+#### `organizations.appgroups.apps.delete()`
 
-#### `organizations.instances.attachments.create()`
-
-Creates a new attachment of an environment to an instance. **Note:** Not supported for Apigee hybrid.
+Deletes an AppGroup app. **Note**: The delete operation is asynchronous. The AppGroup app is deleted immediately, but its associated resources, such as app keys or access tokens, may take anywhere from a few seconds to a few minutes to be deleted.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
+| `params.name` | `string` | Yes | Required. Name of the AppGroup app. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}` |
+
+#### `organizations.appgroups.apps.get()`
+
+Returns the details for an AppGroup app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the AppGroup app. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}` |
+
+#### `organizations.appgroups.apps.list()`
+
+Lists all apps created by an AppGroup in an Apigee organization. Optionally, you can request an expanded view of the AppGroup apps. Lists all AppGroupApps in an AppGroup. A maximum of 1000 AppGroup apps are returned in the response if PageSize is not specified, or if the PageSize is greater than 1000.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the AppGroup. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}` |
+| `params.pageSize` | `integer` | No | Optional. Maximum number entries to return. If unspecified, at most 1000 entries will be returned. |
+| `params.pageToken` | `string` | No | Optional. Page token. If provides, must be a valid AppGroup app returned from a previous call that can be used to retrieve the next page. |
+
+#### `organizations.appgroups.apps.update()`
+
+Updates the details for an AppGroup app. In addition, you can add an API product to an AppGroup app and automatically generate an API key for the app to use when calling APIs in the API product. If you want to use an existing API key for the API product, add the API product to the API key using the UpdateAppGroupAppKey API. Using this API, you cannot update the app name, as it is the primary key used to identify the app and cannot be changed. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the AppGroup app. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}` |
+| `params.action` | `string` | No | Approve or revoke the consumer key by setting this value to `approve` or `revoke`. The `Content-Type` header must be set to `application/octet-stream`, with empty body. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.instances.attachments.list()`
+### `organizations.appgroups.apps.keys`
 
-Lists all attachments to an instance. **Note:** Not supported for Apigee hybrid.
+#### `organizations.appgroups.apps.keys.create()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}` |
-| `params.pageSize` | `integer` | No | Maximum number of instance attachments to return. Defaults to 25. |
-| `params.pageToken` | `string` | No | Page token, returned by a previous ListInstanceAttachments call, that you can use to retrieve the next page of content. |
-
-#### `organizations.instances.attachments.get()`
-
-Gets an attachment. **Note:** Not supported for Apigee hybrid.
+Creates a custom consumer key and secret for a AppGroup app. This is particularly useful if you want to migrate existing consumer keys and secrets to Apigee from another system. Consumer keys and secrets can contain letters, numbers, underscores, and hyphens. No other special characters are allowed. To avoid service disruptions, a consumer key and secret should not exceed 2 KBs each. **Note**: When creating the consumer key and secret, an association to API products will not be made. Therefore, you should not specify the associated API products in your request. Instead, use the UpdateAppGroupAppKey API to make the association after the consumer key and secret are created. If a consumer key and secret already exist, you can keep them or delete them using the DeleteAppGroupAppKey API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the attachment. Use the following structure in your request: `organizations/{org}/instances/{instance}/attachments/{attachment}` |
-
-#### `organizations.instances.attachments.delete()`
-
-Deletes an attachment. **Note:** Not supported for Apigee hybrid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the attachment. Use the following structure in your request: `organizations/{org}/instances/{instance}/attachments/{attachment}`. |
-
-### `organizations.instances.natAddresses`
-
-#### `organizations.instances.natAddresses.list()`
-
-Lists the NAT addresses for an Apigee instance. **Note:** Not supported for Apigee hybrid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}` |
-| `params.pageSize` | `integer` | No | Maximum number of natAddresses to return. Defaults to 25. |
-| `params.pageToken` | `string` | No | Page token, returned from a previous ListNatAddresses call, that you can use to retrieve the next page of content. |
-
-#### `organizations.instances.natAddresses.get()`
-
-Gets the details of a NAT address. **Note:** Not supported for Apigee hybrid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the nat address. Use the following structure in your request: `organizations/{org}/instances/{instances}/natAddresses/{nataddress}` |
-
-#### `organizations.instances.natAddresses.create()`
-
-Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the instance. Use the following structure in your request: `organizations/{org}/instances/{instance}` |
+| `params.parent` | `string` | Yes | Required. Parent of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.instances.natAddresses.activate()`
+#### `organizations.appgroups.apps.keys.delete()`
 
-Activates the NAT address. The Apigee instance can now use this for Internet egress traffic. **Note:** Not supported for Apigee hybrid.
+Deletes an app's consumer key and removes all API products associated with the app. After the consumer key is deleted, it cannot be used to access any APIs.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the nat address. Use the following structure in your request: `organizations/{org}/instances/{instances}/natAddresses/{nataddress}`` |
+| `params.name` | `string` | Yes | Required. Name of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}` |
+
+#### `organizations.appgroups.apps.keys.get()`
+
+Gets details for a consumer key for a AppGroup app, including the key and secret value, associated API products, and other information.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}` |
+
+#### `organizations.appgroups.apps.keys.updateAppGroupAppKey()`
+
+Adds an API product to an AppGroupAppKey, enabling the app that holds the key to access the API resources bundled in the API product. In addition, you can add attributes and scopes to the AppGroupAppKey. This API replaces the existing attributes with those specified in the request. Include or exclude any existing attributes that you want to retain or delete, respectively. You can use the same key to access all API products associated with the app.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.instances.natAddresses.delete()`
+### `organizations.appgroups.apps.keys.apiproducts`
 
-Deletes the NAT address. Connections that are actively using the address are drained before it is removed. **Note:** Not supported for Apigee hybrid.
+#### `organizations.appgroups.apps.keys.apiproducts.updateAppGroupAppKeyApiProduct()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the nat address. Use the following structure in your request: `organizations/{org}/instances/{instances}/natAddresses/{nataddress}`` |
-
-### `organizations.instances.canaryevaluations`
-
-#### `organizations.instances.canaryevaluations.create()`
-
-Creates a new canary evaluation for an organization.
+Approves or revokes the consumer key for an API product. After a consumer key is approved, the app can use it to access APIs. A consumer key that is revoked or pending cannot be used to access an API. Any access tokens associated with a revoked consumer key will remain active. However, Apigee checks the status of the consumer key and if set to `revoked` will not allow access to the API.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}/instances/{instance}`. |
+| `params.name` | `string` | Yes | Required. Name of the API product in the developer app key in the following format: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}/apiproducts/{apiproduct}` |
+| `params.action` | `string` | No | Approve or revoke the consumer key by setting this value to `approve` or `revoke` respectively. The `Content-Type` header, if set, must be set to `application/octet-stream`, with empty body. |
+
+#### `organizations.appgroups.apps.keys.apiproducts.delete()`
+
+Removes an API product from an app's consumer key. After the API product is removed, the app cannot access the API resources defined in that API product. **Note**: The consumer key is not removed, only its association with the API product.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Parent of the AppGroup app key. Use the following structure in your request: `organizations/{org}/appgroups/{app_group_name}/apps/{app}/keys/{key}/apiproducts/{apiproduct}` |
+
+### `organizations.appgroups.subscriptions`
+
+#### `organizations.appgroups.subscriptions.create()`
+
+Creates a subscription to an API product. 
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the appgroup that is purchasing a subscription to the API product. Use the following structure in your request: `organizations/{org}/appgroups/{appgroup}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.instances.canaryevaluations.get()`
+#### `organizations.appgroups.subscriptions.get()`
 
-Gets a CanaryEvaluation for an organization.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the CanaryEvaluation. Use the following structure in your request: `organizations/{org}/instances/*/canaryevaluations/{evaluation}` |
-
-### `organizations.keyvaluemaps`
-
-#### `organizations.keyvaluemaps.create()`
-
-Creates a key value map in an organization.
+Get an api product subscription for an appgroup.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization in which to create the key value map file. Use the following structure in your request: `organizations/{org}` |
+| `params.name` | `string` | Yes | Required. The name of the AppGroupSubscription to retrieve. Format: `organizations/{org}/appgroups/{appgroup}/subscriptions/{subscription}` |
+
+#### `organizations.appgroups.subscriptions.list()`
+
+List all api product subscriptions for an appgroup.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the appgroup. Use the following structure in your request: `organizations/{org}/appgroups/{appgroup}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of subscriptions to return. The service may return fewer than this value. If unspecified, at most 100 subscriptions will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListAppGroupSubscriptions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAppGroupSubscriptions` must match the call that provided the page token. |
+
+#### `organizations.appgroups.subscriptions.expire()`
+
+Expires an API product subscription immediately.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the API product subscription. Use the following structure in your request: `organizations/{org}/appgroups/{appgroup}/subscriptions/{subscription}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.keyvaluemaps.delete()`
+### `organizations.hostSecurityReports`
 
-Deletes a key value map from an organization.
+#### `organizations.hostSecurityReports.create()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the key value map. Use the following structure in your request: `organizations/{org}/keyvaluemaps/{keyvaluemap}` |
-
-#### `organizations.keyvaluemaps.get()`
-
-Get the key value map scoped to an organization, environment, or API proxy.
+Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.keyvaluemaps.update()`
-
-Update the key value map scoped to an organization, environment, or API proxy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `organizations.keyvaluemaps.entries`
+#### `organizations.hostSecurityReports.get()`
 
-#### `organizations.keyvaluemaps.entries.get()`
-
-Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
+Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map entry/value. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.name` | `string` | Yes | Required. Name of the security report to get. Must be of the form `organizations/{org}/securityReports/{reportId}`. |
 
-#### `organizations.keyvaluemaps.entries.delete()`
+#### `organizations.hostSecurityReports.getResult()`
 
-Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:**
-
-* After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior.
-
-* Supported for Apigee hybrid 1.8.x and higher.
+After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to delete the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.name` | `string` | Yes | Required. Name of the security report result to get. Must be of the form `organizations/{org}/securityReports/{reportId}/result`. |
 
-#### `organizations.keyvaluemaps.entries.create()`
+#### `organizations.hostSecurityReports.getResultView()`
 
-Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.keyvaluemaps.entries.update()`
-
-Update key value entry scoped to an organization, environment, or API proxy for an existing key.
+After the query is completed, use this API to view the query result when result size is small.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. Name of the security report result view to get. Must be of the form `organizations/{org}/securityReports/{reportId}/resultView`. |
 
-#### `organizations.keyvaluemaps.entries.list()`
+#### `organizations.hostSecurityReports.list()`
 
-Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to list key value maps. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.pageSize` | `integer` | No | Optional. Maximum number of key value entries to return. If unspecified, at most 100 entries will be returned. |
-| `params.pageToken` | `string` | No | Optional. Page token. If provides, must be a valid key value entry returned from a previous call that can be used to retrieve the next page. |
-
-### `organizations.securityFeedback`
-
-#### `organizations.securityFeedback.create()`
-
-Creates a new report containing customer feedback.
+Return a list of Security Reports at host level.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}`. |
-| `params.securityFeedbackId` | `string` | No | Optional. The id for this feedback report. If not provided, it will be set to a system-generated UUID. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.securityFeedback.get()`
-
-Gets a specific customer feedback report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the SecurityFeedback. Format: `organizations/{org}/securityFeedback/{feedback_id}` Example: organizations/apigee-organization-name/securityFeedback/feedback-id |
-
-#### `organizations.securityFeedback.list()`
-
-Lists all feedback reports which have already been submitted.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the organization. Format: `organizations/{org}`. Example: organizations/apigee-organization-name/securityFeedback |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback reports to return. The service may return fewer than this value. LINT.IfChange(documented_page_size_limits) If unspecified, at most 10 feedback reports will be returned. The maximum value is 100; values above 100 will be coerced to 100. LINT.ThenChange( //depot/google3/edge/sense/boq/service/v1/securityfeedback/securityfeedback_rpc.go:page_size_limits ) |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListSecurityFeedback` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSecurityFeedback` must match the call that provided the page token. |
-
-#### `organizations.securityFeedback.patch()`
-
-Updates a specific feedback report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Output only. Identifier. The feedback name is intended to be a system-generated uuid. |
-| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.securityFeedback.delete()`
-
-Deletes a specific feedback report. Used for "undo" of a feedback submission.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the SecurityFeedback to delete. Use the following structure in your request: `organizations/{org}/securityFeedback/{feedback_id}` |
+| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}`. |
+| `params.submittedBy` | `string` | No | Filter response list by user who submitted queries. |
+| `params.status` | `string` | No | Filter response list by security report status. |
+| `params.from` | `string` | No | Filter response list by returning security reports that created after this date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'. |
+| `params.to` | `string` | No | Filter response list by returning security reports that created before this date time. Time must be in ISO date-time format like '2011-12-03T10:16:30Z'. |
+| `params.dataset` | `string` | No | Filter response list by dataset. Example: `api`, `mint` |
+| `params.pageSize` | `integer` | No | The maximum number of security report to return in the list response. |
+| `params.pageToken` | `string` | No | Token returned from the previous list response to fetch the next page. |
+| `params.envgroupHostname` | `string` | No | Required. Filter response list by hostname. |
 
 ### `organizations.securityProfiles`
 
@@ -3301,57 +3206,6 @@ ComputeEnvironmentScores calculates scores for requested time range for the spec
 |---|---|---|---|
 | `params.profileEnvironment` | `string` | Yes | Required. Name of organization and environment and profile id for which score needs to be computed. Format: organizations/{org}/securityProfiles/{profile}/environments/{env} |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `organizations.hostSecurityReports`
-
-#### `organizations.hostSecurityReports.create()`
-
-Submit a query at host level to be processed in the background. If the submission of the query succeeds, the API returns a 201 status and an ID that refer to the query. In addition to the HTTP status 201, the `state` of "enqueued" means that the request succeeded.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `organizations.hostSecurityReports.get()`
-
-Get status of a query submitted at host level. If the query is still in progress, the `state` is set to "running" After the query has completed successfully, `state` is set to "completed"
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the security report to get. Must be of the form `organizations/{org}/securityReports/{reportId}`. |
-
-#### `organizations.hostSecurityReports.getResult()`
-
-After the query is completed, use this API to retrieve the results. If the request succeeds, and there is a non-zero result set, the result is downloaded to the client as a zipped JSON file. The name of the downloaded file will be: OfflineQueryResult-.zip Example: `OfflineQueryResult-9cfc0d85-0f30-46d6-ae6f-318d0cb961bd.zip`
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the security report result to get. Must be of the form `organizations/{org}/securityReports/{reportId}/result`. |
-
-#### `organizations.hostSecurityReports.getResultView()`
-
-After the query is completed, use this API to view the query result when result size is small.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the security report result view to get. Must be of the form `organizations/{org}/securityReports/{reportId}/resultView`. |
-
-#### `organizations.hostSecurityReports.list()`
-
-Return a list of Security Reports at host level.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The parent resource name. Must be of the form `organizations/{org}`. |
-| `params.submittedBy` | `string` | No | Filter response list by user who submitted queries. |
-| `params.status` | `string` | No | Filter response list by security report status. |
-| `params.from` | `string` | No | Filter response list by returning security reports that created after this date time. Time must be in ISO date-time format like '2011-12-03T10:15:30Z'. |
-| `params.to` | `string` | No | Filter response list by returning security reports that created before this date time. Time must be in ISO date-time format like '2011-12-03T10:16:30Z'. |
-| `params.dataset` | `string` | No | Filter response list by dataset. Example: `api`, `mint` |
-| `params.pageSize` | `integer` | No | The maximum number of security report to return in the list response. |
-| `params.pageToken` | `string` | No | Token returned from the previous list response to fetch the next page. |
-| `params.envgroupHostname` | `string` | No | Required. Filter response list by hostname. |
 
 ### `organizations.securityAssessmentResults`
 
@@ -3464,227 +3318,373 @@ Delete a security monitoring condition.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the security monitoring condition to delete. Format: `organizations/{org}/securityMonitoringConditions/{security_monitoring_condition}` |
 
-### `organizations.sharedflows`
+### `organizations.securityFeedback`
 
-#### `organizations.sharedflows.list()`
+#### `organizations.securityFeedback.create()`
 
-Lists all shared flows in the organization. If the resource has the `space` attribute set, the response may not return all resources. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent organization under which to get shared flows. Must be of the form: `organizations/{organization_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.includeRevisions` | `boolean` | No | Indicates whether to include a list of revisions in the response. |
-| `params.includeMetaData` | `boolean` | No | Indicates whether to include shared flow metadata in the response. |
-| `params.space` | `string` | No | Optional. The space ID used to filter the list of shared flows (optional). If unspecified, all shared flows in the organization will be listed. To learn how Spaces can be used to manage resources, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.sharedflows.get()`
-
-Gets a shared flow by name, including a list of its revisions.
+Creates a new report containing customer feedback.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the shared flow to get. Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.sharedflows.delete()`
-
-Deletes a shared flow and all it's revisions. The shared flow must be undeployed before you can delete it.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. shared flow name of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-
-#### `organizations.sharedflows.create()`
-
-Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The name of the parent organization under which to create the shared flow. Must be of the form: `organizations/{organization_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.action` | `string` | No | Required. Must be set to either `import` or `validate`. |
-| `params.name` | `string` | No | Required. The name to give the shared flow |
-| `params.space` | `string` | No | Optional. The ID of the space to associated with this shared flow. Any IAM policies applied to the space will affect access to this shared flow. Note that this field is only respected when creating a new shared flow. It has no effect when creating a new revision for an existing shared flow. |
+| `params.parent` | `string` | Yes | Required. Name of the organization. Use the following structure in your request: `organizations/{org}`. |
+| `params.securityFeedbackId` | `string` | No | Optional. The id for this feedback report. If not provided, it will be set to a system-generated UUID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.sharedflows.move()`
+#### `organizations.securityFeedback.get()`
 
-Moves an shared flow to a different space.
+Gets a specific customer feedback report.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Shared Flow to move in the following format: `organizations/{org}/sharedflows/{shared_flow}` |
+| `params.name` | `string` | Yes | Required. Name of the SecurityFeedback. Format: `organizations/{org}/securityFeedback/{feedback_id}` Example: organizations/apigee-organization-name/securityFeedback/feedback-id |
+
+#### `organizations.securityFeedback.list()`
+
+Lists all feedback reports which have already been submitted.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization. Format: `organizations/{org}`. Example: organizations/apigee-organization-name/securityFeedback |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of feedback reports to return. The service may return fewer than this value. LINT.IfChange(documented_page_size_limits) If unspecified, at most 10 feedback reports will be returned. The maximum value is 100; values above 100 will be coerced to 100. LINT.ThenChange( //depot/google3/edge/sense/boq/service/v1/securityfeedback/securityfeedback_rpc.go:page_size_limits ) |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListSecurityFeedback` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSecurityFeedback` must match the call that provided the page token. |
+
+#### `organizations.securityFeedback.patch()`
+
+Updates a specific feedback report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Output only. Identifier. The feedback name is intended to be a system-generated uuid. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `organizations.sharedflows.deployments`
+#### `organizations.securityFeedback.delete()`
 
-#### `organizations.sharedflows.deployments.list()`
-
-Lists all deployments of a shared flow.
+Deletes a specific feedback report. Used for "undo" of a feedback submission.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the shared flow for which to return deployment information in the following format: `organizations/{org}/sharedflows/{sharedflow}` If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.name` | `string` | Yes | Required. Name of the SecurityFeedback to delete. Use the following structure in your request: `organizations/{org}/securityFeedback/{feedback_id}` |
 
-### `organizations.sharedflows.revisions`
+### `organizations.keyvaluemaps`
 
-#### `organizations.sharedflows.revisions.updateSharedFlowRevision()`
+#### `organizations.keyvaluemaps.create()`
 
-Updates a shared flow revision. This operation is only allowed on revisions which have never been deployed. After deployment a revision becomes immutable, even if it becomes undeployed. The payload is a ZIP-formatted shared flow. Content type must be either multipart/form-data or application/octet-stream.
+Creates a key value map in an organization.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the shared flow revision to update. Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}` If the resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.validate` | `boolean` | No | Ignored. All uploads are validated regardless of the value of this field. It is kept for compatibility with existing APIs. Must be `true` or `false` if provided. |
+| `params.parent` | `string` | Yes | Required. Name of the organization in which to create the key value map file. Use the following structure in your request: `organizations/{org}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.sharedflows.revisions.get()`
+#### `organizations.keyvaluemaps.delete()`
 
-Gets a revision of a shared flow. To download the shared flow configuration bundle for the specified revision as a zip file, set the `format` query parameter to `bundle`. If you are using curl, specify `-o filename.zip` to save the output to a file; otherwise, it displays to `stdout`. Then, develop the shared flow configuration locally and upload the updated sharedFlow configuration revision, as described in [updateSharedFlowRevision](updateSharedFlowRevision).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the shared flow revision to get. Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}` If the Shared Flow resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
-| `params.format` | `string` | No | Specify `bundle` to export the contents of the shared flow bundle. Otherwise, the bundle metadata is returned. |
-
-#### `organizations.sharedflows.revisions.delete()`
-
-Deletes a shared flow and all associated policies, resources, and revisions. You must undeploy the shared flow before deleting it.
+Deletes a key value map from an organization.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the shared flow revision to delete. Must be of the form: `organizations/{organization_id}/sharedflows/{shared_flow_id}/revisions/{revision_id}` If the Shared Flow resource has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.name` | `string` | Yes | Required. Name of the key value map. Use the following structure in your request: `organizations/{org}/keyvaluemaps/{keyvaluemap}` |
 
-### `organizations.sharedflows.revisions.deployments`
+#### `organizations.keyvaluemaps.get()`
 
-#### `organizations.sharedflows.revisions.deployments.list()`
-
-Lists all deployments of a shared flow revision.
+Get the key value map scoped to an organization, environment, or API proxy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the API proxy revision for which to return deployment information in the following format: `organizations/{org}/sharedflows/{sharedflow}/revisions/{rev}`. If the shared flow resource has the `space` attribute set, IAM permissions are checked differently . To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 
-### `organizations.spaces`
+#### `organizations.keyvaluemaps.update()`
 
-#### `organizations.spaces.create()`
-
-Create a space under an organization.
+Update the key value map scoped to an organization, environment, or API proxy.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Name of the Google Cloud project in which to associate the Apigee space. Pass the information as a query parameter using the following structure in your request: `organizations/` |
-| `params.spaceId` | `string` | No | Required. Resource ID of the space. |
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.spaces.get()`
+### `organizations.keyvaluemaps.entries`
 
-Get a space under an Organization.
+#### `organizations.keyvaluemaps.entries.get()`
 
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Apigee organization space name in the following format: `organizations/{org}/spaces/{space}` |
-
-#### `organizations.spaces.patch()`
-
-Updates a space.
+Get the key value entry value for a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the space in the following format: `organizations/{org}/spaces/{space_id}`. |
-| `params.updateMask` | `string` | No | Required. List of fields to be updated. Fields that can be updated: display_name. |
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to fetch the key value map entry/value. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.keyvaluemaps.entries.delete()`
+
+Deletes a key value entry from a key value map scoped to an organization, environment, or API proxy. **Notes:**
+
+* After you delete the key value entry, the policy consuming the entry will continue to function with its cached values for a few minutes. This is expected behavior.
+
+* Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to delete the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}/entries/{entry}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}/entries/{entry}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+
+#### `organizations.keyvaluemaps.entries.create()`
+
+Creates key value entries in a key value map scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.spaces.delete()`
+#### `organizations.keyvaluemaps.entries.update()`
 
-Deletes an organization space.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Apigee organization space name in the following format: `organizations/{org}/spaces/{space}` |
-
-#### `organizations.spaces.list()`
-
-Lists spaces under an organization.
+Update key value entry scoped to an organization, environment, or API proxy for an existing key.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Use the following structure in your request: `organizations` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of spaces to return. The service may return fewer than this value. If unspecified, at most 50 spaces will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListSpaces` call. Provide this to retrieve the subsequent page. When paginating, all parameters must match the original call. |
-
-#### `organizations.spaces.setIamPolicy()`
-
-IAM META APIs Callers must have apigee.spaces.setIamPolicy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.name` | `string` | Yes | Required. Scope as indicated by the URI in which to create the key value map entry. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `organizations.spaces.getIamPolicy()`
+#### `organizations.keyvaluemaps.entries.list()`
 
-Callers must have apigee.spaces.getIamPolicy.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-
-#### `organizations.spaces.testIamPermissions()`
-
-Callers don't need any permissions.
+Lists key value entries for key values maps scoped to an organization, environment, or API proxy. **Note**: Supported for Apigee hybrid 1.8.x and higher.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.parent` | `string` | Yes | Required. Scope as indicated by the URI in which to list key value maps. Use **one** of the following structures in your request: * `organizations/{organization}/apis/{api}/keyvaluemaps/{keyvaluemap}`. * `organizations/{organization}/environments/{environment}/keyvaluemaps/{keyvaluemap}` * `organizations/{organization}/keyvaluemaps/{keyvaluemap}`. If the KeyValueMap is under an API Proxy resource that has the `space` attribute set, IAM permissions are checked against the Space resource path. To learn more, read the [Apigee Spaces Overview](https://cloud.google.com/apigee/docs/api-platform/system-administration/spaces/apigee-spaces-overview). |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of key value entries to return. If unspecified, at most 100 entries will be returned. |
+| `params.pageToken` | `string` | No | Optional. Page token. If provides, must be a valid key value entry returned from a previous call that can be used to retrieve the next page. |
+
+### `organizations.sites`
+
+### `organizations.sites.apicategories`
+
+#### `organizations.sites.apicategories.create()`
+
+Creates a new API category.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `organizations.hostStats`
+#### `organizations.sites.apicategories.delete()`
 
-#### `organizations.hostStats.get()`
-
-Retrieve metrics grouped by dimensions in host level. The types of metrics you can retrieve include traffic, message counts, API call latency, response size, and cache hits and counts. Dimensions let you view metrics in meaningful groups. You can optionally pass dimensions as path parameters to the `stats` API. If dimensions are not specified, the metrics are computed on the entire set of data for the given time range.
+Deletes an API category.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name for which the interactive query will be executed. Use the following format in your request: `organizations/{org}/hostStats/{dimensions}` Dimensions let you view metrics in meaningful groupings, such as `apiproxy`, `target_host`. The value of dimensions should be a comma-separated list as shown below `organizations/{org}/hostStats/apiproxy,request_verb` |
-| `params.select` | `string` | No | Comma-separated list of metrics. For example: `sum(message_count),sum(error_count)` |
-| `params.timeUnit` | `string` | No | Granularity of metrics returned. Valid values include: `second`, `minute`, `hour`, `day`, `week`, or `month`. |
-| `params.timeRange` | `string` | No | Time interval for the interactive query. Time range is specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59` |
-| `params.filter` | `string` | No | Flag that enables drill-down on specific dimension values. |
-| `params.sort` | `string` | No | Flag that specifies if the sort order should be ascending or descending. Valid values are `DESC` and `ASC`. |
-| `params.sortby` | `string` | No | Comma-separated list of metrics to sort the final result. |
-| `params.limit` | `string` | No | Maximum number of result items to return. |
-| `params.offset` | `string` | No | Offset value. Use `offset` with `limit` to enable pagination of results. For example, to display results 11-20, set limit to `10` and offset to `10`. |
-| `params.topk` | `string` | No | Top number of results to return. For example, to return the top 5 results, set `topk=5`. |
-| `params.tsAscending` | `boolean` | No | Flag that specifies whether to list timestamps in ascending (`true`) or descending (`false`) order. Apigee recommends that you set this value to `true` if you are using `sortby` with `sort=DESC`. |
-| `params.realtime` | `boolean` | No | No longer used by Apigee. Supported for backwards compatibility. |
-| `params.tzo` | `string` | No | Timezone offset value. |
-| `params.accuracy` | `string` | No | No longer used by Apigee. Supported for backwards compatibility. |
-| `params.envgroupHostname` | `string` | No | Required. Hostname for which the interactive query will be executed. |
+| `params.name` | `string` | Yes | Required. Name of the category. Use the following structure in your request: `organizations/{org}/sites/{site}/apicategories/{apicategory}` |
 
-### `organizations.optimizedHostStats`
+#### `organizations.sites.apicategories.patch()`
 
-#### `organizations.optimizedHostStats.get()`
-
-Similar to GetHostStats except that the response is less verbose.
+Updates an API category.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name for which the interactive query will be executed. Use the following format in your request: `organizations/{organization_id}/optimizedHostStats/{dimensions}` Dimensions let you view metrics in meaningful groupings, such as `apiproxy`, `target_host`. The value of dimensions should be a comma-separated list as shown below: `organizations/{org}/optimizedHostStats/apiproxy,request_verb` |
-| `params.select` | `string` | No | Required. Comma-separated list of metrics. For example: `sum(message_count),sum(error_count)` |
-| `params.timeUnit` | `string` | No | Granularity of metrics returned. Valid values include: `second`, `minute`, `hour`, `day`, `week`, or `month`. |
-| `params.timeRange` | `string` | No | Required. Time interval for the interactive query. Time range is specified in GMT as `start~end`. For example: `04/15/2017 00:00~05/15/2017 23:59`. |
-| `params.filter` | `string` | No | Filter that enables you to drill-down on specific dimension values. |
-| `params.sort` | `string` | No | Flag that specifies whether the sort order should be ascending or descending. Valid values include `DESC` and `ASC`. |
-| `params.sortby` | `string` | No | Comma-separated list of metrics used to sort the final result. |
-| `params.limit` | `string` | No | Maximum number of result items to return. |
-| `params.offset` | `string` | No | Offset value. Use `offset` with `limit` to enable pagination of results. For example, to display results 11-20, set limit to `10` and offset to `10`. |
-| `params.topk` | `string` | No | Top number of results to return. For example, to return the top 5 results, set `topk=5`. |
-| `params.tsAscending` | `boolean` | No | Flag that specifies whether to list timestamps in ascending (`true`) or descending (`false`) order. Apigee recommends that you set this value to `true` if you are using `sortby` with `sort=DESC`. |
-| `params.realtime` | `boolean` | No | No longer used by Apigee. Supported for backwards compatibility. |
-| `params.tzo` | `string` | No | Timezone offset value. |
-| `params.accuracy` | `string` | No | No longer used by Apigee. Supported for backwards compatibility. |
-| `params.envgroupHostname` | `string` | No | Required. Hostname for which the interactive query will be executed. |
+| `params.name` | `string` | Yes | Required. Name of the category. Use the following structure in your request: `organizations/{org}/sites/{site}/apicategories/{apicategory}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.sites.apicategories.get()`
+
+Gets an API category.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the category. Use the following structure in your request: `organizations/{org}/sites/{site}/apicategories/{apicategory}` |
+
+#### `organizations.sites.apicategories.list()`
+
+Returns the API categories associated with a portal.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}` |
+
+### `organizations.sites.apidocs`
+
+#### `organizations.sites.apidocs.get()`
+
+Gets a catalog item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the catalog item. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}` |
+
+#### `organizations.sites.apidocs.create()`
+
+Creates a new catalog item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.sites.apidocs.update()`
+
+Updates a catalog item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the catalog item. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.sites.apidocs.list()`
+
+Returns the catalog items associated with a portal.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the portal. Use the following structure in your request: `organizations/{org}/sites/{site}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of items to return. The service may return fewer than this value. If unspecified, at most 25 books will be returned. The maximum value is 100; values above 100 will be coerced to 100. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListApiDocs` call. Provide this to retrieve the subsequent page. |
+
+#### `organizations.sites.apidocs.delete()`
+
+Deletes a catalog item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the catalog item. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}` |
+
+#### `organizations.sites.apidocs.updateDocumentation()`
+
+Updates the documentation for the specified catalog item. Note that the documentation file contents will not be populated in the return message.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the catalog item documentation. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}/documentation` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.sites.apidocs.getDocumentation()`
+
+Gets the documentation for the specified catalog item.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the catalog item documentation. Use the following structure in your request: `organizations/{org}/sites/{site}/apidocs/{apidoc}/documentation` |
+
+### `organizations.endpointAttachments`
+
+#### `organizations.endpointAttachments.create()`
+
+Creates an endpoint attachment. **Note:** Not supported for Apigee hybrid.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Organization the endpoint attachment will be created in. |
+| `params.endpointAttachmentId` | `string` | No | ID to use for the endpoint attachment. ID must start with a lowercase letter followed by up to 31 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. The minimum length is 2. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.endpointAttachments.get()`
+
+Gets the endpoint attachment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}` |
+
+#### `organizations.endpointAttachments.list()`
+
+Lists the endpoint attachments in an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization for which to list endpoint attachments. Use the following structure in your request: `organizations/{org}` |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of endpoint attachments to return. If unspecified, at most 25 attachments will be returned. |
+| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous `ListEndpointAttachments` call, that you can use to retrieve the next page. |
+
+#### `organizations.endpointAttachments.delete()`
+
+Deletes an endpoint attachment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the endpoint attachment. Use the following structure in your request: `organizations/{org}/endpointAttachments/{endpoint_attachment}` |
+
+### `organizations.dnsZones`
+
+#### `organizations.dnsZones.create()`
+
+Creates a new DNS zone.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Organization where the DNS zone will be created. |
+| `params.dnsZoneId` | `string` | No | Required. User assigned ID for this resource. Must be unique within the organization. The name must be 1-63 characters long, must begin with a letter, end with a letter or digit, and only contain lowercase letters, digits or dashes. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.dnsZones.get()`
+
+Fetches the representation of an existing DNS zone.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the DNS zone to fetch. Use the following structure in your request: `organizations/{org}/dnsZones/{dns_zone}`. |
+
+#### `organizations.dnsZones.list()`
+
+Enumerates DNS zones that have been created but not yet deleted.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization for which to list the DNS zones. Use the following structure in your request: `organizations/{org}` |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of DNS zones to return. If unspecified, at most 25 DNS zones will be returned. |
+| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous `ListDnsZones` call, that you can use to retrieve the next page. |
+
+#### `organizations.dnsZones.delete()`
+
+Deletes a previously created DNS zone.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the DNS zone to delete. Use the following structure in your request: `organizations/{org}/dnsZones/{dns_zone}`. |
+
+### `organizations.apimServiceExtensions`
+
+#### `organizations.apimServiceExtensions.create()`
+
+Creates an APIM ServiceExtension in an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization in which the service extension will be created. Use the following structure in your request: `organizations/{org}` |
+| `params.apimServiceExtensionId` | `string` | No | Optional. ID used to uniquely identify of the service extension. It must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.apimServiceExtensions.get()`
+
+Gets APIM service extension details.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the service extension. Use the following structure in your request: `organizations/{org}/apimServiceExtensions/{extension_id}` |
+
+#### `organizations.apimServiceExtensions.list()`
+
+Lists all APIM service extensions in an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Name of the organization for which to list the service extension. Use the following structure in your request: `organizations/{org}/apimServiceExtensions` |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of items to return. If unspecified, at most 25 service extension will be returned. |
+| `params.pageToken` | `string` | No | Optional. Page token, returned from a previous `ListApimServiceExtensions` call, that you can use to retrieve the next page. |
+
+#### `organizations.apimServiceExtensions.patch()`
+
+Updates an APIM service extension in an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. unique name of the APIM service extension. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number. |
+| `params.updateMask` | `string` | No | Optional. The list of fields to update. |
+| `params.allowMissing` | `boolean` | No | Optional. If set to true, and the service extension is not found, a new service extension will be created. In this situation, `update_mask` is ignored. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `organizations.apimServiceExtensions.delete()`
+
+Deletes APIM service extension from an organization.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Name of the service extension. Use the following structure in your request: `organizations/{org}/apimServiceExtensions/{extension_id}` |
 
 ### `projects`
 
