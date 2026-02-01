@@ -18,63 +18,63 @@ class Androidmanagement {
     this._servicePath = '';
 
 
+    this.provisioningInfo = {};
+    this.provisioningInfo.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.signupUrls = {};
     this.signupUrls.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/signupUrls', 'POST', apiParams, clientConfig);
 
     this.enterprises = {};
-    this.enterprises.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.enterprises.generateEnterpriseUpgradeUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateEnterpriseUpgradeUrl', 'POST', apiParams, clientConfig);
     this.enterprises.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.enterprises.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/enterprises', 'GET', apiParams, clientConfig);
-    this.enterprises.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.enterprises.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.enterprises.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/enterprises', 'POST', apiParams, clientConfig);
-
-    this.enterprises.policies = {};
-    this.enterprises.policies.removePolicyApplications = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removePolicyApplications', 'POST', apiParams, clientConfig);
-    this.enterprises.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.enterprises.policies.modifyPolicyApplications = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyPolicyApplications', 'POST', apiParams, clientConfig);
-    this.enterprises.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.enterprises.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.enterprises.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policies', 'GET', apiParams, clientConfig);
-
-    this.enterprises.migrationTokens = {};
-    this.enterprises.migrationTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migrationTokens', 'POST', apiParams, clientConfig);
-    this.enterprises.migrationTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.enterprises.migrationTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migrationTokens', 'GET', apiParams, clientConfig);
-
-    this.enterprises.enrollmentTokens = {};
-    this.enterprises.enrollmentTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/enrollmentTokens', 'GET', apiParams, clientConfig);
-    this.enterprises.enrollmentTokens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.enterprises.enrollmentTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.enterprises.enrollmentTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/enrollmentTokens', 'POST', apiParams, clientConfig);
-
-    this.enterprises.webApps = {};
-    this.enterprises.webApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.enterprises.webApps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.enterprises.webApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.enterprises.webApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webApps', 'POST', apiParams, clientConfig);
-    this.enterprises.webApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webApps', 'GET', apiParams, clientConfig);
+    this.enterprises.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.enterprises.generateEnterpriseUpgradeUrl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:generateEnterpriseUpgradeUrl', 'POST', apiParams, clientConfig);
+    this.enterprises.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/enterprises', 'GET', apiParams, clientConfig);
 
     this.enterprises.webTokens = {};
     this.enterprises.webTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webTokens', 'POST', apiParams, clientConfig);
 
+    this.enterprises.enrollmentTokens = {};
+    this.enterprises.enrollmentTokens.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.enterprises.enrollmentTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/enrollmentTokens', 'GET', apiParams, clientConfig);
+    this.enterprises.enrollmentTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.enterprises.enrollmentTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/enrollmentTokens', 'POST', apiParams, clientConfig);
+
     this.enterprises.devices = {};
-    this.enterprises.devices.issueCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:issueCommand', 'POST', apiParams, clientConfig);
     this.enterprises.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.enterprises.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices', 'GET', apiParams, clientConfig);
-    this.enterprises.devices.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.enterprises.devices.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.enterprises.devices.issueCommand = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:issueCommand', 'POST', apiParams, clientConfig);
+    this.enterprises.devices.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.enterprises.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices', 'GET', apiParams, clientConfig);
 
     this.enterprises.devices.operations = {};
     this.enterprises.devices.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.enterprises.devices.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.enterprises.devices.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
 
+    this.enterprises.policies = {};
+    this.enterprises.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/policies', 'GET', apiParams, clientConfig);
+    this.enterprises.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.enterprises.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.enterprises.policies.removePolicyApplications = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:removePolicyApplications', 'POST', apiParams, clientConfig);
+    this.enterprises.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.enterprises.policies.modifyPolicyApplications = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:modifyPolicyApplications', 'POST', apiParams, clientConfig);
+
+    this.enterprises.migrationTokens = {};
+    this.enterprises.migrationTokens.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.enterprises.migrationTokens.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migrationTokens', 'POST', apiParams, clientConfig);
+    this.enterprises.migrationTokens.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/migrationTokens', 'GET', apiParams, clientConfig);
+
+    this.enterprises.webApps = {};
+    this.enterprises.webApps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.enterprises.webApps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webApps', 'GET', apiParams, clientConfig);
+    this.enterprises.webApps.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.enterprises.webApps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/webApps', 'POST', apiParams, clientConfig);
+    this.enterprises.webApps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.enterprises.applications = {};
     this.enterprises.applications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.provisioningInfo = {};
-    this.provisioningInfo.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
