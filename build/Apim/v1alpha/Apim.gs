@@ -23,37 +23,37 @@ class Apim {
     this.projects.locations = {};
     this.projects.locations.listApiObservationTags = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}:listApiObservationTags', 'GET', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/locations', 'GET', apiParams, clientConfig);
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.getEntitlement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.observationJobs = {};
-    this.projects.locations.observationJobs.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.projects.locations.observationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.observationJobs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationJobs', 'POST', apiParams, clientConfig);
     this.projects.locations.observationJobs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.observationJobs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.observationJobs.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.projects.locations.observationJobs.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:disable', 'POST', apiParams, clientConfig);
     this.projects.locations.observationJobs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationJobs', 'GET', apiParams, clientConfig);
 
     this.projects.locations.observationJobs.apiObservations = {};
     this.projects.locations.observationJobs.apiObservations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/apiObservations', 'GET', apiParams, clientConfig);
-    this.projects.locations.observationJobs.apiObservations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.observationJobs.apiObservations.batchEditTags = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/apiObservations:batchEditTags', 'POST', apiParams, clientConfig);
+    this.projects.locations.observationJobs.apiObservations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.observationJobs.apiObservations.apiOperations = {};
-    this.projects.locations.observationJobs.apiObservations.apiOperations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.observationJobs.apiObservations.apiOperations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/apiOperations', 'GET', apiParams, clientConfig);
+    this.projects.locations.observationJobs.apiObservations.apiOperations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.observationSources = {};
+    this.projects.locations.observationSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationSources', 'GET', apiParams, clientConfig);
     this.projects.locations.observationSources.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.observationSources.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationSources', 'POST', apiParams, clientConfig);
     this.projects.locations.observationSources.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.observationSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+parent}/observationSources', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/{+name}/operations', 'GET', apiParams, clientConfig);
   }
 
 /**
