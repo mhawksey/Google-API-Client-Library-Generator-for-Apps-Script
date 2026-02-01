@@ -4,8 +4,8 @@ Auto-generated client library for using the **Abusive Experience Report API (ver
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:20:49 GMT
-- **Last Modified:** Sun, 21 Sep 2025 17:02:17 GMT
+- **Last Checked:** Sun, 01 Feb 2026 00:20:51 GMT
+- **Last Modified:** Sun, 01 Feb 2026 00:20:51 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:25 GMT
 
 
@@ -13,6 +13,15 @@ Auto-generated client library for using the **Abusive Experience Report API (ver
 ---
 
 ## API Reference
+
+### `violatingSites`
+
+#### `violatingSites.list()`
+
+Lists sites that are failing in the Abusive Experience Report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
 
 ### `sites`
 
@@ -23,12 +32,3 @@ Gets a site's Abusive Experience Report summary.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the site whose summary to get, e.g. `sites/http%3A%2F%2Fwww.google.com%2F`. Format: `sites/{site}` |
-
-### `violatingSites`
-
-#### `violatingSites.list()`
-
-Lists sites that are failing in the Abusive Experience Report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
