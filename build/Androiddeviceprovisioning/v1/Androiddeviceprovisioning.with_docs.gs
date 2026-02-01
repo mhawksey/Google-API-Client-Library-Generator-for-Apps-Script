@@ -30,173 +30,6 @@ class Androiddeviceprovisioning {
      */
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.partners = {};
-
-    this.partners.vendors = {};
-
-    /**
-     * Lists the vendors of the partner.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of results to be returned.
-     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
-     * @param {string} apiParams.parent - (Required) Required. The resource name in the format `partners/[PARTNER_ID]`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.vendors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vendors', 'GET', apiParams, clientConfig);
-
-    this.partners.vendors.customers = {};
-
-    /**
-     * Lists the customers of the vendor.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of results to be returned.
-     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
-     * @param {string} apiParams.parent - (Required) Required. The resource name in the format `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.vendors.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customers', 'GET', apiParams, clientConfig);
-
-    this.partners.customers = {};
-
-    /**
-     * Creates a customer for zero-touch enrollment. After the method returns successfully, admin and owner roles can manage devices and EMM configs by calling API methods or using their zero-touch enrollment portal. The customer receives an email that welcomes them to zero-touch enrollment and explains how to sign into the portal.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The parent resource ID in the format `partners/[PARTNER_ID]` that identifies the reseller.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.customers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customers', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists the customers that are enrolled to the reseller identified by the `partnerId` argument. This list includes customers that the reseller created and customers that enrolled themselves using the portal.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of results to be returned. If not specified or 0, all the records are returned.
-     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/customers', 'GET', apiParams, clientConfig);
-
-    this.partners.devices = {};
-
-    /**
-     * Claims a device for a customer and adds it to zero-touch enrollment. If the device is already claimed by another customer, the call returns an error.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.claim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:claim', 'POST', apiParams, clientConfig);
-
-    /**
-     * Unclaims a device from a customer and removes it from zero-touch enrollment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.unclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:unclaim', 'POST', apiParams, clientConfig);
-
-    /**
-     * Finds devices by hardware identifiers, such as IMEI.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.findByIdentifier = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:findByIdentifier', 'POST', apiParams, clientConfig);
-
-    /**
-     * Finds devices claimed for customers. The results only contain devices registered to the reseller that's identified by the `partnerId` argument. The customer's devices purchased from other resellers don't appear in the results.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.findByOwner = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:findByOwner', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets a device.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The device API resource name in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets a device's SIM lock state.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.getSimLockState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:getSimLockState', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates reseller metadata associated with the device. Android devices only.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.deviceId - (Required) Required. The ID of the device.
-     * @param {string} apiParams.metadataOwnerId - (Required) Required. The owner of the newly set metadata. Set this to the partner ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.metadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+metadataOwnerId}/devices/{+deviceId}/metadata', 'POST', apiParams, clientConfig);
-
-    /**
-     * Claims a batch of devices for a customer asynchronously. Adds the devices to zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.claimAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:claimAsync', 'POST', apiParams, clientConfig);
-
-    /**
-     * Unclaims a batch of devices for a customer asynchronously. Removes the devices from zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The reseller partner ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.unclaimAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:unclaimAsync', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously and returns an `Operation` that can be used to track progress. Read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations). Android Devices only.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.partnerId - (Required) Required. The reseller partner ID.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.partners.devices.updateMetadataAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:updateMetadataAsync', 'POST', apiParams, clientConfig);
-
     this.customers = {};
 
     /**
@@ -210,74 +43,29 @@ class Androiddeviceprovisioning {
      */
     this.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/customers', 'GET', apiParams, clientConfig);
 
-    this.customers.configurations = {};
-
-    /**
-     * Creates a new configuration. Once created, a customer can apply the configuration to devices.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The customer that manages the configuration. An API resource name in the format `customers/[CUSTOMER_ID]`. This field has custom validation in CreateConfigurationRequestValidator
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.configurations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the details of a configuration.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The configuration to get. An API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a configuration's field values.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Output only. The API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by the server.
-     * @param {string} apiParams.updateMask - Required. The field mask applied to the target `Configuration` before updating the fields. To learn more about using field masks, read [FieldMask](/protocol-buffers/docs/reference/google.protobuf#fieldmask) in the Protocol Buffers documentation.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.configurations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes an unused configuration. The API call fails if the customer has devices with the configuration applied.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The configuration to delete. An API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If the configuration is applied to any devices, the API call fails.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.configurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Lists a customer's configurations.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The customer that manages the listed configurations. An API resource name in the format `customers/[CUSTOMER_ID]`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'GET', apiParams, clientConfig);
-
-    this.customers.dpcs = {};
-
-    /**
-     * Lists the DPCs (device policy controllers) that support zero-touch enrollment.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The customer that can use the DPCs in configurations. An API resource name in the format `customers/[CUSTOMER_ID]`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.dpcs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dpcs', 'GET', apiParams, clientConfig);
-
     this.customers.devices = {};
+
+    /**
+     * Applies a Configuration to the device to register the device for zero-touch enrollment. After applying a configuration to a device, the device automatically provisions itself on first boot, or next factory reset.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The customer managing the device. An API resource name in the format `customers/[CUSTOMER_ID]`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.devices.applyConfiguration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:applyConfiguration', 'POST', apiParams, clientConfig);
+
+    /**
+     * Removes a configuration from device.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The customer managing the device in the format `customers/[CUSTOMER_ID]`.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.devices.removeConfiguration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:removeConfiguration', 'POST', apiParams, clientConfig);
 
     /**
      * Lists a customer's devices.
@@ -312,27 +100,239 @@ class Androiddeviceprovisioning {
      */
     this.customers.devices.unclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:unclaim', 'POST', apiParams, clientConfig);
 
-    /**
-     * Applies a Configuration to the device to register the device for zero-touch enrollment. After applying a configuration to a device, the device automatically provisions itself on first boot, or next factory reset.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The customer managing the device. An API resource name in the format `customers/[CUSTOMER_ID]`.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.customers.devices.applyConfiguration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:applyConfiguration', 'POST', apiParams, clientConfig);
+    this.customers.configurations = {};
 
     /**
-     * Removes a configuration from device.
+     * Gets the details of a configuration.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The customer managing the device in the format `customers/[CUSTOMER_ID]`.
+     * @param {string} apiParams.name - (Required) Required. The configuration to get. An API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a configuration's field values.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Output only. The API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. Assigned by the server.
+     * @param {string} apiParams.updateMask - Required. The field mask applied to the target `Configuration` before updating the fields. To learn more about using field masks, read [FieldMask](/protocol-buffers/docs/reference/google.protobuf#fieldmask) in the Protocol Buffers documentation.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.customers.devices.removeConfiguration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:removeConfiguration', 'POST', apiParams, clientConfig);
+    this.customers.configurations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Lists a customer's configurations.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The customer that manages the listed configurations. An API resource name in the format `customers/[CUSTOMER_ID]`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new configuration. Once created, a customer can apply the configuration to devices.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The customer that manages the configuration. An API resource name in the format `customers/[CUSTOMER_ID]`. This field has custom validation in CreateConfigurationRequestValidator
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.configurations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes an unused configuration. The API call fails if the customer has devices with the configuration applied.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The configuration to delete. An API resource name in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. If the configuration is applied to any devices, the API call fails.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.configurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.customers.dpcs = {};
+
+    /**
+     * Lists the DPCs (device policy controllers) that support zero-touch enrollment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The customer that can use the DPCs in configurations. An API resource name in the format `customers/[CUSTOMER_ID]`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.customers.dpcs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dpcs', 'GET', apiParams, clientConfig);
+
+    this.partners = {};
+
+    this.partners.customers = {};
+
+    /**
+     * Creates a customer for zero-touch enrollment. After the method returns successfully, admin and owner roles can manage devices and EMM configs by calling API methods or using their zero-touch enrollment portal. The customer receives an email that welcomes them to zero-touch enrollment and explains how to sign into the portal.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource ID in the format `partners/[PARTNER_ID]` that identifies the reseller.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.customers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Lists the customers that are enrolled to the reseller identified by the `partnerId` argument. This list includes customers that the reseller created and customers that enrolled themselves using the portal.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of results to be returned. If not specified or 0, all the records are returned.
+     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/customers', 'GET', apiParams, clientConfig);
+
+    this.partners.devices = {};
+
+    /**
+     * Claims a batch of devices for a customer asynchronously. Adds the devices to zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.claimAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:claimAsync', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates the reseller metadata attached to a batch of devices. This method updates devices asynchronously and returns an `Operation` that can be used to track progress. Read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations). Android Devices only.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The reseller partner ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.updateMetadataAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:updateMetadataAsync', 'POST', apiParams, clientConfig);
+
+    /**
+     * Unclaims a batch of devices for a customer asynchronously. Removes the devices from zero-touch enrollment. To learn more, read [Long‑running batch operations](/zero-touch/guides/how-it-works#operations).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The reseller partner ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.unclaimAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:unclaimAsync', 'POST', apiParams, clientConfig);
+
+    /**
+     * Finds devices by hardware identifiers, such as IMEI.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.findByIdentifier = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:findByIdentifier', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates reseller metadata associated with the device. Android devices only.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.deviceId - (Required) Required. The ID of the device.
+     * @param {string} apiParams.metadataOwnerId - (Required) Required. The owner of the newly set metadata. Set this to the partner ID.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.metadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+metadataOwnerId}/devices/{+deviceId}/metadata', 'POST', apiParams, clientConfig);
+
+    /**
+     * Unclaims a device from a customer and removes it from zero-touch enrollment.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.unclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:unclaim', 'POST', apiParams, clientConfig);
+
+    /**
+     * Claims a device for a customer and adds it to zero-touch enrollment. If the device is already claimed by another customer, the call returns an error.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.claim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:claim', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a device's SIM lock state.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the partner.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.getSimLockState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:getSimLockState', 'POST', apiParams, clientConfig);
+
+    /**
+     * Finds devices claimed for customers. The results only contain devices registered to the reseller that's identified by the `partnerId` argument. The customer's devices purchased from other resellers don't appear in the results.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.partnerId - (Required) Required. The ID of the reseller partner.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.findByOwner = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:findByOwner', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a device.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The device API resource name in the format `partners/[PARTNER_ID]/devices/[DEVICE_ID]`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.partners.vendors = {};
+
+    /**
+     * Lists the vendors of the partner.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of results to be returned.
+     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
+     * @param {string} apiParams.parent - (Required) Required. The resource name in the format `partners/[PARTNER_ID]`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.vendors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vendors', 'GET', apiParams, clientConfig);
+
+    this.partners.vendors.customers = {};
+
+    /**
+     * Lists the customers of the vendor.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of results to be returned.
+     * @param {string} apiParams.pageToken - A token identifying a page of results returned by the server.
+     * @param {string} apiParams.parent - (Required) Required. The resource name in the format `partners/[PARTNER_ID]/vendors/[VENDOR_ID]`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.partners.vendors.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customers', 'GET', apiParams, clientConfig);
   }
 
 /**
