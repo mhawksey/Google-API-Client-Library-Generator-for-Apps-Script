@@ -21,79 +21,79 @@ class Analyticsadmin {
     this.accountSummaries = {};
     this.accountSummaries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/accountSummaries', 'GET', apiParams, clientConfig);
 
-    this.accounts = {};
-    this.accounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.getDataSharingSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.provisionAccountTicket = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/accounts:provisionAccountTicket', 'POST', apiParams, clientConfig);
-    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/accounts', 'GET', apiParams, clientConfig);
-    this.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.searchChangeHistoryEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+account}:searchChangeHistoryEvents', 'POST', apiParams, clientConfig);
-    this.accounts.runAccessReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+entity}:runAccessReport', 'POST', apiParams, clientConfig);
-
     this.properties = {};
+    this.properties.runAccessReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+entity}:runAccessReport', 'POST', apiParams, clientConfig);
     this.properties.getDataRetentionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.properties.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.properties.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.properties.runAccessReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+entity}:runAccessReport', 'POST', apiParams, clientConfig);
-    this.properties.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/properties', 'POST', apiParams, clientConfig);
     this.properties.updateDataRetentionSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.properties.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/properties', 'GET', apiParams, clientConfig);
-    this.properties.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.properties.acknowledgeUserDataCollection = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:acknowledgeUserDataCollection', 'POST', apiParams, clientConfig);
-
-    this.properties.conversionEvents = {};
-    this.properties.conversionEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/conversionEvents', 'POST', apiParams, clientConfig);
-    this.properties.conversionEvents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.properties.conversionEvents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.properties.conversionEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/conversionEvents', 'GET', apiParams, clientConfig);
-    this.properties.conversionEvents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-
-    this.properties.googleAdsLinks = {};
-    this.properties.googleAdsLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/googleAdsLinks', 'POST', apiParams, clientConfig);
-    this.properties.googleAdsLinks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.properties.googleAdsLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/googleAdsLinks', 'GET', apiParams, clientConfig);
-    this.properties.googleAdsLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.properties.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.properties.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.properties.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/properties', 'POST', apiParams, clientConfig);
+    this.properties.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/properties', 'GET', apiParams, clientConfig);
 
     this.properties.keyEvents = {};
-    this.properties.keyEvents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.properties.keyEvents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.properties.keyEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/keyEvents', 'POST', apiParams, clientConfig);
-    this.properties.keyEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/keyEvents', 'GET', apiParams, clientConfig);
+    this.properties.keyEvents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.properties.keyEvents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.properties.keyEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/keyEvents', 'GET', apiParams, clientConfig);
+    this.properties.keyEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/keyEvents', 'POST', apiParams, clientConfig);
+
+    this.properties.firebaseLinks = {};
+    this.properties.firebaseLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.properties.firebaseLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/firebaseLinks', 'GET', apiParams, clientConfig);
+    this.properties.firebaseLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/firebaseLinks', 'POST', apiParams, clientConfig);
+
+    this.properties.conversionEvents = {};
+    this.properties.conversionEvents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.properties.conversionEvents.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.properties.conversionEvents.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/conversionEvents', 'POST', apiParams, clientConfig);
+    this.properties.conversionEvents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.properties.conversionEvents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/conversionEvents', 'GET', apiParams, clientConfig);
 
     this.properties.dataStreams = {};
+    this.properties.dataStreams.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.properties.dataStreams.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/dataStreams', 'POST', apiParams, clientConfig);
     this.properties.dataStreams.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.properties.dataStreams.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.properties.dataStreams.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.properties.dataStreams.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/dataStreams', 'GET', apiParams, clientConfig);
 
     this.properties.dataStreams.measurementProtocolSecrets = {};
-    this.properties.dataStreams.measurementProtocolSecrets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.properties.dataStreams.measurementProtocolSecrets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.properties.dataStreams.measurementProtocolSecrets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/measurementProtocolSecrets', 'GET', apiParams, clientConfig);
-    this.properties.dataStreams.measurementProtocolSecrets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.properties.dataStreams.measurementProtocolSecrets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/measurementProtocolSecrets', 'POST', apiParams, clientConfig);
+    this.properties.dataStreams.measurementProtocolSecrets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.properties.dataStreams.measurementProtocolSecrets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.properties.dataStreams.measurementProtocolSecrets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.properties.googleAdsLinks = {};
+    this.properties.googleAdsLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/googleAdsLinks', 'GET', apiParams, clientConfig);
+    this.properties.googleAdsLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.properties.googleAdsLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/googleAdsLinks', 'POST', apiParams, clientConfig);
+    this.properties.googleAdsLinks.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.properties.customDimensions = {};
-    this.properties.customDimensions.archive = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:archive', 'POST', apiParams, clientConfig);
-    this.properties.customDimensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.properties.customDimensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/customDimensions', 'POST', apiParams, clientConfig);
     this.properties.customDimensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.properties.customDimensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/customDimensions', 'GET', apiParams, clientConfig);
-    this.properties.customDimensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/customDimensions', 'POST', apiParams, clientConfig);
-
-    this.properties.firebaseLinks = {};
-    this.properties.firebaseLinks.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/firebaseLinks', 'POST', apiParams, clientConfig);
-    this.properties.firebaseLinks.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
-    this.properties.firebaseLinks.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/firebaseLinks', 'GET', apiParams, clientConfig);
+    this.properties.customDimensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.properties.customDimensions.archive = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:archive', 'POST', apiParams, clientConfig);
 
     this.properties.customMetrics = {};
     this.properties.customMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/customMetrics', 'GET', apiParams, clientConfig);
+    this.properties.customMetrics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/customMetrics', 'POST', apiParams, clientConfig);
+    this.properties.customMetrics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
     this.properties.customMetrics.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.properties.customMetrics.archive = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:archive', 'POST', apiParams, clientConfig);
-    this.properties.customMetrics.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
-    this.properties.customMetrics.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/customMetrics', 'POST', apiParams, clientConfig);
+
+    this.accounts = {};
+    this.accounts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'DELETE', apiParams, clientConfig);
+    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/accounts', 'GET', apiParams, clientConfig);
+    this.accounts.runAccessReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+entity}:runAccessReport', 'POST', apiParams, clientConfig);
+    this.accounts.getDataSharingSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.provisionAccountTicket = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/accounts:provisionAccountTicket', 'POST', apiParams, clientConfig);
+    this.accounts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.searchChangeHistoryEvents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+account}:searchChangeHistoryEvents', 'POST', apiParams, clientConfig);
   }
 
 /**
