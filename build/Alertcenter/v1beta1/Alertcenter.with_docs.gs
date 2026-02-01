@@ -21,17 +21,6 @@ class Alertcenter {
     this.alerts = {};
 
     /**
-     * Restores, or "undeletes", an alert that was marked for deletion within the past 30 days. Attempting to undelete an alert which was marked for deletion over 30 days ago (which has been removed from the Alert Center database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting to undelete an alert which has not been marked for deletion has no effect.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.alertId - (Required) Required. The identifier of the alert to undelete.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.alerts.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}:undelete', 'POST', apiParams, clientConfig);
-
-    /**
      * Performs batch undelete operation on alerts.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -53,6 +42,17 @@ class Alertcenter {
     this.alerts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}', 'DELETE', apiParams, clientConfig);
 
     /**
+     * Returns the metadata of an alert. Attempting to get metadata for a non-existent alert returns `NOT_FOUND` error.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.alertId - (Required) Required. The identifier of the alert this metadata belongs to.
+     * @param {string} apiParams.customerId - Optional. The unique identifier of the Google Workspace account of the customer the alert metadata is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.alerts.getMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}/metadata', 'GET', apiParams, clientConfig);
+
+    /**
      * Performs batch delete operation on alerts.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
@@ -61,6 +61,17 @@ class Alertcenter {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.alerts.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts:batchDelete', 'POST', apiParams, clientConfig);
+
+    /**
+     * Restores, or "undeletes", an alert that was marked for deletion within the past 30 days. Attempting to undelete an alert which was marked for deletion over 30 days ago (which has been removed from the Alert Center database) or a nonexistent alert returns a `NOT_FOUND` error. Attempting to undelete an alert which has not been marked for deletion has no effect.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.alertId - (Required) Required. The identifier of the alert to undelete.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.alerts.undelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}:undelete', 'POST', apiParams, clientConfig);
 
     /**
      * Gets the specified alert. Attempting to get a nonexistent alert returns `NOT_FOUND` error.
@@ -72,17 +83,6 @@ class Alertcenter {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.alerts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Returns the metadata of an alert. Attempting to get metadata for a non-existent alert returns `NOT_FOUND` error.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.alertId - (Required) Required. The identifier of the alert this metadata belongs to.
-     * @param {string} apiParams.customerId - Optional. The unique identifier of the Google Workspace account of the customer the alert metadata is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.alerts.getMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}/metadata', 'GET', apiParams, clientConfig);
 
     /**
      * Lists the alerts.
@@ -101,18 +101,6 @@ class Alertcenter {
     this.alerts.feedback = {};
 
     /**
-     * Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert returns `NOT_FOUND` error. Attempting to create a feedback for an alert that is marked for deletion returns `FAILED_PRECONDITION' error.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.alertId - (Required) Required. The identifier of the alert this feedback belongs to.
-     * @param {string} apiParams.customerId - Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.alerts.feedback.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}/feedback', 'POST', apiParams, clientConfig);
-
-    /**
      * Lists all the feedback for an alert. Attempting to list feedbacks for a non-existent alert returns `NOT_FOUND` error.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.alertId - (Required) Required. The alert identifier. The "-" wildcard could be used to represent all alerts.
@@ -123,6 +111,18 @@ class Alertcenter {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.alerts.feedback.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}/feedback', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates new feedback for an alert. Attempting to create a feedback for a non-existent alert returns `NOT_FOUND` error. Attempting to create a feedback for an alert that is marked for deletion returns `FAILED_PRECONDITION' error.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.alertId - (Required) Required. The identifier of the alert this feedback belongs to.
+     * @param {string} apiParams.customerId - Optional. The unique identifier of the Google Workspace account of the customer the alert is associated with. The `customer_id` must have the initial "C" stripped (for example, `046psxkn`). Inferred from the caller identity if not provided. [Find your customer ID](https://support.google.com/cloudidentity/answer/10070793).
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.alerts.feedback.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/alerts/{alertId}/feedback', 'POST', apiParams, clientConfig);
 
     this.v1beta1 = {};
 
