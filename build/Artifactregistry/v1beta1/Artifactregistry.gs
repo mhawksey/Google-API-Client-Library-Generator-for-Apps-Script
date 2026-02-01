@@ -28,31 +28,31 @@ class Artifactregistry {
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.repositories = {};
-    this.projects.locations.repositories.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/repositories', 'POST', apiParams, clientConfig);
     this.projects.locations.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/repositories', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
     this.projects.locations.repositories.packages = {};
     this.projects.locations.repositories.packages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/packages', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.packages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/packages', 'GET', apiParams, clientConfig);
 
     this.projects.locations.repositories.packages.versions = {};
+    this.projects.locations.repositories.packages.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.packages.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/versions', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.packages.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.repositories.packages.tags = {};
-    this.projects.locations.repositories.packages.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.packages.tags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.packages.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tags', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tags', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.packages.tags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/tags', 'GET', apiParams, clientConfig);
 
     this.projects.locations.repositories.files = {};
     this.projects.locations.repositories.files.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta1/{+parent}/files', 'GET', apiParams, clientConfig);
