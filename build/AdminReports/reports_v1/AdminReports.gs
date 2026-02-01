@@ -18,21 +18,21 @@ class AdminReports {
     this._servicePath = '';
 
 
-    this.activities = {};
-    this.activities.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports/v1/activity/users/{userKey}/applications/{applicationName}/watch', 'POST', apiParams, clientConfig);
-    this.activities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports/v1/activity/users/{userKey}/applications/{applicationName}', 'GET', apiParams, clientConfig);
-
-    this.userUsageReport = {};
-    this.userUsageReport.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports/v1/usage/users/{userKey}/dates/{date}', 'GET', apiParams, clientConfig);
+    this.entityUsageReports = {};
+    this.entityUsageReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports/v1/usage/{entityType}/{entityKey}/dates/{date}', 'GET', apiParams, clientConfig);
 
     this.customerUsageReports = {};
     this.customerUsageReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports/v1/usage/dates/{date}', 'GET', apiParams, clientConfig);
 
-    this.entityUsageReports = {};
-    this.entityUsageReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports/v1/usage/{entityType}/{entityKey}/dates/{date}', 'GET', apiParams, clientConfig);
-
     this.channels = {};
     this.channels.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports_v1/channels/stop', 'POST', apiParams, clientConfig);
+
+    this.userUsageReport = {};
+    this.userUsageReport.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports/v1/usage/users/{userKey}/dates/{date}', 'GET', apiParams, clientConfig);
+
+    this.activities = {};
+    this.activities.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports/v1/activity/users/{userKey}/applications/{applicationName}/watch', 'POST', apiParams, clientConfig);
+    this.activities.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/reports/v1/activity/users/{userKey}/applications/{applicationName}', 'GET', apiParams, clientConfig);
   }
 
 /**
