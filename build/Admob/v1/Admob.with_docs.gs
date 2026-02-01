@@ -41,6 +41,20 @@ class Admob {
      */
     this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/accounts', 'GET', apiParams, clientConfig);
 
+    this.accounts.apps = {};
+
+    /**
+     * List the apps under the specified AdMob account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of apps to return. If unspecified or 0, at most 10,000 apps will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
+     * @param {string} apiParams.pageToken - The value returned by the last `ListAppsResponse`; indicates that this is a continuation of a prior `ListApps` call, and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apps', 'GET', apiParams, clientConfig);
+
     this.accounts.adUnits = {};
 
     /**
@@ -67,20 +81,6 @@ class Admob {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.mediationReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mediationReport:generate', 'POST', apiParams, clientConfig);
-
-    this.accounts.apps = {};
-
-    /**
-     * List the apps under the specified AdMob account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of apps to return. If unspecified or 0, at most 10,000 apps will be returned. The maximum value is 20,000; values above 20,000 will be coerced to 20,000.
-     * @param {string} apiParams.pageToken - The value returned by the last `ListAppsResponse`; indicates that this is a continuation of a prior `ListApps` call, and that the system should return the next page of data.
-     * @param {string} apiParams.parent - (Required) Required. Resource name of the account to list apps for. Example: accounts/pub-9876543210987654
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apps', 'GET', apiParams, clientConfig);
 
     this.accounts.networkReport = {};
 
