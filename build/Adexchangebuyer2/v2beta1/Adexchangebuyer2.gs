@@ -18,63 +18,116 @@ class Adexchangebuyer2 {
     this._servicePath = '';
 
 
+    this.buyers = {};
+
+    this.buyers.filterSets = {};
+    this.buyers.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
+    this.buyers.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
+    this.buyers.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
+    this.buyers.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.buyers.filterSets.nonBillableWinningBids = {};
+    this.buyers.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.bidResponsesWithoutBids = {};
+    this.buyers.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.losingBids = {};
+    this.buyers.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.filteredBids = {};
+    this.buyers.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.filteredBids.creatives = {};
+    this.buyers.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.filteredBids.details = {};
+    this.buyers.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.bidMetrics = {};
+    this.buyers.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.filteredBidRequests = {};
+    this.buyers.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.bidResponseErrors = {};
+    this.buyers.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
+
+    this.buyers.filterSets.impressionMetrics = {};
+    this.buyers.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
+
+    this.accounts = {};
+
+    this.accounts.creatives = {};
+    this.accounts.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives', 'POST', apiParams, clientConfig);
+    this.accounts.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}', 'GET', apiParams, clientConfig);
+    this.accounts.creatives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}', 'PUT', apiParams, clientConfig);
+    this.accounts.creatives.stopWatching = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching', 'POST', apiParams, clientConfig);
+    this.accounts.creatives.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}:watch', 'POST', apiParams, clientConfig);
+    this.accounts.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives', 'GET', apiParams, clientConfig);
+
+    this.accounts.creatives.dealAssociations = {};
+    this.accounts.creatives.dealAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations', 'GET', apiParams, clientConfig);
+    this.accounts.creatives.dealAssociations.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add', 'POST', apiParams, clientConfig);
+    this.accounts.creatives.dealAssociations.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove', 'POST', apiParams, clientConfig);
+
+    this.accounts.clients = {};
+    this.accounts.clients.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients', 'POST', apiParams, clientConfig);
+    this.accounts.clients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients', 'GET', apiParams, clientConfig);
+    this.accounts.clients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}', 'GET', apiParams, clientConfig);
+    this.accounts.clients.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}', 'PUT', apiParams, clientConfig);
+
+    this.accounts.clients.users = {};
+    this.accounts.clients.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/users', 'GET', apiParams, clientConfig);
+    this.accounts.clients.users.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', 'PUT', apiParams, clientConfig);
+    this.accounts.clients.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', 'GET', apiParams, clientConfig);
+
+    this.accounts.clients.invitations = {};
+    this.accounts.clients.invitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}', 'GET', apiParams, clientConfig);
+    this.accounts.clients.invitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', 'POST', apiParams, clientConfig);
+    this.accounts.clients.invitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', 'GET', apiParams, clientConfig);
+
+    this.accounts.products = {};
+    this.accounts.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/products', 'GET', apiParams, clientConfig);
+    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/products/{productId}', 'GET', apiParams, clientConfig);
+
+    this.accounts.finalizedProposals = {};
+    this.accounts.finalizedProposals.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume', 'POST', apiParams, clientConfig);
+    this.accounts.finalizedProposals.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause', 'POST', apiParams, clientConfig);
+    this.accounts.finalizedProposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals', 'GET', apiParams, clientConfig);
+
+    this.accounts.proposals = {};
+    this.accounts.proposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals', 'GET', apiParams, clientConfig);
+    this.accounts.proposals.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:resume', 'POST', apiParams, clientConfig);
+    this.accounts.proposals.completeSetup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup', 'POST', apiParams, clientConfig);
+    this.accounts.proposals.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals', 'POST', apiParams, clientConfig);
+    this.accounts.proposals.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:accept', 'POST', apiParams, clientConfig);
+    this.accounts.proposals.addNote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote', 'POST', apiParams, clientConfig);
+    this.accounts.proposals.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:pause', 'POST', apiParams, clientConfig);
+    this.accounts.proposals.cancelNegotiation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation', 'POST', apiParams, clientConfig);
+    this.accounts.proposals.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}', 'PUT', apiParams, clientConfig);
+    this.accounts.proposals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}', 'GET', apiParams, clientConfig);
+
+    this.accounts.publisherProfiles = {};
+    this.accounts.publisherProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/publisherProfiles/{publisherProfileId}', 'GET', apiParams, clientConfig);
+    this.accounts.publisherProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/publisherProfiles', 'GET', apiParams, clientConfig);
+
     this.bidders = {};
 
-    this.bidders.accounts = {};
-
-    this.bidders.accounts.filterSets = {};
-    this.bidders.accounts.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
-    this.bidders.accounts.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.bidders.accounts.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
-    this.bidders.accounts.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.bidResponseErrors = {};
-    this.bidders.accounts.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.bidMetrics = {};
-    this.bidders.accounts.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.impressionMetrics = {};
-    this.bidders.accounts.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.bidResponsesWithoutBids = {};
-    this.bidders.accounts.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.filteredBids = {};
-    this.bidders.accounts.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.filteredBids.creatives = {};
-    this.bidders.accounts.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.filteredBids.details = {};
-    this.bidders.accounts.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.losingBids = {};
-    this.bidders.accounts.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.nonBillableWinningBids = {};
-    this.bidders.accounts.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.accounts.filterSets.filteredBidRequests = {};
-    this.bidders.accounts.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
-
     this.bidders.filterSets = {};
-    this.bidders.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.bidders.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
     this.bidders.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
+    this.bidders.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
     this.bidders.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.bidders.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
 
-    this.bidders.filterSets.bidMetrics = {};
-    this.bidders.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
+    this.bidders.filterSets.impressionMetrics = {};
+    this.bidders.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
 
-    this.bidders.filterSets.bidResponsesWithoutBids = {};
-    this.bidders.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
+    this.bidders.filterSets.filteredBidRequests = {};
+    this.bidders.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
 
     this.bidders.filterSets.nonBillableWinningBids = {};
     this.bidders.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
-
-    this.bidders.filterSets.bidResponseErrors = {};
-    this.bidders.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
 
     this.bidders.filterSets.filteredBids = {};
     this.bidders.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
@@ -85,108 +138,55 @@ class Adexchangebuyer2 {
     this.bidders.filterSets.filteredBids.creatives = {};
     this.bidders.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
 
-    this.bidders.filterSets.impressionMetrics = {};
-    this.bidders.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
+    this.bidders.filterSets.bidResponseErrors = {};
+    this.bidders.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
 
-    this.bidders.filterSets.filteredBidRequests = {};
-    this.bidders.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
+    this.bidders.filterSets.bidResponsesWithoutBids = {};
+    this.bidders.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
 
     this.bidders.filterSets.losingBids = {};
     this.bidders.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
 
-    this.buyers = {};
+    this.bidders.filterSets.bidMetrics = {};
+    this.bidders.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets = {};
-    this.buyers.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
-    this.buyers.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.buyers.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
-    this.buyers.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
+    this.bidders.accounts = {};
 
-    this.buyers.filterSets.bidResponsesWithoutBids = {};
-    this.buyers.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets = {};
+    this.bidders.accounts.filterSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+ownerName}/filterSets', 'POST', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets.bidMetrics = {};
-    this.buyers.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.bidResponseErrors = {};
+    this.bidders.accounts.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets.nonBillableWinningBids = {};
-    this.buyers.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.filteredBidRequests = {};
+    this.bidders.accounts.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets.impressionMetrics = {};
-    this.buyers.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.impressionMetrics = {};
+    this.bidders.accounts.filterSets.impressionMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/impressionMetrics', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets.bidResponseErrors = {};
-    this.buyers.filterSets.bidResponseErrors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponseErrors', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.nonBillableWinningBids = {};
+    this.bidders.accounts.filterSets.nonBillableWinningBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/nonBillableWinningBids', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets.losingBids = {};
-    this.buyers.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.losingBids = {};
+    this.bidders.accounts.filterSets.losingBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/losingBids', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets.filteredBidRequests = {};
-    this.buyers.filterSets.filteredBidRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBidRequests', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.bidResponsesWithoutBids = {};
+    this.bidders.accounts.filterSets.bidResponsesWithoutBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidResponsesWithoutBids', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets.filteredBids = {};
-    this.buyers.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.filteredBids = {};
+    this.bidders.accounts.filterSets.filteredBids.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets.filteredBids.details = {};
-    this.buyers.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.filteredBids.details = {};
+    this.bidders.accounts.filterSets.filteredBids.details.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/details', 'GET', apiParams, clientConfig);
 
-    this.buyers.filterSets.filteredBids.creatives = {};
-    this.buyers.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.filteredBids.creatives = {};
+    this.bidders.accounts.filterSets.filteredBids.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/filteredBids/{creativeStatusId}/creatives', 'GET', apiParams, clientConfig);
 
-    this.accounts = {};
-
-    this.accounts.finalizedProposals = {};
-    this.accounts.finalizedProposals.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:pause', 'POST', apiParams, clientConfig);
-    this.accounts.finalizedProposals.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals/{proposalId}:resume', 'POST', apiParams, clientConfig);
-    this.accounts.finalizedProposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/finalizedProposals', 'GET', apiParams, clientConfig);
-
-    this.accounts.publisherProfiles = {};
-    this.accounts.publisherProfiles.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/publisherProfiles', 'GET', apiParams, clientConfig);
-    this.accounts.publisherProfiles.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/publisherProfiles/{publisherProfileId}', 'GET', apiParams, clientConfig);
-
-    this.accounts.creatives = {};
-    this.accounts.creatives.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}', 'PUT', apiParams, clientConfig);
-    this.accounts.creatives.watch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}:watch', 'POST', apiParams, clientConfig);
-    this.accounts.creatives.stopWatching = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}:stopWatching', 'POST', apiParams, clientConfig);
-    this.accounts.creatives.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives', 'GET', apiParams, clientConfig);
-    this.accounts.creatives.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}', 'GET', apiParams, clientConfig);
-    this.accounts.creatives.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives', 'POST', apiParams, clientConfig);
-
-    this.accounts.creatives.dealAssociations = {};
-    this.accounts.creatives.dealAssociations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations', 'GET', apiParams, clientConfig);
-    this.accounts.creatives.dealAssociations.remove = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:remove', 'POST', apiParams, clientConfig);
-    this.accounts.creatives.dealAssociations.add = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/creatives/{creativeId}/dealAssociations:add', 'POST', apiParams, clientConfig);
-
-    this.accounts.products = {};
-    this.accounts.products.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/products/{productId}', 'GET', apiParams, clientConfig);
-    this.accounts.products.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/products', 'GET', apiParams, clientConfig);
-
-    this.accounts.proposals = {};
-    this.accounts.proposals.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}', 'PUT', apiParams, clientConfig);
-    this.accounts.proposals.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals', 'POST', apiParams, clientConfig);
-    this.accounts.proposals.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}', 'GET', apiParams, clientConfig);
-    this.accounts.proposals.cancelNegotiation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:cancelNegotiation', 'POST', apiParams, clientConfig);
-    this.accounts.proposals.resume = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:resume', 'POST', apiParams, clientConfig);
-    this.accounts.proposals.pause = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:pause', 'POST', apiParams, clientConfig);
-    this.accounts.proposals.completeSetup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:completeSetup', 'POST', apiParams, clientConfig);
-    this.accounts.proposals.addNote = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:addNote', 'POST', apiParams, clientConfig);
-    this.accounts.proposals.accept = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals/{proposalId}:accept', 'POST', apiParams, clientConfig);
-    this.accounts.proposals.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/proposals', 'GET', apiParams, clientConfig);
-
-    this.accounts.clients = {};
-    this.accounts.clients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients', 'GET', apiParams, clientConfig);
-    this.accounts.clients.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients', 'POST', apiParams, clientConfig);
-    this.accounts.clients.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}', 'PUT', apiParams, clientConfig);
-    this.accounts.clients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}', 'GET', apiParams, clientConfig);
-
-    this.accounts.clients.users = {};
-    this.accounts.clients.users.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', 'PUT', apiParams, clientConfig);
-    this.accounts.clients.users.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/users', 'GET', apiParams, clientConfig);
-    this.accounts.clients.users.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/users/{userId}', 'GET', apiParams, clientConfig);
-
-    this.accounts.clients.invitations = {};
-    this.accounts.clients.invitations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations/{invitationId}', 'GET', apiParams, clientConfig);
-    this.accounts.clients.invitations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', 'POST', apiParams, clientConfig);
-    this.accounts.clients.invitations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/accounts/{accountId}/clients/{clientAccountId}/invitations', 'GET', apiParams, clientConfig);
+    this.bidders.accounts.filterSets.bidMetrics = {};
+    this.bidders.accounts.filterSets.bidMetrics.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2beta1/{+filterSetName}/bidMetrics', 'GET', apiParams, clientConfig);
   }
 
 /**
