@@ -40,46 +40,6 @@ class Apigee {
     this.organizations.getSecuritySettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.updateSecuritySettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
-    this.organizations.sites = {};
-
-    this.organizations.sites.apicategories = {};
-    this.organizations.sites.apicategories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apicategories', 'POST', apiParams, clientConfig);
-    this.organizations.sites.apicategories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.sites.apicategories.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.sites.apicategories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.sites.apicategories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apicategories', 'GET', apiParams, clientConfig);
-
-    this.organizations.sites.apidocs = {};
-    this.organizations.sites.apidocs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.sites.apidocs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apidocs', 'POST', apiParams, clientConfig);
-    this.organizations.sites.apidocs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.organizations.sites.apidocs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apidocs', 'GET', apiParams, clientConfig);
-    this.organizations.sites.apidocs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.sites.apidocs.updateDocumentation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.sites.apidocs.getDocumentation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.organizations.apiproducts = {};
-    this.organizations.apiproducts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apiproducts', 'POST', apiParams, clientConfig);
-    this.organizations.apiproducts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.apiproducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.apiproducts.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
-    this.organizations.apiproducts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apiproducts', 'GET', apiParams, clientConfig);
-    this.organizations.apiproducts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.organizations.apiproducts.attributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/attributes', 'POST', apiParams, clientConfig);
-
-    this.organizations.apiproducts.attributes = {};
-    this.organizations.apiproducts.attributes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.apiproducts.attributes.updateApiProductAttribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
-    this.organizations.apiproducts.attributes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.apiproducts.attributes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attributes', 'GET', apiParams, clientConfig);
-
-    this.organizations.apiproducts.rateplans = {};
-    this.organizations.apiproducts.rateplans.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rateplans', 'POST', apiParams, clientConfig);
-    this.organizations.apiproducts.rateplans.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.apiproducts.rateplans.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rateplans', 'GET', apiParams, clientConfig);
-    this.organizations.apiproducts.rateplans.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.organizations.apiproducts.rateplans.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.organizations.apis = {};
     this.organizations.apis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apis', 'GET', apiParams, clientConfig);
     this.organizations.apis.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
@@ -95,9 +55,6 @@ class Apigee {
 
     this.organizations.apis.revisions.deployments = {};
     this.organizations.apis.revisions.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
-
-    this.organizations.apis.debugsessions = {};
-    this.organizations.apis.debugsessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/debugsessions', 'GET', apiParams, clientConfig);
 
     this.organizations.apis.deployments = {};
     this.organizations.apis.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
@@ -115,71 +72,12 @@ class Apigee {
     this.organizations.apis.keyvaluemaps.entries.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
     this.organizations.apis.keyvaluemaps.entries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'GET', apiParams, clientConfig);
 
+    this.organizations.apis.debugsessions = {};
+    this.organizations.apis.debugsessions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/debugsessions', 'GET', apiParams, clientConfig);
+
     this.organizations.operations = {};
     this.organizations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
     this.organizations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.organizations.apimServiceExtensions = {};
-    this.organizations.apimServiceExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apimServiceExtensions', 'POST', apiParams, clientConfig);
-    this.organizations.apimServiceExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.apimServiceExtensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apimServiceExtensions', 'GET', apiParams, clientConfig);
-    this.organizations.apimServiceExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.apimServiceExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.organizations.appgroups = {};
-    this.organizations.appgroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/appgroups', 'POST', apiParams, clientConfig);
-    this.organizations.appgroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.appgroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.appgroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/appgroups', 'GET', apiParams, clientConfig);
-    this.organizations.appgroups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.organizations.appgroups.getBalance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.appgroups.getMonetizationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.appgroups.updateMonetizationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-
-    this.organizations.appgroups.apps = {};
-    this.organizations.appgroups.apps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apps', 'POST', apiParams, clientConfig);
-    this.organizations.appgroups.apps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.appgroups.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.appgroups.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apps', 'GET', apiParams, clientConfig);
-    this.organizations.appgroups.apps.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-
-    this.organizations.appgroups.apps.keys = {};
-    this.organizations.appgroups.apps.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'POST', apiParams, clientConfig);
-    this.organizations.appgroups.apps.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.appgroups.apps.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.appgroups.apps.keys.updateAppGroupAppKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
-
-    this.organizations.appgroups.apps.keys.apiproducts = {};
-    this.organizations.appgroups.apps.keys.apiproducts.updateAppGroupAppKeyApiProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
-    this.organizations.appgroups.apps.keys.apiproducts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.organizations.appgroups.subscriptions = {};
-    this.organizations.appgroups.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
-    this.organizations.appgroups.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.appgroups.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'GET', apiParams, clientConfig);
-    this.organizations.appgroups.subscriptions.expire = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:expire', 'POST', apiParams, clientConfig);
-
-    this.organizations.appgroups.balance = {};
-    this.organizations.appgroups.balance.credit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:credit', 'POST', apiParams, clientConfig);
-    this.organizations.appgroups.balance.adjust = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:adjust', 'POST', apiParams, clientConfig);
-
-    this.organizations.apps = {};
-    this.organizations.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apps', 'GET', apiParams, clientConfig);
-
-    this.organizations.hostQueries = {};
-    this.organizations.hostQueries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostQueries', 'POST', apiParams, clientConfig);
-    this.organizations.hostQueries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.hostQueries.getResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.hostQueries.getResultView = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.hostQueries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostQueries', 'GET', apiParams, clientConfig);
-
-    this.organizations.reports = {};
-    this.organizations.reports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'POST', apiParams, clientConfig);
-    this.organizations.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'GET', apiParams, clientConfig);
-    this.organizations.reports.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.organizations.reports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.organizations.datacollectors = {};
     this.organizations.datacollectors.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/datacollectors', 'POST', apiParams, clientConfig);
@@ -191,7 +89,6 @@ class Apigee {
     this.organizations.environments = {};
     this.organizations.environments.getDebugmask = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.environments.updateDebugmask = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.environments.getAddonsConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.environments.getTraceConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.environments.updateTraceConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/environments', 'POST', apiParams, clientConfig);
@@ -207,18 +104,9 @@ class Apigee {
     this.organizations.environments.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:subscribe', 'POST', apiParams, clientConfig);
     this.organizations.environments.unsubscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:unsubscribe', 'POST', apiParams, clientConfig);
     this.organizations.environments.modifyEnvironment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.environments.getAddonsConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.environments.getSecurityActionsConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.environments.updateSecurityActionsConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.organizations.environments.analytics = {};
-
-    this.organizations.environments.analytics.admin = {};
-    this.organizations.environments.analytics.admin.getSchemav2 = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.organizations.environments.analytics.exports = {};
-    this.organizations.environments.analytics.exports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/analytics/exports', 'POST', apiParams, clientConfig);
-    this.organizations.environments.analytics.exports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.analytics.exports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/analytics/exports', 'GET', apiParams, clientConfig);
 
     this.organizations.environments.resourcefiles = {};
     this.organizations.environments.resourcefiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/resourcefiles', 'POST', apiParams, clientConfig);
@@ -237,22 +125,16 @@ class Apigee {
     this.organizations.environments.archiveDeployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.environments.archiveDeployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.organizations.environments.queries = {};
-    this.organizations.environments.queries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/queries', 'POST', apiParams, clientConfig);
-    this.organizations.environments.queries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.queries.getResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.queries.getResulturl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.queries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/queries', 'GET', apiParams, clientConfig);
-
-    this.organizations.environments.caches = {};
-    this.organizations.environments.caches.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
     this.organizations.environments.apis = {};
 
     this.organizations.environments.apis.revisions = {};
     this.organizations.environments.apis.revisions.deploy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/deployments', 'POST', apiParams, clientConfig);
     this.organizations.environments.apis.revisions.undeploy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/deployments', 'DELETE', apiParams, clientConfig);
     this.organizations.environments.apis.revisions.getDeployments = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/deployments', 'GET', apiParams, clientConfig);
+
+    this.organizations.environments.apis.revisions.deployments = {};
+    this.organizations.environments.apis.revisions.deployments.generateDeployChangeReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/deployments:generateDeployChangeReport', 'POST', apiParams, clientConfig);
+    this.organizations.environments.apis.revisions.deployments.generateUndeployChangeReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/deployments:generateUndeployChangeReport', 'POST', apiParams, clientConfig);
 
     this.organizations.environments.apis.revisions.debugsessions = {};
     this.organizations.environments.apis.revisions.debugsessions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/debugsessions', 'POST', apiParams, clientConfig);
@@ -262,10 +144,6 @@ class Apigee {
 
     this.organizations.environments.apis.revisions.debugsessions.data = {};
     this.organizations.environments.apis.revisions.debugsessions.data.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.organizations.environments.apis.revisions.deployments = {};
-    this.organizations.environments.apis.revisions.deployments.generateDeployChangeReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/deployments:generateDeployChangeReport', 'POST', apiParams, clientConfig);
-    this.organizations.environments.apis.revisions.deployments.generateUndeployChangeReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/deployments:generateUndeployChangeReport', 'POST', apiParams, clientConfig);
 
     this.organizations.environments.apis.deployments = {};
     this.organizations.environments.apis.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
@@ -292,9 +170,6 @@ class Apigee {
     this.organizations.environments.flowhooks.attachSharedFlowToFlowHook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
     this.organizations.environments.flowhooks.detachSharedFlowFromFlowHook = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.organizations.environments.addonsConfig = {};
-    this.organizations.environments.addonsConfig.setAddonEnablement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setAddonEnablement', 'POST', apiParams, clientConfig);
-
     this.organizations.environments.keystores = {};
     this.organizations.environments.keystores.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keystores', 'POST', apiParams, clientConfig);
     this.organizations.environments.keystores.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
@@ -314,6 +189,76 @@ class Apigee {
     this.organizations.environments.targetservers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.environments.targetservers.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
 
+    this.organizations.environments.addonsConfig = {};
+    this.organizations.environments.addonsConfig.setAddonEnablement = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:setAddonEnablement', 'POST', apiParams, clientConfig);
+
+    this.organizations.environments.references = {};
+    this.organizations.environments.references.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/references', 'POST', apiParams, clientConfig);
+    this.organizations.environments.references.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.environments.references.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.references.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+
+    this.organizations.environments.traceConfig = {};
+
+    this.organizations.environments.traceConfig.overrides = {};
+    this.organizations.environments.traceConfig.overrides.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/overrides', 'POST', apiParams, clientConfig);
+    this.organizations.environments.traceConfig.overrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/overrides', 'GET', apiParams, clientConfig);
+    this.organizations.environments.traceConfig.overrides.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.traceConfig.overrides.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.environments.traceConfig.overrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.organizations.environments.stats = {};
+    this.organizations.environments.stats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.organizations.environments.optimizedStats = {};
+    this.organizations.environments.optimizedStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.organizations.environments.analytics = {};
+
+    this.organizations.environments.analytics.admin = {};
+    this.organizations.environments.analytics.admin.getSchemav2 = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.organizations.environments.analytics.exports = {};
+    this.organizations.environments.analytics.exports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/analytics/exports', 'POST', apiParams, clientConfig);
+    this.organizations.environments.analytics.exports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.analytics.exports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/analytics/exports', 'GET', apiParams, clientConfig);
+
+    this.organizations.environments.queries = {};
+    this.organizations.environments.queries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/queries', 'POST', apiParams, clientConfig);
+    this.organizations.environments.queries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.queries.getResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.queries.getResulturl = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.queries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/queries', 'GET', apiParams, clientConfig);
+
+    this.organizations.environments.caches = {};
+    this.organizations.environments.caches.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.organizations.environments.securityReports = {};
+    this.organizations.environments.securityReports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityReports', 'POST', apiParams, clientConfig);
+    this.organizations.environments.securityReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.securityReports.getResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.securityReports.getResultView = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.securityReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityReports', 'GET', apiParams, clientConfig);
+
+    this.organizations.environments.securityStats = {};
+    this.organizations.environments.securityStats.queryTabularStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+orgenv}/securityStats:queryTabularStats', 'POST', apiParams, clientConfig);
+    this.organizations.environments.securityStats.queryTimeSeriesStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+orgenv}/securityStats:queryTimeSeriesStats', 'POST', apiParams, clientConfig);
+
+    this.organizations.environments.securityIncidents = {};
+    this.organizations.environments.securityIncidents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.securityIncidents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityIncidents', 'GET', apiParams, clientConfig);
+    this.organizations.environments.securityIncidents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.environments.securityIncidents.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityIncidents:batchUpdate', 'POST', apiParams, clientConfig);
+
+    this.organizations.environments.securityActions = {};
+    this.organizations.environments.securityActions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityActions', 'POST', apiParams, clientConfig);
+    this.organizations.environments.securityActions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.environments.securityActions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityActions', 'GET', apiParams, clientConfig);
+    this.organizations.environments.securityActions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.environments.securityActions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.environments.securityActions.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.organizations.environments.securityActions.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
+
     this.organizations.environments.keyvaluemaps = {};
     this.organizations.environments.keyvaluemaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keyvaluemaps', 'POST', apiParams, clientConfig);
     this.organizations.environments.keyvaluemaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -327,52 +272,121 @@ class Apigee {
     this.organizations.environments.keyvaluemaps.entries.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
     this.organizations.environments.keyvaluemaps.entries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'GET', apiParams, clientConfig);
 
-    this.organizations.environments.references = {};
-    this.organizations.environments.references.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/references', 'POST', apiParams, clientConfig);
-    this.organizations.environments.references.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.environments.references.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.references.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.organizations.deployments = {};
+    this.organizations.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
 
-    this.organizations.environments.securityActions = {};
-    this.organizations.environments.securityActions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityActions', 'POST', apiParams, clientConfig);
-    this.organizations.environments.securityActions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.securityActions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityActions', 'GET', apiParams, clientConfig);
-    this.organizations.environments.securityActions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.environments.securityActions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.environments.securityActions.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
-    this.organizations.environments.securityActions.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.organizations.envgroups = {};
+    this.organizations.envgroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/envgroups', 'POST', apiParams, clientConfig);
+    this.organizations.envgroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/envgroups', 'GET', apiParams, clientConfig);
+    this.organizations.envgroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.envgroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.envgroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.envgroups.getDeployedIngressConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.organizations.environments.securityIncidents = {};
-    this.organizations.environments.securityIncidents.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.securityIncidents.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityIncidents', 'GET', apiParams, clientConfig);
-    this.organizations.environments.securityIncidents.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.environments.securityIncidents.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityIncidents:batchUpdate', 'POST', apiParams, clientConfig);
+    this.organizations.envgroups.attachments = {};
+    this.organizations.envgroups.attachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'POST', apiParams, clientConfig);
+    this.organizations.envgroups.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'GET', apiParams, clientConfig);
+    this.organizations.envgroups.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.envgroups.attachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.organizations.environments.securityReports = {};
-    this.organizations.environments.securityReports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityReports', 'POST', apiParams, clientConfig);
-    this.organizations.environments.securityReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.securityReports.getResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.securityReports.getResultView = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.securityReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityReports', 'GET', apiParams, clientConfig);
+    this.organizations.instances = {};
+    this.organizations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'POST', apiParams, clientConfig);
+    this.organizations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'GET', apiParams, clientConfig);
+    this.organizations.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.instances.reportStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+instance}:reportStatus', 'POST', apiParams, clientConfig);
 
-    this.organizations.environments.securityStats = {};
-    this.organizations.environments.securityStats.queryTabularStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+orgenv}/securityStats:queryTabularStats', 'POST', apiParams, clientConfig);
-    this.organizations.environments.securityStats.queryTimeSeriesStats = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+orgenv}/securityStats:queryTimeSeriesStats', 'POST', apiParams, clientConfig);
+    this.organizations.instances.canaryevaluations = {};
+    this.organizations.instances.canaryevaluations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/canaryevaluations', 'POST', apiParams, clientConfig);
+    this.organizations.instances.canaryevaluations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.organizations.environments.stats = {};
-    this.organizations.environments.stats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.instances.attachments = {};
+    this.organizations.instances.attachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'POST', apiParams, clientConfig);
+    this.organizations.instances.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'GET', apiParams, clientConfig);
+    this.organizations.instances.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.instances.attachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.organizations.environments.optimizedStats = {};
-    this.organizations.environments.optimizedStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.instances.natAddresses = {};
+    this.organizations.instances.natAddresses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/natAddresses', 'GET', apiParams, clientConfig);
+    this.organizations.instances.natAddresses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.instances.natAddresses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/natAddresses', 'POST', apiParams, clientConfig);
+    this.organizations.instances.natAddresses.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
+    this.organizations.instances.natAddresses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.organizations.environments.traceConfig = {};
+    this.organizations.sharedflows = {};
+    this.organizations.sharedflows.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sharedflows', 'GET', apiParams, clientConfig);
+    this.organizations.sharedflows.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.sharedflows.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.sharedflows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sharedflows', 'POST', apiParams, clientConfig);
+    this.organizations.sharedflows.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
 
-    this.organizations.environments.traceConfig.overrides = {};
-    this.organizations.environments.traceConfig.overrides.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/overrides', 'POST', apiParams, clientConfig);
-    this.organizations.environments.traceConfig.overrides.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/overrides', 'GET', apiParams, clientConfig);
-    this.organizations.environments.traceConfig.overrides.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.environments.traceConfig.overrides.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.environments.traceConfig.overrides.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.sharedflows.deployments = {};
+    this.organizations.sharedflows.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+
+    this.organizations.sharedflows.revisions = {};
+    this.organizations.sharedflows.revisions.updateSharedFlowRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
+    this.organizations.sharedflows.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.sharedflows.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.organizations.sharedflows.revisions.deployments = {};
+    this.organizations.sharedflows.revisions.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+
+    this.organizations.spaces = {};
+    this.organizations.spaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spaces', 'POST', apiParams, clientConfig);
+    this.organizations.spaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.spaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.spaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.spaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spaces', 'GET', apiParams, clientConfig);
+    this.organizations.spaces.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.organizations.spaces.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.organizations.spaces.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.organizations.hostStats = {};
+    this.organizations.hostStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.organizations.optimizedHostStats = {};
+    this.organizations.optimizedHostStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.organizations.apiproducts = {};
+    this.organizations.apiproducts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apiproducts', 'POST', apiParams, clientConfig);
+    this.organizations.apiproducts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.apiproducts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.apiproducts.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.organizations.apiproducts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apiproducts', 'GET', apiParams, clientConfig);
+    this.organizations.apiproducts.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.organizations.apiproducts.attributes = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/attributes', 'POST', apiParams, clientConfig);
+
+    this.organizations.apiproducts.attributes = {};
+    this.organizations.apiproducts.attributes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.apiproducts.attributes.updateApiProductAttribute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
+    this.organizations.apiproducts.attributes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.apiproducts.attributes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attributes', 'GET', apiParams, clientConfig);
+
+    this.organizations.apiproducts.rateplans = {};
+    this.organizations.apiproducts.rateplans.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rateplans', 'POST', apiParams, clientConfig);
+    this.organizations.apiproducts.rateplans.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.apiproducts.rateplans.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rateplans', 'GET', apiParams, clientConfig);
+    this.organizations.apiproducts.rateplans.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.organizations.apiproducts.rateplans.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.organizations.apps = {};
+    this.organizations.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apps', 'GET', apiParams, clientConfig);
+
+    this.organizations.hostQueries = {};
+    this.organizations.hostQueries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostQueries', 'POST', apiParams, clientConfig);
+    this.organizations.hostQueries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.hostQueries.getResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.hostQueries.getResultView = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.hostQueries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostQueries', 'GET', apiParams, clientConfig);
+
+    this.organizations.reports = {};
+    this.organizations.reports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'POST', apiParams, clientConfig);
+    this.organizations.reports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.reports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/reports', 'GET', apiParams, clientConfig);
+    this.organizations.reports.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.organizations.reports.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.organizations.analytics = {};
 
@@ -383,9 +397,6 @@ class Apigee {
     this.organizations.analytics.datastores.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.analytics.datastores.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/analytics/datastores', 'GET', apiParams, clientConfig);
     this.organizations.analytics.datastores.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-
-    this.organizations.deployments = {};
-    this.organizations.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
 
     this.organizations.developers = {};
     this.organizations.developers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/developers', 'POST', apiParams, clientConfig);
@@ -428,12 +439,6 @@ class Apigee {
     this.organizations.developers.apps.attributes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.organizations.developers.apps.attributes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attributes', 'GET', apiParams, clientConfig);
 
-    this.organizations.developers.subscriptions = {};
-    this.organizations.developers.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
-    this.organizations.developers.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.developers.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'GET', apiParams, clientConfig);
-    this.organizations.developers.subscriptions.expire = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:expire', 'POST', apiParams, clientConfig);
-
     this.organizations.developers.attributes = {};
     this.organizations.developers.attributes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.developers.attributes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
@@ -444,76 +449,55 @@ class Apigee {
     this.organizations.developers.balance.credit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:credit', 'POST', apiParams, clientConfig);
     this.organizations.developers.balance.adjust = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:adjust', 'POST', apiParams, clientConfig);
 
-    this.organizations.dnsZones = {};
-    this.organizations.dnsZones.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsZones', 'POST', apiParams, clientConfig);
-    this.organizations.dnsZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.dnsZones.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsZones', 'GET', apiParams, clientConfig);
-    this.organizations.dnsZones.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.developers.subscriptions = {};
+    this.organizations.developers.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
+    this.organizations.developers.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.developers.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'GET', apiParams, clientConfig);
+    this.organizations.developers.subscriptions.expire = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:expire', 'POST', apiParams, clientConfig);
 
-    this.organizations.endpointAttachments = {};
-    this.organizations.endpointAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endpointAttachments', 'POST', apiParams, clientConfig);
-    this.organizations.endpointAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.endpointAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endpointAttachments', 'GET', apiParams, clientConfig);
-    this.organizations.endpointAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.appgroups = {};
+    this.organizations.appgroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/appgroups', 'POST', apiParams, clientConfig);
+    this.organizations.appgroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.appgroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/appgroups', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.organizations.appgroups.getBalance = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.getMonetizationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.updateMonetizationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
 
-    this.organizations.envgroups = {};
-    this.organizations.envgroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/envgroups', 'POST', apiParams, clientConfig);
-    this.organizations.envgroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/envgroups', 'GET', apiParams, clientConfig);
-    this.organizations.envgroups.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.envgroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.envgroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.envgroups.getDeployedIngressConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.balance = {};
+    this.organizations.appgroups.balance.credit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:credit', 'POST', apiParams, clientConfig);
+    this.organizations.appgroups.balance.adjust = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:adjust', 'POST', apiParams, clientConfig);
 
-    this.organizations.envgroups.attachments = {};
-    this.organizations.envgroups.attachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'POST', apiParams, clientConfig);
-    this.organizations.envgroups.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'GET', apiParams, clientConfig);
-    this.organizations.envgroups.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.envgroups.attachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.appgroups.apps = {};
+    this.organizations.appgroups.apps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apps', 'POST', apiParams, clientConfig);
+    this.organizations.appgroups.apps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.appgroups.apps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apps', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.apps.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
 
-    this.organizations.instances = {};
-    this.organizations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'POST', apiParams, clientConfig);
-    this.organizations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.organizations.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.instances.reportStatus = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+instance}:reportStatus', 'POST', apiParams, clientConfig);
+    this.organizations.appgroups.apps.keys = {};
+    this.organizations.appgroups.apps.keys.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keys', 'POST', apiParams, clientConfig);
+    this.organizations.appgroups.apps.keys.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.appgroups.apps.keys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.apps.keys.updateAppGroupAppKey = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
 
-    this.organizations.instances.attachments = {};
-    this.organizations.instances.attachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'POST', apiParams, clientConfig);
-    this.organizations.instances.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'GET', apiParams, clientConfig);
-    this.organizations.instances.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.instances.attachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.appgroups.apps.keys.apiproducts = {};
+    this.organizations.appgroups.apps.keys.apiproducts.updateAppGroupAppKeyApiProduct = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
+    this.organizations.appgroups.apps.keys.apiproducts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.organizations.instances.natAddresses = {};
-    this.organizations.instances.natAddresses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/natAddresses', 'GET', apiParams, clientConfig);
-    this.organizations.instances.natAddresses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.instances.natAddresses.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/natAddresses', 'POST', apiParams, clientConfig);
-    this.organizations.instances.natAddresses.activate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:activate', 'POST', apiParams, clientConfig);
-    this.organizations.instances.natAddresses.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.appgroups.subscriptions = {};
+    this.organizations.appgroups.subscriptions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'POST', apiParams, clientConfig);
+    this.organizations.appgroups.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'GET', apiParams, clientConfig);
+    this.organizations.appgroups.subscriptions.expire = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:expire', 'POST', apiParams, clientConfig);
 
-    this.organizations.instances.canaryevaluations = {};
-    this.organizations.instances.canaryevaluations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/canaryevaluations', 'POST', apiParams, clientConfig);
-    this.organizations.instances.canaryevaluations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.organizations.keyvaluemaps = {};
-    this.organizations.keyvaluemaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keyvaluemaps', 'POST', apiParams, clientConfig);
-    this.organizations.keyvaluemaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.keyvaluemaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.keyvaluemaps.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-
-    this.organizations.keyvaluemaps.entries = {};
-    this.organizations.keyvaluemaps.entries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.keyvaluemaps.entries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.keyvaluemaps.entries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'POST', apiParams, clientConfig);
-    this.organizations.keyvaluemaps.entries.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.organizations.keyvaluemaps.entries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'GET', apiParams, clientConfig);
-
-    this.organizations.securityFeedback = {};
-    this.organizations.securityFeedback.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityFeedback', 'POST', apiParams, clientConfig);
-    this.organizations.securityFeedback.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.securityFeedback.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityFeedback', 'GET', apiParams, clientConfig);
-    this.organizations.securityFeedback.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.securityFeedback.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.hostSecurityReports = {};
+    this.organizations.hostSecurityReports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostSecurityReports', 'POST', apiParams, clientConfig);
+    this.organizations.hostSecurityReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.hostSecurityReports.getResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.hostSecurityReports.getResultView = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.hostSecurityReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostSecurityReports', 'GET', apiParams, clientConfig);
 
     this.organizations.securityProfiles = {};
     this.organizations.securityProfiles.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityProfiles', 'POST', apiParams, clientConfig);
@@ -527,13 +511,6 @@ class Apigee {
     this.organizations.securityProfiles.environments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/environments', 'POST', apiParams, clientConfig);
     this.organizations.securityProfiles.environments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.organizations.securityProfiles.environments.computeEnvironmentScores = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+profileEnvironment}:computeEnvironmentScores', 'POST', apiParams, clientConfig);
-
-    this.organizations.hostSecurityReports = {};
-    this.organizations.hostSecurityReports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostSecurityReports', 'POST', apiParams, clientConfig);
-    this.organizations.hostSecurityReports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.hostSecurityReports.getResult = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.hostSecurityReports.getResultView = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.hostSecurityReports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostSecurityReports', 'GET', apiParams, clientConfig);
 
     this.organizations.securityAssessmentResults = {};
     this.organizations.securityAssessmentResults.batchCompute = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:batchCompute', 'POST', apiParams, clientConfig);
@@ -552,39 +529,62 @@ class Apigee {
     this.organizations.securityMonitoringConditions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.securityMonitoringConditions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.organizations.sharedflows = {};
-    this.organizations.sharedflows.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sharedflows', 'GET', apiParams, clientConfig);
-    this.organizations.sharedflows.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.sharedflows.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.sharedflows.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sharedflows', 'POST', apiParams, clientConfig);
-    this.organizations.sharedflows.move = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:move', 'POST', apiParams, clientConfig);
+    this.organizations.securityFeedback = {};
+    this.organizations.securityFeedback.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityFeedback', 'POST', apiParams, clientConfig);
+    this.organizations.securityFeedback.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.securityFeedback.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/securityFeedback', 'GET', apiParams, clientConfig);
+    this.organizations.securityFeedback.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.securityFeedback.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
-    this.organizations.sharedflows.deployments = {};
-    this.organizations.sharedflows.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+    this.organizations.keyvaluemaps = {};
+    this.organizations.keyvaluemaps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/keyvaluemaps', 'POST', apiParams, clientConfig);
+    this.organizations.keyvaluemaps.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.keyvaluemaps.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.keyvaluemaps.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
 
-    this.organizations.sharedflows.revisions = {};
-    this.organizations.sharedflows.revisions.updateSharedFlowRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'POST', apiParams, clientConfig);
-    this.organizations.sharedflows.revisions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.sharedflows.revisions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.keyvaluemaps.entries = {};
+    this.organizations.keyvaluemaps.entries.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.keyvaluemaps.entries.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.keyvaluemaps.entries.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'POST', apiParams, clientConfig);
+    this.organizations.keyvaluemaps.entries.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.organizations.keyvaluemaps.entries.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/entries', 'GET', apiParams, clientConfig);
 
-    this.organizations.sharedflows.revisions.deployments = {};
-    this.organizations.sharedflows.revisions.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+    this.organizations.sites = {};
 
-    this.organizations.spaces = {};
-    this.organizations.spaces.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spaces', 'POST', apiParams, clientConfig);
-    this.organizations.spaces.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.organizations.spaces.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.organizations.spaces.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.spaces.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/spaces', 'GET', apiParams, clientConfig);
-    this.organizations.spaces.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.organizations.spaces.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.organizations.spaces.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.organizations.sites.apicategories = {};
+    this.organizations.sites.apicategories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apicategories', 'POST', apiParams, clientConfig);
+    this.organizations.sites.apicategories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.sites.apicategories.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.sites.apicategories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.sites.apicategories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apicategories', 'GET', apiParams, clientConfig);
 
-    this.organizations.hostStats = {};
-    this.organizations.hostStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.sites.apidocs = {};
+    this.organizations.sites.apidocs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.sites.apidocs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apidocs', 'POST', apiParams, clientConfig);
+    this.organizations.sites.apidocs.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.organizations.sites.apidocs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apidocs', 'GET', apiParams, clientConfig);
+    this.organizations.sites.apidocs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.organizations.sites.apidocs.updateDocumentation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.sites.apidocs.getDocumentation = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.organizations.optimizedHostStats = {};
-    this.organizations.optimizedHostStats.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.endpointAttachments = {};
+    this.organizations.endpointAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endpointAttachments', 'POST', apiParams, clientConfig);
+    this.organizations.endpointAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.endpointAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/endpointAttachments', 'GET', apiParams, clientConfig);
+    this.organizations.endpointAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.organizations.dnsZones = {};
+    this.organizations.dnsZones.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsZones', 'POST', apiParams, clientConfig);
+    this.organizations.dnsZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.dnsZones.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dnsZones', 'GET', apiParams, clientConfig);
+    this.organizations.dnsZones.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.organizations.apimServiceExtensions = {};
+    this.organizations.apimServiceExtensions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apimServiceExtensions', 'POST', apiParams, clientConfig);
+    this.organizations.apimServiceExtensions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.apimServiceExtensions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apimServiceExtensions', 'GET', apiParams, clientConfig);
+    this.organizations.apimServiceExtensions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.organizations.apimServiceExtensions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects = {};
     this.projects.provisionOrganization = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+project}:provisionOrganization', 'POST', apiParams, clientConfig);
