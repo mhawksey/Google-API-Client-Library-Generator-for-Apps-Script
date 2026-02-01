@@ -22,19 +22,19 @@ class Adsenseplatform {
 
     this.platforms.accounts = {};
     this.platforms.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts:lookup', 'GET', apiParams, clientConfig);
-    this.platforms.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'POST', apiParams, clientConfig);
-    this.platforms.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'GET', apiParams, clientConfig);
     this.platforms.accounts.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
+    this.platforms.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'GET', apiParams, clientConfig);
+    this.platforms.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'POST', apiParams, clientConfig);
     this.platforms.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.platforms.accounts.events = {};
     this.platforms.accounts.events.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/events', 'POST', apiParams, clientConfig);
 
     this.platforms.accounts.sites = {};
-    this.platforms.accounts.sites.requestReview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:requestReview', 'POST', apiParams, clientConfig);
-    this.platforms.accounts.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.platforms.accounts.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sites', 'GET', apiParams, clientConfig);
     this.platforms.accounts.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sites', 'POST', apiParams, clientConfig);
+    this.platforms.accounts.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.platforms.accounts.sites.requestReview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:requestReview', 'POST', apiParams, clientConfig);
+    this.platforms.accounts.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sites', 'GET', apiParams, clientConfig);
     this.platforms.accounts.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
