@@ -19,18 +19,18 @@ class Analyticsdata {
 
 
     this.properties = {};
-    this.properties.getMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
-    this.properties.runPivotReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:runPivotReport', 'POST', apiParams, clientConfig);
     this.properties.runRealtimeReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:runRealtimeReport', 'POST', apiParams, clientConfig);
-    this.properties.batchRunPivotReports = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:batchRunPivotReports', 'POST', apiParams, clientConfig);
-    this.properties.batchRunReports = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:batchRunReports', 'POST', apiParams, clientConfig);
     this.properties.runReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:runReport', 'POST', apiParams, clientConfig);
+    this.properties.getMetadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.properties.batchRunReports = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:batchRunReports', 'POST', apiParams, clientConfig);
+    this.properties.batchRunPivotReports = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:batchRunPivotReports', 'POST', apiParams, clientConfig);
+    this.properties.runPivotReport = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:runPivotReport', 'POST', apiParams, clientConfig);
     this.properties.checkCompatibility = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+property}:checkCompatibility', 'POST', apiParams, clientConfig);
 
     this.properties.audienceExports = {};
-    this.properties.audienceExports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/audienceExports', 'POST', apiParams, clientConfig);
     this.properties.audienceExports.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
     this.properties.audienceExports.query = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:query', 'POST', apiParams, clientConfig);
+    this.properties.audienceExports.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/audienceExports', 'POST', apiParams, clientConfig);
     this.properties.audienceExports.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/audienceExports', 'GET', apiParams, clientConfig);
   }
 
