@@ -21,49 +21,49 @@ class Androiddeviceprovisioning {
     this.operations = {};
     this.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
+    this.customers = {};
+    this.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/customers', 'GET', apiParams, clientConfig);
+
+    this.customers.devices = {};
+    this.customers.devices.applyConfiguration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:applyConfiguration', 'POST', apiParams, clientConfig);
+    this.customers.devices.removeConfiguration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:removeConfiguration', 'POST', apiParams, clientConfig);
+    this.customers.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices', 'GET', apiParams, clientConfig);
+    this.customers.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.devices.unclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:unclaim', 'POST', apiParams, clientConfig);
+
+    this.customers.configurations = {};
+    this.customers.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.customers.configurations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.customers.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'GET', apiParams, clientConfig);
+    this.customers.configurations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'POST', apiParams, clientConfig);
+    this.customers.configurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.customers.dpcs = {};
+    this.customers.dpcs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dpcs', 'GET', apiParams, clientConfig);
+
     this.partners = {};
-
-    this.partners.vendors = {};
-    this.partners.vendors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vendors', 'GET', apiParams, clientConfig);
-
-    this.partners.vendors.customers = {};
-    this.partners.vendors.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customers', 'GET', apiParams, clientConfig);
 
     this.partners.customers = {};
     this.partners.customers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customers', 'POST', apiParams, clientConfig);
     this.partners.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/customers', 'GET', apiParams, clientConfig);
 
     this.partners.devices = {};
-    this.partners.devices.claim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:claim', 'POST', apiParams, clientConfig);
-    this.partners.devices.unclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:unclaim', 'POST', apiParams, clientConfig);
+    this.partners.devices.claimAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:claimAsync', 'POST', apiParams, clientConfig);
+    this.partners.devices.updateMetadataAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:updateMetadataAsync', 'POST', apiParams, clientConfig);
+    this.partners.devices.unclaimAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:unclaimAsync', 'POST', apiParams, clientConfig);
     this.partners.devices.findByIdentifier = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:findByIdentifier', 'POST', apiParams, clientConfig);
+    this.partners.devices.metadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+metadataOwnerId}/devices/{+deviceId}/metadata', 'POST', apiParams, clientConfig);
+    this.partners.devices.unclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:unclaim', 'POST', apiParams, clientConfig);
+    this.partners.devices.claim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:claim', 'POST', apiParams, clientConfig);
+    this.partners.devices.getSimLockState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:getSimLockState', 'POST', apiParams, clientConfig);
     this.partners.devices.findByOwner = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:findByOwner', 'POST', apiParams, clientConfig);
     this.partners.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.partners.devices.getSimLockState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:getSimLockState', 'POST', apiParams, clientConfig);
-    this.partners.devices.metadata = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+metadataOwnerId}/devices/{+deviceId}/metadata', 'POST', apiParams, clientConfig);
-    this.partners.devices.claimAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:claimAsync', 'POST', apiParams, clientConfig);
-    this.partners.devices.unclaimAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:unclaimAsync', 'POST', apiParams, clientConfig);
-    this.partners.devices.updateMetadataAsync = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/partners/{+partnerId}/devices:updateMetadataAsync', 'POST', apiParams, clientConfig);
 
-    this.customers = {};
-    this.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/customers', 'GET', apiParams, clientConfig);
+    this.partners.vendors = {};
+    this.partners.vendors.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/vendors', 'GET', apiParams, clientConfig);
 
-    this.customers.configurations = {};
-    this.customers.configurations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'POST', apiParams, clientConfig);
-    this.customers.configurations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.customers.configurations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.customers.configurations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.customers.configurations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/configurations', 'GET', apiParams, clientConfig);
-
-    this.customers.dpcs = {};
-    this.customers.dpcs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dpcs', 'GET', apiParams, clientConfig);
-
-    this.customers.devices = {};
-    this.customers.devices.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices', 'GET', apiParams, clientConfig);
-    this.customers.devices.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.customers.devices.unclaim = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:unclaim', 'POST', apiParams, clientConfig);
-    this.customers.devices.applyConfiguration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:applyConfiguration', 'POST', apiParams, clientConfig);
-    this.customers.devices.removeConfiguration = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/devices:removeConfiguration', 'POST', apiParams, clientConfig);
+    this.partners.vendors.customers = {};
+    this.partners.vendors.customers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/customers', 'GET', apiParams, clientConfig);
   }
 
 /**
