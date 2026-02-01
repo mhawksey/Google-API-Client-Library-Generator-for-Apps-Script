@@ -58,6 +58,16 @@ class AdminDatatransfer {
     this.applications = {};
 
     /**
+     * Retrieves information about an application for the given application ID.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationId - (Required) ID of the application resource to be retrieved.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.applications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/applications/{applicationId}', 'GET', apiParams, clientConfig);
+
+    /**
      * Lists the applications available for data transfer for a customer.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.customerId - Immutable ID of the Google Workspace account.
@@ -68,16 +78,6 @@ class AdminDatatransfer {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.applications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/applications', 'GET', apiParams, clientConfig);
-
-    /**
-     * Retrieves information about an application for the given application ID.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationId - (Required) ID of the application resource to be retrieved.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.applications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/applications/{applicationId}', 'GET', apiParams, clientConfig);
   }
 
 /**
