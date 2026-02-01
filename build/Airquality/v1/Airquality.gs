@@ -18,10 +18,8 @@ class Airquality {
     this._servicePath = '';
 
 
-    this.mapTypes = {};
-
-    this.mapTypes.heatmapTiles = {};
-    this.mapTypes.heatmapTiles.lookupHeatmapTile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}', 'GET', apiParams, clientConfig);
+    this.history = {};
+    this.history.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/history:lookup', 'POST', apiParams, clientConfig);
 
     this.forecast = {};
     this.forecast.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forecast:lookup', 'POST', apiParams, clientConfig);
@@ -29,8 +27,10 @@ class Airquality {
     this.currentConditions = {};
     this.currentConditions.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/currentConditions:lookup', 'POST', apiParams, clientConfig);
 
-    this.history = {};
-    this.history.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/history:lookup', 'POST', apiParams, clientConfig);
+    this.mapTypes = {};
+
+    this.mapTypes.heatmapTiles = {};
+    this.mapTypes.heatmapTiles.lookupHeatmapTile = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/mapTypes/{mapType}/heatmapTiles/{zoom}/{x}/{y}', 'GET', apiParams, clientConfig);
   }
 
 /**
