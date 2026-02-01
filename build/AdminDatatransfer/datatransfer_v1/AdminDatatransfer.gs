@@ -24,8 +24,8 @@ class AdminDatatransfer {
     this.transfers.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/transfers/{dataTransferId}', 'GET', apiParams, clientConfig);
 
     this.applications = {};
-    this.applications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/applications', 'GET', apiParams, clientConfig);
     this.applications.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/applications/{applicationId}', 'GET', apiParams, clientConfig);
+    this.applications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('admin/datatransfer/v1/applications', 'GET', apiParams, clientConfig);
   }
 
 /**
