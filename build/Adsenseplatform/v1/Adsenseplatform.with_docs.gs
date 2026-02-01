@@ -34,15 +34,15 @@ class Adsenseplatform {
     this.platforms.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts:lookup', 'GET', apiParams, clientConfig);
 
     /**
-     * Creates a sub-account.
+     * Closes a sub-account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Platform to create an account for. Format: platforms/{platform}
+     * @param {string} apiParams.name - (Required) Required. Account to close. Format: platforms/{platform}/accounts/{account_id}
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.platforms.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'POST', apiParams, clientConfig);
+    this.platforms.accounts.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
 
     /**
      * Lists a partial view of sub-accounts for a specific parent account.
@@ -57,15 +57,15 @@ class Adsenseplatform {
     this.platforms.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'GET', apiParams, clientConfig);
 
     /**
-     * Closes a sub-account.
+     * Creates a sub-account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Account to close. Format: platforms/{platform}/accounts/{account_id}
+     * @param {string} apiParams.parent - (Required) Required. Platform to create an account for. Format: platforms/{platform}
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.platforms.accounts.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
+    this.platforms.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'POST', apiParams, clientConfig);
 
     /**
      * Gets information about the selected sub-account.
@@ -93,14 +93,15 @@ class Adsenseplatform {
     this.platforms.accounts.sites = {};
 
     /**
-     * Requests the review of a site. The site should be in REQUIRES_REVIEW or NEEDS_ATTENTION state. Note: Make sure you place an [ad tag](https://developers.google.com/adsense/platforms/direct/ad-tags) on your site before requesting a review.
+     * Creates a site for a specified account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the site to submit for review. Format: platforms/{platform}/accounts/{account}/sites/{site}
+     * @param {string} apiParams.parent - (Required) Required. Account to create site. Format: platforms/{platform}/accounts/{account_id}
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.platforms.accounts.sites.requestReview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:requestReview', 'POST', apiParams, clientConfig);
+    this.platforms.accounts.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sites', 'POST', apiParams, clientConfig);
 
     /**
      * Gets a site from a specified sub-account.
@@ -113,6 +114,16 @@ class Adsenseplatform {
     this.platforms.accounts.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
+     * Requests the review of a site. The site should be in REQUIRES_REVIEW or NEEDS_ATTENTION state. Note: Make sure you place an [ad tag](https://developers.google.com/adsense/platforms/direct/ad-tags) on your site before requesting a review.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the site to submit for review. Format: platforms/{platform}/accounts/{account}/sites/{site}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.platforms.accounts.sites.requestReview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:requestReview', 'POST', apiParams, clientConfig);
+
+    /**
      * Lists sites for a specific account.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.pageSize - The maximum number of sites to include in the response, used for paging. If unspecified, at most 10000 sites will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
@@ -123,17 +134,6 @@ class Adsenseplatform {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.platforms.accounts.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sites', 'GET', apiParams, clientConfig);
-
-    /**
-     * Creates a site for a specified account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Account to create site. Format: platforms/{platform}/accounts/{account_id}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.platforms.accounts.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sites', 'POST', apiParams, clientConfig);
 
     /**
      * Deletes a site from a specified account.
