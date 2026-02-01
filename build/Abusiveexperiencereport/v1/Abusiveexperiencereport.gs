@@ -18,11 +18,11 @@ class Abusiveexperiencereport {
     this._servicePath = '';
 
 
-    this.sites = {};
-    this.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
     this.violatingSites = {};
     this.violatingSites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/violatingSites', 'GET', apiParams, clientConfig);
+
+    this.sites = {};
+    this.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
   }
 
 /**
