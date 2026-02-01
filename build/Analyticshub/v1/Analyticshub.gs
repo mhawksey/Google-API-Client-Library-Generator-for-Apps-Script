@@ -22,47 +22,47 @@ class Analyticshub {
 
     this.projects.locations = {};
 
-    this.projects.locations.dataExchanges = {};
-    this.projects.locations.dataExchanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataExchanges', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataExchanges', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:subscribe', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listSubscriptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listSubscriptions', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.subscriptions = {};
+    this.projects.locations.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.subscriptions.refresh = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:refresh', 'POST', apiParams, clientConfig);
+    this.projects.locations.subscriptions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.subscriptions.revoke = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:revoke', 'POST', apiParams, clientConfig);
+    this.projects.locations.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'GET', apiParams, clientConfig);
+    this.projects.locations.subscriptions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.dataExchanges.listings = {};
-    this.projects.locations.dataExchanges.listings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/listings', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/listings', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listings.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:subscribe', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listings.listSubscriptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listSubscriptions', 'GET', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listings.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listings.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.listings.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges = {};
+    this.projects.locations.dataExchanges.listSubscriptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listSubscriptions', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:subscribe', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataExchanges', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dataExchanges', 'GET', apiParams, clientConfig);
 
     this.projects.locations.dataExchanges.queryTemplates = {};
-    this.projects.locations.dataExchanges.queryTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/queryTemplates', 'POST', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.queryTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.queryTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.dataExchanges.queryTemplates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/queryTemplates', 'GET', apiParams, clientConfig);
     this.projects.locations.dataExchanges.queryTemplates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.queryTemplates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.dataExchanges.queryTemplates.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:submit', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.queryTemplates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.queryTemplates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/queryTemplates', 'POST', apiParams, clientConfig);
     this.projects.locations.dataExchanges.queryTemplates.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.queryTemplates.submit = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:submit', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.subscriptions = {};
-    this.projects.locations.subscriptions.refresh = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:refresh', 'POST', apiParams, clientConfig);
-    this.projects.locations.subscriptions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.subscriptions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/subscriptions', 'GET', apiParams, clientConfig);
-    this.projects.locations.subscriptions.revoke = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:revoke', 'POST', apiParams, clientConfig);
-    this.projects.locations.subscriptions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.subscriptions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.subscriptions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings = {};
+    this.projects.locations.dataExchanges.listings.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/listings', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings.subscribe = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:subscribe', 'POST', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings.listSubscriptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:listSubscriptions', 'GET', apiParams, clientConfig);
+    this.projects.locations.dataExchanges.listings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/listings', 'GET', apiParams, clientConfig);
 
     this.organizations = {};
 
