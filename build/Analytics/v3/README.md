@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Analytics API (version: v3)
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:22:05 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:22:05 GMT
+- **Last Checked:** Sun, 01 Feb 2026 00:22:13 GMT
+- **Last Modified:** Sun, 01 Feb 2026 00:22:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:11:49 GMT
 
 
@@ -14,57 +14,653 @@ Auto-generated client library for using the **Google Analytics API (version: v3)
 
 ## API Reference
 
+### `data`
+
+### `data.realtime`
+
+#### `data.realtime.get()`
+
+Returns real time data for a view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.metrics` | `string` | Yes | A comma-separated list of real time metrics. E.g., 'rt:activeUsers'. At least one metric must be specified. |
+| `params.ids` | `string` | Yes | Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID. |
+| `params.filters` | `string` | No | A comma-separated list of dimension or metric filters to be applied to real time data. |
+| `params.max-results` | `integer` | No | The maximum number of entries to include in this feed. |
+| `params.dimensions` | `string` | No | A comma-separated list of real time dimensions. E.g., 'rt:medium,rt:city'. |
+| `params.sort` | `string` | No | A comma-separated list of dimensions or metrics that determine the sort order for real time data. |
+
+### `data.mcf`
+
+#### `data.mcf.get()`
+
+Returns Analytics Multi-Channel Funnels data for a view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.max-results` | `integer` | No | The maximum number of entries to include in this feed. |
+| `params.metrics` | `string` | Yes | A comma-separated list of Multi-Channel Funnels metrics. E.g., 'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must be specified. |
+| `params.filters` | `string` | No | A comma-separated list of dimension or metric filters to be applied to the Analytics data. |
+| `params.end-date` | `string` | Yes | End date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo. |
+| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.samplingLevel` | `string` | No | The desired sampling level. |
+| `params.sort` | `string` | No | A comma-separated list of dimensions or metrics that determine the sort order for the Analytics data. |
+| `params.ids` | `string` | Yes | Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID. |
+| `params.start-date` | `string` | Yes | Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo. |
+| `params.dimensions` | `string` | No | A comma-separated list of Multi-Channel Funnels dimensions. E.g., 'mcf:source,mcf:medium'. |
+
+### `data.ga`
+
+#### `data.ga.get()`
+
+Returns Analytics data for a view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.max-results` | `integer` | No | The maximum number of entries to include in this feed. |
+| `params.end-date` | `string` | Yes | End date for fetching Analytics data. Request can should specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is yesterday. |
+| `params.samplingLevel` | `string` | No | The desired sampling level. |
+| `params.filters` | `string` | No | A comma-separated list of dimension or metric filters to be applied to Analytics data. |
+| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.output` | `string` | No | The selected format for the response. Default format is JSON. |
+| `params.dimensions` | `string` | No | A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'. |
+| `params.segment` | `string` | No | An Analytics segment to be applied to data. |
+| `params.start-date` | `string` | Yes | Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo. |
+| `params.include-empty-rows` | `boolean` | No | The response will include empty rows if this parameter is set to true, the default is true |
+| `params.sort` | `string` | No | A comma-separated list of dimensions or metrics that determine the sort order for Analytics data. |
+| `params.metrics` | `string` | Yes | A comma-separated list of Analytics metrics. E.g., 'ga:sessions,ga:pageviews'. At least one metric must be specified. |
+| `params.ids` | `string` | Yes | Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID. |
+
+### `provisioning`
+
+#### `provisioning.createAccountTree()`
+
+Provision account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `provisioning.createAccountTicket()`
+
+Creates an account ticket.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `metadata`
+
+### `metadata.columns`
+
+#### `metadata.columns.list()`
+
+Lists all columns for a report type
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.reportType` | `string` | Yes | Report type. Allowed Values: 'ga'. Where 'ga' corresponds to the Core Reporting API |
+
+### `userDeletion`
+
+### `userDeletion.userDeletionRequest`
+
+#### `userDeletion.userDeletionRequest.upsert()`
+
+Insert or update a user deletion requests.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `management`
 
-### `management.profileUserLinks`
+### `management.accountSummaries`
 
-#### `management.profileUserLinks.insert()`
+#### `management.accountSummaries.list()`
 
-Adds a new user to the given view (profile).
+Lists account summaries (lightweight tree comprised of accounts/properties/profiles) to which the user has access.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to create the user link for. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to create the user link for. |
-| `params.webPropertyId` | `string` | Yes | Web Property ID to create the user link for. |
+| `params.max-results` | `integer` | No | The maximum number of account summaries to include in this response, where the largest acceptable value is 1000. |
+| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+
+### `management.webPropertyAdWordsLinks`
+
+#### `management.webPropertyAdWordsLinks.delete()`
+
+Deletes a web property-Google Ads link.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
+| `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property Google Ads link ID. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to delete the Google Ads link for. |
+
+#### `management.webPropertyAdWordsLinks.patch()`
+
+Updates an existing webProperty-Google Ads link. This method supports patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads link for. |
+| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
+| `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property-Google Ads link ID. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `management.profileUserLinks.list()`
+#### `management.webPropertyAdWordsLinks.update()`
 
-Lists profile-user links for a given view (profile).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web Property ID which the given view (profile) belongs to. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve the profile-user links for. Can either be a specific profile ID or '~all', which refers to all the profiles that user has access to. |
-| `params.accountId` | `string` | Yes | Account ID which the given view (profile) belongs to. |
-| `params.start-index` | `integer` | No | An index of the first profile-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.max-results` | `integer` | No | The maximum number of profile-user links to include in this response. |
-
-#### `management.profileUserLinks.update()`
-
-Updates permissions for an existing user on the given view (profile).
+Updates an existing webProperty-Google Ads link.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web Property ID to update the user link for. |
-| `params.profileId` | `string` | Yes | View (Profile ID) to update the user link for. |
-| `params.accountId` | `string` | Yes | Account ID to update the user link for. |
-| `params.linkId` | `string` | Yes | Link ID to update the user link for. |
+| `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property-Google Ads link ID. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads link for. |
+| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `management.profileUserLinks.delete()`
+#### `management.webPropertyAdWordsLinks.get()`
 
-Removes a user from the given view (profile).
+Returns a web property-Google Ads link to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads link for. |
+| `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property-Google Ads link ID. |
+
+#### `management.webPropertyAdWordsLinks.insert()`
+
+Creates a webProperty-Google Ads link.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | ID of the Google Analytics account to create the link for. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to create the link for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.webPropertyAdWordsLinks.list()`
+
+Lists webProperty-Google Ads links for a given web property.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.start-index` | `integer` | No | An index of the first webProperty-Google Ads link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads links for. |
+| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
+| `params.max-results` | `integer` | No | The maximum number of webProperty-Google Ads links to include in this response. |
+
+### `management.webpropertyUserLinks`
+
+#### `management.webpropertyUserLinks.list()`
+
+Lists webProperty-user links for a given web property.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web Property ID for the webProperty-user links to retrieve. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to. |
+| `params.accountId` | `string` | Yes | Account ID which the given web property belongs to. |
+| `params.max-results` | `integer` | No | The maximum number of webProperty-user Links to include in this response. |
+| `params.start-index` | `integer` | No | An index of the first webProperty-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+
+#### `management.webpropertyUserLinks.update()`
+
+Updates permissions for an existing user on the given web property.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID to update the account-user link for. |
+| `params.linkId` | `string` | Yes | Link ID to update the account-user link for. |
+| `params.accountId` | `string` | Yes | Account ID to update the account-user link for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.webpropertyUserLinks.delete()`
+
+Removes a user from the given web property.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.webPropertyId` | `string` | Yes | Web Property ID to delete the user link for. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to delete the user link for. |
 | `params.linkId` | `string` | Yes | Link ID to delete the user link for. |
 | `params.accountId` | `string` | Yes | Account ID to delete the user link for. |
 
+#### `management.webpropertyUserLinks.insert()`
+
+Adds a new user to the given web property.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web Property ID to create the user link for. |
+| `params.accountId` | `string` | Yes | Account ID to create the user link for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `management.experiments`
+
+#### `management.experiments.get()`
+
+Returns an experiment to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the experiment for. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve the experiment for. |
+| `params.experimentId` | `string` | Yes | Experiment ID to retrieve the experiment for. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve the experiment for. |
+
+#### `management.experiments.delete()`
+
+Delete an experiment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.experimentId` | `string` | Yes | ID of the experiment to delete |
+| `params.webPropertyId` | `string` | Yes | Web property ID to which the experiment belongs |
+| `params.accountId` | `string` | Yes | Account ID to which the experiment belongs |
+| `params.profileId` | `string` | Yes | View (Profile) ID to which the experiment belongs |
+
+#### `management.experiments.list()`
+
+Lists experiments to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.max-results` | `integer` | No | The maximum number of experiments to include in this response. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve experiments for. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve experiments for. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve experiments for. |
+| `params.start-index` | `integer` | No | An index of the first experiment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+
+#### `management.experiments.patch()`
+
+Update an existing experiment. This method supports patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.profileId` | `string` | Yes | View (Profile) ID of the experiment to update. |
+| `params.accountId` | `string` | Yes | Account ID of the experiment to update. |
+| `params.webPropertyId` | `string` | Yes | Web property ID of the experiment to update. |
+| `params.experimentId` | `string` | Yes | Experiment ID of the experiment to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.experiments.update()`
+
+Update an existing experiment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID of the experiment to update. |
+| `params.accountId` | `string` | Yes | Account ID of the experiment to update. |
+| `params.profileId` | `string` | Yes | View (Profile) ID of the experiment to update. |
+| `params.experimentId` | `string` | Yes | Experiment ID of the experiment to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.experiments.insert()`
+
+Create a new experiment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to create the experiment for. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to create the experiment for. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to create the experiment for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `management.profiles`
+
+#### `management.profiles.get()`
+
+Gets a view (profile) to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the view (profile) for. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve the view (profile) for. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve the view (profile) for. |
+
+#### `management.profiles.list()`
+
+Lists views (profiles) to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.webPropertyId` | `string` | Yes | Web property ID for the views (profiles) to retrieve. Can either be a specific web property ID or '~all', which refers to all the web properties to which the user has access. |
+| `params.max-results` | `integer` | No | The maximum number of views (profiles) to include in this response. |
+| `params.accountId` | `string` | Yes | Account ID for the view (profiles) to retrieve. Can either be a specific account ID or '~all', which refers to all the accounts to which the user has access. |
+
+#### `management.profiles.delete()`
+
+Deletes a view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID to delete the view (profile) for. |
+| `params.profileId` | `string` | Yes | ID of the view (profile) to be deleted. |
+| `params.accountId` | `string` | Yes | Account ID to delete the view (profile) for. |
+
+#### `management.profiles.insert()`
+
+Create a new view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID to create the view (profile) for. |
+| `params.accountId` | `string` | Yes | Account ID to create the view (profile) for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.profiles.update()`
+
+Updates an existing view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to which the view (profile) belongs |
+| `params.profileId` | `string` | Yes | ID of the view (profile) to be updated. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to which the view (profile) belongs |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.profiles.patch()`
+
+Updates an existing view (profile). This method supports patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.profileId` | `string` | Yes | ID of the view (profile) to be updated. |
+| `params.accountId` | `string` | Yes | Account ID to which the view (profile) belongs |
+| `params.webPropertyId` | `string` | Yes | Web property ID to which the view (profile) belongs |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `management.filters`
+
+#### `management.filters.delete()`
+
+Delete a filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filterId` | `string` | Yes | ID of the filter to be deleted. |
+| `params.accountId` | `string` | Yes | Account ID to delete the filter for. |
+
+#### `management.filters.list()`
+
+Lists all filters for an account
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve filters for. |
+| `params.max-results` | `integer` | No | The maximum number of filters to include in this response. |
+
+#### `management.filters.insert()`
+
+Create a new filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to create filter for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.filters.get()`
+
+Returns filters to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to retrieve filters for. |
+| `params.filterId` | `string` | Yes | Filter ID to retrieve filters for. |
+
+#### `management.filters.patch()`
+
+Updates an existing filter. This method supports patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to which the filter belongs. |
+| `params.filterId` | `string` | Yes | ID of the filter to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.filters.update()`
+
+Updates an existing filter.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filterId` | `string` | Yes | ID of the filter to be updated. |
+| `params.accountId` | `string` | Yes | Account ID to which the filter belongs. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `management.webproperties`
+
+#### `management.webproperties.patch()`
+
+Updates an existing web property. This method supports patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID |
+| `params.accountId` | `string` | Yes | Account ID to which the web property belongs |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.webproperties.insert()`
+
+Create a new property if the account has fewer than 20 properties. Web properties are visible in the Google Analytics interface only if they have at least one profile.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to create the web property for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.webproperties.list()`
+
+Lists web properties to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.max-results` | `integer` | No | The maximum number of web properties to include in this response. |
+| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve web properties for. Can either be a specific account ID or '~all', which refers to all the accounts that user has access to. |
+
+#### `management.webproperties.update()`
+
+Updates an existing web property.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to which the web property belongs |
+| `params.webPropertyId` | `string` | Yes | Web property ID |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.webproperties.get()`
+
+Gets a web property to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to retrieve the web property for. |
+| `params.webPropertyId` | `string` | Yes | ID to retrieve the web property for. |
+
+### `management.unsampledReports`
+
+#### `management.unsampledReports.insert()`
+
+Create a new unsampled report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID to create the unsampled report for. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to create the unsampled report for. |
+| `params.accountId` | `string` | Yes | Account ID to create the unsampled report for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.unsampledReports.get()`
+
+Returns a single unsampled report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve unsampled report for. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve unsampled reports for. |
+| `params.unsampledReportId` | `string` | Yes | ID of the unsampled report to retrieve. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve unsampled report for. |
+
+#### `management.unsampledReports.list()`
+
+Lists unsampled reports to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve unsampled reports for. Must be a specific web property ID, ~all is not supported. |
+| `params.start-index` | `integer` | No | An index of the first unsampled report to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.max-results` | `integer` | No | The maximum number of unsampled reports to include in this response. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve unsampled reports for. Must be a specific view (profile) ID, ~all is not supported. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve unsampled reports for. Must be a specific account ID, ~all is not supported. |
+
+#### `management.unsampledReports.delete()`
+
+Deletes an unsampled report.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to delete the unsampled report for. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to delete the unsampled reports for. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to delete the unsampled report for. |
+| `params.unsampledReportId` | `string` | Yes | ID of the unsampled report to be deleted. |
+
+### `management.accountUserLinks`
+
+#### `management.accountUserLinks.delete()`
+
+Removes a user from the given account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to delete the user link for. |
+| `params.linkId` | `string` | Yes | Link ID to delete the user link for. |
+
+#### `management.accountUserLinks.update()`
+
+Updates permissions for an existing user on the given account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.linkId` | `string` | Yes | Link ID to update the account-user link for. |
+| `params.accountId` | `string` | Yes | Account ID to update the account-user link for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.accountUserLinks.list()`
+
+Lists account-user links for a given account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.max-results` | `integer` | No | The maximum number of account-user links to include in this response. |
+| `params.start-index` | `integer` | No | An index of the first account-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve the user links for. |
+
+#### `management.accountUserLinks.insert()`
+
+Adds a new user to the given account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to create the user link for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `management.customDimensions`
+
+#### `management.customDimensions.update()`
+
+Updates an existing custom dimension.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customDimensionId` | `string` | Yes | Custom dimension ID for the custom dimension to update. |
+| `params.accountId` | `string` | Yes | Account ID for the custom dimension to update. |
+| `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set. |
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.customDimensions.list()`
+
+Lists custom dimensions to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.max-results` | `integer` | No | The maximum number of custom dimensions to include in this response. |
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimensions to retrieve. |
+| `params.accountId` | `string` | Yes | Account ID for the custom dimensions to retrieve. |
+| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+
+#### `management.customDimensions.insert()`
+
+Create a new custom dimension.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to create. |
+| `params.accountId` | `string` | Yes | Account ID for the custom dimension to create. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.customDimensions.patch()`
+
+Updates an existing custom dimension. This method supports patch semantics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customDimensionId` | `string` | Yes | Custom dimension ID for the custom dimension to update. |
+| `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set. |
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to update. |
+| `params.accountId` | `string` | Yes | Account ID for the custom dimension to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.customDimensions.get()`
+
+Get a custom dimension to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customDimensionId` | `string` | Yes | The ID of the custom dimension to retrieve. |
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to retrieve. |
+| `params.accountId` | `string` | Yes | Account ID for the custom dimension to retrieve. |
+
+### `management.accounts`
+
+#### `management.accounts.list()`
+
+Lists all accounts to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.start-index` | `integer` | No | An index of the first account to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.max-results` | `integer` | No | The maximum number of accounts to include in this response. |
+
+### `management.customDataSources`
+
+#### `management.customDataSources.list()`
+
+List custom data sources to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.start-index` | `integer` | No | A 1-based index of the first custom data source to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.max-results` | `integer` | No | The maximum number of custom data sources to include in this response. |
+| `params.webPropertyId` | `string` | Yes | Web property Id for the custom data sources to retrieve. |
+| `params.accountId` | `string` | Yes | Account Id for the custom data sources to retrieve. |
+
 ### `management.uploads`
+
+#### `management.uploads.get()`
+
+List uploads to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property Id for the upload to retrieve. |
+| `params.accountId` | `string` | Yes | Account Id for the upload to retrieve. |
+| `params.customDataSourceId` | `string` | Yes | Custom data source Id for upload to retrieve. |
+| `params.uploadId` | `string` | Yes | Upload Id to retrieve. |
 
 #### `management.uploads.deleteUploadData()`
 
@@ -83,11 +679,11 @@ List uploads to which the user has access.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.start-index` | `integer` | No | A 1-based index of the first upload to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.customDataSourceId` | `string` | Yes | Custom data source Id for uploads to retrieve. |
-| `params.webPropertyId` | `string` | Yes | Web property Id for the uploads to retrieve. |
-| `params.max-results` | `integer` | No | The maximum number of uploads to include in this response. |
 | `params.accountId` | `string` | Yes | Account Id for the uploads to retrieve. |
+| `params.start-index` | `integer` | No | A 1-based index of the first upload to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.webPropertyId` | `string` | Yes | Web property Id for the uploads to retrieve. |
+| `params.customDataSourceId` | `string` | Yes | Custom data source Id for uploads to retrieve. |
+| `params.max-results` | `integer` | No | The maximum number of uploads to include in this response. |
 
 #### `management.uploads.uploadData()`
 
@@ -95,143 +691,9 @@ Upload data for a custom data source.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property UA-string associated with the upload. |
-| `params.accountId` | `string` | Yes | Account Id associated with the upload. |
 | `params.customDataSourceId` | `string` | Yes | Custom data source Id to which the data being uploaded belongs. |
-
-#### `management.uploads.get()`
-
-List uploads to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property Id for the upload to retrieve. |
-| `params.accountId` | `string` | Yes | Account Id for the upload to retrieve. |
-| `params.customDataSourceId` | `string` | Yes | Custom data source Id for upload to retrieve. |
-| `params.uploadId` | `string` | Yes | Upload Id to retrieve. |
-
-### `management.unsampledReports`
-
-#### `management.unsampledReports.get()`
-
-Returns a single unsampled report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve unsampled reports for. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve unsampled report for. |
-| `params.accountId` | `string` | Yes | Account ID to retrieve unsampled report for. |
-| `params.unsampledReportId` | `string` | Yes | ID of the unsampled report to retrieve. |
-
-#### `management.unsampledReports.list()`
-
-Lists unsampled reports to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.start-index` | `integer` | No | An index of the first unsampled report to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve unsampled reports for. Must be a specific view (profile) ID, ~all is not supported. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve unsampled reports for. Must be a specific web property ID, ~all is not supported. |
-| `params.max-results` | `integer` | No | The maximum number of unsampled reports to include in this response. |
-| `params.accountId` | `string` | Yes | Account ID to retrieve unsampled reports for. Must be a specific account ID, ~all is not supported. |
-
-#### `management.unsampledReports.insert()`
-
-Create a new unsampled report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.profileId` | `string` | Yes | View (Profile) ID to create the unsampled report for. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to create the unsampled report for. |
-| `params.accountId` | `string` | Yes | Account ID to create the unsampled report for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.unsampledReports.delete()`
-
-Deletes an unsampled report.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.unsampledReportId` | `string` | Yes | ID of the unsampled report to be deleted. |
-| `params.accountId` | `string` | Yes | Account ID to delete the unsampled report for. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to delete the unsampled reports for. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to delete the unsampled report for. |
-
-### `management.profiles`
-
-#### `management.profiles.delete()`
-
-Deletes a view (profile).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.profileId` | `string` | Yes | ID of the view (profile) to be deleted. |
-| `params.accountId` | `string` | Yes | Account ID to delete the view (profile) for. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to delete the view (profile) for. |
-
-#### `management.profiles.insert()`
-
-Create a new view (profile).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to create the view (profile) for. |
-| `params.accountId` | `string` | Yes | Account ID to create the view (profile) for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.profiles.list()`
-
-Lists views (profiles) to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID for the views (profiles) to retrieve. Can either be a specific web property ID or '~all', which refers to all the web properties to which the user has access. |
-| `params.accountId` | `string` | Yes | Account ID for the view (profiles) to retrieve. Can either be a specific account ID or '~all', which refers to all the accounts to which the user has access. |
-| `params.max-results` | `integer` | No | The maximum number of views (profiles) to include in this response. |
-| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-
-#### `management.profiles.patch()`
-
-Updates an existing view (profile). This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to which the view (profile) belongs |
-| `params.webPropertyId` | `string` | Yes | Web property ID to which the view (profile) belongs |
-| `params.profileId` | `string` | Yes | ID of the view (profile) to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.profiles.update()`
-
-Updates an existing view (profile).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to which the view (profile) belongs |
-| `params.profileId` | `string` | Yes | ID of the view (profile) to be updated. |
-| `params.accountId` | `string` | Yes | Account ID to which the view (profile) belongs |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.profiles.get()`
-
-Gets a view (profile) to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the view (profile) for. |
-| `params.accountId` | `string` | Yes | Account ID to retrieve the view (profile) for. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve the view (profile) for. |
-
-### `management.accounts`
-
-#### `management.accounts.list()`
-
-Lists all accounts to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.max-results` | `integer` | No | The maximum number of accounts to include in this response. |
-| `params.start-index` | `integer` | No | An index of the first account to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.accountId` | `string` | Yes | Account Id associated with the upload. |
+| `params.webPropertyId` | `string` | Yes | Web property UA-string associated with the upload. |
 
 ### `management.clientId`
 
@@ -242,238 +704,6 @@ Hashes the given Client ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
-
-### `management.accountUserLinks`
-
-#### `management.accountUserLinks.insert()`
-
-Adds a new user to the given account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to create the user link for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.accountUserLinks.list()`
-
-Lists account-user links for a given account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to retrieve the user links for. |
-| `params.max-results` | `integer` | No | The maximum number of account-user links to include in this response. |
-| `params.start-index` | `integer` | No | An index of the first account-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-
-#### `management.accountUserLinks.delete()`
-
-Removes a user from the given account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to delete the user link for. |
-| `params.linkId` | `string` | Yes | Link ID to delete the user link for. |
-
-#### `management.accountUserLinks.update()`
-
-Updates permissions for an existing user on the given account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to update the account-user link for. |
-| `params.linkId` | `string` | Yes | Link ID to update the account-user link for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `management.webPropertyAdWordsLinks`
-
-#### `management.webPropertyAdWordsLinks.patch()`
-
-Updates an existing webProperty-Google Ads link. This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
-| `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property-Google Ads link ID. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads link for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.webPropertyAdWordsLinks.delete()`
-
-Deletes a web property-Google Ads link.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to delete the Google Ads link for. |
-| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
-| `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property Google Ads link ID. |
-
-#### `management.webPropertyAdWordsLinks.update()`
-
-Updates an existing webProperty-Google Ads link.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads link for. |
-| `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property-Google Ads link ID. |
-| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.webPropertyAdWordsLinks.insert()`
-
-Creates a webProperty-Google Ads link.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to create the link for. |
-| `params.accountId` | `string` | Yes | ID of the Google Analytics account to create the link for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.webPropertyAdWordsLinks.get()`
-
-Returns a web property-Google Ads link to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyAdWordsLinkId` | `string` | Yes | Web property-Google Ads link ID. |
-| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads link for. |
-
-#### `management.webPropertyAdWordsLinks.list()`
-
-Lists webProperty-Google Ads links for a given web property.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.max-results` | `integer` | No | The maximum number of webProperty-Google Ads links to include in this response. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the Google Ads links for. |
-| `params.accountId` | `string` | Yes | ID of the account which the given web property belongs to. |
-| `params.start-index` | `integer` | No | An index of the first webProperty-Google Ads link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-
-### `management.filters`
-
-#### `management.filters.get()`
-
-Returns filters to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to retrieve filters for. |
-| `params.filterId` | `string` | Yes | Filter ID to retrieve filters for. |
-
-#### `management.filters.insert()`
-
-Create a new filter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to create filter for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.filters.patch()`
-
-Updates an existing filter. This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to which the filter belongs. |
-| `params.filterId` | `string` | Yes | ID of the filter to be updated. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.filters.delete()`
-
-Delete a filter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to delete the filter for. |
-| `params.filterId` | `string` | Yes | ID of the filter to be deleted. |
-
-#### `management.filters.update()`
-
-Updates an existing filter.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filterId` | `string` | Yes | ID of the filter to be updated. |
-| `params.accountId` | `string` | Yes | Account ID to which the filter belongs. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.filters.list()`
-
-Lists all filters for an account
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.max-results` | `integer` | No | The maximum number of filters to include in this response. |
-| `params.accountId` | `string` | Yes | Account ID to retrieve filters for. |
-
-### `management.customMetrics`
-
-#### `management.customMetrics.update()`
-
-Updates an existing custom metric.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID for the custom metric to update. |
-| `params.customMetricId` | `string` | Yes | Custom metric ID for the custom metric to update. |
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom metric to update. |
-| `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.customMetrics.insert()`
-
-Create a new custom metric.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID for the custom metric to create. |
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to create. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.customMetrics.get()`
-
-Get a custom metric to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID for the custom metric to retrieve. |
-| `params.customMetricId` | `string` | Yes | The ID of the custom metric to retrieve. |
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom metric to retrieve. |
-
-#### `management.customMetrics.patch()`
-
-Updates an existing custom metric. This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID for the custom metric to update. |
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom metric to update. |
-| `params.customMetricId` | `string` | Yes | Custom metric ID for the custom metric to update. |
-| `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.customMetrics.list()`
-
-Lists custom metrics to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.max-results` | `integer` | No | The maximum number of custom metrics to include in this response. |
-| `params.accountId` | `string` | Yes | Account ID for the custom metrics to retrieve. |
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom metrics to retrieve. |
-
-### `management.accountSummaries`
-
-#### `management.accountSummaries.list()`
-
-Lists account summaries (lightweight tree comprised of accounts/properties/profiles) to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.max-results` | `integer` | No | The maximum number of account summaries to include in this response, where the largest acceptable value is 1000. |
 
 ### `management.segments`
 
@@ -486,149 +716,18 @@ Lists segments to which the user has access.
 | `params.start-index` | `integer` | No | An index of the first segment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
 | `params.max-results` | `integer` | No | The maximum number of segments to include in this response. |
 
-### `management.customDimensions`
-
-#### `management.customDimensions.patch()`
-
-Updates an existing custom dimension. This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customDimensionId` | `string` | Yes | Custom dimension ID for the custom dimension to update. |
-| `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set. |
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to update. |
-| `params.accountId` | `string` | Yes | Account ID for the custom dimension to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.customDimensions.list()`
-
-Lists custom dimensions to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID for the custom dimensions to retrieve. |
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimensions to retrieve. |
-| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.max-results` | `integer` | No | The maximum number of custom dimensions to include in this response. |
-
-#### `management.customDimensions.update()`
-
-Updates an existing custom dimension.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customDimensionId` | `string` | Yes | Custom dimension ID for the custom dimension to update. |
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to update. |
-| `params.accountId` | `string` | Yes | Account ID for the custom dimension to update. |
-| `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom dimension being linked to a custom data source / data set. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.customDimensions.insert()`
-
-Create a new custom dimension.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to create. |
-| `params.accountId` | `string` | Yes | Account ID for the custom dimension to create. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.customDimensions.get()`
-
-Get a custom dimension to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.customDimensionId` | `string` | Yes | The ID of the custom dimension to retrieve. |
-| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to retrieve. |
-| `params.accountId` | `string` | Yes | Account ID for the custom dimension to retrieve. |
-
-### `management.webproperties`
-
-#### `management.webproperties.list()`
-
-Lists web properties to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to retrieve web properties for. Can either be a specific account ID or '~all', which refers to all the accounts that user has access to. |
-| `params.max-results` | `integer` | No | The maximum number of web properties to include in this response. |
-| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-
-#### `management.webproperties.get()`
-
-Gets a web property to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to retrieve the web property for. |
-| `params.webPropertyId` | `string` | Yes | ID to retrieve the web property for. |
-
-#### `management.webproperties.insert()`
-
-Create a new property if the account has fewer than 20 properties. Web properties are visible in the Google Analytics interface only if they have at least one profile.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to create the web property for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.webproperties.update()`
-
-Updates an existing web property.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID |
-| `params.accountId` | `string` | Yes | Account ID to which the web property belongs |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.webproperties.patch()`
-
-Updates an existing web property. This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID |
-| `params.accountId` | `string` | Yes | Account ID to which the web property belongs |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `management.customDataSources`
-
-#### `management.customDataSources.list()`
-
-List custom data sources to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.start-index` | `integer` | No | A 1-based index of the first custom data source to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.max-results` | `integer` | No | The maximum number of custom data sources to include in this response. |
-| `params.accountId` | `string` | Yes | Account Id for the custom data sources to retrieve. |
-| `params.webPropertyId` | `string` | Yes | Web property Id for the custom data sources to retrieve. |
-
 ### `management.profileFilterLinks`
 
-#### `management.profileFilterLinks.insert()`
+#### `management.profileFilterLinks.delete()`
 
-Create a new profile filter link.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to create profile filter link for. |
-| `params.webPropertyId` | `string` | Yes | Web property Id to create profile filter link for. |
-| `params.profileId` | `string` | Yes | Profile ID to create filter link for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.profileFilterLinks.get()`
-
-Returns a single profile filter link.
+Delete a profile filter link.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.linkId` | `string` | Yes | ID of the profile filter link. |
-| `params.webPropertyId` | `string` | Yes | Web property Id to retrieve profile filter link for. |
-| `params.accountId` | `string` | Yes | Account ID to retrieve profile filter link for. |
-| `params.profileId` | `string` | Yes | Profile ID to retrieve filter link for. |
+| `params.accountId` | `string` | Yes | Account ID to which the profile filter link belongs. |
+| `params.profileId` | `string` | Yes | Profile ID to which the filter link belongs. |
+| `params.webPropertyId` | `string` | Yes | Web property Id to which the profile filter link belongs. |
+| `params.linkId` | `string` | Yes | ID of the profile filter link to delete. |
 
 #### `management.profileFilterLinks.list()`
 
@@ -636,11 +735,22 @@ Lists all profile filter links for a profile.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to retrieve profile filter links for. |
-| `params.profileId` | `string` | Yes | Profile ID to retrieve filter links for. Can either be a specific profile ID or '~all', which refers to all the profiles that user has access to. |
-| `params.max-results` | `integer` | No | The maximum number of profile filter links to include in this response. |
 | `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
 | `params.webPropertyId` | `string` | Yes | Web property Id for profile filter links for. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to. |
+| `params.profileId` | `string` | Yes | Profile ID to retrieve filter links for. Can either be a specific profile ID or '~all', which refers to all the profiles that user has access to. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve profile filter links for. |
+| `params.max-results` | `integer` | No | The maximum number of profile filter links to include in this response. |
+
+#### `management.profileFilterLinks.insert()`
+
+Create a new profile filter link.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property Id to create profile filter link for. |
+| `params.accountId` | `string` | Yes | Account ID to create profile filter link for. |
+| `params.profileId` | `string` | Yes | Profile ID to create filter link for. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.profileFilterLinks.patch()`
 
@@ -654,52 +764,30 @@ Update an existing profile filter link. This method supports patch semantics.
 | `params.linkId` | `string` | Yes | ID of the profile filter link to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `management.profileFilterLinks.delete()`
-
-Delete a profile filter link.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.profileId` | `string` | Yes | Profile ID to which the filter link belongs. |
-| `params.accountId` | `string` | Yes | Account ID to which the profile filter link belongs. |
-| `params.webPropertyId` | `string` | Yes | Web property Id to which the profile filter link belongs. |
-| `params.linkId` | `string` | Yes | ID of the profile filter link to delete. |
-
 #### `management.profileFilterLinks.update()`
 
 Update an existing profile filter link.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property Id to which profile filter link belongs |
-| `params.accountId` | `string` | Yes | Account ID to which profile filter link belongs. |
-| `params.linkId` | `string` | Yes | ID of the profile filter link to be updated. |
 | `params.profileId` | `string` | Yes | Profile ID to which filter link belongs |
+| `params.webPropertyId` | `string` | Yes | Web property Id to which profile filter link belongs |
+| `params.linkId` | `string` | Yes | ID of the profile filter link to be updated. |
+| `params.accountId` | `string` | Yes | Account ID to which profile filter link belongs. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.profileFilterLinks.get()`
+
+Returns a single profile filter link.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.linkId` | `string` | Yes | ID of the profile filter link. |
+| `params.webPropertyId` | `string` | Yes | Web property Id to retrieve profile filter link for. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve profile filter link for. |
+| `params.profileId` | `string` | Yes | Profile ID to retrieve filter link for. |
 
 ### `management.goals`
-
-#### `management.goals.get()`
-
-Gets a goal to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the goal for. |
-| `params.accountId` | `string` | Yes | Account ID to retrieve the goal for. |
-| `params.goalId` | `string` | Yes | Goal ID to retrieve the goal for. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve the goal for. |
-
-#### `management.goals.insert()`
-
-Create a new goal.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | Account ID to create the goal for. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to create the goal for. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to create the goal for. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.goals.patch()`
 
@@ -707,10 +795,10 @@ Updates an existing goal. This method supports patch semantics.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.goalId` | `string` | Yes | Index of the goal to be updated. |
-| `params.accountId` | `string` | Yes | Account ID to update the goal. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to update the goal. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to update the goal. |
+| `params.goalId` | `string` | Yes | Index of the goal to be updated. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to update the goal. |
+| `params.accountId` | `string` | Yes | Account ID to update the goal. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.goals.update()`
@@ -719,11 +807,22 @@ Updates an existing goal.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to update the goal. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to update the goal. |
 | `params.profileId` | `string` | Yes | View (Profile) ID to update the goal. |
 | `params.goalId` | `string` | Yes | Index of the goal to be updated. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to update the goal. |
-| `params.accountId` | `string` | Yes | Account ID to update the goal. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.goals.get()`
+
+Gets a goal to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve the goal for. |
+| `params.accountId` | `string` | Yes | Account ID to retrieve the goal for. |
+| `params.goalId` | `string` | Yes | Goal ID to retrieve the goal for. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the goal for. |
 
 #### `management.goals.list()`
 
@@ -731,161 +830,24 @@ Lists goals to which the user has access.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.max-results` | `integer` | No | The maximum number of goals to include in this response. |
-| `params.start-index` | `integer` | No | An index of the first goal to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to retrieve goals for. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to. |
 | `params.profileId` | `string` | Yes | View (Profile) ID to retrieve goals for. Can either be a specific view (profile) ID or '~all', which refers to all the views (profiles) that user has access to. |
 | `params.accountId` | `string` | Yes | Account ID to retrieve goals for. Can either be a specific account ID or '~all', which refers to all the accounts that user has access to. |
+| `params.max-results` | `integer` | No | The maximum number of goals to include in this response. |
+| `params.start-index` | `integer` | No | An index of the first goal to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
 
-### `management.experiments`
+#### `management.goals.insert()`
 
-#### `management.experiments.insert()`
-
-Create a new experiment.
+Create a new goal.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to create the experiment for. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to create the experiment for. |
-| `params.accountId` | `string` | Yes | Account ID to create the experiment for. |
+| `params.webPropertyId` | `string` | Yes | Web property ID to create the goal for. |
+| `params.accountId` | `string` | Yes | Account ID to create the goal for. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to create the goal for. |
 | `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.experiments.list()`
-
-Lists experiments to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve experiments for. |
-| `params.accountId` | `string` | Yes | Account ID to retrieve experiments for. |
-| `params.start-index` | `integer` | No | An index of the first experiment to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.max-results` | `integer` | No | The maximum number of experiments to include in this response. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve experiments for. |
-
-#### `management.experiments.patch()`
-
-Update an existing experiment. This method supports patch semantics.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.profileId` | `string` | Yes | View (Profile) ID of the experiment to update. |
-| `params.accountId` | `string` | Yes | Account ID of the experiment to update. |
-| `params.experimentId` | `string` | Yes | Experiment ID of the experiment to update. |
-| `params.webPropertyId` | `string` | Yes | Web property ID of the experiment to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.experiments.get()`
-
-Returns an experiment to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.experimentId` | `string` | Yes | Experiment ID to retrieve the experiment for. |
-| `params.webPropertyId` | `string` | Yes | Web property ID to retrieve the experiment for. |
-| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve the experiment for. |
-| `params.accountId` | `string` | Yes | Account ID to retrieve the experiment for. |
-
-#### `management.experiments.update()`
-
-Update an existing experiment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.experimentId` | `string` | Yes | Experiment ID of the experiment to update. |
-| `params.profileId` | `string` | Yes | View (Profile) ID of the experiment to update. |
-| `params.webPropertyId` | `string` | Yes | Web property ID of the experiment to update. |
-| `params.accountId` | `string` | Yes | Account ID of the experiment to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.experiments.delete()`
-
-Delete an experiment.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.experimentId` | `string` | Yes | ID of the experiment to delete |
-| `params.webPropertyId` | `string` | Yes | Web property ID to which the experiment belongs |
-| `params.profileId` | `string` | Yes | View (Profile) ID to which the experiment belongs |
-| `params.accountId` | `string` | Yes | Account ID to which the experiment belongs |
-
-### `management.webpropertyUserLinks`
-
-#### `management.webpropertyUserLinks.update()`
-
-Updates permissions for an existing user on the given web property.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID to update the account-user link for. |
-| `params.accountId` | `string` | Yes | Account ID to update the account-user link for. |
-| `params.linkId` | `string` | Yes | Link ID to update the account-user link for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.webpropertyUserLinks.insert()`
-
-Adds a new user to the given web property.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web Property ID to create the user link for. |
-| `params.accountId` | `string` | Yes | Account ID to create the user link for. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.webpropertyUserLinks.list()`
-
-Lists webProperty-user links for a given web property.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.start-index` | `integer` | No | An index of the first webProperty-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.max-results` | `integer` | No | The maximum number of webProperty-user Links to include in this response. |
-| `params.accountId` | `string` | Yes | Account ID which the given web property belongs to. |
-| `params.webPropertyId` | `string` | Yes | Web Property ID for the webProperty-user links to retrieve. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to. |
-
-#### `management.webpropertyUserLinks.delete()`
-
-Removes a user from the given web property.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.linkId` | `string` | Yes | Link ID to delete the user link for. |
-| `params.webPropertyId` | `string` | Yes | Web Property ID to delete the user link for. |
-| `params.accountId` | `string` | Yes | Account ID to delete the user link for. |
 
 ### `management.remarketingAudience`
-
-#### `management.remarketingAudience.update()`
-
-Updates an existing remarketing audience.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.accountId` | `string` | Yes | The account ID of the remarketing audience to update. |
-| `params.remarketingAudienceId` | `string` | Yes | The ID of the remarketing audience to update. |
-| `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audience to update. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `management.remarketingAudience.list()`
-
-Lists remarketing audiences to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.type` | `string` | No |  |
-| `params.accountId` | `string` | Yes | The account ID of the remarketing audiences to retrieve. |
-| `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audiences to retrieve. |
-| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.max-results` | `integer` | No | The maximum number of remarketing audiences to include in this response. |
-
-#### `management.remarketingAudience.get()`
-
-Gets a remarketing audience to which the user has access.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audience to retrieve. |
-| `params.remarketingAudienceId` | `string` | Yes | The ID of the remarketing audience to retrieve. |
-| `params.accountId` | `string` | Yes | The account ID of the remarketing audience to retrieve. |
 
 #### `management.remarketingAudience.patch()`
 
@@ -893,9 +855,20 @@ Updates an existing remarketing audience. This method supports patch semantics.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.accountId` | `string` | Yes | The account ID of the remarketing audience to update. |
-| `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audience to update. |
 | `params.remarketingAudienceId` | `string` | Yes | The ID of the remarketing audience to update. |
+| `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audience to update. |
+| `params.accountId` | `string` | Yes | The account ID of the remarketing audience to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.remarketingAudience.update()`
+
+Updates an existing remarketing audience.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.remarketingAudienceId` | `string` | Yes | The ID of the remarketing audience to update. |
+| `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audience to update. |
+| `params.accountId` | `string` | Yes | The account ID of the remarketing audience to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `management.remarketingAudience.delete()`
@@ -908,112 +881,139 @@ Delete a remarketing audience.
 | `params.remarketingAudienceId` | `string` | Yes | The ID of the remarketing audience to delete. |
 | `params.webPropertyId` | `string` | Yes | Web property ID to which the remarketing audience belongs. |
 
+#### `management.remarketingAudience.get()`
+
+Gets a remarketing audience to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.remarketingAudienceId` | `string` | Yes | The ID of the remarketing audience to retrieve. |
+| `params.accountId` | `string` | Yes | The account ID of the remarketing audience to retrieve. |
+| `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audience to retrieve. |
+
+#### `management.remarketingAudience.list()`
+
+Lists remarketing audiences to which the user has access.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.webPropertyId` | `string` | Yes | The web property ID of the remarketing audiences to retrieve. |
+| `params.max-results` | `integer` | No | The maximum number of remarketing audiences to include in this response. |
+| `params.accountId` | `string` | Yes | The account ID of the remarketing audiences to retrieve. |
+| `params.type` | `string` | No |  |
+
 #### `management.remarketingAudience.insert()`
 
 Creates a new remarketing audience.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.webPropertyId` | `string` | Yes | Web property ID for which to create the remarketing audience. |
 | `params.accountId` | `string` | Yes | The account ID for which to create the remarketing audience. |
+| `params.webPropertyId` | `string` | Yes | Web property ID for which to create the remarketing audience. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `userDeletion`
+### `management.customMetrics`
 
-### `userDeletion.userDeletionRequest`
+#### `management.customMetrics.get()`
 
-#### `userDeletion.userDeletionRequest.upsert()`
-
-Insert or update a user deletion requests.
+Get a custom metric to which the user has access.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom metric to retrieve. |
+| `params.customMetricId` | `string` | Yes | The ID of the custom metric to retrieve. |
+| `params.accountId` | `string` | Yes | Account ID for the custom metric to retrieve. |
+
+#### `management.customMetrics.insert()`
+
+Create a new custom metric.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom dimension to create. |
+| `params.accountId` | `string` | Yes | Account ID for the custom metric to create. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `provisioning`
+#### `management.customMetrics.patch()`
 
-#### `provisioning.createAccountTicket()`
-
-Creates an account ticket.
+Updates an existing custom metric. This method supports patch semantics.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID for the custom metric to update. |
+| `params.customMetricId` | `string` | Yes | Custom metric ID for the custom metric to update. |
+| `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set. |
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom metric to update. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `provisioning.createAccountTree()`
+#### `management.customMetrics.list()`
 
-Provision account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `metadata`
-
-### `metadata.columns`
-
-#### `metadata.columns.list()`
-
-Lists all columns for a report type
+Lists custom metrics to which the user has access.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.reportType` | `string` | Yes | Report type. Allowed Values: 'ga'. Where 'ga' corresponds to the Core Reporting API |
-
-### `data`
-
-### `data.realtime`
-
-#### `data.realtime.get()`
-
-Returns real time data for a view (profile).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.ids` | `string` | Yes | Unique table ID for retrieving real time data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID. |
-| `params.dimensions` | `string` | No | A comma-separated list of real time dimensions. E.g., 'rt:medium,rt:city'. |
-| `params.metrics` | `string` | Yes | A comma-separated list of real time metrics. E.g., 'rt:activeUsers'. At least one metric must be specified. |
-| `params.max-results` | `integer` | No | The maximum number of entries to include in this feed. |
-| `params.filters` | `string` | No | A comma-separated list of dimension or metric filters to be applied to real time data. |
-| `params.sort` | `string` | No | A comma-separated list of dimensions or metrics that determine the sort order for real time data. |
-
-### `data.mcf`
-
-#### `data.mcf.get()`
-
-Returns Analytics Multi-Channel Funnels data for a view (profile).
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.end-date` | `string` | Yes | End date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo. |
-| `params.samplingLevel` | `string` | No | The desired sampling level. |
-| `params.start-date` | `string` | Yes | Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo. |
-| `params.ids` | `string` | Yes | Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID. |
-| `params.metrics` | `string` | Yes | A comma-separated list of Multi-Channel Funnels metrics. E.g., 'mcf:totalConversions,mcf:totalConversionValue'. At least one metric must be specified. |
-| `params.sort` | `string` | No | A comma-separated list of dimensions or metrics that determine the sort order for the Analytics data. |
-| `params.max-results` | `integer` | No | The maximum number of entries to include in this feed. |
-| `params.filters` | `string` | No | A comma-separated list of dimension or metric filters to be applied to the Analytics data. |
 | `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.dimensions` | `string` | No | A comma-separated list of Multi-Channel Funnels dimensions. E.g., 'mcf:source,mcf:medium'. |
+| `params.max-results` | `integer` | No | The maximum number of custom metrics to include in this response. |
+| `params.accountId` | `string` | Yes | Account ID for the custom metrics to retrieve. |
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom metrics to retrieve. |
 
-### `data.ga`
+#### `management.customMetrics.update()`
 
-#### `data.ga.get()`
-
-Returns Analytics data for a view (profile).
+Updates an existing custom metric.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.samplingLevel` | `string` | No | The desired sampling level. |
-| `params.segment` | `string` | No | An Analytics segment to be applied to data. |
-| `params.include-empty-rows` | `boolean` | No | The response will include empty rows if this parameter is set to true, the default is true |
-| `params.ids` | `string` | Yes | Unique table ID for retrieving Analytics data. Table ID is of the form ga:XXXX, where XXXX is the Analytics view (profile) ID. |
-| `params.filters` | `string` | No | A comma-separated list of dimension or metric filters to be applied to Analytics data. |
-| `params.start-index` | `integer` | No | An index of the first entity to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
-| `params.output` | `string` | No | The selected format for the response. Default format is JSON. |
-| `params.dimensions` | `string` | No | A comma-separated list of Analytics dimensions. E.g., 'ga:browser,ga:city'. |
-| `params.end-date` | `string` | Yes | End date for fetching Analytics data. Request can should specify an end date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is yesterday. |
-| `params.start-date` | `string` | Yes | Start date for fetching Analytics data. Requests can specify a start date formatted as YYYY-MM-DD, or as a relative date (e.g., today, yesterday, or 7daysAgo). The default value is 7daysAgo. |
-| `params.sort` | `string` | No | A comma-separated list of dimensions or metrics that determine the sort order for Analytics data. |
-| `params.max-results` | `integer` | No | The maximum number of entries to include in this feed. |
-| `params.metrics` | `string` | Yes | A comma-separated list of Analytics metrics. E.g., 'ga:sessions,ga:pageviews'. At least one metric must be specified. |
+| `params.customMetricId` | `string` | Yes | Custom metric ID for the custom metric to update. |
+| `params.ignoreCustomDataSourceLinks` | `boolean` | No | Force the update and ignore any warnings related to the custom metric being linked to a custom data source / data set. |
+| `params.accountId` | `string` | Yes | Account ID for the custom metric to update. |
+| `params.webPropertyId` | `string` | Yes | Web property ID for the custom metric to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `management.profileUserLinks`
+
+#### `management.profileUserLinks.update()`
+
+Updates permissions for an existing user on the given view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.profileId` | `string` | Yes | View (Profile ID) to update the user link for. |
+| `params.linkId` | `string` | Yes | Link ID to update the user link for. |
+| `params.webPropertyId` | `string` | Yes | Web Property ID to update the user link for. |
+| `params.accountId` | `string` | Yes | Account ID to update the user link for. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `management.profileUserLinks.list()`
+
+Lists profile-user links for a given view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.start-index` | `integer` | No | An index of the first profile-user link to retrieve. Use this parameter as a pagination mechanism along with the max-results parameter. |
+| `params.accountId` | `string` | Yes | Account ID which the given view (profile) belongs to. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to retrieve the profile-user links for. Can either be a specific profile ID or '~all', which refers to all the profiles that user has access to. |
+| `params.webPropertyId` | `string` | Yes | Web Property ID which the given view (profile) belongs to. Can either be a specific web property ID or '~all', which refers to all the web properties that user has access to. |
+| `params.max-results` | `integer` | No | The maximum number of profile-user links to include in this response. |
+
+#### `management.profileUserLinks.delete()`
+
+Removes a user from the given view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.profileId` | `string` | Yes | View (Profile) ID to delete the user link for. |
+| `params.linkId` | `string` | Yes | Link ID to delete the user link for. |
+| `params.webPropertyId` | `string` | Yes | Web Property ID to delete the user link for. |
+| `params.accountId` | `string` | Yes | Account ID to delete the user link for. |
+
+#### `management.profileUserLinks.insert()`
+
+Adds a new user to the given view (profile).
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.accountId` | `string` | Yes | Account ID to create the user link for. |
+| `params.webPropertyId` | `string` | Yes | Web Property ID to create the user link for. |
+| `params.profileId` | `string` | Yes | View (Profile) ID to create the user link for. |
+| `params.requestBody` | `object` | Yes | The request body. |
