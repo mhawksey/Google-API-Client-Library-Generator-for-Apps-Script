@@ -21,141 +21,141 @@ class Apihub {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.retrieveApiViews = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:retrieveApiViews', 'GET', apiParams, clientConfig);
-    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
-    this.projects.locations.collectApiData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:collectApiData', 'POST', apiParams, clientConfig);
     this.projects.locations.searchResources = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:searchResources', 'POST', apiParams, clientConfig);
+    this.projects.locations.retrieveApiViews = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:retrieveApiViews', 'GET', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
     this.projects.locations.lookupRuntimeProjectAttachment = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:lookupRuntimeProjectAttachment', 'GET', apiParams, clientConfig);
+    this.projects.locations.collectApiData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:collectApiData', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.runtimeProjectAttachments = {};
-    this.projects.locations.runtimeProjectAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.runtimeProjectAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.runtimeProjectAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeProjectAttachments', 'GET', apiParams, clientConfig);
-    this.projects.locations.runtimeProjectAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeProjectAttachments', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.plugins = {};
-    this.projects.locations.plugins.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/plugins', 'POST', apiParams, clientConfig);
-    this.projects.locations.plugins.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.plugins.getStyleGuide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.plugins.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
-    this.projects.locations.plugins.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
-    this.projects.locations.plugins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/plugins', 'GET', apiParams, clientConfig);
-    this.projects.locations.plugins.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.plugins.updateStyleGuide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.plugins.styleGuide = {};
-    this.projects.locations.plugins.styleGuide.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:contents', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.plugins.instances = {};
-    this.projects.locations.plugins.instances.manageSourceData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:manageSourceData', 'POST', apiParams, clientConfig);
-    this.projects.locations.plugins.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.plugins.instances.disableAction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disableAction', 'POST', apiParams, clientConfig);
-    this.projects.locations.plugins.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.plugins.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'GET', apiParams, clientConfig);
-    this.projects.locations.plugins.instances.enableAction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enableAction', 'POST', apiParams, clientConfig);
-    this.projects.locations.plugins.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.plugins.instances.executeAction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeAction', 'POST', apiParams, clientConfig);
-    this.projects.locations.plugins.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.discoveredApiObservations = {};
-    this.projects.locations.discoveredApiObservations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.discoveredApiObservations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/discoveredApiObservations', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.discoveredApiObservations.discoveredApiOperations = {};
-    this.projects.locations.discoveredApiObservations.discoveredApiOperations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/discoveredApiOperations', 'GET', apiParams, clientConfig);
-    this.projects.locations.discoveredApiObservations.discoveredApiOperations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.attributes = {};
-    this.projects.locations.attributes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attributes', 'GET', apiParams, clientConfig);
-    this.projects.locations.attributes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.attributes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.attributes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attributes', 'POST', apiParams, clientConfig);
-    this.projects.locations.attributes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-
-    this.projects.locations.hostProjectRegistrations = {};
-    this.projects.locations.hostProjectRegistrations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostProjectRegistrations', 'GET', apiParams, clientConfig);
-    this.projects.locations.hostProjectRegistrations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostProjectRegistrations', 'POST', apiParams, clientConfig);
-    this.projects.locations.hostProjectRegistrations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.apiHubInstances = {};
-    this.projects.locations.apiHubInstances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apiHubInstances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apiHubInstances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apiHubInstances', 'POST', apiParams, clientConfig);
-    this.projects.locations.apiHubInstances.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apiHubInstances:lookup', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.dependencies = {};
-    this.projects.locations.dependencies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dependencies', 'POST', apiParams, clientConfig);
-    this.projects.locations.dependencies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.dependencies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.dependencies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dependencies', 'GET', apiParams, clientConfig);
-    this.projects.locations.dependencies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.externalApis = {};
-    this.projects.locations.externalApis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.externalApis.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalApis', 'POST', apiParams, clientConfig);
-    this.projects.locations.externalApis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalApis', 'GET', apiParams, clientConfig);
-    this.projects.locations.externalApis.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.externalApis.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.deployments = {};
-    this.projects.locations.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'POST', apiParams, clientConfig);
-    this.projects.locations.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.curations = {};
     this.projects.locations.curations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.curations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/curations', 'POST', apiParams, clientConfig);
-    this.projects.locations.curations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.curations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.curations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.curations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/curations', 'POST', apiParams, clientConfig);
     this.projects.locations.curations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/curations', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.deployments = {};
+    this.projects.locations.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+    this.projects.locations.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'POST', apiParams, clientConfig);
+    this.projects.locations.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.addons = {};
-    this.projects.locations.addons.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.addons.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addons', 'GET', apiParams, clientConfig);
-    this.projects.locations.addons.manageConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:manageConfig', 'POST', apiParams, clientConfig);
+    this.projects.locations.discoveredApiObservations = {};
+    this.projects.locations.discoveredApiObservations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/discoveredApiObservations', 'GET', apiParams, clientConfig);
+    this.projects.locations.discoveredApiObservations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.discoveredApiObservations.discoveredApiOperations = {};
+    this.projects.locations.discoveredApiObservations.discoveredApiOperations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.discoveredApiObservations.discoveredApiOperations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/discoveredApiOperations', 'GET', apiParams, clientConfig);
 
     this.projects.locations.apis = {};
     this.projects.locations.apis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apis', 'GET', apiParams, clientConfig);
     this.projects.locations.apis.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.apis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apis', 'POST', apiParams, clientConfig);
     this.projects.locations.apis.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apis', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.locations.apis.versions = {};
-    this.projects.locations.apis.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.apis.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.apis.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.apis.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.apis.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.apis.versions.operations = {};
-    this.projects.locations.apis.versions.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.versions.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.operations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/operations', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.operations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.apis.versions.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs = {};
+    this.projects.locations.apis.versions.specs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/specs', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/specs', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.lint = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:lint', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:contents', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.fetchAdditionalSpecContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchAdditionalSpecContent', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.projects.locations.apis.versions.definitions = {};
     this.projects.locations.apis.versions.definitions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.apis.versions.specs = {};
-    this.projects.locations.apis.versions.specs.lint = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:lint', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/specs', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/specs', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.fetchAdditionalSpecContent = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchAdditionalSpecContent', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:contents', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.operations = {};
+    this.projects.locations.apis.versions.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.operations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/operations', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.versions.operations.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.hostProjectRegistrations = {};
+    this.projects.locations.hostProjectRegistrations.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostProjectRegistrations', 'POST', apiParams, clientConfig);
+    this.projects.locations.hostProjectRegistrations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.hostProjectRegistrations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/hostProjectRegistrations', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.apiHubInstances = {};
+    this.projects.locations.apiHubInstances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apiHubInstances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apiHubInstances', 'POST', apiParams, clientConfig);
+    this.projects.locations.apiHubInstances.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apiHubInstances:lookup', 'GET', apiParams, clientConfig);
+    this.projects.locations.apiHubInstances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.externalApis = {};
+    this.projects.locations.externalApis.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.externalApis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalApis', 'GET', apiParams, clientConfig);
+    this.projects.locations.externalApis.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/externalApis', 'POST', apiParams, clientConfig);
+    this.projects.locations.externalApis.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.externalApis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.attributes = {};
+    this.projects.locations.attributes.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attributes', 'POST', apiParams, clientConfig);
+    this.projects.locations.attributes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attributes', 'GET', apiParams, clientConfig);
+    this.projects.locations.attributes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.attributes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.attributes.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.runtimeProjectAttachments = {};
+    this.projects.locations.runtimeProjectAttachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.runtimeProjectAttachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeProjectAttachments', 'POST', apiParams, clientConfig);
+    this.projects.locations.runtimeProjectAttachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/runtimeProjectAttachments', 'GET', apiParams, clientConfig);
+    this.projects.locations.runtimeProjectAttachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.addons = {};
+    this.projects.locations.addons.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.addons.manageConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:manageConfig', 'POST', apiParams, clientConfig);
+    this.projects.locations.addons.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/addons', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.dependencies = {};
+    this.projects.locations.dependencies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dependencies', 'GET', apiParams, clientConfig);
+    this.projects.locations.dependencies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dependencies', 'POST', apiParams, clientConfig);
+    this.projects.locations.dependencies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.dependencies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dependencies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.plugins = {};
+    this.projects.locations.plugins.disable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disable', 'POST', apiParams, clientConfig);
+    this.projects.locations.plugins.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/plugins', 'GET', apiParams, clientConfig);
+    this.projects.locations.plugins.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/plugins', 'POST', apiParams, clientConfig);
+    this.projects.locations.plugins.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.plugins.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.plugins.enable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enable', 'POST', apiParams, clientConfig);
+    this.projects.locations.plugins.getStyleGuide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.plugins.updateStyleGuide = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    this.projects.locations.plugins.instances = {};
+    this.projects.locations.plugins.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'POST', apiParams, clientConfig);
+    this.projects.locations.plugins.instances.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.plugins.instances.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'GET', apiParams, clientConfig);
+    this.projects.locations.plugins.instances.manageSourceData = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:manageSourceData', 'POST', apiParams, clientConfig);
+    this.projects.locations.plugins.instances.enableAction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:enableAction', 'POST', apiParams, clientConfig);
+    this.projects.locations.plugins.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.plugins.instances.disableAction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:disableAction', 'POST', apiParams, clientConfig);
+    this.projects.locations.plugins.instances.executeAction = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:executeAction', 'POST', apiParams, clientConfig);
+    this.projects.locations.plugins.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.plugins.styleGuide = {};
+    this.projects.locations.plugins.styleGuide.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:contents', 'GET', apiParams, clientConfig);
   }
 
 /**
