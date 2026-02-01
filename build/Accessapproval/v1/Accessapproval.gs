@@ -19,30 +19,30 @@ class Accessapproval {
 
 
     this.folders = {};
-    this.folders.updateAccessApprovalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.folders.getServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.folders.deleteAccessApprovalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.folders.updateAccessApprovalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.folders.getAccessApprovalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.folders.getServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.folders.approvalRequests = {};
+    this.folders.approvalRequests.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
     this.folders.approvalRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/approvalRequests', 'GET', apiParams, clientConfig);
     this.folders.approvalRequests.invalidate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:invalidate', 'POST', apiParams, clientConfig);
     this.folders.approvalRequests.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.folders.approvalRequests.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
     this.folders.approvalRequests.dismiss = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:dismiss', 'POST', apiParams, clientConfig);
 
     this.organizations = {};
+    this.organizations.getServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.updateAccessApprovalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.deleteAccessApprovalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.organizations.getServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.organizations.getAccessApprovalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.organizations.approvalRequests = {};
-    this.organizations.approvalRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/approvalRequests', 'GET', apiParams, clientConfig);
-    this.organizations.approvalRequests.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
     this.organizations.approvalRequests.dismiss = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:dismiss', 'POST', apiParams, clientConfig);
     this.organizations.approvalRequests.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.organizations.approvalRequests.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
     this.organizations.approvalRequests.invalidate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:invalidate', 'POST', apiParams, clientConfig);
+    this.organizations.approvalRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/approvalRequests', 'GET', apiParams, clientConfig);
 
     this.projects = {};
     this.projects.getServiceAccount = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -51,11 +51,11 @@ class Accessapproval {
     this.projects.getAccessApprovalSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.approvalRequests = {};
-    this.projects.approvalRequests.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
+    this.projects.approvalRequests.dismiss = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:dismiss', 'POST', apiParams, clientConfig);
     this.projects.approvalRequests.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.approvalRequests.invalidate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:invalidate', 'POST', apiParams, clientConfig);
+    this.projects.approvalRequests.approve = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:approve', 'POST', apiParams, clientConfig);
     this.projects.approvalRequests.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/approvalRequests', 'GET', apiParams, clientConfig);
-    this.projects.approvalRequests.dismiss = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:dismiss', 'POST', apiParams, clientConfig);
   }
 
 /**
