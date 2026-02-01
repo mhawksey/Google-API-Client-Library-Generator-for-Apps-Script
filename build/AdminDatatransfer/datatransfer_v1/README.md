@@ -4,8 +4,8 @@ Auto-generated client library for using the **Admin SDK API (version: datatransf
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:21:07 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:21:07 GMT
+- **Last Checked:** Sun, 01 Feb 2026 00:21:12 GMT
+- **Last Modified:** Sun, 01 Feb 2026 00:21:12 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:51 GMT
 
 
@@ -22,12 +22,12 @@ Lists the transfers for a customer by source user, destination user, or status.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.newOwnerUserId` | `string` | No | Destination user's profile ID. |
-| `params.maxResults` | `integer` | No | Maximum number of results to return. Default is 100. |
 | `params.oldOwnerUserId` | `string` | No | Source user's profile ID. |
+| `params.status` | `string` | No | Status of the transfer. |
 | `params.customerId` | `string` | No | Immutable ID of the Google Workspace account. |
 | `params.pageToken` | `string` | No | Token to specify the next page in the list. |
-| `params.status` | `string` | No | Status of the transfer. |
+| `params.maxResults` | `integer` | No | Maximum number of results to return. Default is 100. |
+| `params.newOwnerUserId` | `string` | No | Destination user's profile ID. |
 
 #### `transfers.insert()`
 
@@ -47,16 +47,6 @@ Retrieves a data transfer request by its resource ID.
 
 ### `applications`
 
-#### `applications.list()`
-
-Lists the applications available for data transfer for a customer.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.maxResults` | `integer` | No | Maximum number of results to return. Default is 100. |
-| `params.customerId` | `string` | No | Immutable ID of the Google Workspace account. |
-| `params.pageToken` | `string` | No | Token to specify next page in the list. |
-
 #### `applications.get()`
 
 Retrieves information about an application for the given application ID.
@@ -64,3 +54,13 @@ Retrieves information about an application for the given application ID.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.applicationId` | `string` | Yes | ID of the application resource to be retrieved. |
+
+#### `applications.list()`
+
+Lists the applications available for data transfer for a customer.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.customerId` | `string` | No | Immutable ID of the Google Workspace account. |
+| `params.maxResults` | `integer` | No | Maximum number of results to return. Default is 100. |
+| `params.pageToken` | `string` | No | Token to specify next page in the list. |
