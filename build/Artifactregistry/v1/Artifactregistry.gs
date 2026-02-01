@@ -29,15 +29,31 @@ class Artifactregistry {
     this.projects.locations.getVpcscConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.repositories = {};
-    this.projects.locations.repositories.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repositories', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repositories', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.exportArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+repository}:exportArtifact', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repositories', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/repositories', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.exportArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+repository}:exportArtifact', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.repositories.npmPackages = {};
+    this.projects.locations.repositories.npmPackages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/npmPackages', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.npmPackages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.repositories.files = {};
+    this.projects.locations.repositories.files.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.files.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.files.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/files', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.files.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.repositories.files.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.files.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1/{+parent}/files:upload' : 'v1/{+parent}/files:upload';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
 
     this.projects.locations.repositories.kfpArtifacts = {};
     this.projects.locations.repositories.kfpArtifacts.upload = async (apiParams = {}, clientConfig = {}) => {
@@ -50,11 +66,57 @@ class Artifactregistry {
     this.projects.locations.repositories.mavenArtifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.mavenArtifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/mavenArtifacts', 'GET', apiParams, clientConfig);
 
+    this.projects.locations.repositories.pythonPackages = {};
+    this.projects.locations.repositories.pythonPackages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pythonPackages', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.pythonPackages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
     this.projects.locations.repositories.attachments = {};
-    this.projects.locations.repositories.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.attachments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.attachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
     this.projects.locations.repositories.attachments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.attachments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.repositories.attachments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/attachments', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.repositories.goModules = {};
+    this.projects.locations.repositories.goModules.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1/{+parent}/goModules:create' : 'v1/{+parent}/goModules:create';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
+
+    this.projects.locations.repositories.packages = {};
+    this.projects.locations.repositories.packages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/packages', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.repositories.packages.tags = {};
+    this.projects.locations.repositories.packages.tags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.tags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.repositories.packages.versions = {};
+    this.projects.locations.repositories.packages.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.versions.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions:batchDelete', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.packages.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.repositories.rules = {};
+    this.projects.locations.repositories.rules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rules', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.rules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.repositories.rules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rules', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.rules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.repositories.rules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.repositories.aptArtifacts = {};
+    this.projects.locations.repositories.aptArtifacts.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/aptArtifacts:import', 'POST', apiParams, clientConfig);
+    this.projects.locations.repositories.aptArtifacts.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1/{+parent}/aptArtifacts:create' : 'v1/{+parent}/aptArtifacts:create';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
 
     this.projects.locations.repositories.yumArtifacts = {};
     this.projects.locations.repositories.yumArtifacts.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/yumArtifacts:import', 'POST', apiParams, clientConfig);
@@ -64,74 +126,9 @@ class Artifactregistry {
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
 
-    this.projects.locations.repositories.genericArtifacts = {};
-    this.projects.locations.repositories.genericArtifacts.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1/{+parent}/genericArtifacts:create' : 'v1/{+parent}/genericArtifacts:create';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-
-    this.projects.locations.repositories.aptArtifacts = {};
-    this.projects.locations.repositories.aptArtifacts.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1/{+parent}/aptArtifacts:create' : 'v1/{+parent}/aptArtifacts:create';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-    this.projects.locations.repositories.aptArtifacts.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/aptArtifacts:import', 'POST', apiParams, clientConfig);
-
     this.projects.locations.repositories.dockerImages = {};
-    this.projects.locations.repositories.dockerImages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.repositories.dockerImages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dockerImages', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.repositories.pythonPackages = {};
-    this.projects.locations.repositories.pythonPackages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/pythonPackages', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.pythonPackages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.repositories.files = {};
-    this.projects.locations.repositories.files.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1/{+parent}/files:upload' : 'v1/{+parent}/files:upload';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
-    this.projects.locations.repositories.files.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/files', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.files.download = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:download', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.files.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.files.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.files.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.repositories.packages = {};
-    this.projects.locations.repositories.packages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/packages', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.repositories.packages.tags = {};
-    this.projects.locations.repositories.packages.tags.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.tags.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.tags.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.tags.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.tags.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/tags', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.repositories.packages.versions = {};
-    this.projects.locations.repositories.packages.versions.batchDelete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions:batchDelete', 'POST', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.packages.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.repositories.rules = {};
-    this.projects.locations.repositories.rules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.repositories.rules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.repositories.rules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rules', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.rules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.rules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/rules', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.repositories.goModules = {};
-    this.projects.locations.repositories.goModules.upload = async (apiParams = {}, clientConfig = {}) => {
-      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
-      const path = apiParams.media ? '/upload/v1/{+parent}/goModules:create' : 'v1/{+parent}/goModules:create';
-      return this._makeRequest(path, 'POST', apiParams, clientConfig);
-    };
+    this.projects.locations.repositories.dockerImages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.repositories.googetArtifacts = {};
     this.projects.locations.repositories.googetArtifacts.import = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/googetArtifacts:import', 'POST', apiParams, clientConfig);
@@ -141,9 +138,12 @@ class Artifactregistry {
       return this._makeRequest(path, 'POST', apiParams, clientConfig);
     };
 
-    this.projects.locations.repositories.npmPackages = {};
-    this.projects.locations.repositories.npmPackages.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.repositories.npmPackages.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/npmPackages', 'GET', apiParams, clientConfig);
+    this.projects.locations.repositories.genericArtifacts = {};
+    this.projects.locations.repositories.genericArtifacts.upload = async (apiParams = {}, clientConfig = {}) => {
+      // If apiParams.media is provided, use the upload path; otherwise, use the standard path.
+      const path = apiParams.media ? '/upload/v1/{+parent}/genericArtifacts:create' : 'v1/{+parent}/genericArtifacts:create';
+      return this._makeRequest(path, 'POST', apiParams, clientConfig);
+    };
 
     this.projects.locations.operations = {};
     this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
