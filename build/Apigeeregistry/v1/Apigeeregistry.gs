@@ -21,133 +21,133 @@ class Apigeeregistry {
     this.projects = {};
 
     this.projects.locations = {};
-    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/locations', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.apis = {};
-    this.projects.locations.apis.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apis', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apis', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.apis.deployments = {};
-    this.projects.locations.apis.deployments.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listRevisions', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollback', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.tagRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:tagRevision', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.deleteRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteRevision', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-
-    this.projects.locations.apis.deployments.artifacts = {};
-    this.projects.locations.apis.deployments.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.apis.deployments.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.apis.versions = {};
-    this.projects.locations.apis.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.apis.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.apis.versions.artifacts = {};
-    this.projects.locations.apis.versions.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.versions.artifacts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.artifacts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.apis.versions.artifacts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.apis.versions.specs = {};
-    this.projects.locations.apis.versions.specs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/specs', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listRevisions', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.tagRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:tagRevision', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/specs', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.deleteRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteRevision', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollback', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.apis.versions.specs.artifacts = {};
-    this.projects.locations.apis.versions.specs.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.artifacts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.artifacts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.versions.specs.artifacts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-
-    this.projects.locations.apis.artifacts = {};
-    this.projects.locations.apis.artifacts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.artifacts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.apis.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.apis.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.artifacts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.apis.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.apis.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
+    this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.documents = {};
     this.projects.locations.documents.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.documents.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.documents.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.documents.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.artifacts = {};
-    this.projects.locations.artifacts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
-    this.projects.locations.artifacts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.artifacts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
-    this.projects.locations.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
-    this.projects.locations.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
-    this.projects.locations.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis = {};
+    this.projects.locations.apis.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apis', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/apis', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apis.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.apis.versions = {};
+    this.projects.locations.apis.versions.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apis.versions.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.versions.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/versions', 'GET', apiParams, clientConfig);
+
+    this.projects.locations.apis.versions.specs = {};
+    this.projects.locations.apis.versions.specs.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listRevisions', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.deleteRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteRevision', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollback', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/specs', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/specs', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.tagRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:tagRevision', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.apis.versions.specs.artifacts = {};
+    this.projects.locations.apis.versions.specs.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.artifacts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.artifacts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.specs.artifacts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.apis.versions.artifacts = {};
+    this.projects.locations.apis.versions.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.apis.versions.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.artifacts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.versions.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.versions.artifacts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.versions.artifacts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.apis.artifacts = {};
+    this.projects.locations.apis.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.artifacts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.artifacts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.artifacts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+
+    this.projects.locations.apis.deployments = {};
+    this.projects.locations.apis.deployments.listRevisions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:listRevisions', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.tagRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:tagRevision', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.deleteRevision = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:deleteRevision', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.rollback = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:rollback', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/deployments', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.apis.deployments.artifacts = {};
+    this.projects.locations.apis.deployments.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
+    this.projects.locations.apis.deployments.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
+    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     this.projects.locations.runtime = {};
     this.projects.locations.runtime.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.runtime.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
     this.projects.locations.runtime.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.instances = {};
-    this.projects.locations.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'POST', apiParams, clientConfig);
-    this.projects.locations.instances.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
-    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.artifacts = {};
+    this.projects.locations.artifacts.replaceArtifact = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PUT', apiParams, clientConfig);
+    this.projects.locations.artifacts.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.artifacts.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.artifacts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'GET', apiParams, clientConfig);
+    this.projects.locations.artifacts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.artifacts.getContents = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getContents', 'GET', apiParams, clientConfig);
+    this.projects.locations.artifacts.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.artifacts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.artifacts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/artifacts', 'POST', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/operations', 'GET', apiParams, clientConfig);
-    this.projects.locations.operations.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
-    this.projects.locations.operations.cancel = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:cancel', 'POST', apiParams, clientConfig);
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances = {};
+    this.projects.locations.instances.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
+    this.projects.locations.instances.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/instances', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+    this.projects.locations.instances.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
