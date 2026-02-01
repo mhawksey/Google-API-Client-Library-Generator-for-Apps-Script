@@ -19,59 +19,59 @@ class Adsense {
 
 
     this.accounts = {};
-    this.accounts.getAdBlockingRecoveryTag = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/adBlockingRecoveryTag', 'GET', apiParams, clientConfig);
     this.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.listChildAccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}:listChildAccounts', 'GET', apiParams, clientConfig);
     this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/accounts', 'GET', apiParams, clientConfig);
+    this.accounts.listChildAccounts = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}:listChildAccounts', 'GET', apiParams, clientConfig);
+    this.accounts.getAdBlockingRecoveryTag = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/adBlockingRecoveryTag', 'GET', apiParams, clientConfig);
 
     this.accounts.reports = {};
-    this.accounts.reports.generateCsv = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+account}/reports:generateCsv', 'GET', apiParams, clientConfig);
     this.accounts.reports.getSaved = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved', 'GET', apiParams, clientConfig);
+    this.accounts.reports.generateCsv = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+account}/reports:generateCsv', 'GET', apiParams, clientConfig);
     this.accounts.reports.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+account}/reports:generate', 'GET', apiParams, clientConfig);
 
     this.accounts.reports.saved = {};
+    this.accounts.reports.saved.generateCsv = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved:generateCsv', 'GET', apiParams, clientConfig);
     this.accounts.reports.saved.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/reports/saved', 'GET', apiParams, clientConfig);
     this.accounts.reports.saved.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved:generate', 'GET', apiParams, clientConfig);
-    this.accounts.reports.saved.generateCsv = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved:generateCsv', 'GET', apiParams, clientConfig);
 
-    this.accounts.alerts = {};
-    this.accounts.alerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/alerts', 'GET', apiParams, clientConfig);
+    this.accounts.policyIssues = {};
+    this.accounts.policyIssues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyIssues', 'GET', apiParams, clientConfig);
+    this.accounts.policyIssues.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     this.accounts.payments = {};
     this.accounts.payments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/payments', 'GET', apiParams, clientConfig);
 
     this.accounts.adclients = {};
-    this.accounts.adclients.getAdcode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/adcode', 'GET', apiParams, clientConfig);
-    this.accounts.adclients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adclients', 'GET', apiParams, clientConfig);
     this.accounts.adclients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.adclients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adclients', 'GET', apiParams, clientConfig);
+    this.accounts.adclients.getAdcode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/adcode', 'GET', apiParams, clientConfig);
+
+    this.accounts.adclients.adunits = {};
+    this.accounts.adclients.adunits.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
+    this.accounts.adclients.adunits.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.adclients.adunits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adunits', 'POST', apiParams, clientConfig);
+    this.accounts.adclients.adunits.getAdcode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/adcode', 'GET', apiParams, clientConfig);
+    this.accounts.adclients.adunits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adunits', 'GET', apiParams, clientConfig);
+    this.accounts.adclients.adunits.listLinkedCustomChannels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}:listLinkedCustomChannels', 'GET', apiParams, clientConfig);
 
     this.accounts.adclients.customchannels = {};
-    this.accounts.adclients.customchannels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
-    this.accounts.adclients.customchannels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/customchannels', 'POST', apiParams, clientConfig);
     this.accounts.adclients.customchannels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
     this.accounts.adclients.customchannels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
     this.accounts.adclients.customchannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/customchannels', 'GET', apiParams, clientConfig);
     this.accounts.adclients.customchannels.listLinkedAdUnits = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}:listLinkedAdUnits', 'GET', apiParams, clientConfig);
+    this.accounts.adclients.customchannels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/customchannels', 'POST', apiParams, clientConfig);
+    this.accounts.adclients.customchannels.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.accounts.adclients.urlchannels = {};
-    this.accounts.adclients.urlchannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/urlchannels', 'GET', apiParams, clientConfig);
     this.accounts.adclients.urlchannels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    this.accounts.adclients.adunits = {};
-    this.accounts.adclients.adunits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adunits', 'GET', apiParams, clientConfig);
-    this.accounts.adclients.adunits.listLinkedCustomChannels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}:listLinkedCustomChannels', 'GET', apiParams, clientConfig);
-    this.accounts.adclients.adunits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adunits', 'POST', apiParams, clientConfig);
-    this.accounts.adclients.adunits.getAdcode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/adcode', 'GET', apiParams, clientConfig);
-    this.accounts.adclients.adunits.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-    this.accounts.adclients.adunits.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    this.accounts.policyIssues = {};
-    this.accounts.policyIssues.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-    this.accounts.policyIssues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyIssues', 'GET', apiParams, clientConfig);
+    this.accounts.adclients.urlchannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/urlchannels', 'GET', apiParams, clientConfig);
 
     this.accounts.sites = {};
     this.accounts.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/sites', 'GET', apiParams, clientConfig);
     this.accounts.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    this.accounts.alerts = {};
+    this.accounts.alerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/alerts', 'GET', apiParams, clientConfig);
   }
 
 /**
