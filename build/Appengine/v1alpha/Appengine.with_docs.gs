@@ -18,201 +18,6 @@ class Appengine {
     this._servicePath = '';
 
 
-    this.apps = {};
-
-    this.apps.authorizedCertificates = {};
-
-    /**
-     * Lists all SSL certificates the user is authorized to administer.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {integer} apiParams.pageSize - Maximum results to return per page.
-     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
-     * @param {string} apiParams.view - Controls the set of fields returned in the LIST response.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
-     * @param {string} apiParams.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.updateMask - Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.authorizedCertificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Gets the specified SSL certificate.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
-     * @param {string} apiParams.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {string} apiParams.view - Controls the set of fields returned in the GET response.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.authorizedCertificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified SSL certificate.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
-     * @param {string} apiParams.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Uploads the specified SSL certificate.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.authorizedCertificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates', 'POST', apiParams, clientConfig);
-
-    this.apps.locations = {};
-
-    /**
-     * Gets information about a location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Resource name for the location.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/locations/{locationsId}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists information about the supported locations for this service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. The resource that owns the locations collection, if applicable.
-     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
-     * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
-     * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
-     * @param {string} apiParams.pageToken - A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/locations', 'GET', apiParams, clientConfig);
-
-    this.apps.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. The name of the operation's parent resource.
-     * @param {string} apiParams.filter - The standard list filter.
-     * @param {integer} apiParams.pageSize - The standard list page size.
-     * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/operations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. The name of the operation resource.
-     * @param {string} apiParams.operationsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/operations/{operationsId}', 'GET', apiParams, clientConfig);
-
-    this.apps.domainMappings = {};
-
-    /**
-     * Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {boolean} apiParams.noManagedCertificate - Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
-     * @param {string} apiParams.overrideStrategy - Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.domainMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings', 'POST', apiParams, clientConfig);
-
-    /**
-     * Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
-     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com.
-     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {boolean} apiParams.noManagedCertificate - Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask.
-     * @param {string} apiParams.updateMask - Required. Standard field mask for the set of fields to be updated.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.domainMappings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Lists the domain mappings on an application.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {integer} apiParams.pageSize - Maximum results to return per page.
-     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.domainMappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the specified domain mapping.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
-     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.domainMappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}', 'GET', apiParams, clientConfig);
-
-    this.apps.authorizedDomains = {};
-
-    /**
-     * Lists all domains the user is authorized to administer.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {integer} apiParams.pageSize - Maximum results to return per page.
-     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.apps.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedDomains', 'GET', apiParams, clientConfig);
-
     this.projects = {};
 
     this.projects.locations = {};
@@ -229,7 +34,7 @@ class Appengine {
     this.projects.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists information about the supported locations for this service.
+     * Lists information about the supported locations for this service. This method can be called in two ways: List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other locations specifically visible to the project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
@@ -242,38 +47,38 @@ class Appengine {
      */
     this.projects.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations', 'GET', apiParams, clientConfig);
 
-    this.projects.locations.operations = {};
-
-    /**
-     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - The standard list filter.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {integer} apiParams.pageSize - The standard list page size.
-     * @param {string} apiParams.pageToken - The standard list page token.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. The name of the operation's parent resource.
-     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/operations', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.operationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. The name of the operation resource.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}', 'GET', apiParams, clientConfig);
-
     this.projects.locations.applications = {};
 
+    this.projects.locations.applications.authorizedDomains = {};
+
+    /**
+     * Lists all domains the user is authorized to administer.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
+     * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains', 'GET', apiParams, clientConfig);
+
     this.projects.locations.applications.domainMappings = {};
+
+    /**
+     * Gets the specified domain mapping.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.domainMappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists the domain mappings on an application.
@@ -303,21 +108,6 @@ class Appengine {
     this.projects.locations.applications.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
-     * @param {boolean} apiParams.noManagedCertificate - Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
-     * @param {string} apiParams.overrideStrategy - Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
-     * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.domainMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', 'POST', apiParams, clientConfig);
-
-    /**
      * Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
@@ -334,33 +124,19 @@ class Appengine {
     this.projects.locations.applications.domainMappings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Gets the specified domain mapping.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
-     * @param {string} apiParams.projectsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.locations.applications.domainMappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings/{domainMappingsId}', 'GET', apiParams, clientConfig);
-
-    this.projects.locations.applications.authorizedDomains = {};
-
-    /**
-     * Lists all domains the user is authorized to administer.
+     * Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
      * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
-     * @param {integer} apiParams.pageSize - Maximum results to return per page.
-     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
+     * @param {boolean} apiParams.noManagedCertificate - Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
+     * @param {string} apiParams.overrideStrategy - Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
      * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.applications.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedDomains', 'GET', apiParams, clientConfig);
+    this.projects.locations.applications.domainMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/domainMappings', 'POST', apiParams, clientConfig);
 
     this.projects.locations.applications.authorizedCertificates = {};
 
@@ -394,17 +170,19 @@ class Appengine {
     this.projects.locations.applications.authorizedCertificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Uploads the specified SSL certificate.
+     * Lists all SSL certificates the user is authorized to administer.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
      * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
      * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.view - Controls the set of fields returned in the LIST response.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.applications.authorizedCertificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'POST', apiParams, clientConfig);
+    this.projects.locations.applications.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
 
     /**
      * Deletes the specified SSL certificate.
@@ -420,19 +198,241 @@ class Appengine {
     this.projects.locations.applications.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
 
     /**
-     * Lists all SSL certificates the user is authorized to administer.
+     * Uploads the specified SSL certificate.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.applicationsId - (Required) Part of `parent`. See documentation of `projectsId`.
      * @param {string} apiParams.locationsId - (Required) Part of `parent`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.applications.authorizedCertificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'POST', apiParams, clientConfig);
+
+    this.projects.locations.operations = {};
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - The standard list filter.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {integer} apiParams.pageSize - The standard list page size.
+     * @param {string} apiParams.pageToken - The standard list page token.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. The name of the operation's parent resource.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/operations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.operationsId - (Required) Part of `name`. See documentation of `projectsId`.
+     * @param {string} apiParams.projectsId - (Required) Part of `name`. The name of the operation resource.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/operations/{operationsId}', 'GET', apiParams, clientConfig);
+
+    this.apps = {};
+
+    this.apps.locations = {};
+
+    /**
+     * Lists information about the supported locations for this service. This method can be called in two ways: List all public locations: Use the path GET /v1/locations. List project-visible locations: Use the path GET /v1/projects/{project_id}/locations. This may include public locations as well as private or other locations specifically visible to the project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. The resource that owns the locations collection, if applicable.
+     * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
+     * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160 (https://google.aip.dev/160).
+     * @param {integer} apiParams.pageSize - The maximum number of results to return. If not set, the service selects a default.
+     * @param {string} apiParams.pageToken - A page token received from the next_page_token field in the response. Send that page token to receive the subsequent page.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.locations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/locations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets information about a location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Resource name for the location.
+     * @param {string} apiParams.locationsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.locations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/locations/{locationsId}', 'GET', apiParams, clientConfig);
+
+    this.apps.authorizedDomains = {};
+
+    /**
+     * Lists all domains the user is authorized to administer.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
      * @param {integer} apiParams.pageSize - Maximum results to return per page.
      * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
-     * @param {string} apiParams.projectsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.authorizedDomains.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedDomains', 'GET', apiParams, clientConfig);
+
+    this.apps.authorizedCertificates = {};
+
+    /**
+     * Uploads the specified SSL certificate.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.authorizedCertificates.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the specified SSL certificate.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} apiParams.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.view - Controls the set of fields returned in the GET response.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.authorizedCertificates.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified SSL certificate.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} apiParams.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.authorizedCertificates.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Lists all SSL certificates the user is authorized to administer.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
      * @param {string} apiParams.view - Controls the set of fields returned in the LIST response.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.locations.applications.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/projects/{projectsId}/locations/{locationsId}/applications/{applicationsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
+    this.apps.authorizedCertificates.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates the specified SSL certificate. To renew a certificate and maintain its existing domain mappings, update certificate_data with a new certificate. The new certificate must be applicable to the same domains as the original certificate. The certificate display_name may also be updated.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/authorizedCertificates/12345.
+     * @param {string} apiParams.authorizedCertificatesId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {string} apiParams.updateMask - Standard field mask for the set of fields to be updated. Updates are only supported on the certificate_raw_data and display_name fields.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.authorizedCertificates.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/authorizedCertificates/{authorizedCertificatesId}', 'PATCH', apiParams, clientConfig);
+
+    this.apps.domainMappings = {};
+
+    /**
+     * Maps a domain to an application. A user must be authorized to administer a domain in order to map it to an application. For a list of available authorized domains, see AuthorizedDomains.ListAuthorizedDomains.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {boolean} apiParams.noManagedCertificate - Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
+     * @param {string} apiParams.overrideStrategy - Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.domainMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the specified domain mapping.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource requested. Example: apps/myapp/domainMappings/example.com.
+     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.domainMappings.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists the domain mappings on an application.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `parent`. Required. Name of the parent Application resource. Example: apps/myapp.
+     * @param {integer} apiParams.pageSize - Maximum results to return per page.
+     * @param {string} apiParams.pageToken - Continuation token for fetching the next page of results.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.domainMappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes the specified domain mapping. A user must be authorized to administer the associated domain in order to delete a DomainMapping resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to delete. Example: apps/myapp/domainMappings/example.com.
+     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.domainMappings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates the specified domain mapping. To map an SSL certificate to a domain mapping, update certificate_id to point to an AuthorizedCertificate resource. A user must be authorized to administer the associated domain in order to update a DomainMapping resource.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. Required. Name of the resource to update. Example: apps/myapp/domainMappings/example.com.
+     * @param {string} apiParams.domainMappingsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {boolean} apiParams.noManagedCertificate - Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated. Only applicable if ssl_settings.certificate_id is specified in the update mask.
+     * @param {string} apiParams.updateMask - Required. Standard field mask for the set of fields to be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.domainMappings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/domainMappings/{domainMappingsId}', 'PATCH', apiParams, clientConfig);
+
+    this.apps.operations = {};
+
+    /**
+     * Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. The name of the operation's parent resource.
+     * @param {string} apiParams.filter - The standard list filter.
+     * @param {integer} apiParams.pageSize - The standard list page size.
+     * @param {string} apiParams.pageToken - The standard list page token.
+     * @param {boolean} apiParams.returnPartialSuccess - When set to true, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field.This can only be true when reading across collections. For example, when parent is set to "projects/example/locations/-".This field is not supported by default and will result in an UNIMPLEMENTED error if set unless explicitly documented otherwise in service or product specific documentation.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.operations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/operations', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.appsId - (Required) Part of `name`. The name of the operation resource.
+     * @param {string} apiParams.operationsId - (Required) Part of `name`. See documentation of `appsId`.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.apps.operations.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1alpha/apps/{appsId}/operations/{operationsId}', 'GET', apiParams, clientConfig);
   }
 
 /**
