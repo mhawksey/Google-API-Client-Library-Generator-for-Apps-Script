@@ -23,6 +23,18 @@ class Adsenseplatform {
     this.platforms.accounts = {};
 
     /**
+     * Lists a partial view of sub-accounts for a specific parent account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of accounts to include in the response, used for paging. If unspecified, at most 10000 accounts will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page.
+     * @param {string} apiParams.parent - (Required) Required. Platform who parents the accounts. Format: platforms/{platform}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.platforms.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'GET', apiParams, clientConfig);
+
+    /**
      * Looks up information about a sub-account for a specified creation_request_id. If no account exists for the given creation_request_id, returns 404.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.creationRequestId - Optional. The creation_request_id provided when calling createAccount.
@@ -34,27 +46,14 @@ class Adsenseplatform {
     this.platforms.accounts.lookup = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts:lookup', 'GET', apiParams, clientConfig);
 
     /**
-     * Closes a sub-account.
+     * Gets information about the selected sub-account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Account to close. Format: platforms/{platform}/accounts/{account_id}
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id}
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.platforms.accounts.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
-
-    /**
-     * Lists a partial view of sub-accounts for a specific parent account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Optional. The maximum number of accounts to include in the response, used for paging. If unspecified, at most 10000 accounts will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
-     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListAccounts` call. Provide this to retrieve the subsequent page.
-     * @param {string} apiParams.parent - (Required) Required. Platform who parents the accounts. Format: platforms/{platform}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.platforms.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'GET', apiParams, clientConfig);
+    this.platforms.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a sub-account.
@@ -68,14 +67,15 @@ class Adsenseplatform {
     this.platforms.accounts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/accounts', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets information about the selected sub-account.
+     * Closes a sub-account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Account to get information about. Format: platforms/{platform}/accounts/{account_id}
+     * @param {string} apiParams.name - (Required) Required. Account to close. Format: platforms/{platform}/accounts/{account_id}
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.platforms.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.platforms.accounts.close = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:close', 'POST', apiParams, clientConfig);
 
     this.platforms.accounts.events = {};
 
@@ -93,17 +93,6 @@ class Adsenseplatform {
     this.platforms.accounts.sites = {};
 
     /**
-     * Creates a site for a specified account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. Account to create site. Format: platforms/{platform}/accounts/{account_id}
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.platforms.accounts.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sites', 'POST', apiParams, clientConfig);
-
-    /**
      * Gets a site from a specified sub-account.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the site to retrieve. Format: platforms/{platform}/accounts/{account}/sites/{site}
@@ -112,6 +101,16 @@ class Adsenseplatform {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.platforms.accounts.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a site from a specified account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the site to delete. Format: platforms/{platform}/accounts/{account}/sites/{site}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.platforms.accounts.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Requests the review of a site. The site should be in REQUIRES_REVIEW or NEEDS_ATTENTION state. Note: Make sure you place an [ad tag](https://developers.google.com/adsense/platforms/direct/ad-tags) on your site before requesting a review.
@@ -136,14 +135,15 @@ class Adsenseplatform {
     this.platforms.accounts.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sites', 'GET', apiParams, clientConfig);
 
     /**
-     * Deletes a site from a specified account.
+     * Creates a site for a specified account.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the site to delete. Format: platforms/{platform}/accounts/{account}/sites/{site}
+     * @param {string} apiParams.parent - (Required) Required. Account to create site. Format: platforms/{platform}/accounts/{account_id}
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.platforms.accounts.sites.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.platforms.accounts.sites.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/sites', 'POST', apiParams, clientConfig);
   }
 
 /**
