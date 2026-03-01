@@ -4,7 +4,7 @@ Auto-generated client library for using the **Datastream API (version: v1alpha1)
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:36:04 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:36:31 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:42:33 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:44 GMT
 
@@ -30,7 +30,11 @@ The FetchStaticIps API call exposes the static IP addresses used by Datastream.
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service.
+Lists information about the supported locations for this service. This method can be called in two ways:
+
+* **List all public locations:** Use the path `GET /v1/locations`.
+
+* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
