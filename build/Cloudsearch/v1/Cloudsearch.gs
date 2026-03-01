@@ -1,7 +1,7 @@
 
 /**
  * Google Apps Script client library for the Cloud Search API
- * Documentation URL: https://developers.google.com/cloud-search/docs/guides/
+ * Documentation URL: https://developers.google.com/workspace/cloud-search/docs/guides/
  * @class
  */
 class Cloudsearch {
@@ -89,7 +89,6 @@ class Cloudsearch {
     this.query.suggest = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query/suggest', 'POST', apiParams, clientConfig);
     this.query.search = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query/search', 'POST', apiParams, clientConfig);
     this.query.removeActivity = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query:removeActivity', 'POST', apiParams, clientConfig);
-    this.query.debugSearch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query:debugSearch', 'POST', apiParams, clientConfig);
 
     this.query.sources = {};
     this.query.sources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/query/sources', 'GET', apiParams, clientConfig);
