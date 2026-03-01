@@ -109,6 +109,94 @@ class Classroom {
      */
     this.courses.updateGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'PATCH', apiParams, clientConfig);
 
+    this.courses.studentGroups = {};
+
+    /**
+     * Creates a student group for a course. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or for access errors. * `NOT_FOUND` if the course does not exist or the requesting user doesn't have access to the course. * `FAILED_PRECONDITION` if creating the student group would exceed the maximum number of student groups per course.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.studentGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested student group or for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the student group.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course containing the student group to delete.
+     * @param {string} apiParams.id - (Required) Required. The identifier of the student group to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.studentGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{id}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Updates one or more fields in a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested student group or for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the student group. * `INVALID_ARGUMENT` if invalid fields are specified in the update mask or if no update mask is supplied.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. Identifier of the course.
+     * @param {string} apiParams.id - (Required) Required. Identifier of the student group.
+     * @param {string} apiParams.updateMask - Required. Mask that identifies which fields on the student group to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields can be specified by teachers: * `title`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.studentGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{id}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Returns a list of groups in a course. This method returns the following error codes: * `NOT_FOUND` if the course does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course.
+     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum, which is currently set to 75 items. The server may return fewer than the specified number of results.
+     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.studentGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups', 'GET', apiParams, clientConfig);
+
+    this.courses.studentGroups.studentGroupMembers = {};
+
+    /**
+     * Creates a student group member for a student group. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or member for access errors. * `NOT_FOUND` if the student group does not exist or the user does not have access to the student group. * `ALREADY_EXISTS` if the student group member already exists. * `FAILED_PRECONDITION` if attempting to add a member to a student group that has reached its member limit.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course.
+     * @param {string} apiParams.studentGroupId - (Required) Required. The identifier of the student group.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.studentGroups.studentGroupMembers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers', 'POST', apiParams, clientConfig);
+
+    /**
+     * Deletes a student group member. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested student group member or for access errors. * `NOT_FOUND` if the student group member does not exist or the user does not have access to the student group.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course containing the relevant student group.
+     * @param {string} apiParams.studentGroupId - (Required) Required. The identifier of the student group containing the student group member to delete.
+     * @param {string} apiParams.userId - (Required) Required. The identifier of the student group member to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.studentGroups.studentGroupMembers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers/{userId}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Returns a list of students in a group. This method returns the following error codes: * `NOT_FOUND` if the course or student group does not exist.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.courseId - (Required) Required. The identifier of the course.
+     * @param {integer} apiParams.pageSize - Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results.
+     * @param {string} apiParams.pageToken - nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token.
+     * @param {string} apiParams.studentGroupId - (Required) Required. The identifier of the student group.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.courses.studentGroups.studentGroupMembers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers', 'GET', apiParams, clientConfig);
+
     this.courses.aliases = {};
 
     /**
@@ -276,7 +364,7 @@ class Classroom {
     this.courses.courseWork.studentSubmissions.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/courseWork/{courseWorkId}/studentSubmissions/{id}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Returns a list of student submissions that the requester is permitted to view, factoring in the OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student submissions for multiple course work items. Course students may only view their own work. Course teachers and domain administrators may view all student submissions. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
+     * Returns a list of student submissions that the requester is permitted to view, factoring in the OAuth scopes of the request. A hyphen (`-`) may be specified as the `course_work_id` to include student submissions for multiple course work items. Course students may only view their own work. Course teachers and domain administrators may view all student submissions. This method returns the following error codes: * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors. * `INVALID_ARGUMENT` if the request is malformed. * `NOT_FOUND` if the requested course does not exist.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.courseId - (Required) Identifier of the course. This identifier can be either the Classroom-assigned identifier or an alias.
      * @param {string} apiParams.courseWorkId - (Required) Identifier of the student work to request. This may be set to the string literal `"-"` to request student work for all course work in the specified course.
