@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Workspace Marketplace API (
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Feb 2026 00:23:31 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:23:20 GMT
 - **Last Modified:** Sun, 01 Feb 2026 00:23:31 GMT
 - **Created:** Sun, 01 Feb 2026 00:23:31 GMT
 
@@ -18,20 +18,20 @@ Auto-generated client library for using the **Google Workspace Marketplace API (
 
 #### `customerLicense.get()`
 
-Gets the status of a license for a customer to determine if they have access for a given app.
+Gets the customer's licensing status to determine if they have access to a given app. For more information, see [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.customerId` | `string` | Yes | Customer Id |
-| `params.applicationId` | `string` | Yes | Application Id |
+| `params.applicationId` | `string` | Yes | The ID of the application. |
+| `params.customerId` | `string` | Yes | The ID of the customer. |
 
 ### `userLicense`
 
 #### `userLicense.get()`
 
-Gets the user's licensing status for their permission to use a given app.
+Gets the user's licensing status to determine if they have permission to use a given app. For more information, see [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.applicationId` | `string` | Yes | Application Id |
-| `params.userId` | `string` | Yes | User Id |
+| `params.applicationId` | `string` | Yes | The ID of the application. |
+| `params.userId` | `string` | Yes | The ID of the user. |
