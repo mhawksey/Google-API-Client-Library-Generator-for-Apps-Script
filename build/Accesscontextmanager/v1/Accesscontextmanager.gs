@@ -72,6 +72,9 @@ class Accesscontextmanager {
     this.organizations.gcpUserAccessBindings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/gcpUserAccessBindings', 'POST', apiParams, clientConfig);
     this.organizations.gcpUserAccessBindings.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.organizations.gcpUserAccessBindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.permissions = {};
+    this.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/permissions', 'GET', apiParams, clientConfig);
   }
 
 /**
