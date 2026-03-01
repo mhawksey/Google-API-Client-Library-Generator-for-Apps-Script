@@ -4,8 +4,8 @@ Auto-generated client library for using the **BigQuery Connection API (version: 
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:24:21 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:24:21 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:24:12 GMT
+- **Last Modified:** Sun, 01 Mar 2026 00:24:12 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:05 GMT
 
 
@@ -39,23 +39,22 @@ Sets the credential for the specified connection.
 | `params.name` | `string` | Yes | Required. Name of the connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}/credential` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.list()`
+#### `projects.locations.connections.delete()`
 
-Returns a list of connections in the given project.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Parent resource name. Must be in the form: `projects/{project_id}/locations/{location_id}` |
-| `params.maxResults` | `integer` | No | Required. Maximum number of results per page. |
-| `params.pageToken` | `string` | No | Page token. |
-
-#### `projects.locations.connections.get()`
-
-Returns specified connection.
+Deletes connection and associated credential.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the requested connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` |
+| `params.name` | `string` | Yes | Required. Name of the deleted connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` |
+
+#### `projects.locations.connections.testIamPermissions()`
+
+Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.create()`
 
@@ -76,14 +75,6 @@ Sets the access control policy on the specified resource. Replaces any existing 
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.delete()`
-
-Deletes connection and associated credential.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Name of the deleted connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` |
-
 #### `projects.locations.connections.getIamPolicy()`
 
 Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
@@ -93,11 +84,20 @@ Gets the access control policy for a resource. Returns an empty policy if the re
 | `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.testIamPermissions()`
+#### `projects.locations.connections.get()`
 
-Returns permissions that a caller has on the specified resource. If the resource does not exist, this will return an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+Returns specified connection.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. Name of the requested connection, for example: `projects/{project_id}/locations/{location_id}/connections/{connection_id}` |
+
+#### `projects.locations.connections.list()`
+
+Returns a list of connections in the given project.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.maxResults` | `integer` | No | Required. Maximum number of results per page. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.parent` | `string` | Yes | Required. Parent resource name. Must be in the form: `projects/{project_id}/locations/{location_id}` |
