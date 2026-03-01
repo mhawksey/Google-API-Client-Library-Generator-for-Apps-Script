@@ -4,8 +4,8 @@ Auto-generated client library for using the **Access Context Manager API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Feb 2026 00:20:59 GMT
-- **Last Modified:** Sun, 01 Feb 2026 00:20:59 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:20:58 GMT
+- **Last Modified:** Sun, 01 Mar 2026 00:20:58 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:36 GMT
 
 
@@ -382,3 +382,14 @@ Deletes a GcpUserAccessBinding. Completion of this long-running operation does n
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N" |
+
+### `permissions`
+
+#### `permissions.list()`
+
+Lists all supported permissions in VPCSC Granular Controls.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. This flag specifies the maximum number of services to return per page. Default is 100. |
+| `params.pageToken` | `string` | No | Optional. Token to start on a later page. Default is the first page. |
