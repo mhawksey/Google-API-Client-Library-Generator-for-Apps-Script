@@ -19,14 +19,14 @@ class Admob {
 
 
     this.accounts = {};
-    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/accounts', 'GET', apiParams, clientConfig);
     this.accounts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'GET', apiParams, clientConfig);
+    this.accounts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/accounts', 'GET', apiParams, clientConfig);
 
-    this.accounts.adSources = {};
-    this.accounts.adSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adSources', 'GET', apiParams, clientConfig);
+    this.accounts.networkReport = {};
+    this.accounts.networkReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/networkReport:generate', 'POST', apiParams, clientConfig);
 
-    this.accounts.adSources.adapters = {};
-    this.accounts.adSources.adapters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adapters', 'GET', apiParams, clientConfig);
+    this.accounts.mediationReport = {};
+    this.accounts.mediationReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/mediationReport:generate', 'POST', apiParams, clientConfig);
 
     this.accounts.campaignReport = {};
     this.accounts.campaignReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/campaignReport:generate', 'POST', apiParams, clientConfig);
@@ -35,8 +35,13 @@ class Admob {
     this.accounts.apps.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps', 'POST', apiParams, clientConfig);
     this.accounts.apps.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/apps', 'GET', apiParams, clientConfig);
 
-    this.accounts.mediationReport = {};
-    this.accounts.mediationReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/mediationReport:generate', 'POST', apiParams, clientConfig);
+    this.accounts.adUnits = {};
+    this.accounts.adUnits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnits', 'POST', apiParams, clientConfig);
+    this.accounts.adUnits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnits', 'GET', apiParams, clientConfig);
+
+    this.accounts.adUnits.adUnitMappings = {};
+    this.accounts.adUnits.adUnitMappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnitMappings', 'GET', apiParams, clientConfig);
+    this.accounts.adUnits.adUnitMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnitMappings', 'POST', apiParams, clientConfig);
 
     this.accounts.mediationGroups = {};
     this.accounts.mediationGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/mediationGroups', 'GET', apiParams, clientConfig);
@@ -44,22 +49,17 @@ class Admob {
     this.accounts.mediationGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}', 'PATCH', apiParams, clientConfig);
 
     this.accounts.mediationGroups.mediationAbExperiments = {};
-    this.accounts.mediationGroups.mediationAbExperiments.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:stop', 'POST', apiParams, clientConfig);
     this.accounts.mediationGroups.mediationAbExperiments.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/mediationAbExperiments', 'POST', apiParams, clientConfig);
-
-    this.accounts.networkReport = {};
-    this.accounts.networkReport.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/networkReport:generate', 'POST', apiParams, clientConfig);
+    this.accounts.mediationGroups.mediationAbExperiments.stop = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+name}:stop', 'POST', apiParams, clientConfig);
 
     this.accounts.adUnitMappings = {};
     this.accounts.adUnitMappings.batchCreate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnitMappings:batchCreate', 'POST', apiParams, clientConfig);
 
-    this.accounts.adUnits = {};
-    this.accounts.adUnits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnits', 'POST', apiParams, clientConfig);
-    this.accounts.adUnits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnits', 'GET', apiParams, clientConfig);
+    this.accounts.adSources = {};
+    this.accounts.adSources.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adSources', 'GET', apiParams, clientConfig);
 
-    this.accounts.adUnits.adUnitMappings = {};
-    this.accounts.adUnits.adUnitMappings.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnitMappings', 'POST', apiParams, clientConfig);
-    this.accounts.adUnits.adUnitMappings.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adUnitMappings', 'GET', apiParams, clientConfig);
+    this.accounts.adSources.adapters = {};
+    this.accounts.adSources.adapters.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1beta/{+parent}/adapters', 'GET', apiParams, clientConfig);
   }
 
 /**
