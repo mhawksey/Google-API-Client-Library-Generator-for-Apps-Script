@@ -4,8 +4,8 @@ Auto-generated client library for using the **API Keys API (version: v2)** in Go
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Feb 2026 00:23:07 GMT
-- **Last Modified:** Sun, 01 Feb 2026 00:23:07 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:22:57 GMT
+- **Last Modified:** Sun, 01 Mar 2026 00:22:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:12:43 GMT
 
 
@@ -13,16 +13,6 @@ Auto-generated client library for using the **API Keys API (version: v2)** in Go
 ---
 
 ## API Reference
-
-### `operations`
-
-#### `operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
 
 ### `keys`
 
@@ -34,11 +24,30 @@ Find the parent project and resource name of the API key that matches the key st
 |---|---|---|---|
 | `params.keyString` | `string` | No | Required. Finds the project that owns the key string value. |
 
+### `operations`
+
+#### `operations.get()`
+
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
 ### `projects`
 
 ### `projects.locations`
 
 ### `projects.locations.keys`
+
+#### `projects.locations.keys.undelete()`
+
+Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the API key to be undeleted. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.keys.get()`
 
@@ -54,10 +63,29 @@ Lists the API keys owned by a project. The key string of the API key isn't inclu
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. Specifies the maximum number of results to be returned at a time. |
 | `params.parent` | `string` | Yes | Required. Lists all API keys associated with this project. |
-| `params.pageToken` | `string` | No | Optional. Requests a specific page of results. |
 | `params.showDeleted` | `boolean` | No | Optional. Indicate that keys deleted in the past 30 days should also be returned. |
+| `params.pageSize` | `integer` | No | Optional. Specifies the maximum number of results to be returned at a time. |
+| `params.pageToken` | `string` | No | Optional. Requests a specific page of results. |
+
+#### `projects.locations.keys.create()`
+
+Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.keyId` | `string` | No | User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string. |
+| `params.parent` | `string` | Yes | Required. The project in which the API key is created. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.keys.delete()`
+
+Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the API key to be deleted. |
+| `params.etag` | `string` | No | Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency. |
 
 #### `projects.locations.keys.getKeyString()`
 
@@ -67,40 +95,12 @@ Get the key string for an API key. NOTE: Key is a global resource; hence the onl
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the API key to be retrieved. |
 
-#### `projects.locations.keys.delete()`
-
-Deletes an API key. Deleted key can be retrieved within 30 days of deletion. Afterward, key will be purged from the project. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.etag` | `string` | No | Optional. The etag known to the client for the expected state of the key. This is to be used for optimistic concurrency. |
-| `params.name` | `string` | Yes | Required. The resource name of the API key to be deleted. |
-
-#### `projects.locations.keys.create()`
-
-Creates a new API key. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The project in which the API key is created. |
-| `params.keyId` | `string` | No | User specified key id (optional). If specified, it will become the final component of the key resource name. The id must be unique within the project, must conform with RFC-1034, is restricted to lower-cased letters, and has a maximum length of 63 characters. In another word, the id must match the regular expression: `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. The id must NOT be a UUID-like string. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.keys.patch()`
 
 Patches the modifiable fields of an API key. The key string of the API key isn't included in the response. NOTE: Key is a global resource; hence the only supported value for location is `global`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Output only. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`. |
 | `params.updateMask` | `string` | No | The field mask specifies which fields to be updated as part of this request. All other fields are ignored. Mutable fields are: `display_name`, `restrictions`, and `annotations`. If an update mask is not provided, the service treats it as an implied mask equivalent to all allowed fields that are set on the wire. If the field mask has a special value "*", the service treats it equivalent to replace all allowed mutable fields. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.keys.undelete()`
-
-Undeletes an API key which was deleted within 30 days. NOTE: Key is a global resource; hence the only supported value for location is `global`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the API key to be undeleted. |
+| `params.name` | `string` | Yes | Output only. The resource name of the key. The `name` has the form: `projects//locations/global/keys/`. For example: `projects/123456867718/locations/global/keys/b7ff1f9f-8275-410a-94dd-3855ee9b5dd2` NOTE: Key is a global resource; hence the only supported value for location is `global`. |
 | `params.requestBody` | `object` | Yes | The request body. |
