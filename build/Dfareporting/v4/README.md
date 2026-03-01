@@ -4,7 +4,7 @@ Auto-generated client library for using the **Campaign Manager 360 API (version:
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:42:20 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:42:25 GMT
 - **Last Modified:** Thu, 01 Jan 2026 00:42:20 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:21 GMT
 
@@ -1015,7 +1015,7 @@ Inserts a new dynamic feed.
 
 #### `dynamicFeeds.update()`
 
-Updates a new dynamic feed.
+Updates a new dynamic feed. For draft feeds, only Element can be updated. For published feeds, only FeedSchedule can be updated. Other fields will be ignored.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1023,7 +1023,7 @@ Updates a new dynamic feed.
 
 #### `dynamicFeeds.retransform()`
 
-Retransforms a dynamic feed.
+Retransforms a dynamic feed. Only draft feeds can be retransformed (i.e. the feed has not been published).
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -1057,7 +1057,7 @@ Updates an existing dynamic profile.
 
 #### `dynamicProfiles.generateCode()`
 
-Generates code for a dynamic profile.
+Generates code for a dynamic profile, which will need unescaping.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
