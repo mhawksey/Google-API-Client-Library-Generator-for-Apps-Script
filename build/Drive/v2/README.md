@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Drive API (version: v2)** i
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:43:42 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:43:47 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:45:16 GMT
 - **Created:** Sun, 20 Jul 2025 16:32:33 GMT
 
@@ -318,7 +318,7 @@ Creates a copy of the specified file.
 | `params.supportsTeamDrives` | `boolean` | No | Deprecated: Use `supportsAllDrives` instead. |
 | `params.timedTextLanguage` | `string` | No | The language of the timed text. |
 | `params.timedTextTrackName` | `string` | No | The timed text track name. |
-| `params.visibility` | `string` | No | The visibility of the new file. This parameter is only relevant when the source is not a native Google Doc and convert=false. |
+| `params.visibility` | `string` | No | The visibility of the new file. Permissions are still inherited from parent folders. This parameter is only relevant when the source is not a Google Doc file and when `convert=false`. |
 | `params.includePermissionsForView` | `string` | No | Specifies which additional view's permissions to include in the response. Only `published` is supported. |
 | `params.includeLabels` | `string` | No | A comma-separated list of IDs of labels to include in the `labelInfo` part of the response. |
 | `params.requestBody` | `object` | Yes | The request body. |
@@ -394,7 +394,7 @@ Generates a set of file IDs which can be provided in insert or copy requests.
 | `params.timedTextLanguage` | `string` | No | The language of the timed text. |
 | `params.timedTextTrackName` | `string` | No | The timed text track name. |
 | `params.useContentAsIndexableText` | `boolean` | No | Whether to use the content as indexable text. |
-| `params.visibility` | `string` | No | The visibility of the new file. This parameter is only relevant when convert=false. |
+| `params.visibility` | `string` | No | The visibility of the new file. Permissions are still inherited from parent folders. This parameter is only relevant when `convert=false`. |
 | `params.includePermissionsForView` | `string` | No | Specifies which additional view's permissions to include in the response. Only `published` is supported. |
 | `params.includeLabels` | `string` | No | A comma-separated list of IDs of labels to include in the `labelInfo` part of the response. |
 | `params.requestBody` | `object` | Yes | The request body. |
