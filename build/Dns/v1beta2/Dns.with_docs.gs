@@ -21,6 +21,35 @@ class Dns {
     this.resourceRecordSets = {};
 
     /**
+     * Enumerates ResourceRecordSets that you have created but not yet deleted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Specify a filter expression to view records that exactly match the specified domain. Both the name and type parameters are not supported when you use filter and must be omitted. Your filter expression must conform to AIP-160 and you must specify a domain in the name field. Optionally, you can include the type field to filter records by type. You can also include the has_suffix function to view records that match by domain suffix. Examples: - name="example.com." - name="example.com." AND type="A" - name=has_suffix("example.com.") - name=has_suffix("example.com.") AND type="A"
+     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+     * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
+     * @param {string} apiParams.name - Specify a fully qualified domain name to view only those records. The name parameter is not supported and must be omitted when you use filter.
+     * @param {string} apiParams.pageToken - Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {string} apiParams.type - Specify a record type to view only those records. You must also specify the name parameter. The type parameter is not supported and must be omitted when you use filter.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.resourceRecordSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates a new ResourceRecordSet.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.resourceRecordSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets', 'POST', apiParams, clientConfig);
+
+    /**
      * Fetches the representation of an existing ResourceRecordSet.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
@@ -62,64 +91,6 @@ class Dns {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.resourceRecordSets.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets/{name}/{type}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Creates a new ResourceRecordSet.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.resourceRecordSets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets', 'POST', apiParams, clientConfig);
-
-    /**
-     * Enumerates ResourceRecordSets that you have created but not yet deleted.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-     * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
-     * @param {string} apiParams.name - Restricts the list to return only records with this fully qualified domain name. Mutually exclusive with the {@code filter} field.
-     * @param {string} apiParams.pageToken - Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {string} apiParams.type - Restricts the list to return only records of this type. If present, the "name" parameter must also be present. Mutually exclusive with the {@code filter} field.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.resourceRecordSets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/rrsets', 'GET', apiParams, clientConfig);
-
-    this.dnsKeys = {};
-
-    /**
-     * Enumerates DnsKeys to a ResourceRecordSet collection.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.digestType - An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type is computed and displayed.
-     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-     * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
-     * @param {string} apiParams.pageToken - Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.dnsKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/dnsKeys', 'GET', apiParams, clientConfig);
-
-    /**
-     * Fetches the representation of an existing DnsKey.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.digestType - An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type is computed and displayed.
-     * @param {string} apiParams.dnsKeyId - (Required) The identifier of the requested DnsKey.
-     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.dnsKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/dnsKeys/{dnsKeyId}', 'GET', apiParams, clientConfig);
 
     this.changes = {};
 
@@ -164,23 +135,27 @@ class Dns {
      */
     this.changes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/changes', 'GET', apiParams, clientConfig);
 
-    this.managedZones = {};
+    this.dnsKeys = {};
 
     /**
-     * Returns permissions that a caller has on the specified resource. If the resource does not exist, this returns an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+     * Fetches the representation of an existing DnsKey.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.digestType - An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type is computed and displayed.
+     * @param {string} apiParams.dnsKeyId - (Required) The identifier of the requested DnsKey.
+     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.managedZones.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
+    this.dnsKeys.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/dnsKeys/{dnsKeyId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Enumerates ManagedZones that have been created but not yet deleted.
+     * Enumerates DnsKeys to a ResourceRecordSet collection.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.dnsName - Restricts the list to return only zones with this domain name.
+     * @param {string} apiParams.digestType - An optional comma-separated list of digest types to compute and display for key signing keys. If omitted, the recommended digest type is computed and displayed.
+     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
      * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
      * @param {string} apiParams.pageToken - Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.
      * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
@@ -188,91 +163,20 @@ class Dns {
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.managedZones.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones', 'GET', apiParams, clientConfig);
+    this.dnsKeys.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/dnsKeys', 'GET', apiParams, clientConfig);
+
+    this.projects = {};
 
     /**
-     * Applies a partial update to an existing ManagedZone.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.managedZones.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'PATCH', apiParams, clientConfig);
-
-    /**
-     * Deletes a previously created ManagedZone.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.managedZones.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Creates a new ManagedZone.
+     * Fetches the representation of an existing Project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
      * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.managedZones.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones', 'POST', apiParams, clientConfig);
-
-    /**
-     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.managedZones.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Fetches the representation of an existing ManagedZone.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.managedZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.managedZones.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
-
-    /**
-     * Updates an existing ManagedZone.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.managedZones.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'PUT', apiParams, clientConfig);
+    this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}', 'GET', apiParams, clientConfig);
 
     this.managedZoneOperations = {};
 
@@ -303,18 +207,115 @@ class Dns {
      */
     this.managedZoneOperations.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}/operations', 'GET', apiParams, clientConfig);
 
-    this.projects = {};
+    this.managedZones = {};
 
     /**
-     * Fetches the representation of an existing Project.
+     * Creates a new ManagedZone.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.managedZones.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones', 'POST', apiParams, clientConfig);
+
+    /**
+     * Fetches the representation of an existing ManagedZone.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
      * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}', 'GET', apiParams, clientConfig);
+    this.managedZones.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Enumerates ManagedZones that have been created but not yet deleted.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dnsName - Restricts the list to return only zones with this domain name.
+     * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
+     * @param {string} apiParams.pageToken - Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.managedZones.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a previously created ManagedZone.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.managedZones.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Applies a partial update to an existing ManagedZone.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.managedZones.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Updates an existing ManagedZone.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.managedZone - (Required) Identifies the managed zone addressed by this request. Can be the managed zone name or ID.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.managedZones.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/managedZones/{managedZone}', 'PUT', apiParams, clientConfig);
+
+    /**
+     * Sets the access control policy on the specified resource. Replaces any existing policy. Can return `NOT_FOUND`, `INVALID_ARGUMENT`, and `PERMISSION_DENIED` errors.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.managedZones.setIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:setIamPolicy', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets the access control policy for a resource. Returns an empty policy if the resource exists and does not have a policy set.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.managedZones.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:getIamPolicy', 'POST', apiParams, clientConfig);
+
+    /**
+     * Returns permissions that a caller has on the specified resource. If the resource does not exist, this returns an empty set of permissions, not a `NOT_FOUND` error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.resource - (Required) REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.managedZones.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
 
     this.policies = {};
 
@@ -331,18 +332,6 @@ class Dns {
     this.policies.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies', 'POST', apiParams, clientConfig);
 
     /**
-     * Enumerates all policies associated with a project.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
-     * @param {string} apiParams.pageToken - Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies', 'GET', apiParams, clientConfig);
-
-    /**
      * Fetches the representation of an existing policy.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
@@ -355,17 +344,28 @@ class Dns {
     this.policies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates an existing policy.
+     * Enumerates all policies associated with a project.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.policy - (Required) User given friendly name of the policy addressed by this request.
+     * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
+     * @param {string} apiParams.pageToken - Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.
      * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.policies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'PUT', apiParams, clientConfig);
+    this.policies.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a previously created policy. Fails if the policy is still being referenced by a network.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.policy - (Required) User given friendly name of the policy addressed by this request.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Applies a partial update to an existing policy.
@@ -381,31 +381,19 @@ class Dns {
     this.policies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Deletes a previously created policy. Fails if the policy is still being referenced by a network.
+     * Updates an existing policy.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
      * @param {string} apiParams.policy - (Required) User given friendly name of the policy addressed by this request.
      * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.policies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'DELETE', apiParams, clientConfig);
-
-    this.responsePolicies = {};
-
-    /**
-     * Updates an existing Response Policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the Response Policy addressed by this request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.responsePolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'PUT', apiParams, clientConfig);
+    this.policies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/policies/{policy}', 'PUT', apiParams, clientConfig);
+
+    this.responsePolicies = {};
 
     /**
      * Creates a new Response Policy
@@ -432,19 +420,6 @@ class Dns {
     this.responsePolicies.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'GET', apiParams, clientConfig);
 
     /**
-     * Applies a partial update to an existing Response Policy.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the response policy addressed by this request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.responsePolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'PATCH', apiParams, clientConfig);
-
-    /**
      * Enumerates all Response Policies associated with a project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
@@ -468,33 +443,33 @@ class Dns {
      */
     this.responsePolicies.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'DELETE', apiParams, clientConfig);
 
+    /**
+     * Applies a partial update to an existing Response Policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the response policy addressed by this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.responsePolicies.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Updates an existing Response Policy.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the Response Policy addressed by this request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.responsePolicies.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}', 'PUT', apiParams, clientConfig);
+
     this.responsePolicyRules = {};
-
-    /**
-     * Deletes a previously created Response Policy Rule.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the Response Policy containing the Response Policy Rule.
-     * @param {string} apiParams.responsePolicyRule - (Required) User assigned name of the Response Policy Rule addressed by this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.responsePolicyRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'DELETE', apiParams, clientConfig);
-
-    /**
-     * Fetches the representation of an existing Response Policy Rule.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
-     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the Response Policy containing the Response Policy Rule.
-     * @param {string} apiParams.responsePolicyRule - (Required) User assigned name of the Response Policy Rule addressed by this request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.responsePolicyRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'GET', apiParams, clientConfig);
 
     /**
      * Creates a new Response Policy Rule.
@@ -510,18 +485,43 @@ class Dns {
     this.responsePolicyRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates an existing Response Policy Rule.
+     * Fetches the representation of an existing Response Policy Rule.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
      * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
      * @param {string} apiParams.responsePolicy - (Required) User assigned name of the Response Policy containing the Response Policy Rule.
      * @param {string} apiParams.responsePolicyRule - (Required) User assigned name of the Response Policy Rule addressed by this request.
-     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.responsePolicyRules.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'PUT', apiParams, clientConfig);
+    this.responsePolicyRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Deletes a previously created Response Policy Rule.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the Response Policy containing the Response Policy Rule.
+     * @param {string} apiParams.responsePolicyRule - (Required) User assigned name of the Response Policy Rule addressed by this request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.responsePolicyRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Enumerates all Response Policy Rules associated with a project.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
+     * @param {string} apiParams.pageToken - Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.
+     * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
+     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the Response Policy to list.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.responsePolicyRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules', 'GET', apiParams, clientConfig);
 
     /**
      * Applies a partial update to an existing Response Policy Rule.
@@ -538,17 +538,18 @@ class Dns {
     this.responsePolicyRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'PATCH', apiParams, clientConfig);
 
     /**
-     * Enumerates all Response Policy Rules associated with a project.
+     * Updates an existing Response Policy Rule.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.maxResults - Optional. Maximum number of results to be returned. If unspecified, the server decides how many results to return.
-     * @param {string} apiParams.pageToken - Optional. A tag returned by a previous list request that was truncated. Use this parameter to continue a previous list request.
+     * @param {string} apiParams.clientOperationId - For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
      * @param {string} apiParams.project - (Required) Identifies the project addressed by this request.
-     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the Response Policy to list.
+     * @param {string} apiParams.responsePolicy - (Required) User assigned name of the Response Policy containing the Response Policy Rule.
+     * @param {string} apiParams.responsePolicyRule - (Required) User assigned name of the Response Policy Rule addressed by this request.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.responsePolicyRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules', 'GET', apiParams, clientConfig);
+    this.responsePolicyRules.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('dns/v1beta2/projects/{project}/responsePolicies/{responsePolicy}/rules/{responsePolicyRule}', 'PUT', apiParams, clientConfig);
   }
 
 /**
