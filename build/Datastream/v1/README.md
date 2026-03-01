@@ -4,7 +4,7 @@ Auto-generated client library for using the **Datastream API (version: v1)** in 
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:36:06 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:42:09 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:42:36 GMT
 - **Created:** Sun, 20 Jul 2025 16:25:48 GMT
 
@@ -25,12 +25,16 @@ The FetchStaticIps API call exposes the static IP addresses used by Datastream.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name for the location for which static IPs should be returned. Must be in the format `projects/*/locations/*`. |
-| `params.pageSize` | `integer` | No | Maximum number of Ips to return, will likely not be specified. |
-| `params.pageToken` | `string` | No | A page token, received from a previous `ListStaticIps` call. will likely not be specified. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of Ips to return, will likely not be specified. |
+| `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListStaticIps` call. will likely not be specified. |
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service.
+Lists information about the supported locations for this service. This method can be called in two ways:
+
+* **List all public locations:** Use the path `GET /v1/locations`.
+
+* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -96,10 +100,10 @@ Use this method to list connection profiles created in a project and location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent that owns the collection of connection profiles. |
-| `params.pageSize` | `integer` | No | Maximum number of connection profiles to return. If unspecified, at most 50 connection profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Page token received from a previous `ListConnectionProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Filter request. |
-| `params.orderBy` | `string` | No | Order by fields for the result. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of connection profiles to return. If unspecified, at most 50 connection profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. Page token received from a previous `ListConnectionProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. Filter request. |
+| `params.orderBy` | `string` | No | Optional. Order by fields for the result. |
 
 #### `projects.locations.connectionProfiles.get()`
 
@@ -162,10 +166,10 @@ Use this method to list streams in a project and location.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent that owns the collection of streams. |
-| `params.pageSize` | `integer` | No | Maximum number of streams to return. If unspecified, at most 50 streams will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Page token received from a previous `ListStreams` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreams` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Filter request. |
-| `params.orderBy` | `string` | No | Order by fields for the result. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of streams to return. If unspecified, at most 50 streams will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. Page token received from a previous `ListStreams` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreams` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. Filter request. |
+| `params.orderBy` | `string` | No | Optional. Order by fields for the result. |
 
 #### `projects.locations.streams.get()`
 
@@ -245,8 +249,8 @@ Use this method to list the objects of a specific stream.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent stream that owns the collection of objects. |
-| `params.pageSize` | `integer` | No | Maximum number of objects to return. Default is 50. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Page token received from a previous `ListStreamObjectsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreamObjectsRequest` must match the call that provided the page token. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of objects to return. Default is 50. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. Page token received from a previous `ListStreamObjectsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreamObjectsRequest` must match the call that provided the page token. |
 
 #### `projects.locations.streams.objects.startBackfillJob()`
 
@@ -297,9 +301,9 @@ Use this method to list private connectivity configurations in a project and loc
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent that owns the collection of private connectivity configurations. |
 | `params.pageSize` | `integer` | No | Maximum number of private connectivity configurations to return. If unspecified, at most 50 private connectivity configurations that will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Page token received from a previous `ListPrivateConnections` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPrivateConnections` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Filter request. |
-| `params.orderBy` | `string` | No | Order by fields for the result. |
+| `params.pageToken` | `string` | No | Optional. Page token received from a previous `ListPrivateConnections` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPrivateConnections` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. Filter request. |
+| `params.orderBy` | `string` | No | Optional. Order by fields for the result. |
 
 #### `projects.locations.privateConnections.delete()`
 
@@ -339,10 +343,10 @@ Use this method to list routes created for a private connectivity configuration 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The parent that owns the collection of Routess. |
-| `params.pageSize` | `integer` | No | Maximum number of Routes to return. The service may return fewer than this value. If unspecified, at most 50 Routes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
-| `params.pageToken` | `string` | No | Page token received from a previous `ListRoutes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRoutes` must match the call that provided the page token. |
-| `params.filter` | `string` | No | Filter request. |
-| `params.orderBy` | `string` | No | Order by fields for the result. |
+| `params.pageSize` | `integer` | No | Optional. Maximum number of Routes to return. The service may return fewer than this value. If unspecified, at most 50 Routes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. Page token received from a previous `ListRoutes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRoutes` must match the call that provided the page token. |
+| `params.filter` | `string` | No | Optional. Filter request. |
+| `params.orderBy` | `string` | No | Optional. Order by fields for the result. |
 
 #### `projects.locations.privateConnections.routes.delete()`
 
