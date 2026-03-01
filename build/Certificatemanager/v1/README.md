@@ -4,7 +4,7 @@ Auto-generated client library for using the **Certificate Manager API (version: 
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:25:39 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:25:04 GMT
 - **Last Modified:** Mon, 01 Dec 2025 00:25:46 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:59 GMT
 
