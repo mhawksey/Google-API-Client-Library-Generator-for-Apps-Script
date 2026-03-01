@@ -21,10 +21,14 @@ class Contactcenterinsights {
     this.projects = {};
 
     this.projects.locations = {};
+    this.projects.locations.getCorrelationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.updateCorrelationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.testCorrelationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:testCorrelationConfig', 'POST', apiParams, clientConfig);
     this.projects.locations.getSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.updateSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.getEncryptionSpec = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
     this.projects.locations.queryMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:queryMetrics', 'POST', apiParams, clientConfig);
+    this.projects.locations.generativeInsights = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:generativeInsights', 'POST', apiParams, clientConfig);
     this.projects.locations.queryPerformanceOverview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:queryPerformanceOverview', 'POST', apiParams, clientConfig);
     this.projects.locations.listAllFeedbackLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:listAllFeedbackLabels', 'GET', apiParams, clientConfig);
     this.projects.locations.bulkUploadFeedbackLabels = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:bulkUploadFeedbackLabels', 'POST', apiParams, clientConfig);
@@ -148,6 +152,14 @@ class Contactcenterinsights {
     this.projects.locations.analysisRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.analysisRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
+    this.projects.locations.autoLabelingRules = {};
+    this.projects.locations.autoLabelingRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoLabelingRules', 'GET', apiParams, clientConfig);
+    this.projects.locations.autoLabelingRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.autoLabelingRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoLabelingRules', 'POST', apiParams, clientConfig);
+    this.projects.locations.autoLabelingRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.autoLabelingRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.locations.autoLabelingRules.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoLabelingRules:test', 'POST', apiParams, clientConfig);
+
     this.projects.locations.assessmentRules = {};
     this.projects.locations.assessmentRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/assessmentRules', 'POST', apiParams, clientConfig);
     this.projects.locations.assessmentRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -207,6 +219,7 @@ class Contactcenterinsights {
     this.projects.locations.authorizedViewSets.authorizedViews.getIamPolicy = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:getIamPolicy', 'GET', apiParams, clientConfig);
     this.projects.locations.authorizedViewSets.authorizedViews.testIamPermissions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+resource}:testIamPermissions', 'POST', apiParams, clientConfig);
     this.projects.locations.authorizedViewSets.authorizedViews.queryMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:queryMetrics', 'POST', apiParams, clientConfig);
+    this.projects.locations.authorizedViewSets.authorizedViews.generativeInsights = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:generativeInsights', 'POST', apiParams, clientConfig);
     this.projects.locations.authorizedViewSets.authorizedViews.queryPerformanceOverview = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}:queryPerformanceOverview', 'POST', apiParams, clientConfig);
     this.projects.locations.authorizedViewSets.authorizedViews.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/authorizedViews', 'POST', apiParams, clientConfig);
     this.projects.locations.authorizedViewSets.authorizedViews.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
@@ -248,6 +261,20 @@ class Contactcenterinsights {
     this.projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/notes', 'GET', apiParams, clientConfig);
     this.projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
     this.projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.dashboards = {};
+    this.projects.locations.dashboards.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dashboards', 'POST', apiParams, clientConfig);
+    this.projects.locations.dashboards.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dashboards.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dashboards', 'GET', apiParams, clientConfig);
+    this.projects.locations.dashboards.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.dashboards.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.dashboards.charts = {};
+    this.projects.locations.dashboards.charts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/charts', 'POST', apiParams, clientConfig);
+    this.projects.locations.dashboards.charts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+    this.projects.locations.dashboards.charts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/charts', 'GET', apiParams, clientConfig);
+    this.projects.locations.dashboards.charts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.locations.dashboards.charts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
