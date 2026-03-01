@@ -4,7 +4,7 @@ Auto-generated client library for using the **BigQuery Reservation API (version:
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:24:35 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:24:26 GMT
 - **Last Modified:** Thu, 01 Jan 2026 00:24:35 GMT
 - **Created:** Sun, 20 Jul 2025 16:14:19 GMT
 
