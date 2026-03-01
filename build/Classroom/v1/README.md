@@ -4,8 +4,8 @@ Auto-generated client library for using the **Google Classroom API (version: v1)
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:31:30 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:31:30 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:25:32 GMT
+- **Last Modified:** Sun, 01 Mar 2026 00:25:32 GMT
 - **Created:** Sun, 20 Jul 2025 16:20:50 GMT
 
 
@@ -154,6 +154,112 @@ Updates grading period settings of a course. Individual grading periods can be a
 | `params.courseId` | `string` | Yes | Required. The identifier of the course. |
 | `params.updateMask` | `string` | No | Mask that identifies which fields in the GradingPeriodSettings to update. The GradingPeriodSettings `grading_periods` list will be fully replaced by the grading periods specified in the update request. For example: * Grading periods included in the list without an ID are considered additions, and a new ID will be assigned when the request is made. * Grading periods that currently exist, but are missing from the request will be considered deletions. * Grading periods with an existing ID and modified data are considered edits. Unmodified data will be left as is. * Grading periods included with an unknown ID will result in an error. The following fields may be specified: * `grading_periods` * `apply_to_existing_coursework` |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+### `courses.studentGroups`
+
+#### `courses.studentGroups.create()`
+
+Creates a student group for a course. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or for access errors.
+
+* `NOT_FOUND` if the course does not exist or the requesting user doesn't have access to the course.
+
+* `FAILED_PRECONDITION` if creating the student group would exceed the maximum number of student groups per course.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. The identifier of the course. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.studentGroups.delete()`
+
+Deletes a student group. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested student group or for access errors.
+
+* `NOT_FOUND` if the student group does not exist or the user does not have access to the student group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. The identifier of the course containing the student group to delete. |
+| `params.id` | `string` | Yes | Required. The identifier of the student group to delete. |
+
+#### `courses.studentGroups.patch()`
+
+Updates one or more fields in a student group. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to modify the requested student group or for access errors.
+
+* `NOT_FOUND` if the student group does not exist or the user does not have access to the student group.
+
+* `INVALID_ARGUMENT` if invalid fields are specified in the update mask or if no update mask is supplied.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. Identifier of the course. |
+| `params.id` | `string` | Yes | Required. Identifier of the student group. |
+| `params.updateMask` | `string` | No | Required. Mask that identifies which fields on the student group to update. This field is required to do an update. The update fails if invalid fields are specified. The following fields can be specified by teachers: * `title` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.studentGroups.list()`
+
+Returns a list of groups in a course. This method returns the following error codes:
+
+* `NOT_FOUND` if the course does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. The identifier of the course. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum, which is currently set to 75 items. The server may return fewer than the specified number of results. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
+
+### `courses.studentGroups.studentGroupMembers`
+
+#### `courses.studentGroups.studentGroupMembers.create()`
+
+Creates a student group member for a student group. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to create the student group or member for access errors.
+
+* `NOT_FOUND` if the student group does not exist or the user does not have access to the student group.
+
+* `ALREADY_EXISTS` if the student group member already exists.
+
+* `FAILED_PRECONDITION` if attempting to add a member to a student group that has reached its member limit.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. The identifier of the course. |
+| `params.studentGroupId` | `string` | Yes | Required. The identifier of the student group. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `courses.studentGroups.studentGroupMembers.delete()`
+
+Deletes a student group member. This method returns the following error codes:
+
+* `PERMISSION_DENIED` if the requesting user is not permitted to delete the requested student group member or for access errors.
+
+* `NOT_FOUND` if the student group member does not exist or the user does not have access to the student group.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. The identifier of the course containing the relevant student group. |
+| `params.studentGroupId` | `string` | Yes | Required. The identifier of the student group containing the student group member to delete. |
+| `params.userId` | `string` | Yes | Required. The identifier of the student group member to delete. |
+
+#### `courses.studentGroups.studentGroupMembers.list()`
+
+Returns a list of students in a group. This method returns the following error codes:
+
+* `NOT_FOUND` if the course or student group does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.courseId` | `string` | Yes | Required. The identifier of the course. |
+| `params.studentGroupId` | `string` | Yes | Required. The identifier of the student group. |
+| `params.pageSize` | `integer` | No | Maximum number of items to return. Zero or unspecified indicates that the server may assign a maximum. The server may return fewer than the specified number of results. |
+| `params.pageToken` | `string` | No | nextPageToken value returned from a previous list call, indicating that the subsequent page of results should be returned. The list request must be otherwise identical to the one that resulted in this token. |
 
 ### `courses.aliases`
 
@@ -389,7 +495,7 @@ Updates one or more fields of a student submission. See google.classroom.v1.Stud
 
 #### `courses.courseWork.studentSubmissions.list()`
 
-Returns a list of student submissions that the requester is permitted to view, factoring in the OAuth scopes of the request. `-` may be specified as the `course_work_id` to include student submissions for multiple course work items. Course students may only view their own work. Course teachers and domain administrators may view all student submissions. This method returns the following error codes:
+Returns a list of student submissions that the requester is permitted to view, factoring in the OAuth scopes of the request. A hyphen (`-`) may be specified as the `course_work_id` to include student submissions for multiple course work items. Course students may only view their own work. Course teachers and domain administrators may view all student submissions. This method returns the following error codes:
 
 * `PERMISSION_DENIED` if the requesting user is not permitted to access the requested course or course work, or for access errors.
 
