@@ -28,6 +28,17 @@ class Classroom {
     this.courses.getGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'GET', apiParams, clientConfig);
     this.courses.updateGradingPeriodSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/gradingPeriodSettings', 'PATCH', apiParams, clientConfig);
 
+    this.courses.studentGroups = {};
+    this.courses.studentGroups.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups', 'POST', apiParams, clientConfig);
+    this.courses.studentGroups.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{id}', 'DELETE', apiParams, clientConfig);
+    this.courses.studentGroups.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{id}', 'PATCH', apiParams, clientConfig);
+    this.courses.studentGroups.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups', 'GET', apiParams, clientConfig);
+
+    this.courses.studentGroups.studentGroupMembers = {};
+    this.courses.studentGroups.studentGroupMembers.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers', 'POST', apiParams, clientConfig);
+    this.courses.studentGroups.studentGroupMembers.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers/{userId}', 'DELETE', apiParams, clientConfig);
+    this.courses.studentGroups.studentGroupMembers.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/studentGroups/{studentGroupId}/studentGroupMembers', 'GET', apiParams, clientConfig);
+
     this.courses.aliases = {};
     this.courses.aliases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases', 'POST', apiParams, clientConfig);
     this.courses.aliases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/courses/{courseId}/aliases/{alias}', 'DELETE', apiParams, clientConfig);
