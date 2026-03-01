@@ -23,6 +23,39 @@ class Contactcenterinsights {
     this.projects.locations = {};
 
     /**
+     * Gets correlation config.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the correlation config resource to get. Format: projects/{project}/locations/{location}/correlationConfig
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.getCorrelationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates correlation config.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Immutable. Identifier. The resource name of the correlation config. Format: projects/{project}/locations/{location}/correlationConfig
+     * @param {string} apiParams.updateMask - Optional. The list of fields to be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.updateCorrelationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Tests correlation config on a conversation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.location - (Required) Required. The location to test correlation config. Format: projects/{project}/locations/{location}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.testCorrelationConfig = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:testCorrelationConfig', 'POST', apiParams, clientConfig);
+
+    /**
      * Gets project-level settings.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The name of the settings resource to get.
@@ -64,6 +97,17 @@ class Contactcenterinsights {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.queryMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:queryMetrics', 'POST', apiParams, clientConfig);
+
+    /**
+     * Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.location - (Required) Required. The location of the data. "projects/{project}/locations/{location}"
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.generativeInsights = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:generativeInsights', 'POST', apiParams, clientConfig);
 
     /**
      * Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period.
@@ -187,6 +231,7 @@ class Contactcenterinsights {
      * Updates a conversation.
      * @param {object} apiParams - The parameters for the API request.
      * @param {boolean} apiParams.allowMissing - Optional. Defaults to false. If set to true, and the conversation is not found, a new conversation will be created. In this situation, `update_mask` is ignored.
+     * @param {boolean} apiParams.conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate - Optional. If set to true, the conversation will be updated with auto labeling results.
      * @param {string} apiParams.name - (Required) Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation}
      * @param {string} apiParams.updateMask - The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `agent_id` * `language_code` * `labels` * `metadata` * `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or `ttl` * `data_source.gcs_source.audio_uri` or * `data_source.dialogflow_source.audio_uri` * `data_source.screen_recordings`
      * @param {object} apiParams.requestBody - The request body.
@@ -1105,6 +1150,75 @@ class Contactcenterinsights {
      */
     this.projects.locations.analysisRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
+    this.projects.locations.autoLabelingRules = {};
+
+    /**
+     * Lists auto labeling rules.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of auto labeling rules to return in a single response. If unspecified, at most 100 rules will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. The next_page_token value returned from a previous List request, if any.
+     * @param {string} apiParams.parent - (Required) Required. The project and location to list auto labeling rules from. Format: projects/{project}/locations/{location}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.autoLabelingRules.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoLabelingRules', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets an auto labeling rule.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the auto labeling rule to get. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.autoLabelingRules.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Creates an auto labeling rule.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.autoLabelingRuleId - Required. The ID to use for the auto labeling rule, which will become the final component of the auto labeling rule's resource name.
+     * @param {string} apiParams.parent - (Required) Required. The project and location to create the auto labeling rule in. Format: projects/{project}/locations/{location}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.autoLabelingRules.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoLabelingRules', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates an auto labeling rule.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. The resource name of the auto-labeling rule. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+     * @param {string} apiParams.updateMask - Optional. The list of fields to be updated.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.autoLabelingRules.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes an auto labeling rule.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the auto labeling rule to delete. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.autoLabelingRules.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Tests auto labeling rules against a conversation.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent project and location. Format: projects/{project}/locations/{location}
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.autoLabelingRules.test = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/autoLabelingRules:test', 'POST', apiParams, clientConfig);
+
     this.projects.locations.assessmentRules = {};
 
     /**
@@ -1598,6 +1712,17 @@ class Contactcenterinsights {
     this.projects.locations.authorizedViewSets.authorizedViews.queryMetrics = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:queryMetrics', 'POST', apiParams, clientConfig);
 
     /**
+     * Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.location - (Required) Required. The location of the data. "projects/{project}/locations/{location}"
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.authorizedViewSets.authorizedViews.generativeInsights = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:generativeInsights', 'POST', apiParams, clientConfig);
+
+    /**
      * Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The parent resource of the conversations to derive performance stats from. "projects/{project}/locations/{location}"
@@ -1961,6 +2086,122 @@ class Contactcenterinsights {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.projects.locations.authorizedViewSets.authorizedViews.conversations.assessments.notes.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.dashboards = {};
+
+    /**
+     * Creates a Dashboard.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.dashboardId - Optional. A unique ID for the new Dashboard. This ID will become the final component of the Dashboard's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the dashboard.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dashboards', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a Dashboard.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the dashboard to get.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists Dashboards.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Optional. The filter expression to filter dashboards listed in the response.
+     * @param {string} apiParams.orderBy - Optional. The order by expression to order dashboards listed in the response.
+     * @param {integer} apiParams.pageSize - Optional. The maximum number of dashboards to return. The service may return fewer than this value. The default and maximum value is 100.
+     * @param {string} apiParams.pageToken - Optional. The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of a prior `ListDashboards` call and that the system should return the next page of data.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the dashboards.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/dashboards', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a Dashboard.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. Dashboard resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard}
+     * @param {string} apiParams.updateMask - Optional. List of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `display_name` * `root_container` * `description`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a Dashboard.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the dashboard to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.projects.locations.dashboards.charts = {};
+
+    /**
+     * Creates a Chart.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.chartId - Optional. A unique ID for the new Chart. This ID will become the final component of the Chart's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the chart.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.charts.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/charts', 'POST', apiParams, clientConfig);
+
+    /**
+     * Gets a Chart.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the chart to get.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.charts.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists Charts.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The parent resource of the charts.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.charts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/charts', 'GET', apiParams, clientConfig);
+
+    /**
+     * Updates a Chart.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Identifier. Chart resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart}
+     * @param {string} apiParams.updateMask - Optional. List of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `display_name`
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.charts.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+
+    /**
+     * Deletes a Chart.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the chart to delete.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.locations.dashboards.charts.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
   }
 
 /**
