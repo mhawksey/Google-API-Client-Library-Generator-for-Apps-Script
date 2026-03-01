@@ -1198,7 +1198,7 @@ class Dfareporting {
     this.dynamicFeeds.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('studio/dynamicFeeds', 'POST', apiParams, clientConfig);
 
     /**
-     * Updates a new dynamic feed.
+     * Updates a new dynamic feed. For draft feeds, only Element can be updated. For published feeds, only FeedSchedule can be updated. Other fields will be ignored.
      * @param {object} apiParams - The parameters for the API request.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -1208,7 +1208,7 @@ class Dfareporting {
     this.dynamicFeeds.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('studio/dynamicFeeds', 'PUT', apiParams, clientConfig);
 
     /**
-     * Retransforms a dynamic feed.
+     * Retransforms a dynamic feed. Only draft feeds can be retransformed (i.e. the feed has not been published).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.dynamicFeedId - (Required) Required. Dynamic feed ID.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -1250,7 +1250,7 @@ class Dfareporting {
     this.dynamicProfiles.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('studio/dynamicProfiles', 'PUT', apiParams, clientConfig);
 
     /**
-     * Generates code for a dynamic profile.
+     * Generates code for a dynamic profile, which will need unescaping.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.dynamicProfileId - (Required) Required. Dynamic profile ID.
      * @param {object} [clientConfig] - Optional client-side configuration.
@@ -2738,8 +2738,10 @@ class Dfareporting {
      * Gets one TvCampaignDetail by ID.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - Required. Account ID associated with this request.
+     * @param {string} apiParams.countryDartId - Optional. Country Dart ID. If not specified, defaults to 256 (US).
      * @param {string} apiParams.id - (Required) Required. TV Campaign ID.
      * @param {string} apiParams.profileId - (Required) Required. User profile ID associated with this request.
+     * @param {string} apiParams.tvDataProvider - Optional. TV data provider. If not specified, defaults to `COMSCORE_NATIONAL_US`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -2752,8 +2754,10 @@ class Dfareporting {
      * Retrieves a list of TV campaign summaries.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.accountId - Required. Account ID associated with this request.
+     * @param {string} apiParams.countryDartId - Optional. Country Dart ID. If not specified, defaults to 256 (US).
      * @param {string} apiParams.name - Required. Search string to filter the list of TV campaign summaries. Matches any substring. Required field.
      * @param {string} apiParams.profileId - (Required) Required. User profile ID associated with this request.
+     * @param {string} apiParams.tvDataProvider - Optional. TV data provider. If not specified, defaults to `COMSCORE_NATIONAL_US`.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
