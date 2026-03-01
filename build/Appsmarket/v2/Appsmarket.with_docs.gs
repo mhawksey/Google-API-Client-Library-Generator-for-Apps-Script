@@ -21,10 +21,10 @@ class Appsmarket {
     this.customerLicense = {};
 
     /**
-     * Gets the status of a license for a customer to determine if they have access for a given app.
+     * Gets the customer's licensing status to determine if they have access to a given app. For more information, see [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationId - (Required) Application Id
-     * @param {string} apiParams.customerId - (Required) Customer Id
+     * @param {string} apiParams.applicationId - (Required) The ID of the application.
+     * @param {string} apiParams.customerId - (Required) The ID of the customer.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -34,10 +34,10 @@ class Appsmarket {
     this.userLicense = {};
 
     /**
-     * Gets the user's licensing status for their permission to use a given app.
+     * Gets the user's licensing status to determine if they have permission to use a given app. For more information, see [Getting app installation and licensing details](https://developers.google.com/workspace/marketplace/example-calls-marketplace-api).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.applicationId - (Required) Application Id
-     * @param {string} apiParams.userId - (Required) User Id
+     * @param {string} apiParams.applicationId - (Required) The ID of the application.
+     * @param {string} apiParams.userId - (Required) The ID of the user.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
