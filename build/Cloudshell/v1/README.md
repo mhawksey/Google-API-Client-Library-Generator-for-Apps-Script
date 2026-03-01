@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Shell API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:33:24 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:33:24 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:33:14 GMT
+- **Last Modified:** Sun, 01 Mar 2026 00:33:14 GMT
 - **Created:** Sun, 20 Jul 2025 16:22:44 GMT
 
 
@@ -13,45 +13,6 @@ Auto-generated client library for using the **Cloud Shell API (version: v1)** in
 ---
 
 ## API Reference
-
-### `operations`
-
-#### `operations.delete()`
-
-Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
-
-#### `operations.list()`
-
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
-
-#### `operations.cancel()`
-
-Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `operations.get()`
-
-Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | The name of the operation resource. |
 
 ### `users`
 
@@ -64,6 +25,34 @@ Gets an environment. Returns NOT_FOUND if the environment does not exist.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Name of the requested resource, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
+
+#### `users.environments.removePublicKey()`
+
+Removes a public SSH key from an environment. Clients will no longer be able to connect to the environment using the corresponding private key. If a key with the same content is not present, this will error with NOT_FOUND.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.environment` | `string` | Yes | Environment this key should be removed from, e.g. `users/me/environments/default`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.environments.start()`
+
+Starts an existing environment, allowing clients to connect to it. The returned operation will contain an instance of StartEnvironmentMetadata in its metadata field. Users can wait for the environment to start by polling this operation via GetOperation. Once the environment has finished starting and is ready to accept connections, the operation will contain a StartEnvironmentResponse in its response field.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `users.environments.generateAccessToken()`
+
+Generates an access token for the user's environment.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.ttl` | `string` | No | Desired lifetime duration of the access token. This value must be at most 24 hours. If a value is not specified, the token's lifetime will be set to a default value of 1 hour. |
+| `params.environment` | `string` | Yes | Required. The environment to generate the access token for. |
+| `params.expireTime` | `string` | No | Desired expiration time of the access token. This value must be at most 24 hours in the future. If a value is not specified, the token's expiration time will be set to a default value of 1 hour in the future. |
 
 #### `users.environments.authorize()`
 
@@ -83,30 +72,41 @@ Adds a public SSH key to an environment, allowing clients with the corresponding
 | `params.environment` | `string` | Yes | Environment this key should be added to, e.g. `users/me/environments/default`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `users.environments.start()`
+### `operations`
 
-Starts an existing environment, allowing clients to connect to it. The returned operation will contain an instance of StartEnvironmentMetadata in its metadata field. Users can wait for the environment to start by polling this operation via GetOperation. Once the environment has finished starting and is ready to accept connections, the operation will contain a StartEnvironmentResponse in its response field.
+#### `operations.cancel()`
+
+Starts asynchronous cancellation on a long-running operation. The server makes a best effort to cancel the operation, but success is not guaranteed. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`. Clients can use Operations.GetOperation or other methods to check whether the cancellation succeeded or whether the operation completed despite cancellation. On successful cancellation, the operation is not deleted; instead, it becomes an operation with an Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Name of the resource that should be started, for example `users/me/environments/default` or `users/someone@example.com/environments/default`. |
+| `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `users.environments.removePublicKey()`
+#### `operations.get()`
 
-Removes a public SSH key from an environment. Clients will no longer be able to connect to the environment using the corresponding private key. If a key with the same content is not present, this will error with NOT_FOUND.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.environment` | `string` | Yes | Environment this key should be removed from, e.g. `users/me/environments/default`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `users.environments.generateAccessToken()`
-
-Generates an access token for the user's environment.
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.expireTime` | `string` | No | Desired expiration time of the access token. This value must be at most 24 hours in the future. If a value is not specified, the token's expiration time will be set to a default value of 1 hour in the future. |
-| `params.ttl` | `string` | No | Desired lifetime duration of the access token. This value must be at most 24 hours. If a value is not specified, the token's lifetime will be set to a default value of 1 hour. |
-| `params.environment` | `string` | Yes | Required. The environment to generate the access token for. |
+| `params.name` | `string` | Yes | The name of the operation resource. |
+
+#### `operations.delete()`
+
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns `google.rpc.Code.UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | The name of the operation resource to be deleted. |
+
+#### `operations.list()`
+
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
