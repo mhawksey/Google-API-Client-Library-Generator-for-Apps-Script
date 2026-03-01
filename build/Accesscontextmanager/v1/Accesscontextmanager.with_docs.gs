@@ -464,6 +464,19 @@ class Accesscontextmanager {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.organizations.gcpUserAccessBindings.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    this.permissions = {};
+
+    /**
+     * Lists all supported permissions in VPCSC Granular Controls.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - Optional. This flag specifies the maximum number of services to return per page. Default is 100.
+     * @param {string} apiParams.pageToken - Optional. Token to start on a later page. Default is the first page.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.permissions.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/permissions', 'GET', apiParams, clientConfig);
   }
 
 /**
