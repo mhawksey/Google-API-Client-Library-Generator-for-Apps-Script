@@ -4,8 +4,8 @@ Auto-generated client library for using the **Contact Center AI Insights API (ve
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:34:31 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:34:31 GMT
+- **Last Checked:** Sun, 01 Mar 2026 00:34:38 GMT
+- **Last Modified:** Sun, 01 Mar 2026 00:34:38 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:58 GMT
 
 
@@ -17,6 +17,33 @@ Auto-generated client library for using the **Contact Center AI Insights API (ve
 ### `projects`
 
 ### `projects.locations`
+
+#### `projects.locations.getCorrelationConfig()`
+
+Gets correlation config.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the correlation config resource to get. Format: projects/{project}/locations/{location}/correlationConfig |
+
+#### `projects.locations.updateCorrelationConfig()`
+
+Updates correlation config.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Immutable. Identifier. The resource name of the correlation config. Format: projects/{project}/locations/{location}/correlationConfig |
+| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.testCorrelationConfig()`
+
+Tests correlation config on a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The location to test correlation config. Format: projects/{project}/locations/{location} |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.getSettings()`
 
@@ -47,6 +74,15 @@ Gets location-level encryption key specification.
 #### `projects.locations.queryMetrics()`
 
 Query metrics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.generativeInsights()`
+
+Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -160,6 +196,7 @@ Updates a conversation.
 | `params.name` | `string` | Yes | Immutable. The resource name of the conversation. Format: projects/{project}/locations/{location}/conversations/{conversation} |
 | `params.updateMask` | `string` | No | The list of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `agent_id` * `language_code` * `labels` * `metadata` * `quality_metadata` * `call_metadata` * `start_time` * `expire_time` or `ttl` * `data_source.gcs_source.audio_uri` or * `data_source.dialogflow_source.audio_uri` * `data_source.screen_recordings` |
 | `params.allowMissing` | `boolean` | No | Optional. Defaults to false. If set to true, and the conversation is not found, a new conversation will be created. In this situation, `update_mask` is ignored. |
+| `params.conversationAutoLabelingUpdateConfig.allowAutoLabelingUpdate` | `boolean` | No | Optional. If set to true, the conversation will be updated with auto labeling results. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.conversations.get()`
@@ -913,6 +950,63 @@ Deletes a analysis rule.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the analysis rule to delete. |
 
+### `projects.locations.autoLabelingRules`
+
+#### `projects.locations.autoLabelingRules.list()`
+
+Lists auto labeling rules.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project and location to list auto labeling rules from. Format: projects/{project}/locations/{location} |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of auto labeling rules to return in a single response. If unspecified, at most 100 rules will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000. |
+| `params.pageToken` | `string` | No | Optional. The next_page_token value returned from a previous List request, if any. |
+
+#### `projects.locations.autoLabelingRules.get()`
+
+Gets an auto labeling rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the auto labeling rule to get. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} |
+
+#### `projects.locations.autoLabelingRules.create()`
+
+Creates an auto labeling rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The project and location to create the auto labeling rule in. Format: projects/{project}/locations/{location} |
+| `params.autoLabelingRuleId` | `string` | No | Required. The ID to use for the auto labeling rule, which will become the final component of the auto labeling rule's resource name. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.autoLabelingRules.patch()`
+
+Updates an auto labeling rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. The resource name of the auto-labeling rule. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} |
+| `params.updateMask` | `string` | No | Optional. The list of fields to be updated. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.autoLabelingRules.delete()`
+
+Deletes an auto labeling rule.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the auto labeling rule to delete. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} |
+
+#### `projects.locations.autoLabelingRules.test()`
+
+Tests auto labeling rules against a conversation.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent project and location. Format: projects/{project}/locations/{location} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 ### `projects.locations.assessmentRules`
 
 #### `projects.locations.assessmentRules.create()`
@@ -1321,6 +1415,15 @@ Query metrics.
 | `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.locations.authorizedViewSets.authorizedViews.generativeInsights()`
+
+Natural language based Insights which powers the next generation of dashboards in Insights. Next generation of QueryMetrics.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.location` | `string` | Yes | Required. The location of the data. "projects/{project}/locations/{location}" |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.locations.authorizedViewSets.authorizedViews.queryPerformanceOverview()`
 
 Generates a summary of predefined performance metrics for a set of conversations. Conversations can be specified by specifying a time window and an agent id, for now. The summary includes a comparison of metrics computed for conversations in the previous time period, and also a comparison with peers in the same time period.
@@ -1623,3 +1726,99 @@ Deletes a Note.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the note to delete. |
+
+### `projects.locations.dashboards`
+
+#### `projects.locations.dashboards.create()`
+
+Creates a Dashboard.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the dashboard. |
+| `params.dashboardId` | `string` | No | Optional. A unique ID for the new Dashboard. This ID will become the final component of the Dashboard's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dashboards.get()`
+
+Gets a Dashboard.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the dashboard to get. |
+
+#### `projects.locations.dashboards.list()`
+
+Lists Dashboards.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the dashboards. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of dashboards to return. The service may return fewer than this value. The default and maximum value is 100. |
+| `params.pageToken` | `string` | No | Optional. The value returned by the last `ListDashboardsResponse`. This value indicates that this is a continuation of a prior `ListDashboards` call and that the system should return the next page of data. |
+| `params.filter` | `string` | No | Optional. The filter expression to filter dashboards listed in the response. |
+| `params.orderBy` | `string` | No | Optional. The order by expression to order dashboards listed in the response. |
+
+#### `projects.locations.dashboards.patch()`
+
+Updates a Dashboard.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Dashboard resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard} |
+| `params.updateMask` | `string` | No | Optional. List of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `display_name` * `root_container` * `description` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dashboards.delete()`
+
+Deletes a Dashboard.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the dashboard to delete. |
+
+### `projects.locations.dashboards.charts`
+
+#### `projects.locations.dashboards.charts.create()`
+
+Creates a Chart.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the chart. |
+| `params.chartId` | `string` | No | Optional. A unique ID for the new Chart. This ID will become the final component of the Chart's resource name. If no ID is specified, a server-generated ID will be used. This value should be 4-64 characters and must match the regular expression `^[a-z]([a-z0-9-]{0,61}[a-z0-9])?$`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dashboards.charts.get()`
+
+Gets a Chart.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the chart to get. |
+
+#### `projects.locations.dashboards.charts.list()`
+
+Lists Charts.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The parent resource of the charts. |
+
+#### `projects.locations.dashboards.charts.patch()`
+
+Updates a Chart.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Identifier. Chart resource name. Format: projects/{project}/locations/{location}/dashboards/{dashboard}/charts/{chart} |
+| `params.updateMask` | `string` | No | Optional. List of fields to be updated. All possible fields can be updated by passing `*`, or a subset of the following updateable fields can be provided: * `display_name` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.dashboards.charts.delete()`
+
+Deletes a Chart.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the chart to delete. |
