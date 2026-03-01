@@ -26,8 +26,8 @@ class Datastream {
      * The FetchStaticIps API call exposes the static IP addresses used by Datastream.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. The resource name for the location for which static IPs should be returned. Must be in the format `projects/*\/locations/*`.
-     * @param {integer} apiParams.pageSize - Maximum number of Ips to return, will likely not be specified.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListStaticIps` call. will likely not be specified.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of Ips to return, will likely not be specified.
+     * @param {string} apiParams.pageToken - Optional. A page token, received from a previous `ListStaticIps` call. will likely not be specified.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
@@ -35,7 +35,7 @@ class Datastream {
     this.projects.locations.fetchStaticIps = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:fetchStaticIps', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists information about the supported locations for this service.
+     * Lists information about the supported locations for this service. This method can be called in two ways: * **List all public locations:** Use the path `GET /v1/locations`. * **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.extraLocationTypes - Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage.
      * @param {string} apiParams.filter - A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160).
@@ -110,10 +110,10 @@ class Datastream {
     /**
      * Use this method to list connection profiles created in a project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Filter request.
-     * @param {string} apiParams.orderBy - Order by fields for the result.
-     * @param {integer} apiParams.pageSize - Maximum number of connection profiles to return. If unspecified, at most 50 connection profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Page token received from a previous `ListConnectionProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must match the call that provided the page token.
+     * @param {string} apiParams.filter - Optional. Filter request.
+     * @param {string} apiParams.orderBy - Optional. Order by fields for the result.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of connection profiles to return. If unspecified, at most 50 connection profiles will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. Page token received from a previous `ListConnectionProfiles` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListConnectionProfiles` must match the call that provided the page token.
      * @param {string} apiParams.parent - (Required) Required. The parent that owns the collection of connection profiles.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -188,10 +188,10 @@ class Datastream {
     /**
      * Use this method to list streams in a project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Filter request.
-     * @param {string} apiParams.orderBy - Order by fields for the result.
-     * @param {integer} apiParams.pageSize - Maximum number of streams to return. If unspecified, at most 50 streams will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Page token received from a previous `ListStreams` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreams` must match the call that provided the page token.
+     * @param {string} apiParams.filter - Optional. Filter request.
+     * @param {string} apiParams.orderBy - Optional. Order by fields for the result.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of streams to return. If unspecified, at most 50 streams will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. Page token received from a previous `ListStreams` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreams` must match the call that provided the page token.
      * @param {string} apiParams.parent - (Required) Required. The parent that owns the collection of streams.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -287,8 +287,8 @@ class Datastream {
     /**
      * Use this method to list the objects of a specific stream.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - Maximum number of objects to return. Default is 50. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Page token received from a previous `ListStreamObjectsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreamObjectsRequest` must match the call that provided the page token.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of objects to return. Default is 50. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. Page token received from a previous `ListStreamObjectsRequest` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListStreamObjectsRequest` must match the call that provided the page token.
      * @param {string} apiParams.parent - (Required) Required. The parent stream that owns the collection of objects.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -348,10 +348,10 @@ class Datastream {
     /**
      * Use this method to list private connectivity configurations in a project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Filter request.
-     * @param {string} apiParams.orderBy - Order by fields for the result.
+     * @param {string} apiParams.filter - Optional. Filter request.
+     * @param {string} apiParams.orderBy - Optional. Order by fields for the result.
      * @param {integer} apiParams.pageSize - Maximum number of private connectivity configurations to return. If unspecified, at most 50 private connectivity configurations that will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Page token received from a previous `ListPrivateConnections` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPrivateConnections` must match the call that provided the page token.
+     * @param {string} apiParams.pageToken - Optional. Page token received from a previous `ListPrivateConnections` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPrivateConnections` must match the call that provided the page token.
      * @param {string} apiParams.parent - (Required) Required. The parent that owns the collection of private connectivity configurations.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -399,10 +399,10 @@ class Datastream {
     /**
      * Use this method to list routes created for a private connectivity configuration in a project and location.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Filter request.
-     * @param {string} apiParams.orderBy - Order by fields for the result.
-     * @param {integer} apiParams.pageSize - Maximum number of Routes to return. The service may return fewer than this value. If unspecified, at most 50 Routes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
-     * @param {string} apiParams.pageToken - Page token received from a previous `ListRoutes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRoutes` must match the call that provided the page token.
+     * @param {string} apiParams.filter - Optional. Filter request.
+     * @param {string} apiParams.orderBy - Optional. Order by fields for the result.
+     * @param {integer} apiParams.pageSize - Optional. Maximum number of Routes to return. The service may return fewer than this value. If unspecified, at most 50 Routes will be returned. The maximum value is 1000; values above 1000 will be coerced to 1000.
+     * @param {string} apiParams.pageToken - Optional. Page token received from a previous `ListRoutes` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListRoutes` must match the call that provided the page token.
      * @param {string} apiParams.parent - (Required) Required. The parent that owns the collection of Routess.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
