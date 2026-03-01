@@ -371,7 +371,7 @@ class Drive {
      * @param {boolean} apiParams.supportsTeamDrives - Deprecated: Use `supportsAllDrives` instead.
      * @param {string} apiParams.timedTextLanguage - The language of the timed text.
      * @param {string} apiParams.timedTextTrackName - The timed text track name.
-     * @param {string} apiParams.visibility - The visibility of the new file. This parameter is only relevant when the source is not a native Google Doc and convert=false.
+     * @param {string} apiParams.visibility - The visibility of the new file. Permissions are still inherited from parent folders. This parameter is only relevant when the source is not a Google Doc file and when `convert=false`.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
@@ -459,7 +459,7 @@ class Drive {
      * @param {string} apiParams.timedTextLanguage - The language of the timed text.
      * @param {string} apiParams.timedTextTrackName - The timed text track name.
      * @param {boolean} apiParams.useContentAsIndexableText - Whether to use the content as indexable text.
-     * @param {string} apiParams.visibility - The visibility of the new file. This parameter is only relevant when convert=false.
+     * @param {string} apiParams.visibility - The visibility of the new file. Permissions are still inherited from parent folders. This parameter is only relevant when `convert=false`.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
