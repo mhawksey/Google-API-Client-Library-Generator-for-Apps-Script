@@ -63,169 +63,7 @@ class Adsense {
      */
     this.accounts.getAdBlockingRecoveryTag = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/adBlockingRecoveryTag', 'GET', apiParams, clientConfig);
 
-    this.accounts.reports = {};
-
-    /**
-     * Gets the saved report from the given resource name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the saved report to retrieve. Format: accounts/{account}/reports/{report}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.reports.getSaved = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved', 'GET', apiParams, clientConfig);
-
-    /**
-     * Generates a csv formatted ad hoc report.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.account - (Required) Required. The account which owns the collection of reports. Format: accounts/{account}
-     * @param {string} apiParams.currencyCode - The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set.
-     * @param {string} apiParams.dateRange - Date range of the report, if unset the range will be considered CUSTOM.
-     * @param {string} apiParams.dimensions - Dimensions to base the report on.
-     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {string} apiParams.filters - A list of [filters](/adsense/management/reporting/filtering) to apply to the report. All provided filters must match in order for the data to be included in the report.
-     * @param {string} apiParams.languageCode - The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag).
-     * @param {integer} apiParams.limit - The maximum number of rows of report data to return. Reports producing more rows than the requested limit will be truncated. If unset, this defaults to 100,000 rows for `Reports.GenerateReport` and 1,000,000 rows for `Reports.GenerateCsvReport`, which are also the maximum values permitted here. Report truncation can be identified (for `Reports.GenerateReport` only) by comparing the number of rows returned to the value returned in `total_matched_rows`.
-     * @param {string} apiParams.metrics - Required. Reporting metrics.
-     * @param {string} apiParams.orderBy - The name of a dimension or metric to sort the resulting report on, can be prefixed with "+" to sort ascending or "-" to sort descending. If no prefix is specified, the column is sorted ascending.
-     * @param {string} apiParams.reportingTimeZone - Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725).
-     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.reports.generateCsv = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+account}/reports:generateCsv', 'GET', apiParams, clientConfig);
-
-    /**
-     * Generates an ad hoc report.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.account - (Required) Required. The account which owns the collection of reports. Format: accounts/{account}
-     * @param {string} apiParams.currencyCode - The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set.
-     * @param {string} apiParams.dateRange - Date range of the report, if unset the range will be considered CUSTOM.
-     * @param {string} apiParams.dimensions - Dimensions to base the report on.
-     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {string} apiParams.filters - A list of [filters](/adsense/management/reporting/filtering) to apply to the report. All provided filters must match in order for the data to be included in the report.
-     * @param {string} apiParams.languageCode - The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag).
-     * @param {integer} apiParams.limit - The maximum number of rows of report data to return. Reports producing more rows than the requested limit will be truncated. If unset, this defaults to 100,000 rows for `Reports.GenerateReport` and 1,000,000 rows for `Reports.GenerateCsvReport`, which are also the maximum values permitted here. Report truncation can be identified (for `Reports.GenerateReport` only) by comparing the number of rows returned to the value returned in `total_matched_rows`.
-     * @param {string} apiParams.metrics - Required. Reporting metrics.
-     * @param {string} apiParams.orderBy - The name of a dimension or metric to sort the resulting report on, can be prefixed with "+" to sort ascending or "-" to sort descending. If no prefix is specified, the column is sorted ascending.
-     * @param {string} apiParams.reportingTimeZone - Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725).
-     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.reports.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+account}/reports:generate', 'GET', apiParams, clientConfig);
-
-    this.accounts.reports.saved = {};
-
-    /**
-     * Generates a csv formatted saved report.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.currencyCode - The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set.
-     * @param {string} apiParams.dateRange - Date range of the report, if unset the range will be considered CUSTOM.
-     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {string} apiParams.languageCode - The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag).
-     * @param {string} apiParams.name - (Required) Required. Name of the saved report. Format: accounts/{account}/reports/{report}
-     * @param {string} apiParams.reportingTimeZone - Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725).
-     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.reports.saved.generateCsv = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved:generateCsv', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists saved reports.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of reports to include in the response, used for paging. If unspecified, at most 10000 reports will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListSavedReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSavedReports` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The account which owns the collection of reports. Format: accounts/{account}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.reports.saved.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/reports/saved', 'GET', apiParams, clientConfig);
-
-    /**
-     * Generates a saved report.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.currencyCode - The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set.
-     * @param {string} apiParams.dateRange - Date range of the report, if unset the range will be considered CUSTOM.
-     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {string} apiParams.languageCode - The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag).
-     * @param {string} apiParams.name - (Required) Required. Name of the saved report. Format: accounts/{account}/reports/{report}
-     * @param {string} apiParams.reportingTimeZone - Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725).
-     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
-     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
-     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.reports.saved.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved:generate', 'GET', apiParams, clientConfig);
-
-    this.accounts.policyIssues = {};
-
-    /**
-     * Lists all the policy issues where the specified account is involved, both directly and through any AFP child accounts.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of policy issues to include in the response, used for paging. If unspecified, at most 10000 policy issues will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListPolicyIssues` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPolicyIssues` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The account for which policy issues are being retrieved. Format: accounts/{account}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.policyIssues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyIssues', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets information about the selected policy issue.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the policy issue. Format: accounts/{account}/policyIssues/{policy_issue}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.policyIssues.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    this.accounts.payments = {};
-
-    /**
-     * Lists all the payments available for an account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.parent - (Required) Required. The account which owns the collection of payments. Format: accounts/{account}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.payments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/payments', 'GET', apiParams, clientConfig);
-
     this.accounts.adclients = {};
-
-    /**
-     * Gets the ad client from the given resource name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. The name of the ad client to retrieve. Format: accounts/{account}/adclients/{adclient}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.adclients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
 
     /**
      * Lists all the ad clients available in an account.
@@ -240,6 +78,16 @@ class Adsense {
     this.accounts.adclients.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adclients', 'GET', apiParams, clientConfig);
 
     /**
+     * Gets the ad client from the given resource name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the ad client to retrieve. Format: accounts/{account}/adclients/{adclient}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.adclients.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
      * Gets the AdSense code for a given ad client. This returns what was previously known as the 'auto ad code'. This is only supported for ad clients with a product_code of AFC. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634).
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Name of the ad client for which to get the adcode. Format: accounts/{account}/adclients/{adclient}
@@ -252,18 +100,6 @@ class Adsense {
     this.accounts.adclients.adunits = {};
 
     /**
-     * Updates an ad unit. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. For now, this method can only be used to update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Output only. Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
-     * @param {string} apiParams.updateMask - The list of fields to update. If empty, a full update is performed.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.adclients.adunits.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
-
-    /**
      * Gets an ad unit from a specified account and ad client.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. AdUnit to get information about. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
@@ -272,6 +108,28 @@ class Adsense {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.adclients.adunits.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all ad units under a specified account and ad client.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of ad units to include in the response, used for paging. If unspecified, at most 10000 ad units will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAdUnits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAdUnits` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The ad client which owns the collection of ad units. Format: accounts/{account}/adclients/{adclient}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.adclients.adunits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adunits', 'GET', apiParams, clientConfig);
+
+    /**
+     * Gets the ad unit code for a given ad unit. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your HTML](https://support.google.com/adsense/answer/9190028).
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the adunit for which to get the adcode. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.adclients.adunits.getAdcode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/adcode', 'GET', apiParams, clientConfig);
 
     /**
      * Creates an ad unit. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. Note that ad units can only be created for ad clients with an "AFC" product code. For more info see the [AdClient resource](/adsense/management/reference/rest/v2/accounts.adclients). For now, this method can only be used to create `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
@@ -285,26 +143,16 @@ class Adsense {
     this.accounts.adclients.adunits.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adunits', 'POST', apiParams, clientConfig);
 
     /**
-     * Gets the ad unit code for a given ad unit. For more information, see [About the AdSense code](https://support.google.com/adsense/answer/9274634) and [Where to place the ad code in your HTML](https://support.google.com/adsense/answer/9190028).
+     * Updates an ad unit. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method. For now, this method can only be used to update `DISPLAY` ad units. See: https://support.google.com/adsense/answer/9183566
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the adunit for which to get the adcode. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
+     * @param {string} apiParams.name - (Required) Output only. Resource name of the ad unit. Format: accounts/{account}/adclients/{adclient}/adunits/{adunit}
+     * @param {string} apiParams.updateMask - The list of fields to update. If empty, a full update is performed.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.accounts.adclients.adunits.getAdcode = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/adcode', 'GET', apiParams, clientConfig);
-
-    /**
-     * Lists all ad units under a specified account and ad client.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of ad units to include in the response, used for paging. If unspecified, at most 10000 ad units will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListAdUnits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListAdUnits` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The ad client which owns the collection of ad units. Format: accounts/{account}/adclients/{adclient}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.adclients.adunits.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/adunits', 'GET', apiParams, clientConfig);
+    this.accounts.adclients.adunits.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Lists all the custom channels available for an ad unit.
@@ -321,6 +169,18 @@ class Adsense {
     this.accounts.adclients.customchannels = {};
 
     /**
+     * Lists all the ad units available for a custom channel.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of ad units to include in the response, used for paging. If unspecified, at most 10000 ad units will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListLinkedAdUnits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLinkedAdUnits` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The custom channel which owns the collection of ad units. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.adclients.customchannels.listLinkedAdUnits = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}:listLinkedAdUnits', 'GET', apiParams, clientConfig);
+
+    /**
      * Gets information about the selected custom channel.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.name - (Required) Required. Name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
@@ -329,18 +189,6 @@ class Adsense {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.adclients.customchannels.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
-    /**
-     * Updates a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Output only. Resource name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
-     * @param {string} apiParams.updateMask - The list of fields to update. If empty, a full update is performed.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.adclients.customchannels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Lists all the custom channels available in an ad client.
@@ -355,18 +203,6 @@ class Adsense {
     this.accounts.adclients.customchannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/customchannels', 'GET', apiParams, clientConfig);
 
     /**
-     * Lists all the ad units available for a custom channel.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of ad units to include in the response, used for paging. If unspecified, at most 10000 ad units will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListLinkedAdUnits` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListLinkedAdUnits` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The custom channel which owns the collection of ad units. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.adclients.customchannels.listLinkedAdUnits = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}:listLinkedAdUnits', 'GET', apiParams, clientConfig);
-
-    /**
      * Creates a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.parent - (Required) Required. The ad client to create a custom channel under. Format: accounts/{account}/adclients/{adclient}
@@ -376,6 +212,18 @@ class Adsense {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.adclients.customchannels.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/customchannels', 'POST', apiParams, clientConfig);
+
+    /**
+     * Updates a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Output only. Resource name of the custom channel. Format: accounts/{account}/adclients/{adclient}/customchannels/{customchannel}
+     * @param {string} apiParams.updateMask - The list of fields to update. If empty, a full update is performed.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.adclients.customchannels.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Deletes a custom channel. This method can be called only by a restricted set of projects, which are usually owned by [AdSense for Platforms](https://developers.google.com/adsense/platforms/) publishers. Contact your account manager if you need to use this method.
@@ -411,30 +259,6 @@ class Adsense {
      */
     this.accounts.adclients.urlchannels.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/urlchannels', 'GET', apiParams, clientConfig);
 
-    this.accounts.sites = {};
-
-    /**
-     * Lists all the sites available in an account.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {integer} apiParams.pageSize - The maximum number of sites to include in the response, used for paging. If unspecified, at most 10000 sites will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
-     * @param {string} apiParams.pageToken - A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token.
-     * @param {string} apiParams.parent - (Required) Required. The account which owns the collection of sites. Format: accounts/{account}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/sites', 'GET', apiParams, clientConfig);
-
-    /**
-     * Gets information about the selected site.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Name of the site. Format: accounts/{account}/sites/{site}
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.accounts.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
-
     this.accounts.alerts = {};
 
     /**
@@ -447,6 +271,182 @@ class Adsense {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.accounts.alerts.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/alerts', 'GET', apiParams, clientConfig);
+
+    this.accounts.payments = {};
+
+    /**
+     * Lists all the payments available for an account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.parent - (Required) Required. The account which owns the collection of payments. Format: accounts/{account}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.payments.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/payments', 'GET', apiParams, clientConfig);
+
+    this.accounts.policyIssues = {};
+
+    /**
+     * Gets information about the selected policy issue.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the policy issue. Format: accounts/{account}/policyIssues/{policy_issue}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.policyIssues.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all the policy issues where the specified account is involved, both directly and through any AFP child accounts.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of policy issues to include in the response, used for paging. If unspecified, at most 10000 policy issues will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListPolicyIssues` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListPolicyIssues` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The account for which policy issues are being retrieved. Format: accounts/{account}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.policyIssues.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/policyIssues', 'GET', apiParams, clientConfig);
+
+    this.accounts.reports = {};
+
+    /**
+     * Gets the saved report from the given resource name.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. The name of the saved report to retrieve. Format: accounts/{account}/reports/{report}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.reports.getSaved = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved', 'GET', apiParams, clientConfig);
+
+    /**
+     * Generates an ad hoc report.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.account - (Required) Required. The account which owns the collection of reports. Format: accounts/{account}
+     * @param {string} apiParams.currencyCode - The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set.
+     * @param {string} apiParams.dateRange - Date range of the report, if unset the range will be considered CUSTOM.
+     * @param {string} apiParams.dimensions - Dimensions to base the report on.
+     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {string} apiParams.filters - A list of [filters](/adsense/management/reporting/filtering) to apply to the report. All provided filters must match in order for the data to be included in the report.
+     * @param {string} apiParams.languageCode - The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag).
+     * @param {integer} apiParams.limit - The maximum number of rows of report data to return. Reports producing more rows than the requested limit will be truncated. If unset, this defaults to 100,000 rows for `Reports.GenerateReport` and 1,000,000 rows for `Reports.GenerateCsvReport`, which are also the maximum values permitted here. Report truncation can be identified (for `Reports.GenerateReport` only) by comparing the number of rows returned to the value returned in `total_matched_rows`.
+     * @param {string} apiParams.metrics - Required. Reporting metrics.
+     * @param {string} apiParams.orderBy - The name of a dimension or metric to sort the resulting report on, can be prefixed with "+" to sort ascending or "-" to sort descending. If no prefix is specified, the column is sorted ascending.
+     * @param {string} apiParams.reportingTimeZone - Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725).
+     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.reports.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+account}/reports:generate', 'GET', apiParams, clientConfig);
+
+    /**
+     * Generates a csv formatted ad hoc report.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.account - (Required) Required. The account which owns the collection of reports. Format: accounts/{account}
+     * @param {string} apiParams.currencyCode - The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set.
+     * @param {string} apiParams.dateRange - Date range of the report, if unset the range will be considered CUSTOM.
+     * @param {string} apiParams.dimensions - Dimensions to base the report on.
+     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {string} apiParams.filters - A list of [filters](/adsense/management/reporting/filtering) to apply to the report. All provided filters must match in order for the data to be included in the report.
+     * @param {string} apiParams.languageCode - The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag).
+     * @param {integer} apiParams.limit - The maximum number of rows of report data to return. Reports producing more rows than the requested limit will be truncated. If unset, this defaults to 100,000 rows for `Reports.GenerateReport` and 1,000,000 rows for `Reports.GenerateCsvReport`, which are also the maximum values permitted here. Report truncation can be identified (for `Reports.GenerateReport` only) by comparing the number of rows returned to the value returned in `total_matched_rows`.
+     * @param {string} apiParams.metrics - Required. Reporting metrics.
+     * @param {string} apiParams.orderBy - The name of a dimension or metric to sort the resulting report on, can be prefixed with "+" to sort ascending or "-" to sort descending. If no prefix is specified, the column is sorted ascending.
+     * @param {string} apiParams.reportingTimeZone - Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725).
+     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.reports.generateCsv = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+account}/reports:generateCsv', 'GET', apiParams, clientConfig);
+
+    this.accounts.reports.saved = {};
+
+    /**
+     * Generates a saved report.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.currencyCode - The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set.
+     * @param {string} apiParams.dateRange - Date range of the report, if unset the range will be considered CUSTOM.
+     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {string} apiParams.languageCode - The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag).
+     * @param {string} apiParams.name - (Required) Required. Name of the saved report. Format: accounts/{account}/reports/{report}
+     * @param {string} apiParams.reportingTimeZone - Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725).
+     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.reports.saved.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved:generate', 'GET', apiParams, clientConfig);
+
+    /**
+     * Generates a csv formatted saved report.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.currencyCode - The [ISO-4217 currency code](https://en.wikipedia.org/wiki/ISO_4217) to use when reporting on monetary metrics. Defaults to the account's currency if not set.
+     * @param {string} apiParams.dateRange - Date range of the report, if unset the range will be considered CUSTOM.
+     * @param {integer} apiParams.endDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.endDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.endDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {string} apiParams.languageCode - The language to use for translating report output. If unspecified, this defaults to English ("en"). If the given language is not supported, report output will be returned in English. The language is specified as an [IETF BCP-47 language code](https://en.wikipedia.org/wiki/IETF_language_tag).
+     * @param {string} apiParams.name - (Required) Required. Name of the saved report. Format: accounts/{account}/reports/{report}
+     * @param {string} apiParams.reportingTimeZone - Timezone in which to generate the report. If unspecified, this defaults to the account timezone. For more information, see [changing the time zone of your reports](https://support.google.com/adsense/answer/9830725).
+     * @param {integer} apiParams.startDate.day - Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant.
+     * @param {integer} apiParams.startDate.month - Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day.
+     * @param {integer} apiParams.startDate.year - Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.reports.saved.generateCsv = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}/saved:generateCsv', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists saved reports.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of reports to include in the response, used for paging. If unspecified, at most 10000 reports will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListSavedReports` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSavedReports` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The account which owns the collection of reports. Format: accounts/{account}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.reports.saved.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/reports/saved', 'GET', apiParams, clientConfig);
+
+    this.accounts.sites = {};
+
+    /**
+     * Gets information about the selected site.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Name of the site. Format: accounts/{account}/sites/{site}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.sites.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+name}', 'GET', apiParams, clientConfig);
+
+    /**
+     * Lists all the sites available in an account.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {integer} apiParams.pageSize - The maximum number of sites to include in the response, used for paging. If unspecified, at most 10000 sites will be returned. The maximum value is 10000; values above 10000 will be coerced to 10000.
+     * @param {string} apiParams.pageToken - A page token, received from a previous `ListSites` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListSites` must match the call that provided the page token.
+     * @param {string} apiParams.parent - (Required) Required. The account which owns the collection of sites. Format: accounts/{account}
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.accounts.sites.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v2/{+parent}/sites', 'GET', apiParams, clientConfig);
   }
 
 /**
