@@ -4,8 +4,8 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:47:01 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:47:01 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:49:09 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:49:09 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:54 GMT
 
 
@@ -16,9 +16,9 @@ Auto-generated client library for using the **Cloud Natural Language API (versio
 
 ### `documents`
 
-#### `documents.moderateText()`
+#### `documents.analyzeSentiment()`
 
-Moderates a document for harmful and sensitive categories.
+Analyzes the sentiment of the provided text.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -40,9 +40,9 @@ Classifies a document into categories.
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `documents.analyzeSentiment()`
+#### `documents.moderateText()`
 
-Analyzes the sentiment of the provided text.
+Moderates a document for harmful and sensitive categories.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
