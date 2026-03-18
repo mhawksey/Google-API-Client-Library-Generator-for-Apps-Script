@@ -69,6 +69,7 @@ class Storage {
 
     this.folders = {};
     this.folders.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/folders/{folder}', 'DELETE', apiParams, clientConfig);
+    this.folders.deleteRecursive = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/folders/{folder}/deleteRecursive', 'POST', apiParams, clientConfig);
     this.folders.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/folders/{folder}', 'GET', apiParams, clientConfig);
     this.folders.insert = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/folders', 'POST', apiParams, clientConfig);
     this.folders.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('b/{bucket}/folders', 'GET', apiParams, clientConfig);
