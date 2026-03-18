@@ -4,7 +4,7 @@ Auto-generated client library for using the **Chrome Verified Access API (versio
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 01:14:44 GMT
+- **Last Checked:** Wed, 18 Mar 2026 22:10:43 GMT
 - **Last Modified:** Thu, 01 Jan 2026 01:14:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:56:31 GMT
 
