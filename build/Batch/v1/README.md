@@ -4,8 +4,8 @@ Auto-generated client library for using the **Batch API (version: v1)** in Googl
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:23:55 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:23:55 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:18:53 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:18:53 GMT
 - **Created:** Sun, 20 Jul 2025 16:13:48 GMT
 
 
@@ -20,15 +20,19 @@ Auto-generated client library for using the **Batch API (version: v1)** in Googl
 
 #### `projects.locations.list()`
 
-Lists information about the supported locations for this service.
+Lists information about the supported locations for this service. This method can be called in two ways:
+
+* **List all public locations:** Use the path `GET /v1/locations`.
+
+* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 | `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
 | `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
 | `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
 
 #### `projects.locations.get()`
 
@@ -38,18 +42,19 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-### `projects.locations.state`
+### `projects.locations.operations`
 
-#### `projects.locations.state.report()`
+#### `projects.locations.operations.list()`
 
-Report agent's state, e.g. agent status and tasks information
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Format: projects/{project}/locations/{location} {project} should be a project number. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.operations`
+| `params.pageToken` | `string` | No | The standard list page token. |
+| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
+| `params.filter` | `string` | No | The standard list filter. |
+| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.pageSize` | `integer` | No | The standard list page size. |
 
 #### `projects.locations.operations.get()`
 
@@ -76,19 +81,26 @@ Starts asynchronous cancellation on a long-running operation. The server makes a
 | `params.name` | `string` | Yes | The name of the operation resource to be cancelled. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.operations.list()`
+### `projects.locations.state`
 
-Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns `UNIMPLEMENTED`.
+#### `projects.locations.state.report()`
+
+Report agent's state, e.g. agent status and tasks information
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.returnPartialSuccess` | `boolean` | No | When set to `true`, operations that are reachable are returned as normal, and those that are unreachable are returned in the ListOperationsResponse.unreachable field. This can only be `true` when reading across collections. For example, when `parent` is set to `"projects/example/locations/-"`. This field is not supported by default and will result in an `UNIMPLEMENTED` error if set unless explicitly documented otherwise in service or product specific documentation. |
-| `params.pageSize` | `integer` | No | The standard list page size. |
-| `params.pageToken` | `string` | No | The standard list page token. |
-| `params.filter` | `string` | No | The standard list filter. |
-| `params.name` | `string` | Yes | The name of the operation's parent resource. |
+| `params.parent` | `string` | Yes | Required. Format: projects/{project}/locations/{location} {project} should be a project number. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.jobs`
+
+#### `projects.locations.jobs.get()`
+
+Get a Job specified by its resource name.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Job name. |
 
 #### `projects.locations.jobs.delete()`
 
@@ -96,9 +108,9 @@ Delete a Job.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.reason` | `string` | No | Optional. Reason for this deletion. |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.name` | `string` | Yes | Job name. |
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
+| `params.reason` | `string` | No | Optional. Reason for this deletion. |
 
 #### `projects.locations.jobs.cancel()`
 
@@ -115,19 +127,11 @@ List all Jobs for a project within a region.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageSize` | `integer` | No | Page size. |
 | `params.filter` | `string` | No | List filter. |
 | `params.pageToken` | `string` | No | Page token. |
-| `params.pageSize` | `integer` | No | Page size. |
 | `params.parent` | `string` | Yes | Parent path. |
 | `params.orderBy` | `string` | No | Optional. Sort results. Supported are "name", "name desc", "create_time", and "create_time desc". |
-
-#### `projects.locations.jobs.get()`
-
-Get a Job specified by its resource name.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Job name. |
 
 #### `projects.locations.jobs.create()`
 
@@ -135,25 +139,14 @@ Create a Job.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.parent` | `string` | Yes | Required. The parent resource name where the Job will be created. Pattern: "projects/{project}/locations/{location}" |
 | `params.jobId` | `string` | No | ID used to uniquely identify the Job within its parent scope. This field should contain at most 63 characters and must start with lowercase characters. Only lowercase characters, numbers and '-' are accepted. The '-' character cannot be the first or the last one. A system generated ID will be used if the field is not set. The job.name field in the request will be ignored and the created resource name of the Job will be "{parent}/jobs/{job_id}". |
-| `params.requestId` | `string` | No | Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.jobs.taskGroups`
 
 ### `projects.locations.jobs.taskGroups.tasks`
-
-#### `projects.locations.jobs.taskGroups.tasks.list()`
-
-List Tasks associated with a job.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.filter` | `string` | No | Task filter, null filter matches all Tasks. Filter string should be of the format State=TaskStatus.State e.g. State=RUNNING |
-| `params.pageToken` | `string` | No | Page token. |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.parent` | `string` | Yes | Required. Name of a TaskGroup from which Tasks are being requested. Pattern: "projects/{project}/locations/{location}/jobs/{job}/taskGroups/{task_group}" |
 
 #### `projects.locations.jobs.taskGroups.tasks.get()`
 
@@ -162,3 +155,14 @@ Return a single Task.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Task name. |
+
+#### `projects.locations.jobs.taskGroups.tasks.list()`
+
+List Tasks associated with a job.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
+| `params.filter` | `string` | No | Task filter, null filter matches all Tasks. Filter string should be of the format State=TaskStatus.State e.g. State=RUNNING |
+| `params.parent` | `string` | Yes | Required. Name of a TaskGroup from which Tasks are being requested. Pattern: "projects/{project}/locations/{location}/jobs/{job}/taskGroups/{task_group}" |
