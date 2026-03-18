@@ -4,7 +4,7 @@ Auto-generated client library for using the **Admin SDK API (version: directory_
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:21:13 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:16:33 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:21:13 GMT
 - **Created:** Sun, 20 Jul 2025 16:10:54 GMT
 
@@ -54,7 +54,7 @@ Retrieves a paginated list of Chrome OS devices within an account.
 | `params.orgUnitPath` | `string` | No | The full path of the organizational unit (minus the leading `/`) or its unique ID. |
 | `params.pageToken` | `string` | No | The `pageToken` query parameter is used to request the next page of query results. The follow-on request's `pageToken` query parameter is the `nextPageToken` from your previous response. |
 | `params.projection` | `string` | No | Determines whether the response contains the full list of properties or only a subset. |
-| `params.query` | `string` | No | Search string in the format given at https://developers.google.com/workspace/admin/directory/v1/list-query-operators |
+| `params.query` | `string` | No | Search string in the format given at [List query operators](https://developers.google.com/workspace/admin/directory/v1/list-query-operators). |
 | `params.sortOrder` | `string` | No | Whether to return results in ascending or descending order. Must be used with the `orderBy` parameter. |
 | `params.includeChildOrgunits` | `boolean` | No | Return devices from all child orgunits, as well as the specified org unit. If this is set to true, 'orgUnitPath' must be provided. |
 
@@ -123,7 +123,7 @@ Counts ChromeOS devices matching the request.
 |---|---|---|---|
 | `params.customerId` | `string` | Yes | Required. Immutable ID of the Google Workspace account. |
 | `params.orgUnitPath` | `string` | No | Optional. The full path of the organizational unit (minus the leading `/`) or its unique ID. |
-| `params.filter` | `string` | No | Optional. Search string in the format given at https://developers.google.com/workspace/admin/directory/v1/list-query-operators |
+| `params.filter` | `string` | No | Optional. Search string in the format given at [List query operators](https://developers.google.com/workspace/admin/directory/v1/list-query-operators). |
 | `params.includeChildOrgunits` | `boolean` | No | Optional. Return devices from all child orgunits, as well as the specified org unit. If this is set to true, 'orgUnitPath' must be provided. |
 
 ### `customer.devices.chromeos.commands`
@@ -1122,7 +1122,7 @@ Creates a user. Mutate calls immediately following user creation might sometimes
 
 #### `users.createGuest()`
 
-Create a guest user with access to a [subset of Workspace capabilities](https://support.google.com/a/answer/16558545?hl=en). This feature is currently in Alpha. Please reach out to support if you are interested in trying this feature.
+Create a guest user with access to a [subset of Workspace capabilities](https://support.google.com/a/answer/16558545). This feature is currently in Alpha. Please reach out to support if you are interested in trying this feature.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
