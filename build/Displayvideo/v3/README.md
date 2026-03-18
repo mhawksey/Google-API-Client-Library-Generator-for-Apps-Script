@@ -4,8 +4,8 @@ Auto-generated client library for using the **Display & Video 360 API (version: 
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:43:08 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:43:08 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:37:44 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:37:44 GMT
 - **Created:** Sun, 20 Jul 2025 16:31:55 GMT
 
 
@@ -114,6 +114,35 @@ Lists ad group ads.
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroupAds` method. If not specified, the first page of results will be returned. |
 | `params.orderBy` | `string` | No | Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`. |
 | `params.filter` | `string` | No | Optional. Allows filtering by ad group ad fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `adGroupId` * `displayName` * `entityStatus` * `adGroupAdId` Examples: * All ad group ads under an ad group: `adGroupId="1234"` * All ad group ads under an ad group with an entityStatus of `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED`: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND adGroupId="12345"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. |
+
+#### `advertisers.adGroupAds.create()`
+
+Creates an ad group ad.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the ad belongs to. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `advertisers.adGroupAds.patch()`
+
+Updates an ad group ad.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the ad belongs to. |
+| `params.adGroupAdId` | `string` | Yes | Output only. The unique ID of the ad. Assigned by the system. |
+| `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `advertisers.adGroupAds.delete()`
+
+Deletes an ad group ad.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the ad belongs to. |
+| `params.adGroupAdId` | `string` | Yes | Required. The ID of the ad to delete. |
 
 ### `advertisers.lineItems`
 
@@ -314,6 +343,15 @@ Lists assigned targeting options for multiple ad groups across targeting types. 
 | `params.orderBy` | `string` | No | Optional. Field by which to sort the list. Acceptable values are: * `adGroupId` (default) * `assignedTargetingOption.targetingType` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `targetingType desc`. |
 | `params.filter` | `string` | No | Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `targetingType` Examples: * `AssignedTargetingOption` resources of targeting type `TARGETING_TYPE_YOUTUBE_VIDEO` or `TARGETING_TYPE_YOUTUBE_CHANNEL`: `targetingType="TARGETING_TYPE_YOUTUBE_VIDEO" OR targetingType="TARGETING_TYPE_YOUTUBE_CHANNEL"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. |
 
+#### `advertisers.adGroups.bulkEditAssignedTargetingOptions()`
+
+Bulk edits targeting options for multiple ad groups. The same set of delete and create requests will be applied to all specified ad groups. Specifically, the operation will delete the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.delete_requests from each ad group, and then create the assigned targeting options provided in BulkEditAdGroupAssignedTargetingOptionsRequest.create_requests. Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the ad groups belong to. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `advertisers.adGroups.get()`
 
 Gets an ad group.
@@ -334,6 +372,35 @@ Lists ad groups.
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroups` method. If not specified, the first page of results will be returned. |
 | `params.orderBy` | `string` | No | Optional. Field by which to sort the list. Acceptable values are: * `displayName` (default) * `entityStatus` The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `displayName desc`. |
 | `params.filter` | `string` | No | Optional. Allows filtering by custom ad group fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by `AND` and `OR`. A sequence of restrictions implicitly uses `AND`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported properties: * `adGroupId` * `displayName` * `entityStatus` * `lineItemId` * `adGroupFormat` Examples: * All ad groups under an line item: `lineItemId="1234"` * All `ENTITY_STATUS_ACTIVE` or `ENTITY_STATUS_PAUSED` `AD_GROUP_FORMAT_IN_STREAM` ad groups under an advertiser: `(entityStatus="ENTITY_STATUS_ACTIVE" OR entityStatus="ENTITY_STATUS_PAUSED") AND adGroupFormat="AD_GROUP_FORMAT_IN_STREAM"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. |
+
+#### `advertisers.adGroups.create()`
+
+Creates a new ad group. Returns the newly created ad group if successful.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the ad group belongs to. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `advertisers.adGroups.delete()`
+
+Deletes a AdGroup. Returns error code `NOT_FOUND` if the ad group does not exist.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser this ad group belongs to. |
+| `params.adGroupId` | `string` | Yes | Required. The ID of the ad group to delete. |
+
+#### `advertisers.adGroups.patch()`
+
+Updates an existing ad group. Returns the updated ad group if successful.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Output only. The unique ID of the advertiser the ad group belongs to. |
+| `params.adGroupId` | `string` | Yes | Output only. The unique ID of the ad group. Assigned by the system. |
+| `params.updateMask` | `string` | No | Required. The mask to control which fields to update. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 ### `advertisers.adGroups.targetingTypes`
 
@@ -363,6 +430,28 @@ Lists the targeting options assigned to an ad group. Inherited assigned targetin
 | `params.pageToken` | `string` | No | Optional. A token identifying a page of results the server should return. Typically, this is the value of next_page_token returned from the previous call to `ListAdGroupAssignedTargetingOptions` method. If not specified, the first page of results will be returned. |
 | `params.orderBy` | `string` | No | Optional. Field by which to sort the list. Acceptable values are: * `assignedTargetingOptionId` (default) The default sorting order is ascending. To specify descending order for a field, a suffix "desc" should be added to the field name. Example: `assignedTargetingOptionId desc`. |
 | `params.filter` | `string` | No | Optional. Allows filtering by assigned targeting option fields. Supported syntax: * Filter expressions are made up of one or more restrictions. * Restrictions can be combined by the logical operator `OR`. * A restriction has the form of `{field} {operator} {value}`. * All fields must use the `EQUALS (=)` operator. Supported fields: * `assignedTargetingOptionId` Examples: * `AssignedTargetingOption` resources with ID 1 or 2: `assignedTargetingOptionId="1" OR assignedTargetingOptionId="2"` The length of this field should be no more than 500 characters. Reference our [filter `LIST` requests](/display-video/api/guides/how-tos/filters) guide for more information. |
+
+#### `advertisers.adGroups.targetingTypes.assignedTargetingOptions.create()`
+
+Assigns a targeting option to an ad group. Returns the assigned targeting option if successful. Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the ad group belongs to. |
+| `params.adGroupId` | `string` | Yes | Required. The ID of the ad group the assigned targeting option will belong to. |
+| `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `advertisers.adGroups.targetingTypes.assignedTargetingOptions.delete()`
+
+Deletes an assigned targeting option from an ad group. Only ad groups under a line item of line_item_type `LINE_ITEM_TYPE_DEMAND_GEN` are supported for this method.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.advertiserId` | `string` | Yes | Required. The ID of the advertiser the ad group belongs to. |
+| `params.adGroupId` | `string` | Yes | Required. The ID of the ad group the assigned targeting option belongs to. |
+| `params.targetingType` | `string` | Yes | Required. Identifies the type of this assigned targeting option. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_SESSION_POSITION` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO` |
+| `params.assignedTargetingOptionId` | `string` | Yes | Required. The ID of the assigned targeting option to delete. |
 
 ### `advertisers.targetingTypes`
 
