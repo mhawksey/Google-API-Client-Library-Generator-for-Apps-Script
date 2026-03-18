@@ -4,8 +4,8 @@ Auto-generated client library for using the **Secret Manager API (version: v1)**
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 01:07:03 GMT
-- **Last Modified:** Thu, 01 Jan 2026 01:07:03 GMT
+- **Last Checked:** Wed, 18 Mar 2026 22:02:30 GMT
+- **Last Modified:** Wed, 18 Mar 2026 22:02:30 GMT
 - **Created:** Sun, 20 Jul 2025 16:53:42 GMT
 
 
@@ -32,25 +32,16 @@ Gets the access control policy for a secret. Returns empty policy if the secret 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 
-#### `projects.secrets.testIamPermissions()`
+#### `projects.secrets.addVersion()`
 
-Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.secrets.setIamPolicy()`
-
-Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
+Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.parent` | `string` | Yes | Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.create()`
@@ -73,25 +64,25 @@ Updates metadata of an existing Secret.
 | `params.updateMask` | `string` | No | Required. Specifies the fields to be updated. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
+#### `projects.secrets.setIamPolicy()`
+
+Sets the access control policy on the specified secret. Replaces any existing policy. Permissions on SecretVersions are enforced according to the policy set on the associated Secret.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being specified. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `projects.secrets.list()`
 
 Lists Secrets.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretsResponse.next_page_token. |
 | `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
-| `params.filter` | `string` | No | Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed. |
+| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretsResponse.next_page_token. |
 | `params.parent` | `string` | Yes | Required. The resource name of the project associated with the Secrets, in the format `projects/*` or `projects/*/locations/*` |
-
-#### `projects.secrets.addVersion()`
-
-Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.filter` | `string` | No | Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed. |
 
 #### `projects.secrets.delete()`
 
@@ -102,32 +93,16 @@ Deletes a Secret.
 | `params.etag` | `string` | No | Optional. Etag of the Secret. The request succeeds if it matches the etag of the currently stored secret object. If the etag is omitted, the request succeeds. |
 | `params.name` | `string` | Yes | Required. The resource name of the Secret to delete in the format `projects/*/secrets/*`. |
 
-### `projects.secrets.versions`
+#### `projects.secrets.testIamPermissions()`
 
-#### `projects.secrets.versions.get()`
-
-Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
+Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion. |
-
-#### `projects.secrets.versions.disable()`
-
-Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to disable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.secrets.versions.access()`
-
-Accesses a SecretVersion. This call returns the secret data. `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion. |
+### `projects.secrets.versions`
 
 #### `projects.secrets.versions.list()`
 
@@ -135,19 +110,10 @@ Lists SecretVersions. This call does not return secret data.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
 | `params.parent` | `string` | Yes | Required. The resource name of the Secret associated with the SecretVersions to list, in the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`. |
 | `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretVersionsResponse.next_page_token][]. |
 | `params.filter` | `string` | No | Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secret versions matching the filter. If filter is empty, all secret versions are listed. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
-
-#### `projects.secrets.versions.destroy()`
-
-Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to destroy in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.secrets.versions.enable()`
 
@@ -158,19 +124,41 @@ Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to enable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-### `projects.locations`
+#### `projects.secrets.versions.access()`
 
-#### `projects.locations.list()`
-
-Lists information about the supported locations for this service.
+Accesses a SecretVersion. This call returns the secret data. `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
-| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
-| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
-| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
-| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion. |
+
+#### `projects.secrets.versions.get()`
+
+Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion. |
+
+#### `projects.secrets.versions.destroy()`
+
+Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to destroy in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.secrets.versions.disable()`
+
+Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to disable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations`
 
 #### `projects.locations.get()`
 
@@ -180,17 +168,34 @@ Gets information about a location.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Resource name for the location. |
 
-### `projects.locations.secrets`
+#### `projects.locations.list()`
 
-#### `projects.locations.secrets.patch()`
+Lists information about the supported locations for this service. This method can be called in two ways:
 
-Updates metadata of an existing Secret.
+* **List all public locations:** Use the path `GET /v1/locations`.
+
+* **List project-visible locations:** Use the path `GET /v1/projects/{project_id}/locations`. This may include public locations as well as private or other locations specifically visible to the project.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.updateMask` | `string` | No | Required. Specifies the fields to be updated. |
-| `params.name` | `string` | Yes | Output only. The resource name of the Secret in the format `projects/*/secrets/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageToken` | `string` | No | A page token received from the `next_page_token` field in the response. Send that page token to receive the subsequent page. |
+| `params.pageSize` | `integer` | No | The maximum number of results to return. If not set, the service selects a default. |
+| `params.filter` | `string` | No | A filter to narrow down results to a preferred subset. The filtering language accepts strings like `"displayName=tokyo"`, and is documented in more detail in [AIP-160](https://google.aip.dev/160). |
+| `params.extraLocationTypes` | `string` | No | Optional. Do not use this field. It is unsupported and is ignored unless explicitly documented otherwise. This is primarily for internal usage. |
+| `params.name` | `string` | Yes | The resource that owns the locations collection, if applicable. |
+
+### `projects.locations.secrets`
+
+#### `projects.locations.secrets.list()`
+
+Lists Secrets.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
+| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretsResponse.next_page_token. |
+| `params.filter` | `string` | No | Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed. |
+| `params.parent` | `string` | Yes | Required. The resource name of the project associated with the Secrets, in the format `projects/*` or `projects/*/locations/*` |
 
 #### `projects.locations.secrets.create()`
 
@@ -202,16 +207,42 @@ Creates a new Secret containing no SecretVersions.
 | `params.secretId` | `string` | No | Required. This must be unique within the project. A secret ID is a string with a maximum length of 255 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore (`_`) characters. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.secrets.list()`
+#### `projects.locations.secrets.getIamPolicy()`
 
-Lists Secrets.
+Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secrets matching the filter. If filter is empty, all secrets are listed. |
-| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretsResponse.next_page_token. |
-| `params.parent` | `string` | Yes | Required. The resource name of the project associated with the Secrets, in the format `projects/*` or `projects/*/locations/*` |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
+| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+
+#### `projects.locations.secrets.patch()`
+
+Updates metadata of an existing Secret.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.updateMask` | `string` | No | Required. Specifies the fields to be updated. |
+| `params.name` | `string` | Yes | Output only. The resource name of the Secret in the format `projects/*/secrets/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.secrets.testIamPermissions()`
+
+Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.secrets.addVersion()`
+
+Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.secrets.get()`
 
@@ -227,35 +258,8 @@ Deletes a Secret.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the Secret to delete in the format `projects/*/secrets/*`. |
 | `params.etag` | `string` | No | Optional. Etag of the Secret. The request succeeds if it matches the etag of the currently stored secret object. If the etag is omitted, the request succeeds. |
-
-#### `projects.locations.secrets.getIamPolicy()`
-
-Gets the access control policy for a secret. Returns empty policy if the secret exists and does not have a policy set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.options.requestedPolicyVersion` | `integer` | No | Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). |
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-
-#### `projects.locations.secrets.addVersion()`
-
-Creates a new SecretVersion containing secret data and attaches it to an existing Secret.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The resource name of the Secret to associate with the SecretVersion in the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.secrets.testIamPermissions()`
-
-Returns permissions that a caller has for the specified secret. If the secret does not exist, this call returns an empty set of permissions, not a NOT_FOUND error. Note: This operation is designed to be used for building permission-aware UIs and command-line tools, not for authorization checking. This operation may "fail open" without warning.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.resource` | `string` | Yes | REQUIRED: The resource for which the policy detail is being requested. See [Resource names](https://cloud.google.com/apis/design/resource_names) for the appropriate value for this field. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. The resource name of the Secret to delete in the format `projects/*/secrets/*`. |
 
 #### `projects.locations.secrets.setIamPolicy()`
 
@@ -268,15 +272,6 @@ Sets the access control policy on the specified secret. Replaces any existing po
 
 ### `projects.locations.secrets.versions`
 
-#### `projects.locations.secrets.versions.disable()`
-
-Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to disable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `projects.locations.secrets.versions.access()`
 
 Accesses a SecretVersion. This call returns the secret data. `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
@@ -285,16 +280,13 @@ Accesses a SecretVersion. This call returns the secret data. `projects/*/secrets
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion. |
 
-#### `projects.locations.secrets.versions.list()`
+#### `projects.locations.secrets.versions.get()`
 
-Lists SecretVersions. This call does not return secret data.
+Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.filter` | `string` | No | Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secret versions matching the filter. If filter is empty, all secret versions are listed. |
-| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
-| `params.parent` | `string` | Yes | Required. The resource name of the Secret associated with the SecretVersions to list, in the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`. |
-| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretVersionsResponse.next_page_token][]. |
+| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion. |
 
 #### `projects.locations.secrets.versions.enable()`
 
@@ -305,14 +297,6 @@ Enables a SecretVersion. Sets the state of the SecretVersion to ENABLED.
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to enable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.secrets.versions.get()`
-
-Gets metadata for a SecretVersion. `projects/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. `projects/*/secrets/*/versions/latest` or `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most recently created SecretVersion. |
-
 #### `projects.locations.secrets.versions.destroy()`
 
 Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and irrevocably destroys the secret data.
@@ -321,3 +305,23 @@ Destroys a SecretVersion. Sets the state of the SecretVersion to DESTROYED and i
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to destroy in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.secrets.versions.disable()`
+
+Disables a SecretVersion. Sets the state of the SecretVersion to DISABLED.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the SecretVersion to disable in the format `projects/*/secrets/*/versions/*` or `projects/*/locations/*/secrets/*/versions/*`. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.secrets.versions.list()`
+
+Lists SecretVersions. This call does not return secret data.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.filter` | `string` | No | Optional. Filter string, adhering to the rules in [List-operation filtering](https://cloud.google.com/secret-manager/docs/filtering). List only secret versions matching the filter. If filter is empty, all secret versions are listed. |
+| `params.parent` | `string` | Yes | Required. The resource name of the Secret associated with the SecretVersions to list, in the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`. |
+| `params.pageToken` | `string` | No | Optional. Pagination token, returned earlier via ListSecretVersionsResponse.next_page_token][]. |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of results to be returned in a single page. If set to 0, the server decides the number of results to return. If the number is greater than 25000, it is capped at 25000. |
