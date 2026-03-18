@@ -18,18 +18,6 @@ class Mybusinessverifications {
     this._servicePath = '';
 
 
-    this.verificationTokens = {};
-
-    /**
-     * Generate a token for the provided location data to verify the location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.verificationTokens.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/verificationTokens:generate', 'POST', apiParams, clientConfig);
-
     this.locations = {};
 
     /**
@@ -43,17 +31,6 @@ class Mybusinessverifications {
     this.locations.getVoiceOfMerchantState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/VoiceOfMerchantState', 'GET', apiParams, clientConfig);
 
     /**
-     * Starts the verification process for a location.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name of the location to verify.
-     * @param {object} apiParams.requestBody - The request body.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.locations.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:verify', 'POST', apiParams, clientConfig);
-
-    /**
      * Reports all eligible verification options for a location in a specific language.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.location - (Required) Required. The location to verify.
@@ -63,6 +40,17 @@ class Mybusinessverifications {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.locations.fetchVerificationOptions = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+location}:fetchVerificationOptions', 'POST', apiParams, clientConfig);
+
+    /**
+     * Starts the verification process for a location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the location to verify.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.locations.verify = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:verify', 'POST', apiParams, clientConfig);
 
     this.locations.verifications = {};
 
@@ -88,6 +76,18 @@ class Mybusinessverifications {
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
     this.locations.verifications.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+parent}/verifications', 'GET', apiParams, clientConfig);
+
+    this.verificationTokens = {};
+
+    /**
+     * Generate a token for the provided location data to verify the location.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {object} apiParams.requestBody - The request body.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.verificationTokens.generate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/verificationTokens:generate', 'POST', apiParams, clientConfig);
   }
 
 /**
