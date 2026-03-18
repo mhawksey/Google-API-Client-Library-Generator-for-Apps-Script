@@ -19,8 +19,8 @@ class Civicinfo {
 
 
     this.elections = {};
-    this.elections.voterInfoQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/voterinfo', 'GET', apiParams, clientConfig);
     this.elections.electionQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/elections', 'GET', apiParams, clientConfig);
+    this.elections.voterInfoQuery = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/voterinfo', 'GET', apiParams, clientConfig);
 
     this.divisions = {};
     this.divisions.queryDivisionByAddress = async (apiParams = {}, clientConfig = {}) => this._makeRequest('civicinfo/v2/divisionsByAddress', 'GET', apiParams, clientConfig);
