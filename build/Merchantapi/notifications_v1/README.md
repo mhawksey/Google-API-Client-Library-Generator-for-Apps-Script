@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: notificatio
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:55:05 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:55:05 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:50:35 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:50:35 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:48 GMT
 
 
@@ -26,6 +26,15 @@ Gets notification subscriptions for an account.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The `name` of the notification subscription. |
 
+#### `accounts.notificationsubscriptions.create()`
+
+Creates a notification subscription for a business. For standalone or subaccounts accounts, the business can create a subscription for self. For MCAs, the business can create a subscription for all managed accounts or for a specific subaccount. See [Decode notifications](/merchant/api/guides/accounts/notifications#decode_notifications) for information on how to decode the notification payload and how to interpret its contents. We will allow the following types of notification subscriptions to exist together (per business as a subscriber per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for managed accounts + subscription for self. we will not allow (per business as a subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for the same target account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. The merchant account that owns the new notification subscription. Format: `accounts/{account}` |
+| `params.requestBody` | `object` | Yes | The request body. |
+
 #### `accounts.notificationsubscriptions.patch()`
 
 Updates an existing notification subscription for a merchant.
@@ -44,15 +53,6 @@ Deletes a notification subscription for a merchant.
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. The name of the notification subscription to be deleted. |
 
-#### `accounts.notificationsubscriptions.create()`
-
-Creates a notification subscription for a business. For standalone or subaccounts accounts, the business can create a subscription for self. For MCAs, the business can create a subscription for all managed accounts or for a specific subaccount. We will allow the following types of notification subscriptions to exist together (per business as a subscriber per event type): 1. Subscription for all managed accounts + subscription for self. 2. Multiple "partial" subscriptions for managed accounts + subscription for self. we will not allow (per business as a subscriber per event type): 1. Multiple self subscriptions. 2. Multiple "all managed accounts" subscriptions. 3. "All managed accounts" subscription and partial subscriptions at the same time. 4. Multiple partial subscriptions for the same target account.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The merchant account that owns the new notification subscription. Format: `accounts/{account}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
 #### `accounts.notificationsubscriptions.list()`
 
 Gets all the notification subscriptions for a merchant.
@@ -60,5 +60,5 @@ Gets all the notification subscriptions for a merchant.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. The merchant account who owns the notification subscriptions. Format: `accounts/{account}` |
-| `params.pageToken` | `string` | No | Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. |
 | `params.pageSize` | `integer` | No | The maximum number of notification subscriptions to return in a page. The default value for `page_size` is 100. The maximum value is `200`. Values above `200` will be coerced to `200`. |
+| `params.pageToken` | `string` | No | Token (if provided) to retrieve the subsequent page. All other parameters must match the original call that provided the page token. |
