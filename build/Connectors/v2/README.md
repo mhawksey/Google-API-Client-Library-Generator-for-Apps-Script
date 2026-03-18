@@ -4,8 +4,8 @@ Auto-generated client library for using the **Connectors API (version: v2)** in 
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:34:30 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:34:30 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:28:57 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:28:57 GMT
 - **Created:** Sun, 20 Jul 2025 16:23:50 GMT
 
 
@@ -20,21 +20,47 @@ Auto-generated client library for using the **Connectors API (version: v2)** in 
 
 ### `projects.locations.connections`
 
-#### `projects.locations.connections.checkStatus()`
-
-Reports the status of the connection. Note that when the connection is in a state that is not ACTIVE, the implementation of this RPC method must return a Status with the corresponding State instead of returning a gRPC status code that is not "OK", which indicates that ConnectionStatus itself, not the connection, failed.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes |  |
-| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
-
 #### `projects.locations.connections.checkReadiness()`
 
 Reports readiness status of the connector. Similar logic to GetStatus but modified for kubernetes health check to understand.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.name` | `string` | Yes |  |
+
+#### `projects.locations.connections.generateConnectionToolspecOverride()`
+
+Generate toolspec override for the given list of toolNames.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.connections.tools()`
+
+Lists all available tools with POST.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.parent` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.locations.connections.listCustomToolNames()`
+
+Lists custom tool names.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
+
+#### `projects.locations.connections.checkStatus()`
+
+Reports the status of the connection. Note that when the connection is in a state that is not ACTIVE, the implementation of this RPC method must return a Status with the corresponding State instead of returning a gRPC status code that is not "OK", which indicates that ConnectionStatus itself, not the connection, failed.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
 | `params.name` | `string` | Yes |  |
 
 #### `projects.locations.connections.exchangeAuthCode()`
@@ -55,32 +81,6 @@ RefreshAccessToken exchanges the OAuth refresh token (and other necessary data) 
 | `params.name` | `string` | Yes |  |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.tools()`
-
-Lists all available tools with POST.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.connections.generateConnectionToolspecOverride()`
-
-Generate toolspec override for the given list of toolNames.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `projects.locations.connections.listCustomToolNames()`
-
-Lists custom tool names.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
-
 #### `projects.locations.connections.executeSqlQuery()`
 
 Executes a SQL statement specified in the body of the request. An example of this SQL statement in the case of Salesforce connector would be 'select
@@ -93,6 +93,16 @@ Executes a SQL statement specified in the body of the request. An example of thi
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `projects.locations.connections.actions`
+
+#### `projects.locations.connections.actions.get()`
+
+Gets the schema of the given action.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
+| `params.name` | `string` | Yes | Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} |
+| `params.view` | `string` | No | Specified view of the action schema. |
 
 #### `projects.locations.connections.actions.execute()`
 
@@ -111,72 +121,9 @@ Gets the schema of all the actions supported by the connector.
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Parent resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection} |
 | `params.pageSize` | `integer` | No | Number of Actions to return. Defaults to 25. |
-| `params.pageToken` | `string` | No | Page token, return from a previous ListActions call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of actions. |
+| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
 | `params.view` | `string` | No | Specifies which fields of the Action are returned in the response. |
-| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
-
-#### `projects.locations.connections.actions.get()`
-
-Gets the schema of the given action.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Action. Format: projects/{project}/locations/{location}/connections/{connection}/actions/{action} |
-| `params.view` | `string` | No | Specified view of the action schema. |
-| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
-
-### `projects.locations.connections.tools`
-
-#### `projects.locations.connections.tools.list()`
-
-Lists all available tools.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.pageSize` | `integer` | No | Page size. |
-| `params.pageToken` | `string` | No | Page token. |
-| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
-
-#### `projects.locations.connections.tools.execute()`
-
-Executes a specific tool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Tool. Format: projects/{project}/locations/{location}/connections/{connection}/tools/{tool} |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-### `projects.locations.connections.resources`
-
-#### `projects.locations.connections.resources.list()`
-
-Lists all available resources.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the connection. Format: projects/{project}/locations/{location}/connections/{connection} |
-| `params.pageSize` | `integer` | No | Optional. Page size for the request. |
-| `params.pageToken` | `string` | No | Optional. Page token for the request. |
-| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
-
-#### `projects.locations.connections.resources.get()`
-
-Gets a specific resource.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} |
-| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
-
-#### `projects.locations.connections.resources.getResourcePost()`
-
-Gets a specific resource with POST.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.pageToken` | `string` | No | Page token, return from a previous ListActions call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of actions. |
 
 ### `projects.locations.connections.entityTypes`
 
@@ -186,10 +133,10 @@ Gets metadata of given entity type
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
+| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
 | `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{entityType} |
 | `params.view` | `string` | No | Specifies view for entity type schema. |
 | `params.contextMetadata` | `string` | No | Context metadata for request could be used to fetch customization of entity type schema. |
-| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
 
 #### `projects.locations.connections.entityTypes.list()`
 
@@ -197,11 +144,11 @@ Lists metadata related to all entity types present in the external system.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.parent` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection} |
 | `params.pageSize` | `integer` | No | Number of entity types to return. Defaults to 25. |
+| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
+| `params.parent` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection} |
 | `params.pageToken` | `string` | No | Page token, return from a previous ListEntityTypes call, that can be used retrieve the next page of content. If unspecified, the request returns the first page of entity types. |
 | `params.view` | `string` | No | Specifies which fields of the Entity Type are returned in the response. |
-| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
 
 ### `projects.locations.connections.entityTypes.entities`
 
@@ -212,21 +159,23 @@ Lists entity rows of a particular entity type contained in the request. Note: 1.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.parent` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
-| `params.pageSize` | `integer` | No | Number of entity rows to return. Defaults page size = 25. Max page size = 200. |
-| `params.pageToken` | `string` | No | Page token value if available from a previous request. |
-| `params.sortBy` | `string` | No | List of 'sort_by' columns to use when returning the results. |
 | `params.sortOrder` | `string` | No | List of 'sort_order' columns to use when returning the results. |
-| `params.conditions` | `string` | No | Conditions to be used when listing entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. |
+| `params.pageSize` | `integer` | No | Number of entity rows to return. Defaults page size = 25. Max page size = 200. |
 | `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
+| `params.sortBy` | `string` | No | List of 'sort_by' columns to use when returning the results. |
+| `params.pageToken` | `string` | No | Page token value if available from a previous request. |
+| `params.conditions` | `string` | No | Conditions to be used when listing entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. |
 
-#### `projects.locations.connections.entityTypes.entities.get()`
+#### `projects.locations.connections.entityTypes.entities.updateEntitiesWithConditions()`
 
-Gets a single entity row matching the entity type and entity id specified in the request.
+Updates entities based on conditions specified in the request and not on entity id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
+| `params.entityType` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
+| `params.conditions` | `string` | No | Required. Conditions to be used when updating entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. |
 | `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `projects.locations.connections.entityTypes.entities.create()`
 
@@ -248,16 +197,24 @@ Updates an existing entity row matching the entity type and entity id specified 
 | `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.locations.connections.entityTypes.entities.updateEntitiesWithConditions()`
+#### `projects.locations.connections.entityTypes.entities.deleteEntitiesWithConditions()`
 
-Updates entities based on conditions specified in the request and not on entity id.
+Deletes entities based on conditions specified in the request and not on entity id.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.entityType` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
-| `params.conditions` | `string` | No | Required. Conditions to be used when updating entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. |
+| `params.conditions` | `string` | No | Required. Conditions to be used when deleting entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. |
 | `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.entityType` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
+
+#### `projects.locations.connections.entityTypes.entities.get()`
+
+Gets a single entity row matching the entity type and entity id specified in the request.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
+| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
 
 #### `projects.locations.connections.entityTypes.entities.delete()`
 
@@ -265,15 +222,58 @@ Deletes an existing entity row matching the entity type and entity id specified 
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
 | `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
+| `params.name` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type}/entities/{id} |
 
-#### `projects.locations.connections.entityTypes.entities.deleteEntitiesWithConditions()`
+### `projects.locations.connections.tools`
 
-Deletes entities based on conditions specified in the request and not on entity id.
+#### `projects.locations.connections.tools.list()`
+
+Lists all available tools.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.entityType` | `string` | Yes | Required. Resource name of the Entity Type. Format: projects/{project}/locations/{location}/connections/{connection}/entityTypes/{type} |
-| `params.conditions` | `string` | No | Required. Conditions to be used when deleting entities. From a proto standpoint, There are no restrictions on what can be passed using this field. The connector documentation should have information about what format of filters/conditions are supported. Note: If this conditions field is left empty, an exception is thrown. We don't want to consider 'empty conditions' to be a match-all case. Connector developers can determine and document what a match-all case constraint would be. |
+| `params.pageSize` | `integer` | No | Page size. |
+| `params.pageToken` | `string` | No | Page token. |
 | `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
+| `params.parent` | `string` | Yes | Required. Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection} |
+
+#### `projects.locations.connections.tools.execute()`
+
+Executes a specific tool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Tool. Format: projects/{project}/locations/{location}/connections/{connection}/tools/{tool} |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+### `projects.locations.connections.resources`
+
+#### `projects.locations.connections.resources.get()`
+
+Gets a specific resource.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
+| `params.name` | `string` | Yes | Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} |
+
+#### `projects.locations.connections.resources.list()`
+
+Lists all available resources.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.pageSize` | `integer` | No | Optional. Page size for the request. |
+| `params.pageToken` | `string` | No | Optional. Page token for the request. |
+| `params.executionConfig.headers` | `string` | No | headers to be used for the request. For example: headers:'{"x-integration-connectors-managed-connection-id":"conn-id","x-integration-connectors-runtime-config":"runtime-cfg"}' |
+| `params.parent` | `string` | Yes | Required. Resource name of the connection. Format: projects/{project}/locations/{location}/connections/{connection} |
+
+#### `projects.locations.connections.resources.getResourcePost()`
+
+Gets a specific resource with POST.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of the Resource. Format: projects/{project}/locations/{location}/connections/{connection}/resources/{resource} |
+| `params.requestBody` | `object` | Yes | The request body. |
