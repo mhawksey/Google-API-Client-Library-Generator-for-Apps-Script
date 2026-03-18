@@ -4,8 +4,8 @@ Auto-generated client library for using the **IAM Service Account Credentials AP
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:46:20 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:46:20 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:48:17 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:48:17 GMT
 - **Created:** Sun, 20 Jul 2025 16:35:09 GMT
 
 
@@ -14,37 +14,13 @@ Auto-generated client library for using the **IAM Service Account Credentials AP
 
 ## API Reference
 
-### `locations`
-
-### `locations.workforcePools`
-
-#### `locations.workforcePools.getAllowedLocations()`
-
-Returns the trust boundary info for a given workforce pool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of workforce pool. |
-
 ### `projects`
-
-### `projects.locations`
-
-### `projects.locations.workloadIdentityPools`
-
-#### `projects.locations.workloadIdentityPools.getAllowedLocations()`
-
-Returns the trust boundary info for a given workload identity pool.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. Resource name of workload identity pool. |
 
 ### `projects.serviceAccounts`
 
-#### `projects.serviceAccounts.generateIdToken()`
+#### `projects.serviceAccounts.generateAccessToken()`
 
-Generates an OpenID Connect ID token for a service account.
+Generates an OAuth 2.0 access token for a service account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -54,6 +30,15 @@ Generates an OpenID Connect ID token for a service account.
 #### `projects.serviceAccounts.signBlob()`
 
 Signs a blob using a service account's system-managed private key.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `projects.serviceAccounts.generateIdToken()`
+
+Generates an OpenID Connect ID token for a service account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
@@ -77,11 +62,26 @@ Signs a JWT using a service account's system-managed private key.
 | `params.name` | `string` | Yes | Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. |
 | `params.requestBody` | `object` | Yes | The request body. |
 
-#### `projects.serviceAccounts.generateAccessToken()`
+### `projects.locations`
 
-Generates an OAuth 2.0 access token for a service account.
+### `projects.locations.workloadIdentityPools`
+
+#### `projects.locations.workloadIdentityPools.getAllowedLocations()`
+
+Returns the trust boundary info for a given workload identity pool.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The resource name of the service account for which the credentials are requested, in the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. |
-| `params.requestBody` | `object` | Yes | The request body. |
+| `params.name` | `string` | Yes | Required. Resource name of workload identity pool. |
+
+### `locations`
+
+### `locations.workforcePools`
+
+#### `locations.workforcePools.getAllowedLocations()`
+
+Returns the trust boundary info for a given workforce pool.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. Resource name of workforce pool. |
