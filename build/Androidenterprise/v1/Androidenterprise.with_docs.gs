@@ -58,7 +58,7 @@ class Androidenterprise {
     this.devices.update = async (apiParams = {}, clientConfig = {}) => this._makeRequest('androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}', 'PUT', apiParams, clientConfig);
 
     /**
-     * Retrieves whether a device's access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console. Otherwise, the device state is ignored and all devices are allowed access to Google services. This is only supported for Google-managed users.
+     * Checks if a device can access Google apps and services for a user. Returns whether access is "enabled" or "disabled". A "disabled" state prevents the user's Managed Google Account on the device from successfully authenticating with Google. This blocks access to most Google applications and services, including Google Play, as the device cannot prove its entitlement to access them. New devices default to "disabled". Important: Enforcement of this state depends on the following conditions: * The user must be a managed google account. * The enterprise must be a managed google domain. * Third-party Android mobile management must be active in the Google Admin Console for the user's Organizational Unit. If these conditions aren't met, access may still be possible even in a "disabled" state.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.deviceId - (Required) The ID of the device.
      * @param {string} apiParams.enterpriseId - (Required) The ID of the enterprise.
@@ -70,7 +70,7 @@ class Androidenterprise {
     this.devices.getState = async (apiParams = {}, clientConfig = {}) => this._makeRequest('androidenterprise/v1/enterprises/{enterpriseId}/users/{userId}/devices/{deviceId}/state', 'GET', apiParams, clientConfig);
 
     /**
-     * Sets whether a device's access to Google services is enabled or disabled. The device state takes effect only if enforcing EMM policies on Android devices is enabled in the Google Admin Console. Otherwise, the device state is ignored and all devices are allowed access to Google services. This is only supported for Google-managed users.
+     * Sets whether a device's access to Google services (including Google Play) is enabled or disabled for the specified user. Setting the state to "enabled" allows the Google Account to access Google services, while "disabled" blocks access by preventing OAuth token issuance. Preconditions for Enforcement: 1. This setting is only effective for Google-managed users. 2. The enterprise must be linked to a Google Managed Domain. 3. Enforcement requires third-party Android mobile management to be enabled within the Google Admin Console for the user's Organizational Unit. If these preconditions are not met, changes to this state may be ignored.
      * @param {object} apiParams - The parameters for the API request.
      * @param {string} apiParams.deviceId - (Required) The ID of the device.
      * @param {string} apiParams.enterpriseId - (Required) The ID of the enterprise.
