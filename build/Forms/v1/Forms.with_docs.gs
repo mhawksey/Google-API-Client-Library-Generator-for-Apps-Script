@@ -32,15 +32,15 @@ class Forms {
     this.forms.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms', 'POST', apiParams, clientConfig);
 
     /**
-     * Change the form with a batch of updates.
+     * Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. The form ID.
+     * @param {string} apiParams.formId - (Required) Required. The ID of the form. You can get the id from Form.form_id field.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.forms.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:batchUpdate', 'POST', apiParams, clientConfig);
+    this.forms.setPublishSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:setPublishSettings', 'POST', apiParams, clientConfig);
 
     /**
      * Get a form.
@@ -53,54 +53,28 @@ class Forms {
     this.forms.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}', 'GET', apiParams, clientConfig);
 
     /**
-     * Updates the publish settings of a form. Legacy forms aren't supported because they don't have the `publish_settings` field.
+     * Change the form with a batch of updates.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. The ID of the form. You can get the id from Form.form_id field.
+     * @param {string} apiParams.formId - (Required) Required. The form ID.
      * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.forms.setPublishSettings = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:setPublishSettings', 'POST', apiParams, clientConfig);
-
-    this.forms.responses = {};
-
-    /**
-     * List a form's responses.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.filter - Which form responses to return. Currently, the only supported filters are: * timestamp > *N* which means to get all form responses submitted after (but not at) timestamp *N*. * timestamp >= *N* which means to get all form responses submitted at and after timestamp *N*. For both supported filters, timestamp must be formatted in RFC3339 UTC "Zulu" format. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
-     * @param {string} apiParams.formId - (Required) Required. ID of the Form whose responses to list.
-     * @param {integer} apiParams.pageSize - The maximum number of responses to return. The service may return fewer than this value. If unspecified or zero, at most 5000 responses are returned.
-     * @param {string} apiParams.pageToken - A page token returned by a previous list response. If this field is set, the form and the values of the filter must be the same as for the original request.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.forms.responses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/responses', 'GET', apiParams, clientConfig);
-
-    /**
-     * Get one response from the form.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. The form ID.
-     * @param {string} apiParams.responseId - (Required) Required. The response ID within the form.
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.forms.responses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/responses/{responseId}', 'GET', apiParams, clientConfig);
+    this.forms.batchUpdate = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}:batchUpdate', 'POST', apiParams, clientConfig);
 
     this.forms.watches = {};
 
     /**
-     * Delete a watch.
+     * Create a new watch. If a watch ID is provided, it must be unused. For each invoking project, the per form limit is one watch per Watch.EventType. A watch expires seven days after it is created (see Watch.expire_time).
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. The ID of the Form.
-     * @param {string} apiParams.watchId - (Required) Required. The ID of the Watch to delete.
+     * @param {string} apiParams.formId - (Required) Required. ID of the Form to watch.
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.forms.watches.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches/{watchId}', 'DELETE', apiParams, clientConfig);
+    this.forms.watches.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'POST', apiParams, clientConfig);
 
     /**
      * Renew an existing watch for seven days. The state of the watch after renewal is `ACTIVE`, and the `expire_time` is seven days from the renewal. Renewing a watch in an error state (e.g. `SUSPENDED`) succeeds if the error is no longer present, but fail otherwise. After a watch has expired, RenewWatch returns `NOT_FOUND`.
@@ -125,15 +99,41 @@ class Forms {
     this.forms.watches.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'GET', apiParams, clientConfig);
 
     /**
-     * Create a new watch. If a watch ID is provided, it must be unused. For each invoking project, the per form limit is one watch per Watch.EventType. A watch expires seven days after it is created (see Watch.expire_time).
+     * Delete a watch.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.formId - (Required) Required. ID of the Form to watch.
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.formId - (Required) Required. The ID of the Form.
+     * @param {string} apiParams.watchId - (Required) Required. The ID of the Watch to delete.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.forms.watches.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches', 'POST', apiParams, clientConfig);
+    this.forms.watches.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/watches/{watchId}', 'DELETE', apiParams, clientConfig);
+
+    this.forms.responses = {};
+
+    /**
+     * Get one response from the form.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.formId - (Required) Required. The form ID.
+     * @param {string} apiParams.responseId - (Required) Required. The response ID within the form.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.forms.responses.get = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/responses/{responseId}', 'GET', apiParams, clientConfig);
+
+    /**
+     * List a form's responses.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.filter - Which form responses to return. Currently, the only supported filters are: * timestamp > *N* which means to get all form responses submitted after (but not at) timestamp *N*. * timestamp >= *N* which means to get all form responses submitted at and after timestamp *N*. For both supported filters, timestamp must be formatted in RFC3339 UTC "Zulu" format. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+     * @param {string} apiParams.formId - (Required) Required. ID of the Form whose responses to list.
+     * @param {integer} apiParams.pageSize - The maximum number of responses to return. The service may return fewer than this value. If unspecified or zero, at most 5000 responses are returned.
+     * @param {string} apiParams.pageToken - A page token returned by a previous list response. If this field is set, the form and the values of the filter must be the same as for the original request.
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.forms.responses.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/forms/{formId}/responses', 'GET', apiParams, clientConfig);
   }
 
 /**
