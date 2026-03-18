@@ -4,8 +4,8 @@ Auto-generated client library for using the **Merchant API (version: datasources
 
 ## Metadata
 
-- **Last Checked:** Thu, 01 Jan 2026 00:54:27 GMT
-- **Last Modified:** Thu, 01 Jan 2026 00:54:27 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:50:11 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:50:11 GMT
 - **Created:** Sun, 31 Aug 2025 23:43:24 GMT
 
 
@@ -17,24 +17,6 @@ Auto-generated client library for using the **Merchant API (version: datasources
 ### `accounts`
 
 ### `accounts.dataSources`
-
-#### `accounts.dataSources.fetch()`
-
-Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the data source resource to fetch. Format: `accounts/{account}/dataSources/{datasource}` |
-| `params.requestBody` | `object` | Yes | The request body. |
-
-#### `accounts.dataSources.create()`
-
-Creates the new data source configuration for the given account. This method always creates a new data source.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.parent` | `string` | Yes | Required. The account where this data source will be created. Format: `accounts/{account}` |
-| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.dataSources.get()`
 
@@ -50,17 +32,18 @@ Lists the configurations for data sources for the given account.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.pageSize` | `integer` | No | Optional. The maximum number of data sources to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of data sources will be returned. |
 | `params.parent` | `string` | Yes | Required. The account to list data sources for. Format: `accounts/{account}` |
+| `params.pageSize` | `integer` | No | Optional. The maximum number of data sources to return. The service may return fewer than this value. The maximum value is 1000; values above 1000 will be coerced to 1000. If unspecified, the maximum number of data sources will be returned. |
 | `params.pageToken` | `string` | No | Optional. A page token, received from a previous `ListDataSources` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `ListDataSources` must match the call that provided the page token. |
 
-#### `accounts.dataSources.delete()`
+#### `accounts.dataSources.create()`
 
-Deletes a data source from your Merchant Center account.
+Creates the new data source configuration for the given account. This method always creates a new data source.
 
 | Parameter | Type | Required | Description |
 |---|---|---|---|
-| `params.name` | `string` | Yes | Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}` |
+| `params.parent` | `string` | Yes | Required. The account where this data source will be created. Format: `accounts/{account}` |
+| `params.requestBody` | `object` | Yes | The request body. |
 
 #### `accounts.dataSources.patch()`
 
@@ -70,6 +53,23 @@ Updates the existing data source configuration. The fields that are set in the u
 |---|---|---|---|
 | `params.name` | `string` | Yes | Required. Identifier. The name of the data source. Format: `accounts/{account}/dataSources/{datasource}` |
 | `params.updateMask` | `string` | No | Required. The list of data source fields to be updated. Fields specified in the update mask without a value specified in the body will be deleted from the data source. Providing special "*" value for full data source replacement is not supported. For example, If you insert `updateMask=displayName` in the request, it will only update the `displayName` leaving all other fields untouched. |
+| `params.requestBody` | `object` | Yes | The request body. |
+
+#### `accounts.dataSources.delete()`
+
+Deletes a data source from your Merchant Center account.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the data source to delete. Format: `accounts/{account}/dataSources/{datasource}` |
+
+#### `accounts.dataSources.fetch()`
+
+Performs the data fetch immediately (even outside fetch schedule) on a data source from your Merchant Center Account. If you need to call this method more than once per day, you should use the Products service to update your product data instead. This method only works on data sources with a file input set.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.name` | `string` | Yes | Required. The name of the data source resource to fetch. Format: `accounts/{account}/dataSources/{datasource}` |
 | `params.requestBody` | `object` | Yes | The request body. |
 
 ### `accounts.dataSources.fileUploads`
