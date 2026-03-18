@@ -34,14 +34,15 @@ class Firebaserules {
     this.projects.rulesets = {};
 
     /**
-     * Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a `Release` the operation will fail.
+     * Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name for the ruleset to delete. Format: `projects/{project_id}/rulesets/{ruleset_id}`
+     * @param {string} apiParams.name - (Required) Required. Resource name for Project which owns this `Ruleset`. Format: `projects/{project_id}`
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.rulesets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+    this.projects.rulesets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/rulesets', 'POST', apiParams, clientConfig);
 
     /**
      * Get a `Ruleset` by name including the full `Source` contents.
@@ -67,27 +68,16 @@ class Firebaserules {
     this.projects.rulesets.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/rulesets', 'GET', apiParams, clientConfig);
 
     /**
-     * Create a `Ruleset` from `Source`. The `Ruleset` is given a unique generated name which is returned to the caller. `Source` containing syntactic or semantics errors will result in an error response indicating the first error encountered. For a detailed view of `Source` issues, use TestRuleset.
+     * Delete a `Ruleset` by resource name. If the `Ruleset` is referenced by a `Release` the operation will fail.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name for Project which owns this `Ruleset`. Format: `projects/{project_id}`
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. Resource name for the ruleset to delete. Format: `projects/{project_id}/rulesets/{ruleset_id}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.rulesets.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/rulesets', 'POST', apiParams, clientConfig);
+    this.projects.rulesets.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     this.projects.releases = {};
-
-    /**
-     * Delete a `Release` by resource name.
-     * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name for the `Release` to delete. Format: `projects/{project_id}/releases/{release_id}`
-     * @param {object} [clientConfig] - Optional client-side configuration.
-     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
-     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
-     */
-    this.projects.releases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
 
     /**
      * Create a `Release`. Release names should reflect the developer's deployment practices. For example, the release name may include the environment name, application name, application version, or any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled services. More than one `Release` may be 'live' concurrently. Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer. Release Name -> Ruleset Name * projects/foo/releases/prod -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/beta -> projects/foo/rulesets/uuid123 * projects/foo/releases/prod/v23 -> projects/foo/rulesets/uuid456 The relationships reflect a `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease method.
@@ -101,15 +91,15 @@ class Firebaserules {
     this.projects.releases.create = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/releases', 'POST', apiParams, clientConfig);
 
     /**
-     * Get the `Release` executable to use when enforcing rules.
+     * Update a `Release` via PATCH. Only updates to `ruleset_name` will be honored. `Release` rename is not supported. To create a `Release` use the CreateRelease method.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.executableVersion - Optional. The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1.
-     * @param {string} apiParams.name - (Required) Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
+     * @param {string} apiParams.name - (Required) Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
+     * @param {object} apiParams.requestBody - The request body.
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.releases.getExecutable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getExecutable', 'GET', apiParams, clientConfig);
+    this.projects.releases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
 
     /**
      * Get a `Release` by name.
@@ -135,15 +125,25 @@ class Firebaserules {
     this.projects.releases.list = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}/releases', 'GET', apiParams, clientConfig);
 
     /**
-     * Update a `Release` via PATCH. Only updates to `ruleset_name` will be honored. `Release` rename is not supported. To create a `Release` use the CreateRelease method.
+     * Delete a `Release` by resource name.
      * @param {object} apiParams - The parameters for the API request.
-     * @param {string} apiParams.name - (Required) Required. Resource name for the project which owns this `Release`. Format: `projects/{project_id}`
-     * @param {object} apiParams.requestBody - The request body.
+     * @param {string} apiParams.name - (Required) Required. Resource name for the `Release` to delete. Format: `projects/{project_id}/releases/{release_id}`
      * @param {object} [clientConfig] - Optional client-side configuration.
      * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
      * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
      */
-    this.projects.releases.patch = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'PATCH', apiParams, clientConfig);
+    this.projects.releases.delete = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}', 'DELETE', apiParams, clientConfig);
+
+    /**
+     * Get the `Release` executable to use when enforcing rules.
+     * @param {object} apiParams - The parameters for the API request.
+     * @param {string} apiParams.executableVersion - Optional. The requested runtime executable version. Defaults to FIREBASE_RULES_EXECUTABLE_V1.
+     * @param {string} apiParams.name - (Required) Required. Resource name of the `Release`. Format: `projects/{project_id}/releases/{release_id}`
+     * @param {object} [clientConfig] - Optional client-side configuration.
+     * @param {string} [clientConfig.responseType] - The expected response type. Setting to 'blob' returns the raw file content. Omit for JSON.
+     * @return {Promise<object>} A Promise that resolves with the response object. The response payload is in the `data` property, which will be a JSON object or a Blob.
+     */
+    this.projects.releases.getExecutable = async (apiParams = {}, clientConfig = {}) => this._makeRequest('v1/{+name}:getExecutable', 'GET', apiParams, clientConfig);
   }
 
 /**
