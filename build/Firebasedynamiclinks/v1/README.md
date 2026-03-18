@@ -4,8 +4,8 @@ Auto-generated client library for using the **Firebase Dynamic Links API (versio
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:44:36 GMT
-- **Last Modified:** Sun, 01 Mar 2026 00:44:36 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:39:48 GMT
+- **Last Modified:** Wed, 18 Mar 2026 21:39:48 GMT
 - **Created:** Sun, 20 Jul 2025 16:33:32 GMT
 
 
@@ -36,16 +36,6 @@ Creates a short Dynamic Link given either a valid long Dynamic Link or details s
 
 ### `v1`
 
-#### `v1.getLinkStats()`
-
-Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens.
-
-| Parameter | Type | Required | Description |
-|---|---|---|---|
-| `params.dynamicLink` | `string` | Yes | Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz |
-| `params.durationDays` | `string` | No | The span of time requested in days. |
-| `params.sdkVersion` | `string` | No | Google SDK version. Version takes the form "$major.$minor.$patch" |
-
 #### `v1.installAttribution()`
 
 Get iOS strong/weak-match info for post-install attribution.
@@ -61,3 +51,13 @@ Get iOS reopen attribution for app universal link open deeplinking.
 | Parameter | Type | Required | Description |
 |---|---|---|---|
 | `params.requestBody` | `object` | Yes | The request body. |
+
+#### `v1.getLinkStats()`
+
+Fetches analytics stats of a short Dynamic Link for a given duration. Metrics include number of clicks, redirects, installs, app first opens, and app reopens.
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `params.dynamicLink` | `string` | Yes | Dynamic Link URL. e.g. https://abcd.app.goo.gl/wxyz |
+| `params.sdkVersion` | `string` | No | Google SDK version. Version takes the form "$major.$minor.$patch" |
+| `params.durationDays` | `string` | No | The span of time requested in days. |
