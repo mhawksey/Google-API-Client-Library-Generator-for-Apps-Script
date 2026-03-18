@@ -4,7 +4,7 @@ Auto-generated client library for using the **Google Chat API (version: v1)** in
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:25:15 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:20:07 GMT
 - **Last Modified:** Sun, 01 Mar 2026 00:25:15 GMT
 - **Created:** Sun, 20 Jul 2025 16:15:03 GMT
 
