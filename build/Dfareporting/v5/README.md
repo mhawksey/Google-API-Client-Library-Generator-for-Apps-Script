@@ -4,7 +4,7 @@ Auto-generated client library for using the **Campaign Manager 360 API (version:
 
 ## Metadata
 
-- **Last Checked:** Sun, 01 Mar 2026 00:42:28 GMT
+- **Last Checked:** Wed, 18 Mar 2026 21:31:34 GMT
 - **Last Modified:** Thu, 01 Jan 2026 00:42:25 GMT
 - **Created:** Sun, 31 Aug 2025 23:33:42 GMT
 
@@ -1880,6 +1880,9 @@ Generates tags for a placement.
 | `params.placementIds` | `string` | No | Generate tags for these placements. |
 | `params.campaignId` | `string` | No | Generate placements belonging to this campaign. This is a required field. |
 | `params.tagFormats` | `string` | No | Tag formats to generate for these placements. *Note:* PLACEMENT_TAG_STANDARD can only be generated for 1x1 placements. |
+| `params.tagProperties.tcfGdprMacrosIncluded` | `boolean` | No | Optional. Indicates whether to include the TCF macro in the generated tags. Default true. [Learn more](https://support.google.com/campaignmanager/answer/10031693) about this macro. |
+| `params.tagProperties.gppMacrosIncluded` | `boolean` | No | Optional. Indicates whether to include the GPP macro in the generated tags. [Learn more](https://support.google.com/campaignmanager/answer/10031693) about this macro. |
+| `params.tagProperties.dcDbmMacroIncluded` | `boolean` | No | Optional. Indicates whether to include the dc_dbm macro in the generated tags. [Learn more](https://support.google.com/campaignmanager/answer/9280273) about this macro. |
 
 #### `placements.get()`
 
